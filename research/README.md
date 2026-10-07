@@ -16,8 +16,9 @@ Can we predict which distant fields will start citing each other?
   need each topic's whole neighbourhood. The test window, and the years
   before the train window (used only to decide which pairs were never
   connected), are fetched only for the sampled topics, in chunks of 100,
-  because they only concern sampled pairs. This keeps a 300-topic run to
-  about 8,400 requests.
+  because they only concern sampled pairs. A 300-topic run takes about
+  7,200 requests (measured: about 12 per topic and cutoff), which fits in
+  one day with a free key, or about a week without one.
 - **Label:** the pair has at least 3 links in the test window.
 - **Windows:** cutoff 2011 (train 2004 to 2011, test 2012 to 2017) fits the
   models; cutoff 2017 (train 2010 to 2017, test 2018 to 2023) is the evaluation.
@@ -48,10 +49,13 @@ Can we predict which distant fields will start citing each other?
 ## Run it
 
 ```bash
-python -m venv .venv && .venv/bin/pip install -r research/requirements.txt
+python -m venv .venv
+source .venv/bin/activate        # on Windows: .venv\Scripts\activate
+pip install -r research/requirements.txt
 cd research
-python -m undiscovered_research.collect --per-domain 75   # OpenAlex; cached
-python -m undiscovered_research.backtest                  # prints and writes results/
+python -m undiscovered_research.collect    # OpenAlex; cached, stops and resumes
+python -m undiscovered_research.backtest   # writes results/backtest_e1_k3_<model>.json
+pytest                                     # offline tests
 ```
 
 OpenAlex is free. A free key from <https://openalex.org/settings/api>
