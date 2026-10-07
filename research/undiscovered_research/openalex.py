@@ -92,9 +92,15 @@ def get(path: str, params: dict[str, Any]) -> dict[str, Any]:
 def paged(path: str, params: dict[str, Any]) -> Iterator[dict[str, Any]]:
     """Every page of a cursor-paged list or group_by, as raw responses."""
     cursor = "*"
+    per_page = int(params.get("per_page", 25))
     while cursor:
         page = get(path, {**params, "cursor": cursor})
         yield page
+        # A short page is the last one. Without this check the cursor runs on
+        # for one more, empty, page, which costs a request every time.
+        items = page.get("group_by") if "group_by" in params else page.get("results")
+        if len(items or []) < per_page:
+            break
         cursor = page.get("meta", {}).get("next_cursor")
 
 

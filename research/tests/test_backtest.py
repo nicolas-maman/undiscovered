@@ -163,3 +163,17 @@ def test_self_citations_do_not_count_as_neighbours(world):
     with_self = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")
     rows = dict(zip(with_self["pairs"], with_self["rows"]))
     assert rows[("TA", "TD")]["cocite_cosine"] > 0.1
+
+
+def test_paging_stops_at_a_short_page(monkeypatch):
+    calls = []
+
+    def fake_get(path, params):
+        calls.append(params["cursor"])
+        if params["cursor"] == "*":
+            return {"meta": {"next_cursor": "c2"}, "group_by": [{"key": "T1", "count": 1}] * 2}
+        return {"meta": {"next_cursor": "c3"}, "group_by": [{"key": "T2", "count": 1}]}
+
+    monkeypatch.setattr(openalex, "get", fake_get)
+    pages = list(openalex.paged("works", {"group_by": "primary_topic.id", "per_page": 2}))
+    assert calls == ["*", "c2"] and len(pages) == 2
