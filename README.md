@@ -19,8 +19,12 @@ Swanson worked by hand, in medicine. This project tries to do the same thing
 across all of science, openly, and checks its own predictions against what
 actually happened.
 
-> **Status: building.** The first milestone is the backtest described below.
-> Its result will be published here whether or not the method works.
+> **Status, October 2026: collecting the data for the first test.** The
+> analysis plan, including the rule that decides whether the method works,
+> was [published before any data was analysed](research/PREREGISTRATION.md).
+> The result will appear on the
+> [results page](https://nicolas-maman.github.io/undiscovered/results.html)
+> whether or not the method works.
 
 ## How it works
 
@@ -61,8 +65,9 @@ and one in [Aether](https://github.com/aether-lang-dev/aether).
 
 ## Earlier work
 
-The idea is not new. This project builds on the work below, and its backtest
-has to beat the strongest of these methods to be worth anything.
+The idea is not new. This project builds on the work below. Its backtest has
+to beat a baseline built on the network features that did best in
+Science4Cast to be worth anything.
 
 - **Literature-based discovery.** Swanson's method and his ARROWSMITH
   software, and the time-sliced evaluation that later became the field's

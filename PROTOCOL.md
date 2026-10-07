@@ -63,6 +63,13 @@ Some units are **gold units**: their answer is already known (from the
 backtest: pairs that did or did not connect later). They look exactly like
 other units. They measure how good each contributor's model is.
 
+A limit worth stating: a language model trained on papers from after the
+gold unit's date may simply remember whether the pair connected. Gold units
+therefore measure how reliable a model is at this task, not whether it can
+foresee anything. The claim that the method can foresee connections rests
+only on the backtest, which uses no language model and nothing after its
+freeze date.
+
 ## Results
 
 Submitted as an issue through the `work-result` form. The body is one fenced
@@ -103,20 +110,31 @@ its weight depends on whether the rater really works in one of the two
 fields, and the `expertise` field above is self-declared. The plan:
 
 1. **Optional sign-in with ORCID.** ORCID supports OpenID Connect's implicit
-   flow for public clients, so the static site can obtain an ORCID-signed ID
-   token in the browser with no server. The token goes into the rating
-   issue; the validating Action checks its signature against ORCID's
-   published keys and its expiry. ORCID's public API is free for
-   non-commercial use.
-2. **Expertise from the record, not the claim.** With a verified ORCID iD the
+   flow, so the static site can obtain an ORCID-signed ID token in the
+   browser with no server. The token is short-lived (10 minutes) and can be
+   checked against the keys ORCID publishes at `https://orcid.org/oauth/jwks`.
+   It needs a free Public API client, which ORCID grants to anyone with an
+   ORCID iD (Developer Tools on the record).
+2. **The token never appears in public.** Issues on a public repository are
+   public, and the token carries the person's name, so it must not go into
+   the issue as it is. The site encrypts it in the browser with the
+   project's public key; only the validating Action holds the private key,
+   as a repository secret. Before sign-in, the site sets the OpenID nonce,
+   which ORCID copies into the token, to a hash of the rating being
+   submitted. The Action then checks the signature, that the nonce matches
+   the rating in the issue, and that the issue was opened while the token
+   was valid. A copied token cannot be reused for a different rating, and
+   one person's ratings of the same pair count once.
+3. **Expertise from the record, not the claim.** With a verified ORCID iD the
    Action looks the person up in OpenAlex (a single-record lookup, which
-   costs nothing) and checks whether they have published in either topic of
-   the pair. That decides `own-field`, whatever the form says.
-3. **Anonymous ratings still count**, with a lower weight, so taking part
+   costs nothing; the record lists the topics the person has published in)
+   and checks whether either topic of the pair is among them. That decides
+   `own-field`, whatever the form says.
+4. **Anonymous ratings still count**, with a lower weight, so taking part
    never requires an account.
 
-The token and the ORCID iD are used to compute the weight; the published
-rating shows the iD only if the rater ticks a box to show it.
+The published rating shows the ORCID iD only if the rater ticks a box to
+show it; otherwise it shows only the weight it was given.
 
 ## Bridge reports
 
