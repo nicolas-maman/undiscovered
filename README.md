@@ -50,7 +50,14 @@ actually happened.
 Running it costs nothing: the data is open, the site and the coordination
 run on GitHub, and the work runs on contributors' own machines.
 
-## Ways to help (as each part ships)
+## Ways to help
+
+**Now: find a flaw in the plan.** Read the
+[analysis plan](research/PREREGISTRATION.md) and
+[tell us what could make the result wrong](https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml). Criticism is worth most
+before the data is analysed, while the plan can still change in the open.
+
+As each part ships:
 
 - **Rate a pair.** If a proposed connection touches your field, your view of
   whether it is real is the most useful input the project can get.

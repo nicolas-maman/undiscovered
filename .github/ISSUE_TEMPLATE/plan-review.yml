@@ -1,0 +1,45 @@
+name: A problem with the analysis plan
+description: Something in research/PREREGISTRATION.md that could make the backtest wrong or misleading.
+title: "Plan: "
+labels: ["plan-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Criticism is most useful before the data is analysed, because the plan can still change then, openly and with a dated entry. After the results are in, changes can only be reported as deviations.
+  - type: dropdown
+    id: part
+    attributes:
+      label: Which part of the plan
+      options:
+        - "Data: topics, sample, instrument papers"
+        - "Which pairs count as unconnected"
+        - "What counts as connected later"
+        - "Models and features"
+        - "Metrics and intervals"
+        - "Decision rule"
+        - "Something else"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What could go wrong
+      description: The concrete way this could bias the result or make it hard to interpret.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: What would be better
+      description: Optional. A change, a check to add, or a paper that handles it well.
+  - type: dropdown
+    id: background
+    attributes:
+      label: Your background (optional)
+      options:
+        - "I work on literature-based discovery, link prediction or science of science"
+        - "I do research in another field"
+        - "Statistics or machine learning"
+        - "Software"
+        - "Other"
