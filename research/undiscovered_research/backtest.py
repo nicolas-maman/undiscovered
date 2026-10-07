@@ -74,7 +74,7 @@ def pair_table(cutoff: int, max_train_links: int, min_test_links: int, model: st
 
     emb = topic_embeddings(cutoff, model, {t: recs[t]["abstracts"] for t in ids})
 
-    rows, labels, pairs = [], [], []
+    rows, labels, pairs, links = [], [], [], []
     for i, a in enumerate(ids):
         for b in ids[i + 1:]:
             if domain[a] == domain[b]:
@@ -103,10 +103,13 @@ def pair_table(cutoff: int, max_train_links: int, min_test_links: int, model: st
                 "centroid_cos": float(ea["centroid"] @ eb["centroid"]),
                 "top_pairs_cos": float(top.mean()),
             })
-            labels.append(1 if link("cited_by_test", a, b) >= min_test_links else 0)
+            after = link("cited_by_test", a, b)
+            labels.append(1 if after >= min_test_links else 0)
             pairs.append((a, b))
-    return {"rows": rows, "labels": np.array(labels), "pairs": pairs,
+            links.append((link("cited_by_train", a, b), after))
+    return {"rows": rows, "labels": np.array(labels), "pairs": pairs, "links": links,
             "names": {t["id"]: t["name"] for t in topics},
+            "fields": {t["id"]: t.get("field", "") for t in topics},
             "domains": domain}
 
 
@@ -214,14 +217,21 @@ def run(max_train_links: int, min_test_links: int, model: str) -> dict:
                           and hyp["H2_network_beats_popularity"]["holds"] else "stop")
     report["by_domain_pair"] = by_domain_pair(y_te, scores, test["pairs"], test["domains"])
 
+    # Reporting only: the pairs the combined model ranked highest at the 2017
+    # cutoff, with how often they actually cited each other before and after.
     order = np.argsort(-scores["combined"])[:200]
+
+    def side(t: str) -> dict:
+        return {"id": t, "name": test["names"][t], "field": test["fields"][t],
+                "domain": test["domains"][t]}
+
     report["top_predictions"] = [{
-        "a": test["pairs"][i][0], "a_name": test["names"][test["pairs"][i][0]],
-        "a_domain": test["domains"][test["pairs"][i][0]],
-        "b": test["pairs"][i][1], "b_name": test["names"][test["pairs"][i][1]],
-        "b_domain": test["domains"][test["pairs"][i][1]],
-        "score": float(scores["combined"][i]), "connected_later": int(y_te[i]),
-    } for i in order]
+        "rank": r + 1,
+        "a": side(test["pairs"][i][0]), "b": side(test["pairs"][i][1]),
+        "score": float(scores["combined"][i]),
+        "links_before": int(test["links"][i][0]), "links_after": int(test["links"][i][1]),
+        "connected_later": int(y_te[i]),
+    } for r, i in enumerate(order)]
     return report
 
 

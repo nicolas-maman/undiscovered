@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backtest results · undiscovered</title>
+<meta name="description" content="Can we predict which unconnected fields of science start citing each other? The backtest, its numbers and its examples.">
+<style>
+  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a;
+          --good: #2e6b3a; --bad: #8a3a2f; --band: #f1efe9; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0;
+            --good: #8fcf9b; --bad: #e39a8e; --band: #1d1c1a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 80px; }
+  nav { font: 14px system-ui, sans-serif; margin-bottom: 32px; }
+  nav a { color: var(--muted); text-decoration: none; }
+  h1 { font-size: 2rem; margin: 0 0 8px; }
+  h2 { font: 600 0.95rem system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--muted); margin: 44px 0 10px; }
+  a { color: var(--accent); }
+  .verdict { background: var(--band); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 24px 0; }
+  .verdict.go { border-color: var(--good); }
+  .verdict.stop { border-color: var(--bad); }
+  .note { color: var(--muted); font-size: .92rem; }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font: 15px/1.4 system-ui, sans-serif; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-weight: 600; color: var(--muted); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.ours td { font-weight: 600; }
+  .yes { color: var(--good); font-weight: 600; }
+  .no { color: var(--muted); }
+  .field { color: var(--muted); font-size: .88em; }
+  code { font-size: .9em; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">undiscovered</a> / results</nav>
+  <h1>Backtest results</h1>
+  <p>If we had frozen the scientific literature at the end of 2017, could we have predicted
+  which unconnected fields would start citing each other by 2023?</p>
+
+  <div id="verdict" class="verdict">Loading…</div>
+  <div id="body"></div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var verdict = document.getElementById("verdict");
+  var body = document.getElementById("body");
+
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === "text") node.textContent = attrs[k];
+      else node.setAttribute(k, attrs[k]);
+    });
+    (children || []).forEach(function (c) {
+      node.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    });
+    return node;
+  }
+  function pct(x, digits) { return (100 * x).toFixed(digits === undefined ? 1 : digits) + "%"; }
+  function num(x, digits) { return x.toFixed(digits === undefined ? 3 : digits); }
+  function interval(ci) { return num(ci[0]) + " to " + num(ci[1]); }
+
+  function pending() {
+    verdict.textContent = "";
+    verdict.appendChild(el("strong", {text: "Not run yet. "}));
+    verdict.appendChild(document.createTextNode(
+      "The analysis plan, including the rule that decides whether the method works, was " +
+      "published before any data was analysed. The numbers will appear here when the run " +
+      "is complete, whichever way they come out."));
+    body.appendChild(el("p", {}, [
+      "Read the plan: ",
+      el("a", {href: "https://github.com/nicolas-maman/undiscovered/blob/main/research/PREREGISTRATION.md",
+               text: "research/PREREGISTRATION.md"}), "."]));
+  }
+
+  function render(data) {
+    var r = data.report, m = r.models, h = r.hypotheses;
+    var h1 = h.H1_combined_beats_network;
+    var h2 = h.H2_network_beats_popularity;
+    var go = data.report.decision === "continue";
+    var change = "Adding what the papers say to the shape of the citation network changed " +
+      "average precision by " + (h1.diff >= 0 ? "+" : "") + num(h1.diff, 4) +
+      " (95% interval " + interval(h1.diff_ci) + "), ranking " +
+      r.pairs.eval.toLocaleString("en") + " unconnected pairs of fields. ";
+    verdict.className = "verdict " + (go ? "go" : "stop");
+    verdict.textContent = "";
+    if (go) {
+      verdict.appendChild(el("strong", {text: "The method beat the published baseline. "}));
+      verdict.appendChild(document.createTextNode(change + "The plan's rule for continuing is met."));
+    } else if (!h2.holds) {
+      verdict.appendChild(el("strong", {text: "The published baseline did not reproduce on this data. "}));
+      verdict.appendChild(document.createTextNode(
+        "The network method did not beat a ranking by topic size, so, as the plan published " +
+        "before the analysis says, the comparison with it is not interpreted. " + change +
+        "The project stops here and reports this."));
+    } else {
+      verdict.appendChild(el("strong", {text: "The method did not beat the published baseline. "}));
+      verdict.appendChild(document.createTextNode(change +
+        "Under the plan published before the analysis, the project stops here and reports this."));
+    }
+
+    body.appendChild(el("h2", {text: "What was tested"}));
+    body.appendChild(el("p", {text:
+      "We took pairs of research topics from different domains (physical, life, health and " +
+      "social sciences) that were linked by at most one citing work in 2010 to 2017. The models " +
+      "were fitted on an earlier freeze (2012) and then ranked the 2017 pairs. A pair counts as " +
+      "connected if at least " + r.config.min_test_links + " works in one cited the other's most " +
+      "cited papers between 2018 and 2023. Of the " + r.pairs.eval.toLocaleString("en") + " pairs, " +
+      r.pairs.eval_positive.toLocaleString("en") + " did (" + pct(r.pairs.eval_base_rate, 2) + ")."}));
+    body.appendChild(el("p", {class: "note"}, [
+      "Average precision measures how well a ranking puts the pairs that did connect near the " +
+      "top: 1 is perfect, and a random ranking scores about the share of pairs that connected. " +
+      "The baseline to beat is the network method of ",
+      el("a", {href: "https://arxiv.org/abs/2210.00881", text: "Science4Cast"}), "."]));
+
+    body.appendChild(el("h2", {text: "The numbers"}));
+    var rows = [["random", "Random ranking"], ["popularity", "Popularity (size of the two topics)"],
+                ["network", "Network (published baseline)"], ["semantic", "Content of the papers"],
+                ["combined", "Network and content (this project)"]];
+    var head = el("tr", {}, [el("th", {text: "Model"}), el("th", {class: "num", text: "Average precision"}),
+      el("th", {class: "num", text: "95% interval"}), el("th", {class: "num", text: "ROC-AUC"}),
+      el("th", {class: "num", text: "Hits in top 100"})]);
+    var tbody = el("tbody");
+    rows.forEach(function (row) {
+      var x = m[row[0]];
+      tbody.appendChild(el("tr", {class: row[0] === "combined" ? "ours" : ""}, [
+        el("td", {text: row[1]}),
+        el("td", {class: "num", text: num(x.average_precision, 4)}),
+        el("td", {class: "num", text: x.average_precision_ci ? interval(x.average_precision_ci) : ""}),
+        el("td", {class: "num", text: num(x.roc_auc)}),
+        el("td", {class: "num", text: Math.round(x.precision_at_100 * Math.min(100, r.pairs.eval)) + ""})]));
+    });
+    body.appendChild(el("div", {class: "scroll"}, [el("table", {}, [el("thead", {}, [head]), tbody])]));
+
+    body.appendChild(el("h2", {text: "The hypotheses, as written before the analysis"}));
+    var labels = {
+      H1_combined_beats_network: "H1: network and content together beat the network alone",
+      H2_network_beats_popularity: "H2 (sanity check): the network method beats popularity",
+      H3_semantic_beats_popularity: "H3: the content of the papers alone beats popularity"};
+    var ul = el("ul");
+    Object.keys(labels).forEach(function (k) {
+      var x = h[k];
+      ul.appendChild(el("li", {}, [labels[k] + ": ",
+        el("span", {class: x.holds ? "yes" : "no", text: x.holds ? "holds" : "does not hold"}),
+        " (difference " + (x.diff >= 0 ? "+" : "") + num(x.diff, 4) + ", 95% interval " + interval(x.diff_ci) + ")"]));
+    });
+    body.appendChild(ul);
+
+    body.appendChild(el("h2", {text: "What the method ranked highest in 2017"}));
+    body.appendChild(el("p", {class: "note", text:
+      "The 20 pairs ranked first, with how many citing works linked them in 2010 to 2017 and in 2018 to 2023."}));
+    var ptb = el("tbody");
+    r.top_predictions.slice(0, 20).forEach(function (p) {
+      ptb.appendChild(el("tr", {}, [
+        el("td", {class: "num", text: p.rank + ""}),
+        el("td", {}, [p.a.name, el("br"), el("span", {class: "field", text: p.a.field})]),
+        el("td", {}, [p.b.name, el("br"), el("span", {class: "field", text: p.b.field})]),
+        el("td", {class: "num", text: p.links_before + " → " + p.links_after}),
+        el("td", {}, [el("span", {class: p.connected_later ? "yes" : "no",
+                                  text: p.connected_later ? "connected" : "not yet"})])]));
+    });
+    body.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
+      el("thead", {}, [el("tr", {}, [el("th", {class: "num", text: "#"}), el("th", {text: "Topic"}),
+        el("th", {text: "Topic"}), el("th", {class: "num", text: "Links"}), el("th", {text: "By 2023"})])]),
+      ptb])]));
+
+    body.appendChild(el("h2", {text: "By pair of domains"}));
+    var dtb = el("tbody");
+    Object.keys(r.by_domain_pair).forEach(function (k) {
+      var d = r.by_domain_pair[k];
+      dtb.appendChild(el("tr", {}, [el("td", {text: k}),
+        el("td", {class: "num", text: d.pairs.toLocaleString("en")}),
+        el("td", {class: "num", text: d.positive.toLocaleString("en")}),
+        el("td", {class: "num", text: d.network === undefined ? "too few" : num(d.network, 4)}),
+        el("td", {class: "num", text: d.combined === undefined ? "too few" : num(d.combined, 4)})]));
+    });
+    body.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
+      el("thead", {}, [el("tr", {}, [el("th", {text: "Domains"}), el("th", {class: "num", text: "Pairs"}),
+        el("th", {class: "num", text: "Connected"}), el("th", {class: "num", text: "Network AP"}),
+        el("th", {class: "num", text: "Combined AP"})])]),
+      dtb])]));
+
+    body.appendChild(el("h2", {text: "Check it yourself"}));
+    body.appendChild(el("p", {}, [
+      "Published " + data.published + " from commit ",
+      el("a", {href: data.code, text: data.commit.slice(0, 7)}), ", under ",
+      el("a", {href: data.preregistration, text: "the plan as it stood at that commit"}),
+      ". Every number on this page is in ",
+      el("a", {href: "data/backtest.json", text: "data/backtest.json"}),
+      ", and the code reproduces it from the open OpenAlex data."]));
+  }
+
+  fetch("data/backtest.json", {cache: "no-store"})
+    .then(function (res) { if (!res.ok) throw new Error("missing"); return res.json(); })
+    .then(function (data) { if (data.status === "complete") render(data); else pending(); })
+    .catch(pending);
+})();
+</script>
+</body>
+</html>
