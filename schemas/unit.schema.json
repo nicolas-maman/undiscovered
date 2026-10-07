@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nicolas-maman/undiscovered/schemas/unit.schema.json",
+  "title": "Work unit",
+  "type": "object",
+  "required": ["unit", "protocol", "kind", "quorum"],
+  "properties": {
+    "unit": {"type": "string", "pattern": "^u-[0-9]{6}$"},
+    "protocol": {"type": "integer", "minimum": 0},
+    "kind": {"enum": ["rank", "judge"]},
+    "topic": {"type": "string", "pattern": "^T[0-9]+$"},
+    "candidates": {"type": "array", "items": {"type": "string", "pattern": "^T[0-9]+$"}, "maxItems": 50},
+    "bridge": {"type": "string", "pattern": "^b-T[0-9]+-T[0-9]+$"},
+    "evidence": {"type": "array", "items": {"type": "string", "pattern": "^W[0-9]+$"}, "maxItems": 2},
+    "as_of": {"type": "integer"},
+    "instructions": {"type": "string"},
+    "quorum": {"type": "integer", "minimum": 1}
+  },
+  "allOf": [
+    {"if": {"properties": {"kind": {"const": "rank"}}}, "then": {"required": ["topic", "candidates"]}},
+    {"if": {"properties": {"kind": {"const": "judge"}}}, "then": {"required": ["bridge", "evidence"]}}
+  ]
+}

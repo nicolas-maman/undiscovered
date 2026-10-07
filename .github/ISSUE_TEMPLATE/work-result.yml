@@ -1,0 +1,25 @@
+name: Work result
+description: Submitted by an undiscovered client after working a unit. You normally do not fill this by hand.
+title: "result: "
+labels: ["work-result"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The client fills this in. The body must be one JSON block that matches
+        [schemas/result.schema.json](https://github.com/nicolas-maman/undiscovered/blob/main/schemas/result.schema.json).
+        Never paste an API key: the validator rejects anything that looks like one.
+  - type: textarea
+    id: result
+    attributes:
+      label: Result
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: licence
+    attributes:
+      label: Licence
+      options:
+        - label: I agree this result is published under CC0 (public domain), as all project data is.
+          required: true

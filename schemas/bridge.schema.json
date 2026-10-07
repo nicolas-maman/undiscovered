@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nicolas-maman/undiscovered/schemas/bridge.schema.json",
+  "title": "Published bridge",
+  "type": "object",
+  "required": ["bridge", "topics", "score", "evidence"],
+  "properties": {
+    "bridge": {"type": "string", "pattern": "^b-T[0-9]+-T[0-9]+$"},
+    "topics": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "domain"],
+        "properties": {"id": {"type": "string"}, "name": {"type": "string"}, "field": {"type": "string"}, "domain": {"type": "string"}}
+      }
+    },
+    "score": {"type": "number"},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["works"],
+        "properties": {
+          "works": {"type": "array", "items": {"type": "string", "pattern": "^W[0-9]+$"}, "minItems": 2, "maxItems": 2},
+          "why": {"type": "string"}
+        }
+      }
+    },
+    "verdicts": {"type": "object", "additionalProperties": {"type": "integer"}},
+    "ratings": {"type": "object", "properties": {"count": {"type": "integer"}, "mean": {"type": "number"}}}
+  }
+}

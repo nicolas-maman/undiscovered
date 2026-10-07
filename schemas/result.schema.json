@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nicolas-maman/undiscovered/schemas/result.schema.json",
+  "title": "Work result",
+  "type": "object",
+  "required": ["unit", "protocol", "client", "model"],
+  "properties": {
+    "unit": {"type": "string", "pattern": "^u-[0-9]{6}$"},
+    "protocol": {"type": "integer", "minimum": 0},
+    "client": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {"name": {"type": "string"}, "version": {"type": "string"}}
+    },
+    "model": {
+      "type": "object",
+      "required": ["provider", "id"],
+      "properties": {
+        "provider": {"type": "string"},
+        "id": {"type": "string"},
+        "embedding": {"type": "string"}
+      }
+    },
+    "ranking": {"type": "array", "items": {"type": "string", "pattern": "^T[0-9]+$"}},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["candidate", "works"],
+        "properties": {
+          "candidate": {"type": "string", "pattern": "^T[0-9]+$"},
+          "works": {"type": "array", "items": {"type": "string", "pattern": "^W[0-9]+$"}, "minItems": 2, "maxItems": 2},
+          "why": {"type": "string", "maxLength": 2000}
+        }
+      }
+    },
+    "verdict": {"enum": ["real", "superficial", "unclear"]},
+    "reason": {"type": "string", "maxLength": 4000}
+  },
+  "oneOf": [
+    {"required": ["ranking"]},
+    {"required": ["verdict", "reason"]}
+  ]
+}

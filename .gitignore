@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+research/cache/
+research/data/
+research/.openalex_key
+.openalex_key
+undiscovered.toml
+site/_build/

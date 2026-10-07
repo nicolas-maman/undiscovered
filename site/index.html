@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>undiscovered</title>
+<meta name="description" content="An open, volunteer-run network that finds research which should be talking to each other — across all sciences — and publishes how often it is right.">
+<style>
+  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
+  main { max-width: 680px; margin: 0 auto; padding: 56px 16px 80px; }
+  h1 { font-size: 2.2rem; letter-spacing: -0.01em; margin: 0 0 4px; }
+  .tag { color: var(--muted); font-style: italic; margin: 0 0 40px; }
+  h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--muted); margin: 40px 0 8px; font-family: system-ui, sans-serif; font-weight: 600; }
+  a { color: var(--accent); }
+  .status { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 28px 0; }
+  ul { padding-left: 20px; }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule);
+           color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>undiscovered</h1>
+  <p class="tag">Finding the research that should be talking to each other — and testing whether we're right.</p>
+
+  <p>In 1986 Don Swanson noticed that one body of papers said fish oil thins the blood,
+  and another that Raynaud's syndrome involves thick, sluggish blood. Nobody had read both.
+  He called it <em>undiscovered public knowledge</em>: findings already published, waiting
+  in two literatures that never cite each other.</p>
+
+  <p>This project looks for those connections across all sciences, with an open network of
+  volunteers who bring their own computer and any AI model they like — and it publishes how
+  often it is right.</p>
+
+  <div class="status"><strong>Status: building.</strong> The first milestone is a public
+  backtest: freeze the literature at 2017, predict which distant fields start citing each
+  other, check against 2018–2023, and compare with the published prior art. The result goes
+  here either way.</div>
+
+  <h2>Coming</h2>
+  <ul>
+    <li><strong>Rate a bridge</strong> — if a proposed connection touches your field, your judgment is the most valuable thing here.</li>
+    <li><strong>Ask about your own work</strong> — run the tool on your machine and get the distant fields working on the same thing.</li>
+    <li><strong>Volunteer</strong> — let your machine and the model of your choice work through candidate bridges.</li>
+  </ul>
+
+  <footer>
+    Open source (MIT) · data CC0, from <a href="https://openalex.org">OpenAlex</a> ·
+    <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nicolas-maman/undiscovered/schemas/rating.schema.json",
+  "title": "Bridge rating",
+  "type": "object",
+  "required": ["bridge", "rating", "expertise"],
+  "properties": {
+    "bridge": {"type": "string", "pattern": "^b-T[0-9]+-T[0-9]+$"},
+    "rating": {"type": "integer", "minimum": 1, "maximum": 5},
+    "expertise": {"enum": ["own-field", "adjacent", "outside"]},
+    "comment": {"type": "string", "maxLength": 4000}
+  }
+}

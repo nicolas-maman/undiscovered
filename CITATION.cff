@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: "If you use this project or its data, please cite it, and the work it builds on."
+title: "undiscovered: an open network for finding research that should be talking to each other"
+authors:
+  - family-names: Maman
+    given-names: Nicolas
+repository-code: "https://github.com/nicolas-maman/undiscovered"
+license: MIT
+references:
+  - type: article
+    title: "Fish oil, Raynaud's syndrome, and undiscovered public knowledge"
+    authors:
+      - family-names: Swanson
+        given-names: Don R.
+    journal: "Perspectives in Biology and Medicine"
+    year: 1986
+  - type: article
+    title: "Interesting Scientific Idea Generation Using Knowledge Graphs and LLMs: Evaluations with 100 Research Group Leaders"
+    authors:
+      - family-names: Gu
+        given-names: Xuemei
+      - family-names: Krenn
+        given-names: Mario
+    year: 2024
+    url: "https://arxiv.org/abs/2405.17044"
+  - type: article
+    title: "Forecasting the future of artificial intelligence with machine learning-based link prediction in an exponentially growing knowledge network"
+    authors:
+      - family-names: Krenn
+        given-names: Mario
+    journal: "Nature Machine Intelligence"
+    year: 2023
+  - type: article
+    title: "Accelerating science with human-aware artificial intelligence"
+    authors:
+      - family-names: Sourati
+        given-names: Jamshid
+      - family-names: Evans
+        given-names: James A.
+    journal: "Nature Human Behaviour"
+    year: 2023
+  - type: article
+    title: "Unsupervised word embeddings capture latent knowledge from materials science literature"
+    authors:
+      - family-names: Tshitoyan
+        given-names: Vahe
+    journal: "Nature"
+    year: 2019
+  - type: article
+    title: "OpenAlex: A fully-open index of scholarly works, authors, venues, institutions, and concepts"
+    authors:
+      - family-names: Priem
+        given-names: Jason
+      - family-names: Piwowar
+        given-names: Heather
+      - family-names: Orr
+        given-names: Richard
+    year: 2022
+    url: "https://arxiv.org/abs/2205.01833"

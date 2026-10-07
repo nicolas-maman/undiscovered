@@ -1,0 +1,47 @@
+name: Rate a bridge
+description: Tell us whether a proposed connection between two fields is real. If it is your field, your judgment is the most valuable thing here.
+title: "rating: "
+labels: ["rating"]
+body:
+  - type: input
+    id: bridge
+    attributes:
+      label: Bridge
+      description: The bridge ID shown on the site, e.g. b-T10014-T12108
+      placeholder: b-T10014-T12108
+    validations:
+      required: true
+  - type: dropdown
+    id: rating
+    attributes:
+      label: How real is this connection?
+      options:
+        - "1 — no real connection"
+        - "2 — superficial (shared words, not shared substance)"
+        - "3 — plausible, worth a look"
+        - "4 — real and useful"
+        - "5 — I would start a project on this"
+    validations:
+      required: true
+  - type: dropdown
+    id: expertise
+    attributes:
+      label: Your relation to these fields
+      options:
+        - "own-field — I work in one of the two fields"
+        - "adjacent — I work close to one of them"
+        - "outside — neither"
+    validations:
+      required: true
+  - type: textarea
+    id: comment
+    attributes:
+      label: Why (optional, but it helps)
+      description: What is the real link, or why is there none? A paper that already connects them is especially useful.
+  - type: checkboxes
+    id: licence
+    attributes:
+      label: Licence
+      options:
+        - label: I agree my rating and comment are published under CC0 (public domain), as all project data is.
+          required: true

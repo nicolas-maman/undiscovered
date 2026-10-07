@@ -1,0 +1,43 @@
+name: Report a bridge
+description: You found two fields that should be talking to each other. Tell us, with the papers that show it.
+title: "bridge: "
+labels: ["bridge-report"]
+body:
+  - type: input
+    id: work_a
+    attributes:
+      label: A paper from the first field
+      description: OpenAlex ID (W…) or DOI
+    validations:
+      required: true
+  - type: input
+    id: work_b
+    attributes:
+      label: A paper from the second field
+      description: OpenAlex ID (W…) or DOI
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What connects them
+      description: The method, finding or problem one side has that the other could use.
+    validations:
+      required: true
+  - type: dropdown
+    id: expertise
+    attributes:
+      label: Your relation to these fields
+      options:
+        - "own-field — I work in one of the two fields"
+        - "adjacent — I work close to one of them"
+        - "outside — neither"
+    validations:
+      required: true
+  - type: checkboxes
+    id: licence
+    attributes:
+      label: Licence
+      options:
+        - label: I agree this report is published under CC0 (public domain), as all project data is.
+          required: true
