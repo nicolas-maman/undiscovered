@@ -177,3 +177,30 @@ def test_paging_stops_at_a_short_page(monkeypatch):
     monkeypatch.setattr(openalex, "get", fake_get)
     pages = list(openalex.paged("works", {"group_by": "primary_topic.id", "per_page": 2}))
     assert calls == ["*", "c2"] and len(pages) == 2
+
+
+def test_key_is_sent_but_never_cached(monkeypatch, tmp_path):
+    sent = []
+
+    class Resp:
+        status_code = 200
+        headers = {"X-RateLimit-Remaining": "9876"}
+        text = "{}"
+
+        def json(self):
+            return {"results": []}
+
+    def fake_get(url, params, timeout):
+        sent.append(dict(params))
+        return Resp()
+
+    monkeypatch.setattr(openalex, "_key", "SECRET")
+    monkeypatch.setattr(openalex, "CACHE_DIR", tmp_path)
+    monkeypatch.setattr(openalex, "MIN_INTERVAL", 0.0)
+    monkeypatch.setattr(openalex._session, "get", fake_get)
+    openalex.get("works", {"filter": "publication_year:2017"})
+    assert sent == [{"filter": "publication_year:2017", "api_key": "SECRET"}]
+    assert openalex.remaining == 9876
+    keyless = openalex._cache_path("https://api.openalex.org/works?filter=publication_year%3A2017")
+    assert keyless.exists()
+    assert not any("SECRET" in f.read_text() for f in tmp_path.rglob("*.json"))

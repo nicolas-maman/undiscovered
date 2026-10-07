@@ -161,6 +161,9 @@ def main() -> None:
     chosen = sample_topics(topics, args.per_domain, args.seed)
     (DATA / "sample.json").write_text(json.dumps(chosen, indent=1), encoding="utf-8")
     print(f"{len(topics)} topics; sampled {len(chosen)} ({args.per_domain} per domain)", flush=True)
+    print("Using your OpenAlex key." if oa.has_key else
+          "No OpenAlex key: about 1,000 calls a day. A free key gives 10,000: "
+          "https://openalex.org/settings/api", flush=True)
 
     sampled = [t["id"] for t in chosen]
     for cutoff in CUTOFFS:
@@ -177,8 +180,9 @@ def main() -> None:
                 print(f"progress kept: rerun the same command to continue from topic {i}.", flush=True)
                 return
             path.write_text(json.dumps(rec), encoding="utf-8")
+            left = "" if oa.remaining is None else f" (OpenAlex calls left today: {oa.remaining})"
             print(f"[{cutoff}] {i}/{len(chosen)} {t['id']} size={rec['size']} "
-                  f"citers train={len(rec['cited_by_train'])} test={len(rec['cited_by_test'])}",
+                  f"citers train={len(rec['cited_by_train'])} test={len(rec['cited_by_test'])}{left}",
                   flush=True)
 
 
