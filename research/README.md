@@ -17,13 +17,13 @@ Can we predict which distant fields will start citing each other?
   topics, in chunks of 100, because the labels only concern sampled pairs.
   This keeps a 300-topic run to about 6,600 requests.
 - **Label:** the pair has at least 3 links in the test window.
-- **Windows:** cutoff 2012 (train 2005–2012, test 2013–2018) fits the
-  models; cutoff 2017 (train 2010–2017, test 2018–2023) is the evaluation.
+- **Windows:** cutoff 2012 (train 2005 to 2012, test 2013 to 2018) fits the
+  models; cutoff 2017 (train 2010 to 2017, test 2018 to 2023) is the evaluation.
   Every reported number is out of time.
 - **Models:** logistic regression on
   - `popularity`: the two topics' sizes;
   - `network`: Science4Cast-style structure of the citation graph: common
-    citing topics, Jaccard, Adamic–Adar, co-citation cosine and degrees. This
+    citing topics, Jaccard, Adamic-Adar, co-citation cosine and degrees. This
     is the published method to beat;
   - `semantic`: embedding similarity of each topic's sampled pre-cutoff
     abstracts;

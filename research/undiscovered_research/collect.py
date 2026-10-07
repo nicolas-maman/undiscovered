@@ -140,7 +140,12 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--per-domain", type=int, default=150)
     ap.add_argument("--seed", type=int, default=2026)
+    ap.add_argument("--data", default="", help="data directory (default research/data); "
+                    "use a separate one for each topic sample")
     args = ap.parse_args()
+    if args.data:
+        global DATA
+        DATA = Path(args.data).resolve()
 
     DATA.mkdir(parents=True, exist_ok=True)
     topics = all_topics()

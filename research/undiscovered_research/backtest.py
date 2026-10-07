@@ -29,6 +29,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import average_precision_score, roc_auc_score
 from sklearn.preprocessing import StandardScaler
 
+from . import collect, embed
 from .collect import CUTOFFS, DATA
 from .embed import topic_embeddings
 
@@ -119,19 +120,52 @@ def precision_at(y: np.ndarray, scores: np.ndarray, k: int) -> float:
     return float(y[order].mean()) if k else float("nan")
 
 
-def bootstrap(y: np.ndarray, s1: np.ndarray, s2: np.ndarray, n: int = 300, seed: int = 0) -> dict:
-    """AP of s1 and of s2, and of their difference, with 95% intervals."""
+BOOTSTRAP = 300
+
+
+def _resamples(y: np.ndarray, n: int = BOOTSTRAP, seed: int = 0) -> list[np.ndarray]:
+    """The same bootstrap resamples for every model, so intervals are comparable."""
     rng = np.random.default_rng(seed)
-    a1, a2, d = [], [], []
-    for _ in range(n):
+    out = []
+    while len(out) < n:
         idx = rng.integers(0, len(y), len(y))
-        if y[idx].sum() == 0:
-            continue
-        p1 = average_precision_score(y[idx], s1[idx])
-        p2 = average_precision_score(y[idx], s2[idx])
-        a1.append(p1); a2.append(p2); d.append(p1 - p2)
-    q = lambda v: [float(np.percentile(v, 2.5)), float(np.percentile(v, 97.5))]
-    return {"ap_ci": q(a1), "baseline_ap_ci": q(a2), "diff_ci": q(d)}
+        if y[idx].sum() > 0:
+            out.append(idx)
+    return out
+
+
+def _ci(values: list[float]) -> list[float]:
+    return [float(np.percentile(values, 2.5)), float(np.percentile(values, 97.5))]
+
+
+def ap_interval(y: np.ndarray, s: np.ndarray, samples: list[np.ndarray]) -> list[float]:
+    return _ci([average_precision_score(y[i], s[i]) for i in samples])
+
+
+def compare(y: np.ndarray, s1: np.ndarray, s2: np.ndarray, samples: list[np.ndarray]) -> dict:
+    """AP(s1) - AP(s2), as a point estimate and a 95% bootstrap interval."""
+    d = [average_precision_score(y[i], s1[i]) - average_precision_score(y[i], s2[i])
+         for i in samples]
+    return {"diff": float(average_precision_score(y, s1) - average_precision_score(y, s2)),
+            "diff_ci": _ci(d)}
+
+
+def by_domain_pair(y: np.ndarray, scores: dict[str, np.ndarray], pairs: list[tuple[str, str]],
+                   domains: dict[str, str], min_positive: int = 5) -> dict:
+    """Average precision per domain pair, where there are enough positives to say anything."""
+    groups: dict[str, list[int]] = defaultdict(list)
+    for i, (a, b) in enumerate(pairs):
+        groups[" / ".join(sorted((domains[a], domains[b])))].append(i)
+    out = {}
+    for key, idx in sorted(groups.items()):
+        idx = np.array(idx)
+        pos = int(y[idx].sum())
+        entry = {"pairs": int(len(idx)), "positive": pos}
+        if pos >= min_positive:
+            for name, s in scores.items():
+                entry[name] = float(average_precision_score(y[idx], s[idx]))
+        out[key] = entry
+    return out
 
 
 def run(max_train_links: int, min_test_links: int, model: str) -> dict:
@@ -157,14 +191,28 @@ def run(max_train_links: int, min_test_links: int, model: str) -> dict:
         scores[name] = clf.predict_proba(sc.transform(matrix(test["rows"], cols)))[:, 1]
         report["models"][name] = {"features": cols,
                                   "coef": dict(zip(cols, map(float, clf.coef_[0])))}
+    samples = _resamples(y_te)
     for name, s in scores.items():
         m = report["models"].setdefault(name, {})
         m["roc_auc"] = float(roc_auc_score(y_te, s))
         m["average_precision"] = float(average_precision_score(y_te, s))
+        m["average_precision_ci"] = ap_interval(y_te, s, samples)
         for k in (100, 1000):
             m[f"precision_at_{k}"] = precision_at(y_te, s, k)
-    report["combined_vs_network"] = bootstrap(y_te, scores["combined"], scores["network"])
-    report["semantic_vs_network"] = bootstrap(y_te, scores["semantic"], scores["network"])
+
+    # The hypotheses and the decision rule of research/PREREGISTRATION.md.
+    h1 = compare(y_te, scores["combined"], scores["network"], samples)
+    h2 = compare(y_te, scores["network"], scores["popularity"], samples)
+    h3 = compare(y_te, scores["semantic"], scores["popularity"], samples)
+    report["hypotheses"] = {
+        "H1_combined_beats_network": {**h1, "holds": h1["diff_ci"][0] > 0},
+        "H2_network_beats_popularity": {**h2, "holds": h2["diff"] > 0},
+        "H3_semantic_beats_popularity": {**h3, "holds": h3["diff"] > 0},
+    }
+    hyp = report["hypotheses"]
+    report["decision"] = ("continue" if hyp["H1_combined_beats_network"]["holds"]
+                          and hyp["H2_network_beats_popularity"]["holds"] else "stop")
+    report["by_domain_pair"] = by_domain_pair(y_te, scores, test["pairs"], test["domains"])
 
     order = np.argsort(-scores["combined"])[:200]
     report["top_predictions"] = [{
@@ -182,8 +230,12 @@ def main() -> None:
     ap.add_argument("--max-train-links", type=int, default=1)
     ap.add_argument("--min-test-links", type=int, default=3)
     ap.add_argument("--model", default="BAAI/bge-small-en-v1.5")
+    ap.add_argument("--data", default="", help="data directory (default research/data)")
     ap.add_argument("--out", default="")
     args = ap.parse_args()
+    if args.data:
+        global DATA
+        DATA = collect.DATA = embed.DATA = Path(args.data).resolve()
     report = run(args.max_train_links, args.min_test_links, args.model)
     RESULTS.mkdir(parents=True, exist_ok=True)
     out = Path(args.out) if args.out else RESULTS / (
@@ -197,9 +249,10 @@ def main() -> None:
         m = report["models"][name]
         print(f"{name:<11} {m['roc_auc']:6.3f} {m['average_precision']:7.4f} "
               f"{m['precision_at_100']:6.2f} {m['precision_at_1000']:7.3f}")
-    for key in ("combined_vs_network", "semantic_vs_network"):
-        b = report[key]
-        print(f"{key}: AP diff 95% CI [{b['diff_ci'][0]:+.4f}, {b['diff_ci'][1]:+.4f}]")
+    for key, h in report["hypotheses"].items():
+        print(f"{key}: AP diff {h['diff']:+.4f}, 95% CI [{h['diff_ci'][0]:+.4f}, "
+              f"{h['diff_ci'][1]:+.4f}] -> {'holds' if h['holds'] else 'does not hold'}")
+    print(f"decision (PREREGISTRATION.md): {report['decision']}")
     print(f"wrote {out}")
 
 

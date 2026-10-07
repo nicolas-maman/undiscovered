@@ -1,7 +1,7 @@
 # Data licence
 
-The data this project publishes — candidate bridges, backtest results,
-aggregated ratings and model accuracy — is dedicated to the public domain
+The data this project publishes (candidate pairs, backtest results,
+aggregated ratings and model accuracy) is dedicated to the public domain
 under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 
 It is derived from [OpenAlex](https://openalex.org), which is itself CC0.

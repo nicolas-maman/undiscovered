@@ -91,7 +91,7 @@ From the `rating` form, by anyone, about any published bridge:
 {"bridge": "b-T10014-T12108", "rating": 4, "expertise": "own-field", "comment": "…"}
 ```
 
-`rating` is 1–5 (1 = no real connection, 5 = I would start a project on
+`rating` is 1 to 5 (1 = no real connection, 5 = I would start a project on
 this). `expertise` is `own-field`, `adjacent` or `outside`. Ratings by people
 working in one of the two fields count most.
 

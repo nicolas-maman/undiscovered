@@ -20,3 +20,5 @@ jobs:
         run: python -m pytest -q
       - name: Schemas are valid JSON
         run: python -c "import json,glob; [json.load(open(p)) for p in glob.glob('schemas/*.json')]; print('ok')"
+      - name: Plain punctuation (no em or en dashes in project text)
+        run: python scripts/check_punctuation.py

@@ -16,11 +16,11 @@ body:
     attributes:
       label: How real is this connection?
       options:
-        - "1 — no real connection"
-        - "2 — superficial (shared words, not shared substance)"
-        - "3 — plausible, worth a look"
-        - "4 — real and useful"
-        - "5 — I would start a project on this"
+        - "1: no real connection"
+        - "2: superficial (shared words, not shared substance)"
+        - "3: plausible, worth a look"
+        - "4: real and useful"
+        - "5: I would start a project on this"
     validations:
       required: true
   - type: dropdown
@@ -28,9 +28,9 @@ body:
     attributes:
       label: Your relation to these fields
       options:
-        - "own-field — I work in one of the two fields"
-        - "adjacent — I work close to one of them"
-        - "outside — neither"
+        - "own-field: I work in one of the two fields"
+        - "adjacent: I work close to one of them"
+        - "outside: neither"
     validations:
       required: true
   - type: textarea

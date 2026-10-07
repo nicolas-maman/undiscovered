@@ -95,3 +95,28 @@ def test_pair_table_features_reflect_shared_citers(world):
     # TA and TD are both cited by TX; TA and TC share no citing topic.
     assert rows[("TA", "TD")]["log_common"] > rows[("TA", "TC")]["log_common"]
     assert rows[("TA", "TD")]["centroid_cos"] > rows[("TA", "TC")]["centroid_cos"]
+
+
+def test_full_run_produces_the_preregistered_report(world):
+    report = backtest.run(max_train_links=1, min_test_links=3, model="fake")
+    assert set(report["models"]) == {"random", "popularity", "network", "semantic", "combined"}
+    for m in report["models"].values():
+        lo, hi = m["average_precision_ci"]
+        assert 0.0 <= lo <= hi <= 1.0
+    hyp = report["hypotheses"]
+    assert set(hyp) == {"H1_combined_beats_network", "H2_network_beats_popularity",
+                        "H3_semantic_beats_popularity"}
+    h1 = hyp["H1_combined_beats_network"]
+    assert h1["holds"] == (h1["diff_ci"][0] > 0)
+    expected = "continue" if h1["holds"] and hyp["H2_network_beats_popularity"]["holds"] else "stop"
+    assert report["decision"] == expected
+    assert report["pairs"]["eval_positive"] == 1
+    assert "Life Sciences / Physical Sciences" in report["by_domain_pair"]
+
+
+def test_compare_is_zero_against_itself():
+    y = np.array([1, 0, 1, 0, 0, 1])
+    s = np.array([0.9, 0.2, 0.8, 0.3, 0.1, 0.7])
+    samples = backtest._resamples(y, n=50)
+    c = backtest.compare(y, s, s, samples)
+    assert c["diff"] == 0.0 and c["diff_ci"] == [0.0, 0.0]

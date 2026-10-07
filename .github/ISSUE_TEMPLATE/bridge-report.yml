@@ -29,9 +29,9 @@ body:
     attributes:
       label: Your relation to these fields
       options:
-        - "own-field — I work in one of the two fields"
-        - "adjacent — I work close to one of them"
-        - "outside — neither"
+        - "own-field: I work in one of the two fields"
+        - "adjacent: I work close to one of them"
+        - "outside: neither"
     validations:
       required: true
   - type: checkboxes
