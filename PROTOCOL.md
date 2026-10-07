@@ -95,6 +95,29 @@ From the `rating` form, by anyone, about any published bridge:
 this). `expertise` is `own-field`, `adjacent` or `outside`. Ratings by people
 working in one of the two fields count most.
 
+### Who is rating (planned, not in v0)
+
+Work results need no identity: they are checked by OpenAlex lookups, known
+answers and agreement between contributors. A rating is different, because
+its weight depends on whether the rater really works in one of the two
+fields, and the `expertise` field above is self-declared. The plan:
+
+1. **Optional sign-in with ORCID.** ORCID supports OpenID Connect's implicit
+   flow for public clients, so the static site can obtain an ORCID-signed ID
+   token in the browser with no server. The token goes into the rating
+   issue; the validating Action checks its signature against ORCID's
+   published keys and its expiry. ORCID's public API is free for
+   non-commercial use.
+2. **Expertise from the record, not the claim.** With a verified ORCID iD the
+   Action looks the person up in OpenAlex (a single-record lookup, which
+   costs nothing) and checks whether they have published in either topic of
+   the pair. That decides `own-field`, whatever the form says.
+3. **Anonymous ratings still count**, with a lower weight, so taking part
+   never requires an account.
+
+The token and the ORCID iD are used to compute the weight; the published
+rating shows the iD only if the rater ticks a box to show it.
+
 ## Bridge reports
 
 From the `bridge-report` form: a connection someone found, through `ask` or by
