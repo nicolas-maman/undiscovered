@@ -44,8 +44,14 @@ Can we predict which distant fields will start citing each other?
   all-time citation counts include citations made after the cutoff.
 - No feature uses topic descriptions or keywords; those were written from the
   whole corpus.
+- The models are fitted only at the 2011 freeze, whose outcomes end in 2017.
+  Nothing from 2018 on is used to fit anything.
 - Known residual: OpenAlex assigns topics with one present-day classifier for
   every year, which affects labels and features alike.
+- Known residual: the 100 papers that stand for each topic are its most cited
+  by today's counts, which include citations made after the cutoff. This
+  decides which papers count as the topic, for every model alike; no feature
+  counts a citation made after the cutoff.
 
 ## Run it
 
