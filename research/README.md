@@ -19,7 +19,7 @@ Can we predict which distant fields will start citing each other?
   because they only concern sampled pairs. This keeps a 300-topic run to
   about 8,400 requests.
 - **Label:** the pair has at least 3 links in the test window.
-- **Windows:** cutoff 2012 (train 2005 to 2012, test 2013 to 2018) fits the
+- **Windows:** cutoff 2011 (train 2004 to 2011, test 2012 to 2017) fits the
   models; cutoff 2017 (train 2010 to 2017, test 2018 to 2023) is the evaluation.
   Every reported number is out of time.
 - **Models:** logistic regression on
@@ -31,7 +31,9 @@ Can we predict which distant fields will start citing each other?
     abstracts;
   - `combined`.
 - **Metrics:** ROC-AUC, average precision, precision@100 and @1000, and a
-  bootstrap 95% interval on the difference with `network`.
+  bootstrap 95% interval on the difference with `network`. The bootstrap
+  resamples topics, not pairs, because pairs that share a topic are not
+  independent.
 
 ### Guarding against the future leaking in
 

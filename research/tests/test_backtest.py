@@ -127,9 +127,39 @@ def test_full_run_produces_the_preregistered_report(world):
     assert "Life Sciences / Physical Sciences" in report["by_domain_pair"]
 
 
+PAIRS = [("TA", "TC"), ("TA", "TD"), ("TB", "TC"), ("TB", "TD"), ("TA", "TE"), ("TB", "TE")]
+
+
 def test_compare_is_zero_against_itself():
     y = np.array([1, 0, 1, 0, 0, 1])
     s = np.array([0.9, 0.2, 0.8, 0.3, 0.1, 0.7])
-    samples = backtest._resamples(y, n=50)
+    samples = backtest._resamples(y, PAIRS, n=50)
     c = backtest.compare(y, s, s, samples)
     assert c["diff"] == 0.0 and c["diff_ci"] == [0.0, 0.0]
+
+
+def test_bootstrap_resamples_topics_not_pairs():
+    y = np.array([1, 0, 1, 0, 0, 1])
+    topics = sorted({t for p in PAIRS for t in p})
+    for w in backtest._resamples(y, PAIRS, n=40, seed=3):
+        # Each weight is a product of two topic counts that sum to the number of topics.
+        assert np.all(w == np.round(w)) and w.min() >= 0
+        assert (w * y).sum() > 0 and (w * (1 - y)).sum() > 0
+    # The first resample of seed 0 is exactly the product of the topic draws,
+    # so a topic that was not drawn takes all of its pairs out of it.
+    drawn = np.random.default_rng(0).integers(0, len(topics), len(topics))
+    count = dict(zip(topics, np.bincount(drawn, minlength=len(topics))))
+    expected = np.array([count[a] * count[b] for a, b in PAIRS], dtype=float)
+    assert (expected * y).sum() > 0 and (expected * (1 - y)).sum() > 0
+    assert list(backtest._resamples(y, PAIRS, n=1, seed=0)[0]) == list(expected)
+    assert any(c == 0 for c in count.values()) and 0.0 in expected
+
+
+def test_self_citations_do_not_count_as_neighbours(world):
+    for p in (world / "topics" / "2017").glob("*.json"):
+        rec = json.loads(p.read_text())
+        rec["cited_by_train"][rec["topic"]] = 10_000
+        p.write_text(json.dumps(rec))
+    with_self = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")
+    rows = dict(zip(with_self["pairs"], with_self["rows"]))
+    assert rows[("TA", "TD")]["cocite_cosine"] > 0.1

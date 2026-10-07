@@ -34,8 +34,9 @@ actually happened.
    the two topics' papers are in content.
 3. **A backtest anyone can rerun.** We freeze the literature at the end of
    2017, rank the unconnected pairs, and check which of them did start citing
-   each other between 2018 and 2023. The model is fitted on an earlier
-   freeze (2012), so it never sees the years it is judged on.
+   each other between 2018 and 2023. The model learns its weights on an
+   earlier freeze (2011, with outcomes from 2012 to 2017), so nothing after
+   2017 goes into it.
 4. **Volunteers and experts.** Once the backtest is done, anyone will be able
    to lend their computer and whichever AI model they prefer, local or from
    a provider, to examine candidate pairs. Researchers will be able to rate

@@ -42,8 +42,8 @@ features beat end-to-end models on a related task).
 - **Topics:** 75 per domain, 300 in total, drawn with seed 2026 from the 4,516
   OpenAlex topics (`collect.sample_topics`).
 - **Topic of a work:** its OpenAlex primary topic.
-- **Cutoffs:** 2012 (train window 2005 to 2012, test window 2013 to 2018) is
-  used only to fit the models. 2017 (train window 2010 to 2017, test window
+- **Cutoffs:** 2011 (train window 2004 to 2011, test window 2012 to 2017) is
+  used only to fit the models (amended 2026-10-07, see below). 2017 (train window 2010 to 2017, test window
   2018 to 2023) is used only to evaluate them.
 - **Instrument:** for each topic and cutoff, its 100 most-cited works
   published up to the cutoff.
@@ -66,14 +66,15 @@ features beat end-to-end models on a related task).
 ## Models
 
 Logistic regression with balanced class weights on standardised features,
-fitted on the 2012 cutoff and applied unchanged to the 2017 cutoff. The
+fitted on the 2011 cutoff and applied unchanged to the 2017 cutoff. The
 feature sets are exactly those in `undiscovered_research/backtest.py` as of the
 commit that adds this file:
 
 - `popularity`: log size of the larger and of the smaller topic.
 - `network`: popularity, plus the two topics' degrees, the log number of
   topics citing both, their Jaccard index, Adamic-Adar, and the cosine of
-  their citing-topic count vectors.
+  their citing-topic count vectors. A topic's citations of itself are not
+  part of its neighbourhood (amended 2026-10-07).
 - `semantic`: popularity, plus the cosine of the two topics' abstract
   centroids and the mean of the five highest cosines between their
   individual abstracts.
@@ -85,9 +86,11 @@ A random score is reported as a floor.
 
 - **Primary:** average precision on the 2017 evaluation pairs.
 - **Secondary:** ROC-AUC, precision at 100 and at 1,000, and the base rate.
-- **Uncertainty:** 300 bootstrap resamples of the evaluation pairs, with a
-  95% percentile interval for each model's average precision and for the
-  difference between models.
+- **Uncertainty:** 300 bootstrap resamples of the evaluation *topics*
+  (amended 2026-10-07): topics are drawn with replacement and each pair is
+  weighted by how many times each of its two topics was drawn. The same
+  resamples serve every model. 95% percentile intervals are reported for
+  each model's average precision and for the difference between models.
 
 ## Decision
 
@@ -128,12 +131,35 @@ These are reported alongside the main result and do not change the decision:
   heavily before 2010 but rarely in 2010 to 2017 would have counted as
   "unconnected", and its return would have been an easy prediction rather
   than a discovery. Eligibility now counts links in every year up to the
-  cutoff, which is what Science4Cast means by "not yet connected". The
+  cutoff, as Science4Cast does when it asks which pairs are still
+  unconnected (we still allow one stray citing work). The
   collector fetches the earlier years for the sampled topics only, about
   1,800 extra requests. This was decided before any analysis data was
   collected and before any model was fitted. The only data fetched so far
-  is a pilot that tested the queries (42 topics at the 2012 cutoff and 3 at
-  2017, with an earlier query design), which is not used in the analysis.
+  is the pilot described at the top, with an earlier query design, which is
+  not used in the analysis. (Correction: besides the 40 topics at 2012, the
+  pilot had also fetched 3 topics at 2017.)
+- **2026-10-07, fitting cutoff 2011 instead of 2012.** With 2012, the
+  fitting labels came from 2013 to 2018, which shares the year 2018 with the
+  evaluation window. With 2011 they come from 2012 to 2017, so nothing after
+  2017 is used to fit anything, and "frozen at the end of 2017" holds for
+  the whole pipeline. Same reason for timing as above: decided before any
+  analysis data was collected.
+- **2026-10-07, bootstrap over topics instead of pairs.** Pairs that share
+  a topic are not independent: if a model misjudges one topic, it misjudges
+  all of that topic's pairs together. Resampling pairs would treat tens of
+  thousands of dependent pairs as independent and give intervals that are
+  too narrow, which would make H1 easier to pass by chance. Resampling
+  topics keeps that dependence. It is expected to widen the intervals, so
+  it makes H1 harder to pass, not easier.
+- **2026-10-07, self-citations out of the neighbourhood.** A topic's
+  citations of its own most-cited papers were counted among its citing
+  topics. In the pilot they were among a topic's three largest counts for
+  34 of 40 topics, so they would have weighed heavily on the co-citation
+  cosine of every pair while saying nothing about the neighbours it is
+  meant to compare. They are now left out of the network features. They
+  never affected eligibility or labels, which only count links between two
+  different topics.
 
 ## Deviations
 

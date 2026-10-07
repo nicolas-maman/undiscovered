@@ -2,8 +2,9 @@
 
 Unit: a pair of topics from different OpenAlex domains that were (almost) not
 connected in the train window. Label: they connect in the test window.
-Models are fitted on the 2012 cutoff and judged on the 2017 cutoff, so every
-reported number is out of time.
+Models are fitted on the 2011 cutoff, whose test window ends in 2017, and
+judged on the 2017 cutoff: nothing after 2017 is used to fit anything, and
+every reported number is out of time.
 
 Models compared (logistic regression on standardised features):
   popularity  log sizes of the two topics (preferential attachment)
@@ -64,8 +65,10 @@ def pair_table(cutoff: int, max_prior_links: int, min_test_links: int, model: st
     def link(window: str, a: str, b: str) -> int:
         return recs[b].get(window, {}).get(a, 0) + recs[a].get(window, {}).get(b, 0)
 
-    # Neighbourhoods in the train window: the topics citing each topic.
-    citers = {t: recs[t]["cited_by_train"] for t in ids}
+    # Neighbourhoods in the train window: the other topics citing each topic.
+    # A topic's citations of itself are left out: they are among its largest
+    # counts and say nothing about its neighbours.
+    citers = {t: {z: c for z, c in recs[t]["cited_by_train"].items() if z != t} for t in ids}
     reach = defaultdict(int)        # how many sampled topics each citing topic cites
     for t in ids:
         for z in citers[t]:
@@ -129,14 +132,27 @@ def precision_at(y: np.ndarray, scores: np.ndarray, k: int) -> float:
 BOOTSTRAP = 300
 
 
-def _resamples(y: np.ndarray, n: int = BOOTSTRAP, seed: int = 0) -> list[np.ndarray]:
-    """The same bootstrap resamples for every model, so intervals are comparable."""
+def _resamples(y: np.ndarray, pairs: list[tuple[str, str]], n: int = BOOTSTRAP,
+               seed: int = 0) -> list[np.ndarray]:
+    """Pair weights for each bootstrap resample, shared by every model.
+
+    Pairs that share a topic are not independent, so the unit resampled is
+    the topic: draw the topics with replacement, and weight each pair by how
+    many times each of its two topics was drawn. Resampling pairs instead
+    would treat tens of thousands of dependent pairs as independent and give
+    intervals that are too narrow.
+    """
+    topics = sorted({t for p in pairs for t in p})
+    index = {t: i for i, t in enumerate(topics)}
+    a = np.array([index[p[0]] for p in pairs])
+    b = np.array([index[p[1]] for p in pairs])
     rng = np.random.default_rng(seed)
     out = []
     while len(out) < n:
-        idx = rng.integers(0, len(y), len(y))
-        if y[idx].sum() > 0:
-            out.append(idx)
+        drawn = np.bincount(rng.integers(0, len(topics), len(topics)), minlength=len(topics))
+        w = (drawn[a] * drawn[b]).astype(float)
+        if (w * y).sum() > 0 and (w * (1 - y)).sum() > 0:
+            out.append(w)
     return out
 
 
@@ -145,13 +161,13 @@ def _ci(values: list[float]) -> list[float]:
 
 
 def ap_interval(y: np.ndarray, s: np.ndarray, samples: list[np.ndarray]) -> list[float]:
-    return _ci([average_precision_score(y[i], s[i]) for i in samples])
+    return _ci([average_precision_score(y, s, sample_weight=w) for w in samples])
 
 
 def compare(y: np.ndarray, s1: np.ndarray, s2: np.ndarray, samples: list[np.ndarray]) -> dict:
     """AP(s1) - AP(s2), as a point estimate and a 95% bootstrap interval."""
-    d = [average_precision_score(y[i], s1[i]) - average_precision_score(y[i], s2[i])
-         for i in samples]
+    d = [average_precision_score(y, s1, sample_weight=w) - average_precision_score(y, s2, sample_weight=w)
+         for w in samples]
     return {"diff": float(average_precision_score(y, s1) - average_precision_score(y, s2)),
             "diff_ci": _ci(d)}
 
@@ -197,7 +213,7 @@ def run(max_prior_links: int, min_test_links: int, model: str) -> dict:
         scores[name] = clf.predict_proba(sc.transform(matrix(test["rows"], cols)))[:, 1]
         report["models"][name] = {"features": cols,
                                   "coef": dict(zip(cols, map(float, clf.coef_[0])))}
-    samples = _resamples(y_te)
+    samples = _resamples(y_te, test["pairs"])
     for name, s in scores.items():
         m = report["models"].setdefault(name, {})
         m["roc_auc"] = float(roc_auc_score(y_te, s))

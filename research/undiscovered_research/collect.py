@@ -36,7 +36,7 @@ from pathlib import Path
 from . import openalex as oa
 
 DATA = Path(__file__).resolve().parent.parent / "data"
-CUTOFFS = (2012, 2017)          # 2012 trains the network model; 2017 is the evaluation
+CUTOFFS = (2011, 2017)          # 2011 fits the models; 2017 is the evaluation
 TRAIN_YEARS = 7                 # train window [C-7, C]
 TEST_YEARS = 6                  # test window  [C+1, C+6]
 INSTRUMENT = 100                # papers per topic that define "citing the topic"

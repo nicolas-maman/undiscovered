@@ -113,8 +113,8 @@
     body.appendChild(el("p", {text:
       "We took pairs of research topics from different domains (physical, life, health and " +
       "social sciences) that had been linked by at most one citing work in all the years up to " +
-      "2017. The models " +
-      "were fitted on an earlier freeze (2012) and then ranked the 2017 pairs. A pair counts as " +
+      "2017. The models learned their weights on an earlier freeze (2011, with outcomes from 2012 " +
+      "to 2017), so nothing after 2017 went into them. They then ranked the 2017 pairs. A pair counts as " +
       "connected if at least " + r.config.min_test_links + " works in one cited the other's most " +
       "cited papers between 2018 and 2023. Of the " + r.pairs.eval.toLocaleString("en") + " pairs, " +
       r.pairs.eval_positive.toLocaleString("en") + " did (" + pct(r.pairs.eval_base_rate, 2) + ")."}));
@@ -122,7 +122,9 @@
       "Average precision measures how well a ranking puts the pairs that did connect near the " +
       "top: 1 is perfect, and a random ranking scores about the share of pairs that connected. " +
       "The baseline to beat is the network method of ",
-      el("a", {href: "https://arxiv.org/abs/2210.00881", text: "Science4Cast"}), "."]));
+      el("a", {href: "https://arxiv.org/abs/2210.00881", text: "Science4Cast"}),
+      ". The 95% intervals come from resampling topics rather than pairs, because pairs " +
+      "that share a topic are not independent."]));
 
     body.appendChild(el("h2", {text: "The numbers"}));
     var rows = [["random", "Random ranking"], ["popularity", "Popularity (size of the two topics)"],
