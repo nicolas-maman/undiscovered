@@ -101,7 +101,7 @@
   }
 
   var MODELS = [["random", "Random ranking"], ["popularity", "Popularity (size of the two topics)"],
-                ["network", "Network (published baseline)"], ["semantic", "Content of the papers"],
+                ["network", "Network (Science4Cast-style baseline)"], ["semantic", "Content of the papers"],
                 ["combined", "Network and content (this project)"]];
 
   // One row per model: a dot for its average precision and a line for its
@@ -197,16 +197,16 @@
     verdict.className = "verdict " + (go ? "go" : "stop");
     verdict.textContent = "";
     if (go) {
-      verdict.appendChild(el("strong", {text: "The method beat the published baseline. "}));
+      verdict.appendChild(el("strong", {text: "The method beat the network baseline. "}));
       verdict.appendChild(document.createTextNode(change + "The plan's rule for continuing is met."));
     } else if (!h2.holds) {
-      verdict.appendChild(el("strong", {text: "The published baseline did not reproduce on this data. "}));
+      verdict.appendChild(el("strong", {text: "The network baseline did not beat popularity on this data. "}));
       verdict.appendChild(document.createTextNode(
-        "The network method did not beat a ranking by topic size, so, as the plan published " +
-        "before the analysis says, the comparison with it is not interpreted. " + change +
+        "A ranking by the size of the two topics did as well, so, as the plan published before " +
+        "the analysis says, the comparison with it is not interpreted. " + change +
         "The project stops here and reports this."));
     } else {
-      verdict.appendChild(el("strong", {text: "The method did not beat the published baseline. "}));
+      verdict.appendChild(el("strong", {text: "The method did not beat the network baseline. "}));
       verdict.appendChild(document.createTextNode(change +
         "Under the plan published before the analysis, the project stops here and reports this."));
     }
@@ -223,8 +223,8 @@
     body.appendChild(el("p", {class: "note"}, [
       "Average precision measures how well a ranking puts the pairs that did connect near the " +
       "top: 1 is perfect, and a random ranking scores about the share of pairs that connected. " +
-      "The baseline to beat is the network method of ",
-      el("a", {href: "https://arxiv.org/abs/2210.00881", text: "Science4Cast"}),
+      "The baseline to beat is a model built on the kind of network features that did best in the ",
+      el("a", {href: "https://arxiv.org/abs/2210.00881", text: "Science4Cast"}), " benchmark",
       ". The 95% intervals come from resampling topics rather than pairs, because pairs " +
       "that share a topic are not independent."]));
 
@@ -232,7 +232,7 @@
     body.appendChild(apChart(m));
     body.appendChild(el("p", {class: "note", text:
       "Each dot is a model's average precision on the 2017 pairs, and the line is its 95% " +
-      "interval. Further right is better. Whether this project beats the published baseline is " +
+      "interval. Further right is better. Whether this project beats the network baseline is " +
       "decided by the interval of their difference, under the hypotheses below, not by whether " +
       "these two lines overlap."}));
     var rows = MODELS;

@@ -27,7 +27,8 @@ Can we predict which distant fields will start citing each other?
   - `popularity`: the two topics' sizes;
   - `network`: Science4Cast-style structure of the citation graph: common
     citing topics, Jaccard, Adamic-Adar, co-citation cosine and degrees. This
-    is the published method to beat;
+    is the kind of model that did best in Science4Cast, and the baseline
+    to beat;
   - `semantic`: embedding similarity of each topic's sampled pre-cutoff
     abstracts;
   - `combined`.
