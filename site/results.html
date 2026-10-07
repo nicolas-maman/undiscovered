@@ -53,6 +53,11 @@
          font: 13px/1.4 system-ui, sans-serif; white-space: nowrap; display: none;
          box-shadow: 0 2px 8px rgba(0,0,0,.08); }
   .tip strong { font-size: 15px; }
+  .timeline .sees { fill: var(--band); stroke: var(--muted); stroke-width: 1; }
+  .timeline .judged { fill: var(--accent); }
+  .timeline text.in { fill: var(--fg); }
+  .timeline text.on-accent { fill: var(--bg); font-weight: 600; }
+  .timeline .freeze { stroke: var(--fg); stroke-width: 1.5; }
 </style>
 </head>
 <body>
@@ -87,6 +92,61 @@
   function num(x, digits) { return x.toFixed(digits === undefined ? 3 : digits); }
   function interval(ci) { return num(ci[0]) + " to " + num(ci[1]); }
 
+  // The two freezes on one time axis: what each model sees, and what it is
+  // asked to predict. Nothing used for fitting goes past 2017.
+  function timeline() {
+    var NS = "http://www.w3.org/2000/svg";
+    function svg(tag, attrs, text) {
+      var n = document.createElementNS(NS, tag);
+      Object.keys(attrs || {}).forEach(function (k) { n.setAttribute(k, attrs[k]); });
+      if (text) n.textContent = text;
+      return n;
+    }
+    var width = Math.max(300, Math.min(body.clientWidth || 700, 760));
+    var first = 2004, last = 2023, left = 2, right = 2, top = 8, rowH = 62, barH = 26;
+    function x(year) { return left + (width - left - right) * (year - first) / (last - first + 1); }
+    var height = top + 2 * rowH + 30;
+    var root = svg("svg", {viewBox: "0 0 " + width + " " + height, role: "img",
+      "aria-label": "Timeline. Fitting: the model sees 2004 to 2011 and learns from what happened in " +
+        "2012 to 2017. Evaluation: it sees 2010 to 2017 and is judged on 2018 to 2023."});
+    var narrow = width < 560;
+    var rows = [
+      ["Fitting the model (freeze at the end of 2011)", 2004, 2011, 2012, 2017,
+       narrow ? "sees" : "what it sees", narrow ? "learns from" : "what it learns from"],
+      ["Evaluation (freeze at the end of 2017)", 2010, 2017, 2018, 2023,
+       narrow ? "sees" : "what it sees", narrow ? "judged on" : "what it is judged on"]];
+    rows.forEach(function (r, i) {
+      var y = top + i * rowH;
+      root.appendChild(svg("text", {x: left, y: y + 12}, r[0]));
+      var by = y + 20;
+      root.appendChild(svg("rect", {class: "sees", x: x(r[1]), y: by, width: x(r[2] + 1) - x(r[1]) - 2,
+                                    height: barH, rx: 4}));
+      root.appendChild(svg("text", {class: "in", x: (x(r[1]) + x(r[2] + 1)) / 2, y: by + 17,
+                                    "text-anchor": "middle"}, r[5]));
+      root.appendChild(svg("rect", {class: "judged", x: x(r[3]), y: by, width: x(r[4] + 1) - x(r[3]),
+                                    height: barH, rx: 4}));
+      root.appendChild(svg("text", {class: "on-accent", x: (x(r[3]) + x(r[4] + 1)) / 2, y: by + 17,
+                                    "text-anchor": "middle"}, r[6]));
+    });
+    var fx = x(2018) - 1;
+    root.appendChild(svg("line", {class: "freeze", x1: fx, x2: fx, y1: top + 18, y2: top + 2 * rowH}));
+    [2004, 2010, 2018, 2023].forEach(function (yr) {
+      var anchor = yr === first ? "start" : yr === last ? "end" : "middle";
+      var px = yr === last ? x(last + 1) : x(yr);
+      root.appendChild(svg("text", {x: px, y: top + 2 * rowH + 18, "text-anchor": anchor}, String(yr)));
+    });
+    var wrap = el("div", {class: "chart timeline"});
+    wrap.appendChild(root);
+    return wrap;
+  }
+
+  function timelineNote() {
+    return el("p", {class: "note", text:
+      "The model learns its weights at the first freeze, then ranks the pairs at the second " +
+      "without seeing anything after 2017. Earlier years are used only to check that a pair " +
+      "had not been connected before."});
+  }
+
   function pending() {
     verdict.textContent = "";
     verdict.appendChild(el("strong", {text: "Not run yet. "}));
@@ -94,6 +154,14 @@
       "The analysis plan, including the rule that decides whether the method works, was " +
       "published before any data was analysed. The numbers will appear here when the run " +
       "is complete, whichever way they come out."));
+    body.appendChild(el("h2", {text: "How the test works"}));
+    body.appendChild(el("p", {text:
+      "We freeze the scientific literature at the end of 2017 and rank pairs of research topics " +
+      "from different domains that had barely cited each other. Then we check which pairs started " +
+      "citing each other between 2018 and 2023, and whether reading the papers' content ranks " +
+      "them better than the shape of the citation network alone."}));
+    body.appendChild(timeline());
+    body.appendChild(timelineNote());
     body.appendChild(el("p", {}, [
       "Read the plan: ",
       el("a", {href: "https://github.com/nicolas-maman/undiscovered/blob/main/research/PREREGISTRATION.md",
@@ -220,6 +288,8 @@
       "connected if at least " + r.config.min_test_links + " works in one cited the other's most " +
       "cited papers between 2018 and 2023. Of the " + r.pairs.eval.toLocaleString("en") + " pairs, " +
       r.pairs.eval_positive.toLocaleString("en") + " did (" + pct(r.pairs.eval_base_rate, 2) + ")."}));
+    body.appendChild(timeline());
+    body.appendChild(timelineNote());
     body.appendChild(el("p", {class: "note"}, [
       "Average precision measures how well a ranking puts the pairs that did connect near the " +
       "top: 1 is perfect, and a random ranking scores about the share of pairs that connected. " +
