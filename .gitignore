@@ -7,3 +7,5 @@ research/.openalex_key
 .openalex_key
 undiscovered.toml
 site/_build/
+research/data_seed2027/
+research/results/

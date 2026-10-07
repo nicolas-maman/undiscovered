@@ -59,6 +59,16 @@ python -m undiscovered_research.backtest   # writes results/backtest_e1_k3_<mode
 pytest                                     # offline tests
 ```
 
+The robustness checks listed in the plan need a second topic sample, then
+one command runs them all; `publish` copies the result to the site with the
+commit it came from:
+
+```bash
+python -m undiscovered_research.collect --seed 2027 --data data_seed2027
+python -m undiscovered_research.robustness           # writes results/robustness.json
+python -m undiscovered_research.publish results/backtest_e1_k3_BAAI_bge-small-en-v1.5.json --robustness results/robustness.json
+```
+
 OpenAlex is free. A free key from <https://openalex.org/settings/api>
 (`OPENALEX_API_KEY`, or a `research/.openalex_key` file) gives about 10,000
 queries a day; without one the shared budget is about a tenth of that. The

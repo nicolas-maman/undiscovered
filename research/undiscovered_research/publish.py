@@ -1,6 +1,7 @@
-"""Copy a finished backtest report into the site, with where it came from.
+r"""Copy a finished backtest report into the site, with where it came from.
 
-    python -m undiscovered_research.publish results/backtest_e1_k3_BAAI_bge-small-en-v1.5.json
+    python -m undiscovered_research.publish \
+        results/backtest_e1_k3_BAAI_bge-small-en-v1.5.json --robustness results/robustness.json
 
 writes ``data/backtest.json`` at the repository root, which the site's
 results page reads. The file records the commit the report was produced
@@ -29,9 +30,18 @@ def _git(*args: str) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("report", help="a results/*.json file written by backtest.py")
+    ap.add_argument("--robustness", default="", help="results/robustness.json, if run")
     args = ap.parse_args()
 
     report = json.loads(Path(args.report).read_text(encoding="utf-8"))
+    robustness = None
+    if args.robustness:
+        robustness = json.loads(Path(args.robustness).read_text(encoding="utf-8"))
+        main_run = robustness.get("main", {})
+        if main_run.get("hypotheses") != report.get("hypotheses"):
+            raise SystemExit("The robustness file's main run does not match the report; "
+                             "rerun both from the same data and code.")
+        robustness = robustness["variants"]
     if _git("status", "--porcelain", "--", "research/undiscovered_research"):
         raise SystemExit("The analysis code has uncommitted changes; commit them first, "
                          "so the published numbers point at code that exists.")
@@ -44,6 +54,8 @@ def main() -> None:
         "preregistration": f"{GITHUB}/blob/{commit}/research/PREREGISTRATION.md",
         "report": report,
     }
+    if robustness is not None:
+        published["robustness"] = robustness
     SITE_DATA.parent.mkdir(parents=True, exist_ok=True)
     SITE_DATA.write_text(json.dumps(published, indent=1), encoding="utf-8")
     print(f"wrote {SITE_DATA.relative_to(REPO)} from commit {commit[:7]}")

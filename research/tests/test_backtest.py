@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import json
+import shutil
 
 import numpy as np
 import pytest
 
-from undiscovered_research import backtest, collect, openalex
+from undiscovered_research import backtest, collect, embed, openalex, robustness
 
 
 def test_abstract_text_rebuilds_word_order():
@@ -204,3 +205,22 @@ def test_key_is_sent_but_never_cached(monkeypatch, tmp_path):
     keyless = openalex._cache_path("https://api.openalex.org/works?filter=publication_year%3A2017")
     assert keyless.exists()
     assert not any("SECRET" in f.read_text() for f in tmp_path.rglob("*.json"))
+
+
+def test_robustness_runs_every_planned_variant(world, monkeypatch, tmp_path_factory):
+    monkeypatch.setattr(collect, "DATA", world)
+    monkeypatch.setattr(embed, "DATA", world)
+    result = robustness.run(second_sample=None)
+    keys = [v["key"] for v in result["variants"]]
+    assert keys == ["main", "k2", "k5", "e0", "bge_base", "seed2027"]
+    assert "skipped" in result["variants"][-1]           # reported, not silently dropped
+    assert result["main"]["hypotheses"] == result["variants"][0]["hypotheses"]
+    e0 = next(v for v in result["variants"] if v["key"] == "e0")
+    assert e0["pairs"]["eval"] < result["variants"][0]["pairs"]["eval"]   # TA-TC had one old link
+
+    second = tmp_path_factory.mktemp("second")
+    shutil.copytree(world, second, dirs_exist_ok=True)
+    result = robustness.run(second_sample=second)
+    seed = result["variants"][-1]
+    assert "skipped" not in seed and seed["hypotheses"] == result["main"]["hypotheses"]
+    assert backtest.DATA == world and embed.DATA == world   # restored afterwards
