@@ -59,7 +59,8 @@ features beat end-to-end models on a related task).
 ## Units and labels
 
 - A unit is an unordered pair of sampled topics from different domains.
-- A pair is **eligible** if its train-window link count is at most 1.
+- A pair is **eligible** if it has at most 1 link in all the years up to
+  the cutoff (see the amendment of 2026-10-07 below).
 - An eligible pair is **positive** if its test-window link count is at least 3.
 
 ## Models
@@ -103,7 +104,7 @@ A random score is reported as a floor.
 These are reported alongside the main result and do not change the decision:
 
 1. Positive threshold of 2 and of 5 test-window links, instead of 3.
-2. Eligibility of 0 train-window links, instead of at most 1.
+2. Eligibility of 0 links up to the cutoff, instead of at most 1.
 3. A second embedding model: `BAAI/bge-base-en-v1.5`.
 4. A second sample of 300 topics, drawn with seed 2027.
 5. Results by domain pair (for example life sciences with physical sciences).
@@ -119,6 +120,20 @@ These are reported alongside the main result and do not change the decision:
   without citation and counts citation without real use.
 - 300 of 4,516 topics are sampled, so neighbourhoods are complete, but the
   set of candidate pairs is a sample.
+
+## Amendments before data collection
+
+- **2026-10-07, eligibility.** The first version counted links only in the
+  train window (seven years), so a pair of topics that cited each other
+  heavily before 2010 but rarely in 2010 to 2017 would have counted as
+  "unconnected", and its return would have been an easy prediction rather
+  than a discovery. Eligibility now counts links in every year up to the
+  cutoff, which is what Science4Cast means by "not yet connected". The
+  collector fetches the earlier years for the sampled topics only, about
+  1,800 extra requests. This was decided before any analysis data was
+  collected and before any model was fitted. The only data fetched so far
+  is a pilot that tested the queries (42 topics at the 2012 cutoff and 3 at
+  2017, with an earlier query design), which is not used in the analysis.
 
 ## Deviations
 

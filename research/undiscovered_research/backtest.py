@@ -54,7 +54,7 @@ def load(cutoff: int) -> tuple[list[dict], dict[str, dict]]:
     return [t for t in sample if t["id"] in recs], recs
 
 
-def pair_table(cutoff: int, max_train_links: int, min_test_links: int, model: str) -> dict:
+def pair_table(cutoff: int, max_prior_links: int, min_test_links: int, model: str) -> dict:
     """Features and labels for every eligible cross-domain pair at one cutoff."""
     topics, recs = load(cutoff)
     ids = [t["id"] for t in topics]
@@ -62,7 +62,7 @@ def pair_table(cutoff: int, max_train_links: int, min_test_links: int, model: st
 
     # A -> B links: works in A citing B's instrument papers, per window.
     def link(window: str, a: str, b: str) -> int:
-        return recs[b][window].get(a, 0) + recs[a][window].get(b, 0)
+        return recs[b].get(window, {}).get(a, 0) + recs[a].get(window, {}).get(b, 0)
 
     # Neighbourhoods in the train window: the topics citing each topic.
     citers = {t: recs[t]["cited_by_train"] for t in ids}
@@ -79,7 +79,10 @@ def pair_table(cutoff: int, max_train_links: int, min_test_links: int, model: st
         for b in ids[i + 1:]:
             if domain[a] == domain[b]:
                 continue
-            if link("cited_by_train", a, b) > max_train_links:
+            # Not yet connected: linked by at most `max_prior_links` citing
+            # works in all the years up to the cutoff, not only the train window.
+            prior = link("cited_by_before", a, b) + link("cited_by_train", a, b)
+            if prior > max_prior_links:
                 continue
             na, nb = set(citers[a]), set(citers[b])
             common = na & nb
@@ -106,7 +109,7 @@ def pair_table(cutoff: int, max_train_links: int, min_test_links: int, model: st
             after = link("cited_by_test", a, b)
             labels.append(1 if after >= min_test_links else 0)
             pairs.append((a, b))
-            links.append((link("cited_by_train", a, b), after))
+            links.append((prior, after))
     return {"rows": rows, "labels": np.array(labels), "pairs": pairs, "links": links,
             "names": {t["id"]: t["name"] for t in topics},
             "fields": {t["id"]: t.get("field", "") for t in topics},
@@ -171,13 +174,13 @@ def by_domain_pair(y: np.ndarray, scores: dict[str, np.ndarray], pairs: list[tup
     return out
 
 
-def run(max_train_links: int, min_test_links: int, model: str) -> dict:
-    train = pair_table(TRAIN_CUTOFF, max_train_links, min_test_links, model)
-    test = pair_table(EVAL_CUTOFF, max_train_links, min_test_links, model)
+def run(max_prior_links: int, min_test_links: int, model: str) -> dict:
+    train = pair_table(TRAIN_CUTOFF, max_prior_links, min_test_links, model)
+    test = pair_table(EVAL_CUTOFF, max_prior_links, min_test_links, model)
     y_tr, y_te = train["labels"], test["labels"]
     report = {
         "config": {"train_cutoff": TRAIN_CUTOFF, "eval_cutoff": EVAL_CUTOFF,
-                   "max_train_links": max_train_links, "min_test_links": min_test_links,
+                   "max_prior_links": max_prior_links, "min_test_links": min_test_links,
                    "embedding_model": model},
         "pairs": {"train": len(y_tr), "train_positive": int(y_tr.sum()),
                   "eval": len(y_te), "eval_positive": int(y_te.sum()),
@@ -237,7 +240,7 @@ def run(max_train_links: int, min_test_links: int, model: str) -> dict:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("--max-train-links", type=int, default=1)
+    ap.add_argument("--max-prior-links", type=int, default=1)
     ap.add_argument("--min-test-links", type=int, default=3)
     ap.add_argument("--model", default="BAAI/bge-small-en-v1.5")
     ap.add_argument("--data", default="", help="data directory (default research/data)")
@@ -246,10 +249,10 @@ def main() -> None:
     if args.data:
         global DATA
         DATA = collect.DATA = embed.DATA = Path(args.data).resolve()
-    report = run(args.max_train_links, args.min_test_links, args.model)
+    report = run(args.max_prior_links, args.min_test_links, args.model)
     RESULTS.mkdir(parents=True, exist_ok=True)
     out = Path(args.out) if args.out else RESULTS / (
-        f"backtest_k{args.min_test_links}_{args.model.replace('/', '_')}.json")
+        f"backtest_e{args.max_prior_links}_k{args.min_test_links}_{args.model.replace('/', '_')}.json")
     out.write_text(json.dumps(report, indent=1), encoding="utf-8")
     p = report["pairs"]
     print(f"pairs: train {p['train']} (+{p['train_positive']}), eval {p['eval']} "

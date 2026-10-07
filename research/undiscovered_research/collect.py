@@ -74,16 +74,19 @@ def sample_topics(topics: list[dict], per_domain: int, seed: int) -> list[dict]:
     return chosen
 
 
-def _citing_counts(instrument: list[str], start: int, end: int,
+def _citing_counts(instrument: list[str], start: int | None, end: int,
                    only: list[str] | None = None) -> dict[str, int]:
     """Works published in [start, end] citing any instrument paper, by primary topic.
+
+    ``start=None`` means every year up to ``end``.
 
     With ``only``, restrict the citing works to those primary topics, asked
     100 at a time (OpenAlex's OR limit): one page per chunk, since a chunk
     can produce at most 100 groups.
     """
     counts: dict[str, int] = {}
-    base = f"referenced_works:{'|'.join(instrument)},publication_year:{start}-{end}"
+    years = f"<{end + 1}" if start is None else f"{start}-{end}"
+    base = f"referenced_works:{'|'.join(instrument)},publication_year:{years}"
     chunks = [None] if only is None else [only[i:i + 100] for i in range(0, len(only), 100)]
     for chunk in chunks:
         flt = base if chunk is None else f"{base},primary_topic.id:{'|'.join(chunk)}"
@@ -132,13 +135,18 @@ def collect_topic(topic_id: str, cutoff: int, sampled: list[str]) -> dict:
         "instrument": instrument,
         "abstracts": abstracts,
         "cited_by_train": _citing_counts(instrument, *train) if instrument else {},
+        # Every year before the train window, for the sampled topics only: a
+        # pair is "not yet connected" only if it was never linked before the
+        # cutoff, as in Science4Cast, not merely quiet in the train window.
+        "cited_by_before": (_citing_counts(instrument, None, train[0] - 1, only=sampled)
+                            if instrument else {}),
         "cited_by_test": _citing_counts(instrument, *test, only=sampled) if instrument else {},
     }
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("--per-domain", type=int, default=150)
+    ap.add_argument("--per-domain", type=int, default=75)
     ap.add_argument("--seed", type=int, default=2026)
     ap.add_argument("--data", default="", help="data directory (default research/data); "
                     "use a separate one for each topic sample")

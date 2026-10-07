@@ -41,7 +41,8 @@ def test_precision_at():
 
 @pytest.fixture
 def world(tmp_path, monkeypatch):
-    """Four topics in two domains; A-C stay apart, A-D connect after the cutoff."""
+    """Four topics in two domains; A-C stay apart, A-D connect after the cutoff,
+    B-C were linked long before the train window and so are not "unconnected"."""
     topics = [
         {"id": "TA", "name": "a", "domain": "Life Sciences"},
         {"id": "TB", "name": "b", "domain": "Life Sciences"},
@@ -49,20 +50,20 @@ def world(tmp_path, monkeypatch):
         {"id": "TD", "name": "d", "domain": "Physical Sciences"},
     ]
     (tmp_path / "sample.json").write_text(json.dumps(topics))
-    citing = {  # topic -> (cited_by_train, cited_by_test)
-        "TA": ({"TB": 9, "TX": 4}, {"TB": 9, "TD": 5}),
-        "TB": ({"TA": 7, "TX": 2}, {"TA": 6}),
-        "TC": ({"TD": 3}, {"TD": 3}),
-        "TD": ({"TC": 2, "TX": 1}, {"TC": 2}),
+    citing = {  # topic -> (cited_by_before, cited_by_train, cited_by_test)
+        "TA": ({"TC": 1}, {"TB": 9, "TX": 4}, {"TB": 9, "TD": 5}),
+        "TB": ({}, {"TA": 7, "TX": 2}, {"TA": 6}),
+        "TC": ({"TB": 4}, {"TD": 3}, {"TD": 3}),
+        "TD": ({}, {"TC": 2, "TX": 1}, {"TC": 2}),
     }
     for cutoff in collect.CUTOFFS:
         d = tmp_path / "topics" / str(cutoff)
         d.mkdir(parents=True)
-        for tid, (tr, te) in citing.items():
+        for tid, (before, tr, te) in citing.items():
             d.joinpath(f"{tid}.json").write_text(json.dumps({
                 "topic": tid, "size": 100, "instrument": ["W1"],
                 "abstracts": [{"id": "W1", "text": "x"}],
-                "cited_by_train": tr, "cited_by_test": te,
+                "cited_by_before": before, "cited_by_train": tr, "cited_by_test": te,
             }))
     monkeypatch.setattr(backtest, "DATA", tmp_path)
     vec = {"TA": [1.0, 0.0], "TB": [0.9, 0.1], "TC": [0.0, 1.0], "TD": [0.7, 0.7]}
@@ -80,17 +81,29 @@ def world(tmp_path, monkeypatch):
 
 
 def test_pair_table_keeps_only_unconnected_cross_domain_pairs(world):
-    table = backtest.pair_table(2017, max_train_links=1, min_test_links=3, model="fake")
+    table = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")
     pairs = set(table["pairs"])
     assert ("TA", "TB") not in pairs                     # same domain
-    assert pairs == {("TA", "TC"), ("TA", "TD"), ("TB", "TC"), ("TB", "TD")}
+    assert ("TB", "TC") not in pairs                     # 4 citing works before the train window
+    assert pairs == {("TA", "TC"), ("TA", "TD"), ("TB", "TD")}
     label = dict(zip(table["pairs"], table["labels"]))
     assert label[("TA", "TD")] == 1                      # 5 citing works after the cutoff
     assert label[("TA", "TC")] == 0
+    links = dict(zip(table["pairs"], table["links"]))
+    assert links[("TA", "TC")] == (1, 0)                 # one old link is still "unconnected"
+
+
+def test_records_without_the_before_window_still_load(world):
+    for p in (world / "topics" / "2017").glob("*.json"):
+        rec = json.loads(p.read_text())
+        del rec["cited_by_before"]
+        p.write_text(json.dumps(rec))
+    pairs = set(backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")["pairs"])
+    assert ("TB", "TC") in pairs
 
 
 def test_pair_table_features_reflect_shared_citers(world):
-    table = backtest.pair_table(2017, max_train_links=1, min_test_links=3, model="fake")
+    table = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")
     rows = dict(zip(table["pairs"], table["rows"]))
     # TA and TD are both cited by TX; TA and TC share no citing topic.
     assert rows[("TA", "TD")]["log_common"] > rows[("TA", "TC")]["log_common"]
@@ -98,7 +111,7 @@ def test_pair_table_features_reflect_shared_citers(world):
 
 
 def test_full_run_produces_the_preregistered_report(world):
-    report = backtest.run(max_train_links=1, min_test_links=3, model="fake")
+    report = backtest.run(max_prior_links=1, min_test_links=3, model="fake")
     assert set(report["models"]) == {"random", "popularity", "network", "semantic", "combined"}
     for m in report["models"].values():
         lo, hi = m["average_precision_ci"]

@@ -6,16 +6,18 @@ Can we predict which distant fields will start citing each other?
 
 - **Unit:** a pair of OpenAlex topics from different domains (physical, life,
   health, social sciences) that were connected by at most one citing work in
-  the train window.
+  all the years up to the cutoff.
 - **Topics:** OpenAlex *primary* topics, so each work counts once, under the
   topic it is most about.
 - **Link:** works whose primary topic is A, published in a window, that cite
   one of topic B's 100 most-cited papers published up to the cutoff (or the
   reverse). OpenAlex counts that for every citing topic in one grouped
   request. The train window is fetched in full, because the network features
-  need each topic's whole neighbourhood; the test window only for the sampled
-  topics, in chunks of 100, because the labels only concern sampled pairs.
-  This keeps a 300-topic run to about 6,600 requests.
+  need each topic's whole neighbourhood. The test window, and the years
+  before the train window (used only to decide which pairs were never
+  connected), are fetched only for the sampled topics, in chunks of 100,
+  because they only concern sampled pairs. This keeps a 300-topic run to
+  about 8,400 requests.
 - **Label:** the pair has at least 3 links in the test window.
 - **Windows:** cutoff 2012 (train 2005 to 2012, test 2013 to 2018) fits the
   models; cutoff 2017 (train 2010 to 2017, test 2018 to 2023) is the evaluation.

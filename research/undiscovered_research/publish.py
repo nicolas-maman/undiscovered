@@ -1,6 +1,6 @@
 """Copy a finished backtest report into the site, with where it came from.
 
-    python -m undiscovered_research.publish results/backtest_k3_BAAI_bge-small-en-v1.5.json
+    python -m undiscovered_research.publish results/backtest_e1_k3_BAAI_bge-small-en-v1.5.json
 
 writes ``data/backtest.json`` at the repository root, which the site's
 results page reads. The file records the commit the report was produced

@@ -112,7 +112,8 @@
     body.appendChild(el("h2", {text: "What was tested"}));
     body.appendChild(el("p", {text:
       "We took pairs of research topics from different domains (physical, life, health and " +
-      "social sciences) that were linked by at most one citing work in 2010 to 2017. The models " +
+      "social sciences) that had been linked by at most one citing work in all the years up to " +
+      "2017. The models " +
       "were fitted on an earlier freeze (2012) and then ranked the 2017 pairs. A pair counts as " +
       "connected if at least " + r.config.min_test_links + " works in one cited the other's most " +
       "cited papers between 2018 and 2023. Of the " + r.pairs.eval.toLocaleString("en") + " pairs, " +
@@ -158,7 +159,7 @@
 
     body.appendChild(el("h2", {text: "What the method ranked highest in 2017"}));
     body.appendChild(el("p", {class: "note", text:
-      "The 20 pairs ranked first, with how many citing works linked them in 2010 to 2017 and in 2018 to 2023."}));
+      "The 20 pairs ranked first, with how many citing works linked them up to 2017 and in 2018 to 2023."}));
     var ptb = el("tbody");
     r.top_predictions.slice(0, 20).forEach(function (p) {
       ptb.appendChild(el("tr", {}, [
