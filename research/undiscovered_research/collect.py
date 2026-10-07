@@ -3,11 +3,18 @@
 For a cutoff year C (the literature is "frozen" at the end of C):
 
 * train window = [C-7, C], test window = [C+1, C+6].
+* Topics are OpenAlex *primary* topics throughout: a work counts once, under
+  the topic it is most about, rather than under each of up to three topics.
 * instrument  = the topic's 100 most-cited papers published up to C. A link
-  from topic A to topic B in a window is the number of works in A, published
-  in that window, that cite any of B's instrument papers. One OpenAlex
-  request (``group_by=topics.id``, cursor-paged) returns that count for every
-  citing topic at once.
+  from topic A to topic B in a window is the number of works whose primary
+  topic is A, published in that window, that cite any of B's instrument
+  papers. One request (``group_by=primary_topic.id``) returns that count for
+  every citing topic at once.
+* train window: the full distribution over all citing topics (cursor-paged),
+  because the network features need each topic's whole neighbourhood.
+* test window: only the citing topics in the sample, asked in chunks of 100
+  (the OR limit). The labels only concern sampled pairs, and this costs
+  ceil(n/100) requests instead of paging through every citing topic.
 * abstracts   = a random sample (OpenAlex ``sample`` + ``seed``) of the
   topic's papers in the train window that have an abstract. Random rather
   than most-cited, because all-time citation counts include citations made
@@ -67,27 +74,33 @@ def sample_topics(topics: list[dict], per_domain: int, seed: int) -> list[dict]:
     return chosen
 
 
-def _citing_counts(instrument: list[str], start: int, end: int) -> dict[str, int]:
-    """Works published in [start, end] citing any instrument paper, by topic."""
+def _citing_counts(instrument: list[str], start: int, end: int,
+                   only: list[str] | None = None) -> dict[str, int]:
+    """Works published in [start, end] citing any instrument paper, by primary topic.
+
+    With ``only``, restrict the citing works to those primary topics, asked
+    100 at a time (OpenAlex's OR limit): one page per chunk, since a chunk
+    can produce at most 100 groups.
+    """
     counts: dict[str, int] = {}
-    params = {
-        "filter": f"referenced_works:{'|'.join(instrument)},publication_year:{start}-{end}",
-        "group_by": "topics.id",
-        "per_page": 200,
-    }
-    for page in oa.paged("works", params):
-        for g in page.get("group_by", []):
-            if g.get("key") and g["key"] != "unknown":
-                counts[oa.short_id(g["key"])] = int(g["count"])
+    base = f"referenced_works:{'|'.join(instrument)},publication_year:{start}-{end}"
+    chunks = [None] if only is None else [only[i:i + 100] for i in range(0, len(only), 100)]
+    for chunk in chunks:
+        flt = base if chunk is None else f"{base},primary_topic.id:{'|'.join(chunk)}"
+        for page in oa.paged("works", {"filter": flt, "group_by": "primary_topic.id",
+                                       "per_page": 200}):
+            for g in page.get("group_by", []):
+                if g.get("key") and g["key"] != "unknown":
+                    counts[oa.short_id(g["key"])] = int(g["count"])
     return counts
 
 
-def collect_topic(topic_id: str, cutoff: int) -> dict:
+def collect_topic(topic_id: str, cutoff: int, sampled: list[str]) -> dict:
     train = (cutoff - TRAIN_YEARS, cutoff)
     test = (cutoff + 1, cutoff + TEST_YEARS)
 
     top = oa.get("works", {
-        "filter": f"topics.id:{topic_id},publication_year:<{cutoff + 1}",
+        "filter": f"primary_topic.id:{topic_id},publication_year:<{cutoff + 1}",
         "sort": "cited_by_count:desc",
         "per_page": INSTRUMENT,
         "select": "id",
@@ -95,12 +108,12 @@ def collect_topic(topic_id: str, cutoff: int) -> dict:
     instrument = [oa.short_id(w["id"]) for w in top["results"]]
 
     size = oa.get("works", {
-        "filter": f"topics.id:{topic_id},publication_year:{train[0]}-{train[1]}",
+        "filter": f"primary_topic.id:{topic_id},publication_year:{train[0]}-{train[1]}",
         "per_page": 1, "select": "id",
     })["meta"]["count"]
 
     sample = oa.get("works", {
-        "filter": f"topics.id:{topic_id},publication_year:{train[0]}-{train[1]},has_abstract:true",
+        "filter": f"primary_topic.id:{topic_id},publication_year:{train[0]}-{train[1]},has_abstract:true",
         "sample": ABSTRACTS, "seed": SAMPLE_SEED, "per_page": ABSTRACTS,
         "select": "id,title,abstract_inverted_index,publication_year",
     })
@@ -119,7 +132,7 @@ def collect_topic(topic_id: str, cutoff: int) -> dict:
         "instrument": instrument,
         "abstracts": abstracts,
         "cited_by_train": _citing_counts(instrument, *train) if instrument else {},
-        "cited_by_test": _citing_counts(instrument, *test) if instrument else {},
+        "cited_by_test": _citing_counts(instrument, *test, only=sampled) if instrument else {},
     }
 
 
@@ -136,6 +149,7 @@ def main() -> None:
     (DATA / "sample.json").write_text(json.dumps(chosen, indent=1), encoding="utf-8")
     print(f"{len(topics)} topics; sampled {len(chosen)} ({args.per_domain} per domain)", flush=True)
 
+    sampled = [t["id"] for t in chosen]
     for cutoff in CUTOFFS:
         out_dir = DATA / "topics" / str(cutoff)
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -143,7 +157,12 @@ def main() -> None:
             path = out_dir / f"{t['id']}.json"
             if path.exists():
                 continue
-            rec = collect_topic(t["id"], cutoff)
+            try:
+                rec = collect_topic(t["id"], cutoff, sampled)
+            except oa.BudgetExhausted as e:
+                print(f"stopped: {e}", flush=True)
+                print(f"progress kept: rerun the same command to continue from topic {i}.", flush=True)
+                return
             path.write_text(json.dumps(rec), encoding="utf-8")
             print(f"[{cutoff}] {i}/{len(chosen)} {t['id']} size={rec['size']} "
                   f"citers train={len(rec['cited_by_train'])} test={len(rec['cited_by_test'])}",

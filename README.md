@@ -1,83 +1,89 @@
 # undiscovered
 
-**Finding the research that should be talking to each other — and testing whether we're right.**
+An open network that looks for research in one field that another field
+could use but has never cited, and measures how often it is right.
 
-In 1986 the information scientist Don Swanson noticed that one body of papers
-said fish oil thins the blood and lowers its viscosity, and another said
-Raynaud's syndrome involves thick, sluggish blood. Nobody had read both. He
-proposed fish oil for Raynaud's; a clinical trial later found it helped. He
-called it *undiscovered public knowledge*: findings already published,
-waiting in two literatures that never cite each other.
+## The idea
 
-There are now hundreds of millions of papers, and the walls between fields
-are higher than ever. **undiscovered** is an open, volunteer-run network that
-looks for those connections across *all* sciences, between fields that do not
-yet talk, and **publishes how often it is right**.
+In 1986 the information scientist Don Swanson read two sets of papers that
+had never cited each other. One showed that dietary fish oil lowers blood
+viscosity, reduces platelet aggregation and dampens vascular reactivity. The
+other described patients with Raynaud's syndrome, whose condition involves
+high blood viscosity, platelet aggregation and vascular reactivity. Swanson
+proposed fish oil as a treatment. Three years later a double-blind trial
+(DiGiacomo, Kremer & Shah, *American Journal of Medicine*, 1989) found it
+helped. He called this *undiscovered public knowledge*: results that are
+already published, but in literatures that nobody reads together.
 
-> **Status: building.** The first milestone is the backtest below — does the
-> method beat the published prior art? Its result will be published here
-> either way, including if the answer is no.
+Swanson worked by hand, in medicine. This project tries to do the same thing
+across all of science, openly, and checks its own predictions against what
+actually happened.
+
+> **Status: building.** The first milestone is the backtest described below.
+> Its result will be published here whether or not the method works.
 
 ## How it works
 
-1. **A map of who cites whom.** For every research topic in
-   [OpenAlex](https://openalex.org) (an open, CC0 index of about 250 million
-   works), which other topics cite its landmark papers, and when.
-2. **Candidate bridges.** Pairs of topics from different domains (physical,
-   life, health and social sciences) that do not cite each other yet, scored
-   on how the citation network is shaped around them and on what their
-   papers actually say.
-3. **A backtest anyone can rerun.** Freeze the literature at the end of 2017,
-   predict which unconnected pairs will start citing each other, and check
-   against what happened in 2018–2023. The model is fitted on an earlier
-   cutoff (2012), so every reported number is out of time.
-4. **Volunteers and experts.** People contribute their own computer and
-   **any AI model they like** — local (Ollama, LM Studio, llama.cpp, vLLM) or
-   a provider (OpenAI, Anthropic, Google, OpenRouter…) — to judge candidates,
-   and researchers rate the bridges in their own field. Hidden test questions
-   with known answers measure every contributor's model, so the network can
-   trust results from models it has never seen.
+1. **A map of who cites whom.** [OpenAlex](https://openalex.org), a free and
+   open index of scholarly works, assigns every paper to research topics. For
+   each topic we record which other topics cite its most cited papers, and
+   in which years.
+2. **Candidate pairs.** Two topics from different domains (physical, life,
+   health or social sciences) that barely cite each other yet. Each pair is
+   scored on the shape of the citation network around it and on how close
+   the two topics' papers are in content.
+3. **A backtest anyone can rerun.** We freeze the literature at the end of
+   2017, rank the unconnected pairs, and check which of them did start citing
+   each other between 2018 and 2023. The model is fitted on an earlier
+   freeze (2012), so it never sees the years it is judged on.
+4. **Volunteers and experts.** Once the backtest is done, anyone will be able
+   to lend their computer and whichever AI model they prefer, local or from
+   a provider, to examine candidate pairs. Researchers will be able to rate
+   the pairs that touch their own field. Questions with known answers, mixed
+   into the work, measure how reliable each contributor's model is.
 
-It costs nothing to run: open data, GitHub for the site and the
-coordination, and contributors' own machines for the work.
+Running it costs nothing: the data is open, the site and the coordination
+run on GitHub, and the work runs on contributors' own machines.
 
 ## Ways to help (as each part ships)
 
-- **Rate a bridge** — every connection on the site has a "rate this" button;
-  if it is your field, your judgment is the most valuable thing here.
-- **Ask about your own work** — run the tool on your machine with your paper,
-  ORCID or a description, and get the distant fields working on the same
-  thing. Private by default.
-- **Volunteer** — let your machine and the model of your choice work through
-  candidate bridges.
+- **Rate a pair.** If a proposed connection touches your field, your view of
+  whether it is real is the most useful input the project can get.
+- **Ask about your own work.** Run the tool on your machine with a paper, an
+  ORCID or a short description, and see which distant fields work on the
+  same problem. Nothing leaves your machine unless you choose to share it.
+- **Volunteer.** Let your machine and the model of your choice work through
+  candidate pairs.
 
-Two interchangeable clients implement the same [protocol](PROTOCOL.md): one in
-Python and one in [Aether](https://github.com/aether-lang-dev/aether).
+Two clients will implement the same [protocol](PROTOCOL.md): one in Python
+and one in [Aether](https://github.com/aether-lang-dev/aether).
 
-## Standing on
+## Earlier work
 
-This is not a new idea, and it should not pretend to be. It builds on, and
-must beat, earlier work:
+The idea is not new. This project builds on the work below, and its backtest
+has to beat the strongest of these methods to be worth anything.
 
-- Swanson's literature-based discovery and ARROWSMITH, and the time-sliced
-  evaluation that became that field's standard.
-- **SciMuse** (Gu & Krenn, 2024): a knowledge graph of 58 million papers and
-  GPT-4 proposed cross-domain research ideas; over 100 Max Planck group
-  leaders rated 4,000 of them and found a quarter "very interesting". The
-  closest work to this one.
-- **Science4Cast / Impact4Cast** (Krenn et al., 2023–24): predicting which
-  concepts will be studied together, from the shape of a growing knowledge
-  graph. Its network features are this project's baseline to beat.
-- **Human-aware AI** (Sourati & Evans, *Nature Human Behaviour*, 2023):
-  modelling who could plausibly make a discovery improves prediction of
-  future discoveries by up to 400%, and points to "alien" hypotheses no one
-  is placed to find.
-- **mat2vec** (Tshitoyan et al., *Nature*, 2019): embeddings of materials
-  abstracts frozen at 2009 predicted thermoelectric materials found years
-  later.
+- **Literature-based discovery.** Swanson's method and his ARROWSMITH
+  software, and the time-sliced evaluation that later became the field's
+  standard test.
+- **SciMuse** (Gu & Krenn, 2024). A knowledge graph built from 58 million
+  papers and GPT-4 generated personalised research ideas. More than 100
+  research group leaders at the Max Planck Society scored over 4,400 of them;
+  24.9% received 4 or 5 out of 5. The closest work to this one.
+- **Science4Cast** (Krenn et al., *Nature Machine Intelligence*, 2023). A
+  benchmark for predicting which concepts will be studied together, built
+  from more than 143,000 AI papers. Its finding that carefully chosen network
+  features beat end-to-end learning is why those features are our baseline.
+- **Human-aware AI** (Sourati & Evans, *Nature Human Behaviour*, 2023).
+  Modelling which scientists could plausibly make a discovery improved the
+  prediction of future discoveries by up to 400%.
+- **mat2vec** (Tshitoyan et al., *Nature*, 2019). Word embeddings trained on
+  materials-science abstracts published before 2009 identified thermoelectric
+  materials that were only reported years later.
 
-What is new here is the combination: open, continuous, across all sciences,
-validated in public, and not tied to any one model or company.
+What this project adds is the combination: open code and data, all fields
+rather than one, a public backtest, and no dependence on a particular model
+or company.
 
 ## Reproduce the backtest
 
@@ -85,5 +91,5 @@ See [research/README.md](research/README.md).
 
 ## Licence
 
-Code: [MIT](LICENSE). Data we publish: [CC0](DATA_LICENSE.md), derived from
-OpenAlex (also CC0).
+Code: [MIT](LICENSE). Data published by the project: [CC0](DATA_LICENSE.md),
+derived from OpenAlex, which is also CC0.

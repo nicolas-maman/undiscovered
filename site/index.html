@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>undiscovered</title>
-<meta name="description" content="An open, volunteer-run network that finds research which should be talking to each other — across all sciences — and publishes how often it is right.">
+<meta name="description" content="An open network that looks for research in one field that another field could use but has never cited, and measures how often it is right.">
 <style>
   :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; }
   @media (prefers-color-scheme: dark) {
@@ -28,31 +28,32 @@
 <body>
 <main>
   <h1>undiscovered</h1>
-  <p class="tag">Finding the research that should be talking to each other — and testing whether we're right.</p>
+  <p class="tag">Research in one field that another field could use, but has never cited.</p>
 
-  <p>In 1986 Don Swanson noticed that one body of papers said fish oil thins the blood,
-  and another that Raynaud's syndrome involves thick, sluggish blood. Nobody had read both.
-  He called it <em>undiscovered public knowledge</em>: findings already published, waiting
-  in two literatures that never cite each other.</p>
+  <p>In 1986 Don Swanson read two sets of papers that had never cited each other. One showed
+  that dietary fish oil lowers blood viscosity, platelet aggregation and vascular reactivity.
+  The other described Raynaud's syndrome, which involves all three. He proposed fish oil as a
+  treatment, and a double-blind trial in 1989 found that it helped. He called this
+  <em>undiscovered public knowledge</em>.</p>
 
-  <p>This project looks for those connections across all sciences, with an open network of
-  volunteers who bring their own computer and any AI model they like — and it publishes how
-  often it is right.</p>
+  <p>This project looks for such connections across all of science. Volunteers will be able to
+  lend their own computer and whichever AI model they prefer, and the project publishes how
+  often its predictions turn out to be right.</p>
 
   <div class="status"><strong>Status: building.</strong> The first milestone is a public
-  backtest: freeze the literature at 2017, predict which distant fields start citing each
-  other, check against 2018–2023, and compare with the published prior art. The result goes
-  here either way.</div>
+  backtest. We freeze the literature at the end of 2017, predict which unconnected fields start
+  citing each other, check the prediction against 2018 to 2023, and compare it with the best
+  published method. The result will appear here whether or not the method works.</div>
 
   <h2>Coming</h2>
   <ul>
-    <li><strong>Rate a bridge</strong> — if a proposed connection touches your field, your judgment is the most valuable thing here.</li>
-    <li><strong>Ask about your own work</strong> — run the tool on your machine and get the distant fields working on the same thing.</li>
-    <li><strong>Volunteer</strong> — let your machine and the model of your choice work through candidate bridges.</li>
+    <li><strong>Rate a pair.</strong> If a proposed connection touches your field, your view of whether it is real is the most useful input the project can get.</li>
+    <li><strong>Ask about your own work.</strong> Run the tool on your machine and see which distant fields work on the same problem.</li>
+    <li><strong>Volunteer.</strong> Let your machine and the model of your choice work through candidate pairs.</li>
   </ul>
 
   <footer>
-    Open source (MIT) · data CC0, from <a href="https://openalex.org">OpenAlex</a> ·
+    Open source (MIT). Data CC0, from <a href="https://openalex.org">OpenAlex</a>.
     <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
   </footer>
 </main>
