@@ -36,6 +36,23 @@
   .no { color: var(--muted); }
   .field { color: var(--muted); font-size: .88em; }
   code { font-size: .9em; }
+  .chart { position: relative; margin: 8px 0 4px; }
+  .chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .chart text { font: 13px system-ui, sans-serif; fill: var(--muted); }
+  .chart text.value { fill: var(--fg); font-weight: 600; }
+  .chart .grid { stroke: var(--rule); stroke-width: 1; }
+  .chart .span { stroke-width: 2; stroke-linecap: round; }
+  .chart .dot { stroke: var(--bg); stroke-width: 2; }
+  .chart .ours { stroke: var(--accent); fill: var(--accent); }
+  .chart .base { stroke: var(--fg); fill: var(--fg); }
+  .chart .other { stroke: var(--muted); fill: var(--muted); }
+  .chart g.row { outline: none; cursor: default; }
+  .chart g.row:hover .hit, .chart g.row:focus .hit { fill: var(--band); }
+  .tip { position: absolute; pointer-events: none; background: var(--bg); color: var(--fg);
+         border: 1px solid var(--rule); border-radius: 6px; padding: 6px 10px;
+         font: 13px/1.4 system-ui, sans-serif; white-space: nowrap; display: none;
+         box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .tip strong { font-size: 15px; }
 </style>
 </head>
 <body>
@@ -83,6 +100,91 @@
                text: "research/PREREGISTRATION.md"}), "."]));
   }
 
+  var MODELS = [["random", "Random ranking"], ["popularity", "Popularity (size of the two topics)"],
+                ["network", "Network (published baseline)"], ["semantic", "Content of the papers"],
+                ["combined", "Network and content (this project)"]];
+
+  // One row per model: a dot for its average precision and a line for its
+  // 95% interval. Further right is better.
+  function apChart(models) {
+    var NS = "http://www.w3.org/2000/svg";
+    function svg(tag, attrs) {
+      var n = document.createElementNS(NS, tag);
+      Object.keys(attrs || {}).forEach(function (k) { n.setAttribute(k, attrs[k]); });
+      return n;
+    }
+    var width = Math.max(300, Math.min(body.clientWidth || 700, 760));
+    var left = 4, right = 64, top = 4, rowH = 48, axisH = 30;
+    var height = top + MODELS.length * rowH + axisH;
+    var hi = 0;
+    MODELS.forEach(function (m) {
+      var x = models[m[0]];
+      hi = Math.max(hi, x.average_precision_ci ? x.average_precision_ci[1] : x.average_precision);
+    });
+    var steps = [0.01, 0.02, 0.05, 0.1, 0.2, 0.25, 0.5];
+    var step = steps.filter(function (s) { return hi / s <= 5; })[0] || 0.5;
+    var max = Math.min(1, Math.ceil(hi / step) * step) || step;
+    function x(v) { return left + (width - left - right) * v / max; }
+
+    var root = svg("svg", {viewBox: "0 0 " + width + " " + height, role: "img",
+      "aria-label": "Average precision of each model, with 95% intervals. The table below has the same numbers."});
+    var plotBottom = top + MODELS.length * rowH;
+    for (var t = 0; t <= max + 1e-9; t += step) {
+      root.appendChild(svg("line", {class: "grid", x1: x(t), x2: x(t), y1: top, y2: plotBottom}));
+      var label = svg("text", {x: x(t), y: plotBottom + 20, "text-anchor": "middle"});
+      label.textContent = t === 0 ? "0" : t.toFixed(step < 0.1 ? 2 : 1);
+      root.appendChild(label);
+    }
+
+    var wrap = el("div", {class: "chart"});
+    var tip = el("div", {class: "tip"});
+    function show(m, evt, g) {
+      var v = models[m[0]];
+      tip.textContent = "";
+      tip.appendChild(el("strong", {text: num(v.average_precision, 4)}));
+      tip.appendChild(el("div", {text: m[1]}));
+      if (v.average_precision_ci) tip.appendChild(el("div", {text: "95% interval " + interval(v.average_precision_ci)}));
+      tip.style.display = "block";
+      var box = wrap.getBoundingClientRect();
+      var row = g.getBoundingClientRect();
+      var px = evt && evt.clientX !== undefined ? evt.clientX - box.left : box.width / 2;
+      var tw = tip.offsetWidth;
+      tip.style.left = Math.max(0, Math.min(box.width - tw, px - tw / 2)) + "px";
+      tip.style.top = (row.top - box.top - tip.offsetHeight - 6) + "px";
+    }
+    function hide() { tip.style.display = "none"; }
+
+    MODELS.forEach(function (m, i) {
+      var v = models[m[0]];
+      var kind = m[0] === "combined" ? "ours" : m[0] === "network" ? "base" : "other";
+      var y = top + i * rowH;
+      var g = svg("g", {class: "row", tabindex: "0",
+        "aria-label": m[1] + ": average precision " + num(v.average_precision, 4) +
+          (v.average_precision_ci ? ", 95% interval " + interval(v.average_precision_ci) : "")});
+      g.appendChild(svg("rect", {class: "hit", x: 0, y: y, width: width, height: rowH, fill: "transparent", rx: 4}));
+      var name = svg("text", {x: left + 2, y: y + 17});
+      name.textContent = m[1];
+      g.appendChild(name);
+      var cy = y + 33;
+      var ci = v.average_precision_ci || [v.average_precision, v.average_precision];
+      g.appendChild(svg("line", {class: "span " + kind, x1: x(ci[0]), x2: x(ci[1]), y1: cy, y2: cy}));
+      g.appendChild(svg("circle", {class: "dot " + kind, cx: x(v.average_precision), cy: cy, r: 5}));
+      if (kind !== "other") {
+        var val = svg("text", {class: "value", x: x(ci[1]) + 8, y: cy + 4});
+        val.textContent = num(v.average_precision, 3);
+        g.appendChild(val);
+      }
+      g.addEventListener("pointermove", function (e) { show(m, e, g); });
+      g.addEventListener("pointerleave", hide);
+      g.addEventListener("focus", function () { show(m, null, g); });
+      g.addEventListener("blur", hide);
+      root.appendChild(g);
+    });
+    wrap.appendChild(root);
+    wrap.appendChild(tip);
+    return wrap;
+  }
+
   function render(data) {
     var r = data.report, m = r.models, h = r.hypotheses;
     var h1 = h.H1_combined_beats_network;
@@ -127,9 +229,13 @@
       "that share a topic are not independent."]));
 
     body.appendChild(el("h2", {text: "The numbers"}));
-    var rows = [["random", "Random ranking"], ["popularity", "Popularity (size of the two topics)"],
-                ["network", "Network (published baseline)"], ["semantic", "Content of the papers"],
-                ["combined", "Network and content (this project)"]];
+    body.appendChild(apChart(m));
+    body.appendChild(el("p", {class: "note", text:
+      "Each dot is a model's average precision on the 2017 pairs, and the line is its 95% " +
+      "interval. Further right is better. Whether this project beats the published baseline is " +
+      "decided by the interval of their difference, under the hypotheses below, not by whether " +
+      "these two lines overlap."}));
+    var rows = MODELS;
     var head = el("tr", {}, [el("th", {text: "Model"}), el("th", {class: "num", text: "Average precision"}),
       el("th", {class: "num", text: "95% interval"}), el("th", {class: "num", text: "ROC-AUC"}),
       el("th", {class: "num", text: "Hits in top 100"})]);
