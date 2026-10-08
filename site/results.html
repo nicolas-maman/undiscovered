@@ -153,7 +153,8 @@
     return el("p", {class: "note", text:
       "The model learns its weights at the first freeze, then ranks the pairs at the second " +
       "without seeing anything after 2017. Earlier years are used only to check that a pair " +
-      "had not been connected before."});
+      "had not been connected before. Content is compared with word weights learned only from " +
+      "the abstracts available at each freeze, so it cannot know anything written later."});
   }
 
   function pending() {
