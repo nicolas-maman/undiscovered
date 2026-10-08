@@ -75,9 +75,9 @@ README).
 }
 ```
 
-A client fetches what it needs from OpenAlex itself (titles and abstracts of
-the topics' papers), so the fetching is spread across volunteers and their
-own OpenAlex budgets.
+A client fetches what it needs from OpenAlex itself (titles and
+abstracts), so the fetching is spread across volunteers and their own
+OpenAlex budgets.
 
 Some units are **gold units**: their answer is already known (from the
 backtest: pairs that did or did not connect later). They look exactly like
@@ -86,9 +86,10 @@ other units. They measure how good each contributor's model is.
 A limit worth stating: a language model trained on papers from after the
 gold unit's date may simply remember whether the pair connected. Gold units
 therefore measure how reliable a model is at this task, not whether it can
-foresee anything. The claim that the method can foresee connections rests
-only on the backtest, which uses no language model and nothing after its
-freeze date.
+foresee anything. Any claim that the method foresees connections rests only
+on tests that use no language model and nothing after their freeze date:
+the backtest, and later the forward test described in
+[research/NEXT.md](research/NEXT.md).
 
 ## Results
 
