@@ -1,7 +1,8 @@
 # Analysis plan for the first backtest
 
-This plan was written and committed before any model was fitted and before
-any label was computed. Git history records when. Anything decided after the
+This plan was first committed before any model was fitted and before any
+label was computed. Git history records when, and every later change is
+listed, with its date and reason, under *Amendments before analysis*. Anything decided after the
 results are seen will be listed under *Deviations* at the end and reported
 as exploratory.
 
@@ -20,9 +21,12 @@ start citing each other within the next six years?
 
 The specific question is whether **what the two topics' papers say** adds
 predictive power to **the shape of the citation network around them**. The
-network features are the published method to beat (Science4Cast, Krenn et
-al., *Nature Machine Intelligence*, 2023, found that carefully chosen network
-features beat end-to-end models on a related task).
+network features are the baseline to beat: they are the kind that did best
+in Science4Cast (Krenn et al., *Nature Machine Intelligence*, 2023), which
+found that carefully chosen network features beat end-to-end models on a
+related task. (Wording clarified 2026-10-08: the baseline is in the style
+of Science4Cast, not a reproduction of one published model. The model is
+unchanged.)
 
 ## Hypotheses
 
@@ -30,8 +34,8 @@ features beat end-to-end models on a related task).
   the `network` model on the 2017 evaluation, and the 95% bootstrap interval
   of the difference lies above zero.
 - **H2 (sanity check).** The `network` model has a higher average precision
-  than the `popularity` model. If it does not, the reproduction of the
-  published method failed, and H1 is not interpreted.
+  than the `popularity` model. If it does not, the network baseline failed
+  to work on this data, and H1 is not interpreted.
 - **H3 (secondary).** The `semantic` model has a higher average precision than
   the `popularity` model.
 
@@ -43,8 +47,9 @@ features beat end-to-end models on a related task).
   OpenAlex topics (`collect.sample_topics`).
 - **Topic of a work:** its OpenAlex primary topic.
 - **Cutoffs:** 2011 (train window 2004 to 2011, test window 2012 to 2017) is
-  used only to fit the models (amended 2026-10-07, see below). 2017 (train window 2010 to 2017, test window
-  2018 to 2023) is used only to evaluate them.
+  used only to fit the models (amended 2026-10-07, see below). 2017 (train
+  window 2010 to 2017, test window 2018 to 2023) is used only to evaluate
+  them.
 - **Instrument:** for each topic and cutoff, its 100 most-cited works
   published up to the cutoff.
 - **Link from A to B in a window:** works whose primary topic is A, published
@@ -74,8 +79,8 @@ features beat end-to-end models on a related task).
 
 Logistic regression with balanced class weights on standardised features,
 fitted on the 2011 cutoff and applied unchanged to the 2017 cutoff. The
-feature sets are exactly those in `undiscovered_research/backtest.py` as of the
-commit that adds this file:
+feature sets are those in `undiscovered_research/backtest.py` as of the
+commit that adds this file, with the amendments listed below:
 
 - `popularity`: log size of the larger and of the smaller topic.
 - `network`: popularity, plus the two topics' degrees, the log number of
