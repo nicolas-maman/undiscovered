@@ -226,20 +226,38 @@ def test_robustness_runs_every_planned_variant(world, monkeypatch, tmp_path_fact
     assert backtest.DATA == world and embed.DATA == world   # restored afterwards
 
 
+# Common English words only, so they pass the usable-abstract rule and then
+# vanish as stop words or as terms shared by every abstract.
+FILLER = ("in this paper we show how it was done and why it is of some use to those who "
+          "are in the same place as we are and what we would do if we had to do it again")
+
+
+def english(keywords: str) -> str:
+    return f"{FILLER} {keywords}"
+
+
+def test_usable_abstracts_are_english_and_long_enough():
+    assert embed.usable(english("kalman filter state estimation"))
+    assert not embed.usable("Towards a risk assessment of Trichinella. International audience")
+    assert not embed.usable("水稻的生长 " * 60)
+    french = ("Ce texte est disponible en format PDF seulement et les auteurs ont choisi de "
+              "ne pas le publier ici car la revue ne le permet pas pour des raisons de droits "
+              "qui sont propres a chaque editeur et a chaque pays ou la recherche est faite")
+    assert not embed.usable(french)
+    topics = {"TA": [{"text": english("alpha")}] * 5, "TB": [{"text": english("beta")}] * 4}
+    assert set(embed.usable_abstracts(topics)) == {"TA"}       # TB has too few
+
+
 def test_tfidf_vectors_use_only_the_given_abstracts():
-    abstracts = {
-        "TA": [{"text": "kalman filter state estimation noisy sensor measurements"},
-               {"text": "recursive state estimation from noisy sensor data"}],
-        "TB": [{"text": "data assimilation of noisy sensor measurements into state estimation"},
-               {"text": "weather state estimation from noisy observations"}],
-        "TC": [{"text": "poetry translation and literary style in medieval manuscripts"},
-               {"text": "medieval manuscripts and the history of literary translation"}],
-    }
+    words = {"TA": "kalman filter noisy sensor estimation", "TB": "assimilation weather noisy sensor estimation",
+             "TC": "poetry translation medieval manuscripts", "TD": "glacier ice core isotopes",
+             "TE": "tax policy household income"}
+    abstracts = {t: [{"text": english(w)}] * 5 for t, w in words.items()}
     emb = embed.topic_embeddings(2017, embed.TFIDF, abstracts)
-    assert set(emb) == {"TA", "TB", "TC"}
+    assert set(emb) == set(words)
     cos = lambda a, b: float(emb[a]["centroid"] @ emb[b]["centroid"])
-    assert cos("TA", "TB") > cos("TA", "TC")
-    assert abs(float(emb["TA"]["centroid"] @ emb["TA"]["centroid"]) - 1.0) < 1e-5
+    assert cos("TA", "TB") > 0.3 and cos("TA", "TC") == 0.0
+    assert abs(cos("TA", "TA") - 1.0) < 1e-5
 
 
 def test_pair_table_runs_on_tfidf_vectors(world, monkeypatch):
@@ -250,8 +268,7 @@ def test_pair_table_runs_on_tfidf_vectors(world, monkeypatch):
     for cutoff in collect.CUTOFFS:
         for p in (world / "topics" / str(cutoff)).glob("*.json"):
             rec = json.loads(p.read_text())
-            rec["abstracts"] = [{"id": "W1", "text": texts[rec["topic"]]},
-                                {"id": "W2", "text": texts[rec["topic"]]}]
+            rec["abstracts"] = [{"id": f"W{n}", "text": english(texts[rec["topic"]])} for n in range(5)]
             p.write_text(json.dumps(rec))
     monkeypatch.setattr(backtest, "topic_embeddings", embed.topic_embeddings)
     table = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model=embed.TFIDF)

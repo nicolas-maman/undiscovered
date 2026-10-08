@@ -44,7 +44,9 @@ Can we predict which distant fields will start citing each other?
 
 - The abstracts that describe a topic are a **random** sample of its
   pre-cutoff papers (OpenAlex `sample` with a fixed seed), not its most cited:
-  all-time citation counts include citations made after the cutoff.
+  all-time citation counts include citations made after the cutoff. Only
+  English texts of at least 40 words count, so placeholders and shared
+  languages cannot make two topics look alike.
 - No feature uses topic descriptions or keywords; those were written from the
   whole corpus.
 - The models are fitted only at the 2011 freeze, whose outcomes end in 2017.

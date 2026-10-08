@@ -52,7 +52,11 @@ features beat end-to-end models on a related task).
   link count is the sum of both directions.
 - **Abstracts:** 40 works per topic and cutoff, drawn at random (OpenAlex
   `sample`, seed 17) from the topic's works in the train window that have an
-  abstract.
+  abstract. Only usable ones count: title and abstract together have at
+  least 40 words, and at least a quarter of them are common English words
+  (scikit-learn's English stop-word list). A topic with fewer than 5 usable
+  abstracts has no content vector, and its pairs are left out for every
+  model. (Amended 2026-10-08.)
 - **Content vectors:** TF-IDF fitted, at each cutoff, on that cutoff's
   sampled abstracts and nothing else: English stop words removed, sublinear
   term frequency, terms that appear in at least 2 and at most half of the
@@ -185,6 +189,18 @@ These are reported alongside the main result and do not change the decision:
   at. The only use of the data so far was a check of feature ranges on the
   first 78 topics at the 2011 cutoff, which computed labels in memory
   without printing or summarising them.
+- **2026-10-08, usable abstracts only.** OpenAlex marks some records as
+  having an abstract when the text is a placeholder ("International
+  audience", "Ce texte est disponible en format PDF seulement", retraction
+  notices), and about 9% of the sampled texts are mostly in non-Latin
+  scripts, with more in French, Spanish or Portuguese. Content vectors
+  would then make two topics look alike because both publish in the same
+  language, and research communities that share a language also cite each
+  other, so content could look predictive for a reason unrelated to what
+  the papers say. The rule under Data removes these. Measured on the 246
+  topics collected at the 2011 cutoff, it keeps 73% of the texts; 7 topics
+  have fewer than 5 usable abstracts. Timing: no model fitted, no outcome
+  looked at; the text checks that led here are in the log below.
 
 ## Looks at the data before analysis
 
@@ -197,6 +213,11 @@ printed. None of them printed or summarised an outcome.
 - 2026-10-08: the same for the TF-IDF content features on the first 246
   topics at the 2011 cutoff, plus running time and memory. Labels were
   computed in memory only.
+- 2026-10-08: text quality of the same 246 topics' abstracts: counts of
+  publisher boilerplate, placeholder and non-English texts, a random sample
+  of short texts, the distribution of the share of common English words,
+  and how many texts and topics each candidate rule keeps. No citation
+  counts were read.
 
 ## Deviations
 

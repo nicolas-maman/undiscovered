@@ -19,6 +19,7 @@ under ``research/data/emb/``; TF-IDF is fast enough to recompute.
 from __future__ import annotations
 
 import os
+import re
 from pathlib import Path
 
 import numpy as np
@@ -29,6 +30,35 @@ from .collect import DATA
 _local_models: dict[str, object] = {}
 
 TFIDF = "tfidf"
+
+# Which abstracts describe a topic (fixed in the plan, amended 2026-10-08).
+# OpenAlex has placeholder "abstracts" ("International audience", "Ce texte
+# est disponible en format PDF seulement", retraction notices) and many in
+# other languages. Two topics that both publish in Portuguese would look
+# alike to TF-IDF for a reason that has nothing to do with their content.
+MIN_WORDS = 40              # title and abstract together
+MIN_ENGLISH_SHARE = 0.25    # share of words that are common English words
+MIN_ABSTRACTS = 5           # fewer usable abstracts: the topic has no content vector
+
+
+def usable(text: str) -> bool:
+    """An English text long enough to say what the paper is about."""
+    from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+
+    words = re.findall(r"[^\W\d_]+", text.lower())
+    if len(words) < MIN_WORDS:
+        return False
+    return sum(w in ENGLISH_STOP_WORDS for w in words) / len(words) >= MIN_ENGLISH_SHARE
+
+
+def usable_abstracts(abstracts: dict[str, list[dict]]) -> dict[str, list[dict]]:
+    """Each topic's usable abstracts; topics with too few are left out."""
+    out = {}
+    for t, items in abstracts.items():
+        kept = [a for a in items if usable(a["text"])]
+        if len(kept) >= MIN_ABSTRACTS:
+            out[t] = kept
+    return out
 
 
 def _tfidf_topics(abstracts: dict[str, list[dict]]) -> dict[str, dict]:
@@ -92,11 +122,15 @@ def topic_embeddings(cutoff: int, model: str,
                      abstracts: dict[str, list[dict]]) -> dict[str, dict]:
     """{topic: {"vecs": (n, d) unit vectors, "centroid": (d,) unit vector}}.
 
-    For ``tfidf`` the vectors are a sparse matrix; everything else is dense.
+    Only usable abstracts count (see ``usable``), and a topic with fewer than
+    ``MIN_ABSTRACTS`` of them gets no vector, so its pairs drop out for every
+    model alike. For ``tfidf`` the vectors are a sparse matrix; everything
+    else is dense.
     """
+    abstracts = usable_abstracts(abstracts)
     if model == TFIDF:
-        return _tfidf_topics({t: a for t, a in abstracts.items() if a})
-    cache = DATA / "emb" / model.replace("/", "_") / f"{cutoff}.npz"
+        return _tfidf_topics(abstracts)
+    cache = DATA / "emb" / "usable" / model.replace("/", "_") / f"{cutoff}.npz"
     stored: dict[str, np.ndarray] = {}
     if cache.exists():
         with np.load(cache) as z:
