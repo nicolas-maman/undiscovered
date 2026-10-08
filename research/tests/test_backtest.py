@@ -9,7 +9,8 @@ import shutil
 import numpy as np
 import pytest
 
-from undiscovered_research import backtest, cleanup, collect, embed, openalex, robustness, strict
+from undiscovered_research import (backtest, cleanup, collect, embed, errors, openalex, publish,
+                                   robustness, strict)
 
 # Common English words only, so they pass the usable-abstract rule and then
 # vanish as stop words or as terms shared by every abstract.
@@ -97,7 +98,8 @@ def world(tmp_path, monkeypatch):
         train = (cutoff - collect.TRAIN_YEARS, cutoff)
         for tid, (before, tr, rec_, te) in citing.items():
             d.joinpath(f"{tid}.json").write_text(json.dumps({
-                "format": collect.FORMAT, "topic": tid, "cutoff": cutoff,
+                "format": collect.FORMAT, "sample": collect.sample_id([t["id"] for t in topics]),
+                "topic": tid, "cutoff": cutoff,
                 "train_window": train, "test_window": (cutoff + 1, cutoff + collect.TEST_YEARS),
                 "recent_window": (cutoff - 2, cutoff),
                 "size": 800, "works_by_year": {str(y): 100 for y in range(train[0], train[1] + 1)},
@@ -139,12 +141,16 @@ def test_pair_table_keeps_only_unconnected_cross_domain_pairs(world):
 
 def test_load_refuses_an_incomplete_or_old_sample(world):
     (world / "topics" / "2017" / "TF.json").unlink()
-    with pytest.raises(SystemExit, match="missing or in an old format"):
+    with pytest.raises(errors.IncompleteData, match="1 of 6 topics at 2017 are missing"):
         backtest.load(2017)
     rec = json.loads((world / "topics" / "2011" / "TA.json").read_text())
     rec["format"] = 1
     (world / "topics" / "2011" / "TA.json").write_text(json.dumps(rec))
-    with pytest.raises(SystemExit):
+    with pytest.raises(errors.IncompleteData):
+        backtest.load(2011)
+    rec["format"], rec["sample"] = collect.FORMAT, "another-sample"     # collected for another sample
+    (world / "topics" / "2011" / "TA.json").write_text(json.dumps(rec))
+    with pytest.raises(errors.IncompleteData):
         backtest.load(2011)
 
 
@@ -401,3 +407,132 @@ def test_a_variant_without_enough_data_is_reported_not_fatal(world, monkeypatch)
     monkeypatch.setattr(robustness, "VARIANTS", [("big", "Huge topics only", {"min_size": 10**6})])
     result = robustness.run(main, second_sample=None, n_boot=5)
     assert result["variants"][-1]["skipped"] == "no fitting pairs under these settings"
+
+
+def test_bootstrap_draws_topics_from_both_cutoffs(world, monkeypatch):
+    # With a minimum size, TF qualifies at 2011 but not at 2017.
+    rec = json.loads((world / "topics" / "2017" / "TF.json").read_text())
+    rec["size"] = 100
+    (world / "topics" / "2017" / "TF.json").write_text(json.dumps(rec))
+    drawn = []
+    real = backtest.topic_draws
+
+    def spy(by_domain, rng):
+        drawn.append({t for ts in by_domain.values() for t in ts})
+        return real(by_domain, rng)
+
+    monkeypatch.setattr(backtest, "topic_draws", spy)
+    fit = backtest.pair_table(2011, 1, 3, "fake", min_size=200)
+    ev = backtest.pair_table(2017, 1, 3, "fake", min_size=200)
+    assert "TF" in fit["domains"] and "TF" not in ev["domains"]
+    X = {n: (backtest.matrix(fit["rows"], c), backtest.matrix(ev["rows"], c))
+         for n, c in backtest.FEATURE_SETS.items()}
+    backtest.bootstrap(fit, ev, X, None, n=2)
+    assert all("TF" in d for d in drawn)
+
+
+def test_a_damaged_cache_file_is_a_miss(tmp_path, monkeypatch):
+    monkeypatch.setattr(openalex, "CACHE_DIR", tmp_path)
+    path = openalex._cache_path("https://api.openalex.org/works?x=2")
+    path.parent.mkdir(parents=True)
+    path.write_bytes(gzip.compress(b'{"results": [1]}')[:10])         # cut off by a crash
+    assert openalex._read_cached(path) is None and not path.exists()
+    openalex._write_cached(path, {"results": [3]})
+    assert openalex._read_cached(path) == {"results": [3]}
+    assert not list(tmp_path.rglob("*.tmp"))                           # nothing half-written left
+
+
+def test_a_data_directory_keeps_its_sample(tmp_path, monkeypatch):
+    topics = [{"id": f"T{i}", "domain": d, "name": "", "subfield": "", "field": "", "works_count": 1}
+              for i, d in enumerate(["Physical Sciences", "Life Sciences"] * 10)]
+    monkeypatch.setattr(collect, "DATA", tmp_path)
+    monkeypatch.setattr(collect, "all_topics", lambda: list(topics))
+    first = collect.load_or_draw_sample(3, 2026)
+    # OpenAlex adds a topic: a fresh draw would differ, but the directory keeps its sample.
+    topics.append({"id": "T99", "domain": "Life Sciences", "name": "", "subfield": "", "field": "",
+                   "works_count": 1})
+    assert collect.load_or_draw_sample(3, 2026) == first
+    with pytest.raises(SystemExit, match="use another --data"):
+        collect.load_or_draw_sample(3, 2027)
+    rec = tmp_path / "rec.json"
+    rec.write_text(json.dumps({"format": collect.FORMAT, "sample": collect.sample_id([t["id"] for t in first])}))
+    assert collect.is_current(rec, collect.sample_id([t["id"] for t in first]))
+    assert not collect.is_current(rec, collect.sample_id(["T1", "T2"]))
+
+
+def test_no_strict_positives_fails_the_check_without_hanging(world):
+    report = backtest.run(1, 3, "fake", n_boot=10, strict_links={})
+    assert report["strict"]["positive"] == 0 and report["strict"]["holds"] is False
+    assert report["decision"] == "stop"
+
+
+def test_the_strict_label_does_not_change_the_main_interval(world):
+    with_strict = backtest.run(1, 3, "fake", n_boot=15, strict_links={("TA", "TD"): 4})
+    without = backtest.run(1, 3, "fake", n_boot=15)
+    key = "H1_combined_beats_network"
+    assert with_strict["hypotheses"][key]["diff_ci"] == without["hypotheses"][key]["diff_ci"]
+
+
+def test_bootstrap_gives_up_when_draws_never_have_both_classes(world, monkeypatch):
+    fit = backtest.pair_table(2011, 1, 3, "fake")
+    ev = backtest.pair_table(2017, 1, 3, "fake")
+    X = {n: (backtest.matrix(fit["rows"], c), backtest.matrix(ev["rows"], c))
+         for n, c in backtest.FEATURE_SETS.items()}
+    monkeypatch.setattr(backtest, "topic_draws", lambda by_domain, rng: {})   # every pair weighs 0
+    with pytest.raises(errors.NotEnoughData, match="too few bootstrap draws"):
+        backtest.bootstrap(fit, ev, X, None, n=3)
+
+
+def test_model_names_become_safe_file_names():
+    assert backtest.safe_name("nomic-embed-text:latest") == "nomic-embed-text_latest"
+    assert backtest.safe_name("BAAI/bge-small-en-v1.5") == "BAAI_bge-small-en-v1.5"
+
+
+def test_robustness_skips_what_cannot_run(world, monkeypatch, tmp_path_factory):
+    monkeypatch.setattr(collect, "DATA", world)
+    monkeypatch.setattr(embed, "DATA", world)
+    main = backtest.run(1, 3, "fake", n_boot=5, strict_links={("TA", "TD"): 4})
+    second = tmp_path_factory.mktemp("second")
+    shutil.copytree(world, second, dirs_exist_ok=True)
+    (second / "topics" / "2017" / "TF.json").unlink()                 # still being collected
+    real_run = backtest.run
+
+    def run(*args, **kwargs):
+        if args[2].startswith("BAAI/"):
+            raise errors.MissingPackages("pretrained embeddings need the optional packages")
+        return real_run(*args, **kwargs)
+
+    monkeypatch.setattr(backtest, "run", run)
+    saved = []
+    result = robustness.run(main, second_sample=second, n_boot=5, save=lambda r: saved.append(len(r["variants"])))
+    skipped = {v["key"]: v["skipped"] for v in result["variants"] if "skipped" in v}
+    assert set(skipped) == {"bge_small", "bge_base", "seed2027"}
+    assert "missing" in skipped["seed2027"] and "optional packages" in skipped["bge_small"]
+    assert saved == sorted(saved) and saved[-1] == len(result["variants"])   # saved after each check
+
+
+def test_publish_checks_where_the_numbers_come_from(world, tmp_path, monkeypatch):
+    report = backtest.run(1, 3, "fake", n_boot=5, strict_links={("TA", "TD"): 4})
+    robust = robustness.run(report, second_sample=None, n_boot=5)
+    rpath, bpath = tmp_path / "r.json", tmp_path / "b.json"
+    bpath.write_text(json.dumps(robust))
+    monkeypatch.setattr(publish, "SITE_DATA", tmp_path / "site.json")
+
+    def publish_with(rep):
+        rpath.write_text(json.dumps(rep))
+        monkeypatch.setattr("sys.argv", ["publish", str(rpath), "--robustness", str(bpath)])
+        publish.main()
+
+    with pytest.raises(SystemExit, match="no decision"):
+        publish_with({**report, "decision": "incomplete"})
+    with pytest.raises(SystemExit, match="committed analysis code"):
+        publish_with({**report, "config": {**report["config"], "code_changed": True}})
+    head = publish._git("rev-parse", "HEAD")
+    publish_with({**report, "config": {**report["config"], "commit": head, "code_changed": False}})
+    site = json.loads((tmp_path / "site.json").read_text())
+    assert site["commit"] == head and site["robustness"][0]["key"] == "main"
+
+
+def test_reports_hold_no_nan():
+    assert backtest.no_nan({"a": float("nan"), "b": [1.0, float("nan")], "c": {"d": 2}}) == \
+        {"a": None, "b": [1.0, None], "c": {"d": 2}}

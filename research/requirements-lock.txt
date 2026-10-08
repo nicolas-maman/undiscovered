@@ -1,0 +1,13 @@
+# The exact versions the analysis was run with (Python 3.13.5). The bootstrap
+# refits models with sample weights, and how scikit-learn combines them with
+# balanced class weights has changed between releases, so use these to
+# reproduce the published numbers exactly. Every report also records them.
+#   pip install -r research/requirements-lock.txt
+requests==2.34.2
+numpy==2.5.3
+scipy==1.18.1
+scikit-learn==1.9.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+jsonschema==4.26.0
+pytest==9.1.1

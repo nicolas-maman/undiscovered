@@ -34,6 +34,7 @@ from an older version of this code are collected again.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import random
 from collections import defaultdict
@@ -86,6 +87,11 @@ def sample_topics(topics: list[dict], per_domain: int, seed: int) -> list[dict]:
     return chosen
 
 
+def sample_id(sampled: list[str]) -> str:
+    """A short fingerprint of a topic sample. Records for one sample are no use for another."""
+    return hashlib.sha256(",".join(sorted(sampled)).encode()).hexdigest()[:16]
+
+
 def citations_up_to(work: dict, cutoff: int) -> int:
     """Citations a work had received by the end of ``cutoff``."""
     later = sum(c.get("cited_by_count", 0) for c in work.get("counts_by_year") or []
@@ -103,9 +109,9 @@ def reference_papers(topic_id: str, cutoff: int) -> list[str]:
         candidates.extend(page["results"])
         if len(candidates) >= CANDIDATES:
             break
+    # Ties are broken by id: today's count would bring later citations back in.
     ranked = sorted(candidates[:CANDIDATES],
-                    key=lambda w: (-citations_up_to(w, cutoff), -(w.get("cited_by_count") or 0),
-                                   oa.short_id(w["id"])))
+                    key=lambda w: (-citations_up_to(w, cutoff), oa.short_id(w["id"])))
     return [oa.short_id(w["id"]) for w in ranked[:INSTRUMENT] if citations_up_to(w, cutoff) > 0]
 
 
@@ -163,6 +169,8 @@ def collect_topic(topic_id: str, cutoff: int, sampled: list[str]) -> dict:
 
     return {
         "format": FORMAT,
+        # Earlier years and the test window are counted for this sample only.
+        "sample": sample_id(sampled),
         "topic": topic_id,
         "cutoff": cutoff,
         # OpenAlex changes over time, and its seeded samples with it.
@@ -184,11 +192,43 @@ def collect_topic(topic_id: str, cutoff: int, sampled: list[str]) -> dict:
     }
 
 
-def is_current(path: Path) -> bool:
+def is_current(path: Path, sample: str) -> bool:
+    """Collected by this version of the code, for this sample."""
     try:
-        return json.loads(path.read_text(encoding="utf-8")).get("format") == FORMAT
+        rec = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return False
+    return rec.get("format") == FORMAT and rec.get("sample") == sample
+
+
+def load_or_draw_sample(per_domain: int, seed: int) -> list[dict]:
+    """The data directory's sample: drawn once, then reused as it is.
+
+    Drawing again later could give a different sample if OpenAlex added or
+    removed topics in the meantime, and the records already collected would
+    no longer match it.
+    """
+    meta_path, sample_path = DATA / "sample_meta.json", DATA / "sample.json"
+    wanted = {"seed": seed, "per_domain": per_domain}
+    if sample_path.exists() and meta_path.exists():
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        if {k: meta.get(k) for k in wanted} != wanted:
+            raise SystemExit(f"{DATA} holds a sample drawn with {meta}; use another --data for {wanted}.")
+        return json.loads(sample_path.read_text(encoding="utf-8"))
+    topics = all_topics()
+    (DATA / "all_topics.json").write_text(json.dumps(topics, indent=1), encoding="utf-8")
+    chosen = sample_topics(topics, per_domain, seed)
+    if sample_path.exists():            # from before sample_meta.json existed: must match
+        old = json.loads(sample_path.read_text(encoding="utf-8"))
+        if [t["id"] for t in old] != [t["id"] for t in chosen]:
+            raise SystemExit(f"{sample_path} does not match a fresh draw with {wanted}; "
+                             "use another --data.")
+    sample_path.write_text(json.dumps(chosen, indent=1), encoding="utf-8")
+    meta_path.write_text(json.dumps({**wanted, "topics": len(topics),
+                                     "drawn": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                                     "sample": sample_id([t["id"] for t in chosen])}, indent=1),
+                         encoding="utf-8")
+    return chosen
 
 
 def main() -> None:
@@ -206,22 +246,21 @@ def main() -> None:
         DATA = Path(args.data).resolve()
 
     DATA.mkdir(parents=True, exist_ok=True)
-    topics = all_topics()
-    (DATA / "all_topics.json").write_text(json.dumps(topics, indent=1), encoding="utf-8")
-    chosen = sample_topics(topics, args.per_domain, args.seed)
-    (DATA / "sample.json").write_text(json.dumps(chosen, indent=1), encoding="utf-8")
-    print(f"{len(topics)} topics; sampled {len(chosen)} ({args.per_domain} per domain)", flush=True)
+    oa.CACHE_DIR = DATA / "cache"       # one cache per sample, deleted when the sample is complete
+    chosen = load_or_draw_sample(args.per_domain, args.seed)
+    print(f"sample of {len(chosen)} topics ({args.per_domain} per domain, seed {args.seed})", flush=True)
     print("Using your OpenAlex key." if oa.has_key else
           "No OpenAlex key: about 1,000 calls a day. A free key gives 10,000: "
           "https://openalex.org/settings/api", flush=True)
 
     sampled = [t["id"] for t in chosen]
+    sample = sample_id(sampled)
     for cutoff in CUTOFFS:
         out_dir = DATA / "topics" / str(cutoff)
         out_dir.mkdir(parents=True, exist_ok=True)
         for i, t in enumerate(chosen, 1):
             path = out_dir / f"{t['id']}.json"
-            if is_current(path):
+            if is_current(path, sample):
                 continue
             try:
                 rec = collect_topic(t["id"], cutoff, sampled)
@@ -238,7 +277,7 @@ def main() -> None:
     # Complete: the topic files hold everything, so the response cache is
     # only taking up disk.
     if not args.keep_cache:
-        freed = cleanup.clean_response_cache()
+        freed = cleanup.clean_response_cache(oa.CACHE_DIR)
         print(f"sample complete; removed the response cache ({freed / 1e6:.0f} MB)", flush=True)
 
 

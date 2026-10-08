@@ -118,8 +118,9 @@ def _embed_local(model: str, texts: list[str]) -> np.ndarray:
         import torch
         from sentence_transformers import SentenceTransformer  # imported only when used
     except ImportError as e:
-        raise SystemExit("Pretrained embeddings need the optional packages: "
-                         "pip install -r research/requirements-embeddings.txt") from e
+        from .errors import MissingPackages
+        raise MissingPackages("pretrained embeddings need the optional packages in "
+                              "research/requirements-embeddings.txt") from e
     from .gentle import THREADS
     torch.set_num_threads(THREADS)
     if model not in _local_models:
@@ -162,7 +163,7 @@ def topic_embeddings(cutoff: int, model: str,
     abstracts = usable_abstracts(abstracts)
     if model == TFIDF:
         return _tfidf_topics(abstracts)
-    cache = DATA / "emb" / "usable-clean" / model.replace("/", "_") / f"{cutoff}.npz"
+    cache = DATA / "emb" / "usable-clean" / re.sub(r"[^\w.-]", "_", model) / f"{cutoff}.npz"
     stored: dict[str, np.ndarray] = {}
     if cache.exists():
         with np.load(cache) as z:

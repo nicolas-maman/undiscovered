@@ -72,7 +72,7 @@ The full plan, with every threshold and the reason for each change, is in
 ```bash
 python -m venv .venv
 source .venv/bin/activate        # on Windows: .venv\Scripts\activate
-pip install -r research/requirements.txt
+pip install -r research/requirements.txt   # or requirements-lock.txt for the exact versions used
 cd research
 python -m undiscovered_research.collect    # OpenAlex; cached, stops and resumes
 python -m undiscovered_research.backtest   # fetches the stricter label, writes results/backtest_e1_k3_tfidf.json

@@ -20,6 +20,7 @@ import json
 from pathlib import Path
 
 from . import backtest, collect, embed
+from .errors import CannotRun
 from .gentle import be_gentle
 
 MAIN_MODEL = embed.TFIDF
@@ -55,17 +56,22 @@ def _use_data(path: Path) -> None:
 
 
 def run(main_report: dict, second_sample: Path | None,
-        n_boot: int = backtest.BOOTSTRAP_ROBUSTNESS) -> dict:
+        n_boot: int = backtest.BOOTSTRAP_ROBUSTNESS, save=None) -> dict:
+    """``save``, if given, is called with the result so far after every check."""
     default = backtest.DATA
     out = {"variants": [{"key": "main", "label": "As planned", **summarise(main_report)}]}
     strict = main_report.get("strict")
-    if strict:
+    label = "Stricter label (no possibly misfiled papers)"
+    if strict and strict.get("diff") is not None:
         out["variants"].append({
-            "key": "strict", "label": "Stricter label (no possibly misfiled papers)",
+            "key": "strict", "label": label,
             "pairs": {**main_report["pairs"], "eval_positive": strict["positive"]},
             "hypotheses": {"H1_combined_beats_network": {
-                "diff": strict["diff"], "diff_ci": strict["diff_ci"],
-                "holds": strict["diff_ci"][0] > 0}}})
+                "diff": strict["diff"], "diff_ci": strict["diff_ci"], "outcome": strict["outcome"],
+                "holds": strict["outcome"] == "supported"}}})
+    elif strict:
+        out["variants"].append({"key": "strict", "label": label,
+                                "skipped": "no pair stays connected under the stricter label"})
     try:
         for key, label, settings in VARIANTS:
             entry = {"key": key, "label": label}
@@ -80,14 +86,18 @@ def run(main_report: dict, second_sample: Path | None,
                                       settings.get("min_test_links", 3),
                                       settings.get("model", MAIN_MODEL),
                                       n_boot=n_boot, min_size=settings.get("min_size", 0))
-            except backtest.NotEnoughData as e:
+            except CannotRun as e:
                 entry["skipped"] = str(e)
                 out["variants"].append(entry)
+                if save:
+                    save(out)
                 continue
             finally:
                 _use_data(default)
             entry.update(summarise(report))
             out["variants"].append(entry)
+            if save:
+                save(out)
             h1 = report["hypotheses"]["H1_combined_beats_network"]
             print(f"{key}: H1 diff {h1['diff']:+.4f} {h1['diff_ci']}", flush=True)
     finally:
@@ -109,10 +119,13 @@ def main() -> None:
     second = Path(args.second_sample)
     if not second.is_absolute():
         second = backtest.DATA.parent / second
-    result = run(main_report, second.resolve())
     backtest.RESULTS.mkdir(parents=True, exist_ok=True)
     out = Path(args.out) if args.out else backtest.RESULTS / "robustness.json"
-    out.write_text(json.dumps(result, indent=1), encoding="utf-8")
+
+    def save(result: dict) -> None:     # after every check, so an interruption loses one at most
+        out.write_text(json.dumps(result, indent=1), encoding="utf-8")
+
+    save(run(main_report, second.resolve(), save=save))
     print(f"wrote {out}")
 
 

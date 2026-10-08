@@ -40,8 +40,8 @@ def _remove(path: Path) -> int:
 
 
 def cache_paths() -> list[Path]:
-    paths = [RESEARCH / "cache", RESEARCH / ".pytest_cache"]
-    paths += [d / "emb" for d in (RESEARCH / "data", RESEARCH / "data_seed2027")]
+    paths = [RESEARCH / "cache", RESEARCH / ".pytest_cache"]       # the first: older runs' cache
+    paths += [d / sub for d in (RESEARCH / "data", RESEARCH / "data_seed2027") for sub in ("cache", "emb")]
     paths += sorted(RESEARCH.rglob("__pycache__"))
     return paths
 
@@ -56,9 +56,9 @@ def model_paths() -> list[Path]:
     return [hub / ("models--" + m.replace("/", "--")) for m in MODELS]
 
 
-def clean_response_cache() -> int:
-    """Called by the collector once a sample is complete."""
-    return _remove(RESEARCH / "cache")
+def clean_response_cache(path: Path) -> int:
+    """Called by the collector once a sample is complete, for that sample's cache only."""
+    return _remove(path)
 
 
 def main() -> None:

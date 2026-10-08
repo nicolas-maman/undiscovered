@@ -23,6 +23,7 @@ import hashlib
 import json
 import os
 import time
+import zlib
 from pathlib import Path
 from typing import Any, Iterator
 
@@ -51,12 +52,25 @@ def _cache_path(url: str) -> Path:
 
 
 def _read_cached(path: Path) -> dict[str, Any] | None:
-    if path.exists():
-        return json.loads(gzip.decompress(path.read_bytes()).decode("utf-8"))
+    """A cached response, or None. A damaged file counts as a miss and is removed."""
     legacy = path.with_suffix("")           # uncompressed files from older runs
-    if legacy.exists():
-        return json.loads(legacy.read_text(encoding="utf-8"))
+    for f, read in ((path, lambda: gzip.decompress(path.read_bytes()).decode("utf-8")),
+                    (legacy, lambda: legacy.read_text(encoding="utf-8"))):
+        if not f.exists():
+            continue
+        try:
+            return json.loads(read())
+        except (OSError, EOFError, ValueError, zlib.error):     # truncated by a crash, or not gzip
+            f.unlink(missing_ok=True)
     return None
+
+
+def _write_cached(path: Path, data: dict[str, Any]) -> None:
+    """Write through a temporary file, so a crash never leaves half a file."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_bytes(gzip.compress(json.dumps(data).encode("utf-8"), compresslevel=6))
+    os.replace(tmp, path)
 
 
 def get(path: str, params: dict[str, Any]) -> dict[str, Any]:
@@ -85,8 +99,7 @@ def get(path: str, params: dict[str, Any]) -> dict[str, Any]:
             remaining = int(resp.headers["X-RateLimit-Remaining"])
         if resp.status_code == 200:
             data = resp.json()
-            cached.parent.mkdir(parents=True, exist_ok=True)
-            cached.write_bytes(gzip.compress(json.dumps(data).encode("utf-8"), compresslevel=6))
+            _write_cached(cached, data)
             return data
         if resp.status_code == 429 and "budget" in resp.text.lower():
             try:

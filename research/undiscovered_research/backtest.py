@@ -26,6 +26,9 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import platform
+import re
+import subprocess
 from collections import defaultdict
 from pathlib import Path
 
@@ -34,8 +37,12 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import average_precision_score, roc_auc_score
 from sklearn.preprocessing import StandardScaler
 
+import sklearn
+
 from . import collect, embed
+from . import openalex as oa
 from .collect import CUTOFFS, DATA
+from .errors import CannotRun, IncompleteData, NotEnoughData
 from .gentle import be_gentle
 from .embed import topic_embeddings
 
@@ -66,18 +73,23 @@ FEATURE_SETS = {
 
 def load(cutoff: int) -> tuple[list[dict], dict[str, dict]]:
     """Every sampled topic's record at a cutoff. Refuses an incomplete sample."""
-    sample = json.loads((DATA / "sample.json").read_text(encoding="utf-8"))
+    path = DATA / "sample.json"
+    if not path.exists():
+        raise IncompleteData(f"{path} is missing; collect the sample first.")
+    sample = json.loads(path.read_text(encoding="utf-8"))
+    sid = collect.sample_id([t["id"] for t in sample])
     recs, missing = {}, []
     for t in sample:
         p = DATA / "topics" / str(cutoff) / f"{t['id']}.json"
         rec = json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
-        if not rec or rec.get("format") != collect.FORMAT:
+        if not rec or rec.get("format") != collect.FORMAT or rec.get("sample") != sid:
             missing.append(t["id"])
         else:
             recs[t["id"]] = rec
     if missing:
-        raise SystemExit(f"{len(missing)} of {len(sample)} topics at {cutoff} are missing or in an "
-                         f"old format (first: {missing[0]}); finish the collection first.")
+        raise IncompleteData(f"{len(missing)} of {len(sample)} topics at {cutoff} are missing, in an "
+                             f"old format or from another sample (first: {missing[0]}); finish the "
+                             "collection first.")
     return sample, recs
 
 
@@ -181,10 +193,6 @@ def pair_table(cutoff: int, max_prior_links: int, min_test_links: int, model: st
             "domains": domain}
 
 
-class NotEnoughData(ValueError):
-    """A run with no positive or no negative pairs at one of the cutoffs."""
-
-
 def matrix(rows: list[dict], cols: list[str]) -> np.ndarray:
     return np.array([[r[c] for c in cols] for r in rows], dtype=float).reshape(len(rows), len(cols))
 
@@ -196,7 +204,8 @@ def precision_at(y: np.ndarray, scores: np.ndarray, k: int) -> float:
 
 
 def _ci(values) -> list[float]:
-    return [float(np.percentile(values, 2.5)), float(np.percentile(values, 97.5))]
+    """95% percentile interval, ignoring draws with no value (no strict positives)."""
+    return [float(np.nanpercentile(values, 2.5)), float(np.nanpercentile(values, 97.5))]
 
 
 def fit_score(X_fit: np.ndarray, y_fit: np.ndarray, X_eval: np.ndarray,
@@ -239,26 +248,34 @@ def bootstrap(fit: dict, ev: dict, X: dict, y_strict: np.ndarray | None, n: int,
     uncertainty of the fitted weights as well as that of the evaluation.
     """
     by_domain: dict[str, list[str]] = defaultdict(list)
-    for t, d in sorted(ev["domains"].items()):
+    # Every topic in either table: one that only has usable abstracts at one
+    # cutoff must still be drawn, or its pairs would vanish from every refit.
+    for t, d in sorted({**fit["domains"], **ev["domains"]}.items()):
         by_domain[d].append(t)
     rng = np.random.default_rng(seed)
     y_fit, y_ev = fit["labels"], ev["labels"]
     random_scores = np.random.default_rng(1).random(len(y_ev))
     out: dict[str, list[float]] = defaultdict(list)
+    attempts = 0
     while len(out["random"]) < n:
+        attempts += 1
+        if attempts > 50 * n + 100:
+            raise NotEnoughData("too few bootstrap draws contain both connected and unconnected pairs")
         count = topic_draws(by_domain, rng)
         w_fit, w_ev = pair_weights(fit["pairs"], count), pair_weights(ev["pairs"], count)
         if min((w_fit * y_fit).sum(), (w_fit * (1 - y_fit)).sum(),
                (w_ev * y_ev).sum(), (w_ev * (1 - y_ev)).sum()) == 0:
             continue
-        if y_strict is not None and (w_ev * y_strict).sum() == 0:
-            continue
+        # A draw without strict positives still counts for the main
+        # comparison; it just has no value for the strict one.
+        strict_ok = y_strict is not None and (w_ev * y_strict).sum() > 0
         out["random"].append(average_precision_score(y_ev, random_scores, sample_weight=w_ev))
         for name in FEATURE_SETS:
             s, _ = fit_score(X[name][0], y_fit, X[name][1], w_fit)
             out[name].append(average_precision_score(y_ev, s, sample_weight=w_ev))
             if y_strict is not None and name in ("network", "combined"):
-                out[name + "_strict"].append(average_precision_score(y_strict, s, sample_weight=w_ev))
+                out[name + "_strict"].append(
+                    average_precision_score(y_strict, s, sample_weight=w_ev) if strict_ok else np.nan)
     return {k: np.array(v) for k, v in out.items()}
 
 
@@ -278,6 +295,39 @@ def by_domain_pair(y: np.ndarray, scores: dict[str, np.ndarray], pairs: list[tup
                 entry[name] = float(average_precision_score(y[idx], s[idx]))
         out[key] = entry
     return out
+
+
+def no_nan(value):
+    """The report with every NaN (a value that does not exist) written as null."""
+    if isinstance(value, float) and math.isnan(value):
+        return None
+    if isinstance(value, dict):
+        return {k: no_nan(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [no_nan(v) for v in value]
+    return value
+
+
+def provenance() -> dict:
+    """The code and packages that produced a report, so a published number can be traced."""
+    repo = Path(__file__).resolve().parents[2]
+
+    def git(*args: str) -> str:
+        try:
+            return subprocess.run(["git", *args], cwd=repo, capture_output=True, text=True,
+                                  check=True).stdout.strip()
+        except (OSError, subprocess.CalledProcessError):
+            return ""
+
+    return {"commit": git("rev-parse", "HEAD"),
+            "code_changed": bool(git("status", "--porcelain", "--", "research/undiscovered_research")),
+            "python": platform.python_version(), "numpy": np.__version__,
+            "scikit_learn": sklearn.__version__}
+
+
+def safe_name(model: str) -> str:
+    """A model name usable in a file name on every system (Ollama tags have colons)."""
+    return re.sub(r"[^\w.-]", "_", model)
 
 
 def h1_outcome(diff_ci: list[float], network_ap: float) -> str:
@@ -310,11 +360,14 @@ def run(max_prior_links: int, min_test_links: int, model: str, n_boot: int = BOO
     y_strict = None
     if strict_links is not None:
         y_strict = np.array([1 if strict_links.get(p, 0) >= min_test_links else 0 for p in ev["pairs"]])
+    # With no positive pair under the stricter label there is nothing to rank,
+    # and the check fails: every new link might come from a misfiled paper.
+    strict_empty = y_strict is not None and y_strict.sum() == 0
     report = {
         "config": {"train_cutoff": TRAIN_CUTOFF, "eval_cutoff": EVAL_CUTOFF,
                    "max_prior_links": max_prior_links, "min_test_links": min_test_links,
                    "embedding_model": model, "bootstrap": n_boot, "min_size": min_size,
-                   "smallest_effect": SMALLEST_EFFECT},
+                   "smallest_effect": SMALLEST_EFFECT, **provenance()},
         "pairs": {"train": len(y_fit), "train_positive": int(y_fit.sum()),
                   "eval": len(y_ev), "eval_positive": int(y_ev.sum()),
                   "eval_base_rate": float(y_ev.mean()) if len(y_ev) else None},
@@ -326,7 +379,7 @@ def run(max_prior_links: int, min_test_links: int, model: str, n_boot: int = BOO
         scores[name], clf = fit_score(X[name][0], y_fit, X[name][1])
         report["models"][name] = {"features": cols, "coef": dict(zip(cols, map(float, clf.coef_[0])))}
 
-    boot = bootstrap(fit, ev, X, y_strict, n_boot)
+    boot = bootstrap(fit, ev, X, None if strict_empty else y_strict, n_boot)
     for name, s in scores.items():
         m = report["models"].setdefault(name, {})
         m["roc_auc"] = float(roc_auc_score(y_ev, s))
@@ -353,8 +406,16 @@ def run(max_prior_links: int, min_test_links: int, model: str, n_boot: int = BOO
         report["strict"] = None
         report["decision"] = "incomplete"
     else:
-        st = compare("combined", "network", y=y_strict, suffix="_strict")
-        report["strict"] = {**st, "positive": int(y_strict.sum()), "holds": st["diff"] > 0}
+        if strict_empty:
+            report["strict"] = {"positive": 0, "holds": False, "diff": None, "diff_ci": None,
+                                "outcome": None, "network_ap": None}
+        else:
+            st = compare("combined", "network", y=y_strict, suffix="_strict")
+            net_ap = float(average_precision_score(y_strict, scores["network"]))
+            # The check in the decision: is the difference still above zero?
+            # The same numbers also get H1's three outcomes, for the robustness table.
+            report["strict"] = {**st, "positive": int(y_strict.sum()), "holds": st["diff"] > 0,
+                                "network_ap": net_ap, "outcome": h1_outcome(st["diff_ci"], net_ap)}
         report["decision"] = ("continue" if hyp["H1_combined_beats_network"]["holds"]
                               and hyp["H2_network_beats_popularity"]["holds"]
                               and report["strict"]["holds"] else "stop")
@@ -384,7 +445,7 @@ def run(max_prior_links: int, min_test_links: int, model: str, n_boot: int = BOO
         "links_before": int(ev["links"][i][0]), "links_after": int(ev["links"][i][1]),
         "connected_later": int(y_ev[i]),
     } for r, i in enumerate(order)]
-    return report
+    return no_nan(report)
 
 
 def main() -> None:
@@ -400,13 +461,17 @@ def main() -> None:
     if args.data:
         global DATA
         DATA = collect.DATA = embed.DATA = Path(args.data).resolve()
+    oa.CACHE_DIR = DATA / "cache"
     from . import strict
-    ev = pair_table(EVAL_CUTOFF, args.max_prior_links, args.min_test_links, args.model)
-    strict_links = strict.collect(ev, args.min_test_links)
-    report = run(args.max_prior_links, args.min_test_links, args.model, strict_links=strict_links)
+    try:
+        ev = pair_table(EVAL_CUTOFF, args.max_prior_links, args.min_test_links, args.model)
+        strict_links = strict.collect(ev, args.min_test_links)
+        report = run(args.max_prior_links, args.min_test_links, args.model, strict_links=strict_links)
+    except CannotRun as e:
+        raise SystemExit(str(e)) from e
     RESULTS.mkdir(parents=True, exist_ok=True)
     out = Path(args.out) if args.out else RESULTS / (
-        f"backtest_e{args.max_prior_links}_k{args.min_test_links}_{args.model.replace('/', '_')}.json")
+        f"backtest_e{args.max_prior_links}_k{args.min_test_links}_{safe_name(args.model)}.json")
     out.write_text(json.dumps(report, indent=1), encoding="utf-8")
     p = report["pairs"]
     print(f"pairs: train {p['train']} (+{p['train_positive']}), eval {p['eval']} "

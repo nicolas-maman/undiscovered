@@ -293,18 +293,24 @@
         "says, the comparison with it is not interpreted. " + change + "The project stops here and " +
         "reports this.");
     } else if (h1.outcome === "supported" && st && !st.holds) {
-      say("The gain did not survive the stricter label.", change + "Counting only links that a " +
-        "paper filed under the wrong topic cannot explain, the difference was " +
-        (st.diff >= 0 ? "+" : "") + num(st.diff, 4) + ". Under the plan, the gain may come from " +
-        "misfiled papers, and the project stops here and reports this.");
+      say("The gain did not survive the stricter label.", change + (st.diff === null
+        ? "No pair stayed connected when only links that a misfiled paper cannot explain were counted. "
+        : "Counting only links that a paper filed under the wrong topic cannot explain, the " +
+          "difference was " + (st.diff >= 0 ? "+" : "") + num(st.diff, 4) + ". ") +
+        "Under the plan, the gain may come from misfiled papers, and the project stops here and " +
+        "reports this.");
     } else if (h1.outcome === "inconclusive") {
       say("Inconclusive.", change + "The interval includes no gain and also a gain of at least " +
         smallest + "% of the baseline's score, so this test cannot tell. Under the plan this is " +
         "not enough to continue; the forward test will say more.");
-    } else {
+    } else if (h1.outcome === "negative") {
       say("The method did not beat the network baseline.", change + "The interval rules out a " +
         "gain of " + smallest + "% of the baseline's score or more. Under the plan, the project " +
         "stops here and reports this.");
+    } else {
+      verdict.className = "verdict";
+      say("Not decided.", change + "This report has no decision under the plan, so it is shown " +
+        "for information only.");
     }
 
     body.appendChild(el("h2", {text: "What was tested"}));
@@ -364,11 +370,15 @@
         " (difference " + (x.diff >= 0 ? "+" : "") + num(x.diff, 4) + ", 95% interval " + interval(x.diff_ci) + ")"]));
     });
     if (r.strict) {
-      ul.appendChild(el("li", {}, ["Check against misfiled papers: the difference counting only links " +
-        "that a paper filed under the wrong topic cannot explain: ",
-        el("span", {class: r.strict.holds ? "yes" : "no", text: r.strict.holds ? "still positive" : "not positive"}),
-        " (" + (r.strict.diff >= 0 ? "+" : "") + num(r.strict.diff, 4) + ", 95% interval " +
-        interval(r.strict.diff_ci) + ", " + r.strict.positive.toLocaleString("en") + " pairs connected)"]));
+      var sd = r.strict;
+      ul.appendChild(el("li", {}, ["Check against misfiled papers (part of the decision): is the " +
+        "difference still above zero when only links that a paper filed under the wrong topic " +
+        "cannot explain are counted? ",
+        el("span", {class: sd.holds ? "yes" : "no", text: sd.holds ? "yes" : "no"}),
+        sd.diff === null ? " (no pair stayed connected under the stricter label)"
+          : " (" + (sd.diff >= 0 ? "+" : "") + num(sd.diff, 4) + ", 95% interval " +
+            (sd.diff_ci && sd.diff_ci[0] !== null ? interval(sd.diff_ci) : "not available") + ", " +
+            sd.positive.toLocaleString("en") + " pairs connected)"]));
     }
     body.appendChild(ul);
 
@@ -447,10 +457,27 @@
       ", and the code reproduces it from the open OpenAlex data."]));
   }
 
+  // Only a missing file means "not run yet". A file that is there but cannot
+  // be shown says so, rather than pretending there are no results.
+  function broken(err) {
+    body.textContent = "";
+    verdict.className = "verdict stop";
+    verdict.textContent = "";
+    verdict.appendChild(el("strong", {text: "The results file could not be shown. "}));
+    verdict.appendChild(document.createTextNode("The numbers are in data/backtest.json (" +
+      String(err && err.message || err) + ")."));
+  }
   fetch("data/backtest.json", {cache: "no-store"})
-    .then(function (res) { if (!res.ok) throw new Error("missing"); return res.json(); })
-    .then(function (data) { if (data.status === "complete") render(data); else pending(); })
-    .catch(pending);
+    .then(function (res) {
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    }, function () { return null; })
+    .then(function (data) {
+      if (!data || data.status !== "complete") { pending(); return; }
+      try { render(data); } catch (err) { broken(err); }
+    })
+    .catch(broken);
 })();
 </script>
 </body>

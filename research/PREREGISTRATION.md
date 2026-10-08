@@ -147,7 +147,8 @@ A random score is reported as a floor. The code is
   aggregation) only if all three hold: H1 is *supported*, H2 holds, and the
   difference between `combined` and `network` is still above zero under
   the stricter label. The last condition guards against the gain coming
-  from papers filed under the wrong topic.
+  from papers filed under the wrong topic. If no pair is positive under the
+  stricter label, the condition fails.
 - **Stop and publish the result** otherwise, including when H1 is supported
   but H2 does not hold, and when H1 is *inconclusive*. An inconclusive
   result is reported as inconclusive, not as negative. Features will not be
@@ -269,6 +270,14 @@ feature at both cutoffs, to show whether they shifted between them.
     and feature shift.
   - *A loader that refuses an incomplete sample or records in an old
     format*, instead of silently using what is there.
+  - *From the code review:* each data directory keeps the sample it was
+    first drawn with, and every record carries a fingerprint of that
+    sample, because its earlier-year and test-window counts only cover
+    the sampled topics; ties between reference papers are broken by
+    their identifier, not by today's citation count; a bootstrap draw
+    without positives under the stricter label still counts for the main
+    comparison; each report records the commit and package versions that
+    produced it, and only reports made from committed code are published.
   Timing: the data under the old reference-paper rule was complete at 2011
   and at 181 of 300 topics at 2017; it is being replaced. No model had been
   fitted and no outcome had been looked at, apart from the exposure logged
