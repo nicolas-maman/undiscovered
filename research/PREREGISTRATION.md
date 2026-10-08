@@ -211,8 +211,9 @@ printed. None of them printed or summarised an outcome.
   the first 78 topics at the 2011 cutoff, with pretrained embeddings, and
   the number of eligible pairs. Labels were computed in memory only.
 - 2026-10-08: the same for the TF-IDF content features on the first 246
-  topics at the 2011 cutoff, plus running time and memory. Labels were
-  computed in memory only.
+  topics at the 2011 cutoff, plus running time and memory, and once more
+  after the usable-abstract rule (pair count and missing values only).
+  Labels were computed in memory only.
 - 2026-10-08: text quality of the same 246 topics' abstracts: counts of
   publisher boilerplate, placeholder and non-English texts, a random sample
   of short texts, the distribution of the share of common English words,
