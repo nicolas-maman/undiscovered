@@ -48,12 +48,32 @@ it has.
 }
 ```
 
-Two kinds:
+Three kinds:
 
 | kind | input | the volunteer returns |
 |---|---|---|
-| `rank` | one topic and up to 50 candidate topics from other domains | the candidates ranked, and for the top 3 an evidence pair of works |
+| `distill` | up to 20 works | for each, the problem it works on and how, described without its field's vocabulary |
+| `rank` | one topic and up to 50 candidate topics from other domains | the candidates ranked, and for the top 3 an evidence pair of works: one from the topic, one from the candidate |
 | `judge` | one candidate bridge with its evidence pair | a verdict (`real`, `superficial`, `unclear`) and a one-paragraph reason |
+
+`distill` comes first because it is the part that needs the most model
+calls: one per paper, which no single project can afford across all of
+science. Its output is an open index of field-free problem descriptions,
+published under CC0. Fields often name the same problem differently, and
+descriptions without the jargon are what let papers that solve the same
+problem in different fields find each other (see Kulikowski, 2026, in the
+README).
+
+```json
+{
+  "unit": "u-000456",
+  "protocol": 0,
+  "kind": "distill",
+  "works": ["W2028823348", "W2014952121"],
+  "instructions": "For each work, read its title and abstract in OpenAlex. Describe the problem it works on and how it goes about it, so that a researcher in any field would recognise the problem. Do not name the field, its methods or its objects of study, and do not reuse terms from the abstract that only that field would use.",
+  "quorum": 3
+}
+```
 
 A client fetches what it needs from OpenAlex itself (titles and abstracts of
 the topics' papers), so the fetching is spread across volunteers and their
@@ -83,12 +103,40 @@ JSON block:
   "model": {"provider": "openai-compatible", "id": "qwen2.5:14b", "embedding": "nomic-embed-text"},
   "ranking": ["T11478", "T12108", "T10872"],
   "evidence": [
-    {"candidate": "T11478", "works": ["W2741809807", "W2963403868"], "why": "…"}
+    {"candidate": "T11478", "works": ["W2028823348", "W2014952121"], "why": "…"}
   ]
 }
 ```
 
-For `judge` units, `ranking` is replaced by `"verdict"` and `"reason"`.
+For `judge` units, `ranking` is replaced by `"verdict"` and `"reason"`. For
+`distill` units it is replaced by `"descriptions"`, one per work:
+
+```json
+"descriptions": [
+  {"work": "W2028823348",
+   "problem": "Measure quickly and cheaply how much of one small molecule a living tissue has built up, used as a sign of how short of water it is.",
+   "approach": "Extract the tissue, react the extract with a reagent that turns that molecule coloured, move the coloured product into a solvent, and read its colour against known amounts."},
+  {"work": "W2014952121",
+   "problem": "Deliver the same data to many users efficiently when what they want is the data itself, not a particular machine that holds it.",
+   "approach": "Ask the network for data by a signed name instead of by location, so that any node holding a copy can answer, and let nodes keep copies of what passes through them."}
+]
+```
+
+A `distill` result is checked in three ways before it counts:
+
+- **No jargon.** For each work, the validator takes the terms in its title
+  and abstract that are most specific to it compared with other papers. If
+  more than a few of them reappear in the description, the description is
+  rejected. The threshold is set on the first trial runs and published with
+  the validator.
+- **Agreement between models.** Descriptions of the same work from different
+  contributors are compared by embedding. The accepted description is the
+  one closest to the others, and a model whose descriptions keep landing
+  far from the rest loses weight.
+- **Known twins.** Some units contain pairs of works already known to solve
+  the same problem in different fields, such as those in published
+  benchmarks of cross-field twins, used where their licence allows. A
+  model whose descriptions of known twins land far apart loses weight.
 
 ## Ratings
 

@@ -14,10 +14,15 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install (no ML stack needed for the offline tests)
-        run: pip install requests numpy scikit-learn pytest
+        run: pip install requests numpy scikit-learn jsonschema pytest
       - name: Offline tests
         working-directory: research
         run: python -m pytest -q
+      - name: Protocol examples point at real OpenAlex records
+        working-directory: research
+        env:
+          UNDISCOVERED_ONLINE: "1"
+        run: python -m pytest -q tests/test_protocol.py
       - name: Schemas are valid JSON
         run: python -c "import json,glob; [json.load(open(p)) for p in glob.glob('schemas/*.json')]; print('ok')"
       - name: Plain punctuation (no em or en dashes in project text)

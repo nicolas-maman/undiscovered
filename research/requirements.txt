@@ -2,4 +2,5 @@ requests>=2.31
 numpy>=1.26
 scikit-learn>=1.4
 sentence-transformers>=3.0
+jsonschema>=4.20
 pytest>=8

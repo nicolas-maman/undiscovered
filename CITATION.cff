@@ -57,3 +57,42 @@ references:
         given-names: Richard
     year: 2022
     url: "https://arxiv.org/abs/2205.01833"
+  - type: conference-paper
+    title: "Bursting Scientific Filter Bubbles: Boosting Innovation via Novel Author Discovery"
+    authors:
+      - family-names: Portenoy
+        given-names: Jason
+      - family-names: Radensky
+        given-names: Marissa
+      - family-names: West
+        given-names: Jevin
+      - family-names: Horvitz
+        given-names: Eric
+      - family-names: Weld
+        given-names: Daniel
+      - family-names: Hope
+        given-names: Tom
+    conference:
+      name: "CHI Conference on Human Factors in Computing Systems"
+    year: 2022
+    url: "https://arxiv.org/abs/2108.05669"
+  - type: article
+    title: "Sparking Scientific Creativity via LLM-Driven Interdisciplinary Inspiration"
+    authors:
+      - family-names: Kargupta
+        given-names: Priyanka
+      - family-names: Mehri
+        given-names: Shuhaib
+      - family-names: Hakkani-Tur
+        given-names: Dilek
+      - family-names: Han
+        given-names: Jiawei
+    year: 2026
+    url: "https://arxiv.org/abs/2603.12226"
+  - type: article
+    title: "Same Problem, Different Field: Cross-Domain Solution Import via Domain-Stripped Computational Fingerprints"
+    authors:
+      - family-names: Kulikowski
+        given-names: Eryk
+    year: 2026
+    url: "https://arxiv.org/abs/2609.07595"

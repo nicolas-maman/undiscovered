@@ -41,11 +41,23 @@ actually happened.
    each other between 2018 and 2023. The model learns its weights on an
    earlier freeze (2011, with outcomes from 2012 to 2017), so nothing after
    2017 goes into it.
-4. **Volunteers and experts.** Once the backtest is done, anyone will be able
-   to lend their computer and whichever AI model they prefer, local or from
-   a provider, to examine candidate pairs. Researchers will be able to rate
-   the pairs that touch their own field. Questions with known answers, mixed
-   into the work, measure how reliable each contributor's model is.
+4. **Next: the problem, without the jargon.** Fields often name the same
+   problem differently: estimating a hidden state from noisy measurements
+   is a Kalman filter to a control engineer and data assimilation to a
+   weather forecaster. A language model can rewrite a paper as the problem
+   it solves, with its field's vocabulary taken out, in one call per paper.
+   In a recent study this raised the average precision of matching papers
+   that solve the same problem in different fields from 0.22 to 0.51, on
+   109 papers (Kulikowski, 2026). One call per paper is too much for one
+   project across all of science, but not for many volunteers: anyone will
+   be able to lend their computer and whichever model they prefer, local or
+   from a provider, and the descriptions go into an open index. Whether
+   they predict new connections better than abstracts will be tested the
+   same way as above, on years and topics the first test has not used.
+5. **Experts and checks.** Researchers rate the proposed connections that
+   touch their own field. Every description and verdict records which model
+   produced it. Questions with known answers, mixed into the work, and
+   agreement between different models measure how far to trust each one.
 
 Running it costs nothing: the data is open, the site and the coordination
 run on GitHub, and the work runs on contributors' own machines.
@@ -54,8 +66,9 @@ run on GitHub, and the work runs on contributors' own machines.
 
 **Now: find a flaw in the plan.** Read the
 [analysis plan](research/PREREGISTRATION.md) and
-[tell us what could make the result wrong](https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml). Criticism is worth most
-before the data is analysed, while the plan can still change in the open.
+[tell us what could make the result wrong](https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml).
+Criticism is worth most before the data is analysed, while the plan can
+still change in the open.
 
 As each part ships:
 
@@ -64,8 +77,8 @@ As each part ships:
 - **Ask about your own work.** Run the tool on your machine with a paper, an
   ORCID or a short description, and see which distant fields work on the
   same problem. Nothing leaves your machine unless you choose to share it.
-- **Volunteer.** Let your machine and the model of your choice work through
-  candidate pairs.
+- **Volunteer.** Let your machine and the model of your choice describe
+  papers and examine candidate pairs.
 
 Two clients will implement the same [protocol](PROTOCOL.md): one in Python
 and one in [Aether](https://github.com/aether-lang-dev/aether).
@@ -79,10 +92,14 @@ Science4Cast to be worth anything.
 - **Literature-based discovery.** Swanson's method and his ARROWSMITH
   software, and the time-sliced evaluation that later became the field's
   standard test.
-- **SciMuse** (Gu & Krenn, 2024). A knowledge graph built from 58 million
-  papers and GPT-4 generated personalised research ideas. More than 100
-  research group leaders at the Max Planck Society scored over 4,400 of them;
-  24.9% received 4 or 5 out of 5. The closest work to this one.
+- **mat2vec** (Tshitoyan et al., *Nature*, 2019). Word embeddings trained on
+  materials-science abstracts published before 2009 identified thermoelectric
+  materials that were only reported years later.
+- **Bridger** (Portenoy et al., CHI 2022). Describes authors by the problems
+  and methods in their papers, and suggests authors who share some of them
+  but sit outside a researcher's usual circles. In user studies with
+  computer scientists, its suggestions were judged more interesting and
+  novel than those of a relevance-focused baseline.
 - **Science4Cast** (Krenn et al., *Nature Machine Intelligence*, 2023). A
   benchmark for predicting which concepts will be studied together, built
   from more than 143,000 AI papers. Its finding that carefully chosen network
@@ -90,12 +107,27 @@ Science4Cast to be worth anything.
 - **Human-aware AI** (Sourati & Evans, *Nature Human Behaviour*, 2023).
   Modelling which scientists could plausibly make a discovery improved the
   prediction of future discoveries by up to 400%.
-- **mat2vec** (Tshitoyan et al., *Nature*, 2019). Word embeddings trained on
-  materials-science abstracts published before 2009 identified thermoelectric
-  materials that were only reported years later.
+- **SciMuse** (Gu & Krenn, 2024). A knowledge graph built from 58 million
+  papers and GPT-4 generated personalised research ideas. More than 100
+  research group leaders at the Max Planck Society scored over 4,400 of them;
+  24.9% received 4 or 5 out of 5.
+- **Idea-Catalyst** (Kargupta et al., 2026). Restates a research goal as
+  problems free of any one field's terms and looks for how other disciplines
+  have approached them. It reports gains of 21% in novelty and 16% in
+  insightfulness.
+- **Same Problem, Different Field** (Kulikowski, 2026). Rewrites each paper,
+  with one language-model call, as the computation it performs without its
+  field's vocabulary. On 109 papers from 18 method families this raised
+  cross-field retrieval average precision from 0.222 to 0.513, while four
+  trained scientific embedding models did worse than simple word matching
+  (TF-IDF) on the abstracts: they capture topic and citation closeness,
+  which is the wrong signal for this task.
 
-What this project adds is the combination: open code and data, all fields
-rather than one, a public backtest, and no dependence on a particular model
+What this project adds is the combination: a public test, written down in
+advance and run across all fields, of whether such connections can be
+predicted before they happen; an open index of field-free problem
+descriptions, built by volunteers with whatever model they choose; and
+expert ratings that anyone can inspect. Nothing in it depends on one model
 or company.
 
 ## Reproduce the backtest
