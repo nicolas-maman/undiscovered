@@ -10,12 +10,15 @@ never to the URL used for the cache, the logs or error messages.
 
 This client keeps to a few requests a second, retries server errors with
 backoff, stops cleanly when the daily budget is spent (instead of retrying
-for hours), and caches every response under ``research/cache/`` so a rerun
-costs nothing.
+for hours), and caches every response, gzip-compressed, under
+``research/cache/``, so an interrupted run resumes without spending its
+budget twice. The collector deletes the cache once a sample is complete,
+since the topic files then hold everything; ``cleanup`` deletes it too.
 """
 
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 import os
@@ -44,7 +47,16 @@ class BudgetExhausted(RuntimeError):
 
 def _cache_path(url: str) -> Path:
     digest = hashlib.sha256(url.encode("utf-8")).hexdigest()
-    return CACHE_DIR / digest[:2] / f"{digest}.json"
+    return CACHE_DIR / digest[:2] / f"{digest}.json.gz"
+
+
+def _read_cached(path: Path) -> dict[str, Any] | None:
+    if path.exists():
+        return json.loads(gzip.decompress(path.read_bytes()).decode("utf-8"))
+    legacy = path.with_suffix("")           # uncompressed files from older runs
+    if legacy.exists():
+        return json.loads(legacy.read_text(encoding="utf-8"))
+    return None
 
 
 def get(path: str, params: dict[str, Any]) -> dict[str, Any]:
@@ -53,8 +65,9 @@ def get(path: str, params: dict[str, Any]) -> dict[str, Any]:
     url = requests.Request("GET", f"{API}/{path}", params=params).prepare().url or ""
     cached = _cache_path(url)       # the key is not part of it
     send = {**params, "api_key": _key} if _key else params
-    if cached.exists():
-        return json.loads(cached.read_text(encoding="utf-8"))
+    hit = _read_cached(cached)
+    if hit is not None:
+        return hit
 
     delay = 1.0
     for attempt in range(8):
@@ -73,7 +86,7 @@ def get(path: str, params: dict[str, Any]) -> dict[str, Any]:
         if resp.status_code == 200:
             data = resp.json()
             cached.parent.mkdir(parents=True, exist_ok=True)
-            cached.write_text(json.dumps(data), encoding="utf-8")
+            cached.write_bytes(gzip.compress(json.dumps(data).encode("utf-8"), compresslevel=6))
             return data
         if resp.status_code == 429 and "budget" in resp.text.lower():
             try:

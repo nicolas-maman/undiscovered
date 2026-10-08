@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+import gzip
 import json
 import shutil
 
 import numpy as np
 import pytest
 
-from undiscovered_research import backtest, collect, embed, openalex, robustness
+from undiscovered_research import backtest, cleanup, collect, embed, openalex, robustness
 
 
 def test_abstract_text_rebuilds_word_order():
@@ -204,7 +205,46 @@ def test_key_is_sent_but_never_cached(monkeypatch, tmp_path):
     assert openalex.remaining == 9876
     keyless = openalex._cache_path("https://api.openalex.org/works?filter=publication_year%3A2017")
     assert keyless.exists()
-    assert not any("SECRET" in f.read_text() for f in tmp_path.rglob("*.json"))
+    files = [f for f in tmp_path.rglob("*") if f.is_file()]
+    assert files and not any(b"SECRET" in gzip.decompress(f.read_bytes()) for f in files)
+
+
+def test_cache_is_compressed_and_reads_old_files(tmp_path, monkeypatch):
+    monkeypatch.setattr(openalex, "CACHE_DIR", tmp_path)
+    path = openalex._cache_path("https://api.openalex.org/works?x=1")
+    path.parent.mkdir(parents=True)
+    legacy = path.with_suffix("")                       # an uncompressed file from an older run
+    legacy.write_text(json.dumps({"results": [1]}), encoding="utf-8")
+    assert openalex._read_cached(path) == {"results": [1]}
+    path.write_bytes(gzip.compress(json.dumps({"results": [2]}).encode()))
+    assert openalex._read_cached(path) == {"results": [2]}   # the compressed file wins
+
+
+def test_cleanup_removes_only_what_it_lists(tmp_path, monkeypatch):
+    research = tmp_path / "research"
+    for rel in ("cache/ab/x.json.gz", "data/topics/2011/T1.json", "data/emb/m/2011.npz",
+                "results/r.json", "undiscovered_research/__pycache__/m.pyc", "notes/keep.txt"):
+        (research / rel).parent.mkdir(parents=True, exist_ok=True)
+        (research / rel).write_text("x")
+    hub = tmp_path / "hf" / "hub"
+    (hub / "models--BAAI--bge-small-en-v1.5").mkdir(parents=True)
+    (hub / "models--other--model").mkdir(parents=True)
+    monkeypatch.setattr(cleanup, "RESEARCH", research)
+    monkeypatch.setenv("HF_HUB_CACHE", str(hub))
+
+    monkeypatch.setattr("sys.argv", ["cleanup"])
+    cleanup.main()
+    assert not (research / "cache").exists() and not (research / "data/emb").exists()
+    assert not (research / "undiscovered_research/__pycache__").exists()
+    assert (research / "data/topics/2011/T1.json").exists() and (research / "results/r.json").exists()
+    assert (hub / "models--BAAI--bge-small-en-v1.5").exists()
+
+    monkeypatch.setattr("sys.argv", ["cleanup", "--models", "--data"])
+    cleanup.main()
+    assert not (research / "data").exists() and not (research / "results").exists()
+    assert not (hub / "models--BAAI--bge-small-en-v1.5").exists()
+    assert (hub / "models--other--model").exists()          # not ours: untouched
+    assert (research / "notes/keep.txt").exists()
 
 
 def test_robustness_runs_every_planned_variant(world, monkeypatch, tmp_path_factory):

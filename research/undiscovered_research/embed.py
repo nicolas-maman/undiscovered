@@ -89,7 +89,14 @@ def _tfidf_topics(abstracts: dict[str, list[dict]]) -> dict[str, dict]:
 
 
 def _embed_local(model: str, texts: list[str]) -> np.ndarray:
-    from sentence_transformers import SentenceTransformer  # imported only when used
+    try:
+        import torch
+        from sentence_transformers import SentenceTransformer  # imported only when used
+    except ImportError as e:
+        raise SystemExit("Pretrained embeddings need the optional packages: "
+                         "pip install -r research/requirements-embeddings.txt") from e
+    from .gentle import THREADS
+    torch.set_num_threads(THREADS)
     if model not in _local_models:
         _local_models[model] = SentenceTransformer(model)
     st = _local_models[model]

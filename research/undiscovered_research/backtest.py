@@ -33,6 +33,7 @@ from sklearn.preprocessing import StandardScaler
 
 from . import collect, embed
 from .collect import CUTOFFS, DATA
+from .gentle import be_gentle
 from .embed import topic_embeddings
 
 RESULTS = Path(__file__).resolve().parent.parent / "results"
@@ -265,6 +266,7 @@ def main() -> None:
     ap.add_argument("--data", default="", help="data directory (default research/data)")
     ap.add_argument("--out", default="")
     args = ap.parse_args()
+    be_gentle()
     if args.data:
         global DATA
         DATA = collect.DATA = embed.DATA = Path(args.data).resolve()

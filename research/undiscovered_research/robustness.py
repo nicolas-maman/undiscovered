@@ -19,6 +19,7 @@ import json
 from pathlib import Path
 
 from . import backtest, collect, embed
+from .gentle import be_gentle
 
 MAIN_MODEL = embed.TFIDF
 
@@ -85,6 +86,7 @@ def main() -> None:
                     help="data directory of the seed-2027 sample (relative to research/)")
     ap.add_argument("--out", default="")
     args = ap.parse_args()
+    be_gentle()
     second = Path(args.second_sample)
     if not second.is_absolute():
         second = backtest.DATA.parent / second

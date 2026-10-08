@@ -1,0 +1,8 @@
+# Only for robustness check 3 (pretrained embeddings). Large: PyTorch alone
+# is over 500 MB. Install the CPU build first so pip does not fetch the much
+# larger GPU build:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r research/requirements-embeddings.txt
+# Remove the downloaded models afterwards with:
+#   python -m undiscovered_research.cleanup --models
+sentence-transformers>=3.0

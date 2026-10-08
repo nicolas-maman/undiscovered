@@ -33,7 +33,9 @@ import random
 from collections import defaultdict
 from pathlib import Path
 
+from . import cleanup
 from . import openalex as oa
+from .gentle import be_gentle
 
 DATA = Path(__file__).resolve().parent.parent / "data"
 CUTOFFS = (2011, 2017)          # 2011 fits the models; 2017 is the evaluation
@@ -150,7 +152,10 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=2026)
     ap.add_argument("--data", default="", help="data directory (default research/data); "
                     "use a separate one for each topic sample")
+    ap.add_argument("--keep-cache", action="store_true",
+                    help="keep the OpenAlex response cache after the sample is complete")
     args = ap.parse_args()
+    be_gentle()
     if args.data:
         global DATA
         DATA = Path(args.data).resolve()
@@ -184,6 +189,12 @@ def main() -> None:
             print(f"[{cutoff}] {i}/{len(chosen)} {t['id']} size={rec['size']} "
                   f"citers train={len(rec['cited_by_train'])} test={len(rec['cited_by_test'])}{left}",
                   flush=True)
+
+    # Complete: the topic files hold everything, so the response cache is
+    # only taking up disk.
+    if not args.keep_cache:
+        freed = cleanup.clean_response_cache()
+        print(f"sample complete; removed the response cache ({freed / 1e6:.0f} MB)", flush=True)
 
 
 if __name__ == "__main__":

@@ -86,11 +86,33 @@ queries a day; without one the shared budget is about a tenth of that. The
 collector stops cleanly when the day's budget is spent and resumes where it
 left off.
 
-The robustness checks also use pretrained embeddings, from a local open
-model by default (free, no account). To use any OpenAI-compatible
-embeddings endpoint instead (Ollama, LM Studio, vLLM or a hosted provider),
-set `UNDISCOVERED_EMBED_URL` (and `UNDISCOVERED_EMBED_KEY` if it needs one)
+The robustness checks also use pretrained embeddings. They need extra
+packages, which are large (PyTorch alone is over 500 MB), so they are kept
+apart: see `research/requirements-embeddings.txt`. The model runs locally
+by default (free, no account). To use any OpenAI-compatible embeddings
+endpoint instead (Ollama, LM Studio, vLLM or a hosted provider), set
+`UNDISCOVERED_EMBED_URL` (and `UNDISCOVERED_EMBED_KEY` if it needs one)
 and pass `--model`.
+
+### What it does to your computer
+
+- Every command runs at low priority and uses at most half of the CPU
+  cores, so whatever else you are doing comes first.
+- The collector mostly waits on the network: in our runs it used a few
+  seconds of CPU per ten minutes and about 40 MB of memory.
+- On disk: the collected data takes about 40 MB per topic sample. While a
+  collection runs, OpenAlex's answers are kept, compressed, in
+  `research/cache/` so an interrupted run can resume without spending its
+  budget twice; the collector deletes that cache when the sample is
+  complete.
+- To remove everything that can be rebuilt, at any time except during a
+  collection:
+
+```bash
+python -m undiscovered_research.cleanup            # caches
+python -m undiscovered_research.cleanup --models   # and downloaded embedding models
+python -m undiscovered_research.cleanup --data     # and the collected data and results
+```
 
 ## What comes next
 
