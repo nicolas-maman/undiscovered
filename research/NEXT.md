@@ -46,8 +46,7 @@ cross-field connections better than the abstracts themselves?
 - Size: 300 topics, 40 abstracts each, two freezes: 24,000 descriptions.
   By our estimate (2 to 4 seconds per description) that is roughly a day
   for one consumer GPU running a small local model, or an hour for a few
-  dozen volunteers. It is the first job the volunteer
-  network would do.
+  dozen volunteers. It is the first job the volunteer network would do.
 
 ## What we will not do
 
