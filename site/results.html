@@ -348,8 +348,9 @@
       body.appendChild(el("h2", {text: "Robustness checks, as planned"}));
       body.appendChild(el("p", {class: "note", text:
         "H1 again under each variation listed in the plan. As planned, a pair is connected at 3 or " +
-        "more citing works and unconnected if at most one linked them up to 2017, the embeddings come " +
-        "from bge-small, and the topics were drawn with seed 2026. These checks are reported for " +
+        "more citing works and unconnected if at most one linked them up to 2017, content is compared " +
+        "with word weights learned from each freeze's own abstracts, and the topics were drawn with " +
+        "seed 2026. These checks are reported for " +
         "transparency and do not change the decision above."}));
       var rtb = el("tbody");
       data.robustness.forEach(function (v) {

@@ -53,8 +53,11 @@ features beat end-to-end models on a related task).
 - **Abstracts:** 40 works per topic and cutoff, drawn at random (OpenAlex
   `sample`, seed 17) from the topic's works in the train window that have an
   abstract.
-- **Embedding model:** `BAAI/bge-small-en-v1.5`, chosen in advance because it
-  is small, open and runs on a CPU.
+- **Content vectors:** TF-IDF fitted, at each cutoff, on that cutoff's
+  sampled abstracts and nothing else: English stop words removed, sublinear
+  term frequency, terms that appear in at least 2 and at most half of the
+  abstracts, single words. (Amended 2026-10-08; the first version used the
+  pretrained model `BAAI/bge-small-en-v1.5`, see below.)
 
 ## Units and labels
 
@@ -108,7 +111,8 @@ These are reported alongside the main result and do not change the decision:
 
 1. Positive threshold of 2 and of 5 test-window links, instead of 3.
 2. Eligibility of 0 links up to the cutoff, instead of at most 1.
-3. A second embedding model: `BAAI/bge-base-en-v1.5`.
+3. Pretrained embeddings instead of TF-IDF: `BAAI/bge-small-en-v1.5` and
+   `BAAI/bge-base-en-v1.5` (amended 2026-10-08).
 4. A second sample of 300 topics, drawn with seed 2027.
 5. Results by domain pair (for example life sciences with physical sciences).
 
@@ -123,8 +127,11 @@ These are reported alongside the main result and do not change the decision:
   without citation and counts citation without real use.
 - 300 of 4,516 topics are sampled, so neighbourhoods are complete, but the
   set of candidate pairs is a sample.
+- The pretrained embedding models in robustness check 3 may have been
+  trained on literature from after the cutoff. The main analysis does not
+  use them.
 
-## Amendments before data collection
+## Amendments before analysis
 
 - **2026-10-07, eligibility.** The first version counted links only in the
   train window (seven years), so a pair of topics that cited each other
@@ -160,6 +167,24 @@ These are reported alongside the main result and do not change the decision:
   meant to compare. They are now left out of the network features. They
   never affected eligibility or labels, which only count links between two
   different topics.
+- **2026-10-08, content vectors from the abstracts themselves.** The
+  content features were to come from `BAAI/bge-small-en-v1.5`, a pretrained
+  embedding model released in 2023. Its paper and model card do not list
+  its English training sources, and some embedding models are trained on
+  pairs taken from scientific papers, including citation pairs (Nomic
+  Embed, for example, lists S2ORC citation pairs among its training data).
+  A model trained on citations made after 2017 may have learned which
+  fields later cite each other, which would favour exactly the content
+  features that H1 tests. The main analysis now uses TF-IDF vectors fitted
+  at each cutoff on that cutoff's abstracts only (settings under Data);
+  the two content features are computed from them as before. bge-small and
+  bge-base become robustness checks. If they help and TF-IDF does not, we
+  will report that the gain may come from the models having seen later
+  literature. Timing: 239 of the 600 topic snapshots had been collected,
+  all at the 2011 cutoff. No model had been fitted and no outcome looked
+  at. The only use of the data so far was a check of feature ranges on the
+  first 78 topics at the 2011 cutoff, which computed labels in memory
+  without printing or summarising them.
 
 ## Deviations
 

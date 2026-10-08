@@ -13,7 +13,8 @@ Models compared (logistic regression on standardised features):
               co-citation cosine, degrees. This is the Science4Cast-style
               prior art to beat.
   semantic    popularity + similarity of the two topics' random pre-cutoff
-              abstracts (centroid cosine, mean of the closest paper pairs)
+              abstracts (centroid cosine, mean of the closest paper pairs),
+              by default with TF-IDF fitted on that freeze's abstracts only
   combined    all of the above
 """
 
@@ -96,7 +97,8 @@ def pair_table(cutoff: int, max_prior_links: int, min_test_links: int, model: st
             if ea is None or eb is None:
                 continue
             sims = ea["vecs"] @ eb["vecs"].T
-            top = np.sort(sims.ravel())[-5:]
+            sims = sims.toarray() if hasattr(sims, "toarray") else sims    # sparse for TF-IDF
+            top = np.sort(np.asarray(sims).ravel())[-5:]
             rows.append({
                 "log_size_a": math.log1p(max(recs[a]["size"], recs[b]["size"])),
                 "log_size_b": math.log1p(min(recs[a]["size"], recs[b]["size"])),
@@ -258,7 +260,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--max-prior-links", type=int, default=1)
     ap.add_argument("--min-test-links", type=int, default=3)
-    ap.add_argument("--model", default="BAAI/bge-small-en-v1.5")
+    ap.add_argument("--model", default=embed.TFIDF,
+                    help="tfidf (the plan's main analysis) or a pretrained embedding model")
     ap.add_argument("--data", default="", help="data directory (default research/data)")
     ap.add_argument("--out", default="")
     args = ap.parse_args()

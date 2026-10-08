@@ -29,8 +29,11 @@ Can we predict which distant fields will start citing each other?
     citing topics, Jaccard, Adamic-Adar, co-citation cosine and degrees. This
     is the kind of model that did best in Science4Cast, and the baseline
     to beat;
-  - `semantic`: embedding similarity of each topic's sampled pre-cutoff
-    abstracts;
+  - `semantic`: content similarity of each topic's sampled pre-cutoff
+    abstracts, with TF-IDF fitted at each cutoff on that cutoff's abstracts
+    only. A pretrained embedding model could have been trained on papers
+    and citations from after the cutoff; pretrained models are used only in
+    a robustness check;
   - `combined`.
 - **Metrics:** ROC-AUC, average precision, precision@100 and @1000, and a
   bootstrap 95% interval on the difference with `network`. The bootstrap
@@ -61,7 +64,7 @@ source .venv/bin/activate        # on Windows: .venv\Scripts\activate
 pip install -r research/requirements.txt
 cd research
 python -m undiscovered_research.collect    # OpenAlex; cached, stops and resumes
-python -m undiscovered_research.backtest   # writes results/backtest_e1_k3_<model>.json
+python -m undiscovered_research.backtest   # writes results/backtest_e1_k3_tfidf.json
 pytest                                     # offline tests
 ```
 
@@ -72,7 +75,7 @@ commit it came from:
 ```bash
 python -m undiscovered_research.collect --seed 2027 --data data_seed2027
 python -m undiscovered_research.robustness           # writes results/robustness.json
-python -m undiscovered_research.publish results/backtest_e1_k3_BAAI_bge-small-en-v1.5.json --robustness results/robustness.json
+python -m undiscovered_research.publish results/backtest_e1_k3_tfidf.json --robustness results/robustness.json
 ```
 
 OpenAlex is free. A free key from <https://openalex.org/settings/api>
@@ -81,7 +84,8 @@ queries a day; without one the shared budget is about a tenth of that. The
 collector stops cleanly when the day's budget is spent and resumes where it
 left off.
 
-Embeddings default to a local open model (`BAAI/bge-small-en-v1.5`, free, no
-account). To use any OpenAI-compatible embeddings endpoint instead (Ollama,
-LM Studio, vLLM or a hosted provider), set `UNDISCOVERED_EMBED_URL` (and
-`UNDISCOVERED_EMBED_KEY` if it needs one) and pass `--model`.
+The robustness checks also use pretrained embeddings, from a local open
+model by default (free, no account). To use any OpenAI-compatible
+embeddings endpoint instead (Ollama, LM Studio, vLLM or a hosted provider),
+set `UNDISCOVERED_EMBED_URL` (and `UNDISCOVERED_EMBED_KEY` if it needs one)
+and pass `--model`.

@@ -212,7 +212,7 @@ def test_robustness_runs_every_planned_variant(world, monkeypatch, tmp_path_fact
     monkeypatch.setattr(embed, "DATA", world)
     result = robustness.run(second_sample=None)
     keys = [v["key"] for v in result["variants"]]
-    assert keys == ["main", "k2", "k5", "e0", "bge_base", "seed2027"]
+    assert keys == ["main", "k2", "k5", "e0", "bge_small", "bge_base", "seed2027"]
     assert "skipped" in result["variants"][-1]           # reported, not silently dropped
     assert result["main"]["hypotheses"] == result["variants"][0]["hypotheses"]
     e0 = next(v for v in result["variants"] if v["key"] == "e0")
@@ -224,3 +224,37 @@ def test_robustness_runs_every_planned_variant(world, monkeypatch, tmp_path_fact
     seed = result["variants"][-1]
     assert "skipped" not in seed and seed["hypotheses"] == result["main"]["hypotheses"]
     assert backtest.DATA == world and embed.DATA == world   # restored afterwards
+
+
+def test_tfidf_vectors_use_only_the_given_abstracts():
+    abstracts = {
+        "TA": [{"text": "kalman filter state estimation noisy sensor measurements"},
+               {"text": "recursive state estimation from noisy sensor data"}],
+        "TB": [{"text": "data assimilation of noisy sensor measurements into state estimation"},
+               {"text": "weather state estimation from noisy observations"}],
+        "TC": [{"text": "poetry translation and literary style in medieval manuscripts"},
+               {"text": "medieval manuscripts and the history of literary translation"}],
+    }
+    emb = embed.topic_embeddings(2017, embed.TFIDF, abstracts)
+    assert set(emb) == {"TA", "TB", "TC"}
+    cos = lambda a, b: float(emb[a]["centroid"] @ emb[b]["centroid"])
+    assert cos("TA", "TB") > cos("TA", "TC")
+    assert abs(float(emb["TA"]["centroid"] @ emb["TA"]["centroid"]) - 1.0) < 1e-5
+
+
+def test_pair_table_runs_on_tfidf_vectors(world, monkeypatch):
+    # Words shared by more than half the abstracts are dropped (max_df), so
+    # TB and TD share two words that no other topic uses, and TA and TC none.
+    texts = {"TA": "proline assay leaf tissue", "TB": "drought sensor root growth",
+             "TC": "named content caching routers", "TD": "drought sensor packet delivery"}
+    for cutoff in collect.CUTOFFS:
+        for p in (world / "topics" / str(cutoff)).glob("*.json"):
+            rec = json.loads(p.read_text())
+            rec["abstracts"] = [{"id": "W1", "text": texts[rec["topic"]]},
+                                {"id": "W2", "text": texts[rec["topic"]]}]
+            p.write_text(json.dumps(rec))
+    monkeypatch.setattr(backtest, "topic_embeddings", embed.topic_embeddings)
+    table = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model=embed.TFIDF)
+    rows = dict(zip(table["pairs"], table["rows"]))
+    assert rows[("TA", "TC")]["centroid_cos"] == 0.0 and rows[("TA", "TC")]["top_pairs_cos"] == 0.0
+    assert rows[("TB", "TD")]["centroid_cos"] > 0.3

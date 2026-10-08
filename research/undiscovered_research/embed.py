@@ -1,13 +1,19 @@
-"""Embeddings for each topic's sampled abstracts, from any provider.
+"""Vectors for each topic's sampled abstracts.
 
-The research run uses a local sentence-transformers model, so it is free
-and needs no account. Setting ``UNDISCOVERED_EMBED_URL`` (and optionally
-``UNDISCOVERED_EMBED_KEY``) switches to any OpenAI-compatible
-``/embeddings`` endpoint instead: Ollama, LM Studio, vLLM, OpenRouter or a
-hosted provider. The project prescribes no model.
+The main analysis uses ``tfidf``: word weights fitted, at each freeze, on
+that freeze's own abstracts and nothing else. It cannot know anything
+written after the freeze, which a pretrained model can: some embedding
+models are trained on pairs of scientific papers, including citation pairs
+from years after any freeze we test.
 
-Vectors are L2-normalised and cached per (model, cutoff) under
-``research/data/emb/``.
+Any other name is a pretrained embedding model, used for robustness checks:
+a local sentence-transformers model by default (free, no account), or any
+OpenAI-compatible ``/embeddings`` endpoint when ``UNDISCOVERED_EMBED_URL``
+(and optionally ``UNDISCOVERED_EMBED_KEY``) is set: Ollama, LM Studio, vLLM,
+OpenRouter or a hosted provider. The project prescribes no model.
+
+Vectors are L2-normalised. Pretrained ones are cached per (model, cutoff)
+under ``research/data/emb/``; TF-IDF is fast enough to recompute.
 """
 
 from __future__ import annotations
@@ -21,6 +27,35 @@ import requests
 from .collect import DATA
 
 _local_models: dict[str, object] = {}
+
+TFIDF = "tfidf"
+
+
+def _tfidf_topics(abstracts: dict[str, list[dict]]) -> dict[str, dict]:
+    """TF-IDF over the abstracts given (one freeze's sample), and nothing else.
+
+    Settings fixed in the plan: English stop words removed, sublinear term
+    frequency, terms kept if they appear in at least 2 abstracts and in at
+    most half of them, unigrams only.
+    """
+    from sklearn.feature_extraction.text import TfidfVectorizer
+
+    owners, texts = [], []
+    for t, items in abstracts.items():
+        for a in items:
+            owners.append(t)
+            texts.append(a["text"])
+    vec = TfidfVectorizer(stop_words="english", sublinear_tf=True, min_df=2, max_df=0.5)
+    m = vec.fit_transform(texts).tocsr()          # rows are L2-normalised
+    out = {}
+    for t in abstracts:
+        rows = [i for i, o in enumerate(owners) if o == t]
+        if not rows:
+            continue
+        v = m[rows]
+        c = np.asarray(v.mean(axis=0)).ravel().astype(np.float32)
+        out[t] = {"vecs": v, "centroid": c / max(float(np.linalg.norm(c)), 1e-12)}
+    return out
 
 
 def _embed_local(model: str, texts: list[str]) -> np.ndarray:
@@ -55,7 +90,12 @@ def embed(model: str, texts: list[str]) -> np.ndarray:
 
 def topic_embeddings(cutoff: int, model: str,
                      abstracts: dict[str, list[dict]]) -> dict[str, dict]:
-    """{topic: {"vecs": (n, d) unit vectors, "centroid": (d,) unit vector}}."""
+    """{topic: {"vecs": (n, d) unit vectors, "centroid": (d,) unit vector}}.
+
+    For ``tfidf`` the vectors are a sparse matrix; everything else is dense.
+    """
+    if model == TFIDF:
+        return _tfidf_topics({t: a for t, a in abstracts.items() if a})
     cache = DATA / "emb" / model.replace("/", "_") / f"{cutoff}.npz"
     stored: dict[str, np.ndarray] = {}
     if cache.exists():

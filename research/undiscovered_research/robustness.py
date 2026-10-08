@@ -20,17 +20,18 @@ from pathlib import Path
 
 from . import backtest, collect, embed
 
-MAIN_MODEL = "BAAI/bge-small-en-v1.5"
+MAIN_MODEL = embed.TFIDF
 
 # (key, what changes, settings) in the order of the plan's list.
 # The main run: connected at 3 or more citing works, unconnected at most one
-# before the cutoff, bge-small embeddings, topics drawn with seed 2026.
+# before the cutoff, TF-IDF content vectors, topics drawn with seed 2026.
 VARIANTS = [
     ("main", "As planned", {}),
     ("k2", "Connected at 2+ citing works", {"min_test_links": 2}),
     ("k5", "Connected at 5+ citing works", {"min_test_links": 5}),
     ("e0", "No link at all up to 2017", {"max_prior_links": 0}),
-    ("bge_base", "Embeddings: bge-base", {"model": "BAAI/bge-base-en-v1.5"}),
+    ("bge_small", "Pretrained embeddings: bge-small", {"model": "BAAI/bge-small-en-v1.5"}),
+    ("bge_base", "Pretrained embeddings: bge-base", {"model": "BAAI/bge-base-en-v1.5"}),
     ("seed2027", "Other 300 topics (seed 2027)", {"second_sample": True}),
 ]
 
