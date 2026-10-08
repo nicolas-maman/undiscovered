@@ -45,16 +45,15 @@ actually happened.
    problem differently: estimating a hidden state from noisy measurements
    is a Kalman filter to a control engineer and data assimilation to a
    weather forecaster. A language model can rewrite a paper as the problem
-   it solves, with its field's vocabulary taken out, in one call per paper.
-   In a recent study this raised the average precision of matching papers
-   that solve the same problem in different fields from 0.22 to 0.51, on
-   109 papers (Kulikowski, 2026). One call per paper is too much for one
-   project across all of science, but not for many volunteers: anyone will
-   be able to lend their computer and whichever model they prefer, local or
-   from a provider, and the descriptions go into an open index. Whether
-   they predict new connections better than abstracts will be tested the
-   same way as above, on years and topics the first test has not used
-   ([draft of what comes next](research/NEXT.md)).
+   it solves, without its field's vocabulary. In a recent study that raised
+   the average precision of matching papers on the same problem across
+   fields from 0.22 to 0.51 (Kulikowski, 2026, on 109 papers). It takes one
+   model call per paper: too many for one project across all of science,
+   not for many volunteers, each using their own computer and whichever
+   model they prefer. The descriptions go into an open index. Whether they
+   predict new connections better than abstracts will be tested like the
+   backtest above, on years and topics it has not used
+   ([draft](research/NEXT.md)).
 5. **Experts and checks.** Researchers rate the proposed connections that
    touch their own field. Every description and verdict records which model
    produced it. Questions with known answers, mixed into the work, and
@@ -71,15 +70,15 @@ run on GitHub, and the work runs on contributors' own machines.
 Criticism is worth most before the data is analysed, while the plan can
 still change in the open.
 
-As each part ships:
+As each part ships, you will be able to:
 
-- **Rate a pair.** If a proposed connection touches your field, your view of
-  whether it is real is the most useful input the project can get.
-- **Ask about your own work.** Run the tool on your machine with a paper, an
-  ORCID or a short description, and see which distant fields work on the
-  same problem. Nothing leaves your machine unless you choose to share it.
-- **Volunteer.** Let your machine and the model of your choice describe
-  papers and examine candidate pairs.
+- rate the proposed connections that touch your field. Your view of whether
+  one is real is the most useful input the project can get;
+- run the tool on your own machine with a paper, an ORCID iD or a short
+  description, and see which distant fields work on the same problem.
+  Nothing leaves your machine unless you choose to share it;
+- lend your machine and the model of your choice to describe papers and
+  examine candidate pairs.
 
 Two clients will implement the same [protocol](PROTOCOL.md): one in Python
 and one in [Aether](https://github.com/aether-lang-dev/aether).
