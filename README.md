@@ -53,7 +53,8 @@ actually happened.
    be able to lend their computer and whichever model they prefer, local or
    from a provider, and the descriptions go into an open index. Whether
    they predict new connections better than abstracts will be tested the
-   same way as above, on years and topics the first test has not used.
+   same way as above, on years and topics the first test has not used
+   ([draft of what comes next](research/NEXT.md)).
 5. **Experts and checks.** Researchers rate the proposed connections that
    touch their own field. Every description and verdict records which model
    produced it. Questions with known answers, mixed into the work, and

@@ -89,3 +89,7 @@ model by default (free, no account). To use any OpenAI-compatible
 embeddings endpoint instead (Ollama, LM Studio, vLLM or a hosted provider),
 set `UNDISCOVERED_EMBED_URL` (and `UNDISCOVERED_EMBED_KEY` if it needs one)
 and pass `--model`.
+
+## What comes next
+
+A draft, written before the first result: [NEXT.md](NEXT.md).
