@@ -2,27 +2,33 @@
 
 For a cutoff year C (the literature is "frozen" at the end of C):
 
-* train window = [C-7, C], test window = [C+1, C+6].
+* train window = [C-7, C] (eight calendar years), test window = [C+1, C+6].
 * Topics are OpenAlex *primary* topics throughout: a work counts once, under
   the topic it is most about, rather than under each of up to three topics.
-* instrument  = the topic's 100 most-cited papers published up to C. A link
-  from topic A to topic B in a window is the number of works whose primary
-  topic is A, published in that window, that cite any of B's instrument
-  papers. One request (``group_by=primary_topic.id``) returns that count for
-  every citing topic at once.
-* train window: the full distribution over all citing topics (cursor-paged),
-  because the network features need each topic's whole neighbourhood.
-* test window: only the citing topics in the sample, asked in chunks of 100
-  (the OR limit). The labels only concern sampled pairs, and this costs
-  ceil(n/100) requests instead of paging through every citing topic.
-* abstracts   = a random sample (OpenAlex ``sample`` + ``seed``) of the
-  topic's papers in the train window that have an abstract. Random rather
-  than most-cited, because all-time citation counts include citations made
-  after the cutoff: choosing by them would leak the future into the
-  predictors.
-* size        = the number of the topic's works in the train window.
+* reference papers (``instrument`` in the records) = the topic's 100 papers
+  published up to C with the most citations made up to C. OpenAlex sorts by
+  today's citation count, so we take the 400 most cited today and subtract
+  each paper's citations from the years after C (``counts_by_year``, which
+  starts in 2012) before choosing. Ranking by today's counts would pick
+  papers for citations they received later, partly from the very pairs the
+  test asks about.
+* A link from topic A to topic B in a window is the number of works whose
+  primary topic is A, published in that window, that cite any of B's
+  reference papers. One request (``group_by=primary_topic.id``) returns that
+  count for every citing topic at once.
+* train window and its last three years: the full distribution over all
+  citing topics (cursor-paged), because the network features need each
+  topic's whole neighbourhood, now and recently.
+* earlier years and the test window: only the citing topics in the sample,
+  asked in chunks of 100 (the OR limit). They only concern sampled pairs.
+* abstracts = a random sample (OpenAlex ``sample`` + ``seed``) of the topic's
+  papers in the train window that have an abstract. Random rather than most
+  cited, because citation counts include citations made after the cutoff.
+* works by year = the topic's works per year in the train window, which give
+  its size and how fast it grew.
 
-Everything lands in ``research/data/topics/<cutoff>/<topic>.json``.
+Everything lands in ``research/data/topics/<cutoff>/<topic>.json``. Records
+from an older version of this code are collected again.
 """
 
 from __future__ import annotations
@@ -31,6 +37,7 @@ import argparse
 import json
 import random
 from collections import defaultdict
+from datetime import datetime, timezone
 from pathlib import Path
 
 from . import cleanup
@@ -38,10 +45,13 @@ from . import openalex as oa
 from .gentle import be_gentle
 
 DATA = Path(__file__).resolve().parent.parent / "data"
+FORMAT = 2                      # version of the record layout; older records are collected again
 CUTOFFS = (2011, 2017)          # 2011 fits the models; 2017 is the evaluation
 TRAIN_YEARS = 7                 # train window [C-7, C]
 TEST_YEARS = 6                  # test window  [C+1, C+6]
-INSTRUMENT = 100                # papers per topic that define "citing the topic"
+RECENT_YEARS = 3                # the last years of the train window, for recent neighbourhoods
+INSTRUMENT = 100                # reference papers per topic
+CANDIDATES = 400                # most cited today, among which the reference papers are chosen
 ABSTRACTS = 40                  # random abstracts per topic per cutoff
 SAMPLE_SEED = 17
 
@@ -76,6 +86,29 @@ def sample_topics(topics: list[dict], per_domain: int, seed: int) -> list[dict]:
     return chosen
 
 
+def citations_up_to(work: dict, cutoff: int) -> int:
+    """Citations a work had received by the end of ``cutoff``."""
+    later = sum(c.get("cited_by_count", 0) for c in work.get("counts_by_year") or []
+                if c.get("year", 0) > cutoff)
+    return max(0, int(work.get("cited_by_count") or 0) - later)
+
+
+def reference_papers(topic_id: str, cutoff: int) -> list[str]:
+    """The topic's INSTRUMENT most cited papers, counting citations up to the cutoff."""
+    candidates: list[dict] = []
+    for page in oa.paged("works", {
+            "filter": f"primary_topic.id:{topic_id},publication_year:<{cutoff + 1}",
+            "sort": "cited_by_count:desc", "per_page": 200,
+            "select": "id,cited_by_count,counts_by_year"}):
+        candidates.extend(page["results"])
+        if len(candidates) >= CANDIDATES:
+            break
+    ranked = sorted(candidates[:CANDIDATES],
+                    key=lambda w: (-citations_up_to(w, cutoff), -(w.get("cited_by_count") or 0),
+                                   oa.short_id(w["id"])))
+    return [oa.short_id(w["id"]) for w in ranked[:INSTRUMENT] if citations_up_to(w, cutoff) > 0]
+
+
 def _citing_counts(instrument: list[str], start: int | None, end: int,
                    only: list[str] | None = None) -> dict[str, int]:
     """Works published in [start, end] citing any instrument paper, by primary topic.
@@ -100,22 +133,19 @@ def _citing_counts(instrument: list[str], start: int | None, end: int,
     return counts
 
 
+def works_by_year(topic_id: str, start: int, end: int) -> dict[str, int]:
+    page = oa.get("works", {"filter": f"primary_topic.id:{topic_id},publication_year:{start}-{end}",
+                            "group_by": "publication_year", "per_page": 200})
+    return {str(g["key"]): int(g["count"]) for g in page.get("group_by", []) if g.get("key")}
+
+
 def collect_topic(topic_id: str, cutoff: int, sampled: list[str]) -> dict:
     train = (cutoff - TRAIN_YEARS, cutoff)
     test = (cutoff + 1, cutoff + TEST_YEARS)
+    recent = (cutoff - RECENT_YEARS + 1, cutoff)
 
-    top = oa.get("works", {
-        "filter": f"primary_topic.id:{topic_id},publication_year:<{cutoff + 1}",
-        "sort": "cited_by_count:desc",
-        "per_page": INSTRUMENT,
-        "select": "id",
-    })
-    instrument = [oa.short_id(w["id"]) for w in top["results"]]
-
-    size = oa.get("works", {
-        "filter": f"primary_topic.id:{topic_id},publication_year:{train[0]}-{train[1]}",
-        "per_page": 1, "select": "id",
-    })["meta"]["count"]
+    instrument = reference_papers(topic_id, cutoff)
+    by_year = works_by_year(topic_id, *train)
 
     sample = oa.get("works", {
         "filter": f"primary_topic.id:{topic_id},publication_year:{train[0]}-{train[1]},has_abstract:true",
@@ -128,22 +158,37 @@ def collect_topic(topic_id: str, cutoff: int, sampled: list[str]) -> dict:
         "text": f"{w.get('title') or ''}. {oa.abstract_text(w.get('abstract_inverted_index'))}".strip(),
     } for w in sample["results"]]
 
+    def counts(start, end, only=None):
+        return _citing_counts(instrument, start, end, only=only) if instrument else {}
+
     return {
+        "format": FORMAT,
         "topic": topic_id,
         "cutoff": cutoff,
+        # OpenAlex changes over time, and its seeded samples with it.
+        "retrieved": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "train_window": train,
         "test_window": test,
-        "size": size,
+        "recent_window": recent,
+        "size": sum(by_year.values()),
+        "works_by_year": by_year,
         "instrument": instrument,
         "abstracts": abstracts,
-        "cited_by_train": _citing_counts(instrument, *train) if instrument else {},
+        "cited_by_train": counts(*train),
+        "cited_by_recent": counts(*recent),
         # Every year before the train window, for the sampled topics only: a
         # pair is "not yet connected" only if it was never linked before the
         # cutoff, as in Science4Cast, not merely quiet in the train window.
-        "cited_by_before": (_citing_counts(instrument, None, train[0] - 1, only=sampled)
-                            if instrument else {}),
-        "cited_by_test": _citing_counts(instrument, *test, only=sampled) if instrument else {},
+        "cited_by_before": counts(None, train[0] - 1, only=sampled),
+        "cited_by_test": counts(*test, only=sampled),
     }
+
+
+def is_current(path: Path) -> bool:
+    try:
+        return json.loads(path.read_text(encoding="utf-8")).get("format") == FORMAT
+    except (OSError, ValueError):
+        return False
 
 
 def main() -> None:
@@ -176,7 +221,7 @@ def main() -> None:
         out_dir.mkdir(parents=True, exist_ok=True)
         for i, t in enumerate(chosen, 1):
             path = out_dir / f"{t['id']}.json"
-            if path.exists():
+            if is_current(path):
                 continue
             try:
                 rec = collect_topic(t["id"], cutoff, sampled)
@@ -186,9 +231,9 @@ def main() -> None:
                 return
             path.write_text(json.dumps(rec), encoding="utf-8")
             left = "" if oa.remaining is None else f" (OpenAlex calls left today: {oa.remaining})"
-            print(f"[{cutoff}] {i}/{len(chosen)} {t['id']} size={rec['size']} "
-                  f"citers train={len(rec['cited_by_train'])} test={len(rec['cited_by_test'])}{left}",
-                  flush=True)
+            # Progress only. Nothing from the test window is printed: it is
+            # the outcome, and nobody looks at outcomes before the analysis.
+            print(f"[{cutoff}] {i}/{len(chosen)} {t['id']}{left}", flush=True)
 
     # Complete: the topic files hold everything, so the response cache is
     # only taking up disk.

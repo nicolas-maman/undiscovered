@@ -9,7 +9,16 @@ import shutil
 import numpy as np
 import pytest
 
-from undiscovered_research import backtest, cleanup, collect, embed, openalex, robustness
+from undiscovered_research import backtest, cleanup, collect, embed, openalex, robustness, strict
+
+# Common English words only, so they pass the usable-abstract rule and then
+# vanish as stop words or as terms shared by every abstract.
+FILLER = ("in this paper we show how it was done and why it is of some use to those who "
+          "are in the same place as we are and what we would do if we had to do it again")
+
+
+def english(keywords: str) -> str:
+    return f"{FILLER} {keywords}"
 
 
 def test_abstract_text_rebuilds_word_order():
@@ -41,34 +50,65 @@ def test_precision_at():
     assert backtest.precision_at(y, s, 2) == 0.5
 
 
+def test_reference_papers_count_only_citations_up_to_the_cutoff(monkeypatch):
+    # W2 is the most cited today, but almost all of it came after 2017.
+    works = [
+        {"id": "https://openalex.org/W2", "cited_by_count": 900,
+         "counts_by_year": [{"year": 2019, "cited_by_count": 600}, {"year": 2018, "cited_by_count": 290}]},
+        {"id": "https://openalex.org/W1", "cited_by_count": 300,
+         "counts_by_year": [{"year": 2016, "cited_by_count": 50}, {"year": 2019, "cited_by_count": 20}]},
+        {"id": "https://openalex.org/W3", "cited_by_count": 5,
+         "counts_by_year": [{"year": 2020, "cited_by_count": 5}]},     # nothing before 2018
+    ]
+    assert collect.citations_up_to(works[0], 2017) == 10
+    assert collect.citations_up_to(works[1], 2017) == 280
+    monkeypatch.setattr(collect.oa, "paged", lambda path, params: iter([{"results": works}]))
+    assert collect.reference_papers("T1", 2017) == ["W1", "W2"]          # W3 had no citations yet
+
+
 @pytest.fixture
 def world(tmp_path, monkeypatch):
-    """Four topics in two domains; A-C stay apart, A-D connect after the cutoff,
-    B-C were linked long before the train window and so are not "unconnected"."""
+    """Six topics in two domains.
+
+    A-D and E-F connect after the cutoff; A-C stay apart with one old link;
+    B-C were linked long before the train window, so they are not
+    "unconnected". X is a topic outside the sample.
+    """
     topics = [
-        {"id": "TA", "name": "a", "domain": "Life Sciences"},
-        {"id": "TB", "name": "b", "domain": "Life Sciences"},
-        {"id": "TC", "name": "c", "domain": "Physical Sciences"},
-        {"id": "TD", "name": "d", "domain": "Physical Sciences"},
+        {"id": "TA", "name": "a", "domain": "Life Sciences", "subfield": "sa"},
+        {"id": "TB", "name": "b", "domain": "Life Sciences", "subfield": "sb"},
+        {"id": "TE", "name": "e", "domain": "Life Sciences", "subfield": "se"},
+        {"id": "TC", "name": "c", "domain": "Physical Sciences", "subfield": "sc"},
+        {"id": "TD", "name": "d", "domain": "Physical Sciences", "subfield": "sd"},
+        {"id": "TF", "name": "f", "domain": "Physical Sciences", "subfield": "sf"},
     ]
     (tmp_path / "sample.json").write_text(json.dumps(topics))
-    citing = {  # topic -> (cited_by_before, cited_by_train, cited_by_test)
-        "TA": ({"TC": 1}, {"TB": 9, "TX": 4}, {"TB": 9, "TD": 5}),
-        "TB": ({}, {"TA": 7, "TX": 2}, {"TA": 6}),
-        "TC": ({"TB": 4}, {"TD": 3}, {"TD": 3}),
-        "TD": ({}, {"TC": 2, "TX": 1}, {"TC": 2}),
+    citing = {  # topic -> (cited_by_before, cited_by_train, cited_by_recent, cited_by_test)
+        "TA": ({"TC": 1}, {"TB": 9, "TX": 4}, {"TB": 3}, {"TB": 9, "TD": 5}),
+        "TB": ({}, {"TA": 7, "TX": 2, "TD": 1}, {"TA": 2}, {"TA": 6}),
+        "TC": ({"TB": 4}, {"TD": 3}, {"TD": 1}, {"TD": 3}),
+        "TD": ({}, {"TC": 2, "TX": 1}, {"TX": 1}, {"TC": 2}),
+        "TE": ({}, {"TX": 3}, {"TX": 2}, {"TF": 2}),
+        "TF": ({}, {"TX": 2}, {}, {"TE": 2}),
     }
     for cutoff in collect.CUTOFFS:
         d = tmp_path / "topics" / str(cutoff)
         d.mkdir(parents=True)
-        for tid, (before, tr, te) in citing.items():
+        train = (cutoff - collect.TRAIN_YEARS, cutoff)
+        for tid, (before, tr, rec_, te) in citing.items():
             d.joinpath(f"{tid}.json").write_text(json.dumps({
-                "topic": tid, "size": 100, "instrument": ["W1"],
-                "abstracts": [{"id": "W1", "text": "x"}],
-                "cited_by_before": before, "cited_by_train": tr, "cited_by_test": te,
+                "format": collect.FORMAT, "topic": tid, "cutoff": cutoff,
+                "train_window": train, "test_window": (cutoff + 1, cutoff + collect.TEST_YEARS),
+                "recent_window": (cutoff - 2, cutoff),
+                "size": 800, "works_by_year": {str(y): 100 for y in range(train[0], train[1] + 1)},
+                "instrument": ["W1"],
+                "abstracts": [{"id": f"W{n}", "text": english(f"topic {tid.lower()}")} for n in range(5)],
+                "cited_by_before": before, "cited_by_train": tr, "cited_by_recent": rec_,
+                "cited_by_test": te,
             }))
     monkeypatch.setattr(backtest, "DATA", tmp_path)
-    vec = {"TA": [1.0, 0.0], "TB": [0.9, 0.1], "TC": [0.0, 1.0], "TD": [0.7, 0.7]}
+    vec = {"TA": [1.0, 0.0], "TB": [0.9, 0.1], "TE": [0.6, 0.8],
+           "TC": [0.0, 1.0], "TD": [0.7, 0.7], "TF": [0.5, 0.9]}
 
     def fake_embeddings(cutoff, model, abstracts):
         out = {}
@@ -87,74 +127,41 @@ def test_pair_table_keeps_only_unconnected_cross_domain_pairs(world):
     pairs = set(table["pairs"])
     assert ("TA", "TB") not in pairs                     # same domain
     assert ("TB", "TC") not in pairs                     # 4 citing works before the train window
-    assert pairs == {("TA", "TC"), ("TA", "TD"), ("TB", "TD")}
+    assert ("TB", "TD") in pairs                         # exactly one earlier link: still unconnected
     label = dict(zip(table["pairs"], table["labels"]))
     assert label[("TA", "TD")] == 1                      # 5 citing works after the cutoff
-    assert label[("TA", "TC")] == 0
+    assert label[("TA", "TC")] == 0 and label[("TE", "TF")] == 1
     links = dict(zip(table["pairs"], table["links"]))
     assert links[("TA", "TC")] == (1, 0)                 # one old link is still "unconnected"
+    directions = dict(zip(table["pairs"], table["directions"]))
+    assert directions[("TA", "TD")] == (0, 5)            # works in TD citing TA's papers
 
 
-def test_records_without_the_before_window_still_load(world):
-    for p in (world / "topics" / "2017").glob("*.json"):
-        rec = json.loads(p.read_text())
-        del rec["cited_by_before"]
-        p.write_text(json.dumps(rec))
-    pairs = set(backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")["pairs"])
-    assert ("TB", "TC") in pairs
+def test_load_refuses_an_incomplete_or_old_sample(world):
+    (world / "topics" / "2017" / "TF.json").unlink()
+    with pytest.raises(SystemExit, match="missing or in an old format"):
+        backtest.load(2017)
+    rec = json.loads((world / "topics" / "2011" / "TA.json").read_text())
+    rec["format"] = 1
+    (world / "topics" / "2011" / "TA.json").write_text(json.dumps(rec))
+    with pytest.raises(SystemExit):
+        backtest.load(2011)
 
 
-def test_pair_table_features_reflect_shared_citers(world):
+def test_pair_table_features(world):
     table = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")
     rows = dict(zip(table["pairs"], table["rows"]))
     # TA and TD are both cited by TX; TA and TC share no citing topic.
     assert rows[("TA", "TD")]["log_common"] > rows[("TA", "TC")]["log_common"]
     assert rows[("TA", "TD")]["centroid_cos"] > rows[("TA", "TC")]["centroid_cos"]
-
-
-def test_full_run_produces_the_preregistered_report(world):
-    report = backtest.run(max_prior_links=1, min_test_links=3, model="fake")
-    assert set(report["models"]) == {"random", "popularity", "network", "semantic", "combined"}
-    for m in report["models"].values():
-        lo, hi = m["average_precision_ci"]
-        assert 0.0 <= lo <= hi <= 1.0
-    hyp = report["hypotheses"]
-    assert set(hyp) == {"H1_combined_beats_network", "H2_network_beats_popularity",
-                        "H3_semantic_beats_popularity"}
-    h1 = hyp["H1_combined_beats_network"]
-    assert h1["holds"] == (h1["diff_ci"][0] > 0)
-    expected = "continue" if h1["holds"] and hyp["H2_network_beats_popularity"]["holds"] else "stop"
-    assert report["decision"] == expected
-    assert report["pairs"]["eval_positive"] == 1
-    assert "Life Sciences / Physical Sciences" in report["by_domain_pair"]
-
-
-PAIRS = [("TA", "TC"), ("TA", "TD"), ("TB", "TC"), ("TB", "TD"), ("TA", "TE"), ("TB", "TE")]
-
-
-def test_compare_is_zero_against_itself():
-    y = np.array([1, 0, 1, 0, 0, 1])
-    s = np.array([0.9, 0.2, 0.8, 0.3, 0.1, 0.7])
-    samples = backtest._resamples(y, PAIRS, n=50)
-    c = backtest.compare(y, s, s, samples)
-    assert c["diff"] == 0.0 and c["diff_ci"] == [0.0, 0.0]
-
-
-def test_bootstrap_resamples_topics_not_pairs():
-    y = np.array([1, 0, 1, 0, 0, 1])
-    topics = sorted({t for p in PAIRS for t in p})
-    for w in backtest._resamples(y, PAIRS, n=40, seed=3):
-        # Each weight is a product of two topic counts that sum to the number of topics.
-        assert np.all(w == np.round(w)) and w.min() >= 0
-        assert (w * y).sum() > 0 and (w * (1 - y)).sum() > 0
-    # The first resample of seed 0 is exactly the product of the topic draws,
-    # so a topic that was not drawn takes all of its pairs out of it.
-    drawn = np.random.default_rng(0).integers(0, len(topics), len(topics))
-    count = dict(zip(topics, np.bincount(drawn, minlength=len(topics))))
-    expected = np.array([count[a] * count[b] for a, b in PAIRS], dtype=float)
-    assert (expected * y).sum() > 0 and (expected * (1 - y)).sum() > 0
-    assert list(backtest._resamples(y, PAIRS, n=1, seed=0)[0]) == list(expected)
-    assert any(c == 0 for c in count.values()) and 0.0 in expected
+    # TA cites TB (TA is among TB's citers) and TB cites TD: a two-step path A -> B -> D.
+    assert rows[("TA", "TD")]["log_two_hop"] > 0
+    assert rows[("TA", "TC")]["prior_links"] == 1.0 and rows[("TA", "TD")]["prior_links"] == 0.0
+    assert rows[("TA", "TD")]["growth_hi"] == 0.0         # flat output in every year
+    # Only one pair of domains here, so every pair has the same indicators.
+    assert {tuple(r[f] for f in backtest.DP_FEATURES) for r in table["rows"]} == {
+        tuple(float(p == "Life Sciences / Physical Sciences") for p in backtest.DOMAIN_PAIRS[1:])}
+    assert set(backtest.FEATURE_SETS["combined"]) <= set(table["rows"][0])
 
 
 def test_self_citations_do_not_count_as_neighbours(world):
@@ -162,9 +169,71 @@ def test_self_citations_do_not_count_as_neighbours(world):
         rec = json.loads(p.read_text())
         rec["cited_by_train"][rec["topic"]] = 10_000
         p.write_text(json.dumps(rec))
-    with_self = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")
-    rows = dict(zip(with_self["pairs"], with_self["rows"]))
+    rows = dict(zip(*(lambda t: (t["pairs"], t["rows"]))(
+        backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake"))))
     assert rows[("TA", "TD")]["cocite_cosine"] > 0.1
+
+
+def test_h1_has_three_outcomes():
+    assert backtest.h1_outcome([0.001, 0.02], network_ap=0.1) == "supported"
+    assert backtest.h1_outcome([-0.02, 0.005], network_ap=0.1) == "negative"     # rules out a 10% gain
+    assert backtest.h1_outcome([-0.02, 0.03], network_ap=0.1) == "inconclusive"
+
+
+def test_bootstrap_draws_topics_within_each_domain():
+    rng = np.random.default_rng(0)
+    by_domain = {"Life Sciences": ["TA", "TB", "TE"], "Physical Sciences": ["TC", "TD"]}
+    for _ in range(20):
+        count = backtest.topic_draws(by_domain, rng)
+        assert sum(count[t] for t in by_domain["Life Sciences"]) == 3
+        assert sum(count[t] for t in by_domain["Physical Sciences"]) == 2
+    w = backtest.pair_weights([("TA", "TC"), ("TB", "TD")], {"TA": 2, "TC": 3, "TB": 0, "TD": 1})
+    assert list(w) == [6.0, 0.0]                          # a topic not drawn removes its pairs
+
+
+def test_full_run_produces_the_preregistered_report(world):
+    strict_links = {("TA", "TD"): 4, ("TE", "TF"): 0}
+    report = backtest.run(max_prior_links=1, min_test_links=3, model="fake", n_boot=20,
+                          strict_links=strict_links)
+    assert set(report["models"]) == {"random", "popularity", "network", "semantic", "combined"}
+    for m in report["models"].values():
+        lo, hi = m["average_precision_ci"]
+        assert 0.0 <= lo <= hi <= 1.0
+    hyp = report["hypotheses"]
+    h1 = hyp["H1_combined_beats_network"]
+    assert h1["outcome"] in {"supported", "negative", "inconclusive"}
+    assert h1["holds"] == (h1["outcome"] == "supported")
+    assert report["strict"]["positive"] == 1
+    expected = ("continue" if h1["holds"] and hyp["H2_network_beats_popularity"]["holds"]
+                and report["strict"]["holds"] else "stop")
+    assert report["decision"] == expected
+    assert report["pairs"]["eval_positive"] == 2
+    assert report["directions"] == {"both": 1, "one_way": 1}     # E-F both ways, A-D one way
+    assert "Life Sciences / Physical Sciences" in report["by_domain_pair"]
+    assert set(report["feature_shift"]) == set(backtest.FEATURE_SETS["combined"])
+    # Without the strict label the run cannot decide.
+    assert backtest.run(1, 3, "fake", n_boot=5)["decision"] == "incomplete"
+
+
+def test_strict_label_drops_works_filed_near_the_other_topic(world, monkeypatch):
+    ev = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model="fake")
+    seen = []
+
+    def fake_paged(path, params):
+        seen.append(params["filter"])
+        # Works in TD citing TA's papers; "sa" is TA's subfield.
+        yield {"results": [
+            {"id": "W10", "topics": [{"subfield": {"display_name": "sd"}}]},
+            {"id": "W11", "topics": [{"subfield": {"display_name": "sd"}},
+                                     {"subfield": {"display_name": "sa"}}]},    # also filed near TA
+            {"id": "W12", "topics": []},
+        ]}
+
+    monkeypatch.setattr(strict.oa, "paged", fake_paged)
+    counts = strict.collect(ev, min_test_links=3)
+    assert counts[("TA", "TD")] == 2                     # W11 is left out
+    assert ("TA", "TC") not in counts                    # did not connect: never fetched
+    assert all("type:article|review" in f and "publication_year:2018-2023" in f for f in seen)
 
 
 def test_paging_stops_at_a_short_page(monkeypatch):
@@ -250,30 +319,24 @@ def test_cleanup_removes_only_what_it_lists(tmp_path, monkeypatch):
 def test_robustness_runs_every_planned_variant(world, monkeypatch, tmp_path_factory):
     monkeypatch.setattr(collect, "DATA", world)
     monkeypatch.setattr(embed, "DATA", world)
-    result = robustness.run(second_sample=None)
+    main = backtest.run(1, 3, "fake", n_boot=10, strict_links={("TA", "TD"): 4})
+    result = robustness.run(main, second_sample=None, n_boot=10)
     keys = [v["key"] for v in result["variants"]]
-    assert keys == ["main", "k2", "k5", "e0", "bge_small", "bge_base", "seed2027"]
+    assert keys == ["main", "strict", "k2", "k5", "e0", "large", "bge_small", "bge_base", "seed2027"]
     assert "skipped" in result["variants"][-1]           # reported, not silently dropped
-    assert result["main"]["hypotheses"] == result["variants"][0]["hypotheses"]
     e0 = next(v for v in result["variants"] if v["key"] == "e0")
-    assert e0["pairs"]["eval"] < result["variants"][0]["pairs"]["eval"]   # TA-TC had one old link
+    assert e0["pairs"]["eval"] < main["pairs"]["eval"]   # TA-TC had one old link
+    large = next(v for v in result["variants"] if v["key"] == "large")
+    assert large["pairs"]["eval"] == main["pairs"]["eval"]   # every topic has 800 works
 
     second = tmp_path_factory.mktemp("second")
     shutil.copytree(world, second, dirs_exist_ok=True)
-    result = robustness.run(second_sample=second)
+    result = robustness.run(main, second_sample=second, n_boot=10)
     seed = result["variants"][-1]
-    assert "skipped" not in seed and seed["hypotheses"] == result["main"]["hypotheses"]
+    assert "skipped" not in seed
+    assert seed["hypotheses"]["H1_combined_beats_network"]["diff"] == \
+        main["hypotheses"]["H1_combined_beats_network"]["diff"]
     assert backtest.DATA == world and embed.DATA == world   # restored afterwards
-
-
-# Common English words only, so they pass the usable-abstract rule and then
-# vanish as stop words or as terms shared by every abstract.
-FILLER = ("in this paper we show how it was done and why it is of some use to those who "
-          "are in the same place as we are and what we would do if we had to do it again")
-
-
-def english(keywords: str) -> str:
-    return f"{FILLER} {keywords}"
 
 
 def test_usable_abstracts_are_english_and_long_enough():
@@ -286,6 +349,17 @@ def test_usable_abstracts_are_english_and_long_enough():
     assert not embed.usable(french)
     topics = {"TA": [{"text": english("alpha")}] * 5, "TB": [{"text": english("beta")}] * 4}
     assert set(embed.usable_abstracts(topics)) == {"TA"}       # TB has too few
+
+
+def test_cleaning_and_stop_words():
+    text = ("Background: we grew thin films. RESULTS: they stay thin. (c) 2015 Elsevier Ltd. "
+            "All rights reserved. The background radiation was low.")
+    cleaned = embed.clean(text)
+    assert "Background:" not in cleaned and "RESULTS:" not in cleaned
+    assert "rights reserved" not in cleaned and "background radiation" in cleaned
+    stops = embed.stop_words()
+    assert {"thin", "system", "fire", "interest"}.isdisjoint(stops)      # words with meaning
+    assert {"the", "and", "elsevier", "copyright"} <= stops
 
 
 def test_tfidf_vectors_use_only_the_given_abstracts():
@@ -304,7 +378,8 @@ def test_pair_table_runs_on_tfidf_vectors(world, monkeypatch):
     # Words shared by more than half the abstracts are dropped (max_df), so
     # TB and TD share two words that no other topic uses, and TA and TC none.
     texts = {"TA": "proline assay leaf tissue", "TB": "drought sensor root growth",
-             "TC": "named content caching routers", "TD": "drought sensor packet delivery"}
+             "TC": "named content caching routers", "TD": "drought sensor packet delivery",
+             "TE": "glacier ice core isotopes", "TF": "tax policy household income"}
     for cutoff in collect.CUTOFFS:
         for p in (world / "topics" / str(cutoff)).glob("*.json"):
             rec = json.loads(p.read_text())
@@ -314,4 +389,15 @@ def test_pair_table_runs_on_tfidf_vectors(world, monkeypatch):
     table = backtest.pair_table(2017, max_prior_links=1, min_test_links=3, model=embed.TFIDF)
     rows = dict(zip(table["pairs"], table["rows"]))
     assert rows[("TA", "TC")]["centroid_cos"] == 0.0 and rows[("TA", "TC")]["top_pairs_cos"] == 0.0
-    assert rows[("TB", "TD")]["centroid_cos"] > 0.3
+    assert rows[("TA", "TD")]["log_usable_lo"] == pytest.approx(np.log(5))
+
+
+def test_a_variant_without_enough_data_is_reported_not_fatal(world, monkeypatch):
+    monkeypatch.setattr(collect, "DATA", world)
+    monkeypatch.setattr(embed, "DATA", world)
+    with pytest.raises(backtest.NotEnoughData, match="no positive fitting pairs"):
+        backtest.run(1, 50, "fake", n_boot=5)                  # nobody reaches 50 links
+    main = backtest.run(1, 3, "fake", n_boot=5, strict_links={("TA", "TD"): 4})
+    monkeypatch.setattr(robustness, "VARIANTS", [("big", "Huge topics only", {"min_size": 10**6})])
+    result = robustness.run(main, second_sample=None, n_boot=5)
+    assert result["variants"][-1]["skipped"] == "no fitting pairs under these settings"

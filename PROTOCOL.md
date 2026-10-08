@@ -1,26 +1,28 @@
 # The undiscovered protocol (v0, draft)
 
-How clients, volunteers and the site exchange work. Language-neutral on
-purpose: the Python and Aether clients implement exactly this, and any other
-client that does is a full participant. JSON Schemas for every message are in
-[`schemas/`](schemas/).
+How clients, volunteers and the site will exchange work. It is
+language-neutral on purpose: the Python and Aether clients will implement
+exactly this, and any other client that does is a full participant. JSON
+Schemas for every message are in [`schemas/`](schemas/). None of the
+clients or the validating Actions exist yet; this describes what they will
+do.
 
 > v0 is a draft. It will change until the backtest milestone is done; the
 > version number moves to 1 when a client is published against it.
 
 ## Principles
 
-1. **No server.** Work units are static files on the project site; results,
+1. No server. Work units are static files on the project site; results,
    ratings and reports arrive as GitHub Issues through issue forms; GitHub
    Actions validate and aggregate them. Nothing to host, nothing to pay for.
-2. **Any model.** The protocol never names a model. Every result says which
-   one produced it (provenance), and the network learns how far to trust it.
-3. **Comparable whatever the model.** Volunteers return verdicts, rankings and
+2. Any model. The protocol never names a model. Every result says which one
+   produced it, and the network learns how far to trust it.
+3. Comparable whatever the model. Volunteers return verdicts, rankings and
    evidence paper IDs, never raw scores meant to be compared across models.
    Every paper ID is checked against OpenAlex.
-4. **Keys stay home.** Provider keys and OpenAlex keys live on the
-   contributor's machine. A result never contains one; the validator rejects
-   any submission that looks like it does.
+4. Keys stay home. Provider keys and OpenAlex keys stay on the contributor's
+   machine. A result never contains one, and the validator rejects any
+   submission that looks like it does.
 
 ## Identifiers
 
@@ -83,8 +85,8 @@ Some units are **gold units**: their answer is already known (from the
 backtest: pairs that did or did not connect later). They look exactly like
 other units. They measure how good each contributor's model is.
 
-A limit worth stating: a language model trained on papers from after the
-gold unit's date may simply remember whether the pair connected. Gold units
+A language model trained on papers from after the gold unit's date may
+simply remember whether the pair connected. Gold units
 therefore measure how reliable a model is at this task, not whether it can
 foresee anything. Any claim that the method foresees connections rests only
 on tests that use no language model and nothing after their freeze date:
@@ -125,16 +127,16 @@ For `judge` units, `ranking` is replaced by `"verdict"` and `"reason"`. For
 
 A `distill` result is checked in three ways before it counts:
 
-- **No jargon.** For each work, the validator takes the terms in its title
+- No jargon. For each work, the validator takes the terms in its title
   and abstract that are most specific to it compared with other papers. If
   more than a few of them reappear in the description, the description is
   rejected. The threshold is set on the first trial runs and published with
   the validator.
-- **Agreement between models.** Descriptions of the same work from different
+- Agreement between models. Descriptions of the same work from different
   contributors are compared by embedding. The accepted description is the
   one closest to the others, and a model whose descriptions keep landing
   far from the rest loses weight.
-- **Known twins.** Some units contain pairs of works already known to solve
+- Known twins. Some units contain pairs of works already known to solve
   the same problem in different fields, such as those in published
   benchmarks of cross-field twins, used where their licence allows. A
   model whose descriptions of known twins land far apart loses weight.
@@ -158,13 +160,16 @@ answers and agreement between contributors. A rating is different, because
 its weight depends on whether the rater really works in one of the two
 fields, and the `expertise` field above is self-declared. The plan:
 
-1. **Optional sign-in with ORCID.** ORCID supports OpenID Connect's implicit
+1. Optional sign-in with ORCID. ORCID supports OpenID Connect's implicit
    flow, so the static site can obtain an ORCID-signed ID token in the
    browser with no server. The token is short-lived (10 minutes) and can be
    checked against the keys ORCID publishes at `https://orcid.org/oauth/jwks`.
    It needs a free Public API client, which ORCID grants to anyone with an
-   ORCID iD (Developer Tools on the record).
-2. **The token never appears in public.** Issues on a public repository are
+   ORCID iD (Developer Tools on the record). Current OAuth security advice
+   (RFC 9700) discourages the implicit flow for access tokens; here only the
+   signed ID token is used, to show who the rater is, and the access token
+   that comes with it is discarded.
+2. The token never appears in public. Issues on a public repository are
    public, and the token carries the person's name, so it must not go into
    the issue as it is. The site encrypts it in the browser with the
    project's public key; only the validating Action holds the private key,
@@ -174,34 +179,41 @@ fields, and the `expertise` field above is self-declared. The plan:
    the rating in the issue, and that the issue was opened while the token
    was valid. A copied token cannot be reused for a different rating, and
    one person's ratings of the same pair count once.
-3. **Expertise from the record, not the claim.** With a verified ORCID iD the
+3. Expertise from the record, not the claim. With a verified ORCID iD the
    Action looks the person up in OpenAlex (a single-record lookup, which
-   costs nothing; the record lists the topics the person has published in)
-   and checks whether either topic of the pair is among them. That decides
-   `own-field`, whatever the form says.
-4. **Anonymous ratings still count**, with a lower weight, so taking part
-   never requires an account.
+   costs nothing). The record lists the topics the person publishes in most.
+   If either topic of the pair is among them, the rating counts as
+   `own-field` whatever the form says. A topic missing from that list does
+   not prove the person never worked in it, so the check can raise a
+   rating's weight but never lowers it below that of a rating without
+   sign-in.
+4. Ratings without ORCID sign-in still count, with a lower weight. They
+   still need a GitHub account, because ratings travel as GitHub issues.
 
 The published rating shows the ORCID iD only if the rater ticks a box to
-show it; otherwise it shows only the weight it was given.
+show it. The GitHub account that opened the issue is public either way.
 
 ## Bridge reports
 
-From the `bridge-report` form: a connection someone found, through `ask` or by
-hand, with its evidence works. It enters the queue as a `judge` unit.
+From the `bridge-report` form: a connection someone found, with a client's
+`ask` command (a researcher's question about their own work) or by hand,
+with its evidence works. It enters the queue as a `judge` unit.
 
 ## Aggregation (GitHub Actions)
 
-1. **Validate.** Schema, unit exists and is open, every work ID resolves in
-   OpenAlex and belongs to the claimed topics, no secrets in the body. A
-   failure is labelled `invalid` and closed with the reason.
-2. **Weigh.** Each `(provider, model)` pair has an accuracy measured on gold
-   units; weight is a smoothed log-odds of that accuracy, starting neutral.
-   The model leaderboard on the site is this table.
-3. **Accept.** A unit is accepted when results reach its quorum and agree by
-   weighted majority. Agreement between different models counts for more than
+1. Validate: the schema, that the unit exists and is open, that every work
+   ID resolves in OpenAlex and belongs to the claimed topics, and that the
+   body holds no secrets. A failure is labelled `invalid` and closed with
+   the reason.
+2. Weigh. Each `(provider, model)` pair has an accuracy p measured on gold
+   units, and its weight is log(p / (1 - p)), with p pulled towards one half
+   while there are few gold answers, so a new model starts with a weight
+   near zero. The model leaderboard on the site is this table.
+3. Accept. A unit is accepted when it has as many results as its `quorum`
+   (the number of independent results it needs) and they agree by weighted
+   majority. Agreement between different models counts for more than
    agreement between two runs of the same model.
-4. **Publish.** Accepted results update `data/bridges.json`; the site is
+4. Publish. Accepted results update `data/bridges.json`; the site is
    rebuilt; the issues are closed with a link to what they changed.
 
 ## Versioning

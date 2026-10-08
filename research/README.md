@@ -4,59 +4,68 @@ Can we predict which distant fields will start citing each other?
 
 ## Design
 
-- **Unit:** a pair of OpenAlex topics from different domains (physical, life,
-  health, social sciences) that were connected by at most one citing work in
-  all the years up to the cutoff.
-- **Topics:** OpenAlex *primary* topics, so each work counts once, under the
+The full plan, with every threshold and the reason for each change, is in
+[PREREGISTRATION.md](PREREGISTRATION.md). In short:
+
+- Unit: a pair of OpenAlex topics from different domains (physical, life,
+  health, social sciences) that were connected by at most one citing work
+  in all the years up to the cutoff.
+- Topics: OpenAlex primary topics, so each work counts once, under the
   topic it is most about.
-- **Link:** works whose primary topic is A, published in a window, that cite
-  one of topic B's 100 most-cited papers published up to the cutoff (or the
-  reverse). OpenAlex counts that for every citing topic in one grouped
-  request. The train window is fetched in full, because the network features
-  need each topic's whole neighbourhood. The test window, and the years
-  before the train window (used only to decide which pairs were never
-  connected), are fetched only for the sampled topics, in chunks of 100,
-  because they only concern sampled pairs. A 300-topic run takes about
-  7,200 requests (measured: about 12 per topic and cutoff), which fits in
-  one day with a free key, or about a week without one.
-- **Label:** the pair has at least 3 links in the test window.
-- **Windows:** cutoff 2011 (train 2004 to 2011, test 2012 to 2017) fits the
-  models; cutoff 2017 (train 2010 to 2017, test 2018 to 2023) is the evaluation.
-  Every reported number is out of time.
-- **Models:** logistic regression on
-  - `popularity`: the two topics' sizes;
-  - `network`: Science4Cast-style structure of the citation graph: common
-    citing topics, Jaccard, Adamic-Adar, co-citation cosine and degrees. This
-    is the kind of model that did best in Science4Cast, and the baseline
-    to beat;
-  - `semantic`: content similarity of each topic's sampled pre-cutoff
-    abstracts, with TF-IDF fitted at each cutoff on that cutoff's abstracts
-    only. A pretrained embedding model could have been trained on papers
-    and citations from after the cutoff; pretrained models are used only in
-    a robustness check;
+- Reference papers: for each topic, its 100 papers published up to the
+  cutoff with the most citations received up to the cutoff (today's
+  counts minus later years). Today's counts alone would pick papers for
+  citations they only received later.
+- Link: works whose primary topic is A, published in a window, that cite
+  one of topic B's reference papers (or the reverse). OpenAlex counts that
+  for every citing topic in one grouped request. The train window and its
+  last three years are fetched in full, because the network features need
+  each topic's whole neighbourhood. The test window, and the years before
+  the train window (used only to decide which pairs were never connected),
+  are fetched only for the sampled topics.
+- Label: the pair has at least 3 links in the test window. A stricter
+  version, counting only articles and reviews that OpenAlex does not also
+  file near the other topic, guards against misfiled papers.
+- Windows: cutoff 2011 (train 2004 to 2011, test 2012 to 2017) fits the
+  models; cutoff 2017 (train 2010 to 2017, test 2018 to 2023) is the
+  evaluation. Every reported number comes from years the model never saw
+  when it was fitted.
+- Models, all logistic regression:
+  - `popularity`: the two topics' sizes and growth, how many usable
+    abstracts each has, and which pair of domains they come from. Every
+    other model includes these;
+  - `network`: the citation network around the pair, now and in the last
+    three years: degrees, common citing topics, Jaccard, Adamic-Adar,
+    co-citation cosine, two-step paths and any earlier link. These are the
+    kinds of features that did best in Science4Cast, and the baseline to
+    beat;
+  - `semantic`: how close the two topics' abstracts are, with TF-IDF fitted
+    at each cutoff on that cutoff's abstracts only. A pretrained embedding
+    model could have been trained on papers and citations from after the
+    cutoff, so pretrained models are used only in a robustness check;
   - `combined`.
-- **Metrics:** ROC-AUC, average precision, precision@100 and @1000, and a
-  bootstrap 95% interval on the difference with `network`. The bootstrap
-  resamples topics, not pairs, because pairs that share a topic are not
-  independent.
+- Metrics: average precision (primary), ROC-AUC, precision at 100 and at
+  1,000, with 95% intervals from 2,000 bootstrap replicates that resample
+  topics within each domain and refit every model each time.
+- Cost: about 16 OpenAlex requests per topic and cutoff, so about 9,600 per
+  300-topic sample, plus a few per connected pair for the stricter label.
+  With a free key that is about a day per sample.
 
 ### Guarding against the future leaking in
 
-- The abstracts that describe a topic are a **random** sample of its
-  pre-cutoff papers (OpenAlex `sample` with a fixed seed), not its most cited:
-  all-time citation counts include citations made after the cutoff. Only
-  English texts of at least 40 words count, so placeholders and shared
-  languages cannot make two topics look alike.
-- No feature uses topic descriptions or keywords; those were written from the
-  whole corpus.
+- Reference papers are chosen by citations made up to the cutoff.
+- The abstracts that describe a topic are a random sample of its pre-cutoff
+  papers (OpenAlex `sample` with a fixed seed), not its most cited. Only
+  English texts of at least 40 words count, so placeholder text and a
+  shared non-English language are much less likely to make two topics look
+  alike.
+- No feature uses topic descriptions or keywords; those were written from
+  the whole corpus.
 - The models are fitted only at the 2011 freeze, whose outcomes end in 2017.
-  Nothing from 2018 on is used to fit anything.
-- Known residual: OpenAlex assigns topics with one present-day classifier for
-  every year, which affects labels and features alike.
-- Known residual: the 100 papers that stand for each topic are its most cited
-  by today's counts, which include citations made after the cutoff. This
-  decides which papers count as the topic, for every model alike; no feature
-  counts a citation made after the cutoff.
+- Known residual: OpenAlex files works under topics with one present-day
+  classifier, a language model trained on recent text, for every year. The
+  plan's robustness check on long-established topics and the stricter
+  label address it.
 
 ## Run it
 
@@ -66,7 +75,7 @@ source .venv/bin/activate        # on Windows: .venv\Scripts\activate
 pip install -r research/requirements.txt
 cd research
 python -m undiscovered_research.collect    # OpenAlex; cached, stops and resumes
-python -m undiscovered_research.backtest   # writes results/backtest_e1_k3_tfidf.json
+python -m undiscovered_research.backtest   # fetches the stricter label, writes results/backtest_e1_k3_tfidf.json
 pytest                                     # offline tests
 ```
 
@@ -92,7 +101,8 @@ apart: see `research/requirements-embeddings.txt`. The model runs locally
 by default (free, no account). To use any OpenAI-compatible embeddings
 endpoint instead (Ollama, LM Studio, vLLM or a hosted provider), set
 `UNDISCOVERED_EMBED_URL` (and `UNDISCOVERED_EMBED_KEY` if it needs one)
-and pass `--model`.
+and run `backtest` with `--model <name>`; the robustness command always uses
+the two BGE models named in the plan.
 
 ### What it does to your computer
 

@@ -151,10 +151,12 @@
 
   function timelineNote() {
     return el("p", {class: "note", text:
-      "The model learns its weights at the first freeze, then ranks the pairs at the second " +
-      "without seeing anything after 2017. Earlier years are used only to check that a pair " +
-      "had not been connected before. Content is compared with word weights learned only from " +
-      "the abstracts available at each freeze, so it cannot know anything written later."});
+      "The model learns its weights at the first freeze, then ranks the pairs at the second. " +
+      "Earlier years are used only to check that a pair had not been connected before. Content " +
+      "is compared with word weights learned only from the abstracts available at each freeze. " +
+      "A topic's most cited papers are chosen by citations made up to each freeze. One input " +
+      "still comes from today's OpenAlex, the topic each paper is filed under; the plan says how " +
+      "that is checked."});
   }
 
   function pending() {
@@ -162,8 +164,9 @@
     verdict.appendChild(el("strong", {text: "Not run yet. "}));
     verdict.appendChild(document.createTextNode(
       "The analysis plan, including the rule that decides whether the method works, was " +
-      "published before any data was analysed. The numbers will appear here when the run " +
-      "is complete, whichever way they come out."));
+      "published before any model was fitted or any outcome was seen, and every later change " +
+      "to it is dated. The numbers will appear here when the run is complete, whichever way " +
+      "they come out."));
     body.appendChild(el("h2", {text: "How the test works"}));
     body.appendChild(el("p", {text:
       "We freeze the scientific literature at the end of 2017 and rank pairs of research topics " +
@@ -178,7 +181,7 @@
                text: "research/PREREGISTRATION.md"}), "."]));
   }
 
-  var MODELS = [["random", "Random ranking"], ["popularity", "Popularity (size of the two topics)"],
+  var MODELS = [["random", "Random ranking"], ["popularity", "Popularity (size, growth and domains)"],
                 ["network", "Network (Science4Cast-style baseline)"], ["semantic", "Content of the papers"],
                 ["combined", "Network and content (this project)"]];
 
@@ -272,21 +275,36 @@
       "average precision by " + (h1.diff >= 0 ? "+" : "") + num(h1.diff, 4) +
       " (95% interval " + interval(h1.diff_ci) + "), ranking " +
       r.pairs.eval.toLocaleString("en") + " unconnected pairs of fields. ";
+    var st = r.strict;
+    var smallest = Math.round(100 * (r.config.smallest_effect || 0.1));
     verdict.className = "verdict " + (go ? "go" : "stop");
     verdict.textContent = "";
+    function say(head, tail) {
+      verdict.appendChild(el("strong", {text: head + " "}));
+      verdict.appendChild(document.createTextNode(tail));
+    }
     if (go) {
-      verdict.appendChild(el("strong", {text: "The method beat the network baseline. "}));
-      verdict.appendChild(document.createTextNode(change + "The plan's rule for continuing is met."));
+      say("The method beat the network baseline.", change +
+        "The gain also held when only links that a misfiled paper cannot explain were counted, " +
+        "so the plan's rule for continuing is met.");
     } else if (!h2.holds) {
-      verdict.appendChild(el("strong", {text: "The network baseline did not beat popularity on this data. "}));
-      verdict.appendChild(document.createTextNode(
-        "A ranking by the size of the two topics did at least as well, so, as the plan published before " +
-        "the analysis says, the comparison with it is not interpreted. " + change +
-        "The project stops here and reports this."));
+      say("The network baseline did not beat popularity on this data.",
+        "A ranking by the size and growth of the two topics did at least as well, so, as the plan " +
+        "says, the comparison with it is not interpreted. " + change + "The project stops here and " +
+        "reports this.");
+    } else if (h1.outcome === "supported" && st && !st.holds) {
+      say("The gain did not survive the stricter label.", change + "Counting only links that a " +
+        "paper filed under the wrong topic cannot explain, the difference was " +
+        (st.diff >= 0 ? "+" : "") + num(st.diff, 4) + ". Under the plan, the gain may come from " +
+        "misfiled papers, and the project stops here and reports this.");
+    } else if (h1.outcome === "inconclusive") {
+      say("Inconclusive.", change + "The interval includes no gain and also a gain of at least " +
+        smallest + "% of the baseline's score, so this test cannot tell. Under the plan this is " +
+        "not enough to continue; the forward test will say more.");
     } else {
-      verdict.appendChild(el("strong", {text: "The method did not beat the network baseline. "}));
-      verdict.appendChild(document.createTextNode(change +
-        "Under the plan published before the analysis, the project stops here and reports this."));
+      say("The method did not beat the network baseline.", change + "The interval rules out a " +
+        "gain of " + smallest + "% of the baseline's score or more. Under the plan, the project " +
+        "stops here and reports this.");
     }
 
     body.appendChild(el("h2", {text: "What was tested"}));
@@ -294,7 +312,7 @@
       "We took pairs of research topics from different domains (physical, life, health and " +
       "social sciences) that had been linked by at most one citing work in all the years up to " +
       "2017. The models learned their weights on an earlier freeze (2011, with outcomes from 2012 " +
-      "to 2017), so nothing after 2017 went into them. They then ranked the 2017 pairs. A pair counts as " +
+      "to 2017) and then ranked the 2017 pairs. A pair counts as " +
       "connected if at least " + r.config.min_test_links + " works in one cited the other's most " +
       "cited papers between 2018 and 2023. Of the " + r.pairs.eval.toLocaleString("en") + " pairs, " +
       r.pairs.eval_positive.toLocaleString("en") + " did (" + pct(r.pairs.eval_base_rate, 2) + ")."}));
@@ -306,7 +324,7 @@
       "The baseline to beat is a model built on the kind of network features that did best in the ",
       el("a", {href: "https://arxiv.org/abs/2210.00881", text: "Science4Cast"}), " benchmark",
       ". The 95% intervals come from resampling topics rather than pairs, because pairs " +
-      "that share a topic are not independent."]));
+      "that share a topic are not independent, and every model is refitted in each resample."]));
 
     body.appendChild(el("h2", {text: "The numbers"}));
     body.appendChild(apChart(m));
@@ -318,7 +336,7 @@
     var rows = MODELS;
     var head = el("tr", {}, [el("th", {text: "Model"}), el("th", {class: "num", text: "Average precision"}),
       el("th", {class: "num", text: "95% interval"}), el("th", {class: "num", text: "ROC-AUC"}),
-      el("th", {class: "num", text: "Hits in top 100"})]);
+      el("th", {class: "num", text: "Hits in top 100"}), el("th", {class: "num", text: "Hits in top 1,000"})]);
     var tbody = el("tbody");
     rows.forEach(function (row) {
       var x = m[row[0]];
@@ -327,7 +345,8 @@
         el("td", {class: "num", text: num(x.average_precision, 4)}),
         el("td", {class: "num", text: x.average_precision_ci ? interval(x.average_precision_ci) : ""}),
         el("td", {class: "num", text: num(x.roc_auc)}),
-        el("td", {class: "num", text: Math.round(x.precision_at_100 * Math.min(100, r.pairs.eval)) + ""})]));
+        el("td", {class: "num", text: Math.round(x.precision_at_100 * Math.min(100, r.pairs.eval)) + ""}),
+        el("td", {class: "num", text: Math.round(x.precision_at_1000 * Math.min(1000, r.pairs.eval)).toLocaleString("en")})]));
     });
     body.appendChild(el("div", {class: "scroll"}, [el("table", {}, [el("thead", {}, [head]), tbody])]));
 
@@ -339,10 +358,18 @@
     var ul = el("ul");
     Object.keys(labels).forEach(function (k) {
       var x = h[k];
+      var word = x.outcome || (x.holds ? "holds" : "does not hold");
       ul.appendChild(el("li", {}, [labels[k] + ": ",
-        el("span", {class: x.holds ? "yes" : "no", text: x.holds ? "holds" : "does not hold"}),
+        el("span", {class: x.holds ? "yes" : "no", text: word}),
         " (difference " + (x.diff >= 0 ? "+" : "") + num(x.diff, 4) + ", 95% interval " + interval(x.diff_ci) + ")"]));
     });
+    if (r.strict) {
+      ul.appendChild(el("li", {}, ["Check against misfiled papers: the difference counting only links " +
+        "that a paper filed under the wrong topic cannot explain: ",
+        el("span", {class: r.strict.holds ? "yes" : "no", text: r.strict.holds ? "still positive" : "not positive"}),
+        " (" + (r.strict.diff >= 0 ? "+" : "") + num(r.strict.diff, 4) + ", 95% interval " +
+        interval(r.strict.diff_ci) + ", " + r.strict.positive.toLocaleString("en") + " pairs connected)"]));
+    }
     body.appendChild(ul);
 
     if (data.robustness) {
@@ -367,7 +394,7 @@
                     v.pairs.eval_positive.toLocaleString("en") + ")"}),
           el("td", {class: "num", text: (d.diff >= 0 ? "+" : "") + num(d.diff, 4)}),
           el("td", {class: "num", text: interval(d.diff_ci)}),
-          el("td", {}, [el("span", {class: d.holds ? "yes" : "no", text: d.holds ? "holds" : "does not hold"})])]));
+          el("td", {}, [el("span", {class: d.holds ? "yes" : "no", text: d.outcome || (d.holds ? "holds" : "does not hold")})])]));
       });
       body.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
         el("thead", {}, [el("tr", {}, [el("th", {text: "Variation"}),

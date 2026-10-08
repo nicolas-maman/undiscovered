@@ -8,7 +8,7 @@ body:
       value: |
         The client fills this in. The body must be one JSON block that matches
         [schemas/result.schema.json](https://github.com/nicolas-maman/undiscovered/blob/main/schemas/result.schema.json).
-        Never paste an API key: the validator rejects anything that looks like one.
+        Never paste an API key: the validator will reject anything that looks like one.
   - type: textarea
     id: result
     attributes:

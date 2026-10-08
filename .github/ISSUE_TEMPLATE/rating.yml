@@ -1,5 +1,5 @@
 name: Rate a bridge
-description: Tell us whether a proposed connection between two fields is real. If it is your field, your judgment is the most valuable thing here.
+description: Tell us whether a proposed connection between two fields is real, especially if one of them is your field.
 title: "rating: "
 labels: ["rating"]
 body:

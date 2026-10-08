@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this project or its data, please cite it, and the work it builds on."
-title: "undiscovered: an open network for finding research that should be talking to each other"
+title: "undiscovered: an open network that looks for research in one field that another field could use but has never cited"
 authors:
   - family-names: Maman
     given-names: Nicolas
@@ -15,7 +15,7 @@ references:
     journal: "Perspectives in Biology and Medicine"
     year: 1986
   - type: article
-    title: "Interesting Scientific Idea Generation Using Knowledge Graphs and LLMs: Evaluations with 100 Research Group Leaders"
+    title: "Generating Interesting Scientific Ideas using Knowledge Graphs and LLMs: Evaluations with 100 Research Group Leaders"
     authors:
       - family-names: Gu
         given-names: Xuemei
@@ -28,8 +28,41 @@ references:
     authors:
       - family-names: Krenn
         given-names: Mario
+      - family-names: Buffoni
+        given-names: Lorenzo
+      - family-names: Coutinho
+        given-names: Bruno
+      - family-names: Eppel
+        given-names: Sagi
+      - family-names: Foster
+        given-names: Jacob Gates
+      - family-names: Gritsevskiy
+        given-names: Andrew
+      - family-names: Lee
+        given-names: Harlin
+      - family-names: Lu
+        given-names: Yichao
+      - family-names: Moutinho
+        given-names: Joao P.
+      - family-names: Sanjabi
+        given-names: Nima
+      - family-names: Sonthalia
+        given-names: Rishi
+      - family-names: Tran
+        given-names: Ngoc Mai
+      - family-names: Valente
+        given-names: Francisco
+      - family-names: Xie
+        given-names: Yangxinyu
+      - family-names: Yu
+        given-names: Rose
+      - family-names: Kopp
+        given-names: Michael
     journal: "Nature Machine Intelligence"
+    volume: 5
+    start: 1326
     year: 2023
+    url: "https://arxiv.org/abs/2210.00881"
   - type: article
     title: "Accelerating science with human-aware artificial intelligence"
     authors:
@@ -44,8 +77,27 @@ references:
     authors:
       - family-names: Tshitoyan
         given-names: Vahe
+      - family-names: Dagdelen
+        given-names: John
+      - family-names: Weston
+        given-names: Leigh
+      - family-names: Dunn
+        given-names: Alexander
+      - family-names: Rong
+        given-names: Ziqin
+      - family-names: Kononova
+        given-names: Olga
+      - family-names: Persson
+        given-names: Kristin A.
+      - family-names: Ceder
+        given-names: Gerbrand
+      - family-names: Jain
+        given-names: Anubhav
     journal: "Nature"
+    volume: 571
+    start: 95
     year: 2019
+    doi: "10.1038/s41586-019-1335-8"
   - type: article
     title: "OpenAlex: A fully-open index of scholarly works, authors, venues, institutions, and concepts"
     authors:

@@ -61,12 +61,36 @@ def usable_abstracts(abstracts: dict[str, list[dict]]) -> dict[str, list[dict]]:
     return out
 
 
+# scikit-learn's English stop-word list also drops words that carry meaning
+# in some field (thin films, wildfires, interest rates, systems biology); they
+# are kept. Publisher and database boilerplate is dropped instead.
+KEEP_WORDS = {"system", "thin", "thick", "fire", "bill", "mill", "interest", "found", "detail",
+              "computer", "empty", "fill", "full", "front", "bottom", "top", "side", "part",
+              "move", "describe", "show"}
+BOILERPLATE = {"copyright", "elsevier", "springer", "wiley", "psycinfo", "apa", "ltd", "inc",
+               "llc", "gmbh"}
+_HEADING = re.compile(r"\b(?:background|objectives?|methods?|results|conclusions?|purpose|aims?|"
+                      r"introduction|design|setting|participants|findings|keywords)\s*:", re.I)
+_RIGHTS = re.compile(r"\u00a9|\(c\)|all rights reserved", re.I)
+
+
+def stop_words() -> set[str]:
+    from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+    return (set(ENGLISH_STOP_WORDS) - KEEP_WORDS) | BOILERPLATE
+
+
+def clean(text: str) -> str:
+    """Remove section headings of structured abstracts and rights notices."""
+    return _RIGHTS.sub(" ", _HEADING.sub(" ", text))
+
+
 def _tfidf_topics(abstracts: dict[str, list[dict]]) -> dict[str, dict]:
     """TF-IDF over the abstracts given (one freeze's sample), and nothing else.
 
-    Settings fixed in the plan: English stop words removed, sublinear term
-    frequency, terms kept if they appear in at least 2 abstracts and in at
-    most half of them, unigrams only.
+    Settings fixed in the plan: headings and rights notices removed, the stop
+    words above, words of two or more letters only (no numbers), sublinear
+    term frequency, terms kept if they appear in at least 2 abstracts and in
+    at most half of them.
     """
     from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -74,8 +98,9 @@ def _tfidf_topics(abstracts: dict[str, list[dict]]) -> dict[str, dict]:
     for t, items in abstracts.items():
         for a in items:
             owners.append(t)
-            texts.append(a["text"])
-    vec = TfidfVectorizer(stop_words="english", sublinear_tf=True, min_df=2, max_df=0.5)
+            texts.append(clean(a["text"]))
+    vec = TfidfVectorizer(stop_words=sorted(stop_words()), token_pattern=r"(?u)\b[^\W\d_]{2,}\b",
+                          sublinear_tf=True, min_df=2, max_df=0.5)
     m = vec.fit_transform(texts).tocsr()          # rows are L2-normalised
     out = {}
     for t in abstracts:
@@ -137,7 +162,7 @@ def topic_embeddings(cutoff: int, model: str,
     abstracts = usable_abstracts(abstracts)
     if model == TFIDF:
         return _tfidf_topics(abstracts)
-    cache = DATA / "emb" / "usable" / model.replace("/", "_") / f"{cutoff}.npz"
+    cache = DATA / "emb" / "usable-clean" / model.replace("/", "_") / f"{cutoff}.npz"
     stored: dict[str, np.ndarray] = {}
     if cache.exists():
         with np.load(cache) as z:
@@ -147,7 +172,7 @@ def topic_embeddings(cutoff: int, model: str,
         texts, owner = [], []
         for t in todo:
             for a in abstracts[t]:
-                texts.append(a["text"][:4000])
+                texts.append(clean(a["text"])[:4000])
                 owner.append(t)
         vecs = embed(model, texts)
         for t in todo:

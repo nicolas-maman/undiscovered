@@ -20,10 +20,12 @@ do not exist yet.
   check that the ranking existed on that date and has not changed.
 - Score it every year as the citations arrive, with a GitHub Action, and
   show the running score on the results page next to the backtest.
-- Cost: about 9 OpenAlex calls per topic, once.
+- Cost: about 9 OpenAlex calls per topic for the freeze, then about 3 per
+  topic each year to score it.
 
-If the backtest works, this is how it keeps earning trust. If it does not,
-the network baseline still gets a forward record, which is worth having.
+If the backtest works, the forward test checks it on outcomes nobody could
+have known. If it does not, the network baseline still gets a forward
+record, which is worth having.
 
 ## 2. Field-free descriptions
 
@@ -31,8 +33,9 @@ Question: do descriptions of papers written without their field's
 vocabulary (see `distill` in [PROTOCOL.md](../PROTOCOL.md)) predict new
 cross-field connections better than the abstracts themselves?
 
-- Same design as the first test, on a fresh sample of topics (seed 2028),
-  so nothing is reused from the first test's evaluation.
+- Same question and metrics as the first test, on a fresh sample of
+  topics (seed 2028), so nothing is reused from the first test's
+  evaluation.
 - The hard part is memorisation. A language model describing a 2017 paper
   has read papers from after 2017, and may phrase the description in terms
   that only became common in the field that later took the idea up. That
@@ -43,10 +46,12 @@ cross-field connections better than the abstracts themselves?
     date, and accept a shorter outcome window.
   - **Forward only.** Generate the descriptions now, for the forward test
     above, and wait for the outcomes.
-- Size: 300 topics, 40 abstracts each, two freezes: 24,000 descriptions.
-  By our estimate (2 to 4 seconds per description) that is roughly a day
-  for one consumer GPU running a small local model, or an hour for a few
-  dozen volunteers. It is the first job the volunteer network would do.
+- Size: about 12,000 descriptions per freeze (300 topics, 40 abstracts
+  each), and two freezes in either design (one to fit the model, one to
+  test it). By our estimate (2 to 4 seconds per description) 24,000 is
+  roughly a day for one consumer GPU running a small local model, or an
+  hour for a few dozen volunteers. It is the first job the volunteer
+  network would do.
 
 ## What we will not do
 
