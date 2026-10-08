@@ -186,6 +186,18 @@ These are reported alongside the main result and do not change the decision:
   first 78 topics at the 2011 cutoff, which computed labels in memory
   without printing or summarising them.
 
+## Looks at the data before analysis
+
+Every use of the analysis data before the analysis itself, and what was
+printed. None of them printed or summarised an outcome.
+
+- 2026-10-07: feature ranges (minimum, median, maximum, missing values) on
+  the first 78 topics at the 2011 cutoff, with pretrained embeddings, and
+  the number of eligible pairs. Labels were computed in memory only.
+- 2026-10-08: the same for the TF-IDF content features on the first 246
+  topics at the 2011 cutoff, plus running time and memory. Labels were
+  computed in memory only.
+
 ## Deviations
 
 None yet. Any change made after results are seen will be listed here with
