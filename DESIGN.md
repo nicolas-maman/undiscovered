@@ -49,7 +49,7 @@ abstracts is kept, not their text.
   volunteer's own OpenAlex allowance, runs at low priority, and stops
   cleanly when the day's allowance is spent.
 - **Submission.** A unit's records are too large for an issue (about
-  250 KB; an issue holds 65,536 characters). The client puts them in a
+  500 KB; an issue holds 65,536 characters). The client puts them in a
   gist under the volunteer's GitHub account and opens a short issue with
   the gist's address and a checksum.
 - **Checks.** A job fetches the gist, validates every record against the

@@ -1,0 +1,17 @@
+pyproject.toml
+tests/test_client.py
+undiscovered/__init__.py
+undiscovered/__main__.py
+undiscovered/cli.py
+undiscovered/config.py
+undiscovered/gentle.py
+undiscovered/github.py
+undiscovered/mapper.py
+undiscovered/openalex.py
+undiscovered/stopwords.py
+undiscovered.egg-info/PKG-INFO
+undiscovered.egg-info/SOURCES.txt
+undiscovered.egg-info/dependency_links.txt
+undiscovered.egg-info/entry_points.txt
+undiscovered.egg-info/requires.txt
+undiscovered.egg-info/top_level.txt

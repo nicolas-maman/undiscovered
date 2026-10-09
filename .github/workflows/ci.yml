@@ -18,6 +18,10 @@ jobs:
       - name: Offline tests
         working-directory: research
         run: python -m pytest -q
+      - name: Client tests (the client must agree with the research code)
+        run: |
+          pip install -e clients/python
+          python -m pytest -q clients/python/tests
       - name: Protocol examples point at real OpenAlex records
         working-directory: research
         env:
