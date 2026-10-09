@@ -463,6 +463,15 @@
       ". Every number on this page is in ",
       el("a", {href: "data/backtest.json", text: "data/backtest.json"}),
       ", and the code reproduces it from the open OpenAlex data."]));
+    body.appendChild(el("p", {}, [
+      "The pairs as plain tables for any language or spreadsheet, and every topic record the " +
+      "analysis used, are in the ",
+      el("a", {href: "https://github.com/nicolas-maman/undiscovered/releases/tag/backtest-v1",
+               text: "backtest release"}),
+      "; ",
+      el("a", {href: "https://github.com/nicolas-maman/undiscovered/blob/main/docs/DATA.md",
+               text: "docs/DATA.md"}),
+      " explains every column."]));
   }
 
   // Only a missing file means "not run yet". A file that is there but cannot
