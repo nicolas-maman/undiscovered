@@ -33,8 +33,9 @@ what actually happened.
 > not enough to take the method further as it is. All the numbers, the
 > robustness checks and the code are on the
 > [results page](https://nicolas-maman.github.io/undiscovered/results.html).
-> The next test asks whether describing papers without their field's
-> jargon does better than their words ([draft](research/NEXT.md)).
+> Too few pairs connected for a clear answer; a decisive test needs every
+> topic, and the [draft for it](research/STUDY-2-DRAFT.md) is open for
+> criticism before any of its data is collected.
 
 ## How it works
 
@@ -42,7 +43,8 @@ what actually happened.
    open index of scholarly works, assigns about nine in ten works to
    research topics. For each topic we take the 100 papers most cited up
    to the freeze, and record which other topics cite them and in which
-   years.
+   years. Volunteers collect this map on their own computers, with their
+   own free OpenAlex allowance ([client](clients/python/README.md)).
 2. Candidate pairs: two topics from different domains (physical, life,
    health or social sciences) whose papers have barely cited each other's
    most cited papers yet. Each pair is scored on the shape of the citation
@@ -64,9 +66,9 @@ what actually happened.
    109 papers (Kulikowski, 2026). That is one model call per paper: too
    many for one project, but manageable when many volunteers each run their
    own model, local or from a provider. The descriptions would go into an
-   open index. Whether they predict new connections better than abstracts
-   will be tested like the backtest above, on years and topics it has not
-   used ([draft](research/NEXT.md)).
+   open index. Any model good enough to write them has read papers from
+   after any past freeze, so they will be tested forward: described now,
+   judged on the citations that arrive later ([draft](research/NEXT.md)).
 5. Experts and checks. Researchers rate the proposed connections that touch
    their own field, because a connection that will happen is not always one
    worth making (see SciMuse below). Every description and verdict records
@@ -80,11 +82,11 @@ Contributors who choose a paid model pay for their own calls.
 
 ## Ways to help
 
-Now: find a flaw in the plan. Read the
-[analysis plan](research/PREREGISTRATION.md) and
-[tell us what could make the result wrong](https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml).
-Criticism is worth most before the data is analysed, while the plan can
-still change in the open.
+Now: find a flaw in the [draft plan for the second test](research/STUDY-2-DRAFT.md),
+or in the [first test's results](https://nicolas-maman.github.io/undiscovered/results.html),
+and [tell us what could make a result wrong](https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml).
+Criticism of a plan is worth most before its data is collected, while it
+can still change in the open.
 
 As each part ships, you will be able to:
 
@@ -95,8 +97,9 @@ As each part ships, you will be able to:
 - lend your machine and the model of your choice to describe papers and
   examine candidate pairs.
 
-Two clients will implement the same [protocol](PROTOCOL.md): one in Python
-and one in [Aether](https://github.com/aether-lang-dev/aether). How the
+Clients follow one [protocol](PROTOCOL.md). The [Python client](clients/python/README.md)
+collects the map now; an [Aether](https://github.com/aether-lang-dev/aether)
+client, a single program with nothing to install, is being built. How the
 pieces fit together, and in what order they are built, is in
 [DESIGN.md](DESIGN.md).
 
