@@ -115,6 +115,26 @@ def test_a_dry_run_leaves_no_cache_behind(monkeypatch, tmp_path):
     assert made and not any(d.exists() for d in made)
 
 
+def test_a_named_unit_is_submitted_once(monkeypatch):
+    index = {"units": [{"unit": "u-000001", "status": "open", "freeze": 2025, "topics": ["T1"]}]}
+
+    class Resp:
+        def json(self):
+            return index
+
+    issues = []
+    monkeypatch.setattr(cli.requests, "get", lambda *a, **k: Resp())
+    monkeypatch.setattr(cli, "be_gentle", lambda: None)
+    monkeypatch.setattr(cli, "do_unit", lambda unit, key: "{}")
+    monkeypatch.setattr(cli.config, "load", lambda: {})
+    monkeypatch.setattr(cli.config, "save", lambda cfg: None)
+    monkeypatch.setattr(cli.github, "token", lambda: "token")
+    monkeypatch.setattr(cli.github, "create_gist", lambda *a: "https://gist.github.com/someone/1")
+    monkeypatch.setattr(cli.github, "open_issue", lambda *a: issues.append(a[2]) or "issue")
+    cli.main(["work", "--unit", "u-000001", "--units", "3"])
+    assert issues == ["map result u-000001"]
+
+
 def test_the_submitted_result_follows_the_protocol():
     jsonschema = pytest.importorskip("jsonschema")
     schema = json.loads((REPO / "schemas" / "result.schema.json").read_text(encoding="utf-8"))

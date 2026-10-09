@@ -74,7 +74,7 @@ def cmd_work(args) -> None:
     index = requests.get(UNITS_URL, timeout=60).json()
     done = set(cfg.get("done", []))
     rng = random.Random()
-    for n in range(args.units):
+    for n in range(1 if args.unit else args.units):     # a named unit is done once
         if args.unit:
             unit = next((u for u in index.get("units", []) if u["unit"] == args.unit), None)
             if unit is None:
