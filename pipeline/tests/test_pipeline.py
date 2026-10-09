@@ -86,7 +86,7 @@ def test_a_sound_result_is_accepted_and_stored(branch):
 @pytest.mark.parametrize("break_it, message", [
     (lambda recs: recs[0].update(train_window=[2017, 2025]), "wrong windows"),
     (lambda recs: recs[0].update(size=1), "size is not the sum"),
-    (lambda recs: recs[0].update(instrument=["not-an-id"]), "reference papers"),
+    (lambda recs: recs[0].update(instrument=["not-an-id"]), "instrument"),
     (lambda recs: recs[0].update(usable_abstracts=41), "usable_abstracts"),
     (lambda recs: recs[0]["cited_by_train"].update({"T1": -2}), "cited_by_train"),
     (lambda recs: recs.reverse(), "exactly the unit's topics"),
@@ -140,3 +140,24 @@ def test_a_second_result_that_disagrees_sets_the_unit_aside(branch):
     c2, s2 = payload(unit, wrong)
     intake.intake(map_dir, body(unit["unit"], s2), "bob", 9, fetch=lambda url, tok: c2)
     assert status(map_dir, unit["unit"]) == "disputed"
+
+
+def test_client_authors_can_check_a_saved_result(branch, monkeypatch, tmp_path, capsys):
+    map_dir, index, ids = branch
+    unit = index["units"][0]
+
+    class Index:
+        def json(self):
+            return index
+
+    monkeypatch.setattr(intake.requests, "get", lambda url, timeout: Index())
+    good, _ = payload(unit)
+    (tmp_path / "good.json").write_text(good, encoding="utf-8")
+    assert intake.check_file(str(tmp_path / "good.json"), unit["unit"]) == 0
+    assert "would be accepted: 2 records" in capsys.readouterr().out
+    bad = [record(t) for t in unit["topics"]]
+    bad[1]["size"] = 0
+    content, _ = payload(unit, bad)
+    (tmp_path / "bad.json").write_text(content, encoding="utf-8")
+    assert intake.check_file(str(tmp_path / "bad.json"), unit["unit"]) == 1
+    assert "would be rejected: T2: size" in capsys.readouterr().out

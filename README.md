@@ -151,9 +151,14 @@ before they happen; an open index of field-free problem descriptions, built
 by volunteers with whatever model they choose; and expert ratings that
 anyone can inspect. No step depends on one AI model or provider.
 
-## Reproduce the backtest
+## Reproduce, reuse, contribute
 
-See [research/README.md](research/README.md).
+- Rerun the backtest: [research/README.md](research/README.md).
+- Use the data in any language: one table per freeze, one row per pair of
+  topics, in the [backtest release](https://github.com/nicolas-maman/undiscovered/releases),
+  with every column explained in [docs/DATA.md](docs/DATA.md).
+- Write a client in your own language: [docs/WRITE-A-CLIENT.md](docs/WRITE-A-CLIENT.md).
+- Everything else: [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licence
 

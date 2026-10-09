@@ -1,6 +1,10 @@
 """Check one submitted map result and, if it is sound, store it.
 
 Run by the intake workflow when an issue titled "map result u-..." is opened.
+Client authors can run the same checks on a saved result first:
+
+    python pipeline/intake.py --check undiscovered-u-000241.json u-000241
+
 It reads only the JSON block in the issue, never runs anything from it,
 fetches the gist the result names, checks its checksum and every record,
 and writes to a checkout of the map branch:
@@ -24,6 +28,10 @@ import sys
 from pathlib import Path
 
 import requests
+from jsonschema import Draft202012Validator
+
+SCHEMA = Draft202012Validator(json.loads(
+    (Path(__file__).resolve().parents[1] / "schemas" / "map-record.schema.json").read_text(encoding="utf-8")))
 
 MAX_BYTES = 5_000_000
 CHECK_EVERY = 20
@@ -92,6 +100,10 @@ def check_records(content: str, sha256: str, unit: dict) -> list[dict]:
     f = unit["freeze"]
     for r in records:
         t = r["topic"]
+        problem = next(iter(SCHEMA.iter_errors(r)), None)
+        if problem is not None:
+            where = "/".join(str(x) for x in problem.absolute_path) or "record"
+            raise Reject(f"{t}: {where}: {problem.message[:200]}")
         if r.get("format") != FORMAT or r.get("freeze") != f:
             raise Reject(f"{t}: wrong format or freeze year")
         if r.get("train_window") != [f - 7, f] or r.get("recent_window") != [f - 2, f]:
@@ -173,7 +185,29 @@ def intake(map_dir: Path, body: str, author: str, issue: int, token: str = "",
     return reply
 
 
-def main() -> None:
+UNITS_URL = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/map-2025/units/index.json"
+
+
+def check_file(path: str, unit_id: str) -> int:
+    """For client authors: run the intake checks on a saved result, before submitting it."""
+    index = requests.get(UNITS_URL, timeout=60).json()
+    unit = next((u for u in index["units"] if u["unit"] == unit_id), None)
+    if unit is None:
+        print(f"there is no unit {unit_id}")
+        return 1
+    content = Path(path).read_text(encoding="utf-8")
+    try:
+        records = check_records(content, hashlib.sha256(content.encode("utf-8")).hexdigest(), unit)
+    except Reject as e:
+        print(f"would be rejected: {e}")
+        return 1
+    print(f"would be accepted: {len(records)} records for {unit_id}")
+    return 0
+
+
+def main() -> int | None:
+    if len(sys.argv) == 4 and sys.argv[1] == "--check":
+        return check_file(sys.argv[2], sys.argv[3])
     event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
     issue = event["issue"]
     try:

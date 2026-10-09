@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nicolas-maman/undiscovered/schemas/map-record.schema.json",
+  "title": "Map record: one topic's citation record at a freeze year",
+  "description": "What a map unit returns for each topic. Field meanings: docs/DATA.md. The intake job also checks that size is the sum of works_by_year and that the years and windows fit the freeze year.",
+  "type": "object",
+  "required": ["format", "topic", "freeze", "retrieved", "train_window", "recent_window", "size",
+               "works_by_year", "instrument", "usable_abstracts", "cited_by_train", "cited_by_recent",
+               "cited_by_before"],
+  "additionalProperties": false,
+  "properties": {
+    "format": {"const": 1},
+    "topic": {"type": "string", "pattern": "^T[0-9]+$"},
+    "freeze": {"type": "integer", "minimum": 2000},
+    "retrieved": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "train_window": {"type": "array", "items": {"type": "integer"}, "minItems": 2, "maxItems": 2},
+    "recent_window": {"type": "array", "items": {"type": "integer"}, "minItems": 2, "maxItems": 2},
+    "size": {"type": "integer", "minimum": 0},
+    "works_by_year": {
+      "type": "object",
+      "propertyNames": {"pattern": "^[0-9]{4}$"},
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "instrument": {"type": "array", "items": {"type": "string", "pattern": "^W[0-9]+$"}, "maxItems": 100,
+                   "uniqueItems": true},
+    "usable_abstracts": {"type": "integer", "minimum": 0, "maximum": 40},
+    "cited_by_train": {"$ref": "#/$defs/counts"},
+    "cited_by_recent": {"$ref": "#/$defs/counts"},
+    "cited_by_before": {"$ref": "#/$defs/counts"}
+  },
+  "$defs": {
+    "counts": {
+      "type": "object",
+      "propertyNames": {"pattern": "^T[0-9]+$"},
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    }
+  }
+}

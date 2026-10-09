@@ -76,6 +76,7 @@ pip install -r research/requirements.txt   # or requirements-lock.txt for the ex
 cd research
 python -m undiscovered_research.collect    # OpenAlex; cached, stops and resumes
 python -m undiscovered_research.backtest   # fetches the stricter label, writes results/backtest_e1_k3_tfidf.json
+python -m undiscovered_research.export     # the pairs as plain tables: results/pairs_2011.csv, pairs_2017.csv
 pytest                                     # offline tests
 ```
 

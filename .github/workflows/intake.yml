@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install
-        run: pip install requests
+        run: pip install requests jsonschema
       - name: Check the result
         env:
           MAP_DIR: map

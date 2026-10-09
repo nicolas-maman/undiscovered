@@ -142,3 +142,9 @@ def test_the_openalex_key_never_reaches_the_cache(tmp_path, monkeypatch):
     assert sent[0]["api_key"] == "SECRET" and api.remaining == 77
     assert not any(b"SECRET" in f.read_bytes() for f in tmp_path.rglob("*") if f.is_file())
     assert all("SECRET" not in str(f) for f in tmp_path.rglob("*"))
+
+
+def test_a_map_record_follows_the_shared_schema():
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads((REPO / "schemas" / "map-record.schema.json").read_text(encoding="utf-8"))
+    jsonschema.Draft202012Validator(schema).validate(mapper.map_topic(FakeOpenAlex(), "T1", 2025))
