@@ -1,0 +1,347 @@
+// The two commands, as the Python client's cli.py has them: `setup` answers
+// three questions once, `work` takes an open unit, does it and submits it.
+
+import std.string
+import std.strbuilder
+import std.strarr
+import std.io
+import std.fs
+import std.json
+import std.cryptography
+import std.cryptography.sha2
+import std.http.client
+import version
+import settings
+import github
+import gentle
+import openalex
+import mapper
+import jsontext
+import secret
+
+exports(UNITS_URL, result_body, pick_unit, find_unit, unit_content, do_unit, cmd_work, cmd_setup)
+
+const UNITS_URL = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/map-2025/units/index.json"
+
+// Say why on stderr; returns the exit code for a failure, as Python's sys.exit(reason).
+report_error(reason: string) -> int {
+    io.stderr_write("${reason}\n")
+    return 1
+}
+
+// The issue body: one fenced JSON block, as Python's
+// json.dumps(result, indent=1) writes it.
+result_body(unit_id: string, gist: string, sha: string) -> string {
+    sb = strbuilder.new(512)
+    strbuilder.append(sb, "A map result from the undiscovered client. The checking job reads the JSON below.\n\n```json\n{\n \"unit\": ")
+    jsontext.quote_into(sb, unit_id)
+    strbuilder.append(sb, ",\n \"protocol\": ${version.PROTOCOL},\n \"client\": {\n  \"name\": ")
+    jsontext.quote_into(sb, version.NAME)
+    strbuilder.append(sb, ",\n  \"version\": ")
+    jsontext.quote_into(sb, version.VERSION)
+    strbuilder.append(sb, "\n },\n \"gist\": ")
+    jsontext.quote_into(sb, gist)
+    strbuilder.append(sb, ",\n \"sha256\": ")
+    jsontext.quote_into(sb, sha)
+    strbuilder.append(sb, "\n}\n```\n")
+    return strbuilder.finish(sb)
+}
+
+contains(names: ptr, name: string) -> int {
+    i = 0
+    while i < strarr.size(names) {
+        if strarr.get(names, i) == name {
+            return 1
+        }
+        i = i + 1
+    }
+    return 0
+}
+
+// A unit whose status is open or check and that is not in `done`, chosen by
+// `draw` (any non-negative number, random in use), or null when none is left.
+pick_unit(units: ptr, done: ptr, draw: long) -> ptr {
+    n = jsontext.size(units)
+    todo = 0
+    i = 0
+    while i < n {
+        u = jsontext.at(units, i)
+        status = jsontext.text(u, "status")
+        if (status == "open" || status == "check") && contains(done, jsontext.text(u, "unit")) == 0 {
+            todo = todo + 1
+        }
+        i = i + 1
+    }
+    if todo == 0 {
+        return null
+    }
+    want = (draw % todo) as int
+    i = 0
+    while i < n {
+        u = jsontext.at(units, i)
+        status = jsontext.text(u, "status")
+        if (status == "open" || status == "check") && contains(done, jsontext.text(u, "unit")) == 0 {
+            if want == 0 {
+                return u
+            }
+            want = want - 1
+        }
+        i = i + 1
+    }
+    return null
+}
+
+// The unit called `unit_id`, or null.
+find_unit(units: ptr, unit_id: string) -> ptr {
+    n = jsontext.size(units)
+    i = 0
+    while i < n {
+        u = jsontext.at(units, i)
+        if jsontext.text(u, "unit") == unit_id {
+            return u
+        }
+        i = i + 1
+    }
+    return null
+}
+
+// A random number from the system's random source.
+draw() -> long {
+    raw, n, err = cryptography.random_bytes(6)
+    long v = 0
+    if err == "" {
+        b = string.bytes(raw)
+        i = 0
+        while i < n {
+            v = v * 256 + (b[i] as int)
+            i = i + 1
+        }
+    }
+    return v
+}
+
+// The unit's result file: its records (JSON text each, in the unit's order)
+// as json.dumps(..., sort_keys=True, separators=(",", ":")) writes them.
+unit_content(unit_id: string, freeze: long, records: ptr) -> string {
+    sb = strbuilder.new(65536)
+    strbuilder.append(sb, "{\"freeze\":")
+    strbuilder.append_long(sb, freeze)
+    strbuilder.append(sb, ",\"records\":[")
+    i = 0
+    while i < strarr.size(records) {
+        if i > 0 {
+            strbuilder.append_byte(sb, 44)
+        }
+        strbuilder.append(sb, strarr.get(records, i))
+        i = i + 1
+    }
+    strbuilder.append(sb, "],\"unit\":")
+    jsontext.quote_into(sb, unit_id)
+    strbuilder.append_byte(sb, 125)
+    return strbuilder.finish(sb)
+}
+
+// Map every topic of the unit. Returns (content, "") or ("", reason).
+do_unit(unit: ptr, key: string) -> (string, string) {
+    unit_id = jsontext.text(unit, "unit")
+    freeze = jsontext.whole(unit, "freeze", 0)
+    topics = jsontext.member(unit, "topics")
+    n = jsontext.size(topics)
+    records = strarr.new_hint(n)
+    i = 0
+    while i < n {
+        topic, _terr = json.get_string(jsontext.at(topics, i))
+        record, err = mapper.map_topic(topic, freeze as int, key)
+        if err != "" {
+            openalex.close()
+            strarr.free(records)
+            return string.copy(""), err
+        }
+        strarr.push_copy(records, record)
+        left = ""
+        if openalex.remaining() >= 0 {
+            left = ", OpenAlex calls left today: ${openalex.remaining()}"
+        }
+        println("  ${unit_id}: topic ${i + 1}/${n} ${topic}${left}")
+        i = i + 1
+    }
+    openalex.close()
+    content = unit_content(unit_id, freeze, records)
+    strarr.free(records)
+    return content, ""
+}
+
+// The list of units, from the map branch.
+fetch_index() -> (ptr, string) {
+    req = client.request("GET", UNITS_URL)
+    client.set_header(req, "User-Agent", openalex.user_agent())
+    client.set_timeout(req, 60s)
+    resp, err = client.send_request(req)
+    client.request_free(req)
+    if err != "" {
+        return null, "The list of units could not be read (${err}): ${UNITS_URL}"
+    }
+    status = client.response_status(resp)
+    body = client.response_body(resp)
+    client.response_free(resp)
+    if status != 200 {
+        return null, "The list of units could not be read (HTTP ${status}): ${UNITS_URL}"
+    }
+    doc, perr = json.parse(body)
+    if perr != "" {
+        return null, "The list of units is not JSON (${perr}): ${UNITS_URL}"
+    }
+    return doc, ""
+}
+
+// `undiscovered work`. Returns the exit code.
+cmd_work(count: int, dry_run: int, only: string) -> int {
+    gentle.be_gentle()
+    cfg = settings.load()
+    tok = ""
+    if dry_run == 0 {
+        found, terr = github.token()
+        if terr != "" {
+            json.json_free(cfg)
+            return report_error(terr)
+        }
+        tok = found
+    }
+    index, ierr = fetch_index()
+    if ierr != "" {
+        json.json_free(cfg)
+        return report_error(ierr)
+    }
+    units = jsontext.member(index, "units")
+    done = strarr.new()
+    previous = jsontext.member(cfg, "done")
+    i = 0
+    while i < jsontext.size(previous) {
+        v = jsontext.at(previous, i)
+        if json.json_type(v) == 3 {
+            name, _nerr = json.get_string(v)
+            if contains(done, name) == 0 {
+                strarr.push_copy(done, name)
+            }
+        }
+        i = i + 1
+    }
+    key = settings.openalex_key(cfg)
+    if string.length(only) > 0 {
+        count = 1                       // a named unit is done once
+    }
+    code = 0
+    n = 0
+    while n < count {
+        n = n + 1
+        unit = null
+        if string.length(only) > 0 {
+            unit = find_unit(units, only)
+            if unit == null {
+                code = report_error("There is no unit ${only}.")
+                break
+            }
+        } else {
+            unit = pick_unit(units, done, draw())
+        }
+        if unit == null {
+            println("No open units left for you. Thank you.")
+            break
+        }
+        unit_id = jsontext.text(unit, "unit")
+        println("unit ${unit_id}: ${jsontext.size(jsontext.member(unit, "topics"))} topics at the end of ${jsontext.whole(unit, "freeze", 0)}")
+        content, err = do_unit(unit, key)
+        if err != "" {
+            if openalex.budget_spent() == 1 {
+                println("Stopped: ${err}. Run the same command tomorrow.")
+            } else {
+                code = report_error(err)
+            }
+            break
+        }
+        sha = sha2.sha256_hex(string.bytes(content))
+        if dry_run == 1 {
+            out = "undiscovered-${unit_id}.json"
+            werr = fs.write(out, content)
+            if werr != "" {
+                code = report_error("cannot write ${out}: ${werr}")
+                break
+            }
+            println("saved ${out} (sha256 ${string.substring(sha, 0, 12)}), not submitted")
+            break
+        }
+        gist, gerr = github.create_gist(tok, "${unit_id}.json", content, "undiscovered map result ${unit_id}")
+        if gerr != "" {
+            code = report_error(gerr)
+            break
+        }
+        issue, serr = github.open_issue(tok, version.REPO, "map result ${unit_id}", result_body(unit_id, gist, sha))
+        if serr != "" {
+            code = report_error(serr)
+            break
+        }
+        if contains(done, unit_id) == 0 {
+            strarr.push_copy(done, unit_id)
+        }
+        sort_names(done)
+        listed = json.arr()
+        j = 0
+        while j < strarr.size(done) {
+            json.push(listed, json.str(strarr.get(done, j)))
+            j = j + 1
+        }
+        json.set(cfg, "done", listed)
+        _saved, cerr = settings.save(cfg)
+        if cerr != "" {
+            code = report_error(cerr)
+            break
+        }
+        println("submitted: ${issue}")
+    }
+    strarr.free(done)
+    json.json_free(index)
+    json.json_free(cfg)
+    return code
+}
+
+sort_names(names: ptr) {
+    // Few names, so a plain insertion sort, by bytes as Python's sorted() orders them.
+    i = 1
+    while i < strarr.size(names) {
+        x = strarr.get(names, i)
+        j = i - 1
+        while j >= 0 && string.compare(strarr.get(names, j), x) > 0 {
+            strarr.set(names, j + 1, strarr.get(names, j))
+            j = j - 1
+        }
+        strarr.set(names, j + 1, x)
+        i = i + 1
+    }
+}
+
+// `undiscovered setup`. Returns the exit code.
+cmd_setup() -> int {
+    cfg = settings.load()
+    println("undiscovered setup. Everything you enter stays in ${settings.path()}")
+    println("\n1. OpenAlex key (optional). Without one you get about 1,000 calls a day; a free key")
+    println("   from https://openalex.org/settings/api gives about 10,000.")
+    key = secret.read("   Paste it, or press Enter to skip (input is hidden): ")
+    if string.length(key) > 0 {
+        json.set(cfg, "openalex_key", json.str(key))
+    }
+    println("\n2. GitHub. Results are submitted from your own GitHub account.")
+    _tok, terr = github.token()
+    if terr == "" {
+        println("   Found your GitHub login.")
+    } else {
+        println("   ${terr}")
+    }
+    println("\n3. AI model: not needed for map units, which are the only kind open now.")
+    file, serr = settings.save(cfg)
+    json.json_free(cfg)
+    if serr != "" {
+        return report_error(serr)
+    }
+    println("\nSaved ${file}")
+    return 0
+}

@@ -1,19 +1,20 @@
 # The undiscovered protocol (v0, draft)
 
-How clients, volunteers and the site will exchange work. It is
-language-neutral on purpose: the Python and Aether clients will implement
-exactly this, and any other client that does is a full participant. JSON
-Schemas for every message are in [`schemas/`](schemas/). None of the
-clients or the validating Actions exist yet; this describes what they will
-do.
+How clients, volunteers and the site exchange work. It is
+language-neutral on purpose: the project's [Python](clients/python) and
+[Aether](clients/aether) clients implement it, and any other client that
+does is a full participant. JSON Schemas for every message are in
+[`schemas/`](schemas/). Map units, both clients and the job that checks
+their results exist now; the other kinds of unit are described before they
+are built, and may change.
 
 > v0 is a draft. It will change until the backtest milestone is done; the
 > version number moves to 1 when a client is published against it.
 
 ## Principles
 
-1. No server. Work units are static files on the project site; results,
-   ratings and reports arrive as GitHub Issues through issue forms; GitHub
+1. No server. Work units are static files on a data branch of the
+   repository; results, ratings and reports arrive as GitHub Issues; GitHub
    Actions validate and aggregate them. Nothing to host, nothing to pay for.
 2. Any model. The protocol never names a model. Every result says which one
    produced it, and the network learns how far to trust it.

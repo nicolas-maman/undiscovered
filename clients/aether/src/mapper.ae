@@ -1,0 +1,463 @@
+// Map units: one topic's citation record at a freeze year, with no AI model.
+// The same record, field for field, as the Python client's mapper.py, which
+// docs/WRITE-A-CLIENT.md describes query by query.
+
+import std.string
+import std.strbuilder
+import std.json
+import std.map
+import std.mem
+import std.strarr
+import std.longarr
+import std.intarr
+import std.sort
+import std.os
+import openalex
+import english
+import jsontext
+
+exports(
+    map_topic, citations_up_to, rank_instrument, usable_abstracts, abstract_counts,
+    group_key, counts_add, counts_json, counts_total, instrument_json,
+    FORMAT, TRAIN_YEARS, RECENT_YEARS, INSTRUMENT, CANDIDATES, ABSTRACTS, SAMPLE_SEED, PER_PAGE
+)
+
+const FORMAT = 1
+const TRAIN_YEARS = 7           // train window [F-7, F]: eight calendar years
+const RECENT_YEARS = 3          // its last three
+const INSTRUMENT = 100          // reference papers per topic
+const CANDIDATES = 400          // most cited today, among which they are chosen
+const ABSTRACTS = 40
+const SAMPLE_SEED = 17
+const PER_PAGE = 200
+const POSITION_BITS = 1048576   // 2^20: room for the word number beside a position
+
+// ---- the computing part, which needs no network ----
+
+// A work's citations up to the end of `year`: today's count minus the
+// counts of every later year. Never below zero.
+citations_up_to(work: ptr, year: int) -> long {
+    long later = 0
+    by_year = jsontext.member(work, "counts_by_year")
+    n = jsontext.size(by_year)
+    i = 0
+    while i < n {
+        c = jsontext.at(by_year, i)
+        if jsontext.whole(c, "year", 0) > year {
+            later = later + jsontext.whole(c, "cited_by_count", 0)
+        }
+        i = i + 1
+    }
+    long total = jsontext.whole(work, "cited_by_count", 0) - later
+    if total < 0 {
+        return 0
+    }
+    return total
+}
+
+// Whether candidate a ranks before candidate b: more citations first, then
+// the smaller work ID.
+ranks_before(ids: ptr, cites: ptr, a: int, b: int) -> int {
+    ca = longarr.longarr_get_raw(cites, a)
+    cb = longarr.longarr_get_raw(cites, b)
+    if ca != cb {
+        if ca > cb {
+            return 1
+        }
+        return 0
+    }
+    if string.compare(strarr.get(ids, a), strarr.get(ids, b)) < 0 {
+        return 1
+    }
+    return 0
+}
+
+// The reference papers among the first `n` candidates (their short IDs in
+// `ids`, their citations up to the freeze in `cites`): the 100 most cited,
+// ties by work ID, without those cited nowhere by then. A new strarr that
+// owns its strings; free it with strarr.free.
+rank_instrument(ids: ptr, cites: ptr, n: int) -> ptr {
+    order = intarr.intarr_new_raw(n)
+    i = 0
+    while i < n {
+        intarr.intarr_set_raw(order, i, i)
+        i = i + 1
+    }
+    i = 1
+    while i < n {                       // insertion sort: stable, and n is at most 400
+        x = intarr.intarr_get_raw(order, i)
+        j = i - 1
+        while j >= 0 && ranks_before(ids, cites, x, intarr.intarr_get_raw(order, j)) == 1 {
+            intarr.intarr_set_raw(order, j + 1, intarr.intarr_get_raw(order, j))
+            j = j - 1
+        }
+        intarr.intarr_set_raw(order, j + 1, x)
+        i = i + 1
+    }
+    chosen = strarr.new()
+    k = 0
+    while k < n && k < INSTRUMENT {
+        idx = intarr.intarr_get_raw(order, k)
+        if longarr.longarr_get_raw(cites, idx) > 0 {
+            strarr.push_copy(chosen, strarr.get(ids, idx))
+        }
+        k = k + 1
+    }
+    intarr.intarr_free(order)
+    return chosen
+}
+
+// The words and stop words of an abstract kept as OpenAlex's inverted index
+// (word -> positions). As in Python, a position claimed by two words holds
+// the later one. The words are joined by spaces, so their order does not
+// change what is counted, only which word holds each position does.
+abstract_counts(inverted: ptr) -> (int, int) {
+    if inverted == null {
+        return 0, 0
+    }
+    if json.json_type(inverted) != 5 {
+        return 0, 0
+    }
+    nk = json.object_size(inverted)
+    total = 0
+    k = 0
+    while k < nk {
+        total = total + jsontext.size(json.json_object_value_at(inverted, k))
+        k = k + 1
+    }
+    if total == 0 {
+        return 0, 0
+    }
+    // Each (position, word number) as one long, so one sort orders them by
+    // position and, within a position, by word: the last of a run wins.
+    pairs = longarr.longarr_new_raw(total)
+    kw = intarr.intarr_new_raw(nk)
+    ks = intarr.intarr_new_raw(nk)
+    idx = 0
+    k = 0
+    while k < nk {
+        w, s = english.count_words(json.json_object_key_at(inverted, k))
+        intarr.intarr_set_raw(kw, k, w)
+        intarr.intarr_set_raw(ks, k, s)
+        positions = json.json_object_value_at(inverted, k)
+        m = jsontext.size(positions)
+        j = 0
+        while j < m {
+            long p = json.json_get_long(jsontext.at(positions, j))
+            longarr.longarr_set_raw(pairs, idx, p * POSITION_BITS + k)
+            idx = idx + 1
+            j = j + 1
+        }
+        k = k + 1
+    }
+    sort.longs(longarr.array(pairs))
+    words = 0
+    stops = 0
+    i = 0
+    while i < total {
+        p = longarr.longarr_get_raw(pairs, i) >> 20
+        while i + 1 < total && (longarr.longarr_get_raw(pairs, i + 1) >> 20) == p {
+            i = i + 1
+        }
+        winner = (longarr.longarr_get_raw(pairs, i) & (POSITION_BITS - 1)) as int
+        words = words + intarr.intarr_get_raw(kw, winner)
+        stops = stops + intarr.intarr_get_raw(ks, winner)
+        i = i + 1
+    }
+    longarr.longarr_free(pairs)
+    intarr.intarr_free(kw)
+    intarr.intarr_free(ks)
+    return words, stops
+}
+
+// How many of a sample's works have a usable "title. abstract" text.
+usable_abstracts(sample: ptr) -> int {
+    results = jsontext.member(sample, "results")
+    n = jsontext.size(results)
+    usable = 0
+    i = 0
+    while i < n {
+        w = jsontext.at(results, i)
+        tw, ts = english.count_words(jsontext.text(w, "title"))
+        aw, astops = abstract_counts(jsontext.member(w, "abstract_inverted_index"))
+        usable = usable + english.is_usable(tw + aw, ts + astops)
+        i = i + 1
+    }
+    return usable
+}
+
+// A group's key as Python's str(g["key"]) has it, or "" when Python's
+// `if g.get("key")` would skip the group (absent, null, "", 0).
+group_key(g: ptr) -> string {
+    v = jsontext.member(g, "key")
+    if v == null {
+        return string.copy("")
+    }
+    kind = json.json_type(v)
+    if kind == 3 {
+        s, _err = json.get_string(v)
+        return s
+    }
+    if kind == 2 {
+        if json.json_is_integer(v) == 1 {
+            n = json.json_get_long(v)
+            if n == 0 {
+                return string.copy("")
+            }
+            return string.from_long(n)
+        }
+        num, _err = json.stringify(v)
+        return num
+    }
+    return string.copy("")
+}
+
+// Add a group_by page to `counts` (a map from key to count, as boxed longs).
+// A key seen again keeps its last count, as a Python dict does. With
+// `topics` set, keys are topic URLs: "unknown" is skipped and the rest are
+// kept as short IDs. Returns how many groups the page had.
+counts_add(counts: ptr, page: ptr, topics: int) -> int {
+    groups = jsontext.member(page, "group_by")
+    n = jsontext.size(groups)
+    i = 0
+    while i < n {
+        g = jsontext.at(groups, i)
+        k = group_key(g)
+        if string.length(k) > 0 {
+            if topics == 0 {
+                map.map_put_raw(counts, k, mem.long_to_ptr(jsontext.whole(g, "count", 0)))
+            } else if k != "unknown" {
+                map.map_put_raw(counts, openalex.short_id(k), mem.long_to_ptr(jsontext.whole(g, "count", 0)))
+            }
+        }
+        i = i + 1
+    }
+    return n
+}
+
+// The sum of the counts in `counts`.
+counts_total(counts: ptr) -> long {
+    keys = map.map_keys_raw(counts)
+    n = map.map_keys_size_raw(keys)
+    long total = 0
+    i = 0
+    while i < n {
+        total = total + mem.ptr_to_long(map.map_get_raw(counts, map.map_keys_get_raw(keys, i)))
+        i = i + 1
+    }
+    map.map_keys_free(keys)
+    return total
+}
+
+// `counts` as a JSON object with its keys sorted, as json.dumps(sort_keys=True).
+counts_json(counts: ptr) -> string {
+    keys = map.map_keys_raw(counts)
+    n = map.map_keys_size_raw(keys)
+    names = strarr.new_hint(n)
+    i = 0
+    while i < n {
+        strarr.push_copy(names, map.map_keys_get_raw(keys, i))
+        i = i + 1
+    }
+    map.map_keys_free(keys)
+    sort.strings(strarr.array(names))
+    sb = strbuilder.new(16 + n * 16)
+    strbuilder.append_byte(sb, 123)
+    i = 0
+    while i < n {
+        if i > 0 {
+            strbuilder.append_byte(sb, 44)
+        }
+        name = strarr.get(names, i)
+        jsontext.quote_into(sb, name)
+        strbuilder.append_byte(sb, 58)
+        strbuilder.append_long(sb, mem.ptr_to_long(map.map_get_raw(counts, name)))
+        i = i + 1
+    }
+    strbuilder.append_byte(sb, 125)
+    strarr.free(names)
+    return strbuilder.finish(sb)
+}
+
+// The reference papers as a JSON list, in their order.
+instrument_json(instrument: ptr) -> string {
+    sb = strbuilder.new(1300)
+    strbuilder.append_byte(sb, 91)
+    i = 0
+    while i < strarr.size(instrument) {
+        if i > 0 {
+            strbuilder.append_byte(sb, 44)
+        }
+        jsontext.quote_into(sb, strarr.get(instrument, i))
+        i = i + 1
+    }
+    strbuilder.append_byte(sb, 93)
+    return strbuilder.finish(sb)
+}
+
+// ---- the fetching part ----
+
+// The topic's 100 papers most cited up to the end of the freeze year.
+reference_papers(topic: string, freeze: int, key: string) -> (ptr, string) {
+    flt = "primary_topic.id:${topic},publication_year:<${freeze + 1}"
+    base = "works?filter=${openalex.quote(flt)}&sort=${openalex.quote("cited_by_count:desc")}&per_page=${PER_PAGE}&select=${openalex.quote("id,cited_by_count,counts_by_year")}"
+    ids = strarr.new()
+    cites = longarr.longarr_new_raw(CANDIDATES)
+    n = 0
+    cursor = string.copy("*")
+    going = 1
+    while going == 1 {
+        page, err = openalex.get("${base}&cursor=${openalex.quote(cursor)}", key)
+        if err != "" {
+            strarr.free(ids)
+            longarr.longarr_free(cites)
+            return null, err
+        }
+        results = jsontext.member(page, "results")
+        count = jsontext.size(results)
+        i = 0
+        while i < count {
+            if n < CANDIDATES {
+                w = jsontext.at(results, i)
+                strarr.push_copy(ids, openalex.short_id(jsontext.text(w, "id")))
+                longarr.longarr_set_raw(cites, n, citations_up_to(w, freeze))
+            }
+            n = n + 1
+            i = i + 1
+        }
+        if n >= CANDIDATES || count < PER_PAGE {
+            going = 0
+        } else {
+            cursor = jsontext.text(jsontext.member(page, "meta"), "next_cursor")
+            if string.length(cursor) == 0 {
+                going = 0
+            }
+        }
+        json.json_free(page)
+    }
+    kept = n
+    if kept > CANDIDATES {
+        kept = CANDIDATES
+    }
+    instrument = rank_instrument(ids, cites, kept)
+    strarr.free(ids)
+    longarr.longarr_free(cites)
+    return instrument, ""
+}
+
+// Works published in [start, end] (every year up to `end` when `from_start`
+// is 0) citing any reference paper, by primary topic, as a JSON object.
+citing_counts(instrument: ptr, from_start: int, start: int, end: int, key: string) -> (string, string) {
+    n = strarr.size(instrument)
+    if n == 0 {
+        return string.copy("{}"), ""
+    }
+    joined = strbuilder.new(n * 13)
+    i = 0
+    while i < n {
+        if i > 0 {
+            strbuilder.append_byte(joined, 124)
+        }
+        strbuilder.append(joined, strarr.get(instrument, i))
+        i = i + 1
+    }
+    works = strbuilder.finish(joined)
+    years = "<${end + 1}"
+    if from_start == 1 {
+        years = "${start}-${end}"
+    }
+    flt = "referenced_works:${works},publication_year:${years}"
+    base = "works?filter=${openalex.quote(flt)}&group_by=primary_topic.id&per_page=${PER_PAGE}"
+    counts = map.new()
+    cursor = string.copy("*")
+    going = 1
+    while going == 1 {
+        page, err = openalex.get("${base}&cursor=${openalex.quote(cursor)}", key)
+        if err != "" {
+            map.map_free(counts)
+            return string.copy(""), err
+        }
+        groups = counts_add(counts, page, 1)
+        if groups < PER_PAGE {
+            going = 0
+        } else {
+            cursor = jsontext.text(jsontext.member(page, "meta"), "next_cursor")
+            if string.length(cursor) == 0 {
+                going = 0
+            }
+        }
+        json.json_free(page)
+    }
+    out = counts_json(counts)
+    map.map_free(counts)
+    return out, ""
+}
+
+// One topic's record at the freeze year, as JSON text with its keys sorted.
+map_topic(topic: string, freeze: int, key: string) -> (string, string) {
+    t0 = freeze - TRAIN_YEARS
+    r0 = freeze - RECENT_YEARS + 1
+    instrument, err = reference_papers(topic, freeze, key)
+    if err != "" {
+        return string.copy(""), err
+    }
+
+    flt = "primary_topic.id:${topic},publication_year:${t0}-${freeze}"
+    years, yerr = openalex.get("works?filter=${openalex.quote(flt)}&group_by=publication_year&per_page=${PER_PAGE}", key)
+    if yerr != "" {
+        strarr.free(instrument)
+        return string.copy(""), yerr
+    }
+    by_year = map.new()
+    counts_add(by_year, years, 0)
+    json.json_free(years)
+    size = counts_total(by_year)
+    by_year_text = counts_json(by_year)
+    map.map_free(by_year)
+
+    sflt = "primary_topic.id:${topic},publication_year:${t0}-${freeze},has_abstract:true"
+    sample, serr = openalex.get("works?filter=${openalex.quote(sflt)}&sample=${ABSTRACTS}&seed=${SAMPLE_SEED}&per_page=${ABSTRACTS}&select=${openalex.quote("id,title,abstract_inverted_index")}", key)
+    if serr != "" {
+        strarr.free(instrument)
+        return string.copy(""), serr
+    }
+    usable = usable_abstracts(sample)
+    json.json_free(sample)
+
+    retrieved = string.substring(os.now_utc_iso8601(), 0, 10)
+
+    train, terr = citing_counts(instrument, 1, t0, freeze, key)
+    if terr != "" {
+        strarr.free(instrument)
+        return string.copy(""), terr
+    }
+    recent, rerr = citing_counts(instrument, 1, r0, freeze, key)
+    if rerr != "" {
+        strarr.free(instrument)
+        return string.copy(""), rerr
+    }
+    before, berr = citing_counts(instrument, 0, 0, t0 - 1, key)
+    if berr != "" {
+        strarr.free(instrument)
+        return string.copy(""), berr
+    }
+
+    sb = strbuilder.new(4096)
+    strbuilder.append(sb, "{\"cited_by_before\":")
+    strbuilder.append(sb, before)
+    strbuilder.append(sb, ",\"cited_by_recent\":")
+    strbuilder.append(sb, recent)
+    strbuilder.append(sb, ",\"cited_by_train\":")
+    strbuilder.append(sb, train)
+    strbuilder.append(sb, ",\"format\":${FORMAT},\"freeze\":${freeze},\"instrument\":")
+    strbuilder.append(sb, instrument_json(instrument))
+    strbuilder.append(sb, ",\"recent_window\":[${r0},${freeze}],\"retrieved\":")
+    jsontext.quote_into(sb, retrieved)
+    strbuilder.append(sb, ",\"size\":${size},\"topic\":")
+    jsontext.quote_into(sb, topic)
+    strbuilder.append(sb, ",\"train_window\":[${t0},${freeze}],\"usable_abstracts\":${usable},\"works_by_year\":")
+    strbuilder.append(sb, by_year_text)
+    strbuilder.append_byte(sb, 125)
+    strarr.free(instrument)
+    return strbuilder.finish(sb), ""
+}

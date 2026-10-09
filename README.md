@@ -97,11 +97,12 @@ As each part ships, you will be able to:
 - lend your machine and the model of your choice to describe papers and
   examine candidate pairs.
 
-Clients follow one [protocol](PROTOCOL.md). The [Python client](clients/python/README.md)
-collects the map now; an [Aether](https://github.com/aether-lang-dev/aether)
-client, a single program with nothing to install, is being built. How the
-pieces fit together, and in what order they are built, is in
-[DESIGN.md](DESIGN.md).
+Clients follow one [protocol](PROTOCOL.md). Two collect the map now: the
+[Python client](clients/python/README.md), and the [Aether client](clients/aether/README.md),
+a single program written in [Aether](https://github.com/aether-lang-dev/aether)
+that needs no Python. On the same unit they write the same file, byte
+for byte. How the pieces fit together, and in what order they are built, is
+in [DESIGN.md](DESIGN.md).
 
 ## Earlier work
 

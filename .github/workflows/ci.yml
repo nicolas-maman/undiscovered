@@ -33,3 +33,31 @@ jobs:
         run: python -c "import json,glob; [json.load(open(p)) for p in glob.glob('schemas/*.json')]; print('ok')"
       - name: Plain punctuation (no em or en dashes in project text)
         run: python scripts/check_punctuation.py
+
+  # The Aether client on Linux, where its non-Windows parts (priority, hidden
+  # input, settings path) are compiled and tested. The toolchain is built from
+  # the pinned release once and cached under that tag.
+  aether-client:
+    runs-on: ubuntu-latest
+    env:
+      AETHER_REF: v0.798.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache the Aether toolchain
+        uses: actions/cache@v4
+        with:
+          path: ~/.aether
+          key: aether-${{ runner.os }}-${{ env.AETHER_REF }}
+      - name: Install the Aether toolchain
+        run: |
+          if [ ! -x "$HOME/.aether/bin/ae" ]; then
+            git clone --depth 1 --branch "$AETHER_REF" https://github.com/aether-lang-dev/aether.git "$RUNNER_TEMP/aether"
+            (cd "$RUNNER_TEMP/aether" && ./install.sh)
+          fi
+          echo "$HOME/.aether/bin" >> "$GITHUB_PATH"
+      - name: Build and test the client
+        working-directory: clients/aether
+        run: |
+          ae build src/main.ae -o undiscovered
+          ae test tests/test_client.ae
+          ./undiscovered --version

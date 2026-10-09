@@ -1,0 +1,240 @@
+// A small OpenAlex client for one unit of work, as the Python client's
+// openalex.py: at most 5 requests a second, retries with backoff on 429 and
+// server errors, and a clean stop when the day's allowance is spent. The
+// OpenAlex key, if any, is sent only to OpenAlex, as the api_key query
+// parameter, and never printed: every URL this module reports is the one
+// without it.
+//
+// Unlike the Python client it keeps no cache on disk: a unit never asks the
+// same question twice, so the cache only ever held files to delete.
+//
+// The requests go over std's own TLS 1.3 client (std.cryptography.tls13_client)
+// with std.http1 reading the answers, on one connection kept open for the
+// unit, rather than through std.http.client. That client cuts every request
+// path to 1023 bytes without saying so (std/net/aether_http.c, `char
+// path[1024]` in the send path), and the citing-topic queries name 100 works:
+// about 1,500 bytes. When std.http.client sends whole paths, this module can
+// use it again.
+
+import std.string
+import std.strbuilder
+import std.json
+import std.os
+import std.bytes
+import std.cryptography
+import std.cryptography.tls13_client
+import std.http1
+import version
+
+exports(get, close, quote, short_id, budget_spent, remaining, API, HOST, user_agent)
+
+const HOST = "api.openalex.org"
+const API = "https://api.openalex.org"
+const MIN_INTERVAL_MS = 200     // between live requests: 5 a second
+const ATTEMPTS = 8
+
+var last_ms: long = -1000000
+var remaining_calls = -1        // the X-RateLimit-Remaining OpenAlex last sent; -1 before any
+var budget = 0                  // 1 once OpenAlex has said the allowance is spent
+var conn: ptr = null            // the open TLS connection to OpenAlex, or null
+var conn_requests = 0           // requests sent on it so far
+
+// The User-Agent every request of this client sends.
+user_agent() -> string {
+    return "undiscovered-ae/${version.VERSION} (https://github.com/nicolas-maman/undiscovered)"
+}
+
+// 1 when the last failure was OpenAlex saying the day's allowance is spent.
+budget_spent() -> int {
+    return budget
+}
+
+// The calls OpenAlex says are left today, or -1 when it has not said.
+remaining() -> int {
+    return remaining_calls
+}
+
+// Percent-encode a query value as Python's urlencode does (quote_plus):
+// letters, digits and _.-~ stay, a space becomes +, everything else %XX.
+quote(s: string) -> string {
+    b = string.bytes(s)
+    sb = strbuilder.new(b.len + 16)
+    i = 0
+    while i < b.len {
+        c = b[i] as int
+        if (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122) || c == 95 || c == 46 || c == 45 || c == 126 {
+            strbuilder.append_byte(sb, c)
+        } else if c == 32 {
+            strbuilder.append_byte(sb, 43)
+        } else {
+            strbuilder.append_byte(sb, 37)
+            strbuilder.append_byte(sb, hex_digit(c >> 4))
+            strbuilder.append_byte(sb, hex_digit(c & 15))
+        }
+        i = i + 1
+    }
+    return strbuilder.finish(sb)
+}
+
+hex_digit(v: int) -> int {
+    if v < 10 {
+        return 48 + v
+    }
+    return 55 + v
+}
+
+// "https://openalex.org/T10005" -> "T10005": what follows the last "/".
+short_id(id: string) -> string {
+    b = string.bytes(id)
+    i = b.len - 1
+    while i >= 0 {
+        if b[i] as int == 47 {
+            return string.substring(id, i + 1, b.len)
+        }
+        i = i - 1
+    }
+    return string.copy(id)
+}
+
+all_digits(s: string) -> int {
+    b = string.bytes(s)
+    if b.len == 0 {
+        return 0
+    }
+    i = 0
+    while i < b.len {
+        c = b[i] as int
+        if c < 48 || c > 57 {
+            return 0
+        }
+        i = i + 1
+    }
+    return 1
+}
+
+// Close the connection to OpenAlex, if one is open.
+close() {
+    if conn != null {
+        tls13_client.close_conn(conn)
+        conn = null
+    }
+}
+
+open_connection() -> string {
+    raw, n, rerr = cryptography.random_bytes(32)
+    if rerr != "" || n != 32 {
+        return "no random bytes for the TLS key exchange"
+    }
+    key_share = bytes.new(32)
+    bytes.copy_from_string(key_share, 0, raw, 32)
+    c, err = tls13_client.connect(HOST, 443, key_share)
+    bytes.free(key_share)
+    if err != "" {
+        return "cannot connect to ${HOST}: ${err}"
+    }
+    conn = c
+    conn_requests = 0
+    return ""
+}
+
+// One GET of `target` ("/works?...") on the open connection, opening one if
+// needed. A kept-alive connection the server has since closed is replaced
+// once, as an HTTP library does. Returns (status, X-RateLimit-Remaining,
+// body, "") or (0, "", "", reason).
+exchange(target: string) -> (int, string, string, string) {
+    tries = 0
+    while tries < 2 {
+        tries = tries + 1
+        if conn == null {
+            oerr = open_connection()
+            if oerr != "" {
+                return 0, string.copy(""), string.copy(""), oerr
+            }
+        }
+        reused = conn_requests
+        conn_requests = conn_requests + 1
+        req = "GET ${target} HTTP/1.1\r\nHost: ${HOST}\r\nUser-Agent: ${user_agent()}\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n"
+        err = tls13_client.conn_send(conn, string.bytes(req))
+        if err == "" {
+            resp = http1.response_new()
+            err = http1.read_response_conn(resp, conn)
+            if err == "" {
+                status = http1.status_code(resp)
+                left = http1.header(resp, "x-ratelimit-remaining")
+                body = bytes.string_from_slice(http1.body(resp))
+                closing = string.to_lower(http1.header(resp, "connection"))
+                http1.response_free(resp)
+                if closing == "close" {
+                    close()
+                }
+                return status, left, body, ""
+            }
+            http1.response_free(resp)
+        }
+        close()
+        if reused == 0 {
+            return 0, string.copy(""), string.copy(""), err
+        }
+    }
+    return 0, string.copy(""), string.copy(""), "the connection to ${HOST} keeps closing"
+}
+
+// GET `query` ("works?filter=..." with its values already quoted) and parse
+// the answer. Returns (document, "") with a document the caller frees with
+// json.json_free, or (null, reason). When the reason is that the allowance is
+// spent, budget_spent() says 1.
+get(query: string, key: string) -> (ptr, string) {
+    url = "${API}/${query}"
+    target = "/${query}"
+    if string.length(key) > 0 {
+        target = "/${query}&api_key=${quote(key)}"
+    }
+    delay_ms = 1000
+    attempt = 0
+    while attempt < ATTEMPTS {
+        attempt = attempt + 1
+        wait = MIN_INTERVAL_MS - (os.now_monotonic_ms() - last_ms)
+        if wait > 0 {
+            sleep(wait as int)
+        }
+        last_ms = os.now_monotonic_ms()
+
+        status, left, body, err = exchange(target)
+        if err != "" {
+            sleep(delay_ms)
+            delay_ms = next_delay(delay_ms)
+            continue
+        }
+        if all_digits(left) == 1 {
+            remaining_calls = string.get_int(left)
+        }
+        if status == 200 {
+            doc, perr = json.parse(body)
+            if perr != "" {
+                return null, "OpenAlex sent an answer that is not JSON (${perr}) for ${url}"
+            }
+            return doc, ""
+        }
+        if status == 429 && string.contains(string.to_lower(body), "budget") == 1 {
+            budget = 1
+            if string.length(key) > 0 {
+                return null, "your OpenAlex allowance for today is spent; it resets at midnight UTC"
+            }
+            return null, "your OpenAlex allowance for today is spent; it resets at midnight UTC. A free key gives ten times more: https://openalex.org/settings/api"
+        }
+        if status == 429 || status == 500 || status == 502 || status == 503 || status == 504 {
+            sleep(delay_ms)
+            delay_ms = next_delay(delay_ms)
+            continue
+        }
+        return null, "OpenAlex answered ${status} for ${url}"
+    }
+    return null, "OpenAlex: gave up after retries: ${url}"
+}
+
+next_delay(ms: int) -> int {
+    if ms * 2 > 60000 {
+        return 60000
+    }
+    return ms * 2
+}

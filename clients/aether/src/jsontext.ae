@@ -1,0 +1,205 @@
+// Reading parsed JSON the forgiving way Python's dict.get does, and writing
+// JSON text exactly as Python's json.dumps writes it (ASCII only, so every
+// other character is a \u escape).
+
+import std.string
+import std.strbuilder
+import std.json
+
+exports(member, text, whole, size, at, quote_into, quoted, pretty_into)
+
+// obj[key], or null when obj is not an object or has no such key.
+member(obj: ptr, key: string) -> ptr {
+    if obj == null {
+        return null
+    }
+    if json.json_type(obj) != 5 {
+        return null
+    }
+    return json.json_object_get_raw(obj, key)
+}
+
+// obj[key] when it is a string, else "". The result is the caller's.
+text(obj: ptr, key: string) -> string {
+    v = member(obj, key)
+    if v == null {
+        return string.copy("")
+    }
+    if json.json_type(v) != 3 {
+        return string.copy("")
+    }
+    s, _err = json.get_string(v)
+    return s
+}
+
+// obj[key] when it is a number, else `fallback` (absent, null or anything else).
+whole(obj: ptr, key: string, fallback: long) -> long {
+    v = member(obj, key)
+    if v == null {
+        return fallback
+    }
+    if json.json_type(v) != 2 {
+        return fallback
+    }
+    return json.json_get_long(v)
+}
+
+// The length of a JSON array, 0 for anything else.
+size(arr: ptr) -> int {
+    if arr == null {
+        return 0
+    }
+    if json.json_type(arr) != 4 {
+        return 0
+    }
+    return json.json_array_size(arr)
+}
+
+// arr[i] (borrowed from arr).
+at(arr: ptr, i: int) -> ptr {
+    return json.json_array_get_raw(arr, i)
+}
+
+hex4(sb: ptr, v: int) {
+    strbuilder.append(sb, "\\u")
+    shift = 12
+    while shift >= 0 {
+        d = (v >> shift) & 15
+        if d < 10 {
+            strbuilder.append_byte(sb, 48 + d)
+        } else {
+            strbuilder.append_byte(sb, 87 + d)
+        }
+        shift = shift - 4
+    }
+}
+
+// Append `s` as a JSON string the way Python's json.dumps writes it with
+// ensure_ascii: printable ASCII as is, the usual short escapes, and every
+// other character as \uXXXX (a surrogate pair above U+FFFF).
+quote_into(sb: ptr, s: string) {
+    b = string.bytes(s)
+    n = b.len
+    strbuilder.append_byte(sb, 34)
+    i = 0
+    while i < n {
+        c = b[i] as int
+        cp = c
+        step = 1
+        if c >= 0xF0 && i + 3 < n {
+            cp = ((c & 7) << 18) | ((b[i + 1] as int & 63) << 12) | ((b[i + 2] as int & 63) << 6) | (b[i + 3] as int & 63)
+            step = 4
+        } else if c >= 0xE0 && i + 2 < n {
+            cp = ((c & 15) << 12) | ((b[i + 1] as int & 63) << 6) | (b[i + 2] as int & 63)
+            step = 3
+        } else if c >= 0xC0 && i + 1 < n {
+            cp = ((c & 31) << 6) | (b[i + 1] as int & 63)
+            step = 2
+        } else if c >= 0x80 {
+            cp = 0xFFFD
+        }
+        if cp == 34 {
+            strbuilder.append(sb, "\\\"")
+        } else if cp == 92 {
+            strbuilder.append(sb, "\\\\")
+        } else if cp == 10 {
+            strbuilder.append(sb, "\\n")
+        } else if cp == 13 {
+            strbuilder.append(sb, "\\r")
+        } else if cp == 9 {
+            strbuilder.append(sb, "\\t")
+        } else if cp == 8 {
+            strbuilder.append(sb, "\\b")
+        } else if cp == 12 {
+            strbuilder.append(sb, "\\f")
+        } else if cp >= 32 && cp <= 126 {
+            strbuilder.append_byte(sb, cp)
+        } else if cp > 0xFFFF {
+            v = cp - 0x10000
+            hex4(sb, 0xD800 + (v >> 10))
+            hex4(sb, 0xDC00 + (v & 0x3FF))
+        } else {
+            hex4(sb, cp)
+        }
+        i = i + step
+    }
+    strbuilder.append_byte(sb, 34)
+}
+
+// `s` as a JSON string, as its own string.
+quoted(s: string) -> string {
+    sb = strbuilder.new(string.length(s) + 2)
+    quote_into(sb, s)
+    return strbuilder.finish(sb)
+}
+
+indent(sb: ptr, depth: int) {
+    strbuilder.append_byte(sb, 10)
+    i = 0
+    while i < depth {
+        strbuilder.append_byte(sb, 32)
+        i = i + 1
+    }
+}
+
+// Append `node` as Python's json.dumps(node, indent=1) writes it.
+pretty_into(sb: ptr, node: ptr, depth: int) {
+    kind = json.json_type(node)
+    if kind == 0 {
+        strbuilder.append(sb, "null")
+    } else if kind == 1 {
+        if json.json_get_bool(node) != 0 {
+            strbuilder.append(sb, "true")
+        } else {
+            strbuilder.append(sb, "false")
+        }
+    } else if kind == 2 {
+        if json.json_is_integer(node) == 1 {
+            strbuilder.append_long(sb, json.json_get_long(node))
+        } else {
+            num, _err = json.stringify(node)
+            strbuilder.append(sb, num)
+        }
+    } else if kind == 3 {
+        s, _err = json.get_string(node)
+        quote_into(sb, s)
+    } else if kind == 4 {
+        n = json.json_array_size(node)
+        if n == 0 {
+            strbuilder.append(sb, "[]")
+            return
+        }
+        strbuilder.append_byte(sb, 91)
+        i = 0
+        while i < n {
+            if i > 0 {
+                strbuilder.append_byte(sb, 44)
+            }
+            indent(sb, depth + 1)
+            pretty_into(sb, json.json_array_get_raw(node, i), depth + 1)
+            i = i + 1
+        }
+        indent(sb, depth)
+        strbuilder.append_byte(sb, 93)
+    } else {
+        n = json.object_size(node)
+        if n == 0 {
+            strbuilder.append(sb, "{}")
+            return
+        }
+        strbuilder.append_byte(sb, 123)
+        i = 0
+        while i < n {
+            if i > 0 {
+                strbuilder.append_byte(sb, 44)
+            }
+            indent(sb, depth + 1)
+            quote_into(sb, json.json_object_key_at(node, i))
+            strbuilder.append(sb, ": ")
+            pretty_into(sb, json.json_object_value_at(node, i), depth + 1)
+            i = i + 1
+        }
+        indent(sb, depth)
+        strbuilder.append_byte(sb, 125)
+    }
+}

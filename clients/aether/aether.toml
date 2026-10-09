@@ -1,0 +1,16 @@
+[package]
+name = "undiscovered"
+version = "0.1.0"
+description = "Lend your computer to undiscovered: map which fields of science cite each other, with your own free OpenAlex allowance."
+license = "MIT"
+
+[[bin]]
+name = "undiscovered"
+path = "src/main.ae"
+
+[dependencies]
+
+[build]
+target = "native"
+# src/main.ae calls signal() for Ctrl-C; the generated C needs its header.
+cflags = "-include signal.h"

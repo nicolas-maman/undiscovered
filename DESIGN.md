@@ -144,10 +144,9 @@ pay for their own calls; a local model costs only electricity.
 Each step is usable on its own and is released before the next starts.
 
 1. This document.
-2. Map units, the Python client (`work` for map units), the checking job,
-   and the release with the full map.
+2. Map units, the Python and Aether clients (`work` for map units), the
+   checking job, and the release with the full map.
 3. The ranking job and the public candidate list, after the open question
    in step 2 of the design is settled on the backtest data.
 4. Explain units in the client, and the checks on them.
 5. The review page, the rating form, and the random-pair control.
-6. The Aether client, with the same commands.

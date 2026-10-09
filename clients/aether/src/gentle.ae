@@ -1,0 +1,28 @@
+// Run below normal priority, so whatever the volunteer is doing comes first
+// (the Python client's gentle.py): BELOW_NORMAL_PRIORITY_CLASS on Windows,
+// nice 10 elsewhere.
+
+exports(be_gentle)
+
+when target.os == "windows" {
+    extern GetCurrentProcess() -> ptr @c_import
+    extern SetPriorityClass(process: ptr, priority_class: int) -> int @c_import
+
+    // 1 when the priority was lowered, else 0.
+    be_gentle() -> int {
+        if SetPriorityClass(GetCurrentProcess(), 0x00004000) != 0 {
+            return 1
+        }
+        return 0
+    }
+} else {
+    extern nice(increment: int) -> int @c_import
+
+    // 1 when the priority was lowered, else 0.
+    be_gentle() -> int {
+        if nice(10) == -1 {
+            return 0
+        }
+        return 1
+    }
+}

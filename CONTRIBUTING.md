@@ -7,7 +7,7 @@ Thank you. There are four ways in, from least to most code.
    if anything in the [analysis plan](research/PREREGISTRATION.md), the
    [results](https://nicolas-maman.github.io/undiscovered/results.html) or
    [DESIGN.md](DESIGN.md) could make a conclusion wrong.
-2. **Lend your computer.** Run the [client](clients/python/README.md).
+2. **Lend your computer.** Run a client: [Python](clients/python/README.md) or [Aether](clients/aether/README.md).
 3. **Write a client** in your own language: [docs/WRITE-A-CLIENT.md](docs/WRITE-A-CLIENT.md).
 4. **Change the code.** Open a pull request.
 
@@ -22,6 +22,10 @@ python -m pytest -q research          # the analysis
 python -m pytest -q clients/python/tests pipeline/tests
 python scripts/check_punctuation.py
 ```
+
+The Aether client builds and tests on its own, with the Aether toolchain
+(`ae`, 0.782 or newer): from `clients/aether`, `ae build src/main.ae -o undiscovered`
+and `ae test tests/test_client.ae`.
 
 All tests run offline. CI runs the same, plus a check that every OpenAlex ID
 in PROTOCOL.md exists.

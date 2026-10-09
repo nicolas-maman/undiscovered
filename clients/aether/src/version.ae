@@ -1,0 +1,8 @@
+// The client's name and version, as it reports them in every result.
+
+exports(NAME, VERSION, REPO, PROTOCOL)
+
+const NAME = "undiscovered-ae"
+const VERSION = "0.1.0"
+const REPO = "nicolas-maman/undiscovered"
+const PROTOCOL = 0

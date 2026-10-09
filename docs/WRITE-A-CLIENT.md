@@ -2,7 +2,9 @@
 
 Any program that follows [PROTOCOL.md](../PROTOCOL.md) is a full client, in
 any language. The project's own clients are in Python
-([clients/python](../clients/python)) and, next, Aether. This page is the
+([clients/python](../clients/python)) and Aether
+([clients/aether](../clients/aether)); on the same unit they write the same
+file, byte for byte, and yours should too. This page is the
 whole recipe for the one kind of unit open now, `map`, with the exact
 OpenAlex queries, so that your records match everyone else's.
 

@@ -1,0 +1,102 @@
+// The volunteer's settings, kept on their own machine and nowhere else: the
+// same file as the Python client's (config.py), so both clients share it.
+//
+//   Windows    %APPDATA%\undiscovered\config.json
+//   elsewhere  $XDG_CONFIG_HOME/undiscovered/config.json, else ~/.config/...
+
+import std.string
+import std.strbuilder
+import std.os
+import std.fs
+import std.json
+import jsontext
+
+exports(env, path, load, save, openalex_key)
+
+extern free(p: ptr)
+
+// The environment variable `name`, or "" when it is unset. The caller's.
+env(name: string) -> string {
+    raw = os.os_getenv(name)
+    if raw == null {
+        return string.copy("")
+    }
+    value = string.copy(raw)
+    free(raw)
+    return value
+}
+
+when target.os == "windows" {
+    folder() -> string {
+        base = env("APPDATA")
+        if string.length(base) == 0 {
+            base = "${env("USERPROFILE")}\\AppData\\Roaming"
+        }
+        return "${base}\\undiscovered"
+    }
+
+    file_in(dir: string) -> string {
+        return "${dir}\\config.json"
+    }
+} else {
+    folder() -> string {
+        base = env("XDG_CONFIG_HOME")
+        if string.length(base) == 0 {
+            base = "${env("HOME")}/.config"
+        }
+        return "${base}/undiscovered"
+    }
+
+    file_in(dir: string) -> string {
+        return "${dir}/config.json"
+    }
+}
+
+// Where the settings live.
+path() -> string {
+    return file_in(folder())
+}
+
+// The settings as a JSON object the caller frees with json.json_free: an
+// empty one when the file is missing or unreadable.
+load() -> ptr {
+    content, err = fs.read(path())
+    if err == "" {
+        doc, perr = json.parse(content)
+        if perr == "" {
+            if json.json_type(doc) == 5 {
+                return doc
+            }
+            json.json_free(doc)
+        }
+    }
+    return json.obj()
+}
+
+// Write the settings, as Python's json.dumps(cfg, indent=1) does, readable
+// only by the volunteer where the system allows it. Returns (path, error).
+save(cfg: ptr) -> (string, string) {
+    dir = folder()
+    file = file_in(dir)
+    derr = fs.mkdir_p(dir)
+    if derr != "" {
+        return file, "cannot create ${dir}"
+    }
+    sb = strbuilder.new(256)
+    jsontext.pretty_into(sb, cfg, 0)
+    werr = fs.write(file, strbuilder.finish(sb))
+    if werr != "" {
+        return file, "cannot write ${file}"
+    }
+    _ = fs.chmod(file, 0o600)
+    return file, ""
+}
+
+// The OpenAlex key: OPENALEX_API_KEY, else the one in the settings, else "".
+openalex_key(cfg: ptr) -> string {
+    key = env("OPENALEX_API_KEY")
+    if string.length(key) > 0 {
+        return key
+    }
+    return jsontext.text(cfg, "openalex_key")
+}

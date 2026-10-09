@@ -1,0 +1,180 @@
+// Offline tests for the client: no network, no GitHub. The same cases as
+// clients/python/tests/test_client.py, on the same canned OpenAlex answers,
+// plus the texts that must come out byte for byte as the Python client
+// writes them.
+//
+//     ae test tests/test_client.ae      (from clients/aether)
+
+import std.spec
+import std.string
+import std.json
+import std.map
+import std.strarr
+import std.longarr
+import english
+import mapper
+import openalex
+import github
+import work
+
+// The answer the Python tests' FakeOpenAlex gives to the most-cited query.
+const MOST_CITED = "{\"results\":[{\"id\":\"https://openalex.org/W20\",\"cited_by_count\":900,\"counts_by_year\":[{\"year\":2026,\"cited_by_count\":880}]},{\"id\":\"https://openalex.org/W10\",\"cited_by_count\":300,\"counts_by_year\":[]},{\"id\":\"https://openalex.org/W30\",\"cited_by_count\":4,\"counts_by_year\":[{\"year\":2026,\"cited_by_count\":4}]}]}"
+
+// ...to the abstract sample: one usable English abstract, one too short.
+const SAMPLE = "{\"results\":[{\"id\":\"W1\",\"title\":\"Sensor fusion\",\"abstract_inverted_index\":{\"in\":[0,20],\"this\":[1],\"paper\":[2],\"we\":[3,25,29,33],\"show\":[4],\"how\":[5],\"it\":[6,11,37],\"was\":[7],\"done\":[8],\"and\":[9,27],\"why\":[10],\"is\":[12],\"of\":[13],\"some\":[14],\"use\":[15],\"to\":[16,35],\"those\":[17],\"who\":[18],\"are\":[19,26],\"the\":[21],\"same\":[22],\"place\":[23],\"as\":[24],\"what\":[28],\"would\":[30],\"do\":[31,36],\"if\":[32],\"had\":[34],\"again\":[38]}},{\"id\":\"W2\",\"title\":\"Short\",\"abstract_inverted_index\":{\"tiny\":[0]}}]}"
+
+// ...to the works-per-year and citing-topic queries.
+const YEARS = "{\"group_by\":[{\"key\":\"2018\",\"count\":10},{\"key\":\"2025\",\"count\":30}]}"
+const CITING = "{\"group_by\":[{\"key\":\"https://openalex.org/T7\",\"count\":5},{\"key\":\"unknown\",\"count\":1}]}"
+const CITING_AGAIN = "{\"group_by\":[{\"key\":\"https://openalex.org/T7\",\"count\":8},{\"key\":\"https://openalex.org/T10\",\"count\":2}]}"
+
+// What clients/python's cli.result_body() and requests' json= write for
+// the same inputs (made with the Python client, client name changed).
+const RESULT = "A map result from the undiscovered client. The checking job reads the JSON below.\n\n```json\n{\n \"unit\": \"u-000001\",\n \"protocol\": 0,\n \"client\": {\n  \"name\": \"undiscovered-ae\",\n  \"version\": \"0.1.0\"\n },\n \"gist\": \"https://gist.github.com/someone/0123456789abcdef0123\",\n \"sha256\": \"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881\"\n}\n```\n"
+const CONTENT = "{\"a\":\"Δ \\\"q\\\" é 😀\\n\"}"
+const GIST = "{\"description\": \"undiscovered map result u-000001\", \"public\": false, \"files\": {\"u-000001.json\": {\"content\": \"{\\\"a\\\":\\\"\\u0394 \\\\\\\"q\\\\\\\" \\u00e9 \\ud83d\\ude00\\\\n\\\"}\"}}}"
+const ISSUE = "{\"title\": \"map result u-000001\", \"body\": \"line\\n\\\"x\\\" \\u00e9\", \"labels\": []}"
+
+parse(text: string) -> ptr {
+    doc, err = json.parse(text)
+    if err != "" {
+        spec.fail("canned JSON does not parse: ${err}")
+    }
+    return doc
+}
+
+main() {
+    fw = spec.init()
+
+    spec.describe(fw, "usable abstracts") {
+        spec.it("counts words and stop words as Python does") callback {
+            w, s = english.count_words("Sensor fusion. in this paper we show how it was done")
+            spec.assert_eq(w, 11, "words")
+            spec.assert_eq(s, 8, "stop words")
+            // U+0130 lowers to "i" and a combining dot, U+212A (Kelvin sign) to "k".
+            w2, s2 = english.count_words("İT is KEEP, x² 3D a_b")
+            spec.assert_eq(w2, 8, "words: i t is keep x² d a b")
+            spec.assert_eq(s2, 4, "stop words: i is keep a")
+        }
+        spec.it("keeps the 40-word and quarter rules") callback {
+            spec.assert_eq(english.is_usable(39, 39), 0, "39 words")
+            spec.assert_eq(english.is_usable(40, 10), 1, "a quarter exactly")
+            spec.assert_eq(english.is_usable(40, 9), 0, "under a quarter")
+        }
+        spec.it("finds the one usable abstract in the sample") callback {
+            doc = parse(SAMPLE)
+            spec.assert_eq(mapper.usable_abstracts(doc), 1, "usable abstracts")
+            json.json_free(doc)
+        }
+        spec.it("gives a position claimed twice to the later word") callback {
+            doc = parse("{\"alpha\":[0,1],\"of\":[1]}")
+            w, s = mapper.abstract_counts(doc)
+            spec.assert_eq(w, 2, "words")
+            spec.assert_eq(s, 1, "stop words")
+            json.json_free(doc)
+        }
+    }
+
+    spec.describe(fw, "reference papers") {
+        spec.it("counts citations up to the freeze") callback {
+            doc = parse("{\"cited_by_count\":50,\"counts_by_year\":[{\"year\":2019,\"cited_by_count\":7}]}")
+            spec.assert_eq_long(mapper.citations_up_to(doc, 2017), 43, "citations up to 2017")
+            json.json_free(doc)
+        }
+        spec.it("ranks by citations at the freeze, not today") callback {
+            doc = parse(MOST_CITED)
+            results, _err = json.object_get(doc, "results")
+            ids = strarr.new()
+            cites = longarr.longarr_new_raw(mapper.CANDIDATES)
+            i = 0
+            while i < json.json_array_size(results) {
+                w = json.json_array_get_raw(results, i)
+                id_value, _ierr = json.object_get(w, "id")
+                id_text, _terr = json.get_string(id_value)
+                strarr.push_copy(ids, openalex.short_id(id_text))
+                longarr.longarr_set_raw(cites, i, mapper.citations_up_to(w, 2025))
+                i = i + 1
+            }
+            chosen = mapper.rank_instrument(ids, cites, 3)
+            spec.assert_str_eq(mapper.instrument_json(chosen), "[\"W10\",\"W20\"]", "W30 had no citations by 2025")
+            strarr.free(chosen)
+            strarr.free(ids)
+            longarr.longarr_free(cites)
+            json.json_free(doc)
+        }
+    }
+
+    spec.describe(fw, "counts") {
+        spec.it("keeps works per year and their sum") callback {
+            doc = parse(YEARS)
+            m = map.new()
+            mapper.counts_add(m, doc, 0)
+            spec.assert_str_eq(mapper.counts_json(m), "{\"2018\":10,\"2025\":30}", "works_by_year")
+            spec.assert_eq_long(mapper.counts_total(m), 40, "size")
+            map.map_free(m)
+            json.json_free(doc)
+        }
+        spec.it("keeps citing topics by short ID, without unknown, the last count winning") callback {
+            first = parse(CITING)
+            again = parse(CITING_AGAIN)
+            m = map.new()
+            mapper.counts_add(m, first, 1)
+            spec.assert_str_eq(mapper.counts_json(m), "{\"T7\":5}", "one page")
+            mapper.counts_add(m, again, 1)
+            spec.assert_str_eq(mapper.counts_json(m), "{\"T10\":2,\"T7\":8}", "two pages, keys sorted as text")
+            map.map_free(m)
+            json.json_free(first)
+            json.json_free(again)
+        }
+    }
+
+    spec.describe(fw, "units") {
+        spec.it("are picked at random and never twice") callback {
+            index = parse("[{\"unit\":\"u-000000\",\"status\":\"open\"},{\"unit\":\"u-000001\",\"status\":\"open\"},{\"unit\":\"u-000002\",\"status\":\"check\"},{\"unit\":\"u-000003\",\"status\":\"open\"},{\"unit\":\"u-000004\",\"status\":\"open\"},{\"unit\":\"u-000099\",\"status\":\"done\"}]")
+            done = strarr.new()
+            strarr.push(done, "u-000000")
+            strarr.push(done, "u-000001")
+            seen = map.new()
+            long d = 0
+            while d < 50 {
+                u = work.pick_unit(index, done, d)
+                id_value, _ierr = json.object_get(u, "unit")
+                name, _nerr = json.get_string(id_value)
+                spec.assert_true(name == "u-000002" || name == "u-000003" || name == "u-000004", "an open unit not yet done")
+                map.map_put_raw(seen, name, null)
+                d = d + 1
+            }
+            spec.assert_true(map.map_size(seen) > 1, "more than one unit")
+            strarr.push(done, "u-000002")
+            strarr.push(done, "u-000003")
+            strarr.push(done, "u-000004")
+            spec.assert_true(work.pick_unit(index, done, 7) == null, "none left")
+            map.map_free(seen)
+            strarr.free(done)
+            json.json_free(index)
+        }
+        spec.it("save their records as the Python client does") callback {
+            records = strarr.new()
+            strarr.push(records, "{\"topic\":\"T1\"}")
+            strarr.push(records, "{\"topic\":\"T2\"}")
+            spec.assert_str_eq(work.unit_content("u-000001", 2025, records), "{\"freeze\":2025,\"records\":[{\"topic\":\"T1\"},{\"topic\":\"T2\"}],\"unit\":\"u-000001\"}", "unit file")
+            strarr.free(records)
+        }
+    }
+
+    spec.describe(fw, "submitting") {
+        spec.it("writes the issue body exactly as the Python client") callback {
+            spec.assert_str_eq_diff(work.result_body("u-000001", "https://gist.github.com/someone/0123456789abcdef0123", "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"), RESULT, "result body")
+        }
+        spec.it("writes the GitHub requests as Python's requests does") callback {
+            spec.assert_str_eq_diff(github.gist_body("u-000001.json", CONTENT, "undiscovered map result u-000001"), GIST, "gist request")
+            spec.assert_str_eq_diff(github.issue_body("map result u-000001", "line\n\"x\" é"), ISSUE, "issue request")
+        }
+        spec.it("quotes query values as Python's urlencode") callback {
+            spec.assert_str_eq(openalex.quote("primary_topic.id:T1,publication_year:<2026 *|~"), "primary_topic.id%3AT1%2Cpublication_year%3A%3C2026+%2A%7C~", "quote")
+        }
+    }
+
+    // run_summary returns the verdict (it does not exit): pass it on.
+    exit(spec.run_summary(fw))
+}
