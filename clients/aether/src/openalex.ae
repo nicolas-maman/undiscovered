@@ -13,8 +13,8 @@
 // unit, rather than through std.http.client. That client cuts every request
 // path to 1023 bytes without saying so (std/net/aether_http.c, `char
 // path[1024]` in the send path), and the citing-topic queries name 100 works:
-// about 1,500 bytes. When std.http.client sends whole paths, this module can
-// use it again.
+// about 1,500 bytes. When std.http.client sends whole paths
+// (aether-lang-dev/aether#2674), this module can use it again.
 
 import std.string
 import std.strbuilder

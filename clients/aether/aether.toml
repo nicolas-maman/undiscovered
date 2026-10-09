@@ -12,5 +12,6 @@ path = "src/main.ae"
 
 [build]
 target = "native"
-# src/main.ae calls signal() for Ctrl-C; the generated C needs its header.
+# src/main.ae calls signal() for Ctrl-C; the generated C needs its header
+# (aether-lang-dev/aether#2676).
 cflags = "-include signal.h"

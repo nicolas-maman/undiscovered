@@ -45,7 +45,8 @@ undiscovered work --unit u-000241 --dry-run   # a given unit
 undiscovered --version
 ```
 
-On Windows, Aether's HTTPS does not read the Windows certificate store yet.
+On Windows, Aether's HTTPS does not read the Windows certificate store yet
+([aether#2675](https://github.com/aether-lang-dev/aether/issues/2675)).
 It needs a certificate bundle file, and its two HTTPS stacks (one for
 OpenAlex, one for GitHub) look for one in different places, so point
 `SSL_CERT_FILE` at a bundle before running it, for example the one Git for
@@ -79,7 +80,8 @@ $env:SSL_CERT_FILE = "C:\Program Files\Git\mingw64\etc\ssl\certs\ca-bundle.crt"
   texts that must come out byte for byte as Python writes them: the issue
   body, the GitHub requests, the result file.
 - The OpenAlex requests go over Aether's own TLS 1.3 client instead of
-  `std.http.client`, which cuts request paths at 1,023 bytes; the
+  `std.http.client`, which cuts request paths at 1,023 bytes
+  ([aether#2674](https://github.com/aether-lang-dev/aether/issues/2674)); the
   citing-topic queries name 100 works and run to about 1,500.
 
 The non-Windows parts (priority, hidden input, settings path) compile but

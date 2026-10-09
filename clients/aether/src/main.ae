@@ -16,7 +16,9 @@ import work
 
 // Ctrl-C stops the client as it stops the Python one. Aether treats signal()
 // as a libc function and leaves its declaration to <signal.h>, which the
-// generated C does not include on its own: aether.toml's cflags add it.
+// generated C does not include on its own: aether.toml's cflags add it
+// (aether-lang-dev/aether#2676). The handler is passed `as fn(int)`: passed
+// bare, it compiles to an adapter that is never emitted (aether#2677).
 extern signal(sig: int, handler: fn(int)) -> ptr
 extern _exit(code: int) @c_import
 
