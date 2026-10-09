@@ -9,3 +9,6 @@ undiscovered.toml
 site/_build/
 research/data_seed2027/
 research/results/
+*.egg-info/
+build/
+dist/
