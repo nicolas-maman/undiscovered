@@ -21,13 +21,20 @@ Swanson worked by hand, in medicine. This project tries to do the same thing
 for every field of science, openly, and checks its own predictions against
 what actually happened.
 
-> **Status, October 2026: collecting the data for the first test.** The
-> analysis plan, including the rule that decides whether the method works,
-> was [published before any model was fitted or any outcome was
-> seen](research/PREREGISTRATION.md); every later change to it is dated.
-> The result will appear on the
-> [results page](https://nicolas-maman.github.io/undiscovered/results.html)
-> whether or not the method works.
+> **First result, October 2026: inconclusive.** We froze the literature at
+> the end of 2017 and ranked 28,114 pairs of topics from different domains
+> that had barely cited each other. 305 of them (1.1%) started citing each
+> other by 2023. A model of the citation network around each pair ranked
+> them well: about 14 times better than chance, and 30 of its top 100
+> pairs did connect. Adding what the papers say, measured by the words they
+> share, did not measurably improve it (difference in average precision
+> -0.010, 95% interval -0.050 to +0.045). Under the
+> [plan written before the analysis](research/PREREGISTRATION.md) that is
+> not enough to take the method further as it is. All the numbers, the
+> robustness checks and the code are on the
+> [results page](https://nicolas-maman.github.io/undiscovered/results.html).
+> The next test asks whether describing papers without their field's
+> jargon does better than their words ([draft](research/NEXT.md)).
 
 ## How it works
 
@@ -89,7 +96,9 @@ As each part ships, you will be able to:
   examine candidate pairs.
 
 Two clients will implement the same [protocol](PROTOCOL.md): one in Python
-and one in [Aether](https://github.com/aether-lang-dev/aether).
+and one in [Aether](https://github.com/aether-lang-dev/aether). How the
+pieces fit together, and in what order they are built, is in
+[DESIGN.md](DESIGN.md).
 
 ## Earlier work
 

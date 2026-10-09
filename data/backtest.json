@@ -1,0 +1,4840 @@
+{
+ "status": "complete",
+ "published": "2026-10-09",
+ "commit": "45c304878e518ed4f52abc147b724c281a6504ab",
+ "code": "https://github.com/nicolas-maman/undiscovered/tree/45c304878e518ed4f52abc147b724c281a6504ab/research",
+ "preregistration": "https://github.com/nicolas-maman/undiscovered/blob/45c304878e518ed4f52abc147b724c281a6504ab/research/PREREGISTRATION.md",
+ "report": {
+  "config": {
+   "train_cutoff": 2011,
+   "eval_cutoff": 2017,
+   "max_prior_links": 1,
+   "min_test_links": 3,
+   "embedding_model": "tfidf",
+   "bootstrap": 2000,
+   "min_size": 0,
+   "smallest_effect": 0.1,
+   "commit": "45c304878e518ed4f52abc147b724c281a6504ab",
+   "code_changed": false,
+   "python": "3.13.5",
+   "numpy": "2.5.3",
+   "scikit_learn": "1.9.1"
+  },
+  "pairs": {
+   "train": 28710,
+   "train_positive": 199,
+   "eval": 28114,
+   "eval_positive": 305,
+   "eval_base_rate": 0.01084868748666145
+  },
+  "models": {
+   "popularity": {
+    "features": [
+     "log_size_hi",
+     "log_size_lo",
+     "growth_hi",
+     "growth_lo",
+     "log_usable_hi",
+     "log_usable_lo",
+     "dp_health_physical",
+     "dp_health_social",
+     "dp_life_physical",
+     "dp_life_social",
+     "dp_physical_social"
+    ],
+    "coef": {
+     "log_size_hi": 0.26343027530360436,
+     "log_size_lo": 0.17629814344342706,
+     "growth_hi": 0.2566207525379267,
+     "growth_lo": 0.3222811602434006,
+     "log_usable_hi": -0.15034471135781682,
+     "log_usable_lo": 0.5358427176196779,
+     "dp_health_physical": -0.3024324129770687,
+     "dp_health_social": -0.16066575298208668,
+     "dp_life_physical": -0.15792037865991237,
+     "dp_life_social": -0.3145920024805247,
+     "dp_physical_social": -0.07920561883372708
+    },
+    "roc_auc": 0.7272212262924669,
+    "average_precision": 0.051110231098525125,
+    "average_precision_ci": [
+     0.015640957066822187,
+     0.10900634416647248
+    ],
+    "precision_at_100": 0.18,
+    "precision_at_1000": 0.061
+   },
+   "network": {
+    "features": [
+     "log_size_hi",
+     "log_size_lo",
+     "growth_hi",
+     "growth_lo",
+     "log_usable_hi",
+     "log_usable_lo",
+     "dp_health_physical",
+     "dp_health_social",
+     "dp_life_physical",
+     "dp_life_social",
+     "dp_physical_social",
+     "log_deg_hi",
+     "log_deg_lo",
+     "log_recent_deg_hi",
+     "log_recent_deg_lo",
+     "log_common",
+     "log_recent_common",
+     "jaccard",
+     "adamic_adar",
+     "cocite_cosine",
+     "log_two_hop",
+     "prior_links"
+    ],
+    "coef": {
+     "log_size_hi": 0.16217673205023833,
+     "log_size_lo": 0.10279338870325817,
+     "growth_hi": 0.17642518428676926,
+     "growth_lo": 0.12921367824861546,
+     "log_usable_hi": -0.19106056810411362,
+     "log_usable_lo": 0.43177001487662253,
+     "dp_health_physical": 0.20687175475332922,
+     "dp_health_social": 0.0776680657931921,
+     "dp_life_physical": 0.012664679904284324,
+     "dp_life_social": -0.08406436524948213,
+     "dp_physical_social": 0.2550014968373898,
+     "log_deg_hi": 0.04607477056882764,
+     "log_deg_lo": -1.0409252318139615,
+     "log_recent_deg_hi": -0.6839335589936322,
+     "log_recent_deg_lo": 0.12238219660390219,
+     "log_common": -0.40771839215804395,
+     "log_recent_common": 3.1913058912890335,
+     "jaccard": -0.4583152897623466,
+     "adamic_adar": 0.2910604108640624,
+     "cocite_cosine": 0.25707874513479306,
+     "log_two_hop": 0.44405512393417623,
+     "prior_links": 0.3844412142823954
+    },
+    "roc_auc": 0.9326201153182513,
+    "average_precision": 0.14881574324413532,
+    "average_precision_ci": [
+     0.07530353504156312,
+     0.267516599861046
+    ],
+    "precision_at_100": 0.3,
+    "precision_at_1000": 0.146
+   },
+   "semantic": {
+    "features": [
+     "log_size_hi",
+     "log_size_lo",
+     "growth_hi",
+     "growth_lo",
+     "log_usable_hi",
+     "log_usable_lo",
+     "dp_health_physical",
+     "dp_health_social",
+     "dp_life_physical",
+     "dp_life_social",
+     "dp_physical_social",
+     "centroid_cos",
+     "top_pairs_cos"
+    ],
+    "coef": {
+     "log_size_hi": 0.31726461108148896,
+     "log_size_lo": 0.3449278957856041,
+     "growth_hi": 0.22456018806475125,
+     "growth_lo": 0.17245274502205185,
+     "log_usable_hi": -0.07167969024834846,
+     "log_usable_lo": 0.2578571637989197,
+     "dp_health_physical": -0.2301597773400635,
+     "dp_health_social": -0.048719345872612674,
+     "dp_life_physical": -0.17968709642036307,
+     "dp_life_social": -0.17481649328662685,
+     "dp_physical_social": -0.106202226328834,
+     "centroid_cos": 1.1214786724674362,
+     "top_pairs_cos": 0.3802243579696133
+    },
+    "roc_auc": 0.8503669940560581,
+    "average_precision": 0.08431466451552835,
+    "average_precision_ci": [
+     0.04440653328167591,
+     0.18770660250961033
+    ],
+    "precision_at_100": 0.19,
+    "precision_at_1000": 0.096
+   },
+   "combined": {
+    "features": [
+     "log_size_hi",
+     "log_size_lo",
+     "growth_hi",
+     "growth_lo",
+     "log_usable_hi",
+     "log_usable_lo",
+     "dp_health_physical",
+     "dp_health_social",
+     "dp_life_physical",
+     "dp_life_social",
+     "dp_physical_social",
+     "log_deg_hi",
+     "log_deg_lo",
+     "log_recent_deg_hi",
+     "log_recent_deg_lo",
+     "log_common",
+     "log_recent_common",
+     "jaccard",
+     "adamic_adar",
+     "cocite_cosine",
+     "log_two_hop",
+     "prior_links",
+     "centroid_cos",
+     "top_pairs_cos"
+    ],
+    "coef": {
+     "log_size_hi": 0.1493100332690539,
+     "log_size_lo": 0.124440508253826,
+     "growth_hi": 0.18041717282602113,
+     "growth_lo": 0.09501311576410723,
+     "log_usable_hi": -0.17328469277650127,
+     "log_usable_lo": 0.32150476353084845,
+     "dp_health_physical": 0.18772786665796531,
+     "dp_health_social": 0.03324446031206403,
+     "dp_life_physical": -0.020484931903492338,
+     "dp_life_social": -0.17145635339266785,
+     "dp_physical_social": 0.13972054737698011,
+     "log_deg_hi": 0.6106863999208766,
+     "log_deg_lo": -0.44028580416855456,
+     "log_recent_deg_hi": -0.8343362028587334,
+     "log_recent_deg_lo": -0.06242785515335014,
+     "log_common": -0.906796323626833,
+     "log_recent_common": 2.8185694179006213,
+     "jaccard": -0.3440106013907267,
+     "adamic_adar": 0.26651432842339057,
+     "cocite_cosine": 0.1854625153201618,
+     "log_two_hop": 0.39411632602097435,
+     "prior_links": 0.38678214521273546,
+     "centroid_cos": 0.314431364328767,
+     "top_pairs_cos": 0.39788999587159124
+    },
+    "roc_auc": 0.934671462063526,
+    "average_precision": 0.13923315828679414,
+    "average_precision_ci": [
+     0.07443649785710987,
+     0.26467960045013034
+    ],
+    "precision_at_100": 0.24,
+    "precision_at_1000": 0.14
+   },
+   "random": {
+    "roc_auc": 0.4826094158690223,
+    "average_precision": 0.010631376910164265,
+    "average_precision_ci": [
+     0.007317276098296901,
+     0.01684810600822753
+    ],
+    "precision_at_100": 0.02,
+    "precision_at_1000": 0.01
+   }
+  },
+  "hypotheses": {
+   "H1_combined_beats_network": {
+    "diff": -0.009582584957341184,
+    "diff_ci": [
+     -0.050372907360603666,
+     0.04524527185185859
+    ],
+    "holds": false,
+    "outcome": "inconclusive"
+   },
+   "H2_network_beats_popularity": {
+    "diff": 0.0977055121456102,
+    "diff_ci": [
+     0.03059571792681983,
+     0.19071799547616697
+    ],
+    "holds": true
+   },
+   "H3_semantic_beats_popularity": {
+    "diff": 0.03320443341700323,
+    "diff_ci": [
+     -0.0172698136446255,
+     0.1171101156704508
+    ],
+    "holds": true
+   }
+  },
+  "strict": {
+   "diff": -0.008858819529575443,
+   "diff_ci": [
+    -0.06449155721867875,
+    0.03626283802602817
+   ],
+   "positive": 160,
+   "holds": false,
+   "network_ap": 0.09561050025081662,
+   "outcome": "inconclusive"
+  },
+  "decision": "stop",
+  "by_domain_pair": {
+   "Health Sciences / Life Sciences": {
+    "pairs": 4162,
+    "positive": 82,
+    "random": 0.018059978646406558,
+    "popularity": 0.15790706668311905,
+    "network": 0.24947528251170226,
+    "semantic": 0.14651067585970098,
+    "combined": 0.22441648335695677
+   },
+   "Health Sciences / Physical Sciences": {
+    "pairs": 5005,
+    "positive": 65,
+    "random": 0.016326747090974533,
+    "popularity": 0.057760377258662975,
+    "network": 0.17816894945938902,
+    "semantic": 0.15733336360696426,
+    "combined": 0.1848806639766996
+   },
+   "Health Sciences / Social Sciences": {
+    "pairs": 4637,
+    "positive": 32,
+    "random": 0.008918397777847153,
+    "popularity": 0.011653052478766267,
+    "network": 0.06604196119443842,
+    "semantic": 0.12716810459112246,
+    "combined": 0.08720015361977998
+   },
+   "Life Sciences / Physical Sciences": {
+    "pairs": 4648,
+    "positive": 57,
+    "random": 0.01125038487024071,
+    "popularity": 0.04841569930226779,
+    "network": 0.14658903916962154,
+    "semantic": 0.045473975927674395,
+    "combined": 0.1211819821213965
+   },
+   "Life Sciences / Social Sciences": {
+    "pairs": 4914,
+    "positive": 34,
+    "random": 0.007850363627059542,
+    "popularity": 0.016249494297551934,
+    "network": 0.1713212684809659,
+    "semantic": 0.09004570225603589,
+    "combined": 0.1806428656149645
+   },
+   "Physical Sciences / Social Sciences": {
+    "pairs": 4748,
+    "positive": 35,
+    "random": 0.00818186220475791,
+    "popularity": 0.05418122968484042,
+    "network": 0.17999311418953748,
+    "semantic": 0.06116145053262568,
+    "combined": 0.1503540724594071
+   }
+  },
+  "directions": {
+   "both": 123,
+   "one_way": 182
+  },
+  "feature_shift": {
+   "log_size_hi": {
+    "fit_mean": 9.347335510327525,
+    "fit_sd": 0.8921802492816442,
+    "eval_mean": 9.650616594702313,
+    "eval_sd": 0.8508175142575932
+   },
+   "log_size_lo": {
+    "fit_mean": 7.931306377905428,
+    "fit_sd": 1.2044274925579972,
+    "eval_mean": 8.32322185547025,
+    "eval_sd": 1.0944818575771862
+   },
+   "growth_hi": {
+    "fit_mean": 0.5429529003241068,
+    "fit_sd": 0.3629167669566745,
+    "eval_mean": 0.32341400291967637,
+    "eval_sd": 0.35451352455298973
+   },
+   "growth_lo": {
+    "fit_mean": 0.2241170697037284,
+    "fit_sd": 0.1844440234607175,
+    "eval_mean": 0.012737289594518234,
+    "eval_sd": 0.2046143943208647
+   },
+   "log_usable_hi": {
+    "fit_mean": 3.4534544221529337,
+    "fit_sd": 0.1606136368692939,
+    "eval_mean": 3.454924649158483,
+    "eval_sd": 0.15722993626912474
+   },
+   "log_usable_lo": {
+    "fit_mean": 3.0612740160736367,
+    "fit_sd": 0.3912284440671953,
+    "eval_mean": 3.061365767701687,
+    "eval_sd": 0.39437089264254643
+   },
+   "dp_health_physical": {
+    "fit_mean": 0.17889237199582028,
+    "fit_sd": 0.38326217037105204,
+    "eval_mean": 0.17802518318275593,
+    "eval_sd": 0.3825339427233904
+   },
+   "dp_health_social": {
+    "fit_mean": 0.16391501219087426,
+    "fit_sd": 0.3701984345852097,
+    "eval_mean": 0.1649356192644234,
+    "eval_sd": 0.3711224336553701
+   },
+   "dp_life_physical": {
+    "fit_mean": 0.1671891327063741,
+    "fit_sd": 0.37314464569555933,
+    "eval_mean": 0.1653268834032866,
+    "eval_sd": 0.37147530877225565
+   },
+   "dp_life_social": {
+    "fit_mean": 0.17025426680599096,
+    "fit_sd": 0.37585602488232833,
+    "eval_mean": 0.17478836167034217,
+    "eval_sd": 0.37978597959237487
+   },
+   "dp_physical_social": {
+    "fit_mean": 0.1681992337164751,
+    "fit_sd": 0.37404311448503585,
+    "eval_mean": 0.1688838301202248,
+    "eval_sd": 0.3746492787183073
+   },
+   "log_deg_hi": {
+    "fit_mean": 6.438449366176821,
+    "fit_sd": 0.4824803810146503,
+    "eval_mean": 6.672529776623148,
+    "eval_sd": 0.44840125642951206
+   },
+   "log_deg_lo": {
+    "fit_mean": 5.624382281890607,
+    "fit_sd": 0.734318890703571,
+    "eval_mean": 5.9288739405136734,
+    "eval_sd": 0.6210948502723287
+   },
+   "log_recent_deg_hi": {
+    "fit_mean": 6.0955090287651785,
+    "fit_sd": 0.5340797547644327,
+    "eval_mean": 6.301826516297859,
+    "eval_sd": 0.502482535243471
+   },
+   "log_recent_deg_lo": {
+    "fit_mean": 5.228531371658335,
+    "fit_sd": 0.7657936798874329,
+    "eval_mean": 5.488210923294828,
+    "eval_sd": 0.6735872034953458
+   },
+   "log_common": {
+    "fit_mean": 3.344668671168754,
+    "fit_sd": 1.2950457830399034,
+    "eval_mean": 3.904108393691698,
+    "eval_sd": 1.1914883245632473
+   },
+   "log_recent_common": {
+    "fit_mean": 2.5564245291586887,
+    "fit_sd": 1.311415287079919,
+    "eval_mean": 2.9813104449664247,
+    "eval_sd": 1.2908337654051791
+   },
+   "jaccard": {
+    "fit_mean": 0.04953812681316033,
+    "fit_sd": 0.04910149318014161,
+    "eval_mean": 0.06384299293010573,
+    "eval_sd": 0.05571577980474978
+   },
+   "adamic_adar": {
+    "fit_mean": 13.149588243689696,
+    "fit_sd": 15.400413873570136,
+    "eval_mean": 19.898434327863225,
+    "eval_sd": 20.71324295512528
+   },
+   "cocite_cosine": {
+    "fit_mean": 0.007233053305902114,
+    "fit_sd": 0.018992008997039223,
+    "eval_mean": 0.006867444012793687,
+    "eval_sd": 0.016830310451724714
+   },
+   "log_two_hop": {
+    "fit_mean": 1.5483378675201902,
+    "fit_sd": 1.0123503790511705,
+    "eval_mean": 1.9355439824409248,
+    "eval_sd": 1.0525965472139793
+   },
+   "prior_links": {
+    "fit_mean": 0.07192615813305468,
+    "fit_sd": 0.2583656051204833,
+    "eval_mean": 0.08842569538308316,
+    "eval_sd": 0.2839130003700101
+   },
+   "centroid_cos": {
+    "fit_mean": 0.08382300610440932,
+    "fit_sd": 0.03457526313268438,
+    "eval_mean": 0.08629407601778444,
+    "eval_sd": 0.034905222336195287
+   },
+   "top_pairs_cos": {
+    "fit_mean": 0.05388844715046224,
+    "fit_sd": 0.01985718289468845,
+    "eval_mean": 0.05322630506795772,
+    "eval_sd": 0.019028811834341536
+   }
+  },
+  "top_predictions": [
+   {
+    "rank": 1,
+    "a": {
+     "id": "T13168",
+     "name": "Plant Ecology and Taxonomy Studies",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T12012",
+     "name": "Diatoms and Algae Research",
+     "field": "Materials Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9999999967477955,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 2,
+    "a": {
+     "id": "T12574",
+     "name": "Clinical Reasoning and Diagnostic Skills",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13487",
+     "name": "Statistical and numerical algorithms",
+     "field": "Mathematics",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9997822454174028,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 3,
+    "a": {
+     "id": "T12846",
+     "name": "Ginkgo biloba and Cashew Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12721",
+     "name": "Moringa oleifera research and applications",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9997351231707862,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 4,
+    "a": {
+     "id": "T13483",
+     "name": "Herbal Medicine Research Studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12721",
+     "name": "Moringa oleifera research and applications",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9996224672581145,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 5,
+    "a": {
+     "id": "T13082",
+     "name": "Water and Land Management",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T14336",
+     "name": "Land Use and Management",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.999403400438062,
+    "links_before": 0,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 6,
+    "a": {
+     "id": "T12846",
+     "name": "Ginkgo biloba and Cashew Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13095",
+     "name": "Plant-based Medicinal Research",
+     "field": "Pharmacology, Toxicology and Pharmaceutics",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9992417102258226,
+    "links_before": 0,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 7,
+    "a": {
+     "id": "T13331",
+     "name": "Energy and Environmental Sustainability",
+     "field": "Energy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10053",
+     "name": "International Relations and Foreign Policy",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9987113565147478,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 8,
+    "a": {
+     "id": "T13483",
+     "name": "Herbal Medicine Research Studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13095",
+     "name": "Plant-based Medicinal Research",
+     "field": "Pharmacology, Toxicology and Pharmaceutics",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9986203041063223,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 9,
+    "a": {
+     "id": "T11718",
+     "name": "Physical Education and Pedagogy",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9985054664523627,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 10,
+    "a": {
+     "id": "T13483",
+     "name": "Herbal Medicine Research Studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13322",
+     "name": "Hibiscus Plant Research Studies",
+     "field": "Pharmacology, Toxicology and Pharmaceutics",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9982653431824955,
+    "links_before": 0,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 11,
+    "a": {
+     "id": "T13281",
+     "name": "Andrographolide Research and Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12770",
+     "name": "Amino Acid Enzymes and Metabolism",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9981945615631472,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 12,
+    "a": {
+     "id": "T14009",
+     "name": "Ecology and Conservation Studies",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T12012",
+     "name": "Diatoms and Algae Research",
+     "field": "Materials Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9980059805150152,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 13,
+    "a": {
+     "id": "T12480",
+     "name": "Health and Wellbeing Research",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12728",
+     "name": "Demographic Trends and Gender Preferences",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9979916289459542,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 14,
+    "a": {
+     "id": "T11344",
+     "name": "Traffic Prediction and Management Techniques",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10315",
+     "name": "Decision-Making and Behavioral Economics",
+     "field": "Decision Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9978626467745312,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 15,
+    "a": {
+     "id": "T11376",
+     "name": "Geriatric Care and Nursing Homes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9978524412638373,
+    "links_before": 0,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 16,
+    "a": {
+     "id": "T12574",
+     "name": "Clinical Reasoning and Diagnostic Skills",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12408",
+     "name": "Educational Innovations and Challenges",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9978449615540671,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 17,
+    "a": {
+     "id": "T12592",
+     "name": "Opinion Dynamics and Social Influence",
+     "field": "Physics and Astronomy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12485",
+     "name": "Optimism, Hope, and Well-being",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9976155099735226,
+    "links_before": 1,
+    "links_after": 7,
+    "connected_later": 1
+   },
+   {
+    "rank": 18,
+    "a": {
+     "id": "T10335",
+     "name": "Colorectal Cancer Surgical Treatments",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.997505776785676,
+    "links_before": 1,
+    "links_after": 66,
+    "connected_later": 1
+   },
+   {
+    "rank": 19,
+    "a": {
+     "id": "T12110",
+     "name": "Bone and Dental Protein Studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T14194",
+     "name": "Bioactive Compounds in Plants",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9970013972600443,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 20,
+    "a": {
+     "id": "T13893",
+     "name": "Sustainable Development and Policies",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12028",
+     "name": "Knowledge Management and Sharing",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9969468542144481,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 21,
+    "a": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13944",
+     "name": "Psychiatric care and mental health services",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.996725347685656,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 22,
+    "a": {
+     "id": "T11029",
+     "name": "Renal Diseases and Glomerulopathies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T14194",
+     "name": "Bioactive Compounds in Plants",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.996676394604373,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 23,
+    "a": {
+     "id": "T12408",
+     "name": "Educational Innovations and Challenges",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12998",
+     "name": "Education and Islamic Studies",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9966223508034517,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 24,
+    "a": {
+     "id": "T12849",
+     "name": "Parvovirus B19 Infection Studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12833",
+     "name": "Bartonella species infections research",
+     "field": "Immunology and Microbiology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9965261821398509,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 25,
+    "a": {
+     "id": "T12535",
+     "name": "Machine Learning and Data Classification",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13765",
+     "name": "Social Science and Policy Research",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9965221566830066,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 26,
+    "a": {
+     "id": "T12574",
+     "name": "Clinical Reasoning and Diagnostic Skills",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13745",
+     "name": "Media and Digital Communication",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9965209995738348,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 27,
+    "a": {
+     "id": "T10312",
+     "name": "Health, Nursing, Elderly Care",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12485",
+     "name": "Optimism, Hope, and Well-being",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9964154215085049,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 28,
+    "a": {
+     "id": "T13559",
+     "name": "Edcuational Technology Systems",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T11526",
+     "name": "Innovative Teaching Methods",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9962693114040019,
+    "links_before": 0,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 29,
+    "a": {
+     "id": "T13240",
+     "name": "Bioeconomy and Sustainability Development",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13190",
+     "name": "Engineering and Environmental Studies",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.99609774053397,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 30,
+    "a": {
+     "id": "T14316",
+     "name": "Nursing Education, Practice, and Leadership",
+     "field": "Nursing",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12185",
+     "name": "Regulation and Compliance Studies",
+     "field": "Business, Management and Accounting",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9960937668618299,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 31,
+    "a": {
+     "id": "T11457",
+     "name": "Adipose Tissue and Metabolism",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9960795744677435,
+    "links_before": 1,
+    "links_after": 40,
+    "connected_later": 1
+   },
+   {
+    "rank": 32,
+    "a": {
+     "id": "T13331",
+     "name": "Energy and Environmental Sustainability",
+     "field": "Energy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12725",
+     "name": "transportation and logistics systems",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9960724556480908,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 33,
+    "a": {
+     "id": "T12849",
+     "name": "Parvovirus B19 Infection Studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10066",
+     "name": "Gut microbiota and health",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9960232178260888,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 34,
+    "a": {
+     "id": "T10211",
+     "name": "Computational Drug Discovery Methods",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10235",
+     "name": "Health disparities and outcomes",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9958942337082138,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 35,
+    "a": {
+     "id": "T10621",
+     "name": "Gene Regulatory Network Analysis",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11689",
+     "name": "Adversarial Robustness in Machine Learning",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9957865077807366,
+    "links_before": 1,
+    "links_after": 6,
+    "connected_later": 1
+   },
+   {
+    "rank": 36,
+    "a": {
+     "id": "T10004",
+     "name": "Soil Carbon and Nitrogen Dynamics",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T12504",
+     "name": "Mathematics and Applications",
+     "field": "Mathematics",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.995736873459931,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 37,
+    "a": {
+     "id": "T12788",
+     "name": "Space Science and Extraterrestrial Life",
+     "field": "Physics and Astronomy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12028",
+     "name": "Knowledge Management and Sharing",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9954722861741174,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 38,
+    "a": {
+     "id": "T12626",
+     "name": "Cancer, Stress, Anesthesia, and Immune Response",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13426",
+     "name": "Kruppel-like factors research",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9954668694662379,
+    "links_before": 0,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 39,
+    "a": {
+     "id": "T10570",
+     "name": "Drug Transport and Resistance Mechanisms",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9953687086076808,
+    "links_before": 0,
+    "links_after": 41,
+    "connected_later": 1
+   },
+   {
+    "rank": 40,
+    "a": {
+     "id": "T13331",
+     "name": "Energy and Environmental Sustainability",
+     "field": "Energy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13765",
+     "name": "Social Science and Policy Research",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9953473136276486,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 41,
+    "a": {
+     "id": "T13487",
+     "name": "Statistical and numerical algorithms",
+     "field": "Mathematics",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T11024",
+     "name": "Information Systems Theories and Implementation",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9951565518864671,
+    "links_before": 0,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 42,
+    "a": {
+     "id": "T11610",
+     "name": "Food Security and Health in Diverse Populations",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12028",
+     "name": "Knowledge Management and Sharing",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9950954096039453,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 43,
+    "a": {
+     "id": "T13893",
+     "name": "Sustainable Development and Policies",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13787",
+     "name": "Globalization, Historical Perspectives, and International Relations",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9950472658618964,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 44,
+    "a": {
+     "id": "T13281",
+     "name": "Andrographolide Research and Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10993",
+     "name": "Complement system in diseases",
+     "field": "Immunology and Microbiology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9949082913367554,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 45,
+    "a": {
+     "id": "T12574",
+     "name": "Clinical Reasoning and Diagnostic Skills",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10557",
+     "name": "Social Media and Politics",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9946652343050811,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 46,
+    "a": {
+     "id": "T12108",
+     "name": "Management of metastatic bone disease",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10269",
+     "name": "Epigenetics and DNA Methylation",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9946361493399528,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 47,
+    "a": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12028",
+     "name": "Knowledge Management and Sharing",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9945486480850664,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 48,
+    "a": {
+     "id": "T10129",
+     "name": "Glioma Diagnosis and Treatment",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13095",
+     "name": "Plant-based Medicinal Research",
+     "field": "Pharmacology, Toxicology and Pharmaceutics",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9942845160953601,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 49,
+    "a": {
+     "id": "T13116",
+     "name": "Heat Transfer and Numerical Methods",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10315",
+     "name": "Decision-Making and Behavioral Economics",
+     "field": "Decision Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9941978467412006,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 50,
+    "a": {
+     "id": "T11532",
+     "name": "Chemokine receptors and signaling",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9941496354974775,
+    "links_before": 0,
+    "links_after": 22,
+    "connected_later": 1
+   },
+   {
+    "rank": 51,
+    "a": {
+     "id": "T10335",
+     "name": "Colorectal Cancer Surgical Treatments",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9941404746847334,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 52,
+    "a": {
+     "id": "T13745",
+     "name": "Media and Digital Communication",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13532",
+     "name": "Education Systems and Policy",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9941398675001896,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 53,
+    "a": {
+     "id": "T13281",
+     "name": "Andrographolide Research and Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13426",
+     "name": "Kruppel-like factors research",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9940828533774319,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 54,
+    "a": {
+     "id": "T13331",
+     "name": "Energy and Environmental Sustainability",
+     "field": "Energy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12028",
+     "name": "Knowledge Management and Sharing",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9939631984183857,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 55,
+    "a": {
+     "id": "T13077",
+     "name": "Cancer-related cognitive impairment studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10066",
+     "name": "Gut microbiota and health",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9939075829626604,
+    "links_before": 1,
+    "links_after": 15,
+    "connected_later": 1
+   },
+   {
+    "rank": 56,
+    "a": {
+     "id": "T10129",
+     "name": "Glioma Diagnosis and Treatment",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12167",
+     "name": "Bacterial Identification and Susceptibility Testing",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9937662218264971,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 57,
+    "a": {
+     "id": "T10066",
+     "name": "Gut microbiota and health",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T10315",
+     "name": "Decision-Making and Behavioral Economics",
+     "field": "Decision Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9937320865278835,
+    "links_before": 1,
+    "links_after": 9,
+    "connected_later": 1
+   },
+   {
+    "rank": 58,
+    "a": {
+     "id": "T10408",
+     "name": "Chronic Kidney Disease and Diabetes",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9937271347261252,
+    "links_before": 1,
+    "links_after": 43,
+    "connected_later": 1
+   },
+   {
+    "rank": 59,
+    "a": {
+     "id": "T14447",
+     "name": "Trade Secret Protection Methods",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13875",
+     "name": "Legal Studies and Reforms",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9934512790017606,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 60,
+    "a": {
+     "id": "T11243",
+     "name": "Respiratory viral infections research",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12824",
+     "name": "Infections and bacterial resistance",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9934462221581357,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 61,
+    "a": {
+     "id": "T12237",
+     "name": "Congenital gastrointestinal and neural anomalies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11313",
+     "name": "Immune cells in cancer",
+     "field": "Immunology and Microbiology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9930228615999772,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 62,
+    "a": {
+     "id": "T10211",
+     "name": "Computational Drug Discovery Methods",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13117",
+     "name": "Health Education and Validation",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9929967712105281,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 63,
+    "a": {
+     "id": "T10445",
+     "name": "Antioxidant Activity and Oxidative Stress",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13117",
+     "name": "Health Education and Validation",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9929246327355089,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 64,
+    "a": {
+     "id": "T12535",
+     "name": "Machine Learning and Data Classification",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T11526",
+     "name": "Innovative Teaching Methods",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9928336692937603,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 65,
+    "a": {
+     "id": "T13430",
+     "name": "Lipid metabolism and disorders",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9928247963425904,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 66,
+    "a": {
+     "id": "T13745",
+     "name": "Media and Digital Communication",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10391",
+     "name": "Healthcare Policy and Management",
+     "field": "Economics, Econometrics and Finance",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9928058440850858,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 67,
+    "a": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10235",
+     "name": "Health disparities and outcomes",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9926794883070988,
+    "links_before": 0,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 68,
+    "a": {
+     "id": "T12849",
+     "name": "Parvovirus B19 Infection Studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11313",
+     "name": "Immune cells in cancer",
+     "field": "Immunology and Microbiology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9926188288208231,
+    "links_before": 1,
+    "links_after": 5,
+    "connected_later": 1
+   },
+   {
+    "rank": 69,
+    "a": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13117",
+     "name": "Health Education and Validation",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9924184094630981,
+    "links_before": 0,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 70,
+    "a": {
+     "id": "T10335",
+     "name": "Colorectal Cancer Surgical Treatments",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11406",
+     "name": "Cerebrospinal fluid and hydrocephalus",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9923814315376208,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 71,
+    "a": {
+     "id": "T10445",
+     "name": "Antioxidant Activity and Oxidative Stress",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10315",
+     "name": "Decision-Making and Behavioral Economics",
+     "field": "Decision Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9923640560115558,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 72,
+    "a": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T10211",
+     "name": "Computational Drug Discovery Methods",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9923191174919025,
+    "links_before": 0,
+    "links_after": 24,
+    "connected_later": 1
+   },
+   {
+    "rank": 73,
+    "a": {
+     "id": "T12788",
+     "name": "Space Science and Extraterrestrial Life",
+     "field": "Physics and Astronomy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12496",
+     "name": "Color perception and design",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9923022418749033,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 74,
+    "a": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12377",
+     "name": "Digital Humanities and Scholarship",
+     "field": "Arts and Humanities",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9922383505464584,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 75,
+    "a": {
+     "id": "T10784",
+     "name": "Muscle activation and electromyography studies",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10235",
+     "name": "Health disparities and outcomes",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9922333835729346,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 76,
+    "a": {
+     "id": "T13281",
+     "name": "Andrographolide Research and Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13446",
+     "name": "Antioxidants, Aging, Portulaca oleracea",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9922303678546673,
+    "links_before": 0,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 77,
+    "a": {
+     "id": "T13281",
+     "name": "Andrographolide Research and Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13199",
+     "name": "Digestive system and related health",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9922300429471157,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 78,
+    "a": {
+     "id": "T13559",
+     "name": "Edcuational Technology Systems",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12028",
+     "name": "Knowledge Management and Sharing",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9922253042524023,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 79,
+    "a": {
+     "id": "T10023",
+     "name": "Schizophrenia research and treatment",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9921647103764137,
+    "links_before": 0,
+    "links_after": 21,
+    "connected_later": 1
+   },
+   {
+    "rank": 80,
+    "a": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T11024",
+     "name": "Information Systems Theories and Implementation",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9921387019034916,
+    "links_before": 1,
+    "links_after": 5,
+    "connected_later": 1
+   },
+   {
+    "rank": 81,
+    "a": {
+     "id": "T12480",
+     "name": "Health and Wellbeing Research",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13987",
+     "name": "Child Development and Education",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9920683268424826,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 82,
+    "a": {
+     "id": "T10459",
+     "name": "Sexual function and dysfunction studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9919667070697258,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 83,
+    "a": {
+     "id": "T10895",
+     "name": "Species Distribution and Climate Change",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10053",
+     "name": "International Relations and Foreign Policy",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9919536076368666,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 84,
+    "a": {
+     "id": "T11313",
+     "name": "Immune cells in cancer",
+     "field": "Immunology and Microbiology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11791",
+     "name": "Microbial Community Ecology and Physiology",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9919079353440949,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 85,
+    "a": {
+     "id": "T13077",
+     "name": "Cancer-related cognitive impairment studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10993",
+     "name": "Complement system in diseases",
+     "field": "Immunology and Microbiology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9918351523541931,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 86,
+    "a": {
+     "id": "T12535",
+     "name": "Machine Learning and Data Classification",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12137",
+     "name": "Economic theories and models",
+     "field": "Economics, Econometrics and Finance",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9917297791860469,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 87,
+    "a": {
+     "id": "T10881",
+     "name": "Blood Coagulation and Thrombosis Mechanisms",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.991613490419122,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 88,
+    "a": {
+     "id": "T13190",
+     "name": "Engineering and Environmental Studies",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10880",
+     "name": "Environmental Sustainability in Business",
+     "field": "Business, Management and Accounting",
+     "domain": "Social Sciences"
+    },
+    "score": 0.991611523696157,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 89,
+    "a": {
+     "id": "T11282",
+     "name": "Fibromyalgia and Chronic Fatigue Syndrome Research",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9915946355353885,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 90,
+    "a": {
+     "id": "T13591",
+     "name": "Pasture and Agricultural Systems",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T14157",
+     "name": "Environmental and Agricultural Sciences",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9914605308544988,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 91,
+    "a": {
+     "id": "T11590",
+     "name": "Primary Care and Health Outcomes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T14465",
+     "name": "Leadership, Behavior, and Decision-Making Studies",
+     "field": "Decision Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9914548512736739,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 92,
+    "a": {
+     "id": "T13934",
+     "name": "Indigenous Knowledge Systems and Agriculture",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T10053",
+     "name": "International Relations and Foreign Policy",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9912822159573019,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 93,
+    "a": {
+     "id": "T12681",
+     "name": "Global Healthcare and Medical Tourism",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12485",
+     "name": "Optimism, Hope, and Well-being",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9912808688128963,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 94,
+    "a": {
+     "id": "T12408",
+     "name": "Educational Innovations and Challenges",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12807",
+     "name": "Consumer Behavior and Market Dynamics",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9912740320931108,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 95,
+    "a": {
+     "id": "T12480",
+     "name": "Health and Wellbeing Research",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11526",
+     "name": "Innovative Teaching Methods",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9912658556790666,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 96,
+    "a": {
+     "id": "T12626",
+     "name": "Cancer, Stress, Anesthesia, and Immune Response",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T14194",
+     "name": "Bioactive Compounds in Plants",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.991247243490916,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 97,
+    "a": {
+     "id": "T12280",
+     "name": "Magnesium in Health and Disease",
+     "field": "Nursing",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T14194",
+     "name": "Bioactive Compounds in Plants",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9910170110659444,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 98,
+    "a": {
+     "id": "T11692",
+     "name": "Noise Effects and Management",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11526",
+     "name": "Innovative Teaching Methods",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9909355459306213,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 99,
+    "a": {
+     "id": "T13893",
+     "name": "Sustainable Development and Policies",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12179",
+     "name": "Art Education and Development",
+     "field": "Arts and Humanities",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9908973308591553,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 100,
+    "a": {
+     "id": "T12574",
+     "name": "Clinical Reasoning and Diagnostic Skills",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10268",
+     "name": "Developmental Biology and Gene Regulation",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9908233830485161,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 101,
+    "a": {
+     "id": "T12238",
+     "name": "Green IT and Sustainability",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12137",
+     "name": "Economic theories and models",
+     "field": "Economics, Econometrics and Finance",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9908065058521419,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 102,
+    "a": {
+     "id": "T12626",
+     "name": "Cancer, Stress, Anesthesia, and Immune Response",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10315",
+     "name": "Decision-Making and Behavioral Economics",
+     "field": "Decision Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9907442589481049,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 103,
+    "a": {
+     "id": "T13893",
+     "name": "Sustainable Development and Policies",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12256",
+     "name": "Facilities and Workplace Management",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9907223631701784,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 104,
+    "a": {
+     "id": "T11376",
+     "name": "Geriatric Care and Nursing Homes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10875",
+     "name": "Pesticide Exposure and Toxicity",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.990612117879925,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 105,
+    "a": {
+     "id": "T13190",
+     "name": "Engineering and Environmental Studies",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12725",
+     "name": "transportation and logistics systems",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9904844589238188,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 106,
+    "a": {
+     "id": "T11692",
+     "name": "Noise Effects and Management",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13987",
+     "name": "Child Development and Education",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9903921846022078,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 107,
+    "a": {
+     "id": "T13893",
+     "name": "Sustainable Development and Policies",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10235",
+     "name": "Health disparities and outcomes",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9903850368801157,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 108,
+    "a": {
+     "id": "T13487",
+     "name": "Statistical and numerical algorithms",
+     "field": "Mathematics",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12028",
+     "name": "Knowledge Management and Sharing",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9901057613435578,
+    "links_before": 0,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 109,
+    "a": {
+     "id": "T12280",
+     "name": "Magnesium in Health and Disease",
+     "field": "Nursing",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13446",
+     "name": "Antioxidants, Aging, Portulaca oleracea",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "score": 0.990093155836375,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 110,
+    "a": {
+     "id": "T11590",
+     "name": "Primary Care and Health Outcomes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10066",
+     "name": "Gut microbiota and health",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9900349957397933,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 111,
+    "a": {
+     "id": "T13077",
+     "name": "Cancer-related cognitive impairment studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10315",
+     "name": "Decision-Making and Behavioral Economics",
+     "field": "Decision Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9899741604681818,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 112,
+    "a": {
+     "id": "T11610",
+     "name": "Food Security and Health in Diverse Populations",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13934",
+     "name": "Indigenous Knowledge Systems and Agriculture",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9899720377055251,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 113,
+    "a": {
+     "id": "T13082",
+     "name": "Water and Land Management",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12185",
+     "name": "Regulation and Compliance Studies",
+     "field": "Business, Management and Accounting",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9899190288682634,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 114,
+    "a": {
+     "id": "T11590",
+     "name": "Primary Care and Health Outcomes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11526",
+     "name": "Innovative Teaching Methods",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9898500419022369,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 115,
+    "a": {
+     "id": "T11386",
+     "name": "Bee Products Chemical Analysis",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13487",
+     "name": "Statistical and numerical algorithms",
+     "field": "Mathematics",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9898163864542231,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 116,
+    "a": {
+     "id": "T13219",
+     "name": "Mind wandering and attention",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13117",
+     "name": "Health Education and Validation",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9898092747891148,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 117,
+    "a": {
+     "id": "T10408",
+     "name": "Chronic Kidney Disease and Diabetes",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11791",
+     "name": "Microbial Community Ecology and Physiology",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9897698930816697,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 118,
+    "a": {
+     "id": "T11610",
+     "name": "Food Security and Health in Diverse Populations",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10557",
+     "name": "Social Media and Politics",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9896044854432265,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 119,
+    "a": {
+     "id": "T12280",
+     "name": "Magnesium in Health and Disease",
+     "field": "Nursing",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9895894965645521,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 120,
+    "a": {
+     "id": "T11376",
+     "name": "Geriatric Care and Nursing Homes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12535",
+     "name": "Machine Learning and Data Classification",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9894889233655064,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 121,
+    "a": {
+     "id": "T13270",
+     "name": "QR Code Applications and Technologies",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12496",
+     "name": "Color perception and design",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9894043240997732,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 122,
+    "a": {
+     "id": "T13468",
+     "name": "Educational Research and Science Teaching",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11024",
+     "name": "Information Systems Theories and Implementation",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9892301071496515,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 123,
+    "a": {
+     "id": "T12110",
+     "name": "Bone and Dental Protein Studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9891922114966423,
+    "links_before": 0,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 124,
+    "a": {
+     "id": "T13069",
+     "name": "Cocoa and Sweet Potato Agronomy",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T10236",
+     "name": "Aquatic Ecosystems and Phytoplankton Dynamics",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9891576921376173,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 125,
+    "a": {
+     "id": "T10408",
+     "name": "Chronic Kidney Disease and Diabetes",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10784",
+     "name": "Muscle activation and electromyography studies",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.98906339180053,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 126,
+    "a": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T11895",
+     "name": "Social and Cultural Dynamics",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9890480817128761,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 127,
+    "a": {
+     "id": "T12315",
+     "name": "Older Adults Driving Studies",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11344",
+     "name": "Traffic Prediction and Management Techniques",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9890239776657753,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 128,
+    "a": {
+     "id": "T11997",
+     "name": "Free Will and Agency",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13487",
+     "name": "Statistical and numerical algorithms",
+     "field": "Mathematics",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.989011474734946,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 129,
+    "a": {
+     "id": "T11775",
+     "name": "COVID-19 diagnosis using AI",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9888026501111405,
+    "links_before": 0,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 130,
+    "a": {
+     "id": "T10914",
+     "name": "Tactile and Sensory Interactions",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T12485",
+     "name": "Optimism, Hope, and Well-being",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9887456613517017,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 131,
+    "a": {
+     "id": "T12054",
+     "name": "Menstrual Health and Disorders",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10066",
+     "name": "Gut microbiota and health",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9886960853772013,
+    "links_before": 1,
+    "links_after": 13,
+    "connected_later": 1
+   },
+   {
+    "rank": 132,
+    "a": {
+     "id": "T11590",
+     "name": "Primary Care and Health Outcomes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12671",
+     "name": "Management and Marketing Education",
+     "field": "Business, Management and Accounting",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9886758470789656,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 133,
+    "a": {
+     "id": "T11692",
+     "name": "Noise Effects and Management",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9886606265837734,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 134,
+    "a": {
+     "id": "T10496",
+     "name": "Pharmaceutical Practices and Patient Outcomes",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9885307464458718,
+    "links_before": 0,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 135,
+    "a": {
+     "id": "T13690",
+     "name": "Quality and Safety in Healthcare",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11159",
+     "name": "Manufacturing Process and Optimization",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9885222531494521,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 136,
+    "a": {
+     "id": "T10881",
+     "name": "Blood Coagulation and Thrombosis Mechanisms",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11984",
+     "name": "Anatomy and Medical Technology",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.988456736475951,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 137,
+    "a": {
+     "id": "T13468",
+     "name": "Educational Research and Science Teaching",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T12408",
+     "name": "Educational Innovations and Challenges",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9884439897595295,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 138,
+    "a": {
+     "id": "T12029",
+     "name": "DNA and Biological Computing",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11870",
+     "name": "Structural Analysis and Optimization",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9882945185210497,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 139,
+    "a": {
+     "id": "T12846",
+     "name": "Ginkgo biloba and Cashew Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11423",
+     "name": "Pesticide Residue Analysis and Safety",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.988149552016911,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 140,
+    "a": {
+     "id": "T11376",
+     "name": "Geriatric Care and Nursing Homes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10211",
+     "name": "Computational Drug Discovery Methods",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9881006342989059,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 141,
+    "a": {
+     "id": "T10459",
+     "name": "Sexual function and dysfunction studies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13037",
+     "name": "Piperaceae Chemical and Biological Studies",
+     "field": "Pharmacology, Toxicology and Pharmaceutics",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9880177343805576,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 142,
+    "a": {
+     "id": "T10312",
+     "name": "Health, Nursing, Elderly Care",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12728",
+     "name": "Demographic Trends and Gender Preferences",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9879996464036509,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 143,
+    "a": {
+     "id": "T14054",
+     "name": "Humic Substances and Bio-Organic Studies",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T12012",
+     "name": "Diatoms and Algae Research",
+     "field": "Materials Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9879868382163657,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 144,
+    "a": {
+     "id": "T12574",
+     "name": "Clinical Reasoning and Diagnostic Skills",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T14274",
+     "name": "Education and Vocational Training",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.987920485351476,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 145,
+    "a": {
+     "id": "T11590",
+     "name": "Primary Care and Health Outcomes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10269",
+     "name": "Epigenetics and DNA Methylation",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9878924652056832,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 146,
+    "a": {
+     "id": "T10445",
+     "name": "Antioxidant Activity and Oxidative Stress",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12855",
+     "name": "Peanut Plant Research Studies",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "score": 0.987859480755011,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 147,
+    "a": {
+     "id": "T11590",
+     "name": "Primary Care and Health Outcomes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12728",
+     "name": "Demographic Trends and Gender Preferences",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9876586546159445,
+    "links_before": 0,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 148,
+    "a": {
+     "id": "T12535",
+     "name": "Machine Learning and Data Classification",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10053",
+     "name": "International Relations and Foreign Policy",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9876144308857434,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 149,
+    "a": {
+     "id": "T12280",
+     "name": "Magnesium in Health and Disease",
+     "field": "Nursing",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10621",
+     "name": "Gene Regulatory Network Analysis",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9876141257392288,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 150,
+    "a": {
+     "id": "T13281",
+     "name": "Andrographolide Research and Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10407",
+     "name": "Lipid Membrane Structure and Behavior",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.98758606062982,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 151,
+    "a": {
+     "id": "T13745",
+     "name": "Media and Digital Communication",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12998",
+     "name": "Education and Islamic Studies",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9875855591499498,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 152,
+    "a": {
+     "id": "T13108",
+     "name": "Therapeutic Uses of Natural Elements",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10211",
+     "name": "Computational Drug Discovery Methods",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9873814129738084,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 153,
+    "a": {
+     "id": "T12592",
+     "name": "Opinion Dynamics and Social Influence",
+     "field": "Physics and Astronomy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13497",
+     "name": "Hermeneutics and Narrative Identity",
+     "field": "Arts and Humanities",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9873749415412462,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 154,
+    "a": {
+     "id": "T10445",
+     "name": "Antioxidant Activity and Oxidative Stress",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13326",
+     "name": "Biochemical and Structural Characterization",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9873250375119135,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 155,
+    "a": {
+     "id": "T14354",
+     "name": "Emergency Medicine Education and Research",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9872856045960025,
+    "links_before": 1,
+    "links_after": 5,
+    "connected_later": 1
+   },
+   {
+    "rank": 156,
+    "a": {
+     "id": "T10881",
+     "name": "Blood Coagulation and Thrombosis Mechanisms",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10391",
+     "name": "Healthcare Policy and Management",
+     "field": "Economics, Econometrics and Finance",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9872268205687467,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 157,
+    "a": {
+     "id": "T12504",
+     "name": "Mathematics and Applications",
+     "field": "Mathematics",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12377",
+     "name": "Digital Humanities and Scholarship",
+     "field": "Arts and Humanities",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9872252119710415,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 158,
+    "a": {
+     "id": "T11590",
+     "name": "Primary Care and Health Outcomes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12592",
+     "name": "Opinion Dynamics and Social Influence",
+     "field": "Physics and Astronomy",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.98719902121007,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 159,
+    "a": {
+     "id": "T12238",
+     "name": "Green IT and Sustainability",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10053",
+     "name": "International Relations and Foreign Policy",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9870952652285157,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 160,
+    "a": {
+     "id": "T11356",
+     "name": "Pleural and Pulmonary Diseases",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11791",
+     "name": "Microbial Community Ecology and Physiology",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9870376595753634,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 161,
+    "a": {
+     "id": "T11029",
+     "name": "Renal Diseases and Glomerulopathies",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9869949308913973,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 162,
+    "a": {
+     "id": "T13506",
+     "name": "Botanical Research and Chemistry",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11791",
+     "name": "Microbial Community Ecology and Physiology",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9869197444935639,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 163,
+    "a": {
+     "id": "T12788",
+     "name": "Space Science and Extraterrestrial Life",
+     "field": "Physics and Astronomy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T12485",
+     "name": "Optimism, Hope, and Well-being",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9868979938001188,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 164,
+    "a": {
+     "id": "T12075",
+     "name": "Sodium Intake and Health",
+     "field": "Nursing",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10315",
+     "name": "Decision-Making and Behavioral Economics",
+     "field": "Decision Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9868682303568799,
+    "links_before": 1,
+    "links_after": 5,
+    "connected_later": 1
+   },
+   {
+    "rank": 165,
+    "a": {
+     "id": "T12433",
+     "name": "Skin Diseases and Diabetes",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10235",
+     "name": "Health disparities and outcomes",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9868467131089756,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 166,
+    "a": {
+     "id": "T13430",
+     "name": "Lipid metabolism and disorders",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11791",
+     "name": "Microbial Community Ecology and Physiology",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9867602595298625,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 167,
+    "a": {
+     "id": "T12626",
+     "name": "Cancer, Stress, Anesthesia, and Immune Response",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10059",
+     "name": "Bone Tissue Engineering Materials",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9867581440199349,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 168,
+    "a": {
+     "id": "T11997",
+     "name": "Free Will and Agency",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11863",
+     "name": "Gender, Security, and Conflict",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9867529238088929,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 169,
+    "a": {
+     "id": "T13281",
+     "name": "Andrographolide Research and Applications",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10269",
+     "name": "Epigenetics and DNA Methylation",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9866236847590142,
+    "links_before": 0,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 170,
+    "a": {
+     "id": "T10621",
+     "name": "Gene Regulatory Network Analysis",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T12238",
+     "name": "Green IT and Sustainability",
+     "field": "Engineering",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9866157251072961,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 171,
+    "a": {
+     "id": "T10004",
+     "name": "Soil Carbon and Nitrogen Dynamics",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T10389",
+     "name": "Polymer crystallization and properties",
+     "field": "Materials Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9864758003458931,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 172,
+    "a": {
+     "id": "T10066",
+     "name": "Gut microbiota and health",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.98638338923368,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 173,
+    "a": {
+     "id": "T13883",
+     "name": "Child and Adolescent Health",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10557",
+     "name": "Social Media and Politics",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.98627069701814,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 174,
+    "a": {
+     "id": "T11282",
+     "name": "Fibromyalgia and Chronic Fatigue Syndrome Research",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10993",
+     "name": "Complement system in diseases",
+     "field": "Immunology and Microbiology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9862269833211992,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 175,
+    "a": {
+     "id": "T10129",
+     "name": "Glioma Diagnosis and Treatment",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13446",
+     "name": "Antioxidants, Aging, Portulaca oleracea",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9861209640673096,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 176,
+    "a": {
+     "id": "T11883",
+     "name": "Embodied and Extended Cognition",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13702",
+     "name": "Machine Learning in Healthcare",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9859024942828528,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 177,
+    "a": {
+     "id": "T11692",
+     "name": "Noise Effects and Management",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13944",
+     "name": "Psychiatric care and mental health services",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9857941448295212,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 178,
+    "a": {
+     "id": "T13331",
+     "name": "Energy and Environmental Sustainability",
+     "field": "Energy",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13352",
+     "name": "International Relations in Latin America",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9857223603287036,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 179,
+    "a": {
+     "id": "T13559",
+     "name": "Edcuational Technology Systems",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13765",
+     "name": "Social Science and Policy Research",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9856184153324645,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 180,
+    "a": {
+     "id": "T10335",
+     "name": "Colorectal Cancer Surgical Treatments",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10621",
+     "name": "Gene Regulatory Network Analysis",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.985562018768606,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 181,
+    "a": {
+     "id": "T11765",
+     "name": "Circular RNAs in diseases",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11791",
+     "name": "Microbial Community Ecology and Physiology",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9854693062850599,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 182,
+    "a": {
+     "id": "T13893",
+     "name": "Sustainable Development and Policies",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10391",
+     "name": "Healthcare Policy and Management",
+     "field": "Economics, Econometrics and Finance",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9853962554980191,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 183,
+    "a": {
+     "id": "T13945",
+     "name": "Legal, Health, Environmental and COVID-19 Challenges",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13877",
+     "name": "Law in Society and Culture",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9853575001885089,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 184,
+    "a": {
+     "id": "T12721",
+     "name": "Moringa oleifera research and applications",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11791",
+     "name": "Microbial Community Ecology and Physiology",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9853127226955829,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 185,
+    "a": {
+     "id": "T11796",
+     "name": "Horticultural and Viticultural Research",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T10236",
+     "name": "Aquatic Ecosystems and Phytoplankton Dynamics",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9852567922334284,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 186,
+    "a": {
+     "id": "T12574",
+     "name": "Clinical Reasoning and Diagnostic Skills",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12989",
+     "name": "Ocular Disorders and Treatments",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9851785435662495,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 187,
+    "a": {
+     "id": "T11718",
+     "name": "Physical Education and Pedagogy",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12256",
+     "name": "Facilities and Workplace Management",
+     "field": "Psychology",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9851594866850596,
+    "links_before": 1,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 188,
+    "a": {
+     "id": "T11692",
+     "name": "Noise Effects and Management",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T11634",
+     "name": "Water Quality and Pollution Assessment",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9851456344962006,
+    "links_before": 1,
+    "links_after": 4,
+    "connected_later": 1
+   },
+   {
+    "rank": 189,
+    "a": {
+     "id": "T13082",
+     "name": "Water and Land Management",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T10880",
+     "name": "Environmental Sustainability in Business",
+     "field": "Business, Management and Accounting",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9851281997005286,
+    "links_before": 1,
+    "links_after": 2,
+    "connected_later": 0
+   },
+   {
+    "rank": 190,
+    "a": {
+     "id": "T14054",
+     "name": "Humic Substances and Bio-Organic Studies",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13082",
+     "name": "Water and Land Management",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9851191089103982,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 191,
+    "a": {
+     "id": "T11313",
+     "name": "Immune cells in cancer",
+     "field": "Immunology and Microbiology",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13487",
+     "name": "Statistical and numerical algorithms",
+     "field": "Mathematics",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9851163790468713,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 192,
+    "a": {
+     "id": "T11154",
+     "name": "Parasitic infections in humans and animals",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12824",
+     "name": "Infections and bacterial resistance",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.985088288778911,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 193,
+    "a": {
+     "id": "T11376",
+     "name": "Geriatric Care and Nursing Homes",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T10066",
+     "name": "Gut microbiota and health",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9850509772199388,
+    "links_before": 1,
+    "links_after": 16,
+    "connected_later": 1
+   },
+   {
+    "rank": 194,
+    "a": {
+     "id": "T11883",
+     "name": "Embodied and Extended Cognition",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T11689",
+     "name": "Adversarial Robustness in Machine Learning",
+     "field": "Computer Science",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9849160350203922,
+    "links_before": 1,
+    "links_after": 15,
+    "connected_later": 1
+   },
+   {
+    "rank": 195,
+    "a": {
+     "id": "T11457",
+     "name": "Adipose Tissue and Metabolism",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13446",
+     "name": "Antioxidants, Aging, Portulaca oleracea",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9848959074187258,
+    "links_before": 0,
+    "links_after": 3,
+    "connected_later": 1
+   },
+   {
+    "rank": 196,
+    "a": {
+     "id": "T10914",
+     "name": "Tactile and Sensory Interactions",
+     "field": "Neuroscience",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T13117",
+     "name": "Health Education and Validation",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9848829431048334,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   },
+   {
+    "rank": 197,
+    "a": {
+     "id": "T13893",
+     "name": "Sustainable Development and Policies",
+     "field": "Environmental Science",
+     "domain": "Physical Sciences"
+    },
+    "b": {
+     "id": "T13278",
+     "name": "Economic and Business Development Strategies",
+     "field": "Economics, Econometrics and Finance",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9846960081546702,
+    "links_before": 0,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 198,
+    "a": {
+     "id": "T12480",
+     "name": "Health and Wellbeing Research",
+     "field": "Health Professions",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T13814",
+     "name": "Cultural and political discourse analysis",
+     "field": "Social Sciences",
+     "domain": "Social Sciences"
+    },
+    "score": 0.9846133292136926,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 199,
+    "a": {
+     "id": "T10496",
+     "name": "Pharmaceutical Practices and Patient Outcomes",
+     "field": "Medicine",
+     "domain": "Health Sciences"
+    },
+    "b": {
+     "id": "T12167",
+     "name": "Bacterial Identification and Susceptibility Testing",
+     "field": "Biochemistry, Genetics and Molecular Biology",
+     "domain": "Life Sciences"
+    },
+    "score": 0.9845915811227363,
+    "links_before": 1,
+    "links_after": 0,
+    "connected_later": 0
+   },
+   {
+    "rank": 200,
+    "a": {
+     "id": "T14269",
+     "name": "Food Security and Socioeconomic Dynamics",
+     "field": "Agricultural and Biological Sciences",
+     "domain": "Life Sciences"
+    },
+    "b": {
+     "id": "T12788",
+     "name": "Space Science and Extraterrestrial Life",
+     "field": "Physics and Astronomy",
+     "domain": "Physical Sciences"
+    },
+    "score": 0.9845867890734504,
+    "links_before": 1,
+    "links_after": 1,
+    "connected_later": 0
+   }
+  ]
+ },
+ "robustness": [
+  {
+   "key": "main",
+   "label": "As planned",
+   "pairs": {
+    "train": 28710,
+    "train_positive": 199,
+    "eval": 28114,
+    "eval_positive": 305,
+    "eval_base_rate": 0.01084868748666145
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.051110231098525125,
+     "average_precision_ci": [
+      0.015640957066822187,
+      0.10900634416647248
+     ]
+    },
+    "network": {
+     "average_precision": 0.14881574324413532,
+     "average_precision_ci": [
+      0.07530353504156312,
+      0.267516599861046
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.08431466451552835,
+     "average_precision_ci": [
+      0.04440653328167591,
+      0.18770660250961033
+     ]
+    },
+    "combined": {
+     "average_precision": 0.13923315828679414,
+     "average_precision_ci": [
+      0.07443649785710987,
+      0.26467960045013034
+     ]
+    },
+    "random": {
+     "average_precision": 0.010631376910164265,
+     "average_precision_ci": [
+      0.007317276098296901,
+      0.01684810600822753
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": -0.009582584957341184,
+     "diff_ci": [
+      -0.050372907360603666,
+      0.04524527185185859
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.0977055121456102,
+     "diff_ci": [
+      0.03059571792681983,
+      0.19071799547616697
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.03320443341700323,
+     "diff_ci": [
+      -0.0172698136446255,
+      0.1171101156704508
+     ],
+     "holds": true
+    }
+   }
+  },
+  {
+   "key": "strict",
+   "label": "Stricter label (no possibly misfiled papers)",
+   "pairs": {
+    "train": 28710,
+    "train_positive": 199,
+    "eval": 28114,
+    "eval_positive": 160,
+    "eval_base_rate": 0.01084868748666145
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": -0.008858819529575443,
+     "diff_ci": [
+      -0.06449155721867875,
+      0.03626283802602817
+     ],
+     "outcome": "inconclusive",
+     "holds": false
+    }
+   }
+  },
+  {
+   "key": "k2",
+   "label": "Connected at 2+ citing works",
+   "pairs": {
+    "train": 28710,
+    "train_positive": 497,
+    "eval": 28114,
+    "eval_positive": 676,
+    "eval_base_rate": 0.0240449598065021
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.07162518633326138,
+     "average_precision_ci": [
+      0.03987397366781951,
+      0.11147959829589127
+     ]
+    },
+    "network": {
+     "average_precision": 0.23844756304823947,
+     "average_precision_ci": [
+      0.16221644837920013,
+      0.2987011046288653
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.13004331554545254,
+     "average_precision_ci": [
+      0.08935343245683015,
+      0.19575191688081992
+     ]
+    },
+    "combined": {
+     "average_precision": 0.24949546648352847,
+     "average_precision_ci": [
+      0.16424297079507444,
+      0.3170836543618523
+     ]
+    },
+    "random": {
+     "average_precision": 0.02248272900919344,
+     "average_precision_ci": [
+      0.0173913843362691,
+      0.030212241598382417
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": 0.011047903435288997,
+     "diff_ci": [
+      -0.02234572188070398,
+      0.04478058003488458
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.16682237671497807,
+     "diff_ci": [
+      0.10364915032251067,
+      0.21436651057203393
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.05841812921219115,
+     "diff_ci": [
+      0.020188320280857323,
+      0.11924535730235632
+     ],
+     "holds": true
+    }
+   }
+  },
+  {
+   "key": "k5",
+   "label": "Connected at 5+ citing works",
+   "pairs": {
+    "train": 28710,
+    "train_positive": 50,
+    "eval": 28114,
+    "eval_positive": 106,
+    "eval_base_rate": 0.003770363519954471
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.05378956065447424,
+     "average_precision_ci": [
+      0.005397301356384353,
+      0.1528508594717865
+     ]
+    },
+    "network": {
+     "average_precision": 0.0715142702688913,
+     "average_precision_ci": [
+      0.01732632175990403,
+      0.26178420400820557
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.055799153693576964,
+     "average_precision_ci": [
+      0.011403310114508632,
+      0.20978686231028948
+     ]
+    },
+    "combined": {
+     "average_precision": 0.05280191369042052,
+     "average_precision_ci": [
+      0.017909565904678966,
+      0.23016968547803798
+     ]
+    },
+    "random": {
+     "average_precision": 0.003627937544747514,
+     "average_precision_ci": [
+      0.0021625579578147067,
+      0.006621811394323906
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": -0.018712356578470785,
+     "diff_ci": [
+      -0.08077458270876188,
+      0.03237564264000955
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.017724709614417064,
+     "diff_ci": [
+      -0.06239571790142893,
+      0.1725270969139884
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.002009593039102725,
+     "diff_ci": [
+      -0.0798811911606859,
+      0.13378884234899538
+     ],
+     "holds": true
+    }
+   }
+  },
+  {
+   "key": "e0",
+   "label": "No link at all up to 2017",
+   "pairs": {
+    "train": 26645,
+    "train_positive": 95,
+    "eval": 25628,
+    "eval_positive": 167,
+    "eval_base_rate": 0.006516310285625097
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.03357490740157664,
+     "average_precision_ci": [
+      0.007758719263242694,
+      0.1064587521275437
+     ]
+    },
+    "network": {
+     "average_precision": 0.11741326266631875,
+     "average_precision_ci": [
+      0.03784330283331071,
+      0.23278938158165344
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.09696908250557008,
+     "average_precision_ci": [
+      0.03560012635997304,
+      0.2197445334449532
+     ]
+    },
+    "combined": {
+     "average_precision": 0.12915710132762415,
+     "average_precision_ci": [
+      0.047662267469390576,
+      0.2654303238490672
+     ]
+    },
+    "random": {
+     "average_precision": 0.00678850429747772,
+     "average_precision_ci": [
+      0.0043707575432891405,
+      0.010668811840012157
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": 0.011743838661305392,
+     "diff_ci": [
+      -0.038301315841150194,
+      0.0952677328577231
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.08383835526474212,
+     "diff_ci": [
+      0.009504764013538445,
+      0.17568094337920473
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.06339417510399345,
+     "diff_ci": [
+      0.0018046368169372222,
+      0.17060482452643783
+     ],
+     "holds": true
+    }
+   }
+  },
+  {
+   "key": "large",
+   "label": "Topics with 200+ works only",
+   "pairs": {
+    "train": 27857,
+    "train_positive": 197,
+    "eval": 27676,
+    "eval_positive": 296,
+    "eval_base_rate": 0.0106951871657754
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.05010804252274054,
+     "average_precision_ci": [
+      0.017063457169136008,
+      0.10773962995724776
+     ]
+    },
+    "network": {
+     "average_precision": 0.15257196112086635,
+     "average_precision_ci": [
+      0.0768661944353527,
+      0.28123114812830274
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.08229553335947085,
+     "average_precision_ci": [
+      0.04313258801360893,
+      0.18939686473367492
+     ]
+    },
+    "combined": {
+     "average_precision": 0.1418297227716497,
+     "average_precision_ci": [
+      0.0761044631244504,
+      0.2860932525718342
+     ]
+    },
+    "random": {
+     "average_precision": 0.010322456711191537,
+     "average_precision_ci": [
+      0.006966761039426777,
+      0.015631896466851848
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": -0.010742238349216643,
+     "diff_ci": [
+      -0.059853941556882194,
+      0.04610786019887981
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.10246391859812581,
+     "diff_ci": [
+      0.03747925805711639,
+      0.20168151184769362
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.03218749083673031,
+     "diff_ci": [
+      -0.008310029446200004,
+      0.11733416716834724
+     ],
+     "holds": true
+    }
+   }
+  },
+  {
+   "key": "bge_small",
+   "label": "Pretrained embeddings: bge-small",
+   "pairs": {
+    "train": 28710,
+    "train_positive": 199,
+    "eval": 28114,
+    "eval_positive": 305,
+    "eval_base_rate": 0.01084868748666145
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.051110231098525125,
+     "average_precision_ci": [
+      0.01542862056801189,
+      0.10841572976725138
+     ]
+    },
+    "network": {
+     "average_precision": 0.14881574324413532,
+     "average_precision_ci": [
+      0.0751536299339979,
+      0.2717003515127064
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.11865235392252985,
+     "average_precision_ci": [
+      0.051560186633189904,
+      0.25360560561339596
+     ]
+    },
+    "combined": {
+     "average_precision": 0.15402260543226862,
+     "average_precision_ci": [
+      0.07522224326057389,
+      0.26655408240274486
+     ]
+    },
+    "random": {
+     "average_precision": 0.010631376910164265,
+     "average_precision_ci": [
+      0.007371461844706325,
+      0.016672809510407432
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": 0.005206862188133293,
+     "diff_ci": [
+      -0.032231937436367576,
+      0.03957556462047962
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.0977055121456102,
+     "diff_ci": [
+      0.03416529995475318,
+      0.1907401533240097
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.06754212282400472,
+     "diff_ci": [
+      0.009095669262603572,
+      0.16576365940668664
+     ],
+     "holds": true
+    }
+   }
+  },
+  {
+   "key": "bge_base",
+   "label": "Pretrained embeddings: bge-base",
+   "pairs": {
+    "train": 28710,
+    "train_positive": 199,
+    "eval": 28114,
+    "eval_positive": 305,
+    "eval_base_rate": 0.01084868748666145
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.051110231098525125,
+     "average_precision_ci": [
+      0.01542862056801189,
+      0.10841572976725138
+     ]
+    },
+    "network": {
+     "average_precision": 0.14881574324413532,
+     "average_precision_ci": [
+      0.0751536299339979,
+      0.2717003515127064
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.09933885699640783,
+     "average_precision_ci": [
+      0.046610214864527995,
+      0.23664474551701056
+     ]
+    },
+    "combined": {
+     "average_precision": 0.13867731152633364,
+     "average_precision_ci": [
+      0.07210798577900071,
+      0.25945952668179467
+     ]
+    },
+    "random": {
+     "average_precision": 0.010631376910164265,
+     "average_precision_ci": [
+      0.007371461844706325,
+      0.016672809510407432
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": -0.010138431717801683,
+     "diff_ci": [
+      -0.05571225049217402,
+      0.0273309137320178
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.0977055121456102,
+     "diff_ci": [
+      0.03416529995475318,
+      0.1907401533240097
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.04822862589788271,
+     "diff_ci": [
+      -0.0007999276131800353,
+      0.15890889537056685
+     ],
+     "holds": true
+    }
+   }
+  },
+  {
+   "key": "seed2027",
+   "label": "Other 300 topics (seed 2027)",
+   "skipped": "99 of 300 topics at 2011 are missing, in an old format or from another sample (first: T10221); finish the collection first."
+  }
+ ]
+}

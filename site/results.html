@@ -275,6 +275,12 @@
       "average precision by " + (h1.diff >= 0 ? "+" : "") + num(h1.diff, 4) +
       " (95% interval " + interval(h1.diff_ci) + "), ranking " +
       r.pairs.eval.toLocaleString("en") + " unconnected pairs of fields. ";
+    // What the network baseline achieved on its own, in plain terms.
+    var lift = m.network.average_precision / r.pairs.eval_base_rate;
+    var baseline = "The citation network on its own ranked the pairs that did connect about " +
+      Math.round(lift) + " times better than chance (average precision " +
+      num(m.network.average_precision, 3) + ", against " + pct(r.pairs.eval_base_rate, 1) +
+      " for a random ranking). ";
     var st = r.strict;
     var smallest = Math.round(100 * (r.config.smallest_effect || 0.1));
     verdict.className = "verdict " + (go ? "go" : "stop");
@@ -300,13 +306,13 @@
         "Under the plan, the gain may come from misfiled papers, and the project stops here and " +
         "reports this.");
     } else if (h1.outcome === "inconclusive") {
-      say("Inconclusive.", change + "The interval includes no gain and also a gain of at least " +
-        smallest + "% of the baseline's score, so this test cannot tell. Under the plan this is " +
-        "not enough to continue; the forward test will say more.");
+      say("Inconclusive.", baseline + change + "The interval includes no gain and also a gain " +
+        "of at least " + smallest + "% of the baseline's score, so this test cannot tell. Under " +
+        "the plan this is not enough to take the method further as it is.");
     } else if (h1.outcome === "negative") {
-      say("The method did not beat the network baseline.", change + "The interval rules out a " +
-        "gain of " + smallest + "% of the baseline's score or more. Under the plan, the project " +
-        "stops here and reports this.");
+      say("The method did not beat the network baseline.", baseline + change + "The interval " +
+        "rules out a gain of " + smallest + "% of the baseline's score or more. Under the plan, " +
+        "the project stops here and reports this.");
     } else {
       verdict.className = "verdict";
       say("Not decided.", change + "This report has no decision under the plan, so it is shown " +
@@ -394,7 +400,8 @@
       data.robustness.forEach(function (v) {
         if (v.skipped) {
           rtb.appendChild(el("tr", {}, [el("td", {text: v.label}),
-            el("td", {colspan: "4", class: "no", text: "Not run: " + v.skipped + "."})]));
+            el("td", {colspan: "4", class: "no", text: /missing|collected/.test(v.skipped)
+              ? "Not run yet: its data is still being collected." : "Not run: " + v.skipped + "."})]));
           return;
         }
         var d = v.hypotheses.H1_combined_beats_network;
@@ -415,7 +422,8 @@
 
     body.appendChild(el("h2", {text: "What the method ranked highest in 2017"}));
     body.appendChild(el("p", {class: "note", text:
-      "The 20 pairs ranked first, with how many citing works linked them up to 2017 and in 2018 to 2023."}));
+      "The 20 pairs that the network-and-content model ranked first, with how many citing works " +
+      "linked them up to 2017 and in 2018 to 2023."}));
     var ptb = el("tbody");
     r.top_predictions.slice(0, 20).forEach(function (p) {
       ptb.appendChild(el("tr", {}, [
