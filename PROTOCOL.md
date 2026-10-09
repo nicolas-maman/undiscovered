@@ -50,16 +50,54 @@ it has.
 }
 ```
 
-Three kinds:
+Four kinds:
 
 | kind | input | the volunteer returns |
 |---|---|---|
+| `map` | up to 10 topics and a freeze year | for each topic, which other topics cite its most cited papers, and when (no AI model needed) |
 | `distill` | up to 20 works | for each, the problem it works on and how, described without its field's vocabulary |
 | `rank` | one topic and up to 50 candidate topics from other domains | the candidates ranked, and for the top 3 an evidence pair of works: one from the topic, one from the candidate |
 | `judge` | one candidate bridge with its evidence pair | a verdict (`real`, `superficial`, `unclear`) and a one-paragraph reason |
 
-`distill` comes first because it is the part that needs the most model
-calls: one per paper, which no single project can afford across all of
+`map` comes first: the ranking needs a citation record for every topic,
+about 70,000 OpenAlex calls in all, which volunteers share using their own
+free OpenAlex allowance (see [DESIGN.md](DESIGN.md)).
+
+```json
+{
+  "unit": "u-000001",
+  "protocol": 0,
+  "kind": "map",
+  "topics": ["T10014", "T11478"],
+  "freeze": 2025,
+  "quorum": 1
+}
+```
+
+A map record holds, for one topic, the same fields the backtest collects
+(see `research/undiscovered_research/collect.py`): its 100 papers most
+cited up to the end of the freeze year, its works per year in the eight
+years up to it, the number of usable abstracts among 40 sampled, and the
+counts of works by citing topic in the eight years up to the freeze, in
+its last three, and in every year before. Records for a whole unit are too
+large for an issue (about 250 KB against an issue's 65,536 characters), so
+the client puts them in a gist under the volunteer's own GitHub account,
+and the result names the gist and the file's SHA-256 checksum:
+
+```json
+{
+  "unit": "u-000001",
+  "protocol": 0,
+  "client": {"name": "undiscovered-py", "version": "0.1.0"},
+  "gist": "https://gist.github.com/someone/0123456789abcdef0123456789abcdef",
+  "sha256": "9f2c8f5d0a7b4e3c1a6d2b8e4f0c7a1d3e5b9f2c8f5d0a7b4e3c1a6d2b8e4f0c"
+}
+```
+
+One map unit in twenty is also given to a second volunteer, and the two
+results must agree within the small drift of a live index.
+
+`distill` needs the most model calls: one per paper, which no single project can afford across all of
 science. Its output is an open index of field-free problem descriptions,
 published under CC0. Fields often name the same problem differently, and
 descriptions without the jargon are what let papers that solve the same

@@ -3,34 +3,86 @@
   "$id": "https://github.com/nicolas-maman/undiscovered/schemas/result.schema.json",
   "title": "Work result",
   "type": "object",
-  "required": ["unit", "protocol", "client", "model"],
+  "required": [
+    "unit",
+    "protocol",
+    "client"
+  ],
   "properties": {
-    "unit": {"type": "string", "pattern": "^u-[0-9]{6}$"},
-    "protocol": {"type": "integer", "minimum": 0},
+    "unit": {
+      "type": "string",
+      "pattern": "^u-[0-9]{6}$"
+    },
+    "protocol": {
+      "type": "integer",
+      "minimum": 0
+    },
     "client": {
       "type": "object",
-      "required": ["name", "version"],
-      "properties": {"name": {"type": "string"}, "version": {"type": "string"}}
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
     },
     "model": {
       "type": "object",
-      "required": ["provider", "id"],
+      "required": [
+        "provider",
+        "id"
+      ],
       "properties": {
-        "provider": {"type": "string"},
-        "id": {"type": "string"},
-        "embedding": {"type": "string"}
+        "provider": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "embedding": {
+          "type": "string"
+        }
       }
     },
-    "ranking": {"type": "array", "items": {"type": "string", "pattern": "^T[0-9]+$"}},
+    "ranking": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^T[0-9]+$"
+      }
+    },
     "evidence": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["candidate", "works"],
+        "required": [
+          "candidate",
+          "works"
+        ],
         "properties": {
-          "candidate": {"type": "string", "pattern": "^T[0-9]+$"},
-          "works": {"type": "array", "items": {"type": "string", "pattern": "^W[0-9]+$"}, "minItems": 2, "maxItems": 2},
-          "why": {"type": "string", "maxLength": 2000}
+          "candidate": {
+            "type": "string",
+            "pattern": "^T[0-9]+$"
+          },
+          "works": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^W[0-9]+$"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "why": {
+            "type": "string",
+            "maxLength": 2000
+          }
         }
       }
     },
@@ -40,20 +92,87 @@
       "maxItems": 20,
       "items": {
         "type": "object",
-        "required": ["work", "problem", "approach"],
+        "required": [
+          "work",
+          "problem",
+          "approach"
+        ],
         "properties": {
-          "work": {"type": "string", "pattern": "^W[0-9]+$"},
-          "problem": {"type": "string", "minLength": 20, "maxLength": 600},
-          "approach": {"type": "string", "minLength": 20, "maxLength": 600}
+          "work": {
+            "type": "string",
+            "pattern": "^W[0-9]+$"
+          },
+          "problem": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 600
+          },
+          "approach": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 600
+          }
         }
       }
     },
-    "verdict": {"enum": ["real", "superficial", "unclear"]},
-    "reason": {"type": "string", "maxLength": 4000}
+    "verdict": {
+      "enum": [
+        "real",
+        "superficial",
+        "unclear"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 4000
+    },
+    "gist": {
+      "type": "string",
+      "pattern": "^https://gist\\.github\\.com/[A-Za-z0-9-]+/[0-9a-f]{20,40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
   },
   "oneOf": [
-    {"required": ["descriptions"]},
-    {"required": ["ranking"]},
-    {"required": ["verdict", "reason"]}
+    {
+      "required": [
+        "gist",
+        "sha256"
+      ]
+    },
+    {
+      "required": [
+        "descriptions"
+      ]
+    },
+    {
+      "required": [
+        "ranking"
+      ]
+    },
+    {
+      "required": [
+        "verdict",
+        "reason"
+      ]
+    }
+  ],
+  "allOf": [
+    {
+      "if": {
+        "not": {
+          "required": [
+            "gist"
+          ]
+        }
+      },
+      "then": {
+        "required": [
+          "model"
+        ]
+      }
+    }
   ]
 }

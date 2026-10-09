@@ -49,7 +49,7 @@ def test_every_protocol_example_validates():
         assert kind, f"example matches no schema: {block[:80]}"
         Draft202012Validator(SCHEMAS[kind]).validate(obj)
         seen.add(obj.get("kind", kind))
-    assert {"distill", "rank", "result", "rating", "descriptions"} <= seen
+    assert {"map", "distill", "rank", "result", "rating", "descriptions"} <= seen
 
 
 def test_bridge_ids_in_examples_are_sorted():
