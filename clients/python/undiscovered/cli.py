@@ -4,6 +4,7 @@
     undiscovered work           take an open unit, do it, submit it
     undiscovered work --units 5 do five, one after another
     undiscovered work --dry-run do one and save it here instead of submitting
+    undiscovered work --unit u-000241 --dry-run   a given unit, for example to compare clients
 """
 
 from __future__ import annotations
@@ -74,7 +75,12 @@ def cmd_work(args) -> None:
     done = set(cfg.get("done", []))
     rng = random.Random()
     for n in range(args.units):
-        unit = pick_unit(index, done, rng)
+        if args.unit:
+            unit = next((u for u in index.get("units", []) if u["unit"] == args.unit), None)
+            if unit is None:
+                sys.exit(f"There is no unit {args.unit}.")
+        else:
+            unit = pick_unit(index, done, rng)
         if unit is None:
             print("No open units left for you. Thank you.")
             return
@@ -107,6 +113,7 @@ def main(argv: list[str] | None = None) -> None:
     w = sub.add_parser("work", help="take an open unit, do it, submit it")
     w.add_argument("--units", type=int, default=1, help="how many units to do (default 1)")
     w.add_argument("--dry-run", action="store_true", help="save the result here instead of submitting")
+    w.add_argument("--unit", default="", help="do this unit rather than a random open one")
     w.set_defaults(func=cmd_work)
     args = ap.parse_args(argv)
     try:
