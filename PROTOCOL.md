@@ -62,7 +62,7 @@ Four kinds:
 | `judge` | one candidate bridge with its evidence pair | a verdict (`real`, `superficial`, `unclear`) and a one-paragraph reason |
 
 `map` comes first: the ranking needs a citation record for every topic,
-about 70,000 OpenAlex calls in all, which volunteers share using their own
+about 110,000 OpenAlex calls in all, which volunteers share using their own
 free OpenAlex allowance (see [DESIGN.md](DESIGN.md)).
 
 ```json
@@ -82,7 +82,7 @@ cited up to the end of the freeze year, its works per year in the eight
 years up to it, the number of usable abstracts among 40 sampled, and the
 counts of works by citing topic in the eight years up to the freeze, in
 its last three, and in every year before. Records for a whole unit are too
-large for an issue (about 500 KB against an issue's 65,536 characters), so
+large for an issue (about 300 KB against an issue's 65,536 characters), so
 the client puts them in a gist under the volunteer's own GitHub account,
 and the result names the gist and the file's SHA-256 checksum:
 

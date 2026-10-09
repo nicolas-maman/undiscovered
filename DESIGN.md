@@ -43,13 +43,14 @@ papers, now and in recent years. That is the same record the backtest
 collected, taken at the end of 2025, except that only the number of usable
 abstracts is kept, not their text.
 
-- **Size.** About 15 OpenAlex calls per topic, about 70,000 for all 4,516
-  topics: a week for one free key, a day for ten volunteers.
+- **Size.** About 25 OpenAlex calls per topic (measured on a real unit),
+  about 110,000 for all 4,516 topics: eleven days for one free key, about
+  a day for ten volunteers.
 - **Unit of work.** 10 topics. The client fetches them with the
   volunteer's own OpenAlex allowance, runs at low priority, and stops
   cleanly when the day's allowance is spent.
 - **Submission.** A unit's records are too large for an issue (about
-  500 KB; an issue holds 65,536 characters). The client puts them in a
+  300 KB; an issue holds 65,536 characters). The client puts them in a
   gist under the volunteer's GitHub account and opens a short issue with
   the gist's address and a checksum.
 - **Checks.** A job fetches the gist, validates every record against the

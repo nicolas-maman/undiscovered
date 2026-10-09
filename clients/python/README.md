@@ -14,7 +14,7 @@ the pieces fit together is in [DESIGN.md](../../DESIGN.md).
   account, so anyone can see who did what.
 - Optional: a free OpenAlex key from <https://openalex.org/settings/api>.
   Without one you get about 1,000 calls a day; with one, about 10,000. A
-  unit of ten topics takes about 200.
+  unit of ten topics takes about 250.
 
 ## Install and run
 
@@ -42,6 +42,6 @@ current folder instead of submitting it, if you want to see what is sent.
 ## What it sends
 
 For each unit, one secret gist under your GitHub account with the ten
-topic records (about 500 KB), and one issue on the project naming the gist
+topic records (about 300 KB), and one issue on the project naming the gist
 and its checksum. A job on the project checks every record before using it,
 and gives one unit in twenty to a second volunteer to compare.
