@@ -5,6 +5,10 @@ so that what comes next cannot be shaped by that result, and so that it can
 be criticised while it is still cheap to change. Each part gets its own
 preregistration before any of its data is analysed.
 
+The first test came out inconclusive because too few pairs connected; a
+draft for a decisive version, on every topic, is in
+[STUDY-2-DRAFT.md](STUDY-2-DRAFT.md).
+
 ## 1. A forward test
 
 The backtest checks the past. However careful it is, it was designed by
