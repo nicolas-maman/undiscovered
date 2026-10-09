@@ -22,6 +22,8 @@ jobs:
         run: |
           pip install -e clients/python
           python -m pytest -q clients/python/tests
+      - name: Intake tests (checking submitted results)
+        run: python -m pytest -q pipeline/tests
       - name: Protocol examples point at real OpenAlex records
         working-directory: research
         env:

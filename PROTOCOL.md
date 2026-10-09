@@ -33,9 +33,11 @@ do.
 
 ## Work units
 
-Published at `https://<site>/data/units/<unit>.json`, with an index at
-`/data/units/index.json` listing every open unit and how many accepted results
-it has.
+Each kind of unit lives on its own data branch, listed in
+`units/index.json` with its status (`open`, `check` when a second
+volunteer is needed, `done`, or `disputed`). Map units for the 2025 freeze
+are on the `map-2025` branch:
+<https://raw.githubusercontent.com/nicolas-maman/undiscovered/map-2025/units/index.json>.
 
 ```json
 {
