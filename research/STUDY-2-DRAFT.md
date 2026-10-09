@@ -73,3 +73,8 @@ registered plan will say so and will not change its size after seeing data.
 3. Should the evaluation also be run by domain pair as a primary result,
    since the network model's strength differed by domain pair in the first
    test?
+4. The ranking of today's literature ([DESIGN.md](../DESIGN.md), step 2)
+   needs a model fitted on every topic, because two of its features count
+   through other topics. This test's full maps would give it one. Should
+   the ranking wait for this test, or be computed through the first test's
+   300 topics in the meantime?

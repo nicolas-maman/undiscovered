@@ -72,7 +72,9 @@ abstracts is kept, not their text.
   count through all 4,516 topics and take larger values. Either they are
   computed through the same 300 reference topics, or the model is refitted
   on a full map of an earlier freeze. Whichever is chosen is tested
-  against the backtest data first.
+  against the backtest data first. The second test, if it runs as
+  [drafted](research/STUDY-2-DRAFT.md), collects full maps at 2012 and 2018
+  and so provides the second option.
 - The ranking is also the forward test of [research/NEXT.md](research/NEXT.md):
   it is timestamped when published and scored every year.
 
