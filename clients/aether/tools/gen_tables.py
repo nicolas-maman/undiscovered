@@ -1,15 +1,21 @@
-"""Write the two tables the Aether client needs to count usable abstracts exactly as Python does.
+"""Write the tables the Aether client needs to read text exactly as Python does.
 
     python clients/aether/tools/gen_tables.py
 
 The Python client counts the words of ``text.lower()`` with the pattern
-``[^\\W\\d_]+`` and checks them against its stop-word list. Aether has no
+``[^\\W\\d_]+`` and checks them against its stop-word list; to describe
+papers it also compares those words, lowered, with each paper's avoid
+words, splits and strips answers with ``str.split()`` and ``str.strip()``,
+and drops ``<think>`` blocks with a case-insensitive pattern. Aether has no
 Unicode character database, so this script writes what Python's own one
 says into ``src/letters.ae`` (the code points that pattern counts as
-letters) and copies the stop-word list into ``src/stopwords.ae``. It has
-to be Python: the tables must say what the Python client's ``re`` and
-``str.lower`` say. Run it with the Python version the reference client
-uses, and again when that version's Unicode tables change.
+letters) and ``src/casing.ae`` (what ``str.lower`` maps each code point to,
+the two classes its final-sigma rule reads, what ``str.isspace`` calls
+space, and what ``re.IGNORECASE`` matches for the letters of ``think``),
+and copies the stop-word list into ``src/stopwords.ae``. It has to be
+Python: the tables must say what the Python client's ``re`` and ``str``
+say. Run it with the Python version the reference client uses, and again
+when that version's Unicode tables change.
 """
 
 from __future__ import annotations
@@ -163,6 +169,254 @@ def write_stopwords(path: Path) -> None:
     print(f"{len(words)} stop words -> {path}")
 
 
+CAPITAL_SIGMA = "\u03a3"
+SMALL_SIGMA = "\u03c3"
+FINAL_SIGMA = "\u03c2"
+
+
+def code_points():
+    """Every code point a Python str can hold as text: all but the surrogates."""
+    for cp in range(0x110000):
+        if not 0xD800 <= cp <= 0xDFFF:
+            yield cp
+
+
+def as_ranges(cps: list[int]) -> list[tuple[int, int]]:
+    ranges: list[list[int]] = []
+    for cp in cps:
+        if ranges and ranges[-1][1] == cp - 1:
+            ranges[-1][1] = cp
+        else:
+            ranges.append([cp, cp])
+    return [(a, b) for a, b in ranges]
+
+
+def lower_runs() -> list[tuple[int, int, int, int]]:
+    """What str.lower() maps each code point from 0x80 up to, as runs.
+
+    A run (start, end, step, delta) says that start, start + step, ... end
+    each lower to themselves plus delta; every code point in no run lowers
+    to itself. U+0130 and U+03A3 are left out: the first lowers to two code
+    points, the second depends on its neighbours, and the client handles
+    both itself. Checks the assumptions the client relies on.
+    """
+    for cp in range(0x80):
+        want = chr(cp + 32) if 65 <= cp <= 90 else chr(cp)
+        assert chr(cp).lower() == want, "ASCII lowers as A-Z to a-z"
+    assert "\u0130".lower() == "i\u0307", "U+0130 lowers to i + U+0307"
+    runs: list[list[int]] = []
+    for cp in code_points():
+        if cp < 0x80 or cp in (0x130, 0x3A3):
+            continue
+        low = chr(cp).lower()
+        assert len(low) == 1, f"U+{cp:04X} lowers to more than one code point"
+        assert low.lower() == low, f"lowering U+{cp:04X} twice changes it again"
+        if low == chr(cp):
+            continue
+        delta = ord(low) - cp
+        if runs:
+            start, end, step, d = runs[-1]
+            gap = cp - end
+            if d == delta and ((step == 0 and gap in (1, 2)) or (step != 0 and gap == step)):
+                runs[-1] = [start, cp, gap, d]
+                continue
+        runs.append([cp, cp, 0, delta])
+    out = [(s, e, step or 1, d) for s, e, step, d in runs]
+    mapped = {cp: cp + d for s, e, step, d in out for cp in range(s, e + 1, step)}
+    for cp in code_points():                        # the runs say exactly what str.lower says
+        if cp >= 0x80 and cp not in (0x130, 0x3A3):
+            assert chr(mapped.get(cp, cp)) == chr(cp).lower(), f"the runs lower U+{cp:04X} wrongly"
+    return out
+
+
+def sigma_classes() -> tuple[list[int], list[int]]:
+    """The two classes str.lower() reads to choose between final and medial sigma.
+
+    CPython lowers U+03A3 to final sigma when, skipping case-ignorable code
+    points, a cased one comes before it and none comes after. A code point
+    is told apart by what str.lower() itself does next to a sigma: alone
+    before one, after "A" and before one. Returns (case-ignorable, cased
+    and not case-ignorable); the rule never asks whether a case-ignorable
+    code point is also cased, since it skips them first.
+    """
+    ignorable, cased = [], []
+    for cp in code_points():
+        x = chr(cp)
+        alone = (x + CAPITAL_SIGMA).lower()[-1]
+        after_cased = ("A" + x + CAPITAL_SIGMA).lower()[-1]
+        if alone == SMALL_SIGMA and after_cased == FINAL_SIGMA:
+            ignorable.append(cp)
+        elif alone == FINAL_SIGMA:
+            cased.append(cp)
+        else:
+            assert alone == SMALL_SIGMA and after_cased == SMALL_SIGMA
+    return ignorable, cased
+
+
+def check_final_sigma(ignorable: list[int], cased: list[int]) -> None:
+    """The rule as the client applies it, against str.lower(), on every short mix of telling code points."""
+    ign, cas = set(ignorable), set(cased)
+
+    def lower_sigma(text: str, i: int) -> str:
+        j = i - 1
+        while j >= 0 and ord(text[j]) in ign:
+            j -= 1
+        final = j >= 0 and ord(text[j]) in cas
+        if final and i < len(text) - 1:
+            j = i + 1
+            while j < len(text) and ord(text[j]) in ign:
+                j += 1
+            final = j == len(text) or ord(text[j]) not in cas
+        return FINAL_SIGMA if final else SMALL_SIGMA
+
+    pieces = ["A", "a", CAPITAL_SIGMA, "'", ".", " ", "1", "\u0345", "\u02b0", "\u00ad", "\u0130"]
+    texts = [""]
+    for _ in range(4):
+        texts = [t + p for t in texts for p in pieces]
+        for t in texts:
+            for i, ch in enumerate(t):
+                if ch == CAPITAL_SIGMA:
+                    got = t.lower()
+                    # Every piece but U+0130 lowers to one code point, and U+0130 to two.
+                    k = i + t[:i].count("\u0130")
+                    assert got[k] == lower_sigma(t, i), f"final sigma rule differs for {t!r}"
+
+
+def tag_letters() -> list[tuple[int, int]]:
+    """(letter, code point): what re.IGNORECASE matches for each letter of "think"."""
+    pairs = []
+    for letter in "think":
+        for cp in code_points():
+            if re.fullmatch(letter, chr(cp), re.I):
+                pairs.append((ord(letter), cp))
+    for c in "</>":
+        assert [cp for cp in code_points() if re.fullmatch(re.escape(c), chr(cp), re.I)] == [ord(c)]
+    return pairs
+
+
+def hex_lines(values: list[int]) -> str:
+    lines = []
+    for i in range(0, len(values), 8):
+        lines.append("    " + ", ".join(f"0x{x:05X}" if x >= 0 else f"-0x{-x:05X}" for x in values[i:i + 8]))
+    return ",\n".join(lines)
+
+
+def range_search(name: str, table: str, count: str) -> str:
+    return (
+        f"{name}(cp: int) -> int {{\n"
+        "    lo = 0\n"
+        f"    hi = {count}\n"
+        "    while lo < hi {\n"
+        "        mid = (lo + hi) / 2\n"
+        f"        if cp < {table}[2 * mid] {{\n"
+        "            hi = mid\n"
+        f"        }} else if cp > {table}[2 * mid + 1] {{\n"
+        "            lo = mid + 1\n"
+        "        } else {\n"
+        "            return 1\n"
+        "        }\n"
+        "    }\n"
+        "    return 0\n"
+        "}\n")
+
+
+def write_casing(path: Path) -> None:
+    runs = lower_runs()
+    ignorable, cased = sigma_classes()
+    check_final_sigma(ignorable, cased)
+    ign_ranges, cased_ranges = as_ranges(ignorable), as_ranges(cased)
+    space = as_ranges([cp for cp in code_points() if chr(cp).isspace()])
+    tags = tag_letters()
+    flat_runs = [x for r in runs for x in r]
+    flat_ign = [x for r in ign_ranges for x in r]
+    flat_cased = [x for r in cased_ranges for x in r]
+    flat_space = [x for r in space for x in r]
+    flat_tags = [x for t in tags for x in t]
+    path.write_text(
+        "// Generated by tools/gen_tables.py: do not edit.\n"
+        f"// Python {sys.version.split()[0]}, Unicode {unicodedata.unidata_version}.\n"
+        "//\n"
+        "// What Python's str methods do with text beyond ASCII:\n"
+        "//\n"
+        "// - str.lower() maps each code point to one other code point (the\n"
+        "//   runs below), except U+0130, which lowers to \"i\" and U+0307, and\n"
+        "//   U+03A3, which lowers to final sigma (U+03C2) when a cased code point\n"
+        "//   comes before it and none after, case-ignorable ones skipped, and to\n"
+        "//   U+03C3 otherwise. The callers handle those two.\n"
+        "// - str.split() and str.strip() break on what str.isspace() calls space.\n"
+        "// - re.IGNORECASE matches a letter of \"think\" with the code points\n"
+        "//   TAG_LETTERS pairs it with (\"i\" with U+0130 and U+0131 as well, \"k\"\n"
+        "//   with U+212A).\n"
+        "\n"
+        "exports(lower_code, is_cased, is_case_ignorable, is_space, tag_letter, CAPITAL_SIGMA, DOTTED_CAPITAL_I)\n"
+        "\n"
+        "const CAPITAL_SIGMA = 0x3A3\n"
+        "const DOTTED_CAPITAL_I = 0x130\n"
+        f"const RUN_COUNT = {len(runs)}\n"
+        "// start, end, step, delta\n"
+        f"const LOWER_RUNS: int[{len(flat_runs)}] = [\n{hex_lines(flat_runs)}\n]\n"
+        f"const CASED_COUNT = {len(cased_ranges)}\n"
+        f"const CASED_RANGES: int[{len(flat_cased)}] = [\n{hex_lines(flat_cased)}\n]\n"
+        f"const IGNORABLE_COUNT = {len(ign_ranges)}\n"
+        f"const IGNORABLE_RANGES: int[{len(flat_ign)}] = [\n{hex_lines(flat_ign)}\n]\n"
+        f"const SPACE_COUNT = {len(space)}\n"
+        f"const SPACE_RANGES: int[{len(flat_space)}] = [\n{hex_lines(flat_space)}\n]\n"
+        f"const TAG_COUNT = {len(tags)}\n"
+        "// letter, code point\n"
+        f"const TAG_LETTERS: int[{len(flat_tags)}] = [\n{hex_lines(flat_tags)}\n]\n"
+        "\n"
+        "// What str.lower() makes of `cp`, for any code point but U+0130 and U+03A3.\n"
+        "lower_code(cp: int) -> int {\n"
+        "    if cp < 128 {\n"
+        "        if cp >= 65 && cp <= 90 {\n"
+        "            return cp + 32\n"
+        "        }\n"
+        "        return cp\n"
+        "    }\n"
+        "    lo = 0\n"
+        "    hi = RUN_COUNT\n"
+        "    while lo < hi {\n"
+        "        mid = (lo + hi) / 2\n"
+        "        if cp < LOWER_RUNS[4 * mid] {\n"
+        "            hi = mid\n"
+        "        } else if cp > LOWER_RUNS[4 * mid + 1] {\n"
+        "            lo = mid + 1\n"
+        "        } else {\n"
+        "            if (cp - LOWER_RUNS[4 * mid]) % LOWER_RUNS[4 * mid + 2] == 0 {\n"
+        "                return cp + LOWER_RUNS[4 * mid + 3]\n"
+        "            }\n"
+        "            return cp\n"
+        "        }\n"
+        "    }\n"
+        "    return cp\n"
+        "}\n"
+        "\n"
+        "// 1 when `cp` is cased and not case-ignorable, as the final-sigma rule reads it.\n"
+        + range_search("is_cased", "CASED_RANGES", "CASED_COUNT") +
+        "\n"
+        "// 1 when `cp` is case-ignorable, which the final-sigma rule skips.\n"
+        + range_search("is_case_ignorable", "IGNORABLE_RANGES", "IGNORABLE_COUNT") +
+        "\n"
+        "// 1 when str.isspace() says `cp` is space.\n"
+        + range_search("is_space", "SPACE_RANGES", "SPACE_COUNT") +
+        "\n"
+        "// 1 when re.IGNORECASE matches `cp` with `letter`, one of t h i n k.\n"
+        "tag_letter(cp: int, letter: int) -> int {\n"
+        "    i = 0\n"
+        "    while i < TAG_COUNT {\n"
+        "        if TAG_LETTERS[2 * i] == letter && TAG_LETTERS[2 * i + 1] == cp {\n"
+        "            return 1\n"
+        "        }\n"
+        "        i = i + 1\n"
+        "    }\n"
+        "    return 0\n"
+        "}\n",
+        encoding="utf-8", newline="\n")
+    print(f"{len(runs)} lowercase runs, {len(cased_ranges)} cased and {len(ign_ranges)} case-ignorable ranges,"
+          f" {len(space)} space ranges, {len(tags)} tag letters -> {path}")
+
+
 if __name__ == "__main__":
     write_letters(HERE / "src" / "letters.ae")
     write_stopwords(HERE / "src" / "stopwords.ae")
+    write_casing(HERE / "src" / "casing.ae")

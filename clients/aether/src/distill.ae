@@ -1,0 +1,497 @@
+// Distill units: what each paper works on and how, without its field's
+// words. The same job, step for step, as the Python client's distill.py,
+// which docs/WRITE-A-CLIENT.md ("Describing papers") describes.
+//
+// For each work the client reads its title and abstract from OpenAlex and
+// asks the volunteer's model for two plain sentences: the problem and the
+// approach. Before anything is sent, every answer is checked the way the
+// checking job will check it: one JSON object, both parts present and
+// short, at most `max_avoided` of the paper's own distinctive words (the
+// unit's `avoid` list) reused, and not the same as the description of
+// another paper in the unit. A model that fails a check is asked once
+// more, told why.
+//
+// Words, case and space are Python's (pytext.ae), and so is what counts as
+// valid JSON (pyjson.ae): a check passes or fails in both clients alike.
+
+import std.string
+import std.strbuilder
+import std.strarr
+import std.json
+import std.longarr
+import std.sort
+import std.io
+import openalex
+import models
+import pytext
+import pyjson
+import casing
+import jsontext
+
+exports(
+    PROMPT, MAX_WORDS, SYSTEM, FORMAT, works_query, abstract_text, prompt, drop_thinking,
+    avoided, parse, fingerprint, check, describe, describe_works, describe_unit
+)
+
+const PROMPT = 1            // changes whenever SYSTEM, FORMAT or prompt() changes
+const MAX_WORDS = 60        // per part; FORMAT says it too
+
+const SYSTEM = "You help researchers in one field recognise work from another. You describe what a piece of research does in plain words that any scientist would understand."
+
+const FORMAT = "Answer with one JSON object and nothing else, in this form:\n{\"problem\": \"...\", \"approach\": \"...\"}\nEach value is one or two sentences of plain English, at most 60 words."
+
+const POSITION_BITS = 1048576   // 2^20: room for the word number beside a position
+
+// The one OpenAlex request for a unit's works (`ids`, a JSON array of
+// work IDs): their titles and abstracts.
+works_query(ids: ptr) -> string {
+    n = jsontext.size(ids)
+    joined = strbuilder.new(n * 13 + 9)
+    strbuilder.append(joined, "openalex:")
+    i = 0
+    while i < n {
+        if i > 0 {
+            strbuilder.append_byte(joined, 124)
+        }
+        wid, _err = json.get_string(jsontext.at(ids, i))
+        strbuilder.append(joined, wid)
+        i = i + 1
+    }
+    flt = strbuilder.finish(joined)
+    return "works?filter=${openalex.quote(flt)}&per_page=${n}&select=${openalex.quote("id,title,abstract_inverted_index")}"
+}
+
+// An abstract rebuilt from OpenAlex's inverted index (word -> positions):
+// each word at each of its positions, joined by single spaces. As in
+// Python, a position claimed by two words holds the later one.
+abstract_text(inverted: ptr) -> string {
+    if inverted == null {
+        return string.copy("")
+    }
+    if json.json_type(inverted) != 5 {
+        return string.copy("")
+    }
+    nk = json.object_size(inverted)
+    total = 0
+    k = 0
+    while k < nk {
+        total = total + jsontext.size(json.json_object_value_at(inverted, k))
+        k = k + 1
+    }
+    if total == 0 {
+        return string.copy("")
+    }
+    // Each (position, word number) as one long, so one sort orders them by
+    // position and, within a position, by word: the last of a run wins.
+    pairs = longarr.longarr_new_raw(total)
+    idx = 0
+    k = 0
+    while k < nk {
+        positions = json.json_object_value_at(inverted, k)
+        m = jsontext.size(positions)
+        j = 0
+        while j < m {
+            long p = json.json_get_long(jsontext.at(positions, j))
+            longarr.longarr_set_raw(pairs, idx, p * POSITION_BITS + k)
+            idx = idx + 1
+            j = j + 1
+        }
+        k = k + 1
+    }
+    sort.longs(longarr.array(pairs))
+    sb = strbuilder.new(total * 8)
+    placed = 0
+    i = 0
+    while i < total {
+        pos = longarr.longarr_get_raw(pairs, i) >> 20
+        while i + 1 < total && (longarr.longarr_get_raw(pairs, i + 1) >> 20) == pos {
+            i = i + 1
+        }
+        winner = (longarr.longarr_get_raw(pairs, i) & (POSITION_BITS - 1)) as int
+        if placed > 0 {
+            strbuilder.append_byte(sb, 32)
+        }
+        strbuilder.append(sb, json.json_object_key_at(inverted, winner))
+        placed = placed + 1
+        i = i + 1
+    }
+    longarr.longarr_free(pairs)
+    return strbuilder.finish(sb)
+}
+
+// The words of `avoid` (a JSON array of strings, or null), joined by `sep`.
+joined_words(avoid: ptr, sep: string) -> string {
+    sb = strbuilder.new(128)
+    n = jsontext.size(avoid)
+    i = 0
+    while i < n {
+        if i > 0 {
+            strbuilder.append(sb, sep)
+        }
+        a, _err = json.get_string(jsontext.at(avoid, i))
+        strbuilder.append(sb, a)
+        i = i + 1
+    }
+    return strbuilder.finish(sb)
+}
+
+// The question for one work: the unit's instructions, the title, the
+// abstract, the words to avoid if any, and the answer's form, each part
+// after a blank line.
+prompt(instructions: string, title: string, abstract: string, avoid: ptr) -> string {
+    sb = strbuilder.new(string.length(abstract) + 2048)
+    strbuilder.append(sb, instructions)
+    strbuilder.append(sb, "\n\nTitle: ")
+    strbuilder.append(sb, title)
+    strbuilder.append(sb, "\n\nAbstract: ")
+    strbuilder.append(sb, abstract)
+    if jsontext.size(avoid) > 0 {
+        strbuilder.append(sb, "\n\nDo not use these words, which are specific to this paper: ")
+        strbuilder.append(sb, joined_words(avoid, ", "))
+        strbuilder.append(sb, ".")
+    }
+    strbuilder.append(sb, "\n\n")
+    strbuilder.append(sb, FORMAT)
+    return strbuilder.finish(sb)
+}
+
+// 1 when `names` (a strarr) holds `name`.
+holds(names: ptr, name: string) -> int {
+    i = 0
+    while i < strarr.size(names) {
+        if strarr.get(names, i) == name {
+            return 1
+        }
+        i = i + 1
+    }
+    return 0
+}
+
+// Which of the avoid words appear in `text`, case and a final s ignored, in
+// the order of `avoid`, as a strarr the caller frees.
+avoided(text: string, avoid: ptr) -> ptr {
+    found = pytext.words(text)
+    stems = strarr.new_hint(strarr.size(found))
+    i = 0
+    while i < strarr.size(found) {
+        strarr.push_copy(stems, pytext.stem(strarr.get(found, i)))
+        i = i + 1
+    }
+    strarr.free(found)
+    used = strarr.new()
+    n = jsontext.size(avoid)
+    j = 0
+    while j < n {
+        a, _err = json.get_string(jsontext.at(avoid, j))
+        if holds(stems, pytext.stem(pytext.lower(a))) == 1 {
+            strarr.push_copy(used, a)
+        }
+        j = j + 1
+    }
+    strarr.free(stems)
+    return used
+}
+
+// Where the tag at byte `i` ("<think>", or "</think>" with `closing` set)
+// ends, matched as Python's re.IGNORECASE matches it, or -1.
+tag_end(b: byte[], n: int, i: int, closing: int) -> int {
+    if i >= n || b[i] as int != 60 {
+        return -1
+    }
+    k = i + 1
+    if closing == 1 {
+        if k >= n || b[k] as int != 47 {
+            return -1
+        }
+        k = k + 1
+    }
+    word = string.bytes("think")
+    li = 0
+    while li < 5 {
+        if k >= n {
+            return -1
+        }
+        cp, size = pytext.decode_at(b, n, k)
+        if casing.tag_letter(cp, word[li] as int) == 0 {
+            return -1
+        }
+        k = k + size
+        li = li + 1
+    }
+    if k >= n || b[k] as int != 62 {
+        return -1
+    }
+    return k + 1
+}
+
+// The answer without its <think>...</think> blocks, as Python's
+// re.sub(r"<think>.*?</think>", "", answer, flags=re.S | re.I): from each
+// opening tag to the first closing tag after it.
+drop_thinking(answer: string) -> string {
+    b = string.bytes(answer)
+    n = b.len
+    sb = strbuilder.new(n + 1)
+    kept = 0        // bytes before this are copied or dropped
+    i = 0
+    while i < n {
+        if b[i] as int == 60 {
+            opened = tag_end(b, n, i, 0)
+            if opened >= 0 {
+                closed = -1
+                j = opened
+                while j < n && closed < 0 {
+                    if b[j] as int == 60 {
+                        closed = tag_end(b, n, j, 1)
+                    }
+                    j = j + 1
+                }
+                if closed >= 0 {
+                    while kept < i {
+                        strbuilder.append_byte(sb, b[kept] as int)
+                        kept = kept + 1
+                    }
+                    kept = closed
+                    i = closed
+                    continue
+                }
+            }
+        }
+        i = i + 1
+    }
+    while kept < n {
+        strbuilder.append_byte(sb, b[kept] as int)
+        kept = kept + 1
+    }
+    return strbuilder.finish(sb)
+}
+
+// The problem and approach from a model's answer, which may wrap the JSON
+// in other text: (problem, approach, "") or ("", "", why it cannot be used,
+// in words the model is shown).
+parse(answer: string) -> (string, string, string) {
+    text = drop_thinking(answer)
+    b = string.bytes(text)
+    first = -1
+    last = -1
+    i = 0
+    while i < b.len {
+        c = b[i] as int
+        if c == 123 && first < 0 {
+            first = i
+        }
+        if c == 125 {
+            last = i
+        }
+        i = i + 1
+    }
+    if first < 0 || last < first {
+        return string.copy(""), string.copy(""), "the answer was not a JSON object"
+    }
+    pick = pyjson.read_members(string.substring(text, first, last + 1), "problem", "approach")
+    if pick == null {
+        return string.copy(""), string.copy(""), "the answer was not valid JSON"
+    }
+    if pick.first_text == 0 || pytext.split_count(pick.first) < 4 {
+        heap.free(pick)
+        return string.copy(""), string.copy(""), "\"problem\" was missing or too short"
+    }
+    if pick.second_text == 0 || pytext.split_count(pick.second) < 4 {
+        heap.free(pick)
+        return string.copy(""), string.copy(""), "\"approach\" was missing or too short"
+    }
+    problem = pytext.squeeze(pick.first)
+    approach = pytext.squeeze(pick.second)
+    heap.free(pick)
+    return problem, approach, ""
+}
+
+// `a`, a space and `b`. Built rather than interpolated: in Aether 0.782,
+// interpolation stops at a NUL character (0.798 no longer does), and a
+// description can hold one, from a \u0000 escape in the answer.
+spaced(a: string, b: string) -> string {
+    sb = strbuilder.new(string.length(a) + string.length(b) + 2)
+    strbuilder.append(sb, a)
+    strbuilder.append_byte(sb, 32)
+    strbuilder.append(sb, b)
+    return strbuilder.finish(sb)
+}
+
+// A description's words, lower case, in order: two descriptions with the
+// same are the same.
+fingerprint(problem: string, approach: string) -> string {
+    found = pytext.words(spaced(problem, approach))
+    sb = strbuilder.new(string.length(problem) + string.length(approach) + 2)
+    i = 0
+    while i < strarr.size(found) {
+        if i > 0 {
+            strbuilder.append_byte(sb, 32)
+        }
+        strbuilder.append(sb, strarr.get(found, i))
+        i = i + 1
+    }
+    strarr.free(found)
+    return strbuilder.finish(sb)
+}
+
+// "" when the description passes the checks, else why not. `taken` holds
+// the fingerprints of the unit's descriptions so far.
+check(problem: string, approach: string, avoid: ptr, max_avoided: long, taken: ptr) -> string {
+    if holds(taken, fingerprint(problem, approach)) == 1 {
+        return "it was word for word the description of another paper"
+    }
+    if pytext.split_count(problem) > MAX_WORDS {
+        return "\"problem\" was longer than 60 words"
+    }
+    if pytext.split_count(approach) > MAX_WORDS {
+        return "\"approach\" was longer than 60 words"
+    }
+    used = avoided(spaced(problem, approach), avoid)
+    if strarr.size(used) > max_avoided {
+        sb = strbuilder.new(128)
+        strbuilder.append(sb, "it used words specific to the paper: ")
+        i = 0
+        while i < strarr.size(used) {
+            if i > 0 {
+                strbuilder.append(sb, ", ")
+            }
+            strbuilder.append(sb, strarr.get(used, i))
+            i = i + 1
+        }
+        strarr.free(used)
+        return strbuilder.finish(sb)
+    }
+    strarr.free(used)
+    return string.copy("")
+}
+
+// One work's description, checked, in at most two questions. Returns
+// (problem, approach, "", ""), or ("", "", why the second answer failed,
+// "") when both failed, or ("", "", "", why) when the model could not be
+// asked at all.
+describe(model: *ModelLink, instructions: string, title: string, abstract: string, avoid: ptr, max_avoided: long, taken: ptr) -> (string, string, string, string) {
+    question = prompt(instructions, title, abstract, avoid)
+    reason = ""
+    tries = 0
+    while tries < 2 {
+        tries = tries + 1
+        asked = string.copy(question)
+        if string.length(reason) > 0 {
+            sb = strbuilder.new(string.length(question) + string.length(reason) + 64)
+            strbuilder.append(sb, question)
+            strbuilder.append(sb, "\n\nYour previous answer could not be used: ")
+            strbuilder.append(sb, reason)
+            strbuilder.append(sb, ". Try again.")
+            asked = strbuilder.finish(sb)
+        }
+        answer, merr = models.ask(model, SYSTEM, asked)
+        if merr != "" {
+            return string.copy(""), string.copy(""), string.copy(""), merr
+        }
+        problem, approach, why = parse(answer)
+        if why == "" {
+            why = check(problem, approach, avoid, max_avoided, taken)
+            if why == "" {
+                return problem, approach, string.copy(""), string.copy("")
+            }
+        }
+        reason = string.copy(why)
+    }
+    return string.copy(""), string.copy(""), reason, string.copy("")
+}
+
+// The work with short ID `wid` among OpenAlex's results, or null; the
+// last one when OpenAlex sends a work twice, as a Python dict keeps it.
+find_work(results: ptr, wid: string) -> ptr {
+    found = null
+    n = jsontext.size(results)
+    i = 0
+    while i < n {
+        w = jsontext.at(results, i)
+        if openalex.short_id(jsontext.text(w, "id")) == wid {
+            found = w
+        }
+        i = i + 1
+    }
+    return found
+}
+
+// The unit's descriptions, in its order, from OpenAlex's answer to
+// works_query: a strarr holding work, problem and approach for each, which
+// the caller frees. A work without an abstract, or whose two answers both
+// failed the checks, is left out. If the model fails on more than a
+// quarter of the works, the unit is not submitted at all: the model is not
+// up to the job. Returns (descriptions, "", "") or (null, why the unit
+// failed, "") or (null, "", why the model could not be asked). With `show`
+// set, prints the progress as it goes.
+describe_works(model: *ModelLink, unit: ptr, works: ptr, show: int) -> (ptr, string, string) {
+    unit_id = jsontext.text(unit, "unit")
+    ids = jsontext.member(unit, "works")
+    total = jsontext.size(ids)
+    results = jsontext.member(works, "results")
+    avoid_all = jsontext.member(unit, "avoid")
+    max_avoided = jsontext.whole(unit, "max_avoided", 2)
+    instructions = jsontext.text(unit, "instructions")
+    out = strarr.new()
+    taken = strarr.new()
+    failed = 0
+    last = ""
+    i = 0
+    while i < total {
+        wid, _werr = json.get_string(jsontext.at(ids, i))
+        w = find_work(results, wid)
+        if w != null {
+            abstract = abstract_text(jsontext.member(w, "abstract_inverted_index"))
+            if string.length(abstract) > 0 {
+                title = pytext.strip(jsontext.text(w, "title"))
+                problem, approach, why, merr = describe(model, instructions, title, abstract, jsontext.member(avoid_all, wid), max_avoided, taken)
+                if merr != "" {
+                    strarr.free(out)
+                    strarr.free(taken)
+                    if show == 1 {
+                        io.stdout_write("\n")
+                    }
+                    return null, string.copy(""), merr
+                }
+                if why == "" {
+                    strarr.push_copy(taken, fingerprint(problem, approach))
+                    strarr.push_copy(out, wid)
+                    strarr.push_copy(out, problem)
+                    strarr.push_copy(out, approach)
+                } else {
+                    failed = failed + 1
+                    last = string.copy(why)
+                }
+            }
+        }
+        if show == 1 {
+            if i + 1 < total {
+                io.stdout_write("  ${unit_id}: ${i + 1}/${total} papers\r")
+            } else {
+                io.stdout_write("  ${unit_id}: ${i + 1}/${total} papers\n")
+            }
+        }
+        i = i + 1
+    }
+    strarr.free(taken)
+    if failed * 4 > total {
+        strarr.free(out)
+        return null, "the model's answers failed the checks for ${failed} of ${total} papers (last: ${last}); a larger model may do better", string.copy("")
+    }
+    return out, string.copy(""), string.copy("")
+}
+
+// Describe one unit: one OpenAlex request for its works, then one or two
+// questions to the model for each. Returns (descriptions, why the unit
+// failed, why the model could not be asked, why OpenAlex failed), at most
+// one reason set; when OpenAlex failed because the day's allowance is
+// spent, openalex.budget_spent() says 1.
+describe_unit(model: *ModelLink, unit: ptr, key: string, show: int) -> (ptr, string, string, string) {
+    works, err = openalex.get(works_query(jsontext.member(unit, "works")), key)
+    openalex.close()
+    if err != "" {
+        return null, string.copy(""), string.copy(""), err
+    }
+    out, why, merr = describe_works(model, unit, works, show)
+    json.json_free(works)
+    return out, why, merr, string.copy("")
+}

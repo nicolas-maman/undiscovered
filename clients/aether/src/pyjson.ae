@@ -1,0 +1,383 @@
+// Reading a model's answer as Python's json.loads reads it, for describing
+// units (distill.py parse()). Whether an answer is valid JSON decides
+// whether the model is asked again, and why, so both clients must agree on
+// it. std.json differs from Python's json module in small ways: Python
+// takes NaN, Infinity and -Infinity, takes a \u escape of an unpaired
+// surrogate, and keeps the last of two members with the same name. This
+// reader follows Python's own scanner (Modules/_json.c): the same
+// whitespace, numbers, escapes and errors.
+//
+// It reads the whole text and keeps two members of the top-level object:
+// the last value given for each name, and whether that value is a string.
+
+import std.string
+import std.strbuilder
+import pytext
+
+exports(read_members, MemberPick)
+
+// Deeper nesting than this is refused. Python's own limit is the
+// interpreter's recursion limit, and it fails with an error of another
+// kind there, which no answer worth reading comes near.
+const MAX_DEPTH = 900
+
+// What read_members found: for each of the two names, whether the last
+// member with that name holds a string, and that string.
+struct MemberPick {
+    first: string
+    second: string
+    first_text: int
+    second_text: int
+}
+
+// The index of the first byte at or after `i` that is not JSON whitespace
+// (space, tab, line feed, carriage return: Python's json takes no other).
+skip_space(b: byte[], n: int, i: int) -> int {
+    k = i
+    while k < n {
+        c = b[k] as int
+        if c != 32 && c != 9 && c != 10 && c != 13 {
+            return k
+        }
+        k = k + 1
+    }
+    return k
+}
+
+hex_value(c: int) -> int {
+    if c >= 48 && c <= 57 {
+        return c - 48
+    }
+    if c >= 97 && c <= 102 {
+        return c - 87
+    }
+    if c >= 65 && c <= 70 {
+        return c - 55
+    }
+    return -1
+}
+
+// The four hex digits at `i` as a number, or -1.
+hex4(b: byte[], i: int) -> int {
+    v = 0
+    k = 0
+    while k < 4 {
+        d = hex_value(b[i + k] as int)
+        if d < 0 {
+            return -1
+        }
+        v = v * 16 + d
+        k = k + 1
+    }
+    return v
+}
+
+// Read a string whose opening quote is just before `i`, appending what it
+// says to `sb` unless `sb` is null. Returns the index after the closing
+// quote, or -1 where Python's scanstring fails: a raw control character,
+// an unknown escape, a bad \u escape, no closing quote.
+read_string(b: byte[], n: int, i: int, sb: ptr) -> int {
+    k = i
+    while k < n {
+        c = b[k] as int
+        if c == 34 {
+            return k + 1
+        }
+        if c < 32 {
+            return -1
+        }
+        if c != 92 {
+            if sb != null {
+                strbuilder.append_byte(sb, c)
+            }
+            k = k + 1
+            continue
+        }
+        if k + 1 >= n {
+            return -1
+        }
+        e = b[k + 1] as int
+        if e != 117 {
+            v = -1
+            if e == 34 || e == 92 || e == 47 {
+                v = e
+            } else if e == 98 {
+                v = 8
+            } else if e == 102 {
+                v = 12
+            } else if e == 110 {
+                v = 10
+            } else if e == 114 {
+                v = 13
+            } else if e == 116 {
+                v = 9
+            }
+            if v < 0 {
+                return -1
+            }
+            if sb != null {
+                strbuilder.append_byte(sb, v)
+            }
+            k = k + 2
+            continue
+        }
+        // \uXXXX. Python wants a character after the four digits, and joins
+        // a high surrogate with a \u low surrogate right after it; any
+        // other surrogate stays as it is.
+        digits = k + 2
+        after = digits + 4
+        if after >= n {
+            return -1
+        }
+        cp = hex4(b, digits)
+        if cp < 0 {
+            return -1
+        }
+        if cp >= 0xD800 && cp <= 0xDBFF && after + 6 < n && b[after] as int == 92 && b[after + 1] as int == 117 {
+            low = hex4(b, after + 2)
+            if low < 0 {
+                return -1
+            }
+            if low >= 0xDC00 && low <= 0xDFFF {
+                cp = 0x10000 + ((cp - 0xD800) << 10) + (low - 0xDC00)
+                after = after + 6
+            }
+        }
+        if sb != null {
+            pytext.put_code(sb, cp)
+        }
+        k = after
+    }
+    return -1
+}
+
+is_digit(c: int) -> int {
+    if c >= 48 && c <= 57 {
+        return 1
+    }
+    return 0
+}
+
+// A number at `i`, as Python's _match_number reads one, or -1.
+read_number(b: byte[], n: int, i: int) -> int {
+    last = n - 1
+    k = i
+    if b[k] as int == 45 {
+        k = k + 1
+        if k > last {
+            return -1
+        }
+    }
+    c = b[k] as int
+    if c >= 49 && c <= 57 {
+        k = k + 1
+        while k <= last && is_digit(b[k] as int) == 1 {
+            k = k + 1
+        }
+    } else if c == 48 {
+        k = k + 1
+    } else {
+        return -1
+    }
+    if k < last && b[k] as int == 46 && is_digit(b[k + 1] as int) == 1 {
+        k = k + 2
+        while k <= last && is_digit(b[k] as int) == 1 {
+            k = k + 1
+        }
+    }
+    if k < last && (b[k] as int == 101 || b[k] as int == 69) {
+        e_at = k
+        k = k + 1
+        if k < last && (b[k] as int == 45 || b[k] as int == 43) {
+            k = k + 1
+        }
+        while k <= last && is_digit(b[k] as int) == 1 {
+            k = k + 1
+        }
+        if is_digit(b[k - 1] as int) == 0 {
+            k = e_at        // "1e" or "1e+" without digits: the number ends before the e
+        }
+    }
+    return k
+}
+
+// 1 when the bytes at `i` spell `word` in full.
+spells(b: byte[], n: int, i: int, word: string) -> int {
+    w = string.bytes(word)
+    if i + w.len > n {
+        return 0
+    }
+    k = 0
+    while k < w.len {
+        if b[i + k] as int != w[k] as int {
+            return 0
+        }
+        k = k + 1
+    }
+    return 1
+}
+
+// Any JSON value at `i`. Returns the index after it, or -1.
+read_value(b: byte[], n: int, i: int, depth: int) -> int {
+    if i >= n {
+        return -1
+    }
+    c = b[i] as int
+    if c == 34 {
+        return read_string(b, n, i + 1, null)
+    }
+    if c == 123 {
+        return read_object(b, n, i + 1, depth + 1, null, "", "")
+    }
+    if c == 91 {
+        return read_array(b, n, i + 1, depth + 1)
+    }
+    if c == 110 && spells(b, n, i, "null") == 1 {
+        return i + 4
+    }
+    if c == 116 && spells(b, n, i, "true") == 1 {
+        return i + 4
+    }
+    if c == 102 && spells(b, n, i, "false") == 1 {
+        return i + 5
+    }
+    if c == 78 && spells(b, n, i, "NaN") == 1 {
+        return i + 3
+    }
+    if c == 73 && spells(b, n, i, "Infinity") == 1 {
+        return i + 8
+    }
+    if c == 45 && spells(b, n, i, "-Infinity") == 1 {
+        return i + 9
+    }
+    return read_number(b, n, i)
+}
+
+// The rest of an array whose "[" is just before `i`.
+read_array(b: byte[], n: int, i: int, depth: int) -> int {
+    if depth > MAX_DEPTH {
+        return -1
+    }
+    k = skip_space(b, n, i)
+    if k < n && b[k] as int == 93 {
+        return k + 1
+    }
+    while 1 == 1 {
+        k = read_value(b, n, k, depth)
+        if k < 0 {
+            return -1
+        }
+        k = skip_space(b, n, k)
+        if k < n && b[k] as int == 93 {
+            return k + 1
+        }
+        if k >= n || b[k] as int != 44 {
+            return -1
+        }
+        k = skip_space(b, n, k + 1)
+        if k < n && b[k] as int == 93 {
+            return -1       // a comma before the end
+        }
+    }
+    return -1
+}
+
+// The rest of an object whose "{" is just before `i`. With `pick` set, the
+// members named `first` and `second` are kept in it.
+read_object(b: byte[], n: int, i: int, depth: int, pick: *MemberPick, first: string, second: string) -> int {
+    if depth > MAX_DEPTH {
+        return -1
+    }
+    k = skip_space(b, n, i)
+    if k < n && b[k] as int == 125 {
+        return k + 1
+    }
+    while 1 == 1 {
+        if k >= n || b[k] as int != 34 {
+            return -1
+        }
+        key = ""
+        if pick != null {
+            kb = strbuilder.new(16)
+            k = read_string(b, n, k + 1, kb)
+            key = strbuilder.finish(kb)
+        } else {
+            k = read_string(b, n, k + 1, null)
+        }
+        if k < 0 {
+            return -1
+        }
+        k = skip_space(b, n, k)
+        if k >= n || b[k] as int != 58 {
+            return -1
+        }
+        k = skip_space(b, n, k + 1)
+        slot = 0
+        if pick != null {
+            if key == first {
+                slot = 1
+            } else if key == second {
+                slot = 2
+            }
+        }
+        if slot != 0 && k < n && b[k] as int == 34 {
+            vb = strbuilder.new(256)
+            k = read_string(b, n, k + 1, vb)
+            value = strbuilder.finish(vb)
+            if slot == 1 {
+                pick.first = string.copy(value)
+                pick.first_text = 1
+            } else {
+                pick.second = string.copy(value)
+                pick.second_text = 1
+            }
+        } else {
+            k = read_value(b, n, k, depth)
+            if slot == 1 {
+                pick.first_text = 0
+            } else if slot == 2 {
+                pick.second_text = 0
+            }
+        }
+        if k < 0 {
+            return -1
+        }
+        k = skip_space(b, n, k)
+        if k < n && b[k] as int == 125 {
+            return k + 1
+        }
+        if k >= n || b[k] as int != 44 {
+            return -1
+        }
+        k = skip_space(b, n, k + 1)
+        if k < n && b[k] as int == 125 {
+            return -1       // a comma before the end
+        }
+    }
+    return -1
+}
+
+// Read `text` as json.loads(text) does. Returns null when Python would
+// raise ValueError; otherwise what the top-level object says for the
+// members named `first` and `second` (neither, when the text holds some
+// other value). Free the result with heap.free.
+read_members(text: string, first: string, second: string) -> *MemberPick {
+    b = string.bytes(text)
+    n = b.len
+    pick = heap.new(MemberPick)
+    k = skip_space(b, n, 0)
+    if k < n && b[k] as int == 123 {
+        k = read_object(b, n, k + 1, 1, pick, first, second)
+    } else {
+        k = read_value(b, n, k, 0)
+    }
+    if k < 0 {
+        heap.free(pick)
+        return null
+    }
+    if skip_space(b, n, k) != n {
+        heap.free(pick)     // "Extra data"
+        return null
+    }
+    return pick
+}

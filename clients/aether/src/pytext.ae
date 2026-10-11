@@ -1,0 +1,253 @@
+// Python's str.lower(), str.split(), str.strip() and the word pattern
+// [^\W\d_]+, for describing units (the Python client's distill.py): what is
+// a word, when two words are the same, and what is space are Python's
+// answers, so a description passes or fails the same checks in both
+// clients. casing.ae and letters.ae hold those answers beyond ASCII.
+//
+// Text is UTF-8. Every function reads it by code point, as Python does.
+
+import std.string
+import std.strbuilder
+import std.strarr
+import std.intarr
+import casing
+import letters
+
+exports(decode_at, put_code, code_count, lower, words, split_count, squeeze, strip, stem)
+
+// The code point that starts at byte `i` of `b` (`n` bytes long) and how
+// many bytes it takes. A byte out of place counts as a code point of its
+// own; std.json lets none through. Surrogates written as three bytes (as
+// put_code writes them) read back as themselves.
+decode_at(b: byte[], n: int, i: int) -> (int, int) {
+    c = b[i] as int
+    if c >= 0xF0 && i + 3 < n {
+        return ((c & 7) << 18) | ((b[i + 1] as int & 63) << 12) | ((b[i + 2] as int & 63) << 6) | (b[i + 3] as int & 63), 4
+    }
+    if c >= 0xE0 && i + 2 < n {
+        return ((c & 15) << 12) | ((b[i + 1] as int & 63) << 6) | (b[i + 2] as int & 63), 3
+    }
+    if c >= 0xC0 && i + 1 < n {
+        return ((c & 31) << 6) | (b[i + 1] as int & 63), 2
+    }
+    return c, 1
+}
+
+// Append code point `cp` as UTF-8. A lone surrogate, which Python's
+// json.loads lets through from a \u escape, is written as its three bytes.
+put_code(sb: ptr, cp: int) {
+    if cp < 0x80 {
+        strbuilder.append_byte(sb, cp)
+    } else if cp < 0x800 {
+        strbuilder.append_byte(sb, 0xC0 | (cp >> 6))
+        strbuilder.append_byte(sb, 0x80 | (cp & 63))
+    } else if cp < 0x10000 {
+        strbuilder.append_byte(sb, 0xE0 | (cp >> 12))
+        strbuilder.append_byte(sb, 0x80 | ((cp >> 6) & 63))
+        strbuilder.append_byte(sb, 0x80 | (cp & 63))
+    } else {
+        strbuilder.append_byte(sb, 0xF0 | (cp >> 18))
+        strbuilder.append_byte(sb, 0x80 | ((cp >> 12) & 63))
+        strbuilder.append_byte(sb, 0x80 | ((cp >> 6) & 63))
+        strbuilder.append_byte(sb, 0x80 | (cp & 63))
+    }
+}
+
+// The number of code points in `s`: Python's len(s).
+code_count(s: string) -> int {
+    b = string.bytes(s)
+    n = b.len
+    count = 0
+    i = 0
+    while i < n {
+        _cp, size = decode_at(b, n, i)
+        count = count + 1
+        i = i + size
+    }
+    return count
+}
+
+// Final or medial sigma for the capital sigma at `k` of the `count` code
+// points in `cps`, as CPython chooses: final when, skipping case-ignorable
+// code points, a cased one comes before it and none comes after.
+final_sigma(cps: ptr, count: int, k: int) -> int {
+    j = k - 1
+    while j >= 0 && casing.is_case_ignorable(intarr.intarr_get_raw(cps, j)) == 1 {
+        j = j - 1
+    }
+    if j < 0 {
+        return 0
+    }
+    if casing.is_cased(intarr.intarr_get_raw(cps, j)) == 0 {
+        return 0
+    }
+    j = k + 1
+    while j < count && casing.is_case_ignorable(intarr.intarr_get_raw(cps, j)) == 1 {
+        j = j + 1
+    }
+    if j == count {
+        return 1
+    }
+    if casing.is_cased(intarr.intarr_get_raw(cps, j)) == 1 {
+        return 0
+    }
+    return 1
+}
+
+// Python's s.lower().
+lower(s: string) -> string {
+    b = string.bytes(s)
+    n = b.len
+    cps = intarr.intarr_new_raw(n + 1)
+    count = 0
+    i = 0
+    while i < n {
+        cp, size = decode_at(b, n, i)
+        intarr.intarr_set_raw(cps, count, cp)
+        count = count + 1
+        i = i + size
+    }
+    sb = strbuilder.new(n + 8)
+    k = 0
+    while k < count {
+        cp = intarr.intarr_get_raw(cps, k)
+        if cp == casing.DOTTED_CAPITAL_I {
+            strbuilder.append_byte(sb, 105)         // "i", then a combining dot
+            put_code(sb, 0x307)
+        } else if cp == casing.CAPITAL_SIGMA {
+            if final_sigma(cps, count, k) == 1 {
+                put_code(sb, 0x3C2)
+            } else {
+                put_code(sb, 0x3C3)
+            }
+        } else {
+            put_code(sb, casing.lower_code(cp))
+        }
+        k = k + 1
+    }
+    intarr.intarr_free(cps)
+    return strbuilder.finish(sb)
+}
+
+// 1 when a code point of lowered text belongs to a word: a letter, or a
+// number that is not a decimal digit. Lowering never changes that, and
+// letters.ae says it for every code point from 128 up.
+in_word(cp: int) -> int {
+    if cp >= 97 && cp <= 122 {
+        return 1
+    }
+    if cp >= 128 {
+        return letters.is_letter(cp)
+    }
+    return 0
+}
+
+// Python's re.findall(r"[^\W\d_]+", s.lower()), as a new strarr that owns
+// its strings (free it with strarr.free).
+words(s: string) -> ptr {
+    low = lower(s)
+    b = string.bytes(low)
+    n = b.len
+    out = strarr.new()
+    first = -1
+    i = 0
+    while i < n {
+        cp, size = decode_at(b, n, i)
+        if in_word(cp) == 1 {
+            if first < 0 {
+                first = i
+            }
+        } else if first >= 0 {
+            strarr.push_copy(out, string.substring(low, first, i))
+            first = -1
+        }
+        i = i + size
+    }
+    if first >= 0 {
+        strarr.push_copy(out, string.substring(low, first, n))
+    }
+    return out
+}
+
+// len(s.split()): how many runs of non-space code points `s` has.
+split_count(s: string) -> int {
+    b = string.bytes(s)
+    n = b.len
+    count = 0
+    inside = 0
+    i = 0
+    while i < n {
+        cp, size = decode_at(b, n, i)
+        if casing.is_space(cp) == 1 {
+            inside = 0
+        } else if inside == 0 {
+            inside = 1
+            count = count + 1
+        }
+        i = i + size
+    }
+    return count
+}
+
+// " ".join(s.split()): the same words, one space between each.
+squeeze(s: string) -> string {
+    b = string.bytes(s)
+    n = b.len
+    sb = strbuilder.new(n + 1)
+    pending = 0     // a space is owed before the next word
+    started = 0
+    i = 0
+    while i < n {
+        cp, size = decode_at(b, n, i)
+        if casing.is_space(cp) == 1 {
+            if started == 1 {
+                pending = 1
+            }
+        } else {
+            if pending == 1 {
+                strbuilder.append_byte(sb, 32)
+                pending = 0
+            }
+            started = 1
+            j = 0
+            while j < size {
+                strbuilder.append_byte(sb, b[i + j] as int)
+                j = j + 1
+            }
+        }
+        i = i + size
+    }
+    return strbuilder.finish(sb)
+}
+
+// s.strip(): without the space at either end.
+strip(s: string) -> string {
+    b = string.bytes(s)
+    n = b.len
+    first = n
+    last = 0        // just past the last code point that is not space
+    i = 0
+    while i < n {
+        cp, size = decode_at(b, n, i)
+        if casing.is_space(cp) == 0 {
+            if first == n {
+                first = i
+            }
+            last = i + size
+        }
+        i = i + size
+    }
+    if first >= last {
+        return string.copy("")
+    }
+    return string.substring(s, first, last)
+}
+
+// distill.py's _stem: a final "s" dropped from a word longer than 3 letters.
+stem(word: string) -> string {
+    n = string.length(word)
+    if n > 0 && string.ends_with(word, "s") == 1 && code_count(word) > 3 {
+        return string.substring(word, 0, n - 1)
+    }
+    return string.copy(word)
+}

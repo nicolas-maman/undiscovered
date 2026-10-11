@@ -1,0 +1,440 @@
+// Offline tests for describing papers and for the model connections: no
+// network, no model. The cases of clients/python/tests/test_distill.py that
+// apply, on the same canned answers, plus the texts that must come out byte
+// for byte as the Python client writes them, and what it makes of awkward
+// answers and words (all made with the Python client, client name changed).
+//
+//     ae test tests/test_distill.ae      (from clients/aether)
+
+import std.spec
+import std.string
+import std.strarr
+import std.json
+import std.os
+import models
+import distill
+import pytext
+import jsontext
+import work
+
+const INSTRUCTIONS = "Describe the problem and the approach without the field's words."
+
+// What the Python tests' FakeAPI answers: one work with an abstract, one without.
+const WORKS = "{\"results\":[{\"id\":\"https://openalex.org/W1\",\"title\":\"Proline in drought\",\"abstract_inverted_index\":{\"Leaves\":[0],\"accumulate\":[1],\"proline\":[2],\"under\":[3],\"drought\":[4]}},{\"id\":\"https://openalex.org/W2\",\"title\":\"No abstract\",\"abstract_inverted_index\":null}]}"
+
+// ...and its TwoWorks: the second work the same paper under another ID.
+const TWO_WORKS = "{\"results\":[{\"id\":\"https://openalex.org/W1\",\"title\":\"Proline in drought\",\"abstract_inverted_index\":{\"Leaves\":[0],\"accumulate\":[1],\"proline\":[2],\"under\":[3],\"drought\":[4]}},{\"id\":\"https://openalex.org/W3\",\"title\":\"Proline in drought\",\"abstract_inverted_index\":{\"Leaves\":[0],\"accumulate\":[1],\"proline\":[2],\"under\":[3],\"drought\":[4]}}]}"
+
+const OTHER = "{\"problem\": \"Work out how fast a population grows when food is scarce.\", \"approach\": \"Count individuals each season and fit a simple growth curve to the counts.\"}"
+
+// Everything below was written by the Python client (clients/python) for
+// the same inputs.
+const GOOD = "{\"problem\": \"Measure how much of one small molecule a living tissue has built up.\", \"approach\": \"React an extract with a reagent that colours that molecule and read the colour.\"}"
+const BODY = "Descriptions from the undiscovered client. The checking job reads the JSON below.\n\n```json\n{\n \"unit\": \"u-100000\",\n \"protocol\": 0,\n \"client\": {\n  \"name\": \"undiscovered-ae\",\n  \"version\": \"0.1.0\"\n },\n \"model\": {\n  \"provider\": \"openai-compatible\",\n  \"id\": \"qwen2.5:14b \\\"q\\\"\"\n },\n \"prompt\": 1,\n \"descriptions\": [\n  {\n   \"work\": \"W1\",\n   \"problem\": \"Measure how much of one small molecule a living tissue has built up.\",\n   \"approach\": \"React an extract with a reagent that colours that molecule and read the colour.\"\n  },\n  {\n   \"work\": \"W22\",\n   \"problem\": \"Δ \\\"q\\\" é 😀 back\\\\slash, ctrl\\u0001 and del\x7f here\",\n   \"approach\": \"Ünïcode stays as it is: 中文, ש, and   too.\"\n  }\n ]\n}\n```\n"
+const EMPTY_BODY = "Descriptions from the undiscovered client. The checking job reads the JSON below.\n\n```json\n{\n \"unit\": \"u-100001\",\n \"protocol\": 0,\n \"client\": {\n  \"name\": \"undiscovered-ae\",\n  \"version\": \"0.1.0\"\n },\n \"model\": {\n  \"provider\": \"google\",\n  \"id\": \"gemini\"\n },\n \"prompt\": 1,\n \"descriptions\": []\n}\n```\n"
+const PROMPT_AVOID = "Describe the problem and the approach without the field's words.\n\nTitle: Proline in drought\n\nAbstract: Leaves accumulate proline\n\nDo not use these words, which are specific to this paper: proline, drought.\n\nAnswer with one JSON object and nothing else, in this form:\n{\"problem\": \"...\", \"approach\": \"...\"}\nEach value is one or two sentences of plain English, at most 60 words."
+const PROMPT_PLAIN = "Describe the problem and the approach without the field's words.\n\nTitle: T\n\nAbstract: A\n\nAnswer with one JSON object and nothing else, in this form:\n{\"problem\": \"...\", \"approach\": \"...\"}\nEach value is one or two sentences of plain English, at most 60 words."
+const URL_OPENAI = "http://127.0.0.1:11434/v1/chat/completions"
+const HEADERS_OPENAI = "Authorization: Bearer SECRET\n"
+const REQUEST_OPENAI = "{\"model\": \"m\", \"temperature\": 0, \"max_tokens\": 2048, \"messages\": [{\"role\": \"system\", \"content\": \"sys \\u00e9\"}, {\"role\": \"user\", \"content\": \"user \\\"q\\\"\\nline 2 \\ud83d\\ude00\"}]}"
+const URL_ANTHROPIC = "https://api.anthropic.com/v1/messages"
+const HEADERS_ANTHROPIC = "x-api-key: SECRET\nanthropic-version: 2023-06-01\n"
+const REQUEST_ANTHROPIC = "{\"model\": \"m\", \"max_tokens\": 2048, \"temperature\": 0, \"system\": \"sys \\u00e9\", \"messages\": [{\"role\": \"user\", \"content\": \"user \\\"q\\\"\\nline 2 \\ud83d\\ude00\"}]}"
+const URL_GOOGLE = "https://generativelanguage.googleapis.com/v1beta/models/m:generateContent"
+const HEADERS_GOOGLE = "x-goog-api-key: SECRET\n"
+const REQUEST_GOOGLE = "{\"systemInstruction\": {\"parts\": [{\"text\": \"sys \\u00e9\"}]}, \"contents\": [{\"role\": \"user\", \"parts\": [{\"text\": \"user \\\"q\\\"\\nline 2 \\ud83d\\ude00\"}]}], \"generationConfig\": {\"temperature\": 0, \"maxOutputTokens\": 2048}}"
+const WORDS_IN_0 = "ΟΔΟΣ. ΑΣ.Β ΑΣ'Β Σ ΑΣ"
+const WORDS_OUT_0 = "οδος ασ β ασ β σ ας"
+const LOWER_OUT_0 = "οδος. ασ.β ασ'β σ ας"
+const WORDS_IN_1 = "İstanbul KELVIN K x² 3D a_b"
+const WORDS_OUT_1 = "i stanbul kelvin k x² d a b"
+const LOWER_OUT_1 = "i̇stanbul kelvin k x² 3d a_b"
+const WORDS_IN_2 = "Straße STRASSE ǅemal ǄEMAL"
+const WORDS_OUT_2 = "straße strasse ǆemal ǆemal"
+const WORDS_IN_4 = "µcoil μCOIL ΜCOIL"
+const WORDS_OUT_4 = "µcoil μcoil μcoil"
+const SPACED = "  a b　 c​d\x1c e f "
+const SPACED_SQUEEZED = "a b c​d e f"
+const SPACED_STRIPPED = "a b　 c​d\x1c e f"
+const AVOIDED = "proline, leave, οδος, i, gase, gas"
+const ANSWER_0 = "<think>first I consider { odd } things</think>Sure! {\"problem\": \"Measure how much of one small molecule a living tissue has built up.\", \"approach\": \"React an extract with a reagent that colours that molecule and read the colour.\"} Hope this helps."
+const ANSWER_1 = "<THıNK>{ nope }</tHİnK>{\"problem\": \"Measure how much of one small molecule a living tissue has built up.\", \"approach\": \"React an extract with a reagent that colours that molecule and read the colour.\"}"
+const ANSWER_2 = "<think>never closed {\"problem\": \"Measure how much of one small molecule a living tissue has built up.\", \"approach\": \"React an extract with a reagent that colours that molecule and read the colour.\"}"
+const PARSED_GOOD = "Measure how much of one small molecule a living tissue has built up. | React an extract with a reagent that colours that molecule and read the colour."
+const ANSWER_6 = "{\"problem\": \"a b c d\", \"approach\": \"e f g h\", \"x\": [NaN, -Infinity, 1e5, -0.5E-3, {\"y\": null}]}"
+const ANSWER_7 = "{\"problem\": 1, \"problem\": \"one  two\\tthree\\nfour\", \"approach\": \"e\\u00e9 f g h\\ud83d\\ude00\"}"
+const PARSED_7 = "one two three four | eé f g h😀"
+const ANSWER_8 = "{\"problem\": \"a b c d\", \"approach\": \"e f g h\",}"
+const ANSWER_9 = "{\"problem\": \"a b c\nd\", \"approach\": \"e f g h\"}"
+const ANSWER_10 = "{\"problem\": \"a b c d\", \"approach\": \"e f g h\"} {\"x\": 1}"
+const ANSWER_11 = "{\"problem\": \"a b c d\", \"approach\": \"e f g h\", \"n\": 01}"
+const ANSWER_12 = "{\"problem\": \"a b c d\", \"approach\": \"e f g h\", \"n\": 1.}"
+const ANSWER_13 = "{\"problem\": \"a \\q b c d\", \"approach\": \"e f g h\"}"
+const ANSWER_16 = "```json\n{\"problem\": \"a b c d\", \"approach\": \"  e f g h  \"}\n```"
+const FP_A = "οδος the road walk it"
+
+const NOT_OBJECT = "unusable: the answer was not a JSON object"
+const NOT_JSON = "unusable: the answer was not valid JSON"
+const NO_PROBLEM = "unusable: \"problem\" was missing or too short"
+
+parse_doc(text: string) -> ptr {
+    doc, err = json.parse(text)
+    if err != "" {
+        spec.fail("canned JSON does not parse: ${err}")
+    }
+    return doc
+}
+
+// What distill.parse makes of an answer, as one line.
+parsed(answer: string) -> string {
+    problem, approach, why = distill.parse(answer)
+    if why != "" {
+        return "unusable: ${why}"
+    }
+    return "${problem} | ${approach}"
+}
+
+// An OpenAI-compatible server's reply carrying `answer`.
+chat_reply(answer: string) -> string {
+    return "{\"choices\": [{\"message\": {\"content\": ${jsontext.quoted(answer)}}}]}"
+}
+
+// A stand-in model that answers `answers` in turn.
+answering(answers: ptr) -> *ModelLink {
+    m = models.stand_in("openai-compatible", "fake", "http://127.0.0.1:11434/v1", "")
+    i = 0
+    while i < strarr.size(answers) {
+        models.add_reply(m, 200, "", chat_reply(strarr.get(answers, i)))
+        i = i + 1
+    }
+    return m
+}
+
+// The words of `text`, joined by spaces.
+words_line(text: string) -> string {
+    found = pytext.words(text)
+    line = ""
+    i = 0
+    while i < strarr.size(found) {
+        if i == 0 {
+            line = string.copy(strarr.get(found, 0))
+        } else {
+            line = "${line} ${strarr.get(found, i)}"
+        }
+        i = i + 1
+    }
+    strarr.free(found)
+    return line
+}
+
+main() {
+    fw = spec.init()
+
+    spec.describe(fw, "reading answers") {
+        spec.it("rebuilds the abstract in word order") callback {
+            doc = parse_doc("{\"b\": [1], \"a\": [0, 2]}")
+            spec.assert_str_eq(distill.abstract_text(doc), "a b a", "abstract")
+            json.json_free(doc)
+            spec.assert_str_eq(distill.abstract_text(null), "", "no abstract")
+        }
+        spec.it("reads answers wrapped in text or thinking") callback {
+            spec.assert_str_eq(parsed(ANSWER_0), PARSED_GOOD, "wrapped, with a think block")
+            spec.assert_str_eq(parsed(ANSWER_1), PARSED_GOOD, "a think tag in other case, dotless i and dotted capital I")
+            spec.assert_str_eq(parsed(ANSWER_2), PARSED_GOOD, "a think tag never closed is kept")
+            spec.assert_str_eq(parsed(ANSWER_16), "a b c d | e f g h", "fenced, extra space")
+            spec.assert_str_eq(parsed("no json here"), NOT_OBJECT, "no JSON")
+            spec.assert_str_eq(parsed("}{"), NOT_OBJECT, "braces the wrong way")
+            spec.assert_str_eq(parsed("{\"problem\": \"x\"}"), NO_PROBLEM, "too short")
+            spec.assert_str_eq(parsed("{\"problem\": 3, \"approach\": \"a b c d e\"}"), NO_PROBLEM, "not a string")
+            spec.assert_str_eq(parsed("{\"approach\": \"e f g h\"}"), NO_PROBLEM, "missing")
+        }
+        spec.it("takes and refuses the JSON Python's json.loads does") callback {
+            spec.assert_str_eq(parsed(ANSWER_6), "a b c d | e f g h", "NaN, -Infinity and exponents are JSON to Python")
+            spec.assert_str_eq(parsed(ANSWER_7), PARSED_7, "the last of two members, escapes, a surrogate pair")
+            spec.assert_str_eq(parsed(ANSWER_8), NOT_JSON, "a comma before the end")
+            spec.assert_str_eq(parsed(ANSWER_9), NOT_JSON, "a raw line break in a string")
+            spec.assert_str_eq(parsed(ANSWER_10), NOT_JSON, "two objects")
+            spec.assert_str_eq(parsed(ANSWER_11), NOT_JSON, "a leading zero")
+            spec.assert_str_eq(parsed(ANSWER_12), NOT_JSON, "a point with no digits after it")
+            spec.assert_str_eq(parsed(ANSWER_13), NOT_JSON, "an unknown escape")
+        }
+    }
+
+    spec.describe(fw, "words") {
+        spec.it("lower and split as Python's str.lower and [^\\W\\d_]+ do") callback {
+            spec.assert_str_eq(pytext.lower(WORDS_IN_0), LOWER_OUT_0, "final and medial sigma")
+            spec.assert_str_eq(words_line(WORDS_IN_0), WORDS_OUT_0, "Greek words")
+            spec.assert_str_eq(pytext.lower(WORDS_IN_1), LOWER_OUT_1, "dotted capital I, Kelvin sign")
+            spec.assert_str_eq(words_line(WORDS_IN_1), WORDS_OUT_1, "words around them")
+            spec.assert_str_eq(words_line(WORDS_IN_2), WORDS_OUT_2, "sharp s and titlecase digraphs")
+            spec.assert_str_eq(words_line(WORDS_IN_4), WORDS_OUT_4, "micro sign and mu")
+        }
+        spec.it("split and strip on what str.isspace calls space") callback {
+            spec.assert_str_eq(pytext.squeeze(SPACED), SPACED_SQUEEZED, "squeezed")
+            spec.assert_str_eq(pytext.strip(SPACED), SPACED_STRIPPED, "stripped")
+            spec.assert_eq(pytext.split_count(SPACED), 5, "parts")
+        }
+        spec.it("count the paper's own words ignoring case and plural") callback {
+            avoid = parse_doc("[\"proline\", \"leave\", \"drought\"]")
+            used = distill.avoided("Proline levels in LEAVES", avoid)
+            spec.assert_eq(strarr.size(used), 2, "two used")
+            spec.assert_str_eq(strarr.get(used, 0), "proline", "proline")
+            spec.assert_str_eq(strarr.get(used, 1), "leave", "leaves, without its s")
+            strarr.free(used)
+            json.json_free(avoid)
+            many = parse_doc("[\"proline\", \"leave\", \"drought\", \"οδος\", \"οδοσ\", \"i\", \"gase\", \"gas\", \"covid-19\"]")
+            more = distill.avoided("Proline levels in LEAVES, ΟΔΟΣ and İstanbul; GASES gas", many)
+            line = ""
+            k = 0
+            while k < strarr.size(more) {
+                if k == 0 {
+                    line = string.copy(strarr.get(more, 0))
+                } else {
+                    line = "${line}, ${strarr.get(more, k)}"
+                }
+                k = k + 1
+            }
+            spec.assert_str_eq(line, AVOIDED, "as Python counts them")
+            strarr.free(more)
+            json.json_free(many)
+        }
+        spec.it("check the limits before anything is sent") callback {
+            pair = parse_doc("[\"proline\", \"drought\"]")
+            taken = strarr.new()
+            spec.assert_str_eq(distill.check("proline and drought matter here", "we look at them closely", pair, 2, taken), "", "two of two allowed")
+            spec.assert_str_eq(distill.check("proline and drought matter here", "we look at them closely", pair, 1, taken), "it used words specific to the paper: proline, drought", "one allowed")
+            long_part = ""
+            k = 0
+            while k < 61 {
+                long_part = "${long_part}word "
+                k = k + 1
+            }
+            spec.assert_str_eq(distill.check(long_part, "a b c d", pair, 2, taken), "\"problem\" was longer than 60 words", "61 words")
+            strarr.push(taken, FP_A)
+            spec.assert_str_eq(distill.check("οδος the road", "walk   IT", pair, 2, taken), "it was word for word the description of another paper", "the same words")
+            spec.assert_str_eq(distill.fingerprint("ΟΔΟΣ, the Road!", "Walk it."), FP_A, "fingerprint")
+            strarr.free(taken)
+            json.json_free(pair)
+        }
+    }
+
+    spec.describe(fw, "describing") {
+        spec.it("asks as the Python client asks") callback {
+            pair = parse_doc("[\"proline\", \"drought\"]")
+            spec.assert_str_eq_diff(distill.prompt(INSTRUCTIONS, "Proline in drought", "Leaves accumulate proline", pair), PROMPT_AVOID, "with words to avoid")
+            spec.assert_str_eq_diff(distill.prompt(INSTRUCTIONS, "T", "A", null), PROMPT_PLAIN, "without")
+            json.json_free(pair)
+        }
+        spec.it("retries a failed answer once, with the reason") callback {
+            answers = strarr.new()
+            strarr.push(answers, "not json")
+            strarr.push(answers, GOOD)
+            m = answering(answers)
+            avoid = parse_doc("[\"proline\"]")
+            taken = strarr.new()
+            _problem, approach, why, merr = distill.describe(m, INSTRUCTIONS, "T", "A", avoid, 1, taken)
+            spec.assert_str_eq(merr, "", "the model answered")
+            spec.assert_str_eq(why, "", "the second answer passed")
+            spec.assert_true(string.starts_with(approach, "React") == 1, "its approach")
+            spec.assert_contains(strarr.get(m.asked, 1), "could not be used: the answer was not a JSON object", "told why")
+            spec.assert_contains(strarr.get(m.asked, 0), "Do not use these words, which are specific to this paper: proline.", "told what to avoid")
+            strarr.free(taken)
+            json.json_free(avoid)
+            models.free_model(m)
+            strarr.free(answers)
+        }
+        spec.it("skips works without an abstract and keeps the unit's order") callback {
+            answers = strarr.new()
+            strarr.push(answers, GOOD)
+            m = answering(answers)
+            unit = parse_doc("{\"unit\": \"u-100000\", \"works\": [\"W1\", \"W2\"], \"instructions\": \"x\", \"avoid\": {\"W1\": [\"proline\", \"drought\"]}, \"max_avoided\": 1}")
+            spec.assert_str_eq(distill.works_query(jsontext.member(unit, "works")), "works?filter=openalex%3AW1%7CW2&per_page=2&select=id%2Ctitle%2Cabstract_inverted_index", "one request for the unit")
+            works = parse_doc(WORKS)
+            out, why, merr = distill.describe_works(m, unit, works, 0)
+            spec.assert_str_eq(why, "", "the unit passed")
+            spec.assert_str_eq(merr, "", "the model answered")
+            spec.assert_eq(strarr.size(out), 3, "one description")
+            spec.assert_str_eq(strarr.get(out, 0), "W1", "of W1")
+            strarr.free(out)
+            json.json_free(works)
+            json.json_free(unit)
+            models.free_model(m)
+            strarr.free(answers)
+        }
+        spec.it("asks again for the same description of two papers") callback {
+            answers = strarr.new()
+            strarr.push(answers, GOOD)
+            strarr.push(answers, GOOD)
+            strarr.push(answers, OTHER)
+            m = answering(answers)
+            unit = parse_doc("{\"unit\": \"u-100000\", \"works\": [\"W1\", \"W3\"], \"instructions\": \"x\"}")
+            works = parse_doc(TWO_WORKS)
+            out, why, _merr = distill.describe_works(m, unit, works, 0)
+            spec.assert_str_eq(why, "", "the unit passed")
+            spec.assert_eq(strarr.size(out), 6, "two descriptions")
+            spec.assert_true(string.starts_with(strarr.get(out, 1), "Meas") == 1, "the first")
+            spec.assert_true(string.starts_with(strarr.get(out, 4), "Work") == 1, "the second, asked again")
+            spec.assert_contains(strarr.get(m.asked, 2), "word for word the description of another paper", "told why")
+            strarr.free(out)
+            json.json_free(works)
+            json.json_free(unit)
+            models.free_model(m)
+            strarr.free(answers)
+        }
+        spec.it("stops a model that keeps failing before anything is sent") callback {
+            answers = strarr.new()
+            strarr.push(answers, "nope")
+            strarr.push(answers, "still nope")
+            m = answering(answers)
+            unit = parse_doc("{\"unit\": \"u-100000\", \"works\": [\"W1\"], \"instructions\": \"x\"}")
+            works = parse_doc(WORKS)
+            out, why, _merr = distill.describe_works(m, unit, works, 0)
+            spec.assert_true(out == null, "nothing to send")
+            spec.assert_contains(why, "failed the checks for 1 of 1", "why")
+            spec.assert_str_eq(why, "the model's answers failed the checks for 1 of 1 papers (last: the answer was not a JSON object); a larger model may do better", "the whole reason")
+            json.json_free(works)
+            json.json_free(unit)
+            models.free_model(m)
+            strarr.free(answers)
+        }
+        spec.it("writes the result exactly as the Python client") callback {
+            descs = strarr.new()
+            strarr.push(descs, "W1")
+            strarr.push(descs, "Measure how much of one small molecule a living tissue has built up.")
+            strarr.push(descs, "React an extract with a reagent that colours that molecule and read the colour.")
+            strarr.push(descs, "W22")
+            strarr.push(descs, "Δ \"q\" é 😀 back\\slash, ctrl\x01 and del\x7f here")
+            strarr.push(descs, "Ünïcode stays as it is: 中文, ש, and   too.")
+            spec.assert_str_eq_diff(work.describe_body("u-100000", "openai-compatible", "qwen2.5:14b \"q\"", descs), BODY, "issue body")
+            strarr.free(descs)
+            nothing = strarr.new()
+            spec.assert_str_eq_diff(work.describe_body("u-100001", "google", "gemini", nothing), EMPTY_BODY, "no descriptions")
+            strarr.free(nothing)
+        }
+        spec.it("saves the result as Python's write_text does") callback {
+            if os.platform() == "windows" {
+                spec.assert_str_eq(work.as_text_file("a\nb\n"), "a\r\nb\r\n", "text mode on Windows")
+            } else {
+                spec.assert_str_eq(work.as_text_file("a\nb\n"), "a\nb\n", "elsewhere, as it is")
+            }
+        }
+    }
+
+    spec.describe(fw, "models") {
+        spec.it("asks each kind of endpoint at temperature 0, the key only in a header") callback {
+            m = models.stand_in("openai-compatible", "m", "http://127.0.0.1:11434/v1", "SECRET")
+            models.add_reply(m, 200, "", "{\"choices\": [{\"message\": {\"content\": \"hi\"}}]}")
+            hi, err = models.ask(m, "sys é", "user \"q\"\nline 2 😀")
+            spec.assert_str_eq(hi, "hi", "answer")
+            spec.assert_str_eq(err, "", "no error")
+            spec.assert_str_eq(strarr.get(m.sent, 0), "${URL_OPENAI}\n${HEADERS_OPENAI}${REQUEST_OPENAI}", "request")
+            models.free_model(m)
+
+            a = models.stand_in("anthropic", "m", "", "SECRET")
+            models.add_reply(a, 200, "", "{\"content\": [{\"type\": \"thinking\", \"text\": \"no\"}, {\"type\": \"text\", \"text\": \"hi\"}]}")
+            ahi, aerr = models.ask(a, "sys é", "user \"q\"\nline 2 😀")
+            spec.assert_str_eq(ahi, "hi", "anthropic answer")
+            spec.assert_str_eq(aerr, "", "no anthropic error")
+            spec.assert_str_eq(strarr.get(a.sent, 0), "${URL_ANTHROPIC}\n${HEADERS_ANTHROPIC}${REQUEST_ANTHROPIC}", "anthropic request")
+            models.free_model(a)
+
+            g = models.stand_in("google", "m", "", "SECRET")
+            models.add_reply(g, 200, "", "{\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"h\"}, {\"text\": \"i\"}]}}]}")
+            ghi, gerr = models.ask(g, "sys é", "user \"q\"\nline 2 😀")
+            spec.assert_str_eq(ghi, "hi", "google answer")
+            spec.assert_str_eq(gerr, "", "no google error")
+            spec.assert_str_eq(strarr.get(g.sent, 0), "${URL_GOOGLE}\n${HEADERS_GOOGLE}${REQUEST_GOOGLE}", "google request")
+            models.free_model(g)
+
+            n = models.stand_in("openai-compatible", "m", "http://a/v1/", "")
+            spec.assert_str_eq(models.url_of(n), "http://a/v1/chat/completions", "trailing slash dropped")
+            spec.assert_eq(strarr.size(models.headers_of(n)), 0, "no key, no header")
+            models.add_reply(n, 200, "", "{\"choices\": []}")
+            _bad, berr = models.ask(n, "s", "u")
+            spec.assert_str_eq(berr, "openai-compatible answered in an unexpected shape", "unexpected shape")
+            models.add_reply(n, 200, "", "{\"choices\": [{\"message\": {\"content\": null}}]}")
+            empty, eerr = models.ask(n, "s", "u")
+            spec.assert_str_eq(empty, "", "no content is an empty answer")
+            spec.assert_str_eq(eerr, "", "and no error")
+            models.free_model(n)
+        }
+        spec.it("chooses no model until the volunteer chooses one") callback {
+            empty = parse_doc("{}")
+            absent, nerr = models.from_settings(empty)
+            spec.assert_true(absent == null, "no model")
+            spec.assert_str_eq(nerr, "", "and no error")
+            json.json_free(empty)
+            _a, aerr = models.open_model("openai-compatible", "m", "", "", 0.0)
+            spec.assert_str_eq(aerr, "an openai-compatible model needs its base URL, such as http://127.0.0.1:11434/v1", "no base URL")
+            _b, berr = models.open_model("someone-else", "m", "http://x", "", 0.0)
+            spec.assert_str_eq(berr, "unknown provider 'someone-else'; use one of openai-compatible, anthropic, google", "unknown provider")
+            _c, cerr = models.open_model("openai-compatible", "", "http://x", "", 0.0)
+            spec.assert_str_eq(cerr, "no model chosen; run: undiscovered setup", "no model name")
+        }
+        spec.it("lets environment variables override the settings file") callback {
+            cfg = parse_doc("{\"model\": {\"provider\": \"openai-compatible\", \"base_url\": \"http://a/v1\", \"id\": \"small\", \"key\": \"k1\"}}")
+            os.setenv("UNDISCOVERED_MODEL", "large")
+            os.setenv("UNDISCOVERED_MODEL_KEY", "k2")
+            p, err = models.from_settings(cfg)
+            spec.assert_str_eq(err, "", "a model")
+            m = p as *ModelLink
+            spec.assert_str_eq(m.base, "http://a/v1", "base URL from the file")
+            spec.assert_str_eq(m.id, "large", "model from the variable")
+            spec.assert_str_eq(m.key, "k2", "key from the variable")
+            models.free_model(m)
+            os.setenv("UNDISCOVERED_MODEL_PROVIDER", "anthropic")
+            os.setenv("UNDISCOVERED_MODEL_BASE_URL", "")
+            just_id = parse_doc("{\"model\": {\"id\": \"x\"}}")
+            q, _qerr = models.from_settings(just_id)
+            a = q as *ModelLink
+            spec.assert_str_eq(a.base, "https://api.anthropic.com/v1", "Anthropic's own address")
+            models.free_model(a)
+            os.unsetenv("UNDISCOVERED_MODEL")
+            os.unsetenv("UNDISCOVERED_MODEL_KEY")
+            os.unsetenv("UNDISCOVERED_MODEL_PROVIDER")
+            os.unsetenv("UNDISCOVERED_MODEL_BASE_URL")
+            json.json_free(just_id)
+            json.json_free(cfg)
+        }
+        spec.it("waits as told when asked too fast, and slows down") callback {
+            m = models.stand_in("openai-compatible", "m", "http://a/v1", "")
+            models.add_reply(m, 429, "7", "")
+            models.add_reply(m, 429, "", "")
+            models.add_reply(m, 200, "", "{\"choices\": [{\"message\": {\"content\": \"ok\"}}]}")
+            ok, err = models.ask(m, "s", "u")
+            spec.assert_str_eq(ok, "ok", "answer")
+            spec.assert_str_eq(err, "", "no error")
+            spec.assert_eq_long(models.waited(m, 0), 7000, "the server's own Retry-After")
+            spec.assert_true(models.interval_of(m) == 4.0, "2 s after the first 429, doubled after the second")
+            models.free_model(m)
+        }
+        spec.it("retries a busy server, stops at any other answer") callback {
+            m = models.stand_in("openai-compatible", "m", "http://a/v1", "")
+            models.add_reply(m, 503, "", "")
+            models.add_reply(m, 404, "", "{\"error\": \"no such model\"}")
+            _x, err = models.ask(m, "s", "u")
+            spec.assert_str_eq(err, "the model at http://a/v1 answered 404: {\"error\": \"no such model\"}", "the reason")
+            spec.assert_eq_long(models.waited(m, 0), 2000, "backoff after 503")
+            models.free_model(m)
+            busy = models.stand_in("openai-compatible", "m", "http://a/v1", "")
+            k = 0
+            while k < 8 {
+                models.add_reply(busy, 529, "", "overloaded")
+                k = k + 1
+            }
+            _y, berr = models.ask(busy, "s", "u")
+            spec.assert_str_eq(berr, "the model at http://a/v1 answered 529: overloaded", "the eighth busy answer ends it")
+            models.free_model(busy)
+        }
+        spec.it("reads Retry-After as seconds or as a date") callback {
+            spec.assert_true(models.retry_after("7", 0) == 7.0, "seconds")
+            spec.assert_true(models.retry_after(" 1.5 ", 0) == 1.5, "fractions")
+            spec.assert_true(models.retry_after("", 0) < 0.0, "none")
+            spec.assert_true(models.retry_after("Wed, 21 Oct 2015 07:28:00 GMT", 1445412475000) == 5.0, "a date five seconds ahead")
+            spec.assert_true(models.retry_after("Wed, 21 Oct 2015 07:28:00 GMT", 1445412490000) == 0.0, "a date gone by")
+        }
+    }
+
+    // run_summary returns the verdict (it does not exit): pass it on.
+    exit(spec.run_summary(fw))
+}

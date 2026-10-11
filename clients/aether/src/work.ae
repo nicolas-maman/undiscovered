@@ -1,5 +1,7 @@
 // The two commands, as the Python client's cli.py has them: `setup` answers
 // three questions once, `work` takes an open unit, does it and submits it.
+// With a model set up, `work` takes describing (distill) units, the job
+// that needs one; without one, map units.
 
 import std.string
 import std.strbuilder
@@ -18,12 +20,21 @@ import openalex
 import mapper
 import jsontext
 import secret
+import models
+import distill
+import pytext
 
-exports(UNITS_URL, result_body, pick_unit, find_unit, unit_content, do_unit, cmd_work, cmd_setup)
+exports(
+    UNITS_URL, DISTILL_URL, result_body, describe_body, pick_unit, find_unit, unit_content,
+    do_unit, as_text_file, cmd_work, cmd_setup
+)
 
 const UNITS_URL = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/map-2025/units/index.json"
+const DISTILL_URL = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/distill-2025/units/index.json"
 
 // Say why on stderr; returns the exit code for a failure, as Python's sys.exit(reason).
+// Python's main() prefixes "Stopped: " to a missing GitHub login and to a
+// model's failure; the callers do the same.
 report_error(reason: string) -> int {
     io.stderr_write("${reason}\n")
     return 1
@@ -45,6 +56,70 @@ result_body(unit_id: string, gist: string, sha: string) -> string {
     jsontext.quote_into(sb, sha)
     strbuilder.append(sb, "\n}\n```\n")
     return strbuilder.finish(sb)
+}
+
+// The issue body of a distill result: one fenced JSON block, as Python's
+// json.dumps(result, indent=1, ensure_ascii=False) writes it. `descs`
+// holds work, problem and approach for each description, in order.
+describe_body(unit_id: string, provider: string, model_id: string, descs: ptr) -> string {
+    sb = strbuilder.new(4096)
+    strbuilder.append(sb, "Descriptions from the undiscovered client. The checking job reads the JSON below.\n\n```json\n{\n \"unit\": ")
+    jsontext.quote_utf8_into(sb, unit_id)
+    strbuilder.append(sb, ",\n \"protocol\": ${version.PROTOCOL},\n \"client\": {\n  \"name\": ")
+    jsontext.quote_utf8_into(sb, version.NAME)
+    strbuilder.append(sb, ",\n  \"version\": ")
+    jsontext.quote_utf8_into(sb, version.VERSION)
+    strbuilder.append(sb, "\n },\n \"model\": {\n  \"provider\": ")
+    jsontext.quote_utf8_into(sb, provider)
+    strbuilder.append(sb, ",\n  \"id\": ")
+    jsontext.quote_utf8_into(sb, model_id)
+    strbuilder.append(sb, "\n },\n \"prompt\": ${distill.PROMPT},\n \"descriptions\": ")
+    n = strarr.size(descs) / 3
+    if n == 0 {
+        strbuilder.append(sb, "[]")
+    } else {
+        strbuilder.append(sb, "[")
+        i = 0
+        while i < n {
+            if i > 0 {
+                strbuilder.append(sb, ",")
+            }
+            strbuilder.append(sb, "\n  {\n   \"work\": ")
+            jsontext.quote_utf8_into(sb, strarr.get(descs, 3 * i))
+            strbuilder.append(sb, ",\n   \"problem\": ")
+            jsontext.quote_utf8_into(sb, strarr.get(descs, 3 * i + 1))
+            strbuilder.append(sb, ",\n   \"approach\": ")
+            jsontext.quote_utf8_into(sb, strarr.get(descs, 3 * i + 2))
+            strbuilder.append(sb, "\n  }")
+            i = i + 1
+        }
+        strbuilder.append(sb, "\n ]")
+    }
+    strbuilder.append(sb, "\n}\n```\n")
+    return strbuilder.finish(sb)
+}
+
+// What Python's Path.write_text writes for `content`: in text mode, which
+// on Windows turns every "\n" into "\r\n".
+when target.os == "windows" {
+    as_text_file(content: string) -> string {
+        b = string.bytes(content)
+        sb = strbuilder.new(b.len + b.len / 16 + 16)
+        i = 0
+        while i < b.len {
+            c = b[i] as int
+            if c == 10 {
+                strbuilder.append_byte(sb, 13)
+            }
+            strbuilder.append_byte(sb, c)
+            i = i + 1
+        }
+        return strbuilder.finish(sb)
+    }
+} else {
+    as_text_file(content: string) -> string {
+        return string.copy(content)
+    }
 }
 
 contains(names: ptr, name: string) -> int {
@@ -171,45 +246,133 @@ do_unit(unit: ptr, key: string) -> (string, string) {
     return content, ""
 }
 
-// The list of units, from the map branch.
-fetch_index() -> (ptr, string) {
-    req = client.request("GET", UNITS_URL)
+// The list of units, from the map branch or the distill branch.
+fetch_index(url: string) -> (ptr, string) {
+    req = client.request("GET", url)
     client.set_header(req, "User-Agent", openalex.user_agent())
     client.set_timeout(req, 60s)
     resp, err = client.send_request(req)
     client.request_free(req)
     if err != "" {
-        return null, "The list of units could not be read (${err}): ${UNITS_URL}"
+        return null, "The list of units could not be read (${err}): ${url}"
     }
     status = client.response_status(resp)
     body = client.response_body(resp)
     client.response_free(resp)
     if status != 200 {
-        return null, "The list of units could not be read (HTTP ${status}): ${UNITS_URL}"
+        return null, "The list of units could not be read (HTTP ${status}): ${url}"
     }
     doc, perr = json.parse(body)
     if perr != "" {
-        return null, "The list of units is not JSON (${perr}): ${UNITS_URL}"
+        return null, "The list of units is not JSON (${perr}): ${url}"
     }
     return doc, ""
 }
 
-// `undiscovered work`. Returns the exit code.
-cmd_work(count: int, dry_run: int, only: string) -> int {
+// The volunteer's model, unless `kind` is "map": (null, "") when none is
+// set up, (null, why) when the one set up cannot be used.
+model_for(cfg: ptr, kind: string) -> (ptr, string) {
+    if kind == "map" {
+        return null, ""
+    }
+    m, err = models.from_settings(cfg)
+    return m, err
+}
+
+// Add `unit_id` to the units done, and save the settings with the list
+// sorted, as Python's sorted() orders it. Returns "" or why not saved.
+remember_done(cfg: ptr, done: ptr, unit_id: string) -> string {
+    if contains(done, unit_id) == 0 {
+        strarr.push_copy(done, unit_id)
+    }
+    sort_names(done)
+    listed = json.arr()
+    j = 0
+    while j < strarr.size(done) {
+        json.push(listed, json.str(strarr.get(done, j)))
+        j = j + 1
+    }
+    json.set(cfg, "done", listed)
+    _saved, cerr = settings.save(cfg)
+    return cerr
+}
+
+// Describe one unit with `m` and submit it, or save it with `dry_run`.
+// Returns (exit code, 1 when the run should stop here).
+do_distill(m: *ModelLink, unit: ptr, key: string, dry_run: int, tok: string, cfg: ptr, done: ptr) -> (int, int) {
+    unit_id = jsontext.text(unit, "unit")
+    println("unit ${unit_id}: ${jsontext.size(jsontext.member(unit, "works"))} papers to describe with ${m.id}")
+    descs, why, merr, oerr = distill.describe_unit(m, unit, key, 1)
+    if oerr != "" {
+        if openalex.budget_spent() == 1 {
+            println("Stopped: ${oerr}. Run the same command tomorrow.")
+            return 0, 1
+        }
+        return report_error(oerr), 1
+    }
+    if merr != "" {
+        return report_error("Stopped: ${merr}"), 1
+    }
+    if why != "" {
+        return report_error("Stopped: ${why}. Nothing was submitted."), 1
+    }
+    body = describe_body(unit_id, m.provider, m.id, descs)
+    n = strarr.size(descs) / 3
+    strarr.free(descs)
+    if dry_run == 1 {
+        out = "undiscovered-${unit_id}.md"
+        werr = fs.write(out, as_text_file(body))
+        if werr != "" {
+            return report_error("cannot write ${out}: ${werr}"), 1
+        }
+        println("saved ${out} (${n} descriptions), not submitted")
+        return 0, 1
+    }
+    issue, serr = github.open_issue(tok, version.REPO, "distill result ${unit_id}", body)
+    if serr != "" {
+        return report_error(serr), 1
+    }
+    cerr = remember_done(cfg, done, unit_id)
+    if cerr != "" {
+        return report_error(cerr), 1
+    }
+    println("submitted: ${issue}")
+    return 0, 0
+}
+
+// `undiscovered work`: `kind` is "auto" (distill when a model is set up),
+// "map" or "distill". Returns the exit code.
+cmd_work(count: int, dry_run: int, only: string, kind: string) -> int {
     gentle.be_gentle()
     cfg = settings.load()
+    found_model, merr = model_for(cfg, kind)
+    m = found_model as *ModelLink
+    if merr != "" {
+        json.json_free(cfg)
+        return report_error("Stopped: ${merr}")
+    }
+    if kind == "distill" && m == null {
+        json.json_free(cfg)
+        return report_error("Describing papers needs an AI model. Run: undiscovered setup")
+    }
     tok = ""
     if dry_run == 0 {
         found, terr = github.token()
         if terr != "" {
             json.json_free(cfg)
-            return report_error(terr)
+            models.free_model(m)
+            return report_error("Stopped: ${terr}")
         }
         tok = found
     }
-    index, ierr = fetch_index()
+    url = UNITS_URL
+    if m != null {
+        url = DISTILL_URL
+    }
+    index, ierr = fetch_index(url)
     if ierr != "" {
         json.json_free(cfg)
+        models.free_model(m)
         return report_error(ierr)
     }
     units = jsontext.member(index, "units")
@@ -248,6 +411,14 @@ cmd_work(count: int, dry_run: int, only: string) -> int {
             println("No open units left for you. Thank you.")
             break
         }
+        if m != null {
+            dcode, stop = do_distill(m, unit, key, dry_run, tok, cfg, done)
+            code = dcode
+            if stop == 1 {
+                break
+            }
+            continue
+        }
         unit_id = jsontext.text(unit, "unit")
         println("unit ${unit_id}: ${jsontext.size(jsontext.member(unit, "topics"))} topics at the end of ${jsontext.whole(unit, "freeze", 0)}")
         content, err = do_unit(unit, key)
@@ -280,18 +451,7 @@ cmd_work(count: int, dry_run: int, only: string) -> int {
             code = report_error(serr)
             break
         }
-        if contains(done, unit_id) == 0 {
-            strarr.push_copy(done, unit_id)
-        }
-        sort_names(done)
-        listed = json.arr()
-        j = 0
-        while j < strarr.size(done) {
-            json.push(listed, json.str(strarr.get(done, j)))
-            j = j + 1
-        }
-        json.set(cfg, "done", listed)
-        _saved, cerr = settings.save(cfg)
+        cerr = remember_done(cfg, done, unit_id)
         if cerr != "" {
             code = report_error(cerr)
             break
@@ -301,6 +461,7 @@ cmd_work(count: int, dry_run: int, only: string) -> int {
     strarr.free(done)
     json.json_free(index)
     json.json_free(cfg)
+    models.free_model(m)
     return code
 }
 
@@ -336,7 +497,8 @@ cmd_setup() -> int {
     } else {
         println("   ${terr}")
     }
-    println("\n3. AI model: not needed for map units, which are the only kind open now.")
+    println("\n3. AI model, for describing papers. Map units need none; skip this to do those.")
+    choose_model(cfg)
     file, serr = settings.save(cfg)
     json.json_free(cfg)
     if serr != "" {
@@ -344,4 +506,126 @@ cmd_setup() -> int {
     }
     println("\nSaved ${file}")
     return 0
+}
+
+// The line typed after `prompt`, stripped, as Python's input().strip().
+// At the end of input it is "".
+ask_line(prompt: string) -> string {
+    io.stdout_write(prompt)
+    line, _err = io.fd_read_line(0)
+    return pytext.strip(line)
+}
+
+// The number `s` writes in ASCII digits, or 0 when it is anything else.
+small_number(s: string) -> int {
+    b = string.bytes(s)
+    if b.len == 0 || b.len > 6 {
+        return 0
+    }
+    v = 0
+    i = 0
+    while i < b.len {
+        c = b[i] as int
+        if c < 48 || c > 57 {
+            return 0
+        }
+        v = v * 10 + (c - 48)
+        i = i + 1
+    }
+    return v
+}
+
+// Offer the models on this machine, the services the client knows, or any
+// other server, and keep the volunteer's choice in `cfg`, as cli.py
+// choose_model(). Six strings per option in `options`: label, kind, base
+// URL, model, where to get a key, service name.
+choose_model(cfg: ptr) {
+    options = strarr.new()
+    local = models.local_models()
+    i = 0
+    while i + 2 < strarr.size(local) {
+        server = strarr.get(local, i)
+        mid = strarr.get(local, i + 2)
+        strarr.push_copy(options, "${mid} (${server}, on this machine, free)")
+        strarr.push_copy(options, "openai-compatible")
+        strarr.push_copy(options, strarr.get(local, i + 1))
+        strarr.push_copy(options, mid)
+        strarr.push_copy(options, "")
+        strarr.push_copy(options, "")
+        i = i + 3
+    }
+    strarr.free(local)
+    p = 0
+    while p < models.PRESET_COUNT {
+        p_name, p_kind, p_base, p_page, p_cost = models.preset(p)
+        strarr.push_copy(options, "${p_name}: ${p_cost}")
+        strarr.push_copy(options, p_kind)
+        strarr.push_copy(options, p_base)
+        strarr.push_copy(options, "")
+        strarr.push_copy(options, p_page)
+        strarr.push_copy(options, p_name)
+        p = p + 1
+    }
+    strarr.push_copy(options, "another server that speaks the OpenAI API")
+    strarr.push_copy(options, "openai-compatible")
+    strarr.push_copy(options, "")
+    strarr.push_copy(options, "")
+    strarr.push_copy(options, "")
+    strarr.push_copy(options, "")
+    count = strarr.size(options) / 6
+    println("   Which model? Any of these works; docs/MODELS.md compares them.")
+    k = 0
+    while k < count {
+        pad = ""
+        if k + 1 < 10 {
+            pad = " "
+        }
+        println("   ${pad}${k + 1}. ${strarr.get(options, 6 * k)}")
+        k = k + 1
+    }
+    pick = small_number(ask_line("   Number, or Enter to skip: "))
+    if pick < 1 || pick > count {
+        strarr.free(options)
+        return
+    }
+    first = 6 * (pick - 1)
+    kind = string.copy(strarr.get(options, first + 1))
+    base = string.copy(strarr.get(options, first + 2))
+    mid = string.copy(strarr.get(options, first + 3))
+    page = string.copy(strarr.get(options, first + 4))
+    service = string.copy(strarr.get(options, first + 5))
+    strarr.free(options)
+    chosen = json.obj()
+    if string.length(mid) > 0 {             // a model already on this machine
+        json.set(chosen, "provider", json.str(kind))
+        json.set(chosen, "base_url", json.str(base))
+        json.set(chosen, "id", json.str(mid))
+        json.set(cfg, "model", chosen)
+        return
+    }
+    if string.length(base) == 0 && kind == "openai-compatible" {
+        base = ask_line("   Its base URL, ending in /v1 for most servers: ")
+    }
+    lists = "the server"
+    if string.length(service) > 0 {
+        lists = string.copy(service)
+    }
+    mid = ask_line("   Model name, exactly as ${lists} lists it: ")
+    if string.length(mid) == 0 {
+        println("   No model name; nothing saved.")
+        json.json_free(chosen)
+        return
+    }
+    hint = ""
+    if string.length(page) > 0 {
+        hint = " (${page})"
+    }
+    key = secret.read("   Key${hint}, or Enter if it needs none (input is hidden): ")
+    json.set(chosen, "provider", json.str(kind))
+    json.set(chosen, "base_url", json.str(base))
+    json.set(chosen, "id", json.str(mid))
+    if string.length(key) > 0 {
+        json.set(chosen, "key", json.str(key))
+    }
+    json.set(cfg, "model", chosen)
 }

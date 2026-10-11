@@ -1,12 +1,13 @@
 // Reading parsed JSON the forgiving way Python's dict.get does, and writing
-// JSON text exactly as Python's json.dumps writes it (ASCII only, so every
-// other character is a \u escape).
+// JSON text exactly as Python's json.dumps writes it: by default ASCII only,
+// so every other character is a \u escape, or with ensure_ascii=False, as
+// the descriptions of a distill result are written.
 
 import std.string
 import std.strbuilder
 import std.json
 
-exports(member, text, whole, size, at, quote_into, quoted, pretty_into)
+exports(member, text, whole, size, at, quote_into, quote_utf8_into, quoted, pretty_into)
 
 // obj[key], or null when obj is not an object or has no such key.
 member(obj: ptr, key: string) -> ptr {
@@ -122,6 +123,41 @@ quote_into(sb: ptr, s: string) {
             hex4(sb, cp)
         }
         i = i + step
+    }
+    strbuilder.append_byte(sb, 34)
+}
+
+// Append `s` as a JSON string the way Python's json.dumps writes it with
+// ensure_ascii=False: every character as it is, except the quote, the
+// backslash and the control characters below 0x20, which are escaped as
+// with ensure_ascii.
+quote_utf8_into(sb: ptr, s: string) {
+    b = string.bytes(s)
+    n = b.len
+    strbuilder.append_byte(sb, 34)
+    i = 0
+    while i < n {
+        c = b[i] as int
+        if c == 34 {
+            strbuilder.append(sb, "\\\"")
+        } else if c == 92 {
+            strbuilder.append(sb, "\\\\")
+        } else if c == 10 {
+            strbuilder.append(sb, "\\n")
+        } else if c == 13 {
+            strbuilder.append(sb, "\\r")
+        } else if c == 9 {
+            strbuilder.append(sb, "\\t")
+        } else if c == 8 {
+            strbuilder.append(sb, "\\b")
+        } else if c == 12 {
+            strbuilder.append(sb, "\\f")
+        } else if c < 32 {
+            hex4(sb, c)
+        } else {
+            strbuilder.append_byte(sb, c)
+        }
+        i = i + 1
     }
     strbuilder.append_byte(sb, 34)
 }

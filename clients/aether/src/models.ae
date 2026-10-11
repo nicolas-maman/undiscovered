@@ -1,0 +1,805 @@
+// The volunteer's AI model, whichever it is, as the Python client's
+// models.py. Three kinds of endpoint cover nearly every model:
+//
+//     openai-compatible   Ollama, LM Studio, llama.cpp, vLLM, Jan, Groq, OpenRouter, Mistral,
+//                         Hugging Face, OpenAI, Google's compatibility endpoint, and many more
+//     anthropic           Anthropic's API
+//     google              Google's Gemini API
+//
+// The project prescribes no model and pays for none. Settings come from
+// the settings file's "model" object (provider, base_url, id, key,
+// interval), and the first four can be overridden by an environment
+// variable, so the client also runs in a script with no setup:
+//
+//     UNDISCOVERED_MODEL_PROVIDER   openai-compatible (the default), anthropic or google
+//     UNDISCOVERED_MODEL_BASE_URL   the server's address, such as http://127.0.0.1:11434/v1
+//     UNDISCOVERED_MODEL            the model's name, as the server writes it
+//     UNDISCOVERED_MODEL_KEY        the key, if the server needs one
+//
+// The key is sent only to that server and is never printed or submitted.
+// Every question is asked at temperature 0. Free tiers limit how fast one
+// may ask; rather than guess each provider's limits, the client waits as
+// long as the server says (Retry-After) and slows down whenever it is told
+// it is asking too fast.
+//
+// The requests go through std.http.client, which also speaks plain http://
+// to servers on this machine. Model requests are POSTs with short paths, so
+// its 1,023-byte path limit (aether-lang-dev/aether#2674) does not apply.
+
+import std.string
+import std.strbuilder
+import std.strarr
+import std.longarr
+import std.json
+import std.os
+import std.http.client
+import settings
+import jsontext
+import openalex
+import pytext
+
+exports(
+    ModelLink, open_model, from_settings, free_model, ask,
+    url_of, headers_of, body_of, answer_text, retry_after, stand_in, add_reply,
+    waited, wait_count, interval_of, local_models, preset, PRESET_COUNT, MAX_TOKENS
+)
+
+const MAX_TOKENS = 2048         // room for models that think before they answer
+const SLOWEST = 30.0            // the longest the client will wait between questions of its own accord
+const ATTEMPTS = 8
+const ANTHROPIC_BASE = "https://api.anthropic.com/v1"
+const GOOGLE_BASE = "https://generativelanguage.googleapis.com/v1beta"
+const KINDS = "openai-compatible, anthropic, google"
+const NO_BASE = "an openai-compatible model needs its base URL, such as http://127.0.0.1:11434/v1"
+
+// One model, on one server. `canned` is null in use; the offline tests set
+// it (stand_in) to a list of replies the server would give, and then
+// nothing is sent and nothing waits: the requests are kept in `sent` and
+// the waits in `waits`.
+struct ModelLink {
+    provider: string
+    id: string
+    base: string
+    key: string
+    interval: float     // seconds between questions; grows when the server says to slow down
+    last_ms: long       // when the last question was asked; -1 before any
+    canned: ptr
+    next_reply: int
+    sent: ptr
+    asked: ptr
+    waits: ptr
+    wait_total: int
+}
+
+// A model (a *ModelLink), or (null, why not), as models.Model() checks one.
+// A tuple cannot name a pointer type yet, so it comes back as a ptr.
+open_model(provider: string, model_id: string, base_url: string, key: string, interval: float) -> (ptr, string) {
+    if provider != "openai-compatible" && provider != "anthropic" && provider != "google" {
+        return null, "unknown provider ${py_repr(provider)}; use one of ${KINDS}"
+    }
+    if string.length(model_id) == 0 {
+        return null, "no model chosen; run: undiscovered setup"
+    }
+    base = string.copy(base_url)
+    if string.length(base) == 0 {
+        if provider == "anthropic" {
+            base = string.copy(ANTHROPIC_BASE)
+        } else if provider == "google" {
+            base = string.copy(GOOGLE_BASE)
+        }
+    }
+    trimmed = without_trailing_slashes(base)
+    if string.length(trimmed) == 0 {
+        return null, NO_BASE
+    }
+    m = heap.new(ModelLink)
+    m.provider = string.copy(provider)
+    m.id = string.copy(model_id)
+    m.base = string.copy(trimmed)
+    m.key = string.copy(key)
+    m.interval = interval
+    m.last_ms = -1
+    return m, ""
+}
+
+// Python's s.rstrip("/").
+without_trailing_slashes(s: string) -> string {
+    b = string.bytes(s)
+    n = b.len
+    while n > 0 && b[n - 1] as int == 47 {
+        n = n - 1
+    }
+    return string.substring(s, 0, n)
+}
+
+// Python's repr() of a string, for messages: quoted, with backslashes,
+// quotes and control characters escaped. Non-ASCII characters are kept as
+// they are; Python escapes the few it does not consider printable.
+py_repr(s: string) -> string {
+    b = string.bytes(s)
+    quote = 39
+    if string.contains(s, "'") == 1 && string.contains(s, "\"") == 0 {
+        quote = 34
+    }
+    sb = strbuilder.new(b.len + 4)
+    strbuilder.append_byte(sb, quote)
+    i = 0
+    while i < b.len {
+        c = b[i] as int
+        if c == 92 {
+            strbuilder.append(sb, "\\\\")
+        } else if c == quote {
+            strbuilder.append_byte(sb, 92)
+            strbuilder.append_byte(sb, c)
+        } else if c == 9 {
+            strbuilder.append(sb, "\\t")
+        } else if c == 10 {
+            strbuilder.append(sb, "\\n")
+        } else if c == 13 {
+            strbuilder.append(sb, "\\r")
+        } else if c < 32 || c == 127 {
+            strbuilder.append(sb, "\\x")
+            strbuilder.append_byte(sb, hex_digit(c >> 4))
+            strbuilder.append_byte(sb, hex_digit(c & 15))
+        } else {
+            strbuilder.append_byte(sb, c)
+        }
+        i = i + 1
+    }
+    strbuilder.append_byte(sb, quote)
+    return strbuilder.finish(sb)
+}
+
+hex_digit(v: int) -> int {
+    if v < 10 {
+        return 48 + v
+    }
+    return 87 + v
+}
+
+// One setting: the environment variable when it is set and not empty,
+// else the settings file's value when it is a string, else "".
+setting(model: ptr, field: string, var_name: string) -> string {
+    value = settings.env(var_name)
+    if string.length(value) > 0 {
+        return value
+    }
+    return jsontext.text(model, field)
+}
+
+// The settings file's "interval", as Python's float(m.get("interval", 0) or 0):
+// a number, or a string that holds one.
+interval_setting(model: ptr) -> float {
+    v = jsontext.member(model, "interval")
+    if v == null {
+        return 0.0
+    }
+    kind = json.json_type(v)
+    if kind == 2 {
+        return json.json_get_number(v)
+    }
+    if kind == 1 {
+        if json.json_get_bool(v) != 0 {
+            return 1.0
+        }
+        return 0.0
+    }
+    if kind == 3 {
+        s, _err = json.get_string(v)
+        f, ferr = string.to_double(pytext.strip(s))
+        if ferr == "" {
+            return f
+        }
+    }
+    return 0.0
+}
+
+// The volunteer's model, (null, "") when they have not chosen one, or
+// (null, why) when the settings name one that cannot be used.
+from_settings(cfg: ptr) -> (ptr, string) {
+    model = jsontext.member(cfg, "model")
+    model_id = setting(model, "id", "UNDISCOVERED_MODEL")
+    if string.length(model_id) == 0 {
+        return null, ""
+    }
+    provider = setting(model, "provider", "UNDISCOVERED_MODEL_PROVIDER")
+    if string.length(provider) == 0 {
+        provider = string.copy("openai-compatible")
+    }
+    base = setting(model, "base_url", "UNDISCOVERED_MODEL_BASE_URL")
+    key = setting(model, "key", "UNDISCOVERED_MODEL_KEY")
+    m, err = open_model(provider, model_id, base, key, interval_setting(model))
+    return m, err
+}
+
+free_model(m: *ModelLink) {
+    if m == null {
+        return
+    }
+    if m.canned != null {
+        strarr.free(m.canned)
+        strarr.free(m.sent)
+        strarr.free(m.asked)
+        longarr.longarr_free(m.waits)
+    }
+    heap.free(m)
+}
+
+// The seconds the model now waits between questions.
+interval_of(m: *ModelLink) -> float {
+    return m.interval
+}
+
+// Where questions go.
+url_of(m: *ModelLink) -> string {
+    if m.provider == "anthropic" {
+        return "${m.base}/messages"
+    }
+    if m.provider == "google" {
+        return "${m.base}/models/${m.id}:generateContent"
+    }
+    return "${m.base}/chat/completions"
+}
+
+// The headers that carry the key, as name and value in turn (a strarr the
+// caller frees). An openai-compatible server gets one only when there is a
+// key; the other two always get theirs.
+headers_of(m: *ModelLink) -> ptr {
+    h = strarr.new()
+    if m.provider == "anthropic" {
+        strarr.push_copy(h, "x-api-key")
+        strarr.push_copy(h, m.key)
+        strarr.push_copy(h, "anthropic-version")
+        strarr.push_copy(h, "2023-06-01")
+    } else if m.provider == "google" {
+        strarr.push_copy(h, "x-goog-api-key")
+        strarr.push_copy(h, m.key)
+    } else if string.length(m.key) > 0 {
+        strarr.push_copy(h, "Authorization")
+        strarr.push_copy(h, "Bearer ${m.key}")
+    }
+    return h
+}
+
+// The request body, as Python's requests writes json= (json.dumps with its
+// default separators and ASCII escapes).
+body_of(m: *ModelLink, system: string, user: string) -> string {
+    sb = strbuilder.new(string.length(system) + string.length(user) + 256)
+    if m.provider == "anthropic" {
+        strbuilder.append(sb, "{\"model\": ")
+        jsontext.quote_into(sb, m.id)
+        strbuilder.append(sb, ", \"max_tokens\": ${MAX_TOKENS}, \"temperature\": 0, \"system\": ")
+        jsontext.quote_into(sb, system)
+        strbuilder.append(sb, ", \"messages\": [{\"role\": \"user\", \"content\": ")
+        jsontext.quote_into(sb, user)
+        strbuilder.append(sb, "}]}")
+    } else if m.provider == "google" {
+        strbuilder.append(sb, "{\"systemInstruction\": {\"parts\": [{\"text\": ")
+        jsontext.quote_into(sb, system)
+        strbuilder.append(sb, "}]}, \"contents\": [{\"role\": \"user\", \"parts\": [{\"text\": ")
+        jsontext.quote_into(sb, user)
+        strbuilder.append(sb, "}]}], \"generationConfig\": {\"temperature\": 0, \"maxOutputTokens\": ${MAX_TOKENS}}}")
+    } else {
+        strbuilder.append(sb, "{\"model\": ")
+        jsontext.quote_into(sb, m.id)
+        strbuilder.append(sb, ", \"temperature\": 0, \"max_tokens\": ${MAX_TOKENS}, \"messages\": [{\"role\": \"system\", \"content\": ")
+        jsontext.quote_into(sb, system)
+        strbuilder.append(sb, "}, {\"role\": \"user\", \"content\": ")
+        jsontext.quote_into(sb, user)
+        strbuilder.append(sb, "}]}")
+    }
+    return strbuilder.finish(sb)
+}
+
+// obj[key] when obj is an object and has it, else null (a KeyError or
+// TypeError in Python).
+field(obj: ptr, key: string) -> ptr {
+    return jsontext.member(obj, key)
+}
+
+// arr[0] when arr is a non-empty array, else null.
+first_of(arr: ptr) -> ptr {
+    if jsontext.size(arr) == 0 {
+        return null
+    }
+    return jsontext.at(arr, 0)
+}
+
+// "".join(p.get("text", "") for p in parts): every part an object, every
+// text a string. With `typed` set, only the parts whose "type" is "text".
+// Returns (text, 1), or ("", 0) for any other shape.
+join_texts(parts: ptr, typed: int) -> (string, int) {
+    if parts == null {
+        return string.copy(""), 0
+    }
+    if json.json_type(parts) != 4 {
+        return string.copy(""), 0
+    }
+    sb = strbuilder.new(1024)
+    n = json.json_array_size(parts)
+    i = 0
+    while i < n {
+        p = json.json_array_get_raw(parts, i)
+        if json.json_type(p) != 5 {
+            strbuilder.free(sb)
+            return string.copy(""), 0
+        }
+        wanted = 1
+        if typed == 1 {
+            wanted = 0
+            kind = field(p, "type")
+            if kind != null && json.json_type(kind) == 3 {
+                k, _kerr = json.get_string(kind)
+                if k == "text" {
+                    wanted = 1
+                }
+            }
+        }
+        if wanted == 1 {
+            t = field(p, "text")
+            if t != null {
+                if json.json_type(t) != 3 {
+                    strbuilder.free(sb)
+                    return string.copy(""), 0
+                }
+                s, _serr = json.get_string(t)
+                strbuilder.append(sb, s)
+            }
+        }
+        i = i + 1
+    }
+    return strbuilder.finish(sb), 1
+}
+
+// 1 when Python counts the JSON value as false: null, false, 0, [] or {}.
+empty_value(v: ptr) -> int {
+    kind = json.json_type(v)
+    if kind == 0 {
+        return 1
+    }
+    if kind == 1 && json.json_get_bool(v) == 0 {
+        return 1
+    }
+    if kind == 2 && json.json_get_number(v) == 0.0 {
+        return 1
+    }
+    if kind == 4 && json.json_array_size(v) == 0 {
+        return 1
+    }
+    if kind == 5 && json.object_size(v) == 0 {
+        return 1
+    }
+    return 0
+}
+
+// The answer's text from the server's reply, as models.py _text() reads
+// it, or ("", why). A reply that is not JSON at all ends Python's client
+// with a traceback; here it is the same unexpected shape.
+answer_text(m: *ModelLink, served: string) -> (string, string) {
+    shape = "${m.provider} answered in an unexpected shape"
+    doc, perr = json.parse(served)
+    if perr != "" {
+        return string.copy(""), shape
+    }
+    out = ""
+    ok = 0
+    if m.provider == "anthropic" {
+        out, ok = join_texts(field(doc, "content"), 1)
+    } else if m.provider == "google" {
+        out, ok = join_texts(field(field(first_of(field(doc, "candidates")), "content"), "parts"), 0)
+    } else {
+        content = field(field(first_of(field(doc, "choices")), "message"), "content")
+        if content != null {
+            kind = json.json_type(content)
+            if kind == 3 {
+                out, _cerr = json.get_string(content)
+                ok = 1
+            } else if empty_value(content) == 1 {
+                ok = 1      // null, false, 0, [] or {}: Python's `or ""`
+            }
+        }
+    }
+    json.json_free(doc)
+    if ok == 0 {
+        return string.copy(""), shape
+    }
+    return out, ""
+}
+
+// The seconds a server's Retry-After asks for, or -1 when it gives none:
+// a number of seconds, or a date (IMF-fixdate, as HTTP sends it) from which
+// the seconds left are counted, never below 0. Python counts 0 as no
+// answer too: `retry_after(resp) or delay`.
+retry_after(value: string, now_ms: long) -> float {
+    v = pytext.strip(value)
+    b = string.bytes(v)
+    if b.len == 0 {
+        return -1.0
+    }
+    digits = 0
+    dots = 0
+    other = 0
+    i = 0
+    while i < b.len {
+        c = b[i] as int
+        if c >= 48 && c <= 57 {
+            digits = digits + 1
+        } else if c == 46 && dots == 0 {
+            dots = 1
+        } else {
+            other = 1
+        }
+        i = i + 1
+    }
+    if other == 0 && digits > 0 {
+        f, ferr = string.to_double(v)
+        if ferr == "" {
+            return f
+        }
+        return -1.0
+    }
+    when_s = http_date(v)
+    if when_s < 0 {
+        return -1.0
+    }
+    left = (when_s * 1000 - now_ms) as float / 1000.0
+    if left < 0.0 {
+        return 0.0
+    }
+    return left
+}
+
+const MONTHS = "jan feb mar apr may jun jul aug sep oct nov dec "
+
+// Days from 1970-01-01 to a civil date (proleptic Gregorian).
+days_from_civil(year: long, month: long, day: long) -> long {
+    y = year
+    if month <= 2 {
+        y = y - 1
+    }
+    era = y / 400
+    if y < 0 && y % 400 != 0 {
+        era = era - 1
+    }
+    yoe = y - era * 400
+    mp = (month + 9) % 12
+    doy = (153 * mp + 2) / 5 + day - 1
+    doe = yoe * 365 + yoe / 4 - yoe / 100 + doy
+    return era * 146097 + doe - 719468
+}
+
+// A whole number of `width` digits at `i` of `b`, or -1.
+number_at(b: byte[], i: int, width: int) -> long {
+    if i + width > b.len {
+        return -1
+    }
+    long v = 0
+    k = 0
+    while k < width {
+        c = b[i + k] as int
+        if c < 48 || c > 57 {
+            return -1
+        }
+        v = v * 10 + (c - 48)
+        k = k + 1
+    }
+    return v
+}
+
+// Seconds since 1970 for "Sun, 06 Nov 1994 08:49:37 GMT", or -1.
+http_date(v: string) -> long {
+    s = string.to_lower(v)
+    comma = string.index_of(s, ", ")
+    if comma >= 0 {
+        s = string.substring(s, comma + 2, string.length(s))
+    }
+    b = string.bytes(s)
+    if b.len < 24 {
+        return -1
+    }
+    day = number_at(b, 0, 2)
+    mon = string.index_of(MONTHS, "${string.substring(s, 3, 6)} ")
+    year = number_at(b, 7, 4)
+    hour = number_at(b, 12, 2)
+    minute = number_at(b, 15, 2)
+    second = number_at(b, 18, 2)
+    zone = string.substring(s, 21, string.length(s))
+    if day < 0 || mon < 0 || mon % 4 != 0 || year < 0 || hour < 0 || minute < 0 || second < 0 {
+        return -1
+    }
+    if b[2] as int != 32 || b[6] as int != 32 || b[11] as int != 32 || b[14] as int != 58 || b[17] as int != 58 || b[20] as int != 32 {
+        return -1
+    }
+    if zone != "gmt" && zone != "utc" && zone != "ut" {
+        return -1
+    }
+    month = (mon / 4 + 1) as long
+    return days_from_civil(year, month, day) * 86400 + hour * 3600 + minute * 60 + second
+}
+
+// The first `count` code points of `s`, as Python's s[:count].
+first_chars(s: string, count: int) -> string {
+    b = string.bytes(s)
+    n = b.len
+    seen = 0
+    i = 0
+    while i < n && seen < count {
+        _cp, size = pytext.decode_at(b, n, i)
+        i = i + size
+        seen = seen + 1
+    }
+    if i > n {
+        i = n
+    }
+    return string.substring(s, 0, i)
+}
+
+// Wait `seconds`, or, for a stand-in, write the wait down.
+pause(m: *ModelLink, seconds: float) {
+    ms = (seconds * 1000.0) as long
+    if m.canned != null {
+        if m.wait_total < 64 {
+            longarr.longarr_set_raw(m.waits, m.wait_total, ms)
+        }
+        m.wait_total = m.wait_total + 1
+        return
+    }
+    if ms > 0 {
+        sleep(ms as int)
+    }
+}
+
+// One POST of `body`. Returns (status, Retry-After, reply, "") or
+// (0, "", "", why it could not be sent).
+exchange(m: *ModelLink, url: string, headers: ptr, body: string) -> (int, string, string, string) {
+    if m.canned != null {
+        line = ""
+        if m.next_reply < strarr.size(m.canned) {
+            line = string.copy(strarr.get(m.canned, m.next_reply))
+        }
+        m.next_reply = m.next_reply + 1
+        strarr.push_copy(m.sent, "${url}\n${header_text(headers)}${body}")
+        if string.length(line) == 0 {
+            return 0, string.copy(""), string.copy(""), "the stand-in has no reply left"
+        }
+        first = string.index_of(line, "\n")
+        rest = string.substring(line, first + 1, string.length(line))
+        second = string.index_of(rest, "\n")
+        status = string.get_int(string.substring(line, 0, first))
+        return status, string.substring(rest, 0, second), string.substring(rest, second + 1, string.length(rest)), ""
+    }
+    req = client.request("POST", url)
+    if req == null {
+        return 0, string.copy(""), string.copy(""), "not a URL the client can use: ${url}"
+    }
+    client.set_header(req, "User-Agent", openalex.user_agent())
+    i = 0
+    while i + 1 < strarr.size(headers) {
+        client.set_header(req, strarr.get(headers, i), strarr.get(headers, i + 1))
+        i = i + 2
+    }
+    client.set_body(req, string.bytes(body), "application/json")
+    client.set_timeout(req, 600s)
+    resp, err = client.send_request(req)
+    client.request_free(req)
+    if err != "" {
+        return 0, string.copy(""), string.copy(""), err
+    }
+    status = client.response_status(resp)
+    wait = client.response_header(resp, "Retry-After")
+    served = client.response_body(resp)
+    client.response_free(resp)
+    return status, wait, served, ""
+}
+
+// The headers as "name: value" lines, for a stand-in's record.
+header_text(headers: ptr) -> string {
+    sb = strbuilder.new(128)
+    i = 0
+    while i + 1 < strarr.size(headers) {
+        strbuilder.append(sb, strarr.get(headers, i))
+        strbuilder.append(sb, ": ")
+        strbuilder.append(sb, strarr.get(headers, i + 1))
+        strbuilder.append_byte(sb, 10)
+        i = i + 2
+    }
+    return strbuilder.finish(sb)
+}
+
+smaller(a: float, b: float) -> float {
+    if a < b {
+        return a
+    }
+    return b
+}
+
+// The model's answer as text, waiting and retrying when the server is busy
+// or limits the pace, as models.py ask(): up to 8 attempts; on 429 it asks
+// more slowly from then on (the interval doubles, from 2 s up to 30 s) and
+// waits as the server says, else the backoff delay; 500, 502, 503, 504
+// and 529 are asked again; any other answer stops it. Returns (answer, "")
+// or ("", why).
+ask(m: *ModelLink, system: string, user: string) -> (string, string) {
+    url = url_of(m)
+    headers = headers_of(m)
+    body = body_of(m, system, user)
+    if m.canned != null {
+        strarr.push_copy(m.asked, user)
+    }
+    delay = 2.0
+    attempt = 0
+    while attempt < ATTEMPTS {
+        if m.last_ms >= 0 {
+            wait = m.interval - (os.now_monotonic_ms() - m.last_ms) as float / 1000.0
+            if wait > 0.0 {
+                pause(m, wait)
+            }
+        }
+        m.last_ms = os.now_monotonic_ms()
+        status, retry, served, err = exchange(m, url, headers, body)
+        if err != "" {
+            if attempt == ATTEMPTS - 1 {
+                strarr.free(headers)
+                return string.copy(""), "cannot reach the model at ${m.base} (${err})"
+            }
+            pause(m, delay)
+            delay = smaller(delay * 2.0, 60.0)
+            attempt = attempt + 1
+            continue
+        }
+        if status == 200 {
+            strarr.free(headers)
+            out, aerr = answer_text(m, served)
+            return out, aerr
+        }
+        if status == 429 {          // asked too fast: wait as told, and ask more slowly from now on
+            slower = m.interval * 2.0
+            if slower < 2.0 {
+                slower = 2.0
+            }
+            m.interval = smaller(SLOWEST, slower)
+            told = retry_after(retry, os.now_unix_ms())
+            if told > 0.0 {
+                pause(m, told)
+            } else {
+                pause(m, delay)
+            }
+            delay = smaller(delay * 2.0, 120.0)
+            attempt = attempt + 1
+            continue
+        }
+        if (status == 500 || status == 502 || status == 503 || status == 504 || status == 529) && attempt < ATTEMPTS - 1 {
+            told = retry_after(retry, os.now_unix_ms())
+            if told > 0.0 {
+                pause(m, told)
+            } else {
+                pause(m, delay)
+            }
+            delay = smaller(delay * 2.0, 60.0)
+            attempt = attempt + 1
+            continue
+        }
+        strarr.free(headers)
+        sb = strbuilder.new(512)
+        strbuilder.append(sb, "the model at ${m.base} answered ${status}: ")
+        strbuilder.append(sb, first_chars(served, 300))
+        return string.copy(""), strbuilder.finish(sb)
+    }
+    strarr.free(headers)
+    return string.copy(""), "the model at ${m.base} kept saying it is busy or that we ask too often; if it has a daily limit, it may be reached, so try again later"
+}
+
+// ---- for the offline tests ----
+
+// A model whose server is a list of replies (add_reply): nothing is sent
+// and nothing waits.
+stand_in(provider: string, model_id: string, base_url: string, key: string) -> *ModelLink {
+    p, _err = open_model(provider, model_id, base_url, key, 0.0)
+    m = p as *ModelLink
+    m.canned = strarr.new()
+    m.sent = strarr.new()
+    m.asked = strarr.new()
+    m.waits = longarr.longarr_new_raw(64)
+    return m
+}
+
+// The next reply the stand-in's server gives: an HTTP status, a
+// Retry-After header ("" for none) and a body.
+add_reply(m: *ModelLink, status: int, retry: string, body: string) {
+    strarr.push_copy(m.canned, "${status}\n${retry}\n${body}")
+}
+
+// How many times the stand-in waited, and how long the i-th wait was, in ms.
+wait_count(m: *ModelLink) -> int {
+    return m.wait_total
+}
+
+waited(m: *ModelLink, i: int) -> long {
+    return longarr.longarr_get_raw(m.waits, i)
+}
+
+// ---- for setup ----
+
+const PRESET_COUNT = 6
+
+// The i-th service `undiscovered setup` offers by name (models.py PRESETS),
+// as (name, kind, base URL, where to get a key, what it costs). Checked
+// against each service's own pages on 11 October 2026; docs/MODELS.md has
+// the details.
+preset(i: int) -> (string, string, string, string, string) {
+    if i == 0 {
+        return "Google Gemini", "google", "", "aistudio.google.com/apikey", "free tier; Google uses what it is sent on it to improve its products"
+    }
+    if i == 1 {
+        return "Groq", "openai-compatible", "https://api.groq.com/openai/v1", "console.groq.com/keys", "free plan, within rate limits"
+    }
+    if i == 2 {
+        return "OpenRouter", "openai-compatible", "https://openrouter.ai/api/v1", "openrouter.ai/keys", "models whose name ends in :free cost nothing, 50 requests a day"
+    }
+    if i == 3 {
+        return "Mistral", "openai-compatible", "https://api.mistral.ai/v1", "console.mistral.ai", "free mode, within rate limits"
+    }
+    if i == 4 {
+        return "OpenAI", "openai-compatible", "https://api.openai.com/v1", "platform.openai.com/api-keys", "paid"
+    }
+    return "Anthropic", "anthropic", "", "console.anthropic.com", "paid"
+}
+
+// The i-th server that runs models on this machine, on its usual port
+// (models.py LOCAL), as (name, base URL); ("", "") past the last.
+local_server(i: int) -> (string, string) {
+    if i == 0 {
+        return "Ollama", "http://127.0.0.1:11434/v1"
+    }
+    if i == 1 {
+        return "LM Studio", "http://127.0.0.1:1234/v1"
+    }
+    if i == 2 {
+        return "llama.cpp", "http://127.0.0.1:8080/v1"
+    }
+    if i == 3 {
+        return "vLLM", "http://127.0.0.1:8000/v1"
+    }
+    if i == 4 {
+        return "Jan", "http://127.0.0.1:1337/v1"
+    }
+    return "", ""
+}
+
+// (server, base URL, model) for every model a server on this machine
+// offers, as a strarr of three strings per model the caller frees.
+local_models() -> ptr {
+    found = strarr.new()
+    i = 0
+    while i < 5 {
+        name, base = local_server(i)
+        req = client.request("GET", "${base}/models")
+        if req != null {
+            client.set_header(req, "User-Agent", openalex.user_agent())
+            client.set_timeout(req, 2s)
+            resp, err = client.send_request(req)
+            client.request_free(req)
+            if err == "" {
+                served = client.response_body(resp)
+                client.response_free(resp)
+                doc, perr = json.parse(served)
+                if perr == "" {
+                    listed = jsontext.member(doc, "data")
+                    j = 0
+                    while j < jsontext.size(listed) {
+                        mid = jsontext.text(jsontext.at(listed, j), "id")
+                        if string.length(mid) > 0 {
+                            strarr.push_copy(found, name)
+                            strarr.push_copy(found, base)
+                            strarr.push_copy(found, mid)
+                        }
+                        j = j + 1
+                    }
+                    json.json_free(doc)
+                }
+            }
+        }
+        i = i + 1
+    }
+    return found
+}

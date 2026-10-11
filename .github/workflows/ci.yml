@@ -62,4 +62,5 @@ jobs:
         run: |
           ae build src/main.ae -o undiscovered
           ae test tests/test_client.ae
+          ae test tests/test_distill.ae
           ./undiscovered --version

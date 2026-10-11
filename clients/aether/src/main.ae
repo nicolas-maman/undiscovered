@@ -6,7 +6,11 @@
 //     undiscovered work --units 5 do five, one after another
 //     undiscovered work --dry-run do one and save it here instead of submitting
 //     undiscovered work --unit u-000241 --dry-run   a given unit, for example to compare clients
+//     undiscovered work --kind map                  map units even when a model is set up
 //     undiscovered --version
+//
+// With a model set up, `work` takes describing (distill) units, the job
+// that needs one; without one, map units.
 
 import std.string
 import std.os
@@ -32,11 +36,11 @@ on_interrupt(sig: int) {
 }
 
 const USAGE = "usage: undiscovered [-h] [--version] {setup,work} ...\n"
-const WORK_USAGE = "usage: undiscovered work [-h] [--units UNITS] [--dry-run] [--unit UNIT]\n"
+const WORK_USAGE = "usage: undiscovered work [-h] [--units UNITS] [--dry-run] [--unit UNIT]\n                         [--kind {auto,map,distill}]\n"
 const SETUP_USAGE = "usage: undiscovered setup [-h]\n"
 
 const HELP = "\nLend your computer to undiscovered.\n\npositional arguments:\n  {setup,work}\n    setup       answer three questions once\n    work        take an open unit, do it, submit it\n\noptions:\n  -h, --help    show this help message and exit\n  --version     show program's version number and exit\n"
-const WORK_HELP = "\noptions:\n  -h, --help     show this help message and exit\n  --units UNITS  how many units to do (default 1)\n  --dry-run      save the result here instead of submitting\n  --unit UNIT    do this unit rather than a random open one\n"
+const WORK_HELP = "\noptions:\n  -h, --help            show this help message and exit\n  --units UNITS         how many units to do (default 1)\n  --dry-run             save the result here instead of submitting\n  --unit UNIT           do this unit rather than a random open one\n  --kind {auto,map,distill}\n                        map units, describing (distill) units, or auto:\n                        distill when a model is set up\n"
 const SETUP_HELP = "\noptions:\n  -h, --help  show this help message and exit\n"
 
 // A usage error, as argparse reports it: usage and reason on stderr, code 2.
@@ -52,6 +56,7 @@ main() {
     count = 1
     dry_run = 0
     only = ""
+    kind = "auto"
     stray = ""
     i = 1
     while i < argc {
@@ -105,6 +110,19 @@ main() {
                 } else {
                     only = string.substring(a, 7, string.length(a))
                 }
+            } else if a == "--kind" || string.starts_with(a, "--kind=") == 1 {
+                if a == "--kind" {
+                    if i >= argc {
+                        usage_error(WORK_USAGE, "undiscovered work", "argument --kind: expected one argument")
+                    }
+                    kind = os.args_get(i)
+                    i = i + 1
+                } else {
+                    kind = string.substring(a, 7, string.length(a))
+                }
+                if kind != "auto" && kind != "map" && kind != "distill" {
+                    usage_error(WORK_USAGE, "undiscovered work", "argument --kind: invalid choice: '${kind}' (choose from auto, map, distill)")
+                }
             } else if stray == "" {
                 stray = a
             }
@@ -127,7 +145,7 @@ main() {
     if cmd == "setup" {
         code = work.cmd_setup()
     } else {
-        code = work.cmd_work(count, dry_run, only)
+        code = work.cmd_work(count, dry_run, only, kind)
     }
     exit(code)
 }
