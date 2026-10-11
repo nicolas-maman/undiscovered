@@ -36,6 +36,34 @@ jobs:
       - name: Links within the project point at files and headings that exist
         run: python scripts/check_links.py
 
+  # The describing intake workflow's own commands, on a valid result for the
+  # first open unit of the live branch, without pushing anything: a broken
+  # workflow shows here before a volunteer's result meets it.
+  intake-rehearsal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: distill-2025
+          path: distill
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install, as the intake workflow does
+        run: pip install requests jsonschema numpy scikit-learn ./clients/python
+      - name: A result, checked, combined and scored, as the intake workflow does
+        env:
+          DISTILL_DIR: distill
+          GITHUB_EVENT_PATH: event.json
+        run: |
+          python scripts/rehearse_intake.py distill event.json
+          python pipeline/intake.py | tail -n 1 > verdict.json
+          python -c "import json, sys; v = json.load(open('verdict.json')); print(v['reply']); sys.exit(0 if v['accepted'] else 1)"
+          python pipeline/combine.py distill
+          python pipeline/known_twins.py result distill
+          python -c "import json; p = json.load(open('distill/progress.json')); assert p['descriptions'] == 20, p"
+
   # The Aether client on Linux, where its non-Windows parts (priority, hidden
   # input, settings path) are compiled and tested. The toolchain is built from
   # the pinned release once and cached under that tag.
