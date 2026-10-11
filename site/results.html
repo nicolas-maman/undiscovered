@@ -370,9 +370,13 @@
     var ul = el("ul");
     Object.keys(labels).forEach(function (k) {
       var x = h[k];
-      var word = x.outcome || (x.holds ? "holds" : "does not hold");
+      // H2 and H3 were written as comparisons of the estimates; say when the
+      // interval still includes zero, so "holds" is not read as more than that.
+      var firm = x.holds && x.diff_ci && x.diff_ci[0] > 0;
+      var word = x.outcome || (!x.holds ? "does not hold"
+        : firm ? "holds" : "holds on the estimate, but the interval includes zero");
       ul.appendChild(el("li", {}, [labels[k] + ": ",
-        el("span", {class: x.holds ? "yes" : "no", text: word}),
+        el("span", {class: firm || x.outcome === "supported" ? "yes" : "no", text: word}),
         " (difference " + (x.diff >= 0 ? "+" : "") + num(x.diff, 4) + ", 95% interval " + interval(x.diff_ci) + ")"]));
     });
     if (r.strict) {
