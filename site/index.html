@@ -24,7 +24,13 @@
          font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
   main { max-width: 680px; margin: 0 auto; padding: 56px 16px 80px; }
   h1 { font-size: 2.2rem; letter-spacing: -0.01em; margin: 0 0 4px; }
-  .tag { color: var(--muted); font-style: italic; margin: 0 0 40px; }
+  .tag { color: var(--muted); font-style: italic; margin: 0 0 14px; }
+  .links { font: 15px system-ui, sans-serif; margin: 0 0 36px; }
+  .links a { margin-right: 18px; text-decoration: none; white-space: nowrap; display: inline-block; }
+  .links a:hover, .links a:focus { text-decoration: underline; }
+  .join { background: var(--rule); border-radius: 6px; padding: 14px 18px; margin: 24px 0; }
+  .join a.go { font: 600 16px system-ui, sans-serif; }
+  .live { color: var(--muted); font: 14px system-ui, sans-serif; display: block; margin-top: 6px; }
   h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .08em;
        color: var(--muted); margin: 40px 0 8px; font-family: system-ui, sans-serif; font-weight: 600; }
   a { color: var(--accent); }
@@ -38,6 +44,7 @@
 <main>
   <h1>undiscovered</h1>
   <p class="tag">Research in one field that another field could use, but has never cited.</p>
+  <p class="links"><a href="join.html">Take part</a><a href="connections.html">Same problem, different field</a><a href="results.html">First test</a><a href="https://github.com/nicolas-maman/undiscovered">Code and data</a></p>
 
   <p>In 1986 Don Swanson read two sets of papers that had never cited each other. One showed
   that dietary fish oil lowers blood viscosity, platelet aggregation and vascular reactivity.
@@ -48,10 +55,13 @@
 
   <p>This project looks for such connections in every field of science, and publishes how
   often its predictions turn out to be right. Fields often describe the same problem in
-  different words, so volunteers will lend their own computer and whichever AI model they
-  prefer to rewrite papers without their field's jargon. The result will be an open index of
-  papers described in plain terms, so that work on the same problem in different fields can
-  be matched.</p>
+  different words, so volunteers lend their own computer and whichever AI model they prefer,
+  on their machine or free in the cloud, to rewrite papers without their field's jargon. The
+  result is an open index of papers described in plain terms, so that work on the same problem
+  in different fields can be matched.</p>
+
+  <div class="join"><a class="go" href="join.html">Take part: lend your computer and an AI model</a>
+  <span class="live" id="live">Every paper is described by two volunteers' models, compared in public.</span></div>
 
   <div class="status"><strong>First result, October 2026: inconclusive.</strong> We froze the
   literature at the end of 2017 and ranked 28,114 pairs of topics from different domains that
@@ -88,5 +98,20 @@
     <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
   </footer>
 </main>
+<script>
+  // One line of live progress, from the data branch; the page reads the same without it.
+  fetch("https://raw.githubusercontent.com/nicolas-maman/undiscovered/distill-2025/progress.json", {cache: "no-store"})
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (p) {
+      if (!p || !p.papers) { return; }
+      var n = function (x) { return (x || 0).toLocaleString("en"); };
+      var people = (p.contributors || []).length, models = (p.models || []).length;
+      document.getElementById("live").textContent = p.papers_described
+        ? n(p.papers_described) + " of " + n(p.papers) + " papers described so far, by " + n(people) +
+          (people === 1 ? " volunteer" : " volunteers") + " with " + n(models) + (models === 1 ? " model." : " models.")
+        : n(p.papers) + " papers are ready to be described; none has been yet.";
+    })
+    .catch(function () {});
+</script>
 </body>
 </html>
