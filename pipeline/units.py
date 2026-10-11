@@ -32,7 +32,7 @@ def all_topic_ids() -> list[str]:
 def make_units(topic_ids: list[str], freeze: int) -> dict:
     ids = sorted(topic_ids)
     random.Random(SEED).shuffle(ids)
-    units = [{"unit": f"u-{i + 1:06d}", "kind": "map", "topics": ids[k:k + UNIT_SIZE],
+    units = [{"unit": f"u-{i + 1:06d}", "protocol": 0, "kind": "map", "topics": ids[k:k + UNIT_SIZE],
               "freeze": freeze, "quorum": 1, "status": "open"}
              for i, k in enumerate(range(0, len(ids), UNIT_SIZE))]
     return {"freeze": freeze, "topics": len(ids), "units": units}

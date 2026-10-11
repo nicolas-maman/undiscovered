@@ -11,6 +11,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import distill_units  # noqa: E402
 import intake  # noqa: E402
+import units as map_units  # noqa: E402
 from undiscovered import cli  # noqa: E402
 
 GOOD = {"problem": "Measure how much of one small molecule a living tissue has built up, as a sign of thirst.",
@@ -102,3 +103,13 @@ def test_a_result_from_an_old_prompt_is_turned_away(tmp_path):
     body = issue(u).replace('"prompt": 1', '"prompt": 0')
     with pytest.raises(intake.Reject, match="update the client"):
         intake.intake_distill(branch(tmp_path, u), body, "alice", 11)
+
+
+def test_units_of_both_kinds_follow_the_unit_schema():
+    from jsonschema import Draft202012Validator
+    root = Path(__file__).resolve().parents[2]
+    schema = Draft202012Validator(json.loads((root / "schemas" / "unit.schema.json").read_text(encoding="utf-8")))
+    made = map_units.make_units([f"T{i}" for i in range(1, 25)], 2025)["units"]
+    made += distill_units.make_units({f"W{i}": {} for i in range(1, 25)}, {f"W{i}": ["x"] for i in range(1, 25)})["units"]
+    for u in made:
+        assert not list(schema.iter_errors(u)), u["unit"]
