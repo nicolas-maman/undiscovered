@@ -4,6 +4,13 @@ A draft for criticism. Nothing in it has been ranked yet. When it is final
 it is committed as a plan, and its ranking is published and timestamped
 before any of the outcomes it predicts are counted.
 
+Where it stands (11 October 2026): the 300 topic records at the 2025 freeze
+are collected and pass the same checks as volunteers' map results; the
+ranking code (`undiscovered_research/forward.py`) computes the first test's
+features from them, and on the first test's own 2017 records it reproduces
+that test's eligible pairs and every feature value exactly. No ranking of
+2025 has been computed, and none will be before this plan is registered.
+
 ## Why
 
 The first test checked the past. However carefully it was run, the people
@@ -28,8 +35,8 @@ that, so it is left out here.
   volunteer client's own code (`clients/python`, map records, format 1;
   [docs/DATA.md](../docs/DATA.md)): its 100 papers most cited up to 2025,
   the topics citing them in each window, its works per year and its usable
-  abstracts. About 25 OpenAlex calls a topic, 7,500 in all: one day of one
-  free key.
+  abstracts. About 17 OpenAlex calls a topic, about 5,200 in all (measured):
+  one day of one free key.
 - **Pairs:** every pair of those topics from different domains with at most
   one citing work between them in all the years up to 2025, both with at
   least 5 usable abstracts, as in the first test.
@@ -88,8 +95,8 @@ is timestamped.
 
 ## What it costs
 
-7,500 OpenAlex calls once, then 300 to 600 a year. Both fit in the free
-allowance of one key.
+About 5,200 OpenAlex calls once (already spent), then 300 to 600 a year.
+Both fit in the free allowance of one key.
 
 ## Questions to settle before registering
 
