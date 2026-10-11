@@ -34,13 +34,26 @@ def issue(u: dict, descs: list[dict] | None = None, model_id: str = "qwen3:8b") 
     return cli.describe_body(u, {"provider": "openai-compatible", "id": model_id}, descs)
 
 
-def test_distinctive_words_are_the_papers_own_not_everyones():
-    papers = {"W1": "Proline accumulates in leaves under drought stress. The study measured proline.",
+def test_distinctive_words_are_the_fields_not_everyones():
+    papers = {"W1": "Proline accumulates in leaves under drought stress. This paper measured proline perfectly.",
               "W2": "Glaciers retreat under warming. The study measured glacier mass.",
               "W3": "Banks lend under stress. The study measured lending."}
-    avoid = distill_units.distinctive(papers, k=2)
-    assert avoid["W1"][0] == "proline" and avoid["W2"] == ["glacier", "glaciers"]
-    assert all("study" not in a and "measured" not in a for a in avoid.values())   # in every paper
+    domain = {"W1": "Life Sciences", "W2": "Physical Sciences", "W3": "Social Sciences"}
+    common = {"perfectly", "leaves", "measured", "stress"}          # everyday English, for this test
+    avoid = distill_units.distinctive(papers, domain, k=3, everyday=lambda w: 5.0 if w in common else 2.0)
+    assert avoid["W1"] == ["proline", "accumulates", "drought"]
+    assert avoid["W2"] == ["glacier", "glaciers", "mass"]
+    assert all("perfectly" not in a and "paper" not in a and "study" not in a for a in avoid.values())
+
+
+def test_a_common_word_counts_as_a_fields_when_its_papers_crowd_into_one_domain():
+    counts = {f"W{i}": distill_units.Counter(["cancer"] if i < 12 else ["combined"]) for i in range(24)}
+    counts.update({f"W{i}": distill_units.Counter(["combined"]) for i in range(12, 24)})
+    domain = {f"W{i}": ("Health Sciences" if i < 12 else ["Life Sciences", "Physical Sciences",
+                                                            "Social Sciences", "Health Sciences"][i % 4])
+              for i in range(24)}
+    words = distill_units.fields_words(counts, domain, everyday=lambda w: 5.0)
+    assert "cancer" in words and "combined" not in words
 
 
 def test_units_mix_papers_twenty_at_a_time_and_are_rebuilt_exactly():
