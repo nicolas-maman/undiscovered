@@ -83,6 +83,23 @@ def test_a_unit_skips_works_without_an_abstract_and_keeps_its_order():
     assert api.calls == [{"filter": "openalex:W1|W2", "per_page": 2, "select": "id,title,abstract_inverted_index"}]
 
 
+def test_the_same_description_for_two_papers_is_asked_again():
+    other = json.dumps({"problem": "Work out how fast a population grows when food is scarce.",
+                        "approach": "Count individuals each season and fit a simple growth curve to the counts."})
+    unit = {"unit": "u-100000", "works": ["W1", "W3"], "instructions": INSTRUCTIONS}
+
+    class TwoWorks(FakeAPI):
+        def get(self, path, params):
+            data = super().get(path, params)
+            data["results"][1] = {**data["results"][0], "id": "https://openalex.org/W3"}
+            return data
+
+    model = FakeModel([GOOD, GOOD, other])
+    out = distill.distill_unit(TwoWorks(), model, unit)
+    assert [d["problem"][:4] for d in out] == ["Meas", "Work"]
+    assert "word for word the description of another paper" in model.asked[2]
+
+
 def test_a_model_that_keeps_failing_is_stopped_before_anything_is_sent():
     unit = {"unit": "u-100000", "works": ["W1"], "instructions": INSTRUCTIONS}
     with pytest.raises(distill.Unusable, match="failed the checks for 1 of 1"):

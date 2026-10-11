@@ -183,7 +183,8 @@ A `distill` result is checked in three ways before it counts:
 
 - No jargon, when it arrives. Each description has a problem and an
   approach of at most 60 words each, and reuses at most `max_avoided` of
-  its work's `avoid` words (case and a final s ignored). A result must
+  its work's `avoid` words (case and a final s ignored), and no two
+  descriptions in a result are word for word the same. A result must
   describe at least three quarters of the unit's works, each once, made
   with the current prompt. The checking job uses the client's own
   functions (`clients/python/undiscovered/distill.py`), so a result that

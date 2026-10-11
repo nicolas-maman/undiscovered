@@ -247,17 +247,18 @@ def check_descriptions(result: dict, unit: dict) -> list[dict]:
         raise Reject(f"{where or 'result'}: {problem.message[:200] if problem else 'missing'}")
     if result.get("unit") != unit["unit"]:
         raise Reject("the result is for another unit")
-    descs, seen = result["descriptions"], set()
+    descs, seen, taken = result["descriptions"], set(), set()
     for d in descs:
         w = d["work"]
         if w not in unit["works"] or w in seen:
             raise Reject(f"{w} is not one of the unit's papers, or is described twice")
         seen.add(w)
+        desc = {"problem": " ".join(d["problem"].split()), "approach": " ".join(d["approach"].split())}
         try:
-            distill.check({"problem": " ".join(d["problem"].split()), "approach": " ".join(d["approach"].split())},
-                          unit.get("avoid", {}).get(w, []), unit.get("max_avoided", 2))
+            distill.check(desc, unit.get("avoid", {}).get(w, []), unit.get("max_avoided", 2), taken)
         except distill.Unusable as e:
             raise Reject(f"{w}: {e}") from None
+        taken.add(distill.fingerprint(desc))
     if len(seen) < MIN_COVERED * len(unit["works"]):
         raise Reject(f"only {len(seen)} of the unit's {len(unit['works'])} papers are described")
     return descs

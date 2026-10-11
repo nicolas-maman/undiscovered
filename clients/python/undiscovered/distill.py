@@ -3,9 +3,10 @@
 For each work the client reads its title and abstract from OpenAlex and asks
 the volunteer's model for two plain sentences: the problem and the approach.
 Before anything is sent, every answer is checked the way the checking job
-will check it: one JSON object, both parts present and short, and at most
+will check it: one JSON object, both parts present and short, at most
 `max_avoided` of the paper's own distinctive words (the unit's `avoid` list)
-reused. A model that fails a check is asked once more, told why.
+reused, and not the same as the description of another paper in the unit. A
+model that fails a check is asked once more, told why.
 """
 
 from __future__ import annotations
@@ -91,7 +92,14 @@ def parse(answer: str) -> dict[str, str]:
     return out
 
 
-def check(desc: dict[str, str], avoid: list[str], max_avoided: int) -> None:
+def fingerprint(desc: dict[str, str]) -> str:
+    """A description's words, lower case, in order: two descriptions with the same are the same."""
+    return " ".join(WORD.findall((desc["problem"] + " " + desc["approach"]).lower()))
+
+
+def check(desc: dict[str, str], avoid: list[str], max_avoided: int, taken: set[str] = frozenset()) -> None:
+    if fingerprint(desc) in taken:
+        raise Unusable("it was word for word the description of another paper")
     for part in ("problem", "approach"):
         if len(desc[part].split()) > MAX_WORDS:
             raise Unusable(f'"{part}" was longer than {MAX_WORDS} words')
@@ -100,7 +108,8 @@ def check(desc: dict[str, str], avoid: list[str], max_avoided: int) -> None:
         raise Unusable("it used words specific to the paper: " + ", ".join(used))
 
 
-def describe(model: Model, instructions: str, work: dict, avoid: list[str], max_avoided: int) -> dict:
+def describe(model: Model, instructions: str, work: dict, avoid: list[str], max_avoided: int,
+             taken: set[str] = frozenset()) -> dict:
     """One work's description, checked. Raises Unusable after two failed attempts."""
     ask = prompt(instructions, work["title"], work["abstract"], avoid)
     reason = ""
@@ -108,7 +117,7 @@ def describe(model: Model, instructions: str, work: dict, avoid: list[str], max_
         try:
             desc = parse(model.ask(SYSTEM, ask if not reason else
                                    f"{ask}\n\nYour previous answer could not be used: {reason}. Try again."))
-            check(desc, avoid, max_avoided)
+            check(desc, avoid, max_avoided, taken)
             return desc
         except Unusable as e:
             reason = str(e)
@@ -124,12 +133,13 @@ def distill_unit(api: OpenAlex, model: Model, unit: dict, progress=lambda done, 
     """
     works = fetch_works(api, unit["works"])
     avoid = unit.get("avoid", {})
-    out, failed, last = [], [], ""
+    out, failed, last, taken = [], [], "", set()
     for i, wid in enumerate(unit["works"]):
         w = works.get(wid)
         if w and w["abstract"]:
             try:
-                desc = describe(model, unit["instructions"], w, avoid.get(wid, []), unit.get("max_avoided", 2))
+                desc = describe(model, unit["instructions"], w, avoid.get(wid, []), unit.get("max_avoided", 2), taken)
+                taken.add(fingerprint(desc))
                 out.append({"work": wid, **desc})
             except Unusable as e:
                 failed.append(wid)

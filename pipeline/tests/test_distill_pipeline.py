@@ -18,6 +18,14 @@ GOOD = {"problem": "Measure how much of one small molecule a living tissue has b
         "approach": "React an extract with a reagent that colours that molecule, then read the colour."}
 
 
+WORDS = ["alpha", "beta", "gamma", "delta", "epsilon", "zeta"]
+
+
+def own(i: int) -> dict:
+    """GOOD, worded slightly differently for the i-th paper, as two papers' descriptions would be."""
+    return {**GOOD, "problem": f"{GOOD['problem']} Case {WORDS[i]}."}
+
+
 def unit(works=("W1", "W2", "W3", "W4")) -> dict:
     return {"unit": "u-100001", "protocol": 0, "kind": "distill", "works": list(works),
             "avoid": {w: ["proline", "drought"] for w in works}, "max_avoided": 1,
@@ -31,7 +39,7 @@ def branch(tmp_path: Path, u: dict) -> Path:
 
 
 def issue(u: dict, descs: list[dict] | None = None, model_id: str = "qwen3:8b") -> str:
-    descs = descs if descs is not None else [{"work": w, **GOOD} for w in u["works"]]
+    descs = descs if descs is not None else [{"work": w, **own(i)} for i, w in enumerate(u["works"])]
     return cli.describe_body(u, {"provider": "openai-compatible", "id": model_id}, descs)
 
 
@@ -81,7 +89,7 @@ def test_two_volunteers_complete_a_unit(tmp_path):
 
 
 def described(*works, **change) -> list[dict]:
-    return [{"work": w, **GOOD, **(change if i == 0 else {})} for i, w in enumerate(works)]
+    return [{"work": w, **own(i), **(change if i == 0 else {})} for i, w in enumerate(works)]
 
 
 @pytest.mark.parametrize("descs,reason", [
@@ -91,6 +99,7 @@ def described(*works, **change) -> list[dict]:
     (described("W1", "W1", "W3", "W4"), "described twice"),
     (described("W1", "W2"), "only 2 of the unit's 4"),
     (described("W1", "W2", "W3", "W4", approach="word " * 70), "longer than"),
+    ([{"work": w, **GOOD} for w in ("W1", "W2", "W3", "W4")], "W2: it was word for word"),
 ])
 def test_bad_descriptions_are_rejected_with_the_reason(tmp_path, descs, reason):
     u = unit()
