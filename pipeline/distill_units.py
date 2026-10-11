@@ -25,7 +25,7 @@ the listed words, and the checking job counts how many it used anyway, so
 "without the field's words" means the same thing to every model and every
 client. The units mix topics, twenty papers to a unit, and each needs results
 from two volunteers. Writes units/index.json and papers.json (each paper's
-topic and domain) under --out.
+topic, subfield, field and domain) under --out.
 """
 
 from __future__ import annotations
@@ -163,7 +163,8 @@ def main() -> None:
     for i, t in enumerate(topics, 1):
         for w in sample_works(t["id"], os.environ.get("OPENALEX_API_KEY", "")):
             if w["id"] not in papers:           # a work is sampled under its primary topic only
-                papers[w["id"]] = {"topic": t["id"], "domain": t["domain"]}
+                papers[w["id"]] = {"topic": t["id"], "topic_name": t["name"], "subfield": t["subfield"],
+                                   "field": t["field"], "domain": t["domain"]}
                 texts[w["id"]] = w["text"]
         print(f"{i}/{len(topics)} {t['id']}: {len(papers)} papers so far", flush=True)
         time.sleep(0.25)

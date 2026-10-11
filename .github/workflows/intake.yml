@@ -69,11 +69,13 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install (the client's own checks are the ones applied)
-        run: pip install requests jsonschema ./clients/python
+        run: pip install requests jsonschema numpy scikit-learn ./clients/python
       - name: Check the result
         env:
           DISTILL_DIR: distill
         run: python pipeline/intake.py | tail -n 1 > verdict.json
+      - name: Combine everything accepted so far (model agreement, twins, the open index)
+        run: python pipeline/combine.py distill
       - name: Store what was accepted
         run: |
           cd distill
