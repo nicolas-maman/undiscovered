@@ -13,12 +13,60 @@
   "topic": "T10575",
   "topic_name": "Wireless Communication Networks Research"
  },
+ "W1480844056": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "speech nlp",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W1501139540": {
   "domain": "Social Sciences",
   "field": "Arts and Humanities",
   "subfield": "Philosophy",
   "topic": "T13497",
   "topic_name": "Hermeneutics and Narrative Identity"
+ },
+ "W1511358834": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "machine learning",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W1522660207": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "sports analytics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W1538492647": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "digital humanities",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W1585961208": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "economics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W1672290666": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "cities economics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W1677622784": {
   "domain": "Physical Sciences",
@@ -33,6 +81,22 @@
   "subfield": "Aerospace Engineering",
   "topic": "T12449",
   "topic_name": "Spacecraft Design and Technology"
+ },
+ "W1869766355": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "astronomy",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W1945989287": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "networks",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W1965016279": {
   "domain": "Life Sciences",
@@ -55,12 +119,44 @@
   "topic": "T10595",
   "topic_name": "Medieval Literature and History"
  },
+ "W2010957964": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "physics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2016012936": {
   "domain": "Social Sciences",
   "field": "Arts and Humanities",
   "subfield": "Literature and Literary Theory",
   "topic": "T14217",
   "topic_name": "American Literature and Humor Studies"
+ },
+ "W2069214547": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "neuroscience",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W2086951786": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "scientometrics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W2090689284": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "cosmology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2099427669": {
   "domain": "Life Sciences",
@@ -75,6 +171,46 @@
   "subfield": "Philosophy",
   "topic": "T13497",
   "topic_name": "Hermeneutics and Narrative Identity"
+ },
+ "W2123906784": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "criminology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W2137566700": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "structural biology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W2143469080": {
+  "benchmark": "known twins",
+  "domain": "Health Sciences",
+  "field": "epidemiology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W2152927766": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "radio astronomy",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W2154575165": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "machine learning",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2189071912": {
   "domain": "Physical Sciences",
@@ -118,12 +254,28 @@
   "topic": "T13468",
   "topic_name": "Educational Research and Science Teaching"
  },
+ "W2281364703": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "cryptography",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2403867987": {
   "domain": "Health Sciences",
   "field": "Medicine",
   "subfield": "Surgery",
   "topic": "T12476",
   "topic_name": "Intraoperative Neuromonitoring and Anesthetic Effects"
+ },
+ "W2406688680": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "fluid dynamics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2417138536": {
   "domain": "Health Sciences",
@@ -138,6 +290,22 @@
   "subfield": "Industrial and Manufacturing Engineering",
   "topic": "T11159",
   "topic_name": "Manufacturing Process and Optimization"
+ },
+ "W2507523630": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "neuroscience",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W2584727833": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "speech",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2584848183": {
   "domain": "Physical Sciences",
@@ -195,12 +363,28 @@
   "topic": "T11526",
   "topic_name": "Innovative Teaching Methods"
  },
+ "W2621651488": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "protein biochemistry",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2624124470": {
   "domain": "Physical Sciences",
   "field": "Physics and Astronomy",
   "subfield": "Atomic and Molecular Physics, and Optics",
   "topic": "T11449",
   "topic_name": "Mechanical and Optical Resonators"
+ },
+ "W2625813022": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "seismology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2625916499": {
   "domain": "Physical Sciences",
@@ -237,6 +421,14 @@
   "topic": "T12449",
   "topic_name": "Spacecraft Design and Technology"
  },
+ "W2766301804": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "causal inference",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2768654499": {
   "domain": "Life Sciences",
   "field": "Neuroscience",
@@ -257,6 +449,14 @@
   "subfield": "Sociology and Political Science",
   "topic": "T12807",
   "topic_name": "Consumer Behavior and Market Dynamics"
+ },
+ "W2776575679": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "baseball",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2782008137": {
   "domain": "Physical Sciences",
@@ -1825,6 +2025,14 @@
   "subfield": "Computer Networks and Communications",
   "topic": "T10575",
   "topic_name": "Wireless Communication Networks Research"
+ },
+ "W2807732651": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "finance",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2807759379": {
   "domain": "Health Sciences",
@@ -3869,6 +4077,14 @@
   "subfield": "Cognitive Neuroscience",
   "topic": "T11997",
   "topic_name": "Free Will and Agency"
+ },
+ "W2903898314": {
+  "benchmark": "known twins",
+  "domain": "Health Sciences",
+  "field": "anthropology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2903964354": {
   "domain": "Physical Sciences",
@@ -6453,6 +6669,14 @@
   "topic": "T13630",
   "topic_name": "Agriculture Market Analysis Ukraine"
  },
+ "W2948910962": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "machine learning",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2948974297": {
   "domain": "Social Sciences",
   "field": "Social Sciences",
@@ -6530,6 +6754,14 @@
   "topic": "T11182",
   "topic_name": "Auction Theory and Applications"
  },
+ "W2949943092": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "signal processing",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2949956524": {
   "domain": "Life Sciences",
   "field": "Agricultural and Biological Sciences",
@@ -6558,6 +6790,14 @@
   "topic": "T10269",
   "topic_name": "Epigenetics and DNA Methylation"
  },
+ "W2950452085": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "movement ecology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2950501230": {
   "domain": "Social Sciences",
   "field": "Social Sciences",
@@ -6571,6 +6811,14 @@
   "subfield": "Social Psychology",
   "topic": "T14229",
   "topic_name": "Physical education and sports games research"
+ },
+ "W2950866745": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "astronomy",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2950986738": {
   "domain": "Social Sciences",
@@ -6586,6 +6834,22 @@
   "topic": "T13694",
   "topic_name": "Immigration Law and Human Rights"
  },
+ "W2951110461": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "web social",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W2951119466": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "structural biology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2951169596": {
   "domain": "Life Sciences",
   "field": "Biochemistry, Genetics and Molecular Biology",
@@ -6599,6 +6863,14 @@
   "subfield": "Plant Science",
   "topic": "T11065",
   "topic_name": "Insect Pest Control Strategies"
+ },
+ "W2951278869": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "nlp",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2951398280": {
   "domain": "Health Sciences",
@@ -6627,6 +6899,14 @@
   "subfield": "Pulmonary and Respiratory Medicine",
   "topic": "T13077",
   "topic_name": "Cancer-related cognitive impairment studies"
+ },
+ "W2951702157": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "linguistics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2951716670": {
   "domain": "Health Sciences",
@@ -6683,6 +6963,14 @@
   "subfield": "Ocean Engineering",
   "topic": "T12983",
   "topic_name": "Satellite Image Processing and Photogrammetry"
+ },
+ "W2952548632": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "web ir",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2952593810": {
   "domain": "Life Sciences",
@@ -7972,6 +8260,14 @@
   "topic": "T12496",
   "topic_name": "Color perception and design"
  },
+ "W2974304526": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "power systems",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2974391029": {
   "domain": "Social Sciences",
   "field": "Social Sciences",
@@ -8182,6 +8478,14 @@
   "topic": "T13694",
   "topic_name": "Immigration Law and Human Rights"
  },
+ "W2978151603": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "pharmacology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2978168053": {
   "domain": "Health Sciences",
   "field": "Medicine",
@@ -8293,6 +8597,14 @@
   "subfield": "General Agricultural and Biological Sciences",
   "topic": "T14269",
   "topic_name": "Food Security and Socioeconomic Dynamics"
+ },
+ "W2979917802": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "genomics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W2979939929": {
   "domain": "Life Sciences",
@@ -9974,6 +10286,14 @@
   "topic": "T12277",
   "topic_name": "Frequency Control in Power Systems"
  },
+ "W2999585756": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "sports analytics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W2999664236": {
   "domain": "Physical Sciences",
   "field": "Mathematics",
@@ -10155,6 +10475,14 @@
   "subfield": "Surgery",
   "topic": "T12476",
   "topic_name": "Intraoperative Neuromonitoring and Anesthetic Effects"
+ },
+ "W3002645694": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "astronomy",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3002793355": {
   "domain": "Health Sciences",
@@ -10954,6 +11282,14 @@
   "topic": "T12476",
   "topic_name": "Intraoperative Neuromonitoring and Anesthetic Effects"
  },
+ "W3011396997": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "target tracking",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W3011513909": {
   "domain": "Health Sciences",
   "field": "Medicine",
@@ -11177,6 +11513,14 @@
   "subfield": "Food Science",
   "topic": "T13871",
   "topic_name": "Melamine detection and toxicity"
+ },
+ "W3013783567": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "aerospace attitude",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3013945007": {
   "domain": "Health Sciences",
@@ -12620,6 +12964,14 @@
   "topic": "T13843",
   "topic_name": "African Sexualities and LGBTQ+ Issues"
  },
+ "W3038487029": {
+  "benchmark": "known twins",
+  "domain": "Health Sciences",
+  "field": "imaging mri",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W3039050968": {
   "domain": "Life Sciences",
   "field": "Immunology and Microbiology",
@@ -12815,6 +13167,14 @@
   "subfield": "Surgery",
   "topic": "T11855",
   "topic_name": "Gastrointestinal disorders and treatments"
+ },
+ "W3042222706": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "statistical physics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3042260740": {
   "domain": "Life Sciences",
@@ -13060,6 +13420,14 @@
   "subfield": "Ecology",
   "topic": "T11791",
   "topic_name": "Microbial Community Ecology and Physiology"
+ },
+ "W3045842115": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "astronomy",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3045954956": {
   "domain": "Health Sciences",
@@ -14986,6 +15354,14 @@
   "topic": "T14070",
   "topic_name": "Knowledge Societies in the 21st Century"
  },
+ "W3102913464": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "sociolinguistics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W3103397036": {
   "domain": "Health Sciences",
   "field": "Medicine",
@@ -15546,6 +15922,14 @@
   "topic": "T13108",
   "topic_name": "Therapeutic Uses of Natural Elements"
  },
+ "W3111059718": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "recommender systems",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W3111148677": {
   "domain": "Physical Sciences",
   "field": "Computer Science",
@@ -15706,6 +16090,14 @@
   "subfield": "Civil and Structural Engineering",
   "topic": "T12293",
   "topic_name": "Dam Engineering and Safety"
+ },
+ "W3112152739": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "control power systems",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3112302413": {
   "domain": "Physical Sciences",
@@ -16638,6 +17030,14 @@
   "topic": "T13238",
   "topic_name": "Botanical Studies and Applications"
  },
+ "W3124888246": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "finance",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W3124901515": {
   "domain": "Physical Sciences",
   "field": "Environmental Science",
@@ -17050,6 +17450,14 @@
   "subfield": "Oncology",
   "topic": "T11532",
   "topic_name": "Chemokine receptors and signaling"
+ },
+ "W3131482276": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "communications",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3131511718": {
   "domain": "Life Sciences",
@@ -17835,6 +18243,14 @@
   "topic": "T13487",
   "topic_name": "Statistical and numerical algorithms"
  },
+ "W3143534302": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "machine learning",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W3143536018": {
   "domain": "Life Sciences",
   "field": "Immunology and Microbiology",
@@ -18016,6 +18432,14 @@
   "subfield": "Surgery",
   "topic": "T12108",
   "topic_name": "Management of metastatic bone disease"
+ },
+ "W3152740724": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "nuclear physics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3152752568": {
   "domain": "Life Sciences",
@@ -18380,6 +18804,14 @@
   "subfield": "Psychiatry and Mental health",
   "topic": "T12626",
   "topic_name": "Cancer, Stress, Anesthesia, and Immune Response"
+ },
+ "W3159288442": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "scientometrics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3159315695": {
   "domain": "Physical Sciences",
@@ -18968,6 +19400,14 @@
   "subfield": "General Decision Sciences",
   "topic": "T10315",
   "topic_name": "Decision-Making and Behavioral Economics"
+ },
+ "W3166368384": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "physics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W3166416843": {
   "domain": "Life Sciences",
@@ -20712,6 +21152,14 @@
   "topic": "T11590",
   "topic_name": "Primary Care and Health Outcomes"
  },
+ "W3198221967": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "recommender systems",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W3198233245": {
   "domain": "Social Sciences",
   "field": "Economics, Econometrics and Finance",
@@ -22084,6 +22532,14 @@
   "topic": "T13352",
   "topic_name": "International Relations in Latin America"
  },
+ "W3215555963": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "neuroscience",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W3215627930": {
   "domain": "Social Sciences",
   "field": "Economics, Econometrics and Finance",
@@ -22790,6 +23246,14 @@
   "subfield": "Civil and Structural Engineering",
   "topic": "T10716",
   "topic_name": "Soil and Unsaturated Flow"
+ },
+ "W4200630322": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "finance",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4200631021": {
   "domain": "Physical Sciences",
@@ -24457,6 +24921,14 @@
   "topic": "T12476",
   "topic_name": "Intraoperative Neuromonitoring and Anesthetic Effects"
  },
+ "W4221147076": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "online learning",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4221156988": {
   "domain": "Physical Sciences",
   "field": "Computer Science",
@@ -24792,6 +25264,14 @@
   "subfield": "Dermatology",
   "topic": "T12433",
   "topic_name": "Skin Diseases and Diabetes"
+ },
+ "W4225926372": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "finance",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4225949788": {
   "domain": "Life Sciences",
@@ -27488,6 +27968,14 @@
   "topic": "T10621",
   "topic_name": "Gene Regulatory Network Analysis"
  },
+ "W4288436195": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "astronomy rv",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4288686890": {
   "domain": "Health Sciences",
   "field": "Medicine",
@@ -28559,6 +29047,14 @@
   "topic": "T12855",
   "topic_name": "Peanut Plant Research Studies"
  },
+ "W4297630097": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "phylogenetics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4297687962": {
   "domain": "Physical Sciences",
   "field": "Computer Science",
@@ -28740,6 +29236,14 @@
   "subfield": "Nutrition and Dietetics",
   "topic": "T12075",
   "topic_name": "Sodium Intake and Health"
+ },
+ "W4300166754": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "econometrics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4300427251": {
   "domain": "Life Sciences",
@@ -31233,6 +31737,14 @@
   "topic": "T13765",
   "topic_name": "Social Science and Policy Research"
  },
+ "W4320342752": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "genetics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4320484201": {
   "domain": "Physical Sciences",
   "field": "Engineering",
@@ -31421,6 +31933,14 @@
   "subfield": "Endocrinology",
   "topic": "T12824",
   "topic_name": "Infections and bacterial resistance"
+ },
+ "W4321392152": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "economics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4321440572": {
   "domain": "Health Sciences",
@@ -32513,6 +33033,14 @@
   "subfield": "Cognitive Neuroscience",
   "topic": "T11883",
   "topic_name": "Embodied and Extended Cognition"
+ },
+ "W4366506563": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "analytical chemistry",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4366506745": {
   "domain": "Physical Sciences",
@@ -34782,6 +35310,14 @@
   "topic": "T11997",
   "topic_name": "Free Will and Agency"
  },
+ "W4386147977": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "cybersecurity",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4386149293": {
   "domain": "Social Sciences",
   "field": "Social Sciences",
@@ -35320,6 +35856,14 @@
   "subfield": "Electrical and Electronic Engineering",
   "topic": "T12238",
   "topic_name": "Green IT and Sustainability"
+ },
+ "W4386942857": {
+  "benchmark": "known twins",
+  "domain": "Life Sciences",
+  "field": "genomics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4386944322": {
   "domain": "Health Sciences",
@@ -36020,6 +36564,14 @@
   "subfield": "Psychiatry and Mental health",
   "topic": "T11282",
   "topic_name": "Fibromyalgia and Chronic Fatigue Syndrome Research"
+ },
+ "W4388043193": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "nlp",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4388050005": {
   "domain": "Life Sciences",
@@ -38597,6 +39149,14 @@
   "topic": "T13630",
   "topic_name": "Agriculture Market Analysis Ukraine"
  },
+ "W4392428161": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "education",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4392451067": {
   "domain": "Physical Sciences",
   "field": "Energy",
@@ -39408,6 +39968,14 @@
   "subfield": "Applied Mathematics",
   "topic": "T13487",
   "topic_name": "Statistical and numerical algorithms"
+ },
+ "W4394646133": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "economics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4394738597": {
   "domain": "Health Sciences",
@@ -40466,6 +41034,14 @@
   "topic": "T13322",
   "topic_name": "Hibiscus Plant Research Studies"
  },
+ "W4399354249": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "nlp mt",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4399355816": {
   "domain": "Physical Sciences",
   "field": "Engineering",
@@ -40808,6 +41384,14 @@
   "subfield": "Public Health, Environmental and Occupational Health",
   "topic": "T12054",
   "topic_name": "Menstrual Health and Disorders"
+ },
+ "W4399911415": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "psychometrics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4399912113": {
   "domain": "Life Sciences",
@@ -42944,6 +43528,14 @@
   "topic": "T13787",
   "topic_name": "Globalization, Historical Perspectives, and International Relations"
  },
+ "W4402955097": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "chemistry",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4402957359": {
   "domain": "Life Sciences",
   "field": "Biochemistry, Genetics and Molecular Biology",
@@ -42971,6 +43563,14 @@
   "subfield": "Media Technology",
   "topic": "T11408",
   "topic_name": "Advanced Optical Imaging Technologies"
+ },
+ "W4403006833": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "astronomy",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4403079053": {
   "domain": "Health Sciences",
@@ -44791,6 +45391,14 @@
   "subfield": "General Agricultural and Biological Sciences",
   "topic": "T13468",
   "topic_name": "Educational Research and Science Teaching"
+ },
+ "W4405903218": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "finance",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4405915931": {
   "domain": "Social Sciences",
@@ -47430,6 +48038,14 @@
   "subfield": "Rheumatology",
   "topic": "T14015",
   "topic_name": "Otitis Media and Relapsing Polychondritis"
+ },
+ "W4410034631": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "operations research",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4410049866": {
   "domain": "Social Sciences",
@@ -50287,6 +50903,14 @@
   "topic": "T13270",
   "topic_name": "QR Code Applications and Technologies"
  },
+ "W4414460143": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "gravitational wave",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4414463907": {
   "domain": "Physical Sciences",
   "field": "Computer Science",
@@ -50608,6 +51232,14 @@
   "subfield": "Physiology",
   "topic": "T10945",
   "topic_name": "Lysosomal Storage Disorders Research"
+ },
+ "W4414988521": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "education",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4414988822": {
   "domain": "Physical Sciences",
@@ -51316,6 +51948,14 @@
   "topic": "T12946",
   "topic_name": "Fractal and DNA sequence analysis"
  },
+ "W4416271985": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "oncology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W4416294776": {
   "domain": "Physical Sciences",
   "field": "Materials Science",
@@ -51518,6 +52158,14 @@
   "subfield": "Oncology",
   "topic": "T10570",
   "topic_name": "Drug Transport and Resistance Mechanisms"
+ },
+ "W4416695361": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "computational linguistics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W4416707471": {
   "domain": "Physical Sciences",
@@ -52086,6 +52734,30 @@
   "topic": "T12496",
   "topic_name": "Color perception and design"
  },
+ "W6947961747": {
+  "benchmark": "known twins",
+  "domain": "Health Sciences",
+  "field": "ecology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W6948178797": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "geostatistics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
+ "W6966907018": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "bioinformatics",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
+ },
  "W7005206487": {
   "domain": "Social Sciences",
   "field": "Social Sciences",
@@ -52547,6 +53219,14 @@
   "subfield": "Pharmacology",
   "topic": "T13037",
   "topic_name": "Piperaceae Chemical and Biological Studies"
+ },
+ "W7115564560": {
+  "benchmark": "known twins",
+  "domain": "Social Sciences",
+  "field": "political methodology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W7115589578": {
   "domain": "Life Sciences",
@@ -53961,6 +54641,14 @@
   "subfield": "Water Science and Technology",
   "topic": "T11634",
   "topic_name": "Water Quality and Pollution Assessment"
+ },
+ "W7147738061": {
+  "benchmark": "known twins",
+  "domain": "Physical Sciences",
+  "field": "glaciology",
+  "subfield": "",
+  "topic": "",
+  "topic_name": ""
  },
  "W7150041071": {
   "domain": "Physical Sciences",

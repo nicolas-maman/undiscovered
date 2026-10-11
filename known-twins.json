@@ -1,0 +1,886 @@
+{
+ "credit": "Kulikowski, E. (2026). Same Problem, Different Field: Cross-Domain Solution Import via Domain-Stripped Computational Fingerprints. arXiv:2609.07595. Benchmark: https://github.com/ErykKul/same-problem-different-field at 912badb32eff3c07926ab36f8b050a6d630e5a42, CC BY 4.0, https://doi.org/10.48804/W3B9WC",
+ "plan": "https://github.com/nicolas-maman/undiscovered/blob/main/research/KNOWN-TWINS.md",
+ "units": [
+  "u-100404",
+  "u-100405",
+  "u-100406",
+  "u-100407",
+  "u-100408",
+  "u-100409",
+  "u-100410",
+  "u-100411",
+  "u-100412",
+  "u-100413",
+  "u-100414",
+  "u-100415",
+  "u-100416",
+  "u-100417",
+  "u-100418",
+  "u-100419",
+  "u-100420",
+  "u-100421"
+ ],
+ "papers": [
+  {
+   "id": "kalman-control-001",
+   "work": "W3112152739",
+   "family": "recursive_bayes_kalman",
+   "field": "control_power_systems",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Power System Dynamic State Estimation Using Extended and Unscented Kalman Filters. Accurate estimation of power system dynamics is very important for the enhancement of power system reliability, resilience, security, and stability of power system. With the increasing integration of inverter-based distributed energy resources, the knowledge of power system dynamics has become more necessary and critical than ever before for proper control and operation of the power system. Although recent advancement of measurement devices and the transmission technologies have reduced the measurement and transmission error significantly, these measurements are still not completely free from the measurement noises. Therefore, the noisy measurements need to be filtered to obtain the accurate power system operating dynamics. In this work, the power system dynamic states are estimated using extended Kalman filter (EKF) and unscented Kalman filter (UKF). We have performed case studies on Western Electricity Coordinating Council (WECC)'s $3$-machine $9$-bus system and New England $10$-machine $39$-bus. The results show that the UKF and EKF can accurately estimate the power system dynamics. The comparative performance of EKF and UKF for the tested case is also provided. Other Kalman filtering techniques alongwith the machine learning-based estimator will be updated inthis report soon.All the sources code including Newton Raphsonpower flow, admittance matrix calculation, EKF calculation, andUKF calculation are publicly available in Github",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "kalman-tracking-001",
+   "work": "W3011396997",
+   "family": "recursive_bayes_kalman",
+   "field": "target_tracking",
+   "role": "member",
+   "method_named": "yes",
+   "text": "A Multi-Target Track-Before-Detect Particle Filter Using Superpositional Data in Non-Gaussian Noise. We propose a particle filter (PF) for tracking time-varying states (e.g., position, velocity) of multiple targets jointly from superpositional data, which depend on the sum of all target signals. Many conventional methods perform thresholding for detection prior to tracking, which severely limits tracking performance at a low signal-to-noise ratio. In contrast, the proposed PF can operate directly on unthresholded sensor signals. Though there also exist methods applicable to unthresholded sensor signals called track-before-detect (TBD), the proposed PF has significant advantages over them. First, it is general without any restrictions on the form of a function that maps each target's states to its signal (e.g., disjoint, binary) or on the statistics of observation noise (e.g., Gaussian). Second, it can track an unknown, time-varying number of targets without knowing their initial states owing to Septier et al.'s state modeling with a birth/death process. The proposed PF includes Salmond et al.'s TBD PF for at most one target as a particular instance up to some implementation details. We present a simulation example in the context of radio-frequency tomography, where the proposed PF significantly outperformed Nannuru et al.'s state-of-the-art method based on random finite sets in terms of the optimal subpattern assignment (OSPA) metric.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "kalman-finance-001",
+   "work": "W4200630322",
+   "family": "recursive_bayes_kalman",
+   "field": "finance",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Adaptive calibration of Heston Model using PCRLB based switching Filter. Stochastic volatility models have existed in Option pricing theory ever since the crash of 1987 which violated the Black-Scholes model assumption of constant volatility. Heston model is one such stochastic volatility model that is widely used for volatility estimation and option pricing. In this paper, we design a novel method to estimate parameters of Heston model under state-space representation using Bayesian filtering theory and Posterior Cramer-Rao Lower Bound (PCRLB), integrating it with Normal Maximum Likelihood Estimation (NMLE) proposed in [1]. Several Bayesian filters like Extended Kalman Filter (EKF), Unscented Kalman Filter (UKF), Particle Filter (PF) are used for latent state and parameter estimation. We employ a switching strategy proposed in [2] for adaptive state estimation of the non-linear, discrete-time state-space model (SSM) like Heston model. We use a particle filter approximated PCRLB [3] based performance measure to judge the best filter at each time step. We test our proposed framework on pricing data from S&P 500 and NSE Index, estimating the underlying volatility and parameters from the index. Our proposed method is compared with the VIX measure and historical volatility for both the indexes. The results indicate an effective framework for estimating volatility adaptively with changing market dynamics.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "kalman-neuro-001",
+   "work": "W3215555963",
+   "family": "recursive_bayes_kalman",
+   "field": "neuroscience",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Kalman filters as the steady-state solution of gradient descent on variational free energy. The Kalman filter is an algorithm for the estimation of hidden variables in dynamical systems under linear Gauss-Markov assumptions with widespread applications across different fields. Recently, its Bayesian interpretation has received a growing amount of attention especially in neuroscience, robotics and machine learning. In neuroscience, in particular, models of perception and control under the banners of predictive coding, optimal feedback control, active inference and more generally the so-called Bayesian brain hypothesis, have all heavily relied on ideas behind the Kalman filter. Active inference, an algorithmic theory based on the free energy principle, specifically builds on approximate Bayesian inference methods proposing a variational account of neural computation and behaviour in terms of gradients of variational free energy. Using this ambitious framework, several works have discussed different possible relations between free energy minimisation and standard Kalman filters. With a few exceptions, however, such relations point at a mere qualitative resemblance or are built on a set of very diverse comparisons based on purported differences between free energy minimisation and Kalman filtering. In this work, we present a straightforward derivation of Kalman filters consistent with active inference via a variational treatment of free energy minimisation in terms of gradient descent. The approach considered here offers a more direct link between models of neural dynamics as gradient descent and standard accounts of perception and decision making based on probabilistic inference, further bridging the gap between hypotheses about neural implementation and computational principles in brain and behavioural sciences.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "kalman-pharma-001",
+   "work": "W2978151603",
+   "family": "recursive_bayes_kalman",
+   "field": "pharmacology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Real-Time Cubature Kalman Filter Parameter Estimation of Blood Pressure Response Characteristics Under Vasoactive Drugs Administration. Mathematical modeling and real-time dynamics identification of the mean arterial blood pressure (MAP) response of a patient to vasoactive drug infusion can provide a reliable tool for automated drug administration, and therefore, reduce the emergency costs and significantly benefit the patient's MAP regulation in an intensive care unit. To this end, a dynamic first-order linear time-varying model with adjustable varying parameters and a varying input delay is considered to capture the MAP response dynamics. Such a model effectively addresses the complexity and the intra- and inter-patient variability of the physiological response to vasoactive drugs. We discretize the model and augment the state vector with model parameters as unknown states of the system. A Bayesian-based multiple-model square root cubature Kalman filtering (MMSRCKF) approach is utilized for real-time estimation of the model's time-varying parameters. Since, unlike other model parameters, the input delay cannot be captured by a random-walk process, a multiple-model module with a posterior probability estimation is implemented to provide the delay identification. Validation results confirm the effectiveness of the proposed identification algorithm both in simulation scenarios and also using animal experiment data.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "kalman-finance-dist-001",
+   "work": "W4225926372",
+   "family": "recursive_bayes_kalman",
+   "field": "finance",
+   "role": "distractor",
+   "method_named": "",
+   "text": "Comparative Study of Machine Learning Models for Stock Price Prediction. In this work, we apply machine learning techniques to historical stock prices to forecast future prices. To achieve this, we use recursive approaches that are appropriate for handling time series data. In particular, we apply a linear Kalman filter and different varieties of long short-term memory (LSTM) architectures to historical stock prices over a 10-year range (1/1/2011 - 1/1/2021). We quantify the results of these models by computing the error of the predicted values versus the historical values of each stock. We find that of the algorithms we investigated, a simple linear Kalman filter can predict the next-day value of stocks with low-volatility (e.g., Microsoft) surprisingly well. However, in the case of high-volatility stocks (e.g., Tesla) the more complex LSTM algorithms significantly outperform the Kalman filter. Our results show that we can classify different types of stocks and then train an LSTM for each stock type. This method could be used to automate portfolio generation for a target return rate.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "eigen-web-001",
+   "work": "W2952548632",
+   "family": "eigenvector_centrality",
+   "field": "web_ir",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Personalized PageRank with Node-dependent Restart. Personalized PageRank is an algorithm to classify the improtance of web pages on a user-dependent basis. We introduce two generalizations of Personalized PageRank with node-dependent restart. The first generalization is based on the proportion of visits to nodes before the restart, whereas the second generalization is based on the probability of visited node just before the restart. In the original case of constant restart probability, the two measures coincide. We discuss interesting particular cases of restart probabilities and restart distributions. We show that the both generalizations of Personalized PageRank have an elegant expression connecting the so-called direct and reverse Personalized PageRanks that yield a symmetry property of these Personalized PageRanks.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "eigen-sciento-001",
+   "work": "W3159288442",
+   "family": "eigenvector_centrality",
+   "field": "scientometrics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "4.7 Eigenfactor. The Eigenfactor™ is aj ournal metric, which was developedb yB ergstrom and his colleagues at the Universityo fW ashington.They invented the Eigenfactor as aresponse to the criticism against the use of simple citation counts.The Eigenfactor makes use of the network structure of citations,i .e.c itations between journals, and establishes the importance, influenceo ri mpact of aj ournal based on its location in an etwork of journals.The importance is defined based on the number of citations between journals.As such, the Eigenfactoralgorithm is based on Eigenvector centrality.While journalbased metrics have been criticized, the Eigenfactor has also been suggested as an alternative in the widelyused San Francisco Declaration on Research Assessment (DORA).",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "eigen-sciento-dist-001",
+   "work": "W2086951786",
+   "family": "eigenvector_centrality",
+   "field": "scientometrics",
+   "role": "distractor",
+   "method_named": "",
+   "text": "Ranking journals: could Google Scholar Metrics be an alternative to Journal Citation Reports and Scimago Journal Rank?. ABSTRACT The launch of Google Scholar Metrics as a tool for assessing scientific journals may be serious competition for Thomson Reuters' Journal Citation Reports, and for the Scopus‐powered Scimago Journal Rank. A review of these bibliometric journal evaluation products is performed. We compare their main characteristics from different approaches: coverage, indexing policies, search and visualization, bibliometric indicators, results analysis options, economic cost, and differences in their ranking of journals. Despite its shortcomings, Google Scholar Metrics is a helpful tool for authors and editors in identifying core journals. As an increasingly useful tool for ranking scientific journals, it may also challenge established journals products.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "gp-ml-001",
+   "work": "W2154575165",
+   "family": "gaussian_process",
+   "field": "machine_learning",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Variational Gaussian Process State-Space Models. State-space models have been successfully used for more than fifty years in different areas of science and engineering. We present a procedure for efficient variational Bayesian learning of nonlinear state-space models based on sparse Gaussian processes. The result of learning is a tractable posterior over nonlinear dynamical systems. In comparison to conventional parametric models, we offer the possibility to straightforwardly trade off model capacity and computational cost whilst avoiding overfitting. Our main algorithm uses a hybrid inference approach combining variational Bayes and sequential Monte Carlo. We also present stochastic variational inference and online learning approaches for fast learning with long time series.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "gp-geo-001",
+   "work": "W6948178797",
+   "family": "gaussian_process",
+   "field": "geostatistics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Transformed Gaussian Markov Random Fields and Spatial Modeling. The Gaussian random field (GRF) and the Gaussian Markov random field (GMRF) have been widely used to accommodate spatial dependence under the generalized linear mixed model framework. These models have limitations rooted in the symmetry and thin tail of the Gaussian distribution. We introduce a new class of random fields, termed transformed GRF (TGRF), and a new class of Markov random fields, termed transformed GMRF (TGMRF). They are constructed by transforming the margins of GRFs and GMRFs, respectively, to desired marginal distributions to accommodate asymmetry and heavy tail as needed in practice. The Gaussian copula that characterizes the dependence structure facilitates inferences and applications in modeling spatial dependence. This construction leads to new models such as gamma or beta Markov fields with Gaussian copulas, which can be used to model Poisson intensity or Bernoulli rate in a spatial generalized linear mixed model. The method is naturally implemented in a Bayesian framework. We illustrate the utility of the methodology in an ecological application with spatial count data and spatial presence/absence data of some snail species, where the new models are shown to outperform the traditional spatial models. The validity of Bayesian inferences and model selection are assessed through simulation studies for both spatial Poisson regression and spatial Bernoulli regression.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "gp-power-001",
+   "work": "W2974304526",
+   "family": "gaussian_process",
+   "field": "power_systems",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Uncertainty Quantification in Stochastic Economic Dispatch using Gaussian Process Emulation. The increasing penetration of renewable energy resources in power systems, represented as random processes, converts the traditional deterministic economic dispatch problem into a stochastic one. To solve this stochastic economic dispatch, the conventional Monte Carlo method is prohibitively time consuming for medium- and large-scale power systems. To overcome this problem, we propose in this paper a novel Gaussian-process-emulator-based approach to quantify the uncertainty in the stochastic economic dispatch considering wind power penetration. Based on the dimension-reduction results obtained by the Karhunen-Loève expansion, a Gaussian-process emulator is constructed. This surrogate allows us to evaluate the economic dispatch solver at sampled values with a negligible computational cost while maintaining a desirable accuracy. Simulation results conducted on the IEEE 118-bus system reveal that the proposed method has an excellent performance as compared to the traditional Monte Carlo method.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "diff-physics-001",
+   "work": "W2010957964",
+   "family": "diffusion_heat",
+   "field": "physics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Lattice Boltzmann study of pattern formation in reaction-diffusion systems. Pattern formation in reaction-diffusion systems is of great importance in surface micropatterning [Grzybowski et al., Soft Matter 1, 114 (2005)], self-organization of cellular micro-organisms [Schulz et al., Annu. Rev. Microbiol. 55, 105 (2001)], and in developmental biology [Barkai et al., FEBS Journal 276, 1196 (2009)]. In this work, we apply the lattice Boltzmann method to study pattern formation in reaction-diffusion systems. As a first methodological step, we consider the case of a single species undergoing transformation reaction and diffusion. In this case, we perform a third-order Chapman-Enskog multiscale expansion and study the dependence of the lattice Boltzmann truncation error on the diffusion coefficient and the reaction rate. These findings are in good agreement with numerical simulations. Furthermore, taking the Gray-Scott model as a prominent example, we provide evidence for the maturity of the lattice Boltzmann method in studying pattern formation in nonlinear reaction-diffusion systems. For this purpose, we perform linear stability analysis of the Gray-Scott model and determine the relevant parameter range for pattern formation. Lattice Boltzmann simulations allow us not only to test the validity of the linear stability phase diagram including Turing and Hopf instabilities, but also permit going beyond the linear stability regime, where large perturbations give rise to interesting dynamical behavior such as the so-called self-replicating spots. We also show that the length scale of the patterns may be tuned by rescaling all relevant diffusion coefficients in the system with the same factor while leaving all the reaction constants unchanged.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "diff-finance-001",
+   "work": "W3124888246",
+   "family": "diffusion_heat",
+   "field": "finance",
+   "role": "member",
+   "method_named": "?",
+   "text": "Extending the Black-Scholes Option Pricing Theory to Account for an Option Market Maker's Funding Costs. An option market maker incurs funding costs when carrying and hedging inventory. To hedge a net long delta inventory, for example, she pays a fee to borrow stock from the securities lending market. Because of haircuts, she posts additional cash margin to the lender which needs to be financed at her unsecured debt rate. This paper incorporates funding asymmetry (borrowed cash and invested cash earning different interest rates) and realistic stock financing cost into the classic option pricing theory. It is shown that an option position can be dynamically replicated and self financed in the presence of these funding costs. Noting that the funding amounts and costs are different for long and short positions, we extend Black-Scholes partial differential equations (PDE) per position side. The PDE's nonlinear funding cost terms create a free funding boundary and would result in the bid price for a long position on an option lower than the ask price for a short position. An iterative Crank-Nicholson finite difference method is developed to compute European and American vanilla option prices. Numerical results show that reasonable funding cost parameters can easily produce same magnitude of bid/ask spread of less liquid, longer term options as observed in the market place. Portfolio level pricing examples show the netting effect of hedges, which could moderate impact of funding costs.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "diff-fluids-001",
+   "work": "W2406688680",
+   "family": "diffusion_heat",
+   "field": "fluid_dynamics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "An explicit relaxation filtering framework based upon Perona-Malik anisotropic diffusion for shock capturing and subgrid scale modeling of Burgers turbulence. In this paper, we introduce a relaxation filtering closure approach to account for subgrid scale effects in explicitly filtered large eddy simulations using the concept of anisotropic diffusion. We utilize the Perona-Malik diffusion model and demonstrate its shock capturing ability and spectral performance for solving the Burgers turbulence problem, which is a simplified prototype for more realistic turbulent flows showing the same quadratic nonlinearity. Our numerical assessments present the behavior of various diffusivity functions in conjunction with a detailed sensitivity analysis with respect to the free modeling parameters. In comparison to direct numerical simulation (DNS) and under-resolved DNS results, we find that the proposed closure model is efficient in the prevention of energy accumulation at grid cut-off and is also adept at preventing any possible spurious numerical oscillations due to shock formation under the optimal parameter choices. In contrast to other relaxation filtering approaches, it is also shown that a larger inertial range can be obtained by the proposed anisotropic diffusion model using a compact stencil scheme in an efficient way.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "hmm-speech-001",
+   "work": "W2584727833",
+   "family": "hmm",
+   "field": "speech",
+   "role": "distractor",
+   "method_named": "yes",
+   "text": "A Comprehensive Survey on Bengali Phoneme Recognition. Hidden Markov model based various phoneme recognition methods for Bengali language is reviewed. Automatic phoneme recognition for Bengali language using multilayer neural network is reviewed. Usefulness of multilayer neural network over single layer neural network is discussed. Bangla phonetic feature table construction and enhancement for Bengali speech recognition is also discussed. Comparison among these methods is discussed.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "em-ml-001",
+   "work": "W2948910962",
+   "family": "em_latent_mixture",
+   "field": "machine_learning",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Large Scale Clustering with Variational EM for Gaussian Mixture Models. This paper represents a preliminary (pre-reviewing) version of a sublinear variational algorithm for isotropic Gaussian mixture models (GMMs). Further developments of the algorithm for GMMs with diagonal covariance matrices (instead of isotropic clusters) and their corresponding benchmarking results have been published by TPAMI (doi:10.1109/TPAMI.2021.3133763) in the paper \"A Variational EM Acceleration for Efficient Clustering at Very Large Scales\". We kindly refer the reader to the TPAMI paper instead of this much earlier arXiv version (the TPAMI paper is also open access). Publicly available source code accompanies the paper (see https://github.com/variational-sublinear-clustering). Please note that the TPAMI paper does not contain the benchmark on the 80 Million Tiny Images dataset anymore because we followed the call of the dataset creators to discontinue the use of that dataset. The aim of the project (which resulted in this arXiv version and the later TPAMI paper) is the exploration of the current efficiency and large-scale limits in fitting a parametric model for clustering to data distributions. To reduce computational complexity, we used a clustering objective based on truncated variational EM (which reduces complexity for many clusters) in combination with coreset objectives (which reduce complexity for many data points). We used efficient coreset construction and efficient seeding to translate the theoretical sublinear complexity gains into an efficient algorithm. In applications to standard large-scale benchmarks for clustering, we then observed substantial wall-clock speedups compared to already highly efficient clustering approaches. To demonstrate that the observed efficiency enables applications previously considered unfeasible, we clustered the entire and unscaled 80 Million Tiny Images dataset into up to 32,000 clusters.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "em-astro-001",
+   "work": "W4403006833",
+   "family": "em_latent_mixture",
+   "field": "astronomy",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Galaxy cluster profiles: A Gaussian mixture model approach to halo miscentering. Measurements of the galaxy density and weak-lensing profiles of galaxy clusters typically rely on an assumed cluster center, which is taken to be the brightest cluster galaxy or other proxies for the true halo center. Departure of the assumed cluster center from the true halo center bias the resultant profile measurements, an effect known as miscentering bias. Currently, miscentering is typically modeled in stacked profiles of clusters with a two parameter model. We use an alternate approach in which the profiles of individual clusters are used with the corresponding likelihood computed using a Gaussian mixture model. We test the approach using halos and the corresponding subhalo profiles from the IllustrisTNG hydrodynamic simulations. We obtain significantly improved estimates of the miscentering parameters for both 3D and projected 2D profiles relevant for imaging surveys. We discuss applications to upcoming cosmological surveys.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "mcmc-statphys-001",
+   "work": "W3042222706",
+   "family": "mcmc_metropolis",
+   "field": "statistical_physics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Critical behavior of the classical spin-1 Ising model: a combined low-temperature series expansion and Metropolis Monte Carlo analysis. In this paper, we theoretically study the critical properties of the classical spin-1 Ising model using two approaches: 1) the analytical low-temperature series expansion and 2) the numerical Metropolis Monte Carlo technique. Within this analysis, we discuss the critical behavior of one-, two- and three-dimensional systems modeled by the first-neighbor spin-1 Ising model for different types of exchange interactions. The comparison of the results obtained according the Metropolis Monte Carlo simulations allows us to highlight the limits of the widely used mean-field theory approach. We also show, via a simple transformation, that for the special case where the bilinear and bicubic terms are set equal to zero in the Hamiltonian the partition function of the spin-1 Ising model can be reduced to that of the spin-1/2 Ising model with temperature dependent external field and temperature independent exchange interaction times an exponential factor depending on the other terms of the Hamiltonian and confirm this result numerically by using the Metropolis Monte Carlo simulation. Finally, we investigate the dependence of the critical temperature on the strength of long-range interactions included in the Ising Hamiltonian comparing it with that of the first-neighbor spin-1/2 Ising model.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "mcmc-phylo-001",
+   "work": "W4297630097",
+   "family": "mcmc_metropolis",
+   "field": "phylogenetics",
+   "role": "distractor",
+   "method_named": "yes",
+   "text": "How trustworthy is your tree? Bayesian phylogenetic effective sample size through the lens of Monte Carlo error. Bayesian inference is a popular and widely-used approach to infer phylogenies (evolutionary trees). However, despite decades of widespread application, it remains difficult to judge how well a given Bayesian Markov chain Monte Carlo (MCMC) run explores the space of phylogenetic trees. In this paper, we investigate the Monte Carlo error of phylogenies, focusing on high-dimensional summaries of the posterior distribution, including variability in estimated edge/branch (known in phylogenetics as \"split\") probabilities and tree probabilities, and variability in the estimated summary tree. Specifically, we ask if there is any measure of effective sample size (ESS) applicable to phylogenetic trees which is capable of capturing the Monte Carlo error of these three summary measures. We find that there are some ESS measures capable of capturing the error inherent in using MCMC samples to approximate the posterior distributions on phylogenies. We term these tree ESS measures, and identify a set of three which are useful in practice for assessing the Monte Carlo error. Lastly, we present visualization tools that can improve comparisons between multiple independent MCMC runs by accounting for the Monte Carlo error present in each chain. Our results indicate that common post-MCMC workflows are insufficient to capture the inherent Monte Carlo error of the tree, and highlight the need for both within-chain mixing and between-chain convergence assessments.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "mcmc-cosmo-001",
+   "work": "W2090689284",
+   "family": "mcmc_metropolis",
+   "field": "cosmology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "CIGALEMC: GALAXY PARAMETER ESTIMATION USING A MARKOV CHAIN MONTE CARLO APPROACH WITH CIGALE. We introduce a fast Markov Chain Monte Carlo (MCMC) exploration of the astrophysical parameter space using a modified version of the publicly available code Code Investigating GALaxy Emission ( CIGALE ). The original CIGALE builds a grid of theoretical spectral energy distribution (SED) models and fits to photometric fluxes from ultraviolet to infrared to put constraints on parameters related to both formation and evolution of galaxies. Such a grid-based method can lead to a long and challenging parameter extraction since the computation time increases exponentially with the number of parameters considered and results can be dependent on the density of sampling points, which must be chosen in advance for each parameter. MCMC methods, on the other hand, scale approximately linearly with the number of parameters, allowing a faster and more accurate exploration of the parameter space by using a smaller number of efficiently chosen samples. We test our MCMC version of the code CIGALE (called CIGALEMC ) with simulated data. After checking the ability of the code to retrieve the input parameters used to build the mock sample, we fit theoretical SEDs to real data from the well-known and -studied Spitzer Infrared Nearby Galaxy Survey sample. We discuss constraints on the parameters and show the advantages of our MCMC sampling method in terms of accuracy of the results and optimization of CPU time.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "pa-networks-001",
+   "work": "W1945989287",
+   "family": "preferential_attachment",
+   "field": "networks",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Preferential attachment alone is not sufficient to generate scale free random networks. Many networks exhibit scale free behavior where their degree distribution obeys a power law for large vertex degrees. Models constructed to explain this phenomena have relied on preferential attachment where the networks grow by the addition of both vertices and edges, and the edges attach themselves to a vertex with a probability proportional to its degree. Simulations hint, though not conclusively, that both growth and preferential attachment are necessary for scale free behavior. We derive analytic expressions for degree distributions for networks that grow by the addition of edges to a fixed number of vertices, based on both linear and non-linear preferential attachment, and show that they fall off exponentially as would be expected for purely random networks. From this we conclude that preferential attachment alone might be necessary but is certainly not a sufficient condition for generating scale free networks.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "pa-linguistics-001",
+   "work": "W2951702157",
+   "family": "preferential_attachment",
+   "field": "linguistics",
+   "role": "member",
+   "method_named": "?",
+   "text": "Understanding Zipf's law of word frequencies through sample-space collapse in sentence formation. The formation of sentences is a highly structured and history-dependent process. The probability of using a specific word in a sentence strongly depends on the 'history' of word-usage earlier in that sentence. We study a simple history-dependent model of text generation assuming that the sample-space of word usage reduces along sentence formation, on average. We first show that the model explains the approximate Zipf law found in word frequencies as a direct consequence of sample-space reduction. We then empirically quantify the amount of sample-space reduction in the sentences of ten famous English books, by analysis of corresponding word-transition tables that capture which words can follow any given word in a text. We find a highly nested structure in these transition tables and show that this `nestedness' is tightly related to the power law exponents of the observed word frequency distributions. With the proposed model it is possible to understand that the nestedness of a text can be the origin of the actual scaling exponent, and that deviations from the exact Zipf law can be understood by variations of the degree of nestedness on a book-by-book basis. On a theoretical level we are able to show that in case of weak nesting, Zipf's law breaks down in a fast transition. Unlike previous attempts to understand Zipf's law in language the sample-space reducing model is not based on assumptions of multiplicative, preferential, or self-organised critical mechanisms behind language formation, but simply used the empirically quantifiable parameter 'nestedness' to understand the statistics of word frequencies.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "pa-economics-001",
+   "work": "W4394646133",
+   "family": "preferential_attachment",
+   "field": "economics",
+   "role": "member",
+   "method_named": "?",
+   "text": "A stochastic model of wealth distribution. We propose a stochastic model of evolution of wealth in a society of economic agents. In the model, an agent can be in two states: inactive and active. Transitions between the states occur at random time intervals. In the active state, the rate at which wealth increases is greater than that in the inactive state. In both the states, wealth diminishes at a rate proportional to the current wealth. The probability density function describing the wealth distribution in the steady state is found to have the form of a beta distribution. Wealth distributions for the poor, middle and the rich classes are obtained separately. In economic literature, beta distribution and its generalisations, namely, the generalised beta distribution functions have been proposed to describe the income distributions of different economic societies. Our stochastic model provides a simple basis for the appearance of beta-type distributions.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "replv-ecology-001",
+   "work": "W6947961747",
+   "family": "replicator_lotka_volterra",
+   "field": "ecology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Determine dynamical behaviors by the Lyapunov function in competitive Lotka-Volterra systems. Global dynamical behaviors of the competitive Lotka-Volterra system even in 3-dimension are not fully understood. The Lyapunov function can provide us such knowledge once it is constructed. In this paper, we construct explicitly the Lyapunov function in three examples of the competitive Lotka-Volterra system for the whole state space: (1) the general 2-dimensional case; (2) a 3-dimensional model; (3) the model of May-Leonard. The dynamics of these examples include bistable case and cyclical behavior. The first two examples are the generalized gradient system defined in the Appendixes, while the model of May-Leonard is not. Our method is helpful to understand the limit cycle problems in general 3-dimensional case.",
+   "domain": "Health Sciences"
+  },
+  {
+   "id": "replv-economics-001",
+   "work": "W4321392152",
+   "family": "replicator_lotka_volterra",
+   "field": "economics",
+   "role": "member",
+   "method_named": "?",
+   "text": "Dynamic Structure in a Four-strategy Game: Theory and Experiment. Game dynamics theory, as any field of science, the consistency between theory and experiment is essential. In the past 10 years, important progress has been made in the merging of the theory and experiment in this field, in which dynamics cycle is the presentation. However, the achievement failed to eliminate the constraints of the Euclidean two-dimensional cycle. This paper uses a classic four-strategy game to study the dynamic structure (non-Euclidean superplane cycle). The consistency is in significant between the three ways: (1) analytical results from evolutionary dynamics equations, (2) agent-based simulation results from learning models and (3) laboratory results from human subjects game experiments. The consistency suggests that, the game dynamic structure could be quantitatively predictable, observable, and controllable in general.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "gp-ml-dist-001",
+   "work": "W3143534302",
+   "family": "gaussian_process",
+   "field": "machine_learning",
+   "role": "distractor",
+   "method_named": "",
+   "text": "Strengthening the Training of Convolutional Neural Networks By Using Walsh Matrix. DNN structures are continuously developing and achieving high performances in classification problems. Also, it is observed that success rates obtained with DNNs are higher than those obtained with traditional neural networks. In addition, one of the advantages of DNNs is that there is no need to spend an extra effort to determine the features; the CNN automatically extracts the features from the dataset during the training. Besides their benefits, the DNNs have the following three major drawbacks among the others: (i) Researchers have struggled with over-fitting and under-fitting issues in the training of DNNs, (ii) determination of even a coarse structure for the DNN may take days, and (iii) most of the time, the proposed network structure is too large to be too bulky to be used in real time applications. We have modified the training and structure of DNN to increase the classification performance, to decrease the number of nodes in the structure, and to be used with less number of hyper parameters. A minimum distance network (MDN) following the last layer of the convolutional neural network (CNN) is used as the classifier instead of a fully connected neural network (FCNN). In order to strengthen the training of the CNN, we suggest employing Walsh function. We tested the performances of the proposed DNN (named as DivFE) on the classification of ECG, EEG, heart sound, detection pneumonia in X-ray chest images, detection of BGA solder defects, and patterns of benchmark datasets (MNIST, IRIS, CIFAR10 and CIFAR20). In different areas, it has been observed that a higher classification performance was obtained by using the DivFE with less number of nodes.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "diff-physics-dist-001",
+   "work": "W3166368384",
+   "family": "diffusion_heat",
+   "field": "physics",
+   "role": "distractor",
+   "method_named": "",
+   "text": "Electronic structure of cesium-based photocathode materials from density functional theory: performance of PBE, SCAN, and HSE06 functionals. Abstract The development of novel materials for vacuum electron sources in particle accelerators is an active field of research that can greatly benefit from the results of ab initio calculations for the characterization of the electronic structure of target systems. As state-of-the-art many-body perturbation theory calculations are too expensive for large-scale material screening, density functional theory offers the best compromise between accuracy and computational feasibility. The quality of the obtained results, however, crucially depends on the choice of the exchange–correlation potential, v xc . To address this essential point, we systematically analyze the performance of three popular approximations of v xc [PBE, strongly constrained and appropriately normed (SCAN), and HSE06] on the structural and electronic properties of bulk Cs 3 Sb and Cs 2 Te as representative materials of Cs-based semiconductors employed in photocathode applications. Among the adopted approximations, PBE shows expectedly the largest discrepancies from the target: the unit cell volume is overestimated compared to the experimental value, while the band gap is severely underestimated. On the other hand, both SCAN and HSE06 perform remarkably well in reproducing both structural and electronic properties. Spin–orbit coupling, which mainly impacts the valence region of both materials inducing a band splitting and, consequently, a band-gap reduction of the order of 0.2 eV, is equally captured by all functionals. Our results indicate SCAN as the best trade-off between accuracy and computational costs, outperforming the considerably more expensive HSE06.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "hmm-genomics-dist-001",
+   "work": "W4386942857",
+   "family": "hmm",
+   "field": "genomics",
+   "role": "distractor",
+   "method_named": "",
+   "text": "Embed-Search-Align: DNA Sequence Alignment using Transformer Models. DNA sequence alignment involves assigning short DNA reads to the most probable locations on an extensive reference genome. This process is crucial for various genomic analyses, including variant calling, transcriptomics, and epigenomics. Conventional methods, refined over decades, tackle this challenge in 2 steps: genome indexing followed by efficient search to locate likely positions for given reads. Building on the success of Large Language Models in encoding text into embeddings, where the distance metric captures semantic similarity, recent efforts have explored whether the same Transformer architecture can produce embeddings for DNA sequences. Such models have shown early promise in classifying short DNA sequences, such as detecting coding/non-coding regions, and enhancer, promoter sequences. However, performance at sequence classification tasks does not translate to sequence alignment, where it is necessary to search across the genome to align each read, a significantly longer-range task. We bridge this gap by framing the Sequence Alignment task for Transformer models as an \"Embed-Search-Align\" task. In this framework, a novel Reference-Free DNA Embedding model generates embeddings of reads and reference fragments, which are projected into a shared vector space where the read-fragment distance is used as a surrogate for alignment. Technical contributions include: (1) Contrastive loss for self-supervised training of DNA sequence representations, facilitating rich reference-free, sequence-level embeddings, and (2) a DNA vector store to enable search across fragments on a global scale. DNA-ESA is 99% accurate when aligning 250-length reads onto a human genome (3gb), rivaling conventional methods such as Bowtie and BWA-Mem. DNA-ESA exceeds the performance of 6 Transformer model baselines such as Nucleotide Transformer, Hyena-DNA, and shows task transfer across chromosomes and species.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "em-astro-dist-001",
+   "work": "W3045842115",
+   "family": "em_latent_mixture",
+   "field": "astronomy",
+   "role": "distractor",
+   "method_named": "",
+   "text": "The Uchuu simulations: Data Release 1 and dark matter halo concentrations. ABSTRACT We introduce the Uchuu suite of large high-resolution cosmological N-body simulations. The largest simulation, named Uchuu, consists of 2.1 trillion (12 8003) dark matter particles in a box of side-length 2.0 $\\, h^{-1} \\, \\rm Gpc$, with particle mass of 3.27 × 108$\\, h^{-1}\\, \\rm M_{\\odot }$. The highest resolution simulation, Shin-Uchuu, consists of 262 billion (64003) particles in a box of side-length 140 $\\, h^{-1} \\, \\rm Mpc$, with particle mass of 8.97 × 105$\\, h^{-1}\\, \\rm M_{\\odot }$. Combining these simulations, we can follow the evolution of dark matter haloes and subhaloes spanning those hosting dwarf galaxies to massive galaxy clusters across an unprecedented volume. In this first paper, we present basic statistics, dark matter power spectra, and the halo and subhalo mass functions, which demonstrate the wide dynamic range and superb statistics of the Uchuu suite. From an analysis of the evolution of the power spectra, we conclude that our simulations remain accurate from the baryon acoustic oscillation scale down to the very small. We also provide parameters of a mass–concentration model, which describes the evolution of halo concentration and reproduces our simulation data to within 5 per cent for haloes with masses spanning nearly eight orders of magnitude at redshift 0 ≤ z ≤ 14. There is an upturn in the mass–concentration relation for the population of all haloes and of relaxed haloes at z ≳ 0.5, whereas no upturn is detected at z < 0.5. We make publicly available various N-body products as part of Uchuu Data Release 1 on the Skies & Universes site.1 Future releases will include gravitational lensing maps and mock galaxy, X-ray cluster, and active galactic nucleus catalogues.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "eigen-chem-noname-001",
+   "work": "W4402955097",
+   "family": "eigenvector_centrality",
+   "field": "chemistry",
+   "role": "distractor",
+   "method_named": "partial",
+   "text": "Simple Hückel Molecular Orbital Theory for Möbius Carbon Nanobelts. The recently synthesized Möbius carbon nanobelts (CNBs) have gained attention owing to their unique $π$-conjugation topology, which results in distinctive electronic properties with both fundamental and practical implications. Although Möbius conjugation with phase inversion in atomic orbital (AO) basis is well-established for monocyclic systems, the extension of this understanding to double-stranded Möbius CNBs remains uncertain. This study thoroughly examines the simple Hückel molecular orbital (SHMO) theory for describing the $π$ electronic structures of Möbius CNBs. We demonstrate that the adjacency matrix for any Möbius CNB can preserve its eigenvalues and eigenvectors (with possibly flipped directions) under different placements of the sign inversion, ensuring identical SHMO results regardless of AO phase inversion location. Representative examples of Möbius CNBs, including the experimentally synthesized one, show that the Hückel molecular orbitals (MOs) strikingly resemble the DFT-computed $π$ MOs, which were obtained using a herein proposed technique based on the localization and re-delocalization of DFT canonical MOs. Interestingly, the lower-lying $π$ MOs exhibit an odd number of nodal planes and are doubly quasidegenerate as a consequence of the phase inversion in Möbius macrocycles, contrasting with macrocyclic Hückel systems. Coulson bond orders derived from SHMO theory correlate well with DFT-calculated Wiberg bond indices for all C-C bonds in tested Möbius CNBs. Additionally, a remarkable correlation is observed between HOMO-LUMO gaps obtained from the SHMO and GFN2-xTB calculations for a large number of topoisomers of Möbius CNBs. Thus, the SHMO model not only captures the essence of $π$ electronic structure of Möbius CNBs, but also provides reliable quantitative predictions comparable to DFT results.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "hmm-econ-noname-001",
+   "work": "W4300166754",
+   "family": "hmm",
+   "field": "econometrics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Markov Switching. Markov switching models are a popular family of models that introduces time-variation in the parameters in the form of their state- or regime-specific values. Importantly, this time-variation is governed by a discrete-valued latent stochastic process with limited memory. More specifically, the current value of the state indicator is determined only by the value of the state indicator from the previous period, thus the Markov property, and the transition matrix. The latter characterizes the properties of the Markov process by determining with what probability each of the states can be visited next period, given the state in the current period. This setup decides on the two main advantages of the Markov switching models. Namely, the estimation of the probability of state occurrences in each of the sample periods by using filtering and smoothing methods and the estimation of the state-specific parameters. These two features open the possibility for improved interpretations of the parameters associated with specific regimes combined with the corresponding regime probabilities, as well as for improved forecasting performance based on persistent regimes and parameters characterizing them.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "pa-cities-noname-001",
+   "work": "W1672290666",
+   "family": "preferential_attachment",
+   "field": "cities_economics",
+   "role": "member",
+   "method_named": "partial",
+   "text": "Theory of Zipf's Law and of General Power Law Distributions with Gibrat's law of Proportional Growth. We summarize a book under publication with his title written by the three present authors, on the theory of Zipf's law, and more generally of power laws, driven by the mechanism of proportional growth. The preprint is available upon request from the authors. For clarity, consistence of language and conciseness, we discuss the origin and conditions of the validity of Zipf's law using the terminology of firms' asset values. We use firms at the entities whose size distributions are to be explained. It should be noted, however, that most of the relations discussed in this book, especially the intimate connection between Zipf's and Gilbrat's laws, underlie Zipf's law in diverse scientific areas. The same models and variations thereof can be straightforwardly applied to any of the other domains of application.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "replv-mwu-noname-001",
+   "work": "W4221147076",
+   "family": "replicator_lotka_volterra",
+   "field": "online_learning",
+   "role": "member",
+   "method_named": "partial",
+   "text": "Efficient and Optimal Fixed-Time Regret with Two Experts. Prediction with expert advice is a foundational problem in online learning. In instances with $T$ rounds and $n$ experts, the classical Multiplicative Weights Update method suffers at most $\\sqrt{(T/2)\\ln n}$ regret when $T$ is known beforehand. Moreover, this is asymptotically optimal when both $T$ and $n$ grow to infinity. However, when the number of experts $n$ is small/fixed, algorithms with better regret guarantees exist. Cover showed in 1967 a dynamic programming algorithm for the two-experts problem restricted to $\\{0,1\\}$ costs that suffers at most $\\sqrt{T/2π} + O(1)$ regret with $O(T^2)$ pre-processing time. In this work, we propose an optimal algorithm for prediction with two experts' advice that works even for costs in $[0,1]$ and with $O(1)$ processing time per turn. Our algorithm builds up on recent work on the experts problem based on techniques and tools from stochastic calculus.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "pca-genetics-001",
+   "work": "W4320342752",
+   "family": "pca_svd_lowrank",
+   "field": "genetics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Evaluation of population structure inferred by principal component analysis or the admixture model. Principal component analysis (PCA) is commonly used in genetics to infer and visualize population structure and admixture between populations. PCA is often interpreted in a way similar to inferred admixture proportions, where it is assumed that individuals belong to one of several possible populations or are admixed between these populations. We propose a new method to assess the statistical fit of PCA (interpreted as a model spanned by the top principal components) and to show that violations of the PCA assumptions affect the fit. Our method uses the chosen top principal components to predict the genotypes. By assessing the covariance (and the correlation) of the residuals (the differences between observed and predicted genotypes), we are able to detect violation of the model assumptions. Based on simulations and genome wide human data we show that our assessment of fit can be used to guide the interpretation of the data and to pinpoint individuals that are not well represented by the chosen principal components. Our method works equally on other similar models, such as the admixture model, where the mean of the data is represented by linear matrix decomposition.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "pca-recsys-001",
+   "work": "W3111059718",
+   "family": "pca_svd_lowrank",
+   "field": "recommender_systems",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Probabilistic Latent Factor Model for Collaborative Filtering with Bayesian Inference. Latent Factor Model (LFM) is one of the most successful methods for Collaborative filtering (CF) in the recommendation system, in which both users and items are projected into a joint latent factor space. Base on matrix factorization applied usually in pattern recognition, LFM models user-item interactions as inner products of factor vectors of user and item in that space and can be efficiently solved by least square methods with optimal estimation. However, such optimal estimation methods are prone to overfitting due to the extreme sparsity of user-item interactions. In this paper, we propose a Bayesian treatment for LFM, named Bayesian Latent Factor Model (BLFM). Based on observed user-item interactions, we build a probabilistic factor model in which the regularization is introduced via placing prior constraint on latent factors, and the likelihood function is established over observations and parameters. Then we draw samples of latent factors from the posterior distribution with Variational Inference (VI) to predict expected value. We further make an extension to BLFM, called BLFMBias, incorporating user-dependent and item-dependent biases into the model for enhancing performance. Extensive experiments on the movie rating dataset show the effectiveness of our proposed models by compared with several strong baselines.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "pca-polmeth-001",
+   "work": "W7115564560",
+   "family": "pca_svd_lowrank",
+   "field": "political_methodology",
+   "role": "member",
+   "method_named": "partial",
+   "text": "Euclidean Ideal Point Estimation From Roll-Call Data via Distance-Based Bipartite Network Models. Conventional ideal point models rely on Gaussian or quadratic utility functions that violate the triangle inequality, producing non-metric distances that complicate geometric interpretation and undermine clustering and dispersion-based analyses. We introduce a distance-based alternative that adapts the Latent Space Item Response Model (LSIRM) to roll-call data, treating legislators and bills as nodes in a bipartite network jointly embedded in a Euclidean metric space. Through controlled simulations, Euclidean LSIRM consistently recovers latent coalition structure with superior cluster separation relative to existing methods. Applied to the 118th U.S. House, the model provides competitive predictive performance while yielding bill embeddings that clarify cross-cutting issue alignments. The results show that restoring metric structure to ideal point estimation provides a clearer and more coherent inference about party cohesion, factional divisions, and multidimensional legislative behavior.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "pca-recsys-distractor-001",
+   "work": "W3198221967",
+   "family": "pca_svd_lowrank",
+   "field": "recommender_systems",
+   "role": "distractor",
+   "method_named": "no",
+   "text": "Neural Collaborative Filtering Classification Model to Obtain Prediction Reliabilities.. Neural collaborative filtering is the state of art field in the recommender systems area; it provides some models that obtain accurate predictions and recommendations. These models are regression-based, and they justreturn rating predictions. This paper proposes the use of a classification-based approach, returning both rating predictions and their reliabilities. The extra information (prediction reliabilities) can be used in a variety ofrelevant collaborative filtering areas such as detection of shilling attacks, recommendations explanation or navigational tools to show users and items dependences. Additionally, recommendation reliabilities can begracefully provided to users: “probably you will like this film”, “almost certainly you will like this song”, etc. This paper provides the proposed neural architecture; it also tests that the quality of its recommendation results is as good as the state of art baselines. Remarkably, individual rating predictions are improved by using the proposed architecture compared to baselines. Experiments have been performed making use of four popular public datasets, showing generalizable quality results. Overall, the proposed architecture improves individual rating predictions quality, maintains recommendation results and opens the doors to a set of relevant collaborative filtering fields.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "clf-dh-001",
+   "work": "W1538492647",
+   "family": "linear_text_classifier",
+   "field": "digital_humanities",
+   "role": "member",
+   "method_named": "partial",
+   "text": "More than Word Frequencies: Authorship Attribution via Natural Frequency Zoned Word Distribution Analysis. With such increasing popularity and availability of digital text data, authorships of digital texts can not be taken for granted due to the ease of copying and parsing. This paper presents a new text style analysis called natural frequency zoned word distribution analysis (NFZ-WDA), and then a basic authorship attribution scheme and an open authorship attribution scheme for digital texts based on the analysis. NFZ-WDA is based on the observation that all authors leave distinct intrinsic word usage traces on texts written by them and these intrinsic styles can be identified and employed to analyze the authorship. The intrinsic word usage styles can be estimated through the analysis of word distribution within a text, which is more than normal word frequency analysis and can be expressed as: which groups of words are used in the text; how frequently does each group of words occur; how are the occurrences of each group of words distributed in the text. Next, the basic authorship attribution scheme and the open authorship attribution scheme provide solutions for both closed and open authorship attribution problems. Through analysis and extensive experimental studies, this paper demonstrates the efficiency of the proposed method for authorship attribution.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "clf-nlp-001",
+   "work": "W2951278869",
+   "family": "linear_text_classifier",
+   "field": "nlp",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Thumbs up? Sentiment Classification using Machine Learning Techniques. We consider the problem of classifying documents not by topic, but by overall sentiment, e.g., determining whether a review is positive or negative. Using movie reviews as data, we find that standard machine learning techniques definitively outperform human-produced baselines. However, the three machine learning methods we employed (Naive Bayes, maximum entropy classification, and support vector machines) do not perform as well on sentiment classification as on traditional topic-based categorization. We conclude by examining factors that make the sentiment classification problem more challenging.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "clf-gen-001",
+   "work": "W2979917802",
+   "family": "linear_text_classifier",
+   "field": "genomics",
+   "role": "member",
+   "method_named": "partial",
+   "text": "Statistical Linear Models in Virus Genomic Alignment-free Classification: Application to Hepatitis C Viruses. Viral sequence classification is an important task in pathogen detection, epidemiological surveys and evolutionary studies. Statistical learning methods are widely used to classify and identify viral sequences in samples from environments. These methods face several challenges associated with the nature and properties of viral genomes such as recombination, mutation rate and diversity. Also, new generations of sequencing technologies rise other difficulties by generating massive amounts of fragmented sequences. While linear classifiers are often used to classify viruses, there is a lack of exploration of the accuracy space of existing models in the context of alignment free approaches. In this study, we present an exhaustive assessment procedure exploring the power of linear classifiers in genotyping and subtyping partial and complete genomes. It is applied to the Hepatitis C viruses (HCV). Several variables are considered in this investigation such as classifier types (generative and discriminative) and their hyper-parameters (smoothing value and regularization penalty function), the classification task (genotyping and subtyping), the length of the tested sequences (partial and complete) and the length of k-mer words. Overall, several classifiers perform well given a set of precise combination of the experimental variables mentioned above. Finally, we provide the procedure and benchmark data to allow for more robust assessment of classification from virus genomes.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "clf-nlp-distractor-001",
+   "work": "W4388043193",
+   "family": "linear_text_classifier",
+   "field": "nlp",
+   "role": "distractor",
+   "method_named": "yes",
+   "text": "SMS Spam Detection and Classification to Combat Abuse in Telephone Networks Using Natural Language Processing. In the modern era, mobile phones have become ubiquitous, and Short Message Service (SMS) has grown to become a multi-million-dollar service due to the widespread adoption of mobile devices and the millions of people who use SMS daily. However, SMS spam has also become a pervasive problem that endangers users' privacy and security through phishing and fraud. Despite numerous spam filtering techniques, there is still a need for a more effective solution to address this problem [1]. This research addresses the pervasive issue of SMS spam, which poses threats to users' privacy and security. Despite existing spam filtering techniques, the high false-positive rate persists as a challenge. The study introduces a novel approach utilizing Natural Language Processing (NLP) and machine learning models, particularly BERT (Bidirectional Encoder Representations from Transformers), for SMS spam detection and classification. Data preprocessing techniques, such as stop word removal and tokenization, are applied, along with feature extraction using BERT. Machine learning models, including SVM, Logistic Regression, Naive Bayes, Gradient Boosting, and Random Forest, are integrated with BERT for differentiating spam from ham messages. Evaluation results revealed that the Naïve Bayes classifier + BERT model achieves the highest accuracy at 97.31% with the fastest execution time of 0.3 seconds on the test dataset. This approach demonstrates a notable enhancement in spam detection efficiency and a low false-positive rate. The developed model presents a valuable solution to combat SMS spam, ensuring faster and more accurate detection. This model not only safeguards users' privacy but also assists network providers in effectively identifying and blocking SMS spam messages.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "irt-psych-001",
+   "work": "W4399911415",
+   "family": "irt_logistic_bradleyterry",
+   "field": "psychometrics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Random pairing MLE for estimation of item parameters in Rasch model. The Rasch model, a classical model in the item response theory, is widely used in psychometrics to model the relationship between individuals' latent traits and their binary responses to assessments or questionnaires. In this paper, we introduce a new likelihood-based estimator -- random pairing maximum likelihood estimator ($\\mathrm{RP\\text{-}MLE}$) and its bootstrapped variant multiple random pairing MLE ($\\mathrm{MRP\\text{-}MLE}$) which faithfully estimate the item parameters in the Rasch model. The new estimators have several appealing features compared to existing ones. First, both work for sparse observations, an increasingly important scenario in the big data era. Second, both estimators are provably minimax optimal in terms of finite sample $\\ell_{\\infty}$ estimation error. Lastly, both admit precise distributional characterization that allows uncertainty quantification on the item parameters, e.g., construction of confidence intervals for the item parameters. The main idea underlying $\\mathrm{RP\\text{-}MLE}$ and $\\mathrm{MRP\\text{-}MLE}$ is to randomly pair user-item responses to form item-item comparisons. This is carefully designed to reduce the problem size while retaining statistical independence. We also provide empirical evidence of the efficacy of the two new estimators using both simulated and real data.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "irt-sports-001",
+   "work": "W2999585756",
+   "family": "irt_logistic_bradleyterry",
+   "field": "sports_analytics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Prediction and evaluation in College Hockey using the Bradley–Terry–Zermelo model. We describe the application of the Bradley-Terry model to NCAA Division I Men's Ice Hockey.A Bayesian construction gives a joint posterior probability distribution for the log-strength parameters, given a set of game results and a choice of prior distribution.For several suitable choices of prior, it is straightforward to find the maximum a posteriori point (MAP) and a Hessian matrix, allowing a Gaussian approximation to be constructed.Posterior predictive probabilities can be estimated by 1) setting the log-strengths to their MAP values, 2) using the Gaussian approximation for analytical or Monte Carlo integration, or 3) applying importance sampling to re-weight the results of a Monte Carlo simulation.We define a method to evaluate any models which generate predicted probabilities for future outcomes, using the Bayes factor given the actual outcomes, and apply it to NCAA tournament results.Finally, we describe an on-line tool which currently estimates probabilities of future results using MAP evaluation and describe how it can be refined using the Gaussian approximation or importance sampling.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "irt-edu-001",
+   "work": "W4414988521",
+   "family": "irt_logistic_bradleyterry",
+   "field": "education",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Leveraging AI Graders for Missing Score Imputation to Achieve Accurate Ability Estimation in Constructed-Response Tests. Evaluating the abilities of learners is a fundamental objective in the field of education. In particular, there is an increasing need to assess higher-order abilities such as expressive skills and logical thinking. Constructed-response tests such as short-answer and essay-based questions have become widely used as a method to meet this demand. Although these tests are effective, they require substantial manual grading, making them both labor-intensive and costly. Item response theory (IRT) provides a promising solution by enabling the estimation of ability from incomplete score data, where human raters grade only a subset of answers provided by learners across multiple test items. However, the accuracy of ability estimation declines as the proportion of missing scores increases. Although data augmentation techniques for imputing missing scores have been explored in order to address this limitation, they often struggle with inaccuracy for sparse or heterogeneous data. To overcome these challenges, this study proposes a novel method for imputing missing scores by leveraging automated scoring technologies for accurate IRT-based ability estimation. The proposed method achieves high accuracy in ability estimation while markedly reducing manual grading workload.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "irt-sports-distractor-001",
+   "work": "W1522660207",
+   "family": "eigenvector_centrality",
+   "field": "sports_analytics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "PageRank Approach to Ranking National Football Teams. The Football World Cup as world's favorite sporting event is a source of both entertainment and overwhelming amount of data about the games played. In this paper we analyse the available data on football world championships since 1930 until today. Our goal is to rank the national teams based on all matches during the championships. For this purpose, we apply the PageRank with restarts algorithm to a graph built from the games played during the tournaments. Several statistics such as matches won and goals scored are combined in different metrics that assign weights to the links in the graph. Finally, our results indicate that the Random walk approach with the use of right metrics can indeed produce relevant rankings comparable to the FIFA official all-time ranking board.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "fft-astro-001",
+   "work": "W2950866745",
+   "family": "fourier_spectral",
+   "field": "astronomy",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Irregular time series in astronomy and the use of the Lomb-Scargle periodogram. Detection of a signal hidden by noise within a time series is an important problem in many astronomical searches, i.e. for light curves containing the contributions of periodic/semi-periodic components due to rotating objects and all other astrophysical time-dependent phenomena. One of the most popular tools for use in such studies is the \"periodogram\", whose use in an astronomical context is often not trivial. The \"optimal\" statistical properties of the periodogram are lost in the case of irregular sampling of signals, which is a common situation in astronomical experiments. Parts of these properties are recovered by the \"Lomb-Scargle\" (LS) technique, but at the price of theoretical difficulties, that can make its use unclear, and of algorithms that require the development of dedicated software if a fast implementation is necessary. Such problems would be irrelevant if the LS periodogram could be used to significantly improve the results obtained by approximated but simpler techniques. In this work we show that in many astronomical applications simpler techniques provide results similar to those obtainable with the LS periodogram. The meaning of the \"Nyquist frequency\" is also discussed in the case of irregular sampling.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "fft-econ-001",
+   "work": "W1585961208",
+   "family": "fourier_spectral",
+   "field": "economics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "A Spectral Analysis of Business Cycle Patterns in UK Sectoral Output. This paper studies business cycle patterns in UK sectoral output. It analyzes the distinction between white noise processes and their non-white noise counterparts in the frequency domain and further examines the associated features and patterns for the process where white noise conditions are violated. The characteristics of these sectors, arising from their institutional features that may influence business cycles behavior and patterns, are discussed. The study then investigates the output of UK GDP sectors empirically, revealing their similarities and differences in their business cycle patterns.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "fft-astro-distractor-001",
+   "work": "W3002645694",
+   "family": "gaussian_process",
+   "field": "astronomy",
+   "role": "member",
+   "method_named": "no",
+   "text": "Improving transit characterisation with Gaussian process modelling of stellar variability. Context.New photometric space missions to detect and characterise transiting exoplanets are focusing on bright stars to obtain high cadence, high signal-to-noise light curves. Since these missions will be sensitive to stellar oscillations and granulation even for dwarf stars, they will be limited by stellar variability. Therefore, it is crucial and timely to develop robust methods to account for and correct for stellar variability. Aims.We tested the performance of Gaussian process (GP) regression on the characterisation of transiting planets, and in particular to determine how many components of variability are necessary to describe high cadence, high signal-to-noise light curves expected from CHEOPS and PLATO. To achieve this, we selected a sample of bright stars observed in the asteroseismology field of CoRoT at high cadence (32 s) and high signal-to-noise ratio (S/N). Methods.We used GPs to model stellar variability including different combinations of stellar oscillations, granulation, and rotational modulation models. We preformed model comparison to find the best activity model fit to our data. We compared the best multi-component model with the usual one-component model used for transit retrieval and with a non-GP model. Results.We found that the best GP stellar variability model contains four to five variability components: one stellar oscillation component, two to four granulation components, and/or one rotational modulation component, which is consistent with results from asteroseismology. However, this high number of components is in contrast with the one-component GP model (1GP) commonly used in the literature for transit characterisation. Therefore, we compared the performance of the best multi-component GP model with the 1GP model in the derivation of transit parameters of simulated transits. We found that for Jupiter- and Neptune-size planets the best multi-component GP model is slightly better than the 1GP model, and much better than the non-GP model that gives biased results. For Earth-size planets, the 1GP model fails to retrieve the transit because it is a poor description of stellar activity. The non-GP model gives some biased results and the best multi-component GP is capable of retrieving the correct transit model parameters. Conclusions.We conclude that when characterising transiting exoplanets with high S/Ns and high cadence light curves, we need models that couple the description of stellar variability with the transits analysis, like GPs. Moreover, for Earth-like exoplanets a better description of stellar variability (achieved using multi-component models) improves the planetary characterisation. Our results are particularly important for the analysis of TESS, CHEOPS, and PLATO light curves.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "sparse-mri-001",
+   "work": "W3038487029",
+   "family": "sparse_l1_lasso",
+   "field": "imaging_mri",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Spatiotemporal Flexible Sparse Reconstruction for Rapid Dynamic Contrast-enhanced MRI. Dynamic Contrast-enhanced magnetic resonance imaging (DCE-MRI) is a tissue perfusion imaging technique. Some versatile free-breathing DCE-MRI techniques combining compressed sensing (CS) and parallel imaging with golden-angle radial sampling have been developed to improve motion robustness with high spatial and temporal resolution. These methods have demonstrated good diagnostic performance in clinical setting, but the reconstruction quality will degrade at high acceleration rates and overall reconstruction time remains long. In this paper, we proposed a new parallel CS reconstruction model for DCE-MRI that enforces flexible weighted sparse constraint along both spatial and temporal dimensions. Weights were introduced to flexibly adjust the importance of time and space sparsity, and we derived a fast thresholding algorithm which was proven to be simple and efficient for solving the proposed reconstruction model. Results on in vivo liver DCE datasets show that the proposed method outperforms the state-of-the-art methods in terms of visual image quality assessment and reconstruction speed without introducing significant temporal blurring.",
+   "domain": "Health Sciences"
+  },
+  {
+   "id": "sparse-signal-001",
+   "work": "W2949943092",
+   "family": "sparse_l1_lasso",
+   "field": "signal_processing",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Dictionary Identification - Sparse Matrix-Factorisation via $\\ell_1$-Minimisation. This article treats the problem of learning a dictionary providing sparse representations for a given signal class, via $\\ell_1$-minimisation. The problem can also be seen as factorising a $\\ddim \\times \\nsig$ matrix $Y=(y_1 >... y_\\nsig), y_n\\in \\R^\\ddim$ of training signals into a $\\ddim \\times \\natoms$ dictionary matrix $\\dico$ and a $\\natoms \\times \\nsig$ coefficient matrix $\\X=(x_1... x_\\nsig), x_n \\in \\R^\\natoms$, which is sparse. The exact question studied here is when a dictionary coefficient pair $(\\dico,\\X)$ can be recovered as local minimum of a (nonconvex) $\\ell_1$-criterion with input $Y=\\dico \\X$. First, for general dictionaries and coefficient matrices, algebraic conditions ensuring local identifiability are derived, which are then specialised to the case when the dictionary is a basis. Finally, assuming a random Bernoulli-Gaussian sparse model on the coefficient matrix, it is shown that sufficiently incoherent bases are locally identifiable with high probability. The perhaps surprising result is that the typically sufficient number of training samples $\\nsig$ grows up to a logarithmic factor only linearly with the signal dimension, i.e. $\\nsig \\approx C \\natoms \\log \\natoms$, in contrast to previous approaches requiring combinatorially many samples.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "sparse-finance-001",
+   "work": "W4405903218",
+   "family": "sparse_l1_lasso",
+   "field": "finance",
+   "role": "member",
+   "method_named": "partial",
+   "text": "Robust and Sparse Portfolio Selection: Quantitative Insights and Efficient Algorithms. We extend the classical mean-variance (MV) framework and propose a robust and sparse portfolio selection model incorporating an ellipsoidal uncertainty set to reduce the impact of estimation errors and fixed transaction costs to penalize over-diversification. In the literature, the MV model under fixed transaction costs is referred to as the sparse or cardinality-constrained MV optimization, which is a mixed integer problem and is challenging to solve when the number of assets is large. We develop an efficient semismooth Newton-based proximal difference-of-convex algorithm to solve the proposed model and prove its convergence to at least a local minimizer with a locally linear convergence rate. We explore properties of the robust and sparse portfolio both analytically and numerically. In particular, we show that the MV optimization is indeed a robust procedure as long as an investor makes the proper choice on the risk-aversion coefficient. We contribute to the literature by proving that there is a one-to-one correspondence between the risk-aversion coefficient and the level of robustness. Moreover, we characterize how the number of traded assets changes with respect to the interaction between the level of uncertainty on model parameters and the magnitude of transaction cost.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "dp-bio-001",
+   "work": "W6966907018",
+   "family": "dynamic_programming_viterbi",
+   "field": "bioinformatics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "AnySeq/GPU: A Novel Approach for Faster Sequence Alignment on GPUs. In recent years, the rapidly increasing number of reads produced by next-generation sequencing (NGS) technologies has driven the demand for efficient implementations of sequence alignments in bioinformatics. However, current state-of-the-art approaches are not able to leverage the massively parallel processing capabilities of modern GPUs with close-to-peak performance. We present AnySeq/GPU-a sequence alignment library that augments the AnySeq1 library with a novel approach for accelerating dynamic programming (DP) alignment on GPUs by minimizing memory accesses using warp shuffles and half-precision arithmetic. Our implementation is based on the AnyDSL compiler framework which allows for convenient zero-cost abstractions through guaranteed partial evaluation. We show that our approach achieves over 80% of the peak performance on both NVIDIA and AMD GPUs thereby outperforming the GPU-based alignment libraries AnySeq1, GASAL2, ADEPT, and NVBIO by a factor of at least 3.6 while achieving a median speedup of 19.2x over these tools across different alignment scenarios and sequence lengths when running on the same hardware. This leads to throughputs of up to 1.7 TCUPS (tera cell updates per second) on an NVIDIA GV100, up to 3.3 TCUPS with half-precision arithmetic on a single NVIDIA A100, and up to 3.8 TCUPS on an AMD MI100.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "dp-speech-001",
+   "work": "W1480844056",
+   "family": "dynamic_programming_viterbi",
+   "field": "speech_nlp",
+   "role": "member",
+   "method_named": "yes",
+   "text": "The posterior-Viterbi: a new decoding algorithm for hidden Markov models. Background: Hidden Markov models (HMM) are powerful machine learning tools successfully applied to problems of computational Molecular Biology. In a predictive task, the HMM is endowed with a decoding algorithm in order to assign the most probable state path, and in turn the class labeling, to an unknown sequence. The Viterbi and the posterior decoding algorithms are the most common. The former is very efficient when one path dominates, while the latter, even though does not guarantee to preserve the automaton grammar, is more effective when several concurring paths have similar probabilities. A third good alternative is 1-best, which was shown to perform equal or better than Viterbi. Results: In this paper we introduce the posterior-Viterbi (PV) a new decoding which combines the posterior and Viterbi algorithms. PV is a two step process: first the posterior probability of each state is computed and then the best posterior allowed path through the model is evaluated by a Viterbi algorithm. Conclusions: We show that PV decoding performs better than other algorithms first on toy models and then on the computational biological problem of the prediction of the topology of beta-barrel membrane proteins.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "dp-or-001",
+   "work": "W4410034631",
+   "family": "dynamic_programming_viterbi",
+   "field": "operations_research",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Value Iteration with Guessing for Markov Chains and Markov Decision Processes. Abstract Two standard models for probabilistic systems are Markov chains (MCs) and Markov decision processes (MDPs). Classic objectives for such probabilistic models for control and planning problems are reachability and stochastic shortest path. The widely studied algorithmic approach for these problems is the Value Iteration (VI) algorithm which iteratively applies local updates called Bellman updates. There are many practical approaches for VI in the literature but they all require exponentially many Bellman updates for MCs in the worst case. A preprocessing step is an algorithm that is discrete, graph-theoretical, and requires linear space. An important open question is whether, after a polynomial-time preprocessing, VI can be achieved with sub-exponentially many Bellman updates. In this work, we present a new approach for VI based on guessing values. Our theoretical contributions are twofold. First, for MCs, we present an almost-linear-time preprocessing algorithm after which, along with guessing values, VI requires only subexponentially many Bellman updates. Second, we present an improved analysis of the speed of convergence of VI for MDPs. Finally, we present a practical algorithm for MDPs based on our new approach. Experimental results show that our approach provides a considerable improvement over existing VI-based approaches on several benchmark examples from the literature.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "dp-fin-001",
+   "work": "W2807732651",
+   "family": "dynamic_programming_viterbi",
+   "field": "finance",
+   "role": "member",
+   "method_named": "yes",
+   "text": "A New Approach for American Option Pricing: The Dynamic Chebyshev Method. We introduce a new method to price American options based on Chebyshev interpolation. In each step of a dynamic programming time-stepping we approximate the value function with Chebyshev polynomials. The key advantage of this approach is that it allows us to shift the model-dependent computations into an offline phase prior to the time-stepping. In the offline part a family of generalized (conditional) moments is computed by an appropriate numerical technique such as a Monte Carlo, PDE, or Fourier transform based method. Thanks to this methodological flexibility the approach applies to a large variety of models. Online, the backward induction is solved on a discrete Chebyshev grid, and no (conditional) expectations need to be computed. For each time step the method delivers a closed form approximation of the price function along with the options' delta and gamma. Moreover, the same family of (conditional) moments yield multiple outputs including the option prices for different strikes, maturities, and different payoff profiles. We provide a theoretical error analysis and find conditions that imply explicit error bounds for a variety of stock price models. Numerical experiments confirm the fast convergence of prices and sensitivities. An empirical investigation of accuracy and runtime also shows an efficiency gain compared with the least-squares Monte Carlo method introduced by Longstaff and Schwartz [ Rev. Financ. Stud., 14 (2001), pp. 113--147]. Moreover, we show that the proposed algorithm is flexible enough to price barrier and multivariate barrier options.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "kalman-glaciology-002",
+   "work": "W7147738061",
+   "family": "recursive_bayes_kalman",
+   "field": "glaciology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "The Ice Sheet State and Parameter Estimator (ICESEE) Library (v1.0.0): Ensemble Kalman Filtering for Ice Sheet Models. ICESEE (ICE Sheet statE and parameter Estimator) is a Python-based, open-source data assimilation framework designed for seamless integration with ice sheet and Earth system models. It implements a parallel Ensemble Kalman Filter (EnKF) with full MPI support for scalable assimilation in state and parameter spaces. ICESEE uses a matrix-free update scheme from Evensen (2003), which avoids explicit forecast error covariance construction and eliminates the need for localization in high-dimensional, nonlinear systems. ICESEE also supports four EnKF variants, including a localized version for methodological testing. It enables indirect inference of unobserved model parameters through a hybrid assimilation-inversion strategy. The framework features modular coupling interfaces, adaptive state indexing, and efficient parallel I/O, making it extensible to a variety of modeling environments. ICESEE has been successfully coupled with ISSM, Icepack, and other models. In this study, we focus on applications with ISSM and Icepack, demonstrating ICESEE's interoperability, performance, scalability, and ability to improve state estimates and infer uncertain parameters. Performance benchmarks show strong and weak scaling, highlighting ICESEE's potential for large-scale, observation-constrained ice sheet reanalyses.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "kalman-spacecraft-002",
+   "work": "W3013783567",
+   "family": "recursive_bayes_kalman",
+   "field": "aerospace_attitude",
+   "role": "member",
+   "method_named": "yes",
+   "text": "SE(3) based Extended Kalman Filter for Spacecraft Attitude Estimation. In this paper, the spacecraft attitude estimation problem has been investigated making use of the concept of matrix Lie group. Through formulation of the attitude and gyroscope bias as elements of SE(3), the corresponding extended Kalman filter, termed as SE(3)-EKF, has been derived. It is shown that the resulting SE(3)-EKF is just the newly-derived geometric extended Kalman filter (GEKF) for spacecraft attitude estimation. This provides a new perspective on the GEKF besides the common frame errors definition. Moreover, the SE(3)-EKF with reference frame attitude error is also derived and the resulting algorithm bears much resemblance to the right invariant EKF.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "eigen-protein-002",
+   "work": "W2621651488",
+   "family": "eigenvector_centrality",
+   "field": "protein_biochemistry",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Eigenvector Centrality Distribution for Characterization of Protein Allosteric Pathways. Determining the principal energy pathways for allosteric communication in biomolecules, that occur as a result of thermal motion, remains challenging due to the intrinsic complexity of the systems involved. Graph theory provides an approach for making sense of such complexity, where allosteric proteins can be represented as networks of amino acids. In this work, we establish the eigenvector centrality metric in terms of the mutual information, as a mean of elucidating the allosteric mechanism that regulates the enzymatic activity of proteins. Moreover, we propose a strategy to characterize the range of the physical interactions that underlie the allosteric process. In particular, the well known enzyme, imidazol glycerol phosphate synthase (IGPS), is utilized to test the proposed methodology. The eigenvector centrality measurement successfully describes the allosteric pathways of IGPS, and allows to pinpoint key amino acids in terms of their relevance in the momentum transfer process. The resulting insight can be utilized for refining the control of IGPS activity, widening the scope for its engineering. Furthermore, we propose a new centrality metric quantifying the relevance of the surroundings of each residue. In addition, the proposed technique is validated against experimental solution NMR measurements yielding fully consistent results. Overall, the methodologies proposed in the present work constitute a powerful and cost effective strategy to gain insight on the allosteric mechanism of proteins.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "gp-exoplanet-002",
+   "work": "W4288436195",
+   "family": "gaussian_process",
+   "field": "astronomy_rv",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Quasi-periodic Gaussian processes for stellar activity: From physical to kernel parameters. ABSTRACT In recent years, Gaussian Process (GP) regression has become widely used to analyse stellar and exoplanet time-series data sets. For spotted stars, the most popular GP covariance function is the quasi-periodic (QP) kernel, whose hyperparameters of the GP have a plausible interpretation in terms of physical properties of the star and spots. In this paper, we test the reliability of this interpretation by modelling data simulated using a spot model using a QP GP, and the recently proposed quasi-periodic plus cosine (QPC) GP, comparing the posterior distributions of the GP hyperparameters to the input parameters of the spot model. We find excellent agreement between the input stellar rotation period and the QP and QPC GP period, and very good agreement between the spot decay time-scale and the length scale of the squared exponential term. We also compare the hyperparameters derived from light and radial velocity (RV) curves for a given star, finding that the period and evolution time-scales are in good agreement. However, the harmonic complexity of the GP, while displaying no clear correlation with the spot properties in our simulations, is systematically higher for the RV than for the light-curve data. Finally, for the QP kernel, we investigate the impact of noise and time-sampling on the hyperparameters in the case of RVs. Our results indicate that good coverage of rotation period and spot evolution time-scales is more important than the total number of points, and noise characteristics govern the harmonic complexity.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "diff-oncology-002",
+   "work": "W4416271985",
+   "family": "diffusion_heat",
+   "field": "oncology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "A time-fractional Fisher-KPP equation for tumor growth: Analysis and numerical simulation. We study a time-fractional Fisher-KPP equation involving a Riemann-Liouville fractional derivative acting on the diffusion term, as derived by Angstmann and Henry (Entropy, 22:1035, 2020). The model captures memory effects in diffusive population dynamics and serves as a framework for tumor growth modeling. We first establish local well-posedness of weak solutions. The analysis combines a Galerkin approximation with a refined a priori estimate based on a Bihari-Henry-Gronwall inequality, addressing the nonlinear coupling between the fractional diffusion and the reaction term. For small initial data, we further prove global well-posedness and asymptotic stability. A numerical method based on a nonuniform convolution quadrature scheme is then proposed and validated. Simulations demonstrate distinct dynamical behaviors compared to conventional formulations, emphasizing the physical consistency of the present model in describing tumor progression.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "diff-anthropology-002",
+   "work": "W2903898314",
+   "family": "diffusion_heat",
+   "field": "anthropology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Spreading properties of a three-component reaction-diffusion model for the population of farmers and hunter-gatherers. In this paper, we investigate the spreading properties of solutions of farmer and hunter-gatherer model which is a three-component reaction-diffusion system. Ecologically, the model describes the geographical spreading of an initially localized population of farmers into a region occupied by hunter-gatherers. This model was proposed by Aoki, Shida and Shigesada in 1996, and by numerical simulations, they classified the spreading behaviors into four different types depending on the parameter values. Despite such intriguing observations, no mathematically rigorous studies have been made to justify these numerical observations. The main difficulty comes from the fact that the comparison principle does not hold for the whole system. In this paper, we give theoretical justification to all the four types of spreading behaviors. Furthermore, we show that a logarithmic phase drift occurs as in the scalar KPP equation.",
+   "domain": "Health Sciences"
+  },
+  {
+   "id": "hmm-ecology-002",
+   "work": "W2950452085",
+   "family": "hmm",
+   "field": "movement_ecology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "A Hidden Markov Movement Model for rapidly identifying behavioral states from animal tracks. 1. Electronic telemetry is frequently used to document animal movement through time. Methods that can identify underlying behaviors driving specific movement patterns can help us understand how and why animals use available space, thereby aiding conservation and management efforts. For aquatic animal tracking data with significant measurement error, a Bayesian state-space model called the first-Difference Correlated Random Walk with Switching (DCRWS) has often been used for this purpose. However, for aquatic animals, highly accurate tracking data of animal movement are now becoming more common. 2. We developed a new Hidden Markov Model (HMM) for identifying behavioral states from animal tracks with negligible error, which we called the Hidden Markov Movement Model (HMMM). We implemented as the basis for the HMMM the process equation of the DCRWS, but we used the method of maximum likelihood and the R package TMB for rapid model fitting. 3. We compared the HMMM to a modified version of the DCRWS for highly accurate tracks, the DCRWSnome, and to a common HMM for animal tracks fitted with the R package moveHMM. We show that the HMMM is both accurate and suitable for multiple species by fitting it to real tracks from a grey seal, lake trout, and blue shark, as well as to simulated data. 4. The HMMM is a fast and reliable tool for making meaningful inference from animal movement data that is ideally suited for ecologists who want to use the popular DCRWS implementation for highly accurate tracking data. It additionally provides a groundwork for development of more complex modelling of animal movement with TMB. To facilitate its uptake, we make it available through the R package swim.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "hmm-proteomics-002",
+   "work": "W2951119466",
+   "family": "hmm",
+   "field": "structural_biology",
+   "role": "member",
+   "method_named": "partial",
+   "text": "Protein secondary structure prediction by combining hidden Markov models and sliding window scores. Instead of conformation states of single residues, refined conformation states of quintuplets are proposed to reflect conformation correlation. Simple hidden Markov models combining with sliding window scores are used for predicting secondary structure of a protein from its amino acid sequence. Since the length of protein conformation segments varies in a narrow range, we ignore the duration effect of the length distribution. The window scores for residues are a window version of the Chou-Fasman propensities estimated under an approximation of conditional independency. Different window widths are examined, and the optimal width is found to be 17. A high accuracy about 70% is achieved.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "em-physics-002",
+   "work": "W3152740724",
+   "family": "em_latent_mixture",
+   "field": "nuclear_physics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "An expectation–maximization algorithm for positron emission particle tracking. We develop a new algorithm for the tracking of radioactive particles using Positron Emission Particle Tracking (PEPT). The algorithm relies on the maximization of the likelihood of a simple Gaussian mixture model of the lines of response associated with positron annihilation. The model includes a component that accounts for spurious lines caused by scattering and random coincidence, and it treats the relative activity of particles as well as their positions as parameters to be inferred. Values of these parameters that approximately maximize the likelihood are computed by the application of an expectation-maximization algorithm. A generalization of the model that includes the particle velocities and accelerations as additional parameters takes advantage of the information contained in the exact timing of positron annihilations to reconstruct pieces of trajectories rather than fixed positions, with clear benefits. We test the algorithm on both simulated and experimental data. The results show the algorithm to be highly effective for the simultaneous tracking of many particles (up to 80 in one test). It provides estimates of particle positions that are easily mapped to entire trajectories and handles a variable number of particles in the field of view. The ability to track a large number of particles robustly offers the possibility of a dramatic expansion of the scope of PEPT.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "em-astronomy-002",
+   "work": "W1869766355",
+   "family": "em_latent_mixture",
+   "field": "astronomy",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Application of the Gaussian mixture model in pulsar astronomy - pulsar classification and candidates ranking for the Fermi 2FGL catalogue. Machine learning, algorithms designed to extract empirical knowledge from data, can be used to classify data, which is one of the most common tasks in observational astronomy. In this paper, we focus on Bayesian data classification algorithms using the Gaussian mixture model and show two applications in pulsar astronomy. After reviewing the Gaussian mixture model and the related expectation–maximization algorithm, we present a data classification method using the Neyman–Pearson test. To demonstrate the method, we apply the algorithm to two classification problems. First, it is applied to the well-known period–period derivative diagram, where we find that the pulsar distribution can be modelled with six Gaussian clusters, with two clusters for millisecond pulsars (recycled pulsars) and the rest for normal pulsars. From this distribution, we derive an empirical definition for millisecond pulsars as . The two millisecond pulsar clusters may have different evolutionary origins, since the companion stars to these pulsars in the two clusters show different chemical compositions. Four clusters are found for normal pulsars. Possible implications for these clusters are also discussed. Our second example is to calculate the likelihood of unidentified Fermi point sources being pulsars and rank them accordingly. In the ranked point-source list, the top 5 per cent sources contain 50 per cent known pulsars, the top 50 per cent contain 99 per cent known pulsars and no known active galaxy (the other major population) appears in the top 6 per cent. Such a ranked list can be used to help the future follow-up observations for finding pulsars in unidentified Fermi point sources.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "mcmc-crypto-002",
+   "work": "W2281364703",
+   "family": "mcmc_metropolis",
+   "field": "cryptography",
+   "role": "member",
+   "method_named": "yes",
+   "text": "On the Geometric Ergodicity of Metropolis-Hastings Algorithms for Lattice Gaussian Sampling. Sampling from the lattice Gaussian distribution is emerging as an important problem in coding and cryptography. In this paper, the classic Metropolis-Hastings (MH) algorithm from Markov chain Monte Carlo (MCMC) methods is adapted for lattice Gaussian sampling. Two MH-based algorithms are proposed, which overcome the restriction suffered by the default Klein's algorithm. The first one, referred to as the independent Metropolis-Hastings-Klein (MHK) algorithm, tries to establish a Markov chain through an independent proposal distribution. We show that the Markov chain arising from the independent MHK algorithm is uniformly ergodic, namely, it converges to the stationary distribution exponentially fast regardless of the initial state. Moreover, the rate of convergence is explicitly calculated in terms of the theta series, leading to a predictable mixing time. In order to further exploit the convergence potential, a symmetric Metropolis-Klein (SMK) algorithm is proposed. It is proven that the Markov chain induced by the SMK algorithm is geometrically ergodic, where a reasonable selection of the initial state is capable to enhance the convergence performance.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "mcmc-nlp-002",
+   "work": "W4399354249",
+   "family": "mcmc_metropolis",
+   "field": "nlp_mt",
+   "role": "member",
+   "method_named": "yes",
+   "text": "QUEST: Quality-Aware Metropolis-Hastings Sampling for Machine Translation. An important challenge in machine translation (MT) is to generate high-quality and diverse translations. Prior work has shown that the estimated likelihood from the MT model correlates poorly with translation quality. In contrast, quality evaluation metrics (such as COMET or BLEURT) exhibit high correlations with human judgments, which has motivated their use as rerankers (such as quality-aware and minimum Bayes risk decoding). However, relying on a single translation with high estimated quality increases the chances of \"gaming the metric''. In this paper, we address the problem of sampling a set of high-quality and diverse translations. We provide a simple and effective way to avoid over-reliance on noisy quality estimates by using them as the energy function of a Gibbs distribution. Instead of looking for a mode in the distribution, we generate multiple samples from high-density areas through the Metropolis-Hastings algorithm, a simple Markov chain Monte Carlo approach. The results show that our proposed method leads to high-quality and diverse outputs across multiple language pairs (English$\\leftrightarrow${German, Russian}) with two strong decoder-only LLMs (Alma-7b, Tower-7b).",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "pa-web-002",
+   "work": "W2951110461",
+   "family": "preferential_attachment",
+   "field": "web_social",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Preferential Attachment in Online Networks: Measurement and Explanations. We perform an empirical study of the preferential attachment phenomenon in temporal networks and show that on the Web, networks follow a nonlinear preferential attachment model in which the exponent depends on the type of network considered. The classical preferential attachment model for networks by Barabási and Albert (1999) assumes a linear relationship between the number of neighbors of a node in a network and the probability of attachment. Although this assumption is widely made in Web Science and related fields, the underlying linearity is rarely measured. To fill this gap, this paper performs an empirical longitudinal (time-based) study on forty-seven diverse Web network datasets from seven network categories and including directed, undirected and bipartite networks. We show that contrary to the usual assumption, preferential attachment is nonlinear in the networks under consideration. Furthermore, we observe that the deviation from linearity is dependent on the type of network, giving sublinear attachment in certain types of networks, and superlinear attachment in others. Thus, we introduce the preferential attachment exponent $β$ as a novel numerical network measure that can be used to discriminate different types of networks. We propose explanations for the behavior of that network measure, based on the mechanisms that underly the growth of the network in question.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "replv-linguistics-002",
+   "work": "W3102913464",
+   "family": "replicator_lotka_volterra",
+   "field": "sociolinguistics",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Replicator–mutator dynamics of linguistic convergence and divergence. People tend to align their use of language to the linguistic behaviour of their own ingroup and to simultaneously diverge from the language use of outgroups. This paper proposes to model this phenomenon of sociolinguistic identity maintenance as an evolutionary game in which individuals play the field and the dynamics are supplied by a multi-population extension of the replicator-mutator equation. Using linearization, the stabilities of all dynamic equilibria of the game in its fully symmetric two-population special case are found. The model is then applied to an empirical test case from adolescent sociolinguistic behaviour. It is found that the empirically attested population state corresponds to one of a number of stable equilibria of the game under an independently plausible value of a parameter controlling the rate of linguistic mutations. An asymmetric three-population extension of the game, explored with numerical solution methods, furthermore predicts to which specific equilibrium the system converges.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "pca-spectroscopy-002",
+   "work": "W4366506563",
+   "family": "pca_svd_lowrank",
+   "field": "analytical_chemistry",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Using various machine learning algorithms for quantitative analysis in Laser induced breakdown spectroscopy. Laser induced breakdown spectroscopy technique is employed for quantitative analysis of aluminum samples by different classical machine learning approaches. A Q-switch Nd:YAG laser at fundamental harmonic of 1064 nm is utilized for creation of LIBS plasma for prediction of constituent concentrations of the aluminum standard alloys. In current research, concentration prediction is performed by linear approaches of support vector regression, multiple linear regression, principal component analysis integrated with MLR and SVR, and as well as nonlinear algorithms of artificial neural network, kernelized support vector regression , and the integration of traditional principal component analysis with KSVR, and ANN. Furthermore, dimension reduction is applied on various methodologies by PCA algorithm for improving the quantitative analysis. The results presented that the combination of PCA with KSVR algorithm model had the best efficiency in predictions of the most of elements among other classical machine learning algorithms.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "clf-cybersecurity-002",
+   "work": "W4386147977",
+   "family": "linear_text_classifier",
+   "field": "cybersecurity",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Performance Comparison and Implementation of Bayesian Variants for Network Intrusion Detection. Bayesian classifiers perform well when each of the features is completely independent of the other which is not always valid in real world application. The aim of this study is to implement and compare the performances of each variant of Bayesian classifier (Multinomial, Bernoulli, and Gaussian) on anomaly detection in network intrusion, and to investigate whether there is any association between each variant assumption and their performance. Our investigation showed that each variant of Bayesian algorithm blindly follows its assumption regardless of feature property, and that the assumption is the single most important factor that influences their accuracy. Experimental results show that Bernoulli has accuracy of 69.9% test (71% train), Multinomial has accuracy of 31.2% test (31.2% train), while Gaussian has accuracy of 81.69% test (82.84% train). Going deeper, we investigated and found that each Naive Bayes variants performances and accuracy is largely due to each classifier assumption, Gaussian classifier performed best on anomaly detection due to its assumption that features follow normal distributions which are continuous, while multinomial classifier have a dismal performance as it simply assumes discreet and multinomial distribution.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "irt-baseball-002",
+   "work": "W2776575679",
+   "family": "irt_logistic_bradleyterry",
+   "field": "baseball",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Hierarchical Bayesian Bradley–Terry for applications in Major League Baseball. A common problem faced in statistical inference is drawing conclusions from paired comparisons, in which two objects compete and one is declared the victor.A probabilistic approach to such a problem is the Bradley-Terry model [5,20], first studied by Zermelo in 1929 and rediscovered by Bradley and Terry in 1952.One obvious area of application for such a model is sporting events, and in particular Major League Baseball.With this in mind, we describe a hierarchical Bayesian version of Bradley-Terry suitable for use in ranking and prediction problems, and compare results from these application domains to standard maximum likelihood approaches.Our Bayesian methods outperform the MLE-based analogues, while being simple to construct, implement, and interpret.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "irt-education-002",
+   "work": "W4392428161",
+   "family": "irt_logistic_bradleyterry",
+   "field": "education",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Scalable Learning of Item Response Theory Models. Item Response Theory (IRT) models aim to assess latent abilities of $n$ examinees along with latent difficulty characteristics of $m$ test items from categorical data that indicates the quality of their corresponding answers. Classical psychometric assessments are based on a relatively small number of examinees and items, say a class of $200$ students solving an exam comprising $10$ problems. More recent global large scale assessments such as PISA, or internet studies, may lead to significantly increased numbers of participants. Additionally, in the context of Machine Learning where algorithms take the role of examinees and data analysis problems take the role of items, both $n$ and $m$ may become very large, challenging the efficiency and scalability of computations. To learn the latent variables in IRT models from large data, we leverage the similarity of these models to logistic regression, which can be approximated accurately using small weighted subsets called coresets. We develop coresets for their use in alternating IRT training algorithms, facilitating scalable learning from large data.",
+   "domain": "Social Sciences"
+  },
+  {
+   "id": "fft-neuro-002",
+   "work": "W2507523630",
+   "family": "fourier_spectral",
+   "field": "neuroscience",
+   "role": "member",
+   "method_named": "yes",
+   "text": "A New Statistical Model of Electroencephalogram Noise Spectra for Real-Time Brain–Computer Interfaces. Objective: A characteristic of neurological signal processing is high levels of noise from subcellular ion channels up to whole-brain processes. In this paper, we propose a new model of electroencephalogram (EEG) background periodograms, based on a family of functions which we call generalized van der Ziel-McWhorter (GVZM) power spectral densities (PSDs). To the best of our knowledge, the GVZM PSD function is the only EEG noise model that has relatively few parameters, matches recorded EEG PSD's with high accuracy from 0 to over 30 Hz, and has approximately 1/fθbehavior in the midfrequencies without infinities. Methods: We validate this model using three approaches. First, we show how GVZM PSDs can arise in a population of ion channels at maximum entropy equilibrium. Second, we present a class of mixed autoregressive models, which simulate brain background noise and whose periodograms are asymptotic to the GVZM PSD. Third, we present two real-time estimation algorithms for steady-state visual evoked potential (SSVEP) frequencies, and analyze their performance statistically. Results: In pairwise comparisons, the GVZM-based algorithms showed statistically significant accuracy improvement over two well-known and widely used SSVEP estimators. Conclusion: The GVZM noise model can be a useful and reliable technique for EEG signal processing. Significance: Understanding EEG noise is essential for EEG-based neurology and applications such as real-time brain-computer interfaces, which must make accurate control decisions from very short data epochs. The GVZM approach represents a successful new paradigm for understanding and managing this neurological noise.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "fft-gravwave-002",
+   "work": "W4414460143",
+   "family": "fourier_spectral",
+   "field": "gravitational_wave",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Wavelets for power spectral density estimation of gravitational wave data. Power spectral density (PSD) estimation is a critical step in gravitational wave (GW) detectors data analysis. The Welch method is a typical non-parametric spectral estimation approach that estimates the PSD of stationary noise by averaging periodograms of several time segments, or by taking the median of periodograms to adapt to non-stationary noise. In this work, we propose a wavelet-based approach for fast PSD estimation of both stationary and non-stationary noise. For stationary noise, we apply wavelet smoothing to the periodogram, avoiding the segmentation step in the Welch method, and enabling PSD estimates with high frequency resolution and low variance. The wavelet smoothing PSD outperforms Welch PSD in matched filtering and parameter estimation. For non-stationary noise, we estimate the PSD by taking the median of wavelet packet coefficients in each frequency bin, which offers greater robustness than the traditional median periodogram method. This work introduces a new PSD estimation approach for GW data analysis and expands the application of wavelet methods in this field.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "sparse-radioastro-002",
+   "work": "W2152927766",
+   "family": "sparse_l1_lasso",
+   "field": "radio_astronomy",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Compressed sensing imaging techniques for radio interferometry. Radio interferometry probes astrophysical signals through incomplete and noisy Fourier measurements. The theory of compressed sensing demonstrates that such measurements may actually suffice for accurate reconstruction of sparse or compressible signals. We propose new generic imaging techniques based on convex optimization for global minimization problems defined in this context. The versatility of the framework notably allows introduction of specific prior information on the signals, which offers the possibility of significant improvements of reconstruction relative to the standard local matching pursuit algorithm CLEAN used in radio astronomy. We illustrate the potential of the approach by studying reconstruction performances on simulations of two different kinds of signals observed with very generic interferometric configurations. The first kind is an intensity field of compact astrophysical objects. The second kind is the imprint of cosmic strings in the temperature field of the cosmic microwave background radiation, of particular interest for cosmology.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "dp-communications-002",
+   "work": "W3131482276",
+   "family": "dynamic_programming_viterbi",
+   "field": "communications",
+   "role": "member",
+   "method_named": "yes",
+   "text": "A Further Note on an Innovations Approach to Viterbi Decoding of Convolutional Codes. In this paper, we show that the soft-decision input to the main decoder in an SST Viterbi decoder is regarded as the innovation as well from the viewpoint of mutual information and mean-square error. It is assumed that a code sequence is transmitted symbol by symbol over an AWGN channel using BPSK modulation. Then we can consider the signal model, where the signal is composed of the signal-to-noise ratio (SNR) and the equiprobable binary input. By assuming that the soft-decision input to the main decoder is the innovation, we show that the minimum mean-square error (MMSE) in estimating the binary input is expressed in terms of the distribution of the encoded block for the main decoder. It is shown that the obtained MMSE satisfies indirectly the known relation between the mutual information and the MMSE in Gaussian channels. Thus the derived MMSE is justified, which in turn implies that the soft-decision input to the main decoder can be regarded as the innovation. Moreover, we see that the input-output mutual information is connected with the distribution of the encoded block for the main decoder.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "dp-linguistics-002",
+   "work": "W4416695361",
+   "family": "dynamic_programming_viterbi",
+   "field": "computational_linguistics",
+   "role": "member",
+   "method_named": "partial",
+   "text": "Parallel Needleman-Wunsch on CUDA to measure word similarity based on phonetic transcriptions. We present a method to calculate the similarity between words based on their phonetic transcription (their pronunciation) using the Needleman-Wunsch algorithm. We implement this algorithm in Rust and parallelize it on both CPU and GPU to handle large datasets efficiently. The GPU implementation leverages CUDA and the cudarc Rust library to achieve significant performance improvements. We validate our approach by constructing a fully-connected graph where nodes represent words and edges have weights according to the similarity between the words. This graph is then analyzed using clustering algorithms to identify groups of phonetically similar words. Our results demonstrate the feasibility and effectiveness of the proposed method in analyzing the phonetic structure of languages. It might be easily expanded to other languages.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "pca-causal-001",
+   "work": "W2766301804",
+   "family": "pca_svd_lowrank",
+   "field": "causal_inference",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Matrix Completion Methods for Causal Panel Data Models. In this article, we study methods for estimating causal effects in settings with panel data, where some units are exposed to a treatment during some periods and the goal is estimating counterfactual (untreated) outcomes for the treated unit/period combinations. We propose a class of matrix completion estimators that uses the observed elements of the matrix of control outcomes corresponding to untreated unit/periods to impute the “missing” elements of the control outcome matrix, corresponding to treated units/periods. This leads to a matrix that well-approximates the original (incomplete) matrix, but has lower complexity according to the nuclear norm for matrices. We generalize results from the matrix completion literature by allowing the patterns of missing data to have a time series dependency structure that is common in social science applications. We present novel insights concerning the connections between the matrix completion literature, the literature on interactive fixed effects models and the literatures on program evaluation under unconfoundedness and synthetic control methods. We show that all these estimators can be viewed as focusing on the same objective function. They differ solely in the way they deal with identification, in some cases solely through regularization (our proposed nuclear norm matrix completion estimator) and in other cases primarily through imposing hard restrictions (the unconfoundedness and synthetic control approaches). The proposed method outperforms unconfoundedness-based or synthetic control estimators in simulations based on real data.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "kalman-epidemic-001",
+   "work": "W2143469080",
+   "family": "recursive_bayes_kalman",
+   "field": "epidemiology",
+   "role": "member",
+   "method_named": "no",
+   "text": "Forecasting seasonal outbreaks of influenza. Influenza recurs seasonally in temperate regions of the world; however, our ability to predict the timing, duration, and magnitude of local seasonal outbreaks of influenza remains limited. Here we develop a framework for initializing real-time forecasts of seasonal influenza outbreaks, using a data assimilation technique commonly applied in numerical weather prediction. The availability of real-time, web-based estimates of local influenza infection rates makes this type of quantitative forecasting possible. Retrospective ensemble forecasts are generated on a weekly basis following assimilation of these web-based estimates for the 2003-2008 influenza seasons in New York City. The findings indicate that real-time skillful predictions of peak timing can be made more than 7 wk in advance of the actual peak. In addition, confidence in those predictions can be inferred from the spread of the forecast ensemble. This work represents an initial step in the development of a statistically rigorous system for real-time forecast of seasonal influenza.",
+   "domain": "Health Sciences"
+  },
+  {
+   "id": "ising-protein-001",
+   "work": "W2137566700",
+   "family": "inverse_ising_potts",
+   "field": "structural_biology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Improved contact prediction in proteins: Using pseudolikelihoods to infer Potts models. Spatially proximate amino acids in a protein tend to coevolve. A protein's three-dimensional (3D) structure hence leaves an echo of correlations in the evolutionary record. Reverse engineering 3D structures from such correlations is an open problem in structural biology, pursued with increasing vigor as more and more protein sequences continue to fill the data banks. Within this task lies a statistical inference problem, rooted in the following: correlation between two sites in a protein sequence can arise from firsthand interaction but can also be network-propagated via intermediate sites; observed correlation is not enough to guarantee proximity. To separate direct from indirect interactions is an instance of the general problem of inverse statistical mechanics, where the task is to learn model parameters (fields, couplings) from observables (magnetizations, correlations, samples) in large systems. In the context of protein sequences, the approach has been referred to as direct-coupling analysis. Here we show that the pseudolikelihood method, applied to 21-state Potts models describing the statistical properties of families of evolutionarily related proteins, significantly outperforms existing approaches to the direct-coupling analysis, the latter being based on standard mean-field techniques. This improved performance also relies on a modified score for the coupling strength. The results are verified using known crystal structures of specific sequence instances of various protein families. Code implementing the new method can be found at http://plmdca.csc.kth.se/.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "ising-neuro-001",
+   "work": "W2069214547",
+   "family": "inverse_ising_potts",
+   "field": "neuroscience",
+   "role": "member",
+   "method_named": "partial",
+   "text": "Stimulus-dependent Maximum Entropy Models of Neural Population Codes. Neural populations encode information about their stimulus in a collective fashion, by joint activity patterns of spiking and silence. A full account of this mapping from stimulus to neural activity is given by the conditional probability distribution over neural codewords given the sensory input. For large populations, direct sampling of these distributions is impossible, and so we must rely on constructing appropriate models. We show here that in a population of 100 retinal ganglion cells in the salamander retina responding to temporal white-noise stimuli, dependencies between cells play an important encoding role. We introduce the stimulus-dependent maximum entropy (SDME) model-a minimal extension of the canonical linear-nonlinear model of a single neuron, to a pairwise-coupled neural population. We find that the SDME model gives a more accurate account of single cell responses and in particular significantly outperforms uncoupled models in reproducing the distributions of population codewords emitted in response to a stimulus. We show how the SDME model, in conjunction with static maximum entropy models of population vocabulary, can be used to estimate information-theoretic quantities like average surprise and information transmission in a neural population.",
+   "domain": "Life Sciences"
+  },
+  {
+   "id": "hawkes-crime-001",
+   "work": "W2123906784",
+   "family": "hawkes_self_exciting",
+   "field": "criminology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Self-Exciting Point Process Modeling of Crime. Highly clustered event sequences are observed in certain types of crime data, such as burglary and gang violence, due to crime-specific patterns of criminal behavior. Similar clustering patterns are observed by seismologists, as earthquakes are well known to increase the risk of subsequent earthquakes, or aftershocks, near the location of an initial event. Space–time clustering is modeled in seismology by self-exciting point processes and the focus of this article is to show that these methods are well suited for criminological applications. We first review self-exciting point processes in the context of seismology. Next, using residential burglary data provided by the Los Angeles Police Department, we illustrate the implementation of self-exciting point process models in the context of urban crime. For this purpose we use a fully nonparametric estimation methodology to gain insight into the form of the space–time triggering function and temporal trends in the background rate of burglary.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "hawkes-seismology-001",
+   "work": "W2625813022",
+   "family": "hawkes_self_exciting",
+   "field": "seismology",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Objective estimation of spatially variable parameters of epidemic type aftershock sequence model: Application to California. Abstract The Epidemic Type Aftershock Sequence (ETAS) model is widely employed to model the spatiotemporal distribution of earthquakes, generally using spatially invariant parameters. We propose an efficient method for the estimation of spatially varying parameters, using the expectation maximization (EM) algorithm and spatial Voronoi tessellation ensembles. We use the Bayesian information criterion (BIC) to rank inverted models given their likelihood and complexity and select the best models to finally compute an ensemble model at any location. Using a synthetic catalog, we also check that the proposed method correctly inverts the known parameters. We apply the proposed method to earthquakes included in the Advanced National Seismic System catalog that occurred within the time period 1981–2015 in a spatial polygon around California. The results indicate significant spatial variation of the ETAS parameters. We find that the efficiency of earthquakes to trigger future ones (quantified by the branching ratio) positively correlates with surface heat flow. In contrast, the rate of earthquakes triggered by far‐field tectonic loading or background seismicity rate shows no such correlation, suggesting the relevance of triggering possibly through fluid‐induced activation. Furthermore, the branching ratio and background seismicity rate are found to be uncorrelated with hypocentral depths, indicating that the seismic coupling remains invariant of hypocentral depths in the study region. Additionally, triggering seems to be mostly dominated by small earthquakes. Consequently, the static stress change studies should not only focus on the Coulomb stress changes caused by specific moderate to large earthquakes but also account for the secondary static stress changes caused by smaller earthquakes.",
+   "domain": "Physical Sciences"
+  },
+  {
+   "id": "ot-ml-001",
+   "work": "W1511358834",
+   "family": "optimal_transport",
+   "field": "machine_learning",
+   "role": "member",
+   "method_named": "yes",
+   "text": "Sinkhorn Distances: Lightspeed Computation of Optimal Transportation Distances. Optimal transportation distances are a fundamental family of parameterized distances for histograms. Despite their appealing theoretical properties, excellent performance in retrieval tasks and intuitive formulation, their computation involves the resolution of a linear program whose cost is prohibitive whenever the histograms' dimension exceeds a few hundreds. We propose in this work a new family of optimal transportation distances that look at transportation problems from a maximum-entropy perspective. We smooth the classical optimal transportation problem with an entropic regularization term, and show that the resulting optimum is also a distance which can be computed through Sinkhorn-Knopp's matrix scaling algorithm at a speed that is several orders of magnitude faster than that of transportation solvers. We also report improved performance over classical optimal transportation distances on the MNIST benchmark problem.",
+   "domain": "Physical Sciences"
+  }
+ ]
+}

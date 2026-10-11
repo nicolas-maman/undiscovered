@@ -11,6 +11,10 @@ This branch holds data, not code. The code is on `main`.
 - `results/<unit>/<issue>.json`: every accepted result, whole: who sent it,
   with which client and which model, and its descriptions.
 - `progress.json`: the counts the site shows.
+- `known-twins.json`: the papers of a published benchmark of cross-field twins
+  (Kulikowski 2026, CC BY 4.0) that units u-100404 to u-100421 hold among
+  ordinary papers, with their families, for the test in
+  [research/KNOWN-TWINS.md](https://github.com/nicolas-maman/undiscovered/blob/main/research/KNOWN-TWINS.md).
 - `combined/`: rebuilt after every accepted result by `pipeline/combine.py`:
   `descriptions.jsonl`, the open index, one paper per line; `models.json`,
   how well each model's descriptions agree with other models' descriptions
