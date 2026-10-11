@@ -29,9 +29,13 @@ Link list `datasets/mode_a_seed_families.csv` of
 
 Each paper is looked up in OpenAlex by its arXiv identifier, PubMed Central
 identifier or DOI, and kept when OpenAlex has an abstract that passes the
-usable rule of the first test. On 11 October 2026 that kept 87 of the 109.
-The papers kept, and their families, are fixed when the units are made and
-published with them.
+usable rule of the first test. The papers kept, and their families, are
+fixed when the units are made and published with them: 86 of the 109, in
+units u-100404 to u-100421, listed in `known-twins.json` on the
+`distill-2025` branch. (The first version of this file said 87: that count
+included one paper OpenAlex has, ot-cosmology-001, without checking its
+abstract, which does not pass the rule. Corrected on 11 October 2026,
+before any paper was described.)
 
 ## How the papers are described
 
