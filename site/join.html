@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Take part · undiscovered">
+<meta property="og:description" content="Lend your computer and the AI model of your choice to describe papers in plain words, so that work on the same problem in different fields can find each other.">
+<meta property="og:url" content="https://nicolas-maman.github.io/undiscovered/join.html">
+<meta property="og:image" content="https://nicolas-maman.github.io/undiscovered/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="undiscovered: research in one field that another field could use, but has never cited.">
+<meta name="twitter:card" content="summary_large_image">
+<title>Take part · undiscovered</title>
+<meta name="description" content="Lend your computer and the AI model of your choice to undiscovered, and see the work done so far.">
+<style>
+  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; --band: #f1efe9; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0; --band: #1d1c1a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 80px; }
+  nav { font: 14px system-ui, sans-serif; margin-bottom: 32px; }
+  nav a { color: var(--muted); text-decoration: none; }
+  h1 { font-size: 2rem; margin: 0 0 8px; }
+  h2 { font: 600 0.95rem system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--muted); margin: 44px 0 10px; }
+  a { color: var(--accent); }
+  .lede { font-size: 1.1rem; }
+  .note { color: var(--muted); font-size: .92rem; }
+  pre { background: var(--band); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px;
+        overflow-x: auto; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 8px 0; }
+  .cmdhead { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; }
+  .copy { font: 13px system-ui, sans-serif; background: none; border: 1px solid var(--rule); color: var(--muted);
+          border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+  .copy:hover, .copy:focus { color: var(--fg); border-color: var(--muted); }
+  .jobs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 12px 0; }
+  .job { background: var(--band); border-radius: 6px; padding: 14px 16px; }
+  .job h3 { font: 600 1rem system-ui, sans-serif; margin: 0 0 6px; }
+  .big { font: 600 1.7rem system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+  .bar { height: 6px; background: var(--rule); border-radius: 3px; margin: 8px 0 6px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--accent); }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font: 15px/1.4 system-ui, sans-serif; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule); }
+  th { font-weight: 600; color: var(--muted); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  ul { padding-left: 20px; }
+  code { font-size: .9em; }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">undiscovered</a> / take part</nav>
+  <h1>Take part</h1>
+  <p class="lede">Lend your computer and the AI model of your choice. Your model reads a paper's
+  title and abstract and writes, in two plain sentences, the problem it works on and how, without
+  its field's words.</p>
+  <p>Fields often name the same problem differently: estimating a hidden state from noisy
+  measurements is a Kalman filter to a control engineer and data assimilation to a weather
+  forecaster. Plain descriptions let work on the same problem in different fields find each
+  other. That takes one model call per paper, far more than one project can make, and easy when
+  many people each make a few hundred.</p>
+
+  <h2>Start</h2>
+  <p>You need Python 3.10 or newer, a GitHub account with the
+  <a href="https://cli.github.com">GitHub command-line tool</a> logged in once
+  (<code>gh auth login</code>), and a model: one on your own computer, a free one in the cloud,
+  or one you already pay for.</p>
+  <div class="cmdhead"><span class="note">In a terminal:</span>
+  <button class="copy" type="button" data-for="commands">Copy</button></div>
+  <pre id="commands">pip install "undiscovered @ git+https://github.com/nicolas-maman/undiscovered#subdirectory=clients/python"
+undiscovered setup            # which model, and an optional OpenAlex key
+undiscovered work --units 5   # five units of twenty papers</pre>
+  <p class="note"><code>undiscovered work --dry-run</code> does one unit and saves what it would send,
+  without sending it. The client runs below normal priority and deletes its downloads when each unit
+  is done. Full instructions: <a href="https://github.com/nicolas-maman/undiscovered/blob/main/clients/python/README.md">the client's README</a>.</p>
+
+  <h2>Which model</h2>
+  <ul>
+    <li><strong>On your computer, free and private:</strong> Ollama, LM Studio, llama.cpp, vLLM or Jan.
+    <code>undiscovered setup</code> finds them by itself.</li>
+    <li><strong>Free in the cloud, no graphics card needed:</strong> Google Gemini, Groq, OpenRouter's
+    free models or Mistral's free mode, each with a free key.</li>
+    <li><strong>One you already pay for:</strong> OpenAI, Anthropic, or anything that speaks the OpenAI API.
+    The project pays for nothing and asks for nothing.</li>
+  </ul>
+  <p>Nobody knows yet which models do this well. Every description records the model that wrote it, and
+  each paper is described by two volunteers, so finding out is part of the work.
+  <a href="https://github.com/nicolas-maman/undiscovered/blob/main/docs/MODELS.md">How to connect each one, and what is sent where.</a></p>
+
+  <h2>Progress</h2>
+  <div class="jobs" id="jobs"><p class="note">Loading progress...</p></div>
+  <p class="note" id="updated"></p>
+
+  <h2>Who has helped</h2>
+  <div id="people"></div>
+
+  <h2>Models used so far</h2>
+  <div id="models"></div>
+
+  <h2>What happens to your work</h2>
+  <ul>
+    <li>The client sends your descriptions as an issue under your GitHub account, so anyone can see
+    who did what. Never a key.</li>
+    <li>A job on the project checks each one within minutes: two short parts, and no more than two of
+    the paper's own distinctive words, which the unit lists and your model is told to avoid. The issue
+    is answered with what was accepted, or why not.</li>
+    <li>Accepted work is stored openly, under CC0, on the project's
+    <a href="https://github.com/nicolas-maman/undiscovered/tree/distill-2025">data branch</a>, with the
+    name of the model that wrote it.</li>
+    <li>The rules are in <a href="https://github.com/nicolas-maman/undiscovered/blob/main/PROTOCOL.md#work-units">the protocol</a>;
+    any program that follows it, in any language, is a full participant.</li>
+  </ul>
+
+  <footer>
+    Open source (MIT). Data CC0, from <a href="https://openalex.org">OpenAlex</a>.
+    <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
+  </footer>
+</main>
+<script>
+(function () {
+  "use strict";
+  var RAW = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/";
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === "text") { e.textContent = attrs[k]; } else { e.setAttribute(k, attrs[k]); }
+    });
+    (kids || []).forEach(function (c) { e.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return e;
+  }
+  function n(x) { return (x || 0).toLocaleString("en"); }
+  function job(title, done, total, unit, units, detail) {
+    var share = total ? Math.min(1, done / total) : 0;
+    var bar = el("div", {class: "bar", role: "img", "aria-label": Math.round(100 * share) + "% done"}, [el("span")]);
+    bar.firstChild.style.width = (100 * share).toFixed(1) + "%";
+    return el("div", {class: "job"}, [
+      el("h3", {text: title}),
+      el("div", {class: "big", text: n(done)}),
+      el("div", {class: "note", text: "of " + n(total) + " " + unit}),
+      bar,
+      el("div", {class: "note", text: n(units.done) + " units done, " + n(units.check) + " waiting for a second volunteer, " +
+        n(units.open) + " open" + (detail ? ". " + detail : "")})]);
+  }
+  function table(rows, cols, empty) {
+    if (!rows.length) { return el("p", {class: "note", text: empty}); }
+    var head = el("tr", {}, cols.map(function (c) { return el("th", {class: c.num ? "num" : "", text: c.label}); }));
+    var body = el("tbody", {}, rows.map(function (r) {
+      return el("tr", {}, cols.map(function (c) { return el("td", {class: c.num ? "num" : ""}, [c.cell(r)]); }));
+    }));
+    return el("div", {class: "scroll"}, [el("table", {}, [el("thead", {}, [head]), body])]);
+  }
+  function load(branch) {
+    return fetch(RAW + branch + "/progress.json", {cache: "no-store"}).then(function (r) {
+      if (!r.ok) { throw new Error("HTTP " + r.status); }
+      return r.json();
+    });
+  }
+  Promise.all([load("distill-2025"), load("map-2025")]).then(function (both) {
+    var d = both[0], m = both[1];
+    var jobs = document.getElementById("jobs");
+    jobs.textContent = "";
+    jobs.appendChild(job("Describing papers", d.papers_described, d.papers, "papers described", d.units,
+      n(d.descriptions) + " descriptions in all"));
+    jobs.appendChild(job("Mapping citations", m.topics_recorded, m.topics, "topics mapped (no model needed)", m.units, ""));
+    var when = [d.updated, m.updated].filter(Boolean).sort().pop();
+    document.getElementById("updated").textContent = when ? "Updated " + when.replace("T", " ").replace("Z", " UTC") +
+      "; the page can lag by up to five minutes." : "";
+    var people = {};
+    d.contributors.forEach(function (c) { people[c.login] = {login: c.login, descriptions: c.descriptions, maps: 0}; });
+    m.contributors.forEach(function (c) {
+      people[c.login] = people[c.login] || {login: c.login, descriptions: 0, maps: 0};
+      people[c.login].maps = c.units;
+    });
+    var rows = Object.keys(people).map(function (k) { return people[k]; })
+      .sort(function (a, b) { return (b.descriptions - a.descriptions) || (b.maps - a.maps) || (a.login < b.login ? -1 : 1); });
+    document.getElementById("people").appendChild(table(rows, [
+      {label: "Volunteer", cell: function (r) { return el("a", {href: "https://github.com/" + encodeURIComponent(r.login), text: r.login}); }},
+      {label: "Papers described", num: true, cell: function (r) { return n(r.descriptions); }},
+      {label: "Map units", num: true, cell: function (r) { return n(r.maps); }}],
+      "Nobody yet. The first results will appear here within minutes of being checked."));
+    document.getElementById("models").appendChild(table(d.models, [
+      {label: "Model", cell: function (r) { return r.id; }},
+      {label: "Kind of endpoint", cell: function (r) { return r.provider; }},
+      {label: "Papers described", num: true, cell: function (r) { return n(r.descriptions); }}],
+      "None yet."));
+  }).catch(function (e) {
+    var jobs = document.getElementById("jobs");
+    jobs.textContent = "";
+    jobs.appendChild(el("p", {class: "note"}, ["Progress could not be loaded just now (" + e.message + "). The data itself is on the ",
+      el("a", {href: "https://github.com/nicolas-maman/undiscovered/tree/distill-2025", text: "data branch"}), "."]));
+  });
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var text = document.getElementById(b.getAttribute("data-for")).textContent;
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1500); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, function () {}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
