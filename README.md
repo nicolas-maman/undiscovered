@@ -2,12 +2,13 @@
 
 This branch holds data, not code. The code is on `main`.
 
-- `units/index.json`: 403 units of twenty papers, each unit's status
+- `units/index.json`: 421 units (all of twenty papers but u-100403, of nine, and u-100421, of sixteen), each unit's status
   (`open`, `check` when it still needs a second volunteer, or `done`), each
   paper's distinctive words, and the rule that chose them.
 - `papers.json`: each paper's topic (id and name), subfield, field and domain. The papers are the sampled
   works of the first test's 300 topics, up to 2025, that are research and
-  have a usable abstract: 8,049 in all.
+  have a usable abstract (8,049), and the 86 benchmark papers of
+  `known-twins.json`.
 - `results/<unit>/<issue>.json`: every accepted result, whole: who sent it,
   with which client and which model, and its descriptions.
 - `progress.json`: the counts the site shows.
