@@ -133,3 +133,11 @@ def test_progress_counts_units_descriptions_people_and_models(tmp_path):
     assert p["units"] == {"done": 1} and p["descriptions"] == 8 and p["papers_described"] == 4
     assert [c["login"] for c in p["contributors"]] == ["alice", "bob"]
     assert {m["id"]: m["units"] for m in p["models"]} == {"qwen3:8b": 1, "llama3.1:8b": 1}
+
+
+def test_the_same_issue_processed_twice_is_stored_once(tmp_path):
+    u = unit()
+    d = branch(tmp_path, u)
+    intake.intake_distill(d, issue(u), "alice", 11)
+    assert "already stored" in intake.intake_distill(d, issue(u), "alice", 11)
+    assert len(list((d / "results" / "u-100001").glob("*.json"))) == 1

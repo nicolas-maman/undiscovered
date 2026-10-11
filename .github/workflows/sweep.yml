@@ -1,0 +1,44 @@
+name: sweep
+
+# Every half hour, processes any result issue that is still open and
+# unlabelled ten minutes after it was opened: one whose intake run failed,
+# was cancelled, or could not store it. One at a time, with the same scripts
+# as the intake workflow.
+on:
+  schedule:
+    - cron: "17,47 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install requests jsonschema numpy scikit-learn ./clients/python
+      - name: Process what was missed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue list --state open --limit 200 --json number,title,labels,createdAt \
+            --jq '.[] | select((.labels | length) == 0)
+                      | select(.title | test("^(map|distill) result u-[0-9]{6}$"))
+                      | select((now - (.createdAt | fromdateiso8601)) > 600)
+                      | "\(.number) \(.title | split(" ")[0])"' > missed.txt
+          echo "$(wc -l < missed.txt) result issue(s) to process"
+          while read -r number kind; do
+            rm -rf store
+            git clone -q --branch "${kind}-2025" --single-branch \
+              "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" store
+            gh api "repos/${{ github.repository }}/issues/${number}" --jq '{issue: .}' > event.json
+            INTAKE_EVENT=event.json bash pipeline/intake_job.sh "$kind"
+            bash pipeline/reply.sh "$number"
+          done < missed.txt

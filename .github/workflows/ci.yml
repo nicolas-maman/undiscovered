@@ -46,23 +46,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: distill-2025
-          path: distill
+          path: store
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Install, as the intake workflow does
         run: pip install requests jsonschema numpy scikit-learn ./clients/python
-      - name: A result, checked, combined and scored, as the intake workflow does
+      - name: The intake workflow's own job script on a valid result, without the push
         env:
-          DISTILL_DIR: distill
           INTAKE_EVENT: event.json
+          INTAKE_NO_PUSH: "1"
         run: |
-          python scripts/rehearse_intake.py distill event.json
-          python pipeline/intake.py | tail -n 1 > verdict.json
-          python -c "import json, sys; v = json.load(open('verdict.json')); print(v['reply']); sys.exit(0 if v['accepted'] else 1)"
-          python pipeline/combine.py distill
-          python pipeline/known_twins.py result distill
-          python -c "import json; p = json.load(open('distill/progress.json')); assert p['descriptions'] == 20, p"
+          python scripts/rehearse_intake.py store event.json
+          bash pipeline/intake_job.sh distill
+          python -c "import json, sys; v = json.load(open('verdict.json')); sys.exit(0 if v['accepted'] and v['stored'] else 1)"
+          python -c "import json; p = json.load(open('store/progress.json')); assert p['descriptions'] == 20, p"
+          git -C store log -1 --format=%s
 
   # The Aether client on Linux, where its non-Windows parts (priority, hidden
   # input, settings path) are compiled and tested. The toolchain is built from

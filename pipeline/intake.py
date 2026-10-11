@@ -168,13 +168,15 @@ def intake(map_dir: Path, body: str, author: str, issue: int, token: str = "",
     unit = next((u for u in index["units"] if u["unit"] == result["unit"]), None)
     if unit is None:
         raise Reject(f"there is no unit {result['unit']}")
+    res_path = map_dir / "results" / f"{unit['unit']}.json"
+    results = json.loads(res_path.read_text(encoding="utf-8")) if res_path.exists() else []
+    if any(r["issue"] == issue for r in results):
+        return f"This result for {unit['unit']} is already stored. Thank you."
     if unit["status"] in ("done", "disputed"):
         return f"Unit {unit['unit']} is already complete. Thank you all the same."
     records = check_records(fetch(result["gist"], token), result["sha256"], unit)
     provenance = {"issue": issue, "author": author, "gist": result["gist"], "sha256": result["sha256"],
                   "client": result.get("client")}
-    res_path = map_dir / "results" / f"{unit['unit']}.json"
-    results = json.loads(res_path.read_text(encoding="utf-8")) if res_path.exists() else []
     if unit["status"] == "open":
         for r in records:
             p = map_dir / "records" / f"{r['topic']}.json"
@@ -272,6 +274,8 @@ def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
     unit = next((u for u in index["units"] if u["unit"] == result.get("unit")), None)
     if unit is None:
         raise Reject(f"there is no describing unit {result.get('unit')}")
+    if (dist_dir / "results" / unit["unit"] / f"{issue}.json").exists():
+        return f"This result for {unit['unit']} is already stored. Thank you."
     if unit["status"] == "done":
         return f"Unit {unit['unit']} already has all the results it needs. Thank you all the same."
     descs = check_descriptions(result, unit)
