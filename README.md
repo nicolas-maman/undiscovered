@@ -10,6 +10,12 @@ This branch holds data, not code. The code is on `main`.
   have a usable abstract: 8,049 in all.
 - `results/<unit>/<issue>.json`: every accepted result, whole: who sent it,
   with which client and which model, and its descriptions.
+- `progress.json`: the counts the site shows.
+- `combined/`: rebuilt after every accepted result by `pipeline/combine.py`:
+  `descriptions.jsonl`, the open index, one paper per line; `models.json`,
+  how well each model's descriptions agree with other models' descriptions
+  of the same papers, against chance; and `twins.json`, the most alike pairs
+  of papers from different domains.
 
 The `intake` workflow on `main` writes here when it accepts a result. The
 units were made by `pipeline/distill_units.py`; what a unit and a result
