@@ -316,3 +316,20 @@ printed.
 
 None yet. Any change made after results are seen will be listed here with
 its date and reason.
+
+## After publication
+
+Checks run after the result was published. They are not part of the plan,
+do not change its decision, and are reported whatever they show.
+
+- **11 October 2026: works that are not research in the abstract samples.**
+  OpenAlex's random sample of a topic's works includes works that are not
+  research: datasets, editorials, errata, peer reviews, book reviews,
+  reference entries and works typed "other". Among the usable abstracts
+  compared, they were 379 of 8,142 at 2017 (4.7%) and 302 of 8,087 at 2011
+  (3.7%). No topic falls below five usable abstracts without them, so the
+  pairs are the same. Rerunning H1 as the robustness checks do, with only
+  research works in the samples (`undiscovered_research/posthoc.py`), gives
+  the result in the robustness table on the results page, labelled as after
+  publication. The describing units of the distributed project keep
+  research works only.
