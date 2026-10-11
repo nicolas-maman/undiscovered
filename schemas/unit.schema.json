@@ -48,6 +48,24 @@
       "minItems": 1,
       "maxItems": 20
     },
+    "avoid": {
+      "type": "object",
+      "description": "distill: for each work, its distinctive words, which a description may reuse at most max_avoided of",
+      "propertyNames": {
+        "pattern": "^W[0-9]+$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 20
+      }
+    },
+    "max_avoided": {
+      "type": "integer",
+      "minimum": 0
+    },
     "topic": {
       "type": "string",
       "pattern": "^T[0-9]+$"
@@ -81,6 +99,14 @@
     "quorum": {
       "type": "integer",
       "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "open",
+        "check",
+        "done",
+        "disputed"
+      ]
     }
   },
   "allOf": [
