@@ -24,8 +24,10 @@ do not exist yet.
   check that the ranking existed on that date and has not changed.
 - Score it every year as the citations arrive, with a GitHub Action, and
   show the running score on the results page next to the backtest.
-- Cost: about 9 OpenAlex calls per topic for the freeze, then about 3 per
-  topic each year to score it.
+- Cost: about 25 OpenAlex calls per topic for the freeze, then a call or
+  two per topic each year to score it.
+- A concrete draft, on the first test's 300 topics, is in
+  [FORWARD-TEST-DRAFT.md](FORWARD-TEST-DRAFT.md).
 
 If the backtest works, the forward test checks it on outcomes nobody could
 have known. If it does not, the network baseline still gets a forward
