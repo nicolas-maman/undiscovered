@@ -2,8 +2,8 @@
 
 Three kinds of endpoint cover nearly every model:
 
-    openai-compatible   Ollama, LM Studio, llama.cpp, vLLM, Jan, GitHub Models, Groq, OpenRouter,
-                        Mistral, OpenAI, Google's compatibility endpoint, and many more
+    openai-compatible   Ollama, LM Studio, llama.cpp, vLLM, Jan, Groq, OpenRouter, Mistral,
+                        Hugging Face, OpenAI, Google's compatibility endpoint, and many more
     anthropic           Anthropic's API
     google              Google's Gemini API
 
@@ -40,17 +40,16 @@ LOCAL = {"Ollama": "http://127.0.0.1:11434/v1", "LM Studio": "http://127.0.0.1:1
          "llama.cpp": "http://127.0.0.1:8080/v1", "vLLM": "http://127.0.0.1:8000/v1",
          "Jan": "http://127.0.0.1:1337/v1"}
 # Services `undiscovered setup` offers by name: (name, kind, base URL, where to get a key, what it costs).
+# Checked against each service's own pages on 11 October 2026; docs/MODELS.md has the details.
 PRESETS = [
-    ("GitHub Models", "openai-compatible", "https://models.github.ai/inference",
-     "a GitHub token with the Models: read permission (github.com/settings/tokens)",
-     "free with a GitHub account, within rate limits"),
-    ("Google Gemini", "google", "", "aistudio.google.com/apikey", "free tier, within rate limits"),
+    ("Google Gemini", "google", "", "aistudio.google.com/apikey",
+     "free tier; Google uses what it is sent on it to improve its products"),
     ("Groq", "openai-compatible", "https://api.groq.com/openai/v1", "console.groq.com/keys",
-     "free tier, within rate limits"),
+     "free plan, within rate limits"),
     ("OpenRouter", "openai-compatible", "https://openrouter.ai/api/v1", "openrouter.ai/keys",
-     "models whose name ends in :free cost nothing, a small number a day"),
+     "models whose name ends in :free cost nothing, 50 requests a day"),
     ("Mistral", "openai-compatible", "https://api.mistral.ai/v1", "console.mistral.ai",
-     "free Experiment plan; Mistral may train on what it is sent"),
+     "free mode, within rate limits"),
     ("OpenAI", "openai-compatible", "https://api.openai.com/v1", "platform.openai.com/api-keys", "paid"),
     ("Anthropic", "anthropic", "", "console.anthropic.com", "paid"),
 ]

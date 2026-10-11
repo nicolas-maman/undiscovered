@@ -35,16 +35,17 @@ is asking too fast. A unit is twenty requests.
 
 | Service | Key | Notes |
 |---|---|---|
-| [GitHub Models](https://github.com/marketplace/models) | a [GitHub token](https://github.com/settings/tokens) with the Models: read permission | free for personal accounts; model names include the publisher, as in its catalogue |
-| [Google Gemini](https://ai.google.dev) | [AI Studio](https://aistudio.google.com/apikey) | free tier; the client uses Google's own API |
-| [Groq](https://groq.com) | [console](https://console.groq.com/keys) | free tier |
-| [OpenRouter](https://openrouter.ai) | [keys](https://openrouter.ai/keys) | models whose name ends in `:free` cost nothing, but only a small number of requests a day |
-| [Mistral](https://mistral.ai) | [console](https://console.mistral.ai) | free Experiment plan; Mistral says it may use what it is sent on that plan to train its models |
-| [Hugging Face](https://huggingface.co/docs/inference-providers) | [tokens](https://huggingface.co/settings/tokens), at `https://router.huggingface.co/v1` | a small free credit each month |
+| [Google Gemini](https://ai.google.dev/gemini-api/docs/pricing) | [AI Studio](https://aistudio.google.com/apikey) | free tier for several models; Google says it uses what is sent on the free tier to improve its products. The client uses Google's own API |
+| [Groq](https://console.groq.com/docs/rate-limits) | [console](https://console.groq.com/keys) | free plan |
+| [OpenRouter](https://openrouter.ai/docs/api-reference/limits) | [keys](https://openrouter.ai/keys) | models whose name ends in `:free` cost nothing: 20 requests a minute and 50 a day, or 1,000 a day once the account has bought 10 credits |
+| [Mistral](https://docs.mistral.ai/getting-started/quickstart/) | [console](https://console.mistral.ai) | free mode; read its terms on how it uses what it is sent |
+| [Hugging Face](https://huggingface.co/docs/inference-providers/pricing) | [tokens](https://huggingface.co/settings/tokens), at `https://router.huggingface.co/v1` | a small free credit each month |
 
-Choose GitHub Models, Gemini, Groq, OpenRouter or Mistral by name in
-`undiscovered setup`; for Hugging Face, choose "another server" and give the
-address in the table.
+Choose Gemini, Groq, OpenRouter or Mistral by name in `undiscovered setup`;
+for Hugging Face, choose "another server" and give the address in the
+table. These were checked against each service's own pages on 11 October
+2026. Free offers change: GitHub Models, for one, closed in July 2026. If
+one stops working, tell us in an issue.
 
 ## Paid services
 

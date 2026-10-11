@@ -26,9 +26,8 @@ maps. How the pieces fit together is in [DESIGN.md](../../DESIGN.md).
   [docs/MODELS.md](../../docs/MODELS.md) compares the options:
   - one on your own computer, free and private: Ollama, LM Studio,
     llama.cpp, vLLM or Jan; `undiscovered setup` finds them by itself;
-  - a free service in the cloud, with no graphics card needed: GitHub
-    Models (with your GitHub account), Google Gemini, Groq, OpenRouter's
-    free models or Mistral's free plan;
+  - a free service in the cloud, with no graphics card needed: Google
+    Gemini, Groq, OpenRouter's free models or Mistral's free mode;
   - any service you already pay for: OpenAI, Anthropic, or anything else
     that speaks the OpenAI API. Their usage is billed to you, by them; the
     project pays for nothing and asks for nothing.
