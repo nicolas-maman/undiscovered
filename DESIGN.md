@@ -49,8 +49,11 @@ it works on and how, without the paper's distinctive words.
 
 - **Papers.** The sampled papers of the first test's 300 topics up to
   2025 that are research and have a usable abstract: 8,049, in 403 units of
-  20, on the `distill-2025` branch. Each unit lists, for each paper, its
-  distinctive words; the model is told to avoid them.
+  20, on the `distill-2025` branch; and 86 papers of a published benchmark
+  of cross-field twins, in 18 more units among ordinary papers, for the
+  first test of the descriptions ([research/KNOWN-TWINS.md](research/KNOWN-TWINS.md)).
+  Each unit lists, for each paper, its distinctive words; the model is told
+  to avoid them.
 - **Models.** Any: on the volunteer's machine (Ollama, LM Studio,
   llama.cpp, vLLM, Jan), free in the cloud (Gemini, Groq, OpenRouter,
   Mistral), or paid. Every description records its model.
@@ -121,9 +124,10 @@ record the first test collected, at the end of 2025.
 - **Models against chance**: live. A model whose descriptions agree with
   other models' no more than descriptions of different papers do is
   writing nothing specific.
-- **Known twins**: next. Pairs of papers already known to solve the same
-  problem in different fields, mixed into units, show whether descriptions
-  bring them together. Known answers measure reliability only: a model
+- **Known twins**: in the units now ([plan](research/KNOWN-TWINS.md)). Pairs
+  of papers already known to solve the same problem in different fields,
+  mixed into units, show whether descriptions bring them together better
+  than the abstracts do. Known answers measure reliability only: a model
   trained on later papers may remember them.
 - **Experts against chance**: with the review page. The queue mixes in,
   without marking them, pairs drawn at random. SciMuse found that pairs
@@ -152,10 +156,10 @@ Done:
 3. Describing units in the Python client, with any model; the checking and
    combining jobs; the Take part and Same problem, different field pages.
 4. The forward test's records and ranking code.
+5. Describing units in the Aether client, and the known twins in the
+   describing units, with the code that computes their result.
 
 Next:
 
-5. Register the forward test and publish its ranking.
-6. Known twins in the describing units.
-7. Describing units in the Aether client ([issue #2](https://github.com/nicolas-maman/undiscovered/issues/2)).
-8. The review page, the rating form, and the random-pair control.
+6. Register the forward test and publish its ranking.
+7. The review page, the rating form, and the random-pair control.
