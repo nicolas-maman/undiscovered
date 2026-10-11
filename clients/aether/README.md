@@ -41,8 +41,8 @@ ae build src/main.ae -o undiscovered
 
 The result, `undiscovered.exe`, needs only Windows' own DLLs. The offline
 tests run with `ae test tests/test_client.ae` and
-`ae test tests/test_distill.ae` (one file per call: `ae test` runs only the
-first file it is given).
+`ae test tests/test_distill.ae` (one file per call: `ae test` runs only one
+of the files it is given, [aether#2752](https://github.com/aether-lang-dev/aether/issues/2752)).
 
 ## Run
 

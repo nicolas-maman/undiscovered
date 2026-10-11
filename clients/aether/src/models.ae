@@ -72,7 +72,8 @@ struct ModelLink {
 }
 
 // A model (a *ModelLink), or (null, why not), as models.Model() checks one.
-// A tuple cannot name a pointer type yet, so it comes back as a ptr.
+// A tuple cannot name a pointer type before aether-lang-dev/aether#2626 (fixed
+// after 0.798), so it comes back as a ptr.
 open_model(provider: string, model_id: string, base_url: string, key: string, interval: float) -> (ptr, string) {
     if provider != "openai-compatible" && provider != "anthropic" && provider != "google" {
         return null, "unknown provider ${py_repr(provider)}; use one of ${KINDS}"
