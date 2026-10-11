@@ -15,7 +15,7 @@ import json
 import re
 
 from .models import Model
-from .openalex import OpenAlex
+from .openalex import OpenAlex, abstract_text
 
 PROMPT = 1          # changes whenever SYSTEM, FORMAT or prompt() changes
 MAX_WORDS = 60      # per part
@@ -33,14 +33,6 @@ THINKING = re.compile(r"<think>.*?</think>", re.S | re.I)
 
 class Unusable(ValueError):
     """The model's answer cannot be used; the message says why, in words the model is shown."""
-
-
-def abstract_text(inverted: dict | None) -> str:
-    """The abstract from OpenAlex's inverted index (word -> positions)."""
-    if not inverted:
-        return ""
-    at = {p: w for w, ps in inverted.items() for p in ps}
-    return " ".join(at[p] for p in sorted(at))
 
 
 def fetch_works(api: OpenAlex, ids: list[str]) -> dict[str, dict]:

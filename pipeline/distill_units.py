@@ -45,7 +45,7 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "clients" / "python"))
-from undiscovered.distill import abstract_text  # noqa: E402
+from undiscovered.openalex import abstract_text  # noqa: E402
 from undiscovered.mapper import ABSTRACTS, SAMPLE_SEED, TRAIN_YEARS, usable  # noqa: E402
 from undiscovered.stopwords import ENGLISH_STOP_WORDS  # noqa: E402
 

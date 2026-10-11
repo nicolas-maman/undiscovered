@@ -12,3 +12,4 @@ research/results/
 *.egg-info/
 build/
 dist/
+research/data_forward/
