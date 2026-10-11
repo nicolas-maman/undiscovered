@@ -30,8 +30,10 @@ what actually happened.
 > share, did not measurably improve it (difference in average precision
 > -0.010, 95% interval -0.050 to +0.045). Under the
 > [plan written before the analysis](research/PREREGISTRATION.md) that is
-> not enough to take the method further as it is. All the numbers, the
-> robustness checks and the code are on the
+> not enough to take the method further as it is. On a second, independent
+> sample of 300 topics the network ranking did as well (about 16 times
+> better than chance) and adding the words was again inconclusive. All the
+> numbers, the robustness checks and the code are on the
 > [results page](https://nicolas-maman.github.io/undiscovered/results.html).
 > Too few pairs connected for a clear answer; a decisive test needs every
 > topic, and the [draft for it](research/STUDY-2-DRAFT.md) is open for

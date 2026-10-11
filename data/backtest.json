@@ -1,6 +1,6 @@
 {
  "status": "complete",
- "published": "2026-10-09",
+ "published": "2026-10-11",
  "commit": "45c304878e518ed4f52abc147b724c281a6504ab",
  "code": "https://github.com/nicolas-maman/undiscovered/tree/45c304878e518ed4f52abc147b724c281a6504ab/research",
  "preregistration": "https://github.com/nicolas-maman/undiscovered/blob/45c304878e518ed4f52abc147b724c281a6504ab/research/PREREGISTRATION.md",
@@ -4834,7 +4834,77 @@
   {
    "key": "seed2027",
    "label": "Other 300 topics (seed 2027)",
-   "skipped": "99 of 300 topics at 2011 are missing, in an old format or from another sample (first: T10221); finish the collection first."
+   "pairs": {
+    "train": 28596,
+    "train_positive": 247,
+    "eval": 27331,
+    "eval_positive": 338,
+    "eval_base_rate": 0.0123669093703121
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.0494815958112338,
+     "average_precision_ci": [
+      0.01519395905128426,
+      0.10484328549301968
+     ]
+    },
+    "network": {
+     "average_precision": 0.1953456660187892,
+     "average_precision_ci": [
+      0.10501687034716288,
+      0.2833659537689131
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.0809310619260173,
+     "average_precision_ci": [
+      0.04017105659723075,
+      0.15807962638100315
+     ]
+    },
+    "combined": {
+     "average_precision": 0.20510938742552726,
+     "average_precision_ci": [
+      0.10731929450999499,
+      0.28598263660919443
+     ]
+    },
+    "random": {
+     "average_precision": 0.012058776502545733,
+     "average_precision_ci": [
+      0.00845760414995197,
+      0.017436488061364327
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": 0.009763721406738063,
+     "diff_ci": [
+      -0.019761281257374266,
+      0.02668179740122409
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.1458640702075554,
+     "diff_ci": [
+      0.06285998302404493,
+      0.22470307216911467
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.031449466114783504,
+     "diff_ci": [
+      0.0009971919374414063,
+      0.08947904248249018
+     ],
+     "holds": true
+    }
+   }
   }
  ]
 }
