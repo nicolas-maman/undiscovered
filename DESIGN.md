@@ -1,154 +1,161 @@
-# How the distributed version works (draft)
+# How the distributed version works
 
-Written in October 2026, after the first test. It describes what will be
-built and in what order. [PROTOCOL.md](PROTOCOL.md) has the message
-formats; this document has the shape of the whole.
+Written in October 2026, after the first test, and kept up to date as
+parts ship. [PROTOCOL.md](PROTOCOL.md) has the message formats; this
+document has the shape of the whole.
 
 ## What it is for
 
-A researcher opens the site, finds their own field, and sees a short list of
-distant fields, and specific papers in them, that may bear on their work.
-Each suggestion comes with a plain reason, says which AI models wrote it,
-and shows how experts in the two fields rated it.
+A researcher opens the site, finds their own field, and sees papers in
+distant fields that work on the same problem, and pairs of fields likely to
+connect next. Each suggestion shows its evidence, says which AI models were
+involved, and shows how experts in the two fields rated it.
 
-Three kinds of people make that list:
+Three kinds of people make that:
 
-- **volunteers**, who lend their computer, their free OpenAlex allowance
-  and, if they like, an AI model of their choice;
+- **volunteers**, who lend their computer and an AI model of their choice,
+  on their own machine or free in the cloud;
 - **experts**, who rate the suggestions that touch their own field;
 - **the project**, which runs only free GitHub services: a website, a
-  public inbox for results and ratings, and scheduled jobs that check and
-  combine them.
+  public inbox for results and ratings, and jobs that check and combine
+  them.
+
+The crowd comes first. What volunteers produce together (an open index of
+papers described in plain words, the pairs of papers it brings together,
+and a public comparison of AI models on this task) is what is then put in
+front of researchers.
 
 ## What the first test settled, and what it did not
 
 - **Settled:** the citation network around two topics predicts whether
   they will start citing each other. On 28,114 pairs of topics from
   different domains, the network model ranked the pairs that connected
-  about 14 times better than chance, and 30 of its top 100 did connect.
-  So the network model can choose which pairs are worth a closer look.
+  about 14 times better than chance, and 30 of its top 100 did connect; on
+  a second, independent sample of 300 topics, about 16 times.
 - **Settled, negatively:** comparing the topics' abstracts by the words
   they share added nothing measurable. That method is not used here.
-- **Not tested yet:** whether AI-written explanations are right, and
-  whether descriptions of papers without their field's jargon find better
-  pairs. This design measures both in public (see *How we will know it
+- **Not tested yet:** whether descriptions of papers without their field's
+  jargon find better matches, and whether AI-written explanations are
+  right. This design measures both in public (see *How we will know it
   works*), and labels everything AI-written as untested until then.
 
-## The four steps
+## The parts
 
-### 1. Map (volunteers, no AI needed)
+### 1. Describe (volunteers, any AI model): live
 
-The ranking needs, for every topic, which other topics cite its most cited
-papers, now and in recent years. That is the same record the backtest
-collected, taken at the end of 2025, except that only the number of usable
-abstracts is kept, not their text.
+Fields often name the same problem differently. A volunteer's model reads a
+paper's title and abstract and writes, in two plain sentences, the problem
+it works on and how, without the paper's distinctive words.
 
-- **Size.** About 25 OpenAlex calls per topic (measured on a real unit),
-  about 110,000 for all 4,516 topics: eleven days for one free key, about
-  a day for ten volunteers.
-- **Unit of work.** 10 topics. The client fetches them with the
-  volunteer's own OpenAlex allowance, runs at low priority, and stops
-  cleanly when the day's allowance is spent.
-- **Submission.** A unit's records are too large for an issue (about
-  300 KB; an issue holds 65,536 characters). The client puts them in a
-  gist under the volunteer's GitHub account and opens a short issue with
-  the gist's address and a checksum.
-- **Checks.** A job fetches the gist, validates every record against the
-  schema, and sends 1 unit in 20 to a second volunteer; the two must
-  match within the small drift of a live index. A volunteer whose units
-  fail the comparison is set aside.
-- **Storage.** Accepted records are combined into one compressed file
-  attached to a GitHub release (files there can be 2 GB), not committed to
-  the repository, which would grow too large.
+- **Papers.** The sampled papers of the first test's 300 topics up to
+  2025 that are research and have a usable abstract: 8,049, in 403 units of
+  20, on the `distill-2025` branch. Each unit lists, for each paper, its
+  distinctive words; the model is told to avoid them.
+- **Models.** Any: on the volunteer's machine (Ollama, LM Studio,
+  llama.cpp, vLLM, Jan), free in the cloud (Gemini, Groq, OpenRouter,
+  Mistral), or paid. Every description records its model.
+  [docs/MODELS.md](docs/MODELS.md) compares the options.
+- **Checks.** Before sending, the client checks each answer as the project
+  will, and asks the model again once if it fails; the project's job then
+  checks every result with the same code: two short parts, at most two of
+  the paper's distinctive words, and no description repeated for another
+  paper. Each unit needs two volunteers.
 
-### 2. Rank (one scheduled GitHub job)
+### 2. Combine (one job, after every accepted result): live
 
-- The network model from the first test scores every pair of topics from
-  different domains, about 7.3 million pairs, and publishes the top few
-  thousand as `candidates.json`.
-- **Open question, settled before anything is published:** two features
-  (Adamic-Adar and two-step paths) count through other topics, and the
-  model learned them on a 300-topic sample. On the full map they would
-  count through all 4,516 topics and take larger values. Either they are
-  computed through the same 300 reference topics, or the model is refitted
-  on a full map of an earlier freeze. Whichever is chosen is tested
-  against the backtest data first. The second test, if it runs as
-  [drafted](research/STUDY-2-DRAFT.md), collects full maps at 2012 and 2018
-  and so provides the second option.
-- The ranking is also the forward test of [research/NEXT.md](research/NEXT.md):
-  it is timestamped when published and scored every year.
+The job rebuilds, on the data branch:
 
-### 3. Explain (volunteers, any AI model)
+- **the open index**: every accepted description, with its model, under
+  CC0;
+- **models compared**: how well each model's descriptions agree with
+  other models' descriptions of the same papers, against chance. Two
+  volunteers running the same model do not count as agreeing;
+- **pairs of papers** from different domains whose descriptions are most
+  alike, using only papers that two different models describe
+  consistently, so that a vague description cannot make a pair.
 
-For each candidate pair, in rank order:
+The site shows them on [Same problem, different field](https://nicolas-maman.github.io/undiscovered/connections.html),
+and progress on [Take part](https://nicolas-maman.github.io/undiscovered/join.html).
+Similarity is TF-IDF cosine for now: simple, and anyone can recompute it.
 
-1. The client samples about 40 recent abstracts from each topic.
-2. The volunteer's model rewrites each one without its field's vocabulary
-   (the `distill` unit in PROTOCOL.md).
-3. The client finds the three closest pairs of papers across the two
-   topics, using any embedding model or plain word weights.
-4. The model writes two sentences on why the connection could matter, or
-   says there is none.
+### 3. Map (volunteers, no AI needed): live
 
-Each pair goes to three volunteers using, where possible, different models.
-Every paper they cite must exist in OpenAlex and belong to the right topic;
-answers that disagree are flagged, not averaged away.
+For the ranking of pairs of fields, every topic needs a record of which
+other topics cite its most cited papers, now and in recent years: the same
+record the first test collected, at the end of 2025.
 
-### 4. Review (experts)
+- **Size.** About 17 to 25 OpenAlex calls per topic, about 100,000 for all
+  4,516 topics: ten days for one free key, a day for ten volunteers. This
+  job needs no model, so it suits volunteers without one.
+- **Submission and checks.** A unit's ten records go in a gist under the
+  volunteer's account, named in a short issue with a checksum. The job
+  validates every record, and gives 1 unit in 20 to a second volunteer to
+  compare.
 
-- The site lists candidates by field. A card shows the two fields, the
-  three paper pairs with links, the reason, which models wrote it, and the
-  ratings so far.
-- An expert rates a card from 1 to 5 with a prefilled GitHub issue form.
+### 4. Rank (one job): the forward test is ready
+
+- **The forward test** ([draft plan](research/FORWARD-TEST-DRAFT.md)): the
+  first test's network model, unchanged, ranks the pairs among its 300
+  topics at the end of 2025. The ranking is published with a timestamp
+  before any of the citations that score it exist, and is scored every
+  year. Its records are collected and its code checked; it is registered
+  when the plan is final.
+- **All topics, later.** Two of the model's features count through the
+  other topics in the sample, so on the full map they would take larger
+  values than the model learned. Either they are computed through the same
+  300 reference topics, or the model is refitted on a full map of an
+  earlier freeze; whichever is chosen is tested on the backtest data before
+  a full ranking is published.
+
+### 5. Review (experts): next
+
+- The site lists pairs by field, with their evidence, which models were
+  involved, and the ratings so far.
+- An expert rates a pair from 1 to 5 with a prefilled GitHub issue form.
   Ratings by people who work in one of the two fields count most; sign-in
   with ORCID to check that is planned ([issue #1](https://github.com/nicolas-maman/undiscovered/issues/1)).
 - Ratings, like everything else, are public.
 
 ## How we will know it works
 
-- **Experts against chance.** The review queue mixes in, without marking
-  them, pairs of topics drawn at random. If experts rate the ranked
-  candidates no better than random pairs, the ranking is not useful to
-  them, whatever it predicts. SciMuse made this comparison and found that
-  pairs predicted to be highly cited were, if anything, rated less
-  interesting than random ones, so it is measured here from the start.
-- **The forward test.** The published ranking is scored every year against
-  the citations that actually arrive.
-- **Models against each other.** Agreement between different models, and
-  their accuracy on pairs with known outcomes, give each model a public
-  record. Known outcomes measure reliability only: a model trained on later
-  papers may remember them.
-
-## Using it
-
-- **Volunteers:** install the client, then run `undiscovered work`. The
-  first run asks three things and remembers them on the volunteer's
-  machine only: a GitHub login (through the GitHub command-line tool), an
-  OpenAlex key (optional), and an AI model (it finds a local Ollama on its
-  own, or takes any provider's address and key; only needed for step 3).
-  It runs at low priority, uses at most half the processor, and deletes
-  its caches when a unit is done.
-- **Experts:** the website and a GitHub account.
-- **Researchers:** `undiscovered ask` with a paper, an ORCID iD or a short
-  description runs privately on their machine and shows the distant topics
-  and papers closest to it.
+- **Models against chance**: live. A model whose descriptions agree with
+  other models' no more than descriptions of different papers do is
+  writing nothing specific.
+- **Known twins**: next. Pairs of papers already known to solve the same
+  problem in different fields, mixed into units, show whether descriptions
+  bring them together. Known answers measure reliability only: a model
+  trained on later papers may remember them.
+- **Experts against chance**: with the review page. The queue mixes in,
+  without marking them, pairs drawn at random. SciMuse found that pairs
+  predicted to be highly cited were, if anything, rated less interesting
+  than random ones, so this is measured from the start.
+- **The forward test**: scored every year against the citations that
+  actually arrive.
 
 ## What it costs
 
 Nothing for the project. GitHub Pages (sites up to 1 GB, a soft limit of
 100 GB of traffic a month), GitHub Actions on a public repository, issues,
-gists and releases are free. OpenAlex is free, with a free key giving each
+gists and branches are free. OpenAlex is free, with a free key giving each
 volunteer about 10,000 calls a day. Volunteers who choose a paid AI model
-pay for their own calls; a local model costs only electricity.
+pay for their own calls; a local model costs only electricity, and several
+cloud services have free tiers.
 
 ## Order of work
 
-Each step is usable on its own and is released before the next starts.
+Done:
 
-1. This document.
-2. Map units, the Python and Aether clients (`work` for map units), the
-   checking job, and the release with the full map.
-3. The ranking job and the public candidate list, after the open question
-   in step 2 of the design is settled on the backtest data.
-4. Explain units in the client, and the checks on them.
-5. The review page, the rating form, and the random-pair control.
+1. This document, the protocol, and the first test (published, with all
+   its robustness checks).
+2. Map units: the Python and Aether clients, the checking job, the data
+   branch.
+3. Describing units in the Python client, with any model; the checking and
+   combining jobs; the Take part and Same problem, different field pages.
+4. The forward test's records and ranking code.
+
+Next:
+
+5. Register the forward test and publish its ranking.
+6. Known twins in the describing units.
+7. Describing units in the Aether client ([issue #2](https://github.com/nicolas-maman/undiscovered/issues/2)).
+8. The review page, the rating form, and the random-pair control.

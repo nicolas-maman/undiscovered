@@ -35,9 +35,10 @@ what actually happened.
 > better than chance) and adding the words was again inconclusive. All the
 > numbers, the robustness checks and the code are on the
 > [results page](https://nicolas-maman.github.io/undiscovered/results.html).
-> Too few pairs connected for a clear answer; a decisive test needs every
-> topic, and the [draft for it](research/STUDY-2-DRAFT.md) is open for
-> criticism before any of its data is collected.
+> Rather than spend weeks of data on a bigger version of the same
+> comparison, the project now tests the stronger idea: describing papers
+> without their field's jargon, which volunteers do with their own AI
+> models (step 4 below).
 
 ## How it works
 
@@ -46,19 +47,20 @@ what actually happened.
    research topics. For each topic we take the 100 papers most cited up
    to the freeze, and record which other topics cite them and in which
    years. Volunteers collect this map on their own computers, with their
-   own free OpenAlex allowance ([client](clients/python/README.md)).
+   own free OpenAlex allowance ([client](clients/python/README.md)); this
+   job needs no AI model.
 2. Candidate pairs: two topics from different domains (physical, life,
    health or social sciences) whose papers have barely cited each other's
    most cited papers yet. Each pair is scored on the shape of the citation
-   network around it and on how close the two topics' papers are in
-   content.
+   network around it. Adding how alike the two topics' abstracts are, word
+   for word, did not help in the first test.
 3. A backtest anyone can rerun. We freeze the literature at the end of
    2017, rank the unconnected pairs, and check which of them did start
    citing each other between 2018 and 2023. The ranking model learns its
    weights on an earlier freeze (2011, with outcomes from 2012 to 2017).
    One input still comes from today's OpenAlex: the topic each paper is
    filed under. The plan says how that is checked.
-4. Next: the problem, without the jargon. Fields often name the same
+4. The problem, without the jargon. Fields often name the same
    problem differently: estimating a hidden state from noisy measurements
    is a Kalman filter to a control engineer and data assimilation to a
    weather forecaster (the example is Kulikowski's). A language model can
@@ -67,16 +69,20 @@ what actually happened.
    matching papers on the same problem across fields from 0.22 to 0.51, on
    109 papers (Kulikowski, 2026). That is one model call per paper: too
    many for one project, but manageable when many volunteers each run their
-   own model, local or from a provider. The descriptions would go into an
-   open index. Any model good enough to write them has read papers from
-   after any past freeze, so they will be tested forward: described now,
-   judged on the citations that arrive later ([draft](research/NEXT.md)).
+   own model, local or free in the cloud, and that is the work volunteers
+   do now ([take part](https://nicolas-maman.github.io/undiscovered/join.html)).
+   The descriptions go into an open index, and papers far apart that are
+   described alike are shown as pairs
+   ([same problem, different field](https://nicolas-maman.github.io/undiscovered/connections.html)).
+   Any model good enough to write them has read papers from after any past
+   freeze, so whether they predict connections is tested forward: described
+   now, judged on the citations that arrive later ([draft](research/NEXT.md)).
 5. Experts and checks. Researchers rate the proposed connections that touch
    their own field, because a connection that will happen is not always one
    worth making (see SciMuse below). Every description and verdict records
-   which model produced it. Questions with known answers, mixed into the
-   work, and agreement between different models measure how far to trust
-   each one.
+   which model produced it. Agreement between different models, measured
+   against chance, and, next, pairs with known answers mixed into the work
+   measure how far to trust each one.
 
 It costs the project nothing: the data is open, the site and the
 coordination run on GitHub, and the work runs on contributors' own machines.

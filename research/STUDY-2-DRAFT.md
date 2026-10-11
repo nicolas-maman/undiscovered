@@ -1,4 +1,11 @@
-# Second test: draft plan (not yet registered)
+# Second test: draft plan (shelved)
+
+Shelved on 11 October 2026. It would settle whether word overlap between
+abstracts adds to the citation network, at the cost of about 230,000
+OpenAlex calls. Word overlap is the weaker form of the idea; descriptions
+without the field's jargon, written by volunteers' models and tested
+forward ([NEXT.md](NEXT.md)), test the stronger one, so they come first.
+The draft is kept as it was, in case the question is worth answering later.
 
 A draft for criticism. Nothing in it has been collected or run. When it is
 final it will be registered on OSF and committed as a preregistration

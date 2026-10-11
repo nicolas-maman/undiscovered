@@ -5,9 +5,11 @@ so that what comes next cannot be shaped by that result, and so that it can
 be criticised while it is still cheap to change. Each part gets its own
 preregistration before any of its data is analysed.
 
-The first test came out inconclusive because too few pairs connected; a
+The first test came out inconclusive because too few pairs connected. A
 draft for a decisive version, on every topic, is in
-[STUDY-2-DRAFT.md](STUDY-2-DRAFT.md).
+[STUDY-2-DRAFT.md](STUDY-2-DRAFT.md); it is shelved, because it would spend
+weeks of data on word overlap, the weaker form of the idea, while the
+descriptions in section 2 test the stronger one.
 
 ## 1. A forward test
 

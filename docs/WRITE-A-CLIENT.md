@@ -5,8 +5,10 @@ any language. The project's own clients are in Python
 ([clients/python](../clients/python)) and Aether
 ([clients/aether](../clients/aether)); on the same unit they write the same
 file, byte for byte, and yours should too. This page is the
-whole recipe for the one kind of unit open now, `map`, with the exact
-OpenAlex queries, so that your records match everyone else's.
+whole recipe for the two kinds of unit open now: `map`, with the exact
+OpenAlex queries, so that your records match everyone else's, and
+[`distill`](#describing-papers-distill-units), with the exact prompt, so
+that your model is asked what everyone else's is asked.
 
 ## 1. Pick a unit
 
@@ -85,6 +87,79 @@ be rejected.
 ```
 
 The intake job replies on the issue within a few minutes and closes it.
+
+## Describing papers (distill units)
+
+### Pick a unit
+
+Read <https://raw.githubusercontent.com/nicolas-maman/undiscovered/distill-2025/units/index.json>
+and choose, at random, a unit whose `status` is `open` or `check` that you
+have not done. Each unit has `works` (up to twenty IDs), `avoid` (for each
+work, its distinctive words), `max_avoided` and `instructions`.
+
+### Fetch the papers
+
+One request for the whole unit:
+
+```
+GET https://api.openalex.org/works?filter=openalex:W1|W2|...&per_page=20&select=id,title,abstract_inverted_index
+```
+
+Rebuild each abstract from `abstract_inverted_index` (word to positions):
+put each word at each of its positions and join them with single spaces.
+Skip a work without an abstract.
+
+### Ask the model
+
+One request per work, at temperature 0, with this system message:
+
+```
+You help researchers in one field recognise work from another. You describe what a piece of research does in plain words that any scientist would understand.
+```
+
+and this user message, its parts joined by blank lines (`\n\n`): the unit's
+`instructions`; `Title: ` and the title; `Abstract: ` and the abstract;
+when the work has `avoid` words, `Do not use these words, which are
+specific to this paper: ` and the words joined by `, `, then a full stop;
+and last:
+
+```
+Answer with one JSON object and nothing else, in this form:
+{"problem": "...", "approach": "..."}
+Each value is one or two sentences of plain English, at most 60 words.
+```
+
+That is prompt version 1. Models often wrap the JSON in other text, or
+think aloud between `<think>` tags first: drop those tags and what is
+between them, and read the object from the first `{` to the last `}`.
+
+### Check before you submit
+
+For each description: `problem` and `approach` both present, each at least
+4 and at most 60 words; at most `max_avoided` of the work's `avoid` words
+used (lower case, words of letters only, a final `s` ignored on words
+longer than 3 letters); and not word for word the same as the description
+of another work in the unit. If an answer fails, ask once more, adding to
+the user message, after a blank line: `Your previous answer could not be
+used: ` and the reason, then `. Try again.` A result must describe at least
+three quarters of the unit's works. If your model fails on more than a
+quarter of them, do not submit; a larger model may do better.
+
+### Submit
+
+Open an issue on `nicolas-maman/undiscovered` titled
+`distill result u-100001` whose body has one fenced JSON block:
+
+```json
+{"unit": "u-100001", "protocol": 0, "client": {"name": "my-client", "version": "0.1.0"},
+ "model": {"provider": "openai-compatible", "id": "<the model's name>"}, "prompt": 1,
+ "descriptions": [{"work": "W1", "problem": "...", "approach": "..."}]}
+```
+
+The checking job applies the checks above with the Python client's own
+code (`clients/python/undiscovered/distill.py`), replies within a few
+minutes, and closes the issue. To check a saved result first:
+`python pipeline/intake.py --check <file>.md u-100001`.
 
 ## Good manners
 

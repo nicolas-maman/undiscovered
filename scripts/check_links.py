@@ -29,7 +29,8 @@ def anchors(md: pathlib.Path) -> set[str]:
     for line in FENCE.sub("", md.read_text(encoding="utf-8")).splitlines():
         m = re.match(r"#{1,6}\s+(.*)", line)
         if m:
-            text = re.sub(r"[`*_\[\]]|\(.*?\)", "", m.group(1)).strip().lower()
+            text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", m.group(1))     # a link keeps its text
+            text = re.sub(r"[`*]", "", text).strip().lower()
             out.add(re.sub(r"[^\w\- ]", "", text).replace(" ", "-"))
     return out
 
