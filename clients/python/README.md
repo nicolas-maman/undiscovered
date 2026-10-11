@@ -22,14 +22,16 @@ maps. How the pieces fit together is in [DESIGN.md](../../DESIGN.md).
 - A GitHub account, and the [GitHub command-line tool](https://cli.github.com)
   logged in once with `gh auth login`. Results are submitted from your
   account, so anyone can see who did what.
-- A model, for describing. Any of these works:
-  - one on your own computer, free: [Ollama](https://ollama.com) or
-    [LM Studio](https://lmstudio.ai), with any model they offer;
-    `undiscovered setup` finds them by itself;
-  - any server that speaks the OpenAI API (llama.cpp, vLLM, OpenRouter,
-    Groq, OpenAI and many others), or Anthropic's or Google's API, with your
-    own key. Their usage is billed to you, by them; the project pays for
-    nothing and asks for nothing.
+- A model, for describing. Any model works, and
+  [docs/MODELS.md](../../docs/MODELS.md) compares the options:
+  - one on your own computer, free and private: Ollama, LM Studio,
+    llama.cpp, vLLM or Jan; `undiscovered setup` finds them by itself;
+  - a free service in the cloud, with no graphics card needed: GitHub
+    Models (with your GitHub account), Google Gemini, Groq, OpenRouter's
+    free models or Mistral's free plan;
+  - any service you already pay for: OpenAI, Anthropic, or anything else
+    that speaks the OpenAI API. Their usage is billed to you, by them; the
+    project pays for nothing and asks for nothing.
 - Optional: a free OpenAlex key from <https://openalex.org/settings/api>.
   Without one you get about 1,000 calls a day; with one, about 10,000.
   Describing uses one call per twenty papers; mapping, about 250 per unit.

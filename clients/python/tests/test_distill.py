@@ -133,3 +133,33 @@ def test_no_model_is_chosen_until_the_volunteer_chooses_one():
         models.Model("openai-compatible", "m")          # no base URL
     with pytest.raises(models.ModelError):
         models.Model("someone-else", "m", "http://x")
+
+
+def test_environment_variables_override_the_settings_file(monkeypatch):
+    cfg = {"model": {"provider": "openai-compatible", "base_url": "http://a/v1", "id": "small", "key": "k1"}}
+    monkeypatch.setenv("UNDISCOVERED_MODEL", "large")
+    monkeypatch.setenv("UNDISCOVERED_MODEL_KEY", "k2")
+    m = models.from_settings(cfg)
+    assert (m.base, m.id, m.key) == ("http://a/v1", "large", "k2")
+    monkeypatch.setenv("UNDISCOVERED_MODEL_PROVIDER", "anthropic")
+    monkeypatch.setenv("UNDISCOVERED_MODEL_BASE_URL", "")
+    assert models.from_settings({"model": {"id": "x"}}).base == models.BASE["anthropic"]
+
+
+def test_too_many_requests_waits_as_told_and_slows_down(monkeypatch):
+    slept, replies = [], []
+
+    class Resp:
+        def __init__(self, status, headers=None):
+            self.status_code, self.headers, self.text = status, headers or {}, ""
+
+        def json(self):
+            return {"choices": [{"message": {"content": "ok"}}]}
+
+    replies += [Resp(429, {"Retry-After": "7"}), Resp(429), Resp(200)]
+    m = models.Model("openai-compatible", "m", "http://a/v1")
+    monkeypatch.setattr(models.time, "sleep", slept.append)
+    monkeypatch.setattr(m._session, "post", lambda *a, **k: replies.pop(0))
+    assert m.ask("s", "u") == "ok"
+    assert slept[0] == 7.0                       # the server's own Retry-After
+    assert m.interval == 4.0                     # 2 s after the first 429, doubled after the second

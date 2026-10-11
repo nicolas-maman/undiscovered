@@ -213,15 +213,15 @@ MIN_COVERED = 0.75          # a result describes at least this share of the unit
 def check_descriptions(result: dict, unit: dict) -> list[dict]:
     """The result's descriptions, or Reject with the first problem found."""
     from undiscovered import distill
+    if "descriptions" in result and result.get("prompt") != distill.PROMPT:
+        raise Reject(f"the result was made with prompt {result.get('prompt')}; this unit needs prompt "
+                     f"{distill.PROMPT}, so update the client")
     problem = next(iter(RESULT.iter_errors(result)), None)
     if problem is not None or "descriptions" not in result:
         where = "/".join(str(x) for x in problem.absolute_path) if problem else "descriptions"
         raise Reject(f"{where or 'result'}: {problem.message[:200] if problem else 'missing'}")
     if result.get("unit") != unit["unit"]:
         raise Reject("the result is for another unit")
-    if result.get("prompt") != distill.PROMPT:
-        raise Reject(f"the result was made with prompt {result.get('prompt')}; this unit needs prompt "
-                     f"{distill.PROMPT}, so update the client")
     descs, seen = result["descriptions"], set()
     for d in descs:
         w = d["work"]

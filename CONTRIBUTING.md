@@ -7,7 +7,9 @@ Thank you. There are four ways in, from least to most code.
    if anything in the [analysis plan](research/PREREGISTRATION.md), the
    [results](https://nicolas-maman.github.io/undiscovered/results.html) or
    [DESIGN.md](DESIGN.md) could make a conclusion wrong.
-2. **Lend your computer.** Run a client: [Python](clients/python/README.md) or [Aether](clients/aether/README.md).
+2. **Lend your computer and a model.** Run a client: [Python](clients/python/README.md) or
+   [Aether](clients/aether/README.md). Any AI model works, including free ones in the
+   cloud: [docs/MODELS.md](docs/MODELS.md).
 3. **Write a client** in your own language: [docs/WRITE-A-CLIENT.md](docs/WRITE-A-CLIENT.md).
 4. **Change the code.** Open a pull request.
 

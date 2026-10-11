@@ -54,29 +54,30 @@ def cmd_setup(_args) -> None:
 
 
 def choose_model(cfg: dict) -> None:
-    """Offer the models a local server on this machine has, or take one by hand."""
-    found = models.local_models()
-    for i, (server, _base, mid) in enumerate(found, 1):
-        print(f"   {i}. {mid} ({server}, on this machine)")
-    print(f"   {len(found) + 1}. another model: a provider, or a server elsewhere")
+    """Offer the models on this machine, the services the client knows, or any other server."""
+    options = [(f"{mid} ({server}, on this machine, free)", "openai-compatible", base, mid, "", "")
+               for server, base, mid in models.local_models()]
+    options += [(f"{name}: {cost}", kind, base, "", where, name) for name, kind, base, where, cost in models.PRESETS]
+    options.append(("another server that speaks the OpenAI API", "openai-compatible", "", "", "", ""))
+    print("   Which model? Any of these works; docs/MODELS.md compares them.")
+    for i, (label, *_rest) in enumerate(options, 1):
+        print(f"   {i:>2}. {label}")
     pick = input("   Number, or Enter to skip: ").strip()
-    if not pick.isdigit() or not 1 <= int(pick) <= len(found) + 1:
+    if not pick.isdigit() or not 1 <= int(pick) <= len(options):
         return
-    if int(pick) <= len(found):
-        _server, base, mid = found[int(pick) - 1]
-        cfg["model"] = {"provider": "openai-compatible", "base_url": base, "id": mid}
+    _label, kind, base, mid, where, name = options[int(pick) - 1]
+    if mid:                                     # a model already on this machine
+        cfg["model"] = {"provider": kind, "base_url": base, "id": mid}
         return
-    provider = input(f"   Kind ({', '.join(models.KINDS)}): ").strip() or "openai-compatible"
-    if provider not in models.KINDS:
-        print("   Not a kind the client knows; nothing saved.")
+    if not base and kind == "openai-compatible":
+        base = input("   Its base URL, ending in /v1 for most servers: ").strip()
+    mid = input(f"   Model name, exactly as {name or 'the server'} lists it: ").strip()
+    if not mid:
+        print("   No model name; nothing saved.")
         return
-    if provider == "openai-compatible":
-        base = input("   Base URL, such as https://openrouter.ai/api/v1: ").strip()
-    else:
-        base = input("   Base URL (Enter for the provider's own): ").strip()
-    mid = input("   Model name, as the provider writes it: ").strip()
-    key = getpass.getpass("   Key, or Enter if it needs none (input is hidden): ").strip()
-    cfg["model"] = {"provider": provider, "base_url": base, "id": mid, **({"key": key} if key else {})}
+    hint = f" ({where})" if where else ""
+    secret = getpass.getpass(f"   Key{hint}, or Enter if it needs none (input is hidden): ").strip()
+    cfg["model"] = {"provider": kind, "base_url": base, "id": mid, **({"key": secret} if secret else {})}
 
 
 def pick_unit(index: dict, done: set[str], rng: random.Random) -> dict | None:
