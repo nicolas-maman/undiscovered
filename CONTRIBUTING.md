@@ -21,6 +21,7 @@ pip install -e clients/python
 python -m pytest -q research          # the analysis
 python -m pytest -q clients/python/tests pipeline/tests
 python scripts/check_punctuation.py
+python scripts/check_links.py
 ```
 
 The Aether client builds and tests on its own, with the Aether toolchain

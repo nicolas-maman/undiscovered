@@ -33,6 +33,8 @@ jobs:
         run: python -c "import json,glob; [json.load(open(p)) for p in glob.glob('schemas/*.json')]; print('ok')"
       - name: Plain punctuation (no em or en dashes in project text)
         run: python scripts/check_punctuation.py
+      - name: Links within the project point at files and headings that exist
+        run: python scripts/check_links.py
 
   # The Aether client on Linux, where its non-Windows parts (priority, hidden
   # input, settings path) are compiled and tested. The toolchain is built from
