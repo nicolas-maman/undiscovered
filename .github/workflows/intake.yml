@@ -76,6 +76,8 @@ jobs:
         run: python pipeline/intake.py | tail -n 1 > verdict.json
       - name: Combine everything accepted so far (model agreement, twins, the open index)
         run: python pipeline/combine.py distill
+      - name: The known-twins result, or how far off it is (research/KNOWN-TWINS.md)
+        run: python pipeline/known_twins.py result distill
       - name: Store what was accepted
         run: |
           cd distill

@@ -112,7 +112,7 @@ def twins(X, rows: list[dict], pairs: list[tuple[int, int]], papers: dict, thres
     V = np.vstack([np.asarray(X[by_work[w]].mean(axis=0)).ravel() for w in reliable])
     V /= np.linalg.norm(V, axis=1, keepdims=True) + 1e-12
     S = V @ V.T
-    domain = np.array([papers[w]["domain"] for w in reliable])
+    domain = np.array([papers.get(w, {}).get("domain", "") or w for w in reliable])   # unknown: its own domain
     S[domain[:, None] == domain[None, :]] = -1          # same domain: not a twin
     iu = np.triu_indices(len(reliable), 1)
     order = np.argsort(-S[iu], kind="stable")
@@ -126,7 +126,7 @@ def twins(X, rows: list[dict], pairs: list[tuple[int, int]], papers: dict, thres
             continue
         used[wa] += 1
         used[wb] += 1
-        side = lambda w: {"work": w, **papers[w],  # noqa: E731
+        side = lambda w: {"work": w, **papers.get(w, {}),  # noqa: E731
                           "descriptions": [{"problem": rows[i]["problem"], "approach": rows[i]["approach"],
                                             "model": rows[i]["model"][1]} for i in by_work[w]]}
         out.append({"similarity": round(float(S[a, b]), 4), "a": side(wa), "b": side(wb)})
