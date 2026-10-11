@@ -342,7 +342,9 @@ def check_file(path: str, unit_id: str) -> int:
 def main() -> int | None:
     if len(sys.argv) == 4 and sys.argv[1] == "--check":
         return check_file(sys.argv[2], sys.argv[3])
-    event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
+    # INTAKE_EVENT lets CI rehearse with an issue of its own: Actions does not let
+    # a step change GITHUB_EVENT_PATH.
+    event = json.loads(Path(os.environ.get("INTAKE_EVENT") or os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
     issue = event["issue"]
     body, author, number = issue.get("body") or "", issue["user"]["login"], issue["number"]
     try:

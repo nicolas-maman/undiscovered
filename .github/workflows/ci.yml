@@ -55,7 +55,7 @@ jobs:
       - name: A result, checked, combined and scored, as the intake workflow does
         env:
           DISTILL_DIR: distill
-          GITHUB_EVENT_PATH: event.json
+          INTAKE_EVENT: event.json
         run: |
           python scripts/rehearse_intake.py distill event.json
           python pipeline/intake.py | tail -n 1 > verdict.json
