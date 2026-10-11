@@ -4905,6 +4905,82 @@
      "holds": true
     }
    }
+  },
+  {
+   "key": "research_only",
+   "label": "After publication, not in the plan: research works only in the abstract samples",
+   "abstracts_dropped": 1199,
+   "pairs": {
+    "train": 28710,
+    "train_positive": 199,
+    "eval": 28114,
+    "eval_positive": 305,
+    "eval_base_rate": 0.01084868748666145
+   },
+   "models": {
+    "popularity": {
+     "average_precision": 0.05049721967078601,
+     "average_precision_ci": [
+      0.01459557012148226,
+      0.10838302757598993
+     ]
+    },
+    "network": {
+     "average_precision": 0.14358810153666884,
+     "average_precision_ci": [
+      0.07415419221624411,
+      0.27643515083696657
+     ]
+    },
+    "semantic": {
+     "average_precision": 0.0866870094230881,
+     "average_precision_ci": [
+      0.045478961785788884,
+      0.19420785191609222
+     ]
+    },
+    "combined": {
+     "average_precision": 0.14038031425540606,
+     "average_precision_ci": [
+      0.07367280539401157,
+      0.27795540215631936
+     ]
+    },
+    "random": {
+     "average_precision": 0.010631376910164265,
+     "average_precision_ci": [
+      0.007371461844706325,
+      0.016672809510407432
+     ]
+    }
+   },
+   "hypotheses": {
+    "H1_combined_beats_network": {
+     "diff": -0.0032077872812627806,
+     "diff_ci": [
+      -0.045196258862881734,
+      0.040822048836066875
+     ],
+     "holds": false,
+     "outcome": "inconclusive"
+    },
+    "H2_network_beats_popularity": {
+     "diff": 0.09309088186588282,
+     "diff_ci": [
+      0.037988232729702955,
+      0.20086786703611964
+     ],
+     "holds": true
+    },
+    "H3_semantic_beats_popularity": {
+     "diff": 0.03618978975230209,
+     "diff_ci": [
+      -0.006041533521272578,
+      0.12287476368283202
+     ],
+     "holds": true
+    }
+   }
   }
  ]
 }
