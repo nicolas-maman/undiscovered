@@ -89,7 +89,9 @@ Now:
 - [Take part](https://nicolas-maman.github.io/undiscovered/join.html): lend
   your computer and an AI model of your choice, on your own machine or free
   in the cloud, to describe papers in plain words. The page shows the
-  progress so far, who has helped and which models they used.
+  progress so far, who has helped and which models they used; the pairs of
+  papers the descriptions bring together, and how the models compare, are on
+  [Same problem, different field](https://nicolas-maman.github.io/undiscovered/connections.html).
 - Find a flaw in the [first test's results](https://nicolas-maman.github.io/undiscovered/results.html)
   or the [draft forward test](research/FORWARD-TEST-DRAFT.md), and
   [tell us what could make a result wrong](https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml).
@@ -101,9 +103,7 @@ As each part ships, you will be able to:
 - rate the proposed connections that touch your field;
 - run the tool on your own machine with a paper, an ORCID iD or a short
   description, and see which distant fields work on the same problem.
-  Nothing leaves your machine unless you choose to share it;
-- browse pairs of papers from distant fields that the descriptions show
-  working on the same problem.
+  Nothing leaves your machine unless you choose to share it.
 
 Clients follow one [protocol](PROTOCOL.md). Two collect the map now: the
 [Python client](clients/python/README.md), and the [Aether client](clients/aether/README.md),

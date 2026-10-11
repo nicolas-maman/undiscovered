@@ -155,7 +155,7 @@ def combine(branch: Path) -> dict:
         summary.update(chance_median=round(float(np.median(base)), 4), reliable_above=round(threshold, 4),
                        models=models(X, rows, pairs, rng), twins=twins(X, rows, pairs, papers, threshold))
     else:
-        summary["note"] = f"fewer than {MIN_DESCRIPTIONS} descriptions so far: nothing to compare yet"
+        summary["note"] = f"Fewer than {MIN_DESCRIPTIONS} descriptions so far: nothing to compare yet."
     twins_out = summary.pop("twins")
     (out_dir / "models.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False), encoding="utf-8")
     (out_dir / "twins.json").write_text(json.dumps({"method": summary["method"], "twins": twins_out},

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Same problem, different field · undiscovered">
+<meta property="og:description" content="Pairs of papers from distant fields whose plain descriptions, written by volunteers' AI models, say the same thing.">
+<meta property="og:url" content="https://nicolas-maman.github.io/undiscovered/connections.html">
+<meta property="og:image" content="https://nicolas-maman.github.io/undiscovered/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="undiscovered: research in one field that another field could use, but has never cited.">
+<meta name="twitter:card" content="summary_large_image">
+<title>Same problem, different field · undiscovered</title>
+<meta name="description" content="Pairs of papers from distant fields that work on the same problem, found from plain descriptions written by volunteers' AI models.">
+<style>
+  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; --band: #f1efe9; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0; --band: #1d1c1a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 48px 16px 80px; }
+  nav { font: 14px system-ui, sans-serif; margin-bottom: 32px; }
+  nav a { color: var(--muted); text-decoration: none; }
+  h1 { font-size: 2rem; margin: 0 0 8px; }
+  h2 { font: 600 0.95rem system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--muted); margin: 44px 0 10px; }
+  a { color: var(--accent); }
+  .lede { font-size: 1.1rem; }
+  .note { color: var(--muted); font-size: .92rem; }
+  .pair { border-top: 1px solid var(--rule); padding: 18px 0; }
+  .pair-head { font: 13px system-ui, sans-serif; color: var(--muted); margin-bottom: 8px; }
+  .sides { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 640px) { .sides { grid-template-columns: 1fr; } }
+  .side { background: var(--band); border-radius: 6px; padding: 12px 14px; }
+  .where { font: 600 13px system-ui, sans-serif; color: var(--muted); }
+  .title { font-weight: 600; margin: 4px 0 8px; }
+  .desc { font-size: .95rem; margin: 6px 0 0; }
+  .desc b { font: 600 12px system-ui, sans-serif; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  .by { font: 12px system-ui, sans-serif; color: var(--muted); }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font: 15px/1.4 system-ui, sans-serif; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule); }
+  th { font-weight: 600; color: var(--muted); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  ul { padding-left: 20px; }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">undiscovered</a> / connections</nav>
+  <h1>Same problem, different field</h1>
+  <p class="lede">Pairs of papers from different domains whose plain descriptions say the same thing.
+  Volunteers' AI models describe each paper without its field's words; when two papers far apart are
+  described alike, they may be working on the same problem without knowing it.</p>
+  <p class="note">Each pair is a lead for a reader to judge, not a finding. Only papers that two different
+  models described consistently are paired, so a vague description cannot make a pair. How it is
+  computed is at the end of this page.</p>
+
+  <h2>Pairs found so far</h2>
+  <div id="twins"><p class="note">Loading...</p></div>
+
+  <h2>Models, compared</h2>
+  <p class="note">How closely each model's descriptions agree with other models' descriptions of the same
+  papers, next to how alike descriptions of two different papers are by chance. Agreement is a check that a
+  model says something specific about each paper; it is not proof that what it says is right.</p>
+  <div id="models"></div>
+
+  <h2>How it is computed</h2>
+  <ul>
+    <li>Each paper is described by two volunteers, each with the model of their choice, as the problem it works
+    on and how, without the paper's distinctive words. The descriptions and the model that wrote each are
+    on the <a href="https://github.com/nicolas-maman/undiscovered/tree/distill-2025/combined">data branch</a>,
+    under CC0.</li>
+    <li>Descriptions are compared by the cosine between their TF-IDF word vectors. It is simple and anyone can
+    recompute it; whether a learned embedding finds better pairs is a question for the data once there is
+    enough of it.</li>
+    <li>Chance is how alike descriptions of two different papers are, from a fixed random sample. A paper is
+    used only if descriptions of it by two different models agree more than 95% of those chance pairs do.
+    Two volunteers running the same model do not count as agreeing.</li>
+    <li>Pairs within the same domain (life, health, physical or social sciences) are left out, and no paper
+    appears in more than two pairs. The code is
+    <a href="https://github.com/nicolas-maman/undiscovered/blob/main/pipeline/combine.py">pipeline/combine.py</a>.</li>
+  </ul>
+
+  <footer>
+    Open source (MIT). Data CC0, from <a href="https://openalex.org">OpenAlex</a>.
+    <a href="join.html">Take part</a> ·
+    <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
+  </footer>
+</main>
+<script>
+(function () {
+  "use strict";
+  var RAW = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/distill-2025/";
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === "text") { e.textContent = attrs[k]; } else { e.setAttribute(k, attrs[k]); }
+    });
+    (kids || []).forEach(function (c) { e.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return e;
+  }
+  function n(x) { return (x || 0).toLocaleString("en"); }
+  function get(path) {
+    return fetch(RAW + path, {cache: "no-store"}).then(function (r) {
+      if (!r.ok) { throw new Error("HTTP " + r.status); }
+      return r.json();
+    });
+  }
+  function side(s, titles) {
+    var d = s.descriptions[0];
+    return el("div", {class: "side"}, [
+      el("div", {class: "where", text: s.domain + " · " + (s.field || "") + " · " + (s.topic_name || s.topic)}),
+      el("div", {class: "title"}, [el("a", {href: "https://openalex.org/" + s.work, text: titles[s.work] || s.work})]),
+      el("p", {class: "desc"}, [el("b", {text: "Problem "}), d.problem]),
+      el("p", {class: "desc"}, [el("b", {text: "Approach "}), d.approach]),
+      el("div", {class: "by", text: "Described by " + s.descriptions.map(function (x) { return x.model; }).join(" and ")})]);
+  }
+  function titlesFor(works) {
+    var titles = {}, chunks = [];
+    for (var i = 0; i < works.length; i += 50) { chunks.push(works.slice(i, i + 50)); }
+    return Promise.all(chunks.map(function (c) {
+      return fetch("https://api.openalex.org/works?filter=openalex:" + c.join("|") + "&select=id,title&per_page=50")
+        .then(function (r) { return r.ok ? r.json() : {results: []}; })
+        .then(function (d) { (d.results || []).forEach(function (w) { titles[w.id.split("/").pop()] = w.title; }); })
+        .catch(function () {});
+    })).then(function () { return titles; });
+  }
+  Promise.all([get("combined/twins.json"), get("combined/models.json"), get("progress.json")]).then(function (all) {
+    var twins = all[0].twins || [], m = all[1], p = all[2];
+    var box = document.getElementById("twins");
+    box.textContent = "";
+    if (!twins.length) {
+      box.appendChild(el("p", {}, ["No pairs yet. They appear once enough papers have descriptions from two " +
+        "different models: so far " + n(p.papers_described) + " of " + n(p.papers) + " papers have at least one description. ",
+        el("a", {href: "join.html", text: "Take part"}), " to bring the first ones closer."]));
+    } else {
+      var works = [];
+      twins.forEach(function (t) { works.push(t.a.work, t.b.work); });
+      titlesFor(works).then(function (titles) {
+        twins.forEach(function (t, i) {
+          box.appendChild(el("div", {class: "pair"}, [
+            el("div", {class: "pair-head", text: "#" + (i + 1) + " · similarity " + t.similarity.toFixed(2)}),
+            el("div", {class: "sides"}, [side(t.a, titles), side(t.b, titles)])]));
+        });
+      });
+    }
+    var mbox = document.getElementById("models");
+    if (!m.models || !m.models.length) {
+      mbox.appendChild(el("p", {class: "note", text: m.note || "No descriptions yet."}));
+      return;
+    }
+    var head = el("tr", {}, ["Model", "Kind", "Papers", "Agreement", "Chance"].map(function (h, k) {
+      return el("th", {class: k > 1 ? "num" : "", text: h}); }));
+    var body = el("tbody", {}, m.models.map(function (x) {
+      return el("tr", {}, [el("td", {text: x.id}), el("td", {text: x.provider}),
+        el("td", {class: "num", text: n(x.papers)}),
+        el("td", {class: "num", text: x.agreement === null ? "not yet" : x.agreement.toFixed(2) + " (" + n(x.pairs) + ")"}),
+        el("td", {class: "num", text: x.chance === null ? "" : x.chance.toFixed(2)})]);
+    }));
+    mbox.appendChild(el("div", {class: "scroll"}, [el("table", {}, [el("thead", {}, [head]), body])]));
+    mbox.appendChild(el("p", {class: "note", text: "Agreement: mean similarity to other models' descriptions of the same " +
+      "papers (number of such pairs in brackets). Chance: mean similarity to descriptions of other papers."}));
+  }).catch(function (e) {
+    var box = document.getElementById("twins");
+    box.textContent = "";
+    box.appendChild(el("p", {class: "note"}, ["The results could not be loaded just now (" + e.message + "). They are on the ",
+      el("a", {href: "https://github.com/nicolas-maman/undiscovered/tree/distill-2025/combined", text: "data branch"}), "."]));
+  });
+})();
+</script>
+</body>
+</html>
