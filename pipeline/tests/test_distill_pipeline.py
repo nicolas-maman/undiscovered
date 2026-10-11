@@ -113,3 +113,14 @@ def test_units_of_both_kinds_follow_the_unit_schema():
     made += distill_units.make_units({f"W{i}": {} for i in range(1, 25)}, {f"W{i}": ["x"] for i in range(1, 25)})["units"]
     for u in made:
         assert not list(schema.iter_errors(u)), u["unit"]
+
+
+def test_progress_counts_units_descriptions_people_and_models(tmp_path):
+    u = unit()
+    d = branch(tmp_path, u)
+    intake.intake_distill(d, issue(u), "alice", 11)
+    intake.intake_distill(d, issue(u, model_id="llama3.1:8b"), "bob", 13)
+    p = json.loads((d / "progress.json").read_text(encoding="utf-8"))
+    assert p["units"] == {"done": 1} and p["descriptions"] == 8 and p["papers_described"] == 4
+    assert [c["login"] for c in p["contributors"]] == ["alice", "bob"]
+    assert {m["id"]: m["units"] for m in p["models"]} == {"qwen3:8b": 1, "llama3.1:8b": 1}

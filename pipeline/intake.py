@@ -16,6 +16,7 @@ and writes to a checkout of the map branch:
     units/index.json          the units and their status
     records/<topic>.json      one accepted record per topic
     results/<unit>.json       who submitted what, for every accepted result
+    progress.json             counts for the site: units by status, contributors
 
 One unit in twenty also needs a second volunteer's result, which must
 agree with the first. Prints the reply for the issue on the last line of
@@ -24,11 +25,13 @@ its output, as JSON.
 
 from __future__ import annotations
 
+import datetime
 import hashlib
 import json
 import os
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 import requests
@@ -194,7 +197,29 @@ def intake(map_dir: Path, body: str, author: str, issue: int, token: str = "",
     res_path.parent.mkdir(parents=True, exist_ok=True)
     res_path.write_text(json.dumps(results, indent=1), encoding="utf-8")
     index_path.write_text(json.dumps(index, indent=1), encoding="utf-8")
+    write_progress(map_dir, map_progress(map_dir))
     return reply
+
+
+def _now() -> str:
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def write_progress(branch: Path, progress: dict) -> None:
+    (branch / "progress.json").write_text(json.dumps(progress, indent=1, ensure_ascii=False), encoding="utf-8")
+
+
+def map_progress(map_dir: Path) -> dict:
+    """What the site shows about the map: units by status, topics recorded, who did them."""
+    index = json.loads((map_dir / "units" / "index.json").read_text(encoding="utf-8"))
+    units = Counter()
+    for f in sorted((map_dir / "results").glob("*.json")):
+        for r in json.loads(f.read_text(encoding="utf-8")):
+            units[r["author"]] += 1
+    return {"job": "map", "freeze": index.get("freeze"), "updated": _now(),
+            "topics": index.get("topics"), "topics_recorded": len(list((map_dir / "records").glob("*.json"))),
+            "units": dict(sorted(Counter(u["status"] for u in index["units"]).items())),
+            "contributors": [{"login": a, "units": n} for a, n in sorted(units.items(), key=lambda x: (-x[1], x[0]))]}
 
 
 # Distill results. The descriptions travel in the issue itself (twenty fit
@@ -260,10 +285,32 @@ def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
     have = len(earlier) + 1
     unit["status"] = "done" if have >= unit.get("quorum", 2) else "check"
     index_path.write_text(json.dumps(index, indent=1), encoding="utf-8")
+    write_progress(dist_dir, distill_progress(dist_dir))
     model = f"{result['model']['id']} ({result['model']['provider']})"
     return (f"Accepted: {len(descs)} descriptions for {unit['unit']}, made with {model}. " +
             ("The unit is complete. Thank you." if unit["status"] == "done"
              else f"It needs {unit.get('quorum', 2) - have} more from another volunteer. Thank you."))
+
+
+def distill_progress(dist_dir: Path) -> dict:
+    """What the site shows about describing: units by status, descriptions, contributors and models."""
+    index = json.loads((dist_dir / "units" / "index.json").read_text(encoding="utf-8"))
+    people: dict[str, Counter] = {}
+    models: dict[tuple[str, str], Counter] = {}
+    described = set()
+    for f in sorted((dist_dir / "results").glob("*/*.json")):
+        r = json.loads(f.read_text(encoding="utf-8"))
+        n = len(r["descriptions"])
+        described.update(d["work"] for d in r["descriptions"])
+        people.setdefault(r["author"], Counter()).update(units=1, descriptions=n)
+        models.setdefault((r["model"]["provider"], r["model"]["id"]), Counter()).update(units=1, descriptions=n)
+    order = lambda item: (-item[1]["descriptions"], item[0])  # noqa: E731
+    return {"job": "distill", "set": index.get("set"), "updated": _now(), "papers": index.get("papers"),
+            "papers_described": len(described),
+            "descriptions": sum(c["descriptions"] for c in people.values()),
+            "units": dict(sorted(Counter(u["status"] for u in index["units"]).items())),
+            "contributors": [{"login": a, **c} for a, c in sorted(people.items(), key=order)],
+            "models": [{"provider": k[0], "id": k[1], **c} for k, c in sorted(models.items(), key=order)]}
 
 
 UNITS_URL = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/map-2025/units/index.json"

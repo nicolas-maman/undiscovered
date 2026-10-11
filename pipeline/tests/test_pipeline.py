@@ -81,6 +81,9 @@ def test_a_sound_result_is_accepted_and_stored(branch):
     assert json.loads((map_dir / "results" / f"{unit['unit']}.json").read_text())[0]["author"] == "alice"
     again = intake.intake(map_dir, body(unit["unit"], sha), "bob", 8, fetch=lambda url, tok: content)
     assert "already complete" in again
+    progress = json.loads((map_dir / "progress.json").read_text())
+    assert progress["topics_recorded"] == 2 and progress["units"] == {"done": 1, "open": 1}
+    assert progress["contributors"] == [{"login": "alice", "units": 1}]
 
 
 @pytest.mark.parametrize("break_it, message", [
