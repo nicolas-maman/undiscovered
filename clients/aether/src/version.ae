@@ -3,6 +3,6 @@
 exports(NAME, VERSION, REPO, PROTOCOL)
 
 const NAME = "undiscovered-ae"
-const VERSION = "0.1.0"
+const VERSION = "0.2.0"
 const REPO = "nicolas-maman/undiscovered"
 const PROTOCOL = 0

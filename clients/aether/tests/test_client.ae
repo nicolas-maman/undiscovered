@@ -30,7 +30,7 @@ const CITING_AGAIN = "{\"group_by\":[{\"key\":\"https://openalex.org/T7\",\"coun
 
 // What clients/python's cli.result_body() and requests' json= write for
 // the same inputs (made with the Python client, client name changed).
-const RESULT = "A map result from the undiscovered client. The checking job reads the JSON below.\n\n```json\n{\n \"unit\": \"u-000001\",\n \"protocol\": 0,\n \"client\": {\n  \"name\": \"undiscovered-ae\",\n  \"version\": \"0.1.0\"\n },\n \"gist\": \"https://gist.github.com/someone/0123456789abcdef0123\",\n \"sha256\": \"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881\"\n}\n```\n"
+const RESULT = "A map result from the undiscovered client. The checking job reads the JSON below.\n\n```json\n{\n \"unit\": \"u-000001\",\n \"protocol\": 0,\n \"client\": {\n  \"name\": \"undiscovered-ae\",\n  \"version\": \"0.2.0\"\n },\n \"gist\": \"https://gist.github.com/someone/0123456789abcdef0123\",\n \"sha256\": \"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881\"\n}\n```\n"
 const CONTENT = "{\"a\":\"Δ \\\"q\\\" é 😀\\n\"}"
 const GIST = "{\"description\": \"undiscovered map result u-000001\", \"public\": false, \"files\": {\"u-000001.json\": {\"content\": \"{\\\"a\\\":\\\"\\u0394 \\\\\\\"q\\\\\\\" \\u00e9 \\ud83d\\ude00\\\\n\\\"}\"}}}"
 const ISSUE = "{\"title\": \"map result u-000001\", \"body\": \"line\\n\\\"x\\\" \\u00e9\", \"labels\": []}"

@@ -1,6 +1,6 @@
 [package]
 name = "undiscovered"
-version = "0.1.0"
+version = "0.2.0"
 description = "Lend your computer to undiscovered: map which fields of science cite each other, with your own free OpenAlex allowance."
 license = "MIT"
 
