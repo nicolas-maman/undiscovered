@@ -109,18 +109,28 @@ README).
 
 ```json
 {
-  "unit": "u-000456",
+  "unit": "u-100001",
   "protocol": 0,
   "kind": "distill",
   "works": ["W2028823348", "W2014952121"],
-  "instructions": "For each work, read its title and abstract in OpenAlex. Describe the problem it works on and how it goes about it, so that a researcher in any field would recognise the problem. Do not name the field, its methods or its objects of study, and do not reuse terms from the abstract that only that field would use.",
-  "quorum": 3
+  "avoid": {"W2028823348": ["proline", "drought", "leaves"],
+            "W2014952121": ["caching", "routers", "packets"]},
+  "max_avoided": 2,
+  "instructions": "Describe the problem this work addresses and how it goes about it, so that a researcher in any field would recognise the problem. Do not name the field, its methods or its objects of study, and do not reuse terms from the abstract that only that field would use.",
+  "quorum": 2
 }
 ```
 
 A client fetches what it needs from OpenAlex itself (titles and
-abstracts), so the fetching is spread across volunteers and their own
-OpenAlex budgets.
+abstracts, one request per unit), so the fetching is spread across
+volunteers and their own OpenAlex budgets. `avoid` lists, for each work, its
+most distinctive words: the highest TF-IDF scores of its title and abstract
+against every paper in the set, computed once when the units are made
+(`pipeline/distill_units.py`, eight words per paper). The model is told not
+to use them, and a description may reuse at most `max_avoided` of them.
+Units on the `distill-2025` branch hold the 40 sampled works of each of the
+first test's 300 topics, kept when the abstract is usable: the same papers
+the map records count.
 
 Some units are **gold units**: their answer is already known (from the
 backtest: pairs that did or did not connect later). They look exactly like
@@ -153,7 +163,10 @@ JSON block:
 ```
 
 For `judge` units, `ranking` is replaced by `"verdict"` and `"reason"`. For
-`distill` units it is replaced by `"descriptions"`, one per work:
+`distill` units it is replaced by `"descriptions"`, one per work, and the
+result also gives `"prompt"`, the version of the client's prompt. Twenty
+descriptions fit in an issue, so they travel in it, with no gist. The issue
+is titled `distill result u-...`:
 
 ```json
 "descriptions": [
@@ -168,16 +181,19 @@ For `judge` units, `ranking` is replaced by `"verdict"` and `"reason"`. For
 
 A `distill` result is checked in three ways before it counts:
 
-- No jargon. For each work, the validator takes the terms in its title
-  and abstract that are most specific to it compared with other papers. If
-  more than a few of them reappear in the description, the description is
-  rejected. The threshold is set on the first trial runs and published with
-  the validator.
-- Agreement between models. Descriptions of the same work from different
+- No jargon, when it arrives. Each description has a problem and an
+  approach of at most 60 words each, and reuses at most `max_avoided` of
+  its work's `avoid` words (case and a final s ignored). A result must
+  describe at least three quarters of the unit's works, each once, made
+  with the current prompt. The checking job uses the client's own
+  functions (`clients/python/undiscovered/distill.py`), so a result that
+  passed the client's checks passes these. `max_avoided` is 2 until the
+  first trial runs, which set it; the value is published in every unit.
+- Agreement between models, when results are combined. Descriptions of the same work from different
   contributors are compared by embedding. The accepted description is the
   one closest to the others, and a model whose descriptions keep landing
   far from the rest loses weight.
-- Known twins. Some units contain pairs of works already known to solve
+- Known twins, when results are combined. Some units contain pairs of works already known to solve
   the same problem in different fields, such as those in published
   benchmarks of cross-field twins, used where their licence allows. A
   model whose descriptions of known twins land far apart loses weight.

@@ -1,9 +1,13 @@
-"""Check one submitted map result and, if it is sound, store it.
+"""Check one submitted result and, if it is sound, store it.
 
-Run by the intake workflow when an issue titled "map result u-..." is opened.
-Client authors can run the same checks on a saved result first:
+Run by the intake workflow when an issue titled "map result u-..." or
+"distill result u-..." is opened. Client authors can run the same checks on a
+saved result first:
 
     python pipeline/intake.py --check undiscovered-u-000241.json u-000241
+    python pipeline/intake.py --check undiscovered-u-100001.md u-100001
+
+Distill results are described at the end of this file.
 
 It reads only the JSON block in the issue, never runs anything from it,
 fetches the gist the result names, checks its checksum and every record,
@@ -30,8 +34,9 @@ from pathlib import Path
 import requests
 from jsonschema import Draft202012Validator
 
-SCHEMA = Draft202012Validator(json.loads(
-    (Path(__file__).resolve().parents[1] / "schemas" / "map-record.schema.json").read_text(encoding="utf-8")))
+ROOT = Path(__file__).resolve().parents[1]
+SCHEMA = Draft202012Validator(json.loads((ROOT / "schemas" / "map-record.schema.json").read_text(encoding="utf-8")))
+RESULT = Draft202012Validator(json.loads((ROOT / "schemas" / "result.schema.json").read_text(encoding="utf-8")))
 
 MAX_BYTES = 5_000_000
 CHECK_EVERY = 20
@@ -45,7 +50,7 @@ class Reject(Exception):
     """The result cannot be accepted; the message says why, for the issue reply."""
 
 
-def parse_result(body: str) -> dict:
+def json_block(body: str) -> dict:
     m = re.search(r"```json\s*\n(.*?)\n```", body or "", flags=re.S)
     if not m:
         raise Reject("no JSON block found in the issue")
@@ -53,7 +58,14 @@ def parse_result(body: str) -> dict:
         result = json.loads(m.group(1))
     except ValueError as e:
         raise Reject(f"the JSON block does not parse: {e}") from e
-    if not isinstance(result, dict) or not GIST.match(str(result.get("gist", ""))):
+    if not isinstance(result, dict):
+        raise Reject("the JSON block is not an object")
+    return result
+
+
+def parse_result(body: str) -> dict:
+    result = json_block(body)
+    if not GIST.match(str(result.get("gist", ""))):
         raise Reject("the result does not name a gist at https://gist.github.com/<user>/<id>")
     if not re.fullmatch(r"[0-9a-f]{64}", str(result.get("sha256", ""))):
         raise Reject("the result has no valid sha256")
@@ -185,23 +197,97 @@ def intake(map_dir: Path, body: str, author: str, issue: int, token: str = "",
     return reply
 
 
+# Distill results. The descriptions travel in the issue itself (twenty fit
+# easily), so there is no gist. Each is checked with the client's own
+# functions, so a result that passed the client's checks passes these:
+# both parts present and short, and at most the unit's max_avoided of the
+# paper's distinctive words reused. A unit needs results from `quorum`
+# different volunteers; each result is kept whole under
+# results/<unit>/<issue>.json on the distill branch, with its model.
+# Agreement between models and known twins, the protocol's other two
+# checks, are applied when results are combined, not here.
+
+MIN_COVERED = 0.75          # a result describes at least this share of the unit's papers
+
+
+def check_descriptions(result: dict, unit: dict) -> list[dict]:
+    """The result's descriptions, or Reject with the first problem found."""
+    from undiscovered import distill
+    problem = next(iter(RESULT.iter_errors(result)), None)
+    if problem is not None or "descriptions" not in result:
+        where = "/".join(str(x) for x in problem.absolute_path) if problem else "descriptions"
+        raise Reject(f"{where or 'result'}: {problem.message[:200] if problem else 'missing'}")
+    if result.get("unit") != unit["unit"]:
+        raise Reject("the result is for another unit")
+    if result.get("prompt") != distill.PROMPT:
+        raise Reject(f"the result was made with prompt {result.get('prompt')}; this unit needs prompt "
+                     f"{distill.PROMPT}, so update the client")
+    descs, seen = result["descriptions"], set()
+    for d in descs:
+        w = d["work"]
+        if w not in unit["works"] or w in seen:
+            raise Reject(f"{w} is not one of the unit's papers, or is described twice")
+        seen.add(w)
+        try:
+            distill.check({"problem": " ".join(d["problem"].split()), "approach": " ".join(d["approach"].split())},
+                          unit.get("avoid", {}).get(w, []), unit.get("max_avoided", 2))
+        except distill.Unusable as e:
+            raise Reject(f"{w}: {e}") from None
+    if len(seen) < MIN_COVERED * len(unit["works"]):
+        raise Reject(f"only {len(seen)} of the unit's {len(unit['works'])} papers are described")
+    return descs
+
+
+def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
+    """Process one distill result against a checkout of the distill branch. Returns the reply."""
+    index_path = dist_dir / "units" / "index.json"
+    index = json.loads(index_path.read_text(encoding="utf-8"))
+    result = json_block(body)
+    unit = next((u for u in index["units"] if u["unit"] == result.get("unit")), None)
+    if unit is None:
+        raise Reject(f"there is no describing unit {result.get('unit')}")
+    if unit["status"] == "done":
+        return f"Unit {unit['unit']} already has all the results it needs. Thank you all the same."
+    descs = check_descriptions(result, unit)
+    folder = dist_dir / "results" / unit["unit"]
+    earlier = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))]
+    if any(r["author"] == author for r in earlier):
+        raise Reject("each volunteer describes a unit once; its second result must come from someone else")
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / f"{issue}.json").write_text(json.dumps(
+        {"issue": issue, "author": author, "client": result.get("client"), "model": result["model"],
+         "prompt": result["prompt"], "descriptions": descs}, indent=1, ensure_ascii=False), encoding="utf-8")
+    have = len(earlier) + 1
+    unit["status"] = "done" if have >= unit.get("quorum", 2) else "check"
+    index_path.write_text(json.dumps(index, indent=1), encoding="utf-8")
+    model = f"{result['model']['id']} ({result['model']['provider']})"
+    return (f"Accepted: {len(descs)} descriptions for {unit['unit']}, made with {model}. " +
+            ("The unit is complete. Thank you." if unit["status"] == "done"
+             else f"It needs {unit.get('quorum', 2) - have} more from another volunteer. Thank you."))
+
+
 UNITS_URL = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/map-2025/units/index.json"
+DISTILL_URL = "https://raw.githubusercontent.com/nicolas-maman/undiscovered/distill-2025/units/index.json"
 
 
 def check_file(path: str, unit_id: str) -> int:
     """For client authors: run the intake checks on a saved result, before submitting it."""
-    index = requests.get(UNITS_URL, timeout=60).json()
+    content = Path(path).read_text(encoding="utf-8")
+    distill_result = path.endswith(".md")
+    index = requests.get(DISTILL_URL if distill_result else UNITS_URL, timeout=60).json()
     unit = next((u for u in index["units"] if u["unit"] == unit_id), None)
     if unit is None:
         print(f"there is no unit {unit_id}")
         return 1
-    content = Path(path).read_text(encoding="utf-8")
     try:
-        records = check_records(content, hashlib.sha256(content.encode("utf-8")).hexdigest(), unit)
+        if distill_result:
+            found = f"{len(check_descriptions(json_block(content), unit))} descriptions"
+        else:
+            found = f"{len(check_records(content, hashlib.sha256(content.encode('utf-8')).hexdigest(), unit))} records"
     except Reject as e:
         print(f"would be rejected: {e}")
         return 1
-    print(f"would be accepted: {len(records)} records for {unit_id}")
+    print(f"would be accepted: {found} for {unit_id}")
     return 0
 
 
@@ -210,9 +296,13 @@ def main() -> int | None:
         return check_file(sys.argv[2], sys.argv[3])
     event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
     issue = event["issue"]
+    body, author, number = issue.get("body") or "", issue["user"]["login"], issue["number"]
     try:
-        reply, ok = intake(Path(os.environ["MAP_DIR"]), issue.get("body") or "", issue["user"]["login"],
-                           issue["number"], os.environ.get("GITHUB_TOKEN", "")), True
+        if issue.get("title", "").startswith("distill result"):
+            reply = intake_distill(Path(os.environ["DISTILL_DIR"]), body, author, number)
+        else:
+            reply = intake(Path(os.environ["MAP_DIR"]), body, author, number, os.environ.get("GITHUB_TOKEN", ""))
+        ok = True
     except Reject as e:
         reply, ok = f"Not accepted: {e}.", False
     print(json.dumps({"accepted": ok, "reply": reply}))

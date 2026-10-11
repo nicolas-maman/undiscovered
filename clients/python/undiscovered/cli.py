@@ -5,6 +5,10 @@
     undiscovered work --units 5 do five, one after another
     undiscovered work --dry-run do one and save it here instead of submitting
     undiscovered work --unit u-000241 --dry-run   a given unit, for example to compare clients
+    undiscovered work --kind map                  map units even when a model is set up
+
+With a model set up, ``work`` takes describing (distill) units, the job that
+needs one; without one, map units.
 """
 
 from __future__ import annotations
@@ -20,12 +24,14 @@ from pathlib import Path
 
 import requests
 
-from . import CLIENT, PROTOCOL, REPO, __version__, config, github
+from . import CLIENT, PROTOCOL, REPO, __version__, config, github, models
+from .distill import PROMPT, Unusable, distill_unit
 from .gentle import be_gentle
 from .mapper import map_unit
 from .openalex import BudgetExhausted, OpenAlex
 
 UNITS_URL = f"https://raw.githubusercontent.com/{REPO}/map-2025/units/index.json"
+DISTILL_URL = f"https://raw.githubusercontent.com/{REPO}/distill-2025/units/index.json"
 
 
 def cmd_setup(_args) -> None:
@@ -42,8 +48,35 @@ def cmd_setup(_args) -> None:
         print("   Found your GitHub login.")
     except github.NoGitHubLogin as e:
         print("  ", e)
-    print("\n3. AI model: not needed for map units, which are the only kind open now.")
+    print("\n3. AI model, for describing papers. Map units need none; skip this to do those.")
+    choose_model(cfg)
     print("\nSaved", config.save(cfg))
+
+
+def choose_model(cfg: dict) -> None:
+    """Offer the models a local server on this machine has, or take one by hand."""
+    found = models.local_models()
+    for i, (server, _base, mid) in enumerate(found, 1):
+        print(f"   {i}. {mid} ({server}, on this machine)")
+    print(f"   {len(found) + 1}. another model: a provider, or a server elsewhere")
+    pick = input("   Number, or Enter to skip: ").strip()
+    if not pick.isdigit() or not 1 <= int(pick) <= len(found) + 1:
+        return
+    if int(pick) <= len(found):
+        _server, base, mid = found[int(pick) - 1]
+        cfg["model"] = {"provider": "openai-compatible", "base_url": base, "id": mid}
+        return
+    provider = input(f"   Kind ({', '.join(models.KINDS)}): ").strip() or "openai-compatible"
+    if provider not in models.KINDS:
+        print("   Not a kind the client knows; nothing saved.")
+        return
+    if provider == "openai-compatible":
+        base = input("   Base URL, such as https://openrouter.ai/api/v1: ").strip()
+    else:
+        base = input("   Base URL (Enter for the provider's own): ").strip()
+    mid = input("   Model name, as the provider writes it: ").strip()
+    key = getpass.getpass("   Key, or Enter if it needs none (input is hidden): ").strip()
+    cfg["model"] = {"provider": provider, "base_url": base, "id": mid, **({"key": key} if key else {})}
 
 
 def pick_unit(index: dict, done: set[str], rng: random.Random) -> dict | None:
@@ -59,6 +92,21 @@ def result_body(unit: dict, gist: str, sha: str) -> str:
             "```json\n" + json.dumps(result, indent=1) + "\n```\n")
 
 
+def describe_body(unit: dict, model: dict, descriptions: list[dict]) -> str:
+    result = {"unit": unit["unit"], "protocol": PROTOCOL, "client": CLIENT, "model": model,
+              "prompt": PROMPT, "descriptions": descriptions}
+    return ("Descriptions from the undiscovered client. The checking job reads the JSON below.\n\n"
+            "```json\n" + json.dumps(result, indent=1, ensure_ascii=False) + "\n```\n")
+
+
+def do_distill(unit: dict, key: str, model: models.Model) -> list[dict]:
+    """Describe one unit's works. The OpenAlex cache is deleted afterwards."""
+    def progress(done: int, total: int) -> None:
+        print(f"  {unit['unit']}: {done}/{total} papers", end="\r" if done < total else "\n", flush=True)
+    with tempfile.TemporaryDirectory(prefix="undiscovered-") as tmp:
+        return distill_unit(OpenAlex(Path(tmp), key), model, unit, progress)
+
+
 def do_unit(unit: dict, key: str) -> str:
     """Map one unit and return the records as one JSON text. The cache is deleted afterwards."""
     with tempfile.TemporaryDirectory(prefix="undiscovered-") as tmp:
@@ -70,8 +118,11 @@ def do_unit(unit: dict, key: str) -> str:
 def cmd_work(args) -> None:
     be_gentle()
     cfg = config.load()
+    model = models.from_settings(cfg) if args.kind != "map" else None
+    if args.kind == "distill" and model is None:
+        sys.exit("Describing papers needs an AI model. Run: undiscovered setup")
     tok = None if args.dry_run else github.token()
-    index = requests.get(UNITS_URL, timeout=60).json()
+    index = requests.get(DISTILL_URL if model else UNITS_URL, timeout=60).json()
     done = set(cfg.get("done", []))
     rng = random.Random()
     for n in range(1 if args.unit else args.units):     # a named unit is done once
@@ -84,6 +135,27 @@ def cmd_work(args) -> None:
         if unit is None:
             print("No open units left for you. Thank you.")
             return
+        if model:
+            print(f"unit {unit['unit']}: {len(unit['works'])} papers to describe with {model.id}")
+            try:
+                descriptions = do_distill(unit, config.openalex_key(cfg), model)
+            except BudgetExhausted as e:
+                print(f"Stopped: {e}. Run the same command tomorrow.")
+                return
+            except Unusable as e:
+                sys.exit(f"Stopped: {e}. Nothing was submitted.")
+            body = describe_body(unit, model.provenance, descriptions)
+            if args.dry_run:
+                out = Path(f"undiscovered-{unit['unit']}.md")
+                out.write_text(body, encoding="utf-8")
+                print(f"saved {out} ({len(descriptions)} descriptions), not submitted")
+                return
+            issue = github.open_issue(tok, REPO, f"distill result {unit['unit']}", body, [])
+            done.add(unit["unit"])
+            cfg["done"] = sorted(done)
+            config.save(cfg)
+            print(f"submitted: {issue}")
+            continue
         print(f"unit {unit['unit']}: {len(unit['topics'])} topics at the end of {unit['freeze']}")
         try:
             content = do_unit(unit, config.openalex_key(cfg))
@@ -114,12 +186,14 @@ def main(argv: list[str] | None = None) -> None:
     w.add_argument("--units", type=int, default=1, help="how many units to do (default 1)")
     w.add_argument("--dry-run", action="store_true", help="save the result here instead of submitting")
     w.add_argument("--unit", default="", help="do this unit rather than a random open one")
+    w.add_argument("--kind", choices=["auto", "map", "distill"], default="auto",
+                   help="map units, describing (distill) units, or auto: distill when a model is set up")
     w.set_defaults(func=cmd_work)
     args = ap.parse_args(argv)
     try:
         args.func(args)
-    except github.NoGitHubLogin as e:
-        sys.exit(str(e))
+    except (github.NoGitHubLogin, models.ModelError) as e:
+        sys.exit(f"Stopped: {e}")
     except KeyboardInterrupt:
         sys.exit("Stopped. Nothing half-done was submitted.")
 

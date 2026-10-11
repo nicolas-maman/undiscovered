@@ -50,6 +50,11 @@
         }
       }
     },
+    "prompt": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Version of the client's prompt for distill units; the checking job accepts only the current one."
+    },
     "ranking": {
       "type": "array",
       "items": {
