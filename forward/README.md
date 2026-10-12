@@ -11,7 +11,7 @@ is [research/FORWARD-TEST.md](../research/FORWARD-TEST.md).
 | `model.json` | both models in full: features, coefficients, intercept, and the means and scales they were fitted with |
 | `records-2025.jsonl` | the 300 topic records at the end of 2025 the ranking was computed from (OpenAlex, CC0) |
 | `SHA256SUMS` | the SHA-256 checksum of each of those three files |
-| `SHA256SUMS.ots` | an OpenTimestamps proof that `SHA256SUMS` existed when it was stamped |
+| `SHA256SUMS.ots` | an OpenTimestamps proof that `SHA256SUMS` existed by Bitcoin block 971017, mined at 01:11 UTC on 12 October 2026 |
 
 ## Checking it
 
