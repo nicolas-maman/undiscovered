@@ -1,0 +1,53 @@
+name: forward
+
+# Scores the forward test (research/FORWARD-TEST.md) once a year, from 2027.
+# Every day in July it counts the citations of the windows through the last
+# complete year, carrying on where the previous day's OpenAlex allowance
+# stopped, and publishes the counts and scores in forward/. Before 2027 the
+# last complete year is 2025 or earlier, so it does nothing.
+on:
+  schedule:
+    - cron: "41 4 * 7 *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - name: The last complete year
+        id: year
+        run: echo "through=$(( $(date -u +%Y) - 1 ))" >> "$GITHUB_OUTPUT"
+      - name: Nothing to count yet
+        if: steps.year.outputs.through < 2026
+        run: echo "The forward test's first window starts in 2026; the first count runs in July 2027."
+      - uses: actions/checkout@v4
+        if: steps.year.outputs.through >= 2026
+      - uses: actions/setup-python@v5
+        if: steps.year.outputs.through >= 2026
+        with:
+          python-version: "3.12"
+      - name: Install
+        if: steps.year.outputs.through >= 2026
+        run: pip install -r research/requirements.txt ./clients/python
+      - name: Count and score
+        if: steps.year.outputs.through >= 2026
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+        working-directory: research
+        run: python -m undiscovered_research.forward_score --through "${{ steps.year.outputs.through }}"
+      - name: Publish
+        if: steps.year.outputs.through >= 2026
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forward/counts forward/scores 2>/dev/null || true
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -q -m "Forward test: counts and scores through ${{ steps.year.outputs.through }}"
+          for attempt in 1 2 3 4 5; do
+            git pull -q --rebase && git push -q && exit 0
+            sleep 10
+          done
+          exit 1
