@@ -24,7 +24,7 @@ for the client's name, and the checking job accepted it.
 
 ## Build
 
-You need the Aether toolchain (`ae`, version 0.782 or newer) and the C
+You need the Aether toolchain (`ae`, version 0.806 or newer) and the C
 compiler it uses. From this folder:
 
 ```bash
@@ -77,10 +77,8 @@ takes precedence over the settings file:
 
 On Windows, Aether's HTTPS does not read the Windows certificate store yet
 ([aether#2675](https://github.com/aether-lang-dev/aether/issues/2675)).
-It needs a certificate bundle file, and its two HTTPS stacks (one for
-OpenAlex, the other for GitHub, the list of units and a model's server)
-look for one in different places, so point `SSL_CERT_FILE` at a bundle
-before running it, for example the one Git for Windows installs:
+It needs a certificate bundle file, so point `SSL_CERT_FILE` at one before
+running it, for example the one Git for Windows installs:
 
 ```powershell
 $env:SSL_CERT_FILE = "C:\Program Files\Git\mingw64\etc\ssl\certs\ca-bundle.crt"
@@ -127,11 +125,6 @@ bundle.
   client's offline tests, plus the texts that must come out byte for byte
   as Python writes them: the issue bodies, the GitHub and model requests,
   the result files, and what Python makes of awkward answers and words.
-- The OpenAlex requests go over Aether's own TLS 1.3 client instead of
-  `std.http.client`, which cuts request paths at 1,023 bytes
-  ([aether#2674](https://github.com/aether-lang-dev/aether/issues/2674)); the
-  citing-topic queries name 100 works and run to about 1,500. Model requests
-  are POSTs with short paths and use `std.http.client`.
 
 Where it still differs: a `Retry-After` date is read only in the form HTTP
 servers send (`Wed, 21 Oct 2015 07:28:00 GMT`), and a model server it cannot

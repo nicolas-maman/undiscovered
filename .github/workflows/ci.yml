@@ -69,7 +69,7 @@ jobs:
   aether-client:
     runs-on: ubuntu-latest
     env:
-      AETHER_REF: v0.805.0
+      AETHER_REF: v0.806.0
     steps:
       - uses: actions/checkout@v4
       - name: Cache the Aether toolchain

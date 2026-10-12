@@ -23,8 +23,7 @@
 // it is asking too fast.
 //
 // The requests go through std.http.client, which also speaks plain http://
-// to servers on this machine. Model requests are POSTs with short paths, so
-// its 1,023-byte path limit (aether-lang-dev/aether#2674) does not apply.
+// to servers on this machine.
 
 import std.string
 import std.strbuilder

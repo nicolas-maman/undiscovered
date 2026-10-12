@@ -305,15 +305,9 @@ parse(answer: string) -> (string, string, string) {
     return problem, approach, ""
 }
 
-// `a`, a space and `b`. Built rather than interpolated: in Aether 0.782,
-// interpolation stops at a NUL character (0.798 no longer does), and a
-// description can hold one, from a \u0000 escape in the answer.
+// `a`, a space and `b`.
 spaced(a: string, b: string) -> string {
-    sb = strbuilder.new(string.length(a) + string.length(b) + 2)
-    strbuilder.append(sb, a)
-    strbuilder.append_byte(sb, 32)
-    strbuilder.append(sb, b)
-    return strbuilder.finish(sb)
+    return "${a} ${b}"
 }
 
 // A description's words, lower case, in order: two descriptions with the
@@ -487,7 +481,6 @@ describe_works(model: *ModelLink, unit: ptr, works: ptr, show: int) -> (ptr, str
 // spent, openalex.budget_spent() says 1.
 describe_unit(model: *ModelLink, unit: ptr, key: string, show: int) -> (ptr, string, string, string) {
     works, err = openalex.get(works_query(jsontext.member(unit, "works")), key)
-    openalex.close()
     if err != "" {
         return null, string.copy(""), string.copy(""), err
     }

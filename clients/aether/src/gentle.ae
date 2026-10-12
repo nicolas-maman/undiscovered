@@ -5,6 +5,7 @@
 exports(be_gentle)
 
 when target.os == "windows" {
+    @c_include("windows.h")     // the header that declares the Windows functions below
     extern GetCurrentProcess() -> ptr @c_import
     extern SetPriorityClass(process: ptr, priority_class: int) -> int @c_import
 

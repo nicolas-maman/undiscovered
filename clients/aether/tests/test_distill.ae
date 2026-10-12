@@ -216,6 +216,17 @@ main() {
             strarr.free(taken)
             json.json_free(pair)
         }
+        spec.it("count the paper's words even after a NUL in the answer") callback {
+            // A \u0000 escape in a model's JSON puts a NUL inside the problem;
+            // the word after it must still be counted, as Python counts it.
+            problem, approach, why = distill.parse("{\"problem\": \"alpha beta\\u0000 proline gamma delta\", \"approach\": \"we look at them closely now\"}")
+            spec.assert_str_eq(why, "", "the answer parses")
+            only = parse_doc("[\"proline\"]")
+            seen = strarr.new()
+            spec.assert_str_eq(distill.check(problem, approach, only, 0, seen), "it used words specific to the paper: proline", "proline after the NUL")
+            strarr.free(seen)
+            json.json_free(only)
+        }
     }
 
     spec.describe(fw, "describing") {

@@ -228,7 +228,6 @@ do_unit(unit: ptr, key: string) -> (string, string) {
         topic, _terr = json.get_string(jsontext.at(topics, i))
         record, err = mapper.map_topic(topic, freeze as int, key)
         if err != "" {
-            openalex.close()
             strarr.free(records)
             return string.copy(""), err
         }
@@ -240,7 +239,6 @@ do_unit(unit: ptr, key: string) -> (string, string) {
         println("  ${unit_id}: topic ${i + 1}/${n} ${topic}${left}")
         i = i + 1
     }
-    openalex.close()
     content = unit_content(unit_id, freeze, records)
     strarr.free(records)
     return content, ""
