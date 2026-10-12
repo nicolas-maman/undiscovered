@@ -1,4 +1,4 @@
-"""The forward test (research/FORWARD-TEST-DRAFT.md): its data and its ranking.
+"""The forward test (research/FORWARD-TEST.md): its data and its ranking.
 
     python -m undiscovered_research.forward collect     # the 300 topics at the end of 2025
     python -m undiscovered_research.forward rank --out forward   # only once the plan is registered

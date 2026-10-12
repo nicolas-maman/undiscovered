@@ -99,7 +99,7 @@ Now:
   papers the descriptions bring together, and how the models compare, are on
   [Same problem, different field](https://nicolas-maman.github.io/undiscovered/connections.html).
 - Find a flaw in the [first test's results](https://nicolas-maman.github.io/undiscovered/results.html)
-  or the [draft forward test](research/FORWARD-TEST-DRAFT.md), and
+  or the [forward test's plan](research/FORWARD-TEST.md), and
   [tell us what could make a result wrong](https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml).
   Criticism of a plan is worth most before its data is collected, while it
   can still change in the open.

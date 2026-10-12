@@ -97,7 +97,7 @@ record the first test collected, at the end of 2025.
 
 ### 4. Rank (one job): the forward test is ready
 
-- **The forward test** ([draft plan](research/FORWARD-TEST-DRAFT.md)): the
+- **The forward test** ([plan](research/FORWARD-TEST.md)): the
   first test's network model, unchanged, ranks the pairs among its 300
   topics at the end of 2025. The ranking is published with a timestamp
   before any of the citations that score it exist, and is scored every

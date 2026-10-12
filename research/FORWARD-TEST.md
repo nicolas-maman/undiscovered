@@ -1,15 +1,17 @@
-# Forward test: draft plan (not yet registered)
+# Forward test: plan
 
-A draft for criticism. Nothing in it has been ranked yet. When it is final
-it is committed as a plan, and its ranking is published and timestamped
-before any of the outcomes it predicts are counted.
+Registered on 12 October 2026, by committing this file, before the ranking
+was computed. The ranking is computed afterwards, from code committed
+before this file, and published in `forward/` with checksums and an
+OpenTimestamps proof. Nothing below changes after registration, except for
+dated notes at the end.
 
-Where it stands (11 October 2026): the 300 topic records at the 2025 freeze
-are collected and pass the same checks as volunteers' map results; the
-ranking code (`undiscovered_research/forward.py`) computes the first test's
-features from them, and on the first test's own 2017 records it reproduces
-that test's eligible pairs and every feature value exactly. No ranking of
-2025 has been computed, and none will be before this plan is registered.
+At registration, the 300 topic records at the 2025 freeze were collected
+(retrieved on 11 October 2026) and passed the same checks as volunteers'
+map results; the ranking code (`undiscovered_research/forward.py`) computes
+the first test's features from them, and on the first test's own 2017
+records it reproduces that test's eligible pairs and every feature value
+exactly. No ranking of 2025 had been computed.
 
 ## Why
 
@@ -67,7 +69,14 @@ Within two weeks of registering this plan, in `forward/`:
 
 - **Connected:** a pair whose topics' papers are cited, in either
   direction, by at least 3 works published from 2026 to 2031: the first
-  test's label, with the same six-year window after the freeze.
+  test's label, with the same six-year window after the freeze. For each
+  topic, the works citing any of its reference papers (the `instrument` in
+  its 2025 record, fixed at registration) are counted by primary topic with
+  the map record's citing-topic query ([docs/WRITE-A-CLIENT.md](../docs/WRITE-A-CLIENT.md)),
+  restricted to the window's publication years; the link between two topics
+  is the works in one citing the other's reference papers, plus the
+  reverse. A work's topic is the one OpenAlex gives it when counting, as in
+  the first test.
 - **Counted** once a year, from 2027, by a GitHub Action, with a call or
   two per topic. The yearly counts are interim and are labelled
   as such. The result is the count read in mid-2032, once 2031 is fully
@@ -98,12 +107,17 @@ is timestamped.
 About 5,200 OpenAlex calls once (already spent), then 300 to 600 a year.
 Both fit in the free allowance of one key.
 
-## Questions to settle before registering
+## Settled at registration
 
-1. Run it now on the first test's 300 topics, rather than wait for the
-   volunteers' map of every topic? The full map would give a ranking of
-   all fields, but it needs the model question in
-   [DESIGN.md](../DESIGN.md) settled first, and every month of waiting is
-   a month of outcomes nobody predicted in public.
-2. Is the six-year window from 2026 right as the main result, with 2027 to
-   2032 as the check, or should it be the other way round?
+1. It runs now, on the first test's 300 topics, rather than waiting for
+   the volunteers' map of every topic. A ranking of all fields needs the
+   model question in [DESIGN.md](../DESIGN.md) settled first, and every
+   month of waiting would be a month of outcomes nobody predicted in
+   public.
+2. The main result is the six-year window from 2026 to 2031, the same
+   distance from the freeze as the model was fitted on; 2027 to 2032 is
+   the check.
+
+## Notes after registration
+
+None yet.

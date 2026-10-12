@@ -28,8 +28,8 @@ do not exist yet.
   show the running score on the results page next to the backtest.
 - Cost: about 25 OpenAlex calls per topic for the freeze, then a call or
   two per topic each year to score it.
-- A concrete draft, on the first test's 300 topics, is in
-  [FORWARD-TEST-DRAFT.md](FORWARD-TEST-DRAFT.md).
+- Registered on 12 October 2026, on the first test's 300 topics:
+  [FORWARD-TEST.md](FORWARD-TEST.md).
 
 If the backtest works, the forward test checks it on outcomes nobody could
 have known. If it does not, the network baseline still gets a forward
