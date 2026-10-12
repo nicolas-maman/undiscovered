@@ -1,6 +1,7 @@
 """Timestamp a file with OpenTimestamps, as `ots stamp` does, using only the core library.
 
-    python scripts/timestamp.py forward/SHA256SUMS      # writes forward/SHA256SUMS.ots
+    python scripts/timestamp.py forward/SHA256SUMS                 # writes forward/SHA256SUMS.ots
+    python scripts/timestamp.py --upgrade forward/SHA256SUMS.ots   # adds the Bitcoin attestation
 
 The OpenTimestamps command-line client needs python-bitcoinlib, which cannot
 load on Windows without OpenSSL's old DLLs; stamping does not need it. Only
@@ -42,7 +43,45 @@ def stamp(path: str) -> list[str]:
     return reached
 
 
+def upgrade(ots_path: str) -> int:
+    """Ask each calendar for the Bitcoin attestation of a pending proof, as `ots upgrade` does.
+
+    Returns how many Bitcoin attestations the proof holds afterwards; the file
+    is rewritten only if that number grew.
+    """
+    from opentimestamps.core.notary import BitcoinBlockHeaderAttestation, PendingAttestation
+    from opentimestamps.core.serialize import StreamDeserializationContext
+
+    with open(ots_path, "rb") as f:
+        detached = DetachedTimestampFile.deserialize(StreamDeserializationContext(f))
+
+    def bitcoin() -> int:
+        return sum(isinstance(a, BitcoinBlockHeaderAttestation) for _, a in detached.timestamp.all_attestations())
+
+    before = bitcoin()
+
+    def walk(ts) -> None:
+        for att in list(ts.attestations):
+            if isinstance(att, PendingAttestation):
+                try:
+                    ts.merge(RemoteCalendar(att.uri).get_timestamp(ts.msg, timeout=20))
+                except Exception as e:      # not confirmed yet, or the calendar is down: try again later
+                    print(f"{att.uri}: not yet ({type(e).__name__})")
+        for sub in ts.ops.values():
+            walk(sub)
+
+    walk(detached.timestamp)
+    after = bitcoin()
+    if after > before:
+        with open(ots_path, "wb") as fd:
+            detached.serialize(StreamSerializationContext(fd))
+    return after
+
+
 if __name__ == "__main__":
-    for url in stamp(sys.argv[1]):
-        print(f"submitted to {url}")
-    print(f"wrote {sys.argv[1]}.ots")
+    if len(sys.argv) == 3 and sys.argv[1] == "--upgrade":
+        print(f"{upgrade(sys.argv[2])} Bitcoin attestation(s) in {sys.argv[2]}")
+    else:
+        for url in stamp(sys.argv[1]):
+            print(f"submitted to {url}")
+        print(f"wrote {sys.argv[1]}.ots")

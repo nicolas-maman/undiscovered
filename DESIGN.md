@@ -95,14 +95,15 @@ record the first test collected, at the end of 2025.
   validates every record, and gives 1 unit in 20 to a second volunteer to
   compare.
 
-### 4. Rank (one job): the forward test is ready
+### 4. Rank: the forward test is registered
 
 - **The forward test** ([plan](research/FORWARD-TEST.md)): the
   first test's network model, unchanged, ranks the pairs among its 300
   topics at the end of 2025. The ranking is published with a timestamp
   before any of the citations that score it exist, and is scored every
-  year. Its records are collected and its code checked; it is registered
-  when the plan is final.
+  year. Registered on 12 October 2026; the ranking, both models and the
+  records are in [forward/](forward/), with checksums and an
+  OpenTimestamps proof.
 - **All topics, later.** Two of the model's features count through the
   other topics in the sample, so on the full map they would take larger
   values than the model learned. Either they are computed through the same
@@ -158,8 +159,9 @@ Done:
 4. The forward test's records and ranking code.
 5. Describing units in the Aether client, and the known twins in the
    describing units, with the code that computes their result.
+6. The forward test, registered and its ranking published.
 
 Next:
 
-6. Register the forward test and publish its ranking.
-7. The review page, the rating form, and the random-pair control.
+7. The yearly count that scores the forward test, from 2027.
+8. The review page, the rating form, and the random-pair control.

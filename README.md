@@ -59,7 +59,11 @@ what actually happened.
    citing each other between 2018 and 2023. The ranking model learns its
    weights on an earlier freeze (2011, with outcomes from 2012 to 2017).
    One input still comes from today's OpenAlex: the topic each paper is
-   filed under. The plan says how that is checked.
+   filed under. The plan says how that is checked. A forward test, with no
+   hindsight at all, was registered on 12 October 2026: the same model
+   ranked pairs at the end of 2025, and the ranking, published with a
+   timestamp before its outcomes exist, is scored on citations from 2026 to
+   2031 ([forward/](forward/)).
 4. The problem, without the jargon. Fields often name the same
    problem differently: estimating a hidden state from noisy measurements
    is a Kalman filter to a control engineer and data assimilation to a
