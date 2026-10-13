@@ -27,8 +27,8 @@ python scripts/check_links.py
 ```
 
 The Aether client builds and tests on its own, with the Aether toolchain
-(`ae`, 0.806 or newer): from `clients/aether`, `ae build src/main.ae -o undiscovered`
-and `ae test tests/test_client.ae`.
+(`ae`, 0.809 or newer): from `clients/aether`, `ae build src/main.ae -o undiscovered`
+and `ae test tests/test_client.ae tests/test_distill.ae`.
 
 All tests run offline. CI runs the same, plus a check that every OpenAlex ID
 in PROTOCOL.md exists.

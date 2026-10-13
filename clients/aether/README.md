@@ -24,7 +24,7 @@ for the client's name, and the checking job accepted it.
 
 ## Build
 
-You need the Aether toolchain (`ae`, version 0.806 or newer) and the C
+You need the Aether toolchain (`ae`, version 0.809 or newer) and the C
 compiler it uses. From this folder:
 
 ```bash
@@ -40,9 +40,7 @@ ae build src/main.ae -o undiscovered
 ```
 
 The result, `undiscovered.exe`, needs only Windows' own DLLs. The offline
-tests run with `ae test tests/test_client.ae` and
-`ae test tests/test_distill.ae` (one file per call: `ae test` runs only one
-of the files it is given, [aether#2752](https://github.com/aether-lang-dev/aether/issues/2752)).
+tests run with `ae test tests/test_client.ae tests/test_distill.ae`.
 
 ## Run
 
@@ -75,17 +73,9 @@ takes precedence over the settings file:
 | `UNDISCOVERED_MODEL` | the model's name, as the server writes it |
 | `UNDISCOVERED_MODEL_KEY` | the key, if the server needs one |
 
-On Windows, Aether's HTTPS does not read the Windows certificate store yet
-([aether#2675](https://github.com/aether-lang-dev/aether/issues/2675)).
-It needs a certificate bundle file, so point `SSL_CERT_FILE` at one before
-running it, for example the one Git for Windows installs:
-
-```powershell
-$env:SSL_CERT_FILE = "C:\Program Files\Git\mingw64\etc\ssl\certs\ca-bundle.crt"
-```
-
-A model server on this machine is reached over plain `http://` and needs no
-bundle.
+On Windows, HTTPS trusts the Windows certificate store, so nothing needs
+setting (Aether 0.809 and newer; `SSL_CERT_FILE` still overrides it). A
+model server on this machine is reached over plain `http://`.
 
 ## What it does on your computer
 

@@ -69,7 +69,7 @@ jobs:
   aether-client:
     runs-on: ubuntu-latest
     env:
-      AETHER_REF: v0.806.0
+      AETHER_REF: v0.809.0
     steps:
       - uses: actions/checkout@v4
       - name: Cache the Aether toolchain
@@ -88,6 +88,5 @@ jobs:
         working-directory: clients/aether
         run: |
           ae build src/main.ae -o undiscovered
-          ae test tests/test_client.ae
-          ae test tests/test_distill.ae
+          ae test tests/test_client.ae tests/test_distill.ae
           ./undiscovered --version
