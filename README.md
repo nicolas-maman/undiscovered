@@ -1,7 +1,57 @@
 # undiscovered
 
-An open network that looks for research in one field that another field
-could use but has never cited, and measures how often it is right.
+Research in one field that another field could use, but has never cited.
+
+**[See the site](https://nicolas-maman.github.io/undiscovered/)** ·
+[Take part](https://nicolas-maman.github.io/undiscovered/join.html) ·
+[Results](https://nicolas-maman.github.io/undiscovered/results.html)
+
+Fields often solve the same problem under different names, and rarely read
+each other. This open project looks for those connections across all of
+science, and checks its predictions against what actually happens next.
+
+## What a connection looks like
+
+Known cases, where the same idea was worked out in fields that call it by
+different names:
+
+- **Each event makes the next one more likely, nearby and soon.** The
+  model of earthquake aftershocks
+  ([Nandan et al., 2017](https://openalex.org/W2625813022)) also describes
+  how crime clusters ([Mohler et al., 2011](https://openalex.org/W2123906784)).
+- **Estimate what you cannot see from noisy measurements.** The Kalman
+  filter tracks the state of a power grid
+  ([Bhusal and Gautam, 2020](https://openalex.org/W3112152739)), forecasts
+  flu seasons ([Shaman and Karspeck, 2012](https://openalex.org/W2143469080))
+  and estimates ice sheets ([Kyanjo et al., 2026](https://openalex.org/W7147738061)).
+- **Something matters if things that matter point to it.** PageRank ranks
+  web pages ([Avrachenkov et al., 2014](https://openalex.org/W2952548632)),
+  football teams ([Lazova and Basnarkov, 2015](https://openalex.org/W1522660207))
+  and the amino acids that carry a signal through a protein
+  ([Negre et al., 2017](https://openalex.org/W2621651488)).
+
+They come from the benchmark of Kulikowski (2026), *Same Problem, Different
+Field* (CC BY 4.0), and are the first test of the describing work below.
+
+## Where it stands
+
+- **First test, October 2026: inconclusive.** Frozen at the end of 2017,
+  the citation network around 28,114 pairs of topics from different domains
+  ranked the 305 that connected by 2023 about 14 times better than chance.
+  Adding the words the papers share did not measurably improve on that, and
+  a second, independent sample of 300 topics gave the same answer
+  ([results](https://nicolas-maman.github.io/undiscovered/results.html),
+  [plan](research/PREREGISTRATION.md)).
+- **Forward test, registered 12 October 2026.** The same model ranked
+  26,475 pairs of topics at the end of 2025. Its checksums are timestamped
+  in Bitcoin block 971017, before any citation that will judge it exists,
+  and it is scored on the citations of 2026 to 2031
+  ([what was ranked](https://nicolas-maman.github.io/undiscovered/forward.html),
+  [plan](research/FORWARD-TEST.md)).
+- **Describing papers, open now.** Volunteers' AI models rewrite papers
+  without their field's jargon, so that work on the same problem in
+  different fields can be matched
+  ([take part](https://nicolas-maman.github.io/undiscovered/join.html)).
 
 ## The idea
 
@@ -20,25 +70,6 @@ literatures that nobody reads together.
 Swanson worked by hand, in medicine. This project tries to do the same thing
 for every field of science, openly, and checks its own predictions against
 what actually happened.
-
-> **First result, October 2026: inconclusive.** We froze the literature at
-> the end of 2017 and ranked 28,114 pairs of topics from different domains
-> that had barely cited each other. 305 of them (1.1%) started citing each
-> other by 2023. A model of the citation network around each pair ranked
-> them well: about 14 times better than chance, and 30 of its top 100
-> pairs did connect. Adding what the papers say, measured by the words they
-> share, did not measurably improve it (difference in average precision
-> -0.010, 95% interval -0.050 to +0.045). Under the
-> [plan written before the analysis](research/PREREGISTRATION.md) that is
-> not enough to take the method further as it is. On a second, independent
-> sample of 300 topics the network ranking did as well (about 16 times
-> better than chance) and adding the words was again inconclusive. All the
-> numbers, the robustness checks and the code are on the
-> [results page](https://nicolas-maman.github.io/undiscovered/results.html).
-> Rather than spend weeks of data on a bigger version of the same
-> comparison, the project now tests the stronger idea: describing papers
-> without their field's jargon, which volunteers do with their own AI
-> models (step 4 below).
 
 ## How it works
 

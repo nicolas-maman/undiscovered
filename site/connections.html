@@ -23,8 +23,6 @@
   body { margin: 0; background: var(--bg); color: var(--fg);
          font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
   main { max-width: 860px; margin: 0 auto; padding: 48px 16px 80px; }
-  nav { font: 14px system-ui, sans-serif; margin-bottom: 32px; }
-  nav a { color: var(--muted); text-decoration: none; }
   h1 { font-size: 2rem; margin: 0 0 8px; }
   h2 { font: 600 0.95rem system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em;
        color: var(--muted); margin: 44px 0 10px; }
@@ -47,30 +45,48 @@
   th { font-weight: 600; color: var(--muted); }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   ul { padding-left: 20px; }
+  details { margin-top: 44px; }
+  summary { font: 600 0.95rem system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em;
+            color: var(--muted); cursor: pointer; }
+  .meanwhile { margin-top: 8px; }
   footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
 </style>
+<link rel="stylesheet" href="site.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <main>
-  <nav><a href="./">undiscovered</a> / connections</nav>
+  <header class="top">
+    <a class="brand" href="./">undiscovered</a>
+    <nav><a href="./#examples">Examples</a><a href="./#how">How it works</a><a href="results.html">Results</a><a class="cta" href="join.html">Take part</a></nav>
+  </header>
   <h1>Same problem, different field</h1>
   <p class="lede">Pairs of papers from different domains whose plain descriptions say the same thing.
   Volunteers' AI models describe each paper without its field's words; when two papers far apart are
   described alike, they may be working on the same problem without knowing it.</p>
   <p class="note">Each pair is a lead for a reader to judge, not a finding. Only papers that two different
-  models described consistently are paired, so a vague description cannot make a pair. How it is
-  computed is at the end of this page.</p>
+  models described consistently are paired, so a vague description cannot make a pair. How pairs
+  are made is at the end of this page.</p>
 
   <h2>Pairs found so far</h2>
   <div id="twins"><p class="note">Loading...</p></div>
+  <section class="meanwhile" id="meanwhile" hidden>
+    <p>Until then, this is what a pair looks like: known cases where the same idea was worked out in
+    distant fields, from the benchmark of <a href="https://arxiv.org/abs/2609.07595">Kulikowski (2026)</a>.
+    The describing work is tested on them first. <a href="./#examples">All four cases</a></p>
+    <div class="examples" data-examples="2"></div>
+  </section>
 
+  <section id="models-section">
   <h2>Models, compared</h2>
   <p class="note">How closely each model's descriptions agree with other models' descriptions of the same
   papers, next to how alike descriptions of two different papers are by chance. Agreement is a check that a
   model says something specific about each paper; it is not proof that what it says is right.</p>
   <div id="models"></div>
+  </section>
 
-  <h2>How it is computed</h2>
+  <details>
+  <summary>How pairs are made</summary>
   <ul>
     <li>Each paper is described by two volunteers, each with the model of their choice, as the problem it works
     on and how, without the paper's distinctive words. The descriptions and the model that wrote each are
@@ -86,6 +102,7 @@
     appears in more than two pairs. The code is
     <a href="https://github.com/nicolas-maman/undiscovered/blob/main/pipeline/combine.py">pipeline/combine.py</a>.</li>
   </ul>
+  </details>
 
   <footer>
     Open source (MIT). Data CC0, from <a href="https://openalex.org">OpenAlex</a>.
@@ -93,6 +110,7 @@
     <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
   </footer>
 </main>
+<script src="examples.js"></script>
 <script>
 (function () {
   "use strict";
@@ -139,6 +157,7 @@
       box.appendChild(el("p", {}, ["No pairs yet. They appear once enough papers have descriptions from two " +
         "different models: so far " + n(p.papers_described) + " of " + n(p.papers) + " papers have at least one description. ",
         el("a", {href: "join.html", text: "Take part"}), " to bring the first ones closer."]));
+      document.getElementById("meanwhile").hidden = false;
     } else {
       var works = [];
       twins.forEach(function (t) { works.push(t.a.work, t.b.work); });
@@ -152,7 +171,7 @@
     }
     var mbox = document.getElementById("models");
     if (!m.models || !m.models.length) {
-      mbox.appendChild(el("p", {class: "note", text: m.note || "No descriptions yet."}));
+      document.getElementById("models-section").hidden = true;
       return;
     }
     var head = el("tr", {}, ["Model", "Kind", "Papers", "Agreement", "Chance"].map(function (h, k) {

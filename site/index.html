@@ -15,107 +15,130 @@
 <title>undiscovered</title>
 <meta name="description" content="An open network that looks for research in one field that another field could use but has never cited, and measures how often it is right.">
 <style>
-  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; }
+  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; --band: #f1eee6; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0; }
+    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0; --band: #1d1c1a; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--fg);
          font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
-  main { max-width: 680px; margin: 0 auto; padding: 56px 16px 80px; }
-  h1 { font-size: 2.2rem; letter-spacing: -0.01em; margin: 0 0 4px; }
-  .tag { color: var(--muted); font-style: italic; margin: 0 0 14px; }
-  .links { font: 15px system-ui, sans-serif; margin: 0 0 36px; }
-  .links a { margin-right: 18px; text-decoration: none; white-space: nowrap; display: inline-block; }
-  .links a:hover, .links a:focus { text-decoration: underline; }
-  .join { background: var(--rule); border-radius: 6px; padding: 14px 18px; margin: 24px 0; }
-  .join a.go { font: 600 16px system-ui, sans-serif; }
-  .live { color: var(--muted); font: 14px system-ui, sans-serif; display: block; margin-top: 6px; }
-  h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .08em;
-       color: var(--muted); margin: 40px 0 8px; font-family: system-ui, sans-serif; font-weight: 600; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 80px; }
   a { color: var(--accent); }
-  .status { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 28px 0; }
-  ul { padding-left: 20px; }
-  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule);
+  h1 { font-size: 2.3rem; line-height: 1.15; letter-spacing: -0.01em; margin: 8px 0 16px; }
+  .lede { font-size: 1.15rem; margin: 0; }
+  @media (max-width: 480px) { h1 { font-size: 1.85rem; } .lede { font-size: 1.05rem; } }
+  h2 { font-size: 1.5rem; line-height: 1.25; margin: 64px 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 8px; }
+  .steps { list-style: none; counter-reset: step; padding: 0; margin: 20px 0 0; }
+  .steps li { counter-increment: step; position: relative; padding: 0 0 18px 44px; }
+  .steps li::before { content: counter(step); position: absolute; left: 0; top: 2px; width: 28px; height: 28px;
+                      border-radius: 50%; border: 1px solid var(--accent); color: var(--accent);
+                      font: 600 14px/26px system-ui, sans-serif; text-align: center; }
+  .steps strong { display: block; }
+  .status { display: grid; gap: 14px; margin: 20px 0 0; }
+  .status div { background: var(--band); border-radius: 8px; padding: 14px 18px; }
+  .status .label { display: block; font: 600 12px system-ui, sans-serif; text-transform: uppercase;
+                   letter-spacing: .07em; color: var(--muted); margin-bottom: 2px; }
+  .status p { margin: 0; }
+  blockquote { margin: 16px 0 0; padding: 0 0 0 18px; border-left: 3px solid var(--rule); }
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--rule);
            color: var(--muted); font-size: .9rem; }
 </style>
+<link rel="stylesheet" href="site.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <main>
-  <h1>undiscovered</h1>
-  <p class="tag">Research in one field that another field could use, but has never cited.</p>
-  <p class="links"><a href="join.html">Take part</a><a href="connections.html">Same problem, different field</a><a href="results.html">First test</a><a href="https://github.com/nicolas-maman/undiscovered">Code and data</a></p>
+  <header class="top">
+    <a class="brand" href="./">undiscovered</a>
+    <nav><a href="#examples">Examples</a><a href="#how">How it works</a><a href="results.html">Results</a><a class="cta" href="join.html">Take part</a></nav>
+  </header>
 
-  <p>In 1986 Don Swanson read two sets of papers that had never cited each other. One showed
-  that dietary fish oil lowers blood viscosity, platelet aggregation and vascular reactivity.
-  The other described Raynaud's syndrome, which involves all three. He proposed fish oil as a
-  treatment, and a small double-blind trial in 1989 found that it helped patients with
-  primary Raynaud's. He called this
-  <em>undiscovered public knowledge</em>.</p>
+  <h1>Research in one field that another field could use, but has never cited.</h1>
+  <p class="lede">Fields often solve the same problem under different names, and rarely read each other.
+  This open project looks for those connections across all of science, and checks its predictions
+  against what actually happens next.</p>
+  <div class="buttons">
+    <a class="button primary" href="#examples">See what a connection looks like</a>
+    <a class="button" href="join.html">Take part</a>
+  </div>
 
-  <p>This project looks for such connections in every field of science, and publishes how
-  often its predictions turn out to be right. Fields often describe the same problem in
-  different words, so volunteers lend their own computer and whichever AI model they prefer,
-  on their machine or free in the cloud, to rewrite papers without their field's jargon. The
-  result is an open index of papers described in plain terms, so that work on the same problem
-  in different fields can be matched.</p>
+  <h2 id="examples">What a connection looks like</h2>
+  <p class="sub">Four known cases. In each, the same idea was worked out in fields that call it by
+  different names.</p>
+  <div class="examples" data-examples="all"></div>
+  <p class="credit">From the benchmark of <a href="https://arxiv.org/abs/2609.07595">Kulikowski (2026)</a>,
+  <em>Same Problem, Different Field</em> (CC BY 4.0). These papers are also the first test of the
+  describing work below: plain descriptions of them, without each field's words, should bring each set
+  together.</p>
 
-  <div class="join"><a class="go" href="join.html">Take part: lend your computer and an AI model</a>
-  <span class="live" id="live">Every paper is described by two volunteers' models, compared in public.</span></div>
+  <h2>Where the idea comes from</h2>
+  <p>In 1986 the information scientist Don Swanson read two sets of papers that had never cited each
+  other. One showed that fish oil lowers blood viscosity, platelet aggregation and vascular reactivity.
+  The other described Raynaud's syndrome, which involves all three. He proposed fish oil as a treatment,
+  and a small double-blind trial in 1989 found that it helped patients with primary Raynaud's. He called
+  this <em>undiscovered public knowledge</em>: results already published, in literatures nobody reads
+  together. Swanson worked by hand, in medicine. This project tries the same across every field.</p>
 
-  <div class="status"><strong>First result, October 2026: inconclusive.</strong> We froze the
-  literature at the end of 2017 and ranked 28,114 pairs of topics from different domains that
-  had barely cited each other; 305 of them started citing each other by 2023. The citation
-  network around each pair ranked them about 14 times better than chance. Adding what the
-  papers say, measured by the words they share, did not measurably improve on it, so under the
-  plan written before the analysis the method is not taken further as it is.
-  On a second, independent set of 300 topics the network ranking did as well, and adding
-  the words was again inconclusive. <a href="results.html">See the results</a>.</div>
+  <h2 id="how">How it works</h2>
+  <ol class="steps">
+    <li><strong>Map who cites whom.</strong> From <a href="https://openalex.org">OpenAlex</a>, the open
+    index of scholarly works: for each research topic, which other topics cite its most cited papers, and
+    when. Pairs of topics far apart that have barely cited each other are the candidates.</li>
+    <li><strong>Describe papers without jargon.</strong> Volunteers' AI models rewrite each paper as the
+    problem it solves, in plain words, so that a Kalman filter and data assimilation can be recognised as
+    the same thing. Each paper is described by two volunteers, and only papers that two different
+    models describe consistently are used.</li>
+    <li><strong>Check against what happens.</strong> Every test is planned in public before its outcomes
+    are seen, predictions about the future are timestamped before the citations that judge them exist,
+    and scores are published whichever way they come out.</li>
+  </ol>
 
-  <p><strong>Forward test, registered 12 October 2026.</strong> The same network model ranked
-  26,475 pairs of topics at the end of 2025. Its checksums are anchored in Bitcoin block 971017
-  (01:11 UTC on 12 October 2026), before any of the citations that will score it exist, and it is
-  scored on the citations of 2026 to 2031. <a href="https://github.com/nicolas-maman/undiscovered/blob/main/research/FORWARD-TEST.md">The plan</a>
-  and <a href="https://github.com/nicolas-maman/undiscovered/tree/main/forward">the ranking</a>.</p>
+  <h2 id="status">Where it stands</h2>
+  <div class="status">
+    <div><span class="label">First test, October 2026</span>
+      <p><strong>Inconclusive.</strong> Frozen at the end of 2017, the citation network around 28,114 pairs
+      of topics ranked the 305 that connected by 2023 about 14 times better than chance. Adding the words
+      the papers share did not measurably improve on that. <a href="results.html">Read the results</a></p></div>
+    <div><span class="label">Forward test, registered 12 October 2026</span>
+      <p>The same model ranked 26,475 pairs of topics at the end of 2025. Its checksums are timestamped in
+      the Bitcoin blockchain, before any citation that will judge it exists, and it is scored on the
+      citations of 2026 to 2031. <a href="forward.html">What was ranked</a></p></div>
+    <div><span class="label">Describing papers, open now</span>
+      <p id="live">A first set of 8,135 papers is ready to be described. Pairs appear on
+      <a href="connections.html">Same problem, different field</a> as the work comes in.</p></div>
+  </div>
 
-  <h2>Help now</h2>
-  <p><strong>Lend your computer and an AI model.</strong> Your model, local or free in the cloud,
-  describes papers in plain words so that work on the same problem in different fields can find
-  each other. <a href="join.html">Take part, and see the progress so far</a>; the pairs of papers
-  the descriptions bring together appear on <a href="connections.html">Same problem, different
-  field</a> as the work comes in.</p>
-  <p><strong>Find a flaw.</strong> Read the
-  <a href="https://github.com/nicolas-maman/undiscovered/blob/main/research/FORWARD-TEST.md">plan for the forward test</a>,
-  which ranks pairs of fields now and scores the ranking on citations not yet written, or the
-  <a href="results.html">first test's results</a>, and
-  <a href="https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml">tell us what could make a result wrong</a>.
-  Criticism of a plan is worth most before its data is collected.</p>
-
-  <h2>Coming</h2>
-  <p>As each part ships, you will be able to:</p>
-  <ul>
-    <li>rate the proposed connections that touch your field;</li>
-    <li>run the tool on your own machine with a paper or a short description, and see which
-    distant fields work on the same problem.</li>
-  </ul>
+  <h2>Take part</h2>
+  <p><strong>Lend your computer and an AI model.</strong> One on your own machine, a free one in the
+  cloud, or one you already pay for. Start with five units of twenty papers; the project pays for
+  nothing and asks for nothing. <a href="join.html">How to start</a></p>
+  <p><strong>Find a flaw.</strong> Criticism is worth most before the data is in.
+  <a href="https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml">Tell us what
+  could make a result wrong</a>.</p>
 
   <footer>
     Open source (MIT). Data CC0, from <a href="https://openalex.org">OpenAlex</a>.
-    <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
+    Code, data and every plan: <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
   </footer>
 </main>
+<script src="examples.js"></script>
 <script>
-  // One line of live progress, from the data branch; the page reads the same without it.
+  // Live progress from the data branch; the paragraph reads the same without it.
   fetch("https://raw.githubusercontent.com/nicolas-maman/undiscovered/distill-2025/progress.json", {cache: "no-store"})
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (p) {
-      if (!p || !p.papers) { return; }
+      if (!p || !p.papers_described) { return; }
       var n = function (x) { return (x || 0).toLocaleString("en"); };
       var people = (p.contributors || []).length, models = (p.models || []).length;
-      document.getElementById("live").textContent = p.papers_described
-        ? n(p.papers_described) + " of " + n(p.papers) + " papers described so far, by " + n(people) +
-          (people === 1 ? " volunteer" : " volunteers") + " with " + n(models) + (models === 1 ? " model." : " models.")
-        : n(p.papers) + " papers are ready to be described; none has been yet.";
+      var live = document.getElementById("live");
+      live.textContent = n(p.papers_described) + " of " + n(p.papers) + " papers described so far, by " +
+        n(people) + (people === 1 ? " volunteer" : " volunteers") + " with " + n(models) +
+        (models === 1 ? " model. " : " models. ");
+      var a = document.createElement("a");
+      a.href = "connections.html";
+      a.textContent = "See the pairs they bring together";
+      live.appendChild(a);
     })
     .catch(function () {});
 </script>

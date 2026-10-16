@@ -1,0 +1,35 @@
+/* Shared by every page: the header, buttons and the example cards. Colours
+   come from each page's own :root variables. */
+.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+       gap: 6px 24px; font: 15px system-ui, sans-serif; margin: 0 0 40px; }
+.top .brand { font: 700 1.15rem Georgia, "Iowan Old Style", serif; color: var(--fg); text-decoration: none; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover, .top nav a:focus { color: var(--fg); text-decoration: underline; }
+.top nav a[aria-current="page"] { color: var(--fg); }
+.top nav a.cta { color: var(--accent); font-weight: 600; }
+
+.buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 8px; }
+.button { display: inline-block; font: 600 15px system-ui, sans-serif; padding: 10px 18px;
+          border-radius: 6px; text-decoration: none; border: 1px solid var(--accent); color: var(--accent); }
+.button.primary { background: var(--accent); color: var(--bg); }
+.button:hover, .button:focus { text-decoration: underline; }
+
+.examples { display: grid; gap: 18px; margin: 20px 0 8px; }
+.example { border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px 14px; }
+.example h3 { font-size: 1.12rem; line-height: 1.35; margin: 0 0 4px; }
+.example .detail { color: var(--muted); margin: 0 0 12px; }
+.example .papers { list-style: none; padding: 0; margin: 0; }
+.example .papers li { padding: 9px 0; border-top: 1px solid var(--rule); }
+.example .field { display: block; font: 600 12px system-ui, sans-serif; text-transform: uppercase;
+                  letter-spacing: .07em; color: var(--accent); margin-bottom: 2px; }
+.example .title { color: var(--fg); text-decoration: none; font-weight: normal; margin: 0; }
+.example .title:hover, .example .title:focus { text-decoration: underline; }
+.example .cite { display: block; font: 13px system-ui, sans-serif; color: var(--muted); margin-top: 2px; }
+.example .names { font: 13px system-ui, sans-serif; color: var(--muted); margin: 10px 0 0; }
+.credit { font-size: .9rem; color: var(--muted); }
+
+/* Side by side on wider screens, so each card reads as one idea across fields. */
+@media (min-width: 640px) {
+  .example .papers { display: grid; grid-template-columns: 1fr 1fr; column-gap: 22px; }
+}

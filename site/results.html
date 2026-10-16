@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Backtest results · undiscovered">
+<meta property="og:title" content="First test: results · undiscovered">
 <meta property="og:description" content="If we had frozen the literature at the end of 2017, could we have predicted which unconnected fields would start citing each other by 2023?">
 <meta property="og:url" content="https://nicolas-maman.github.io/undiscovered/results.html">
 <meta property="og:image" content="https://nicolas-maman.github.io/undiscovered/card.png">
@@ -12,7 +12,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="undiscovered: research in one field that another field could use, but has never cited.">
 <meta name="twitter:card" content="summary_large_image">
-<title>Backtest results · undiscovered</title>
+<title>First test: results · undiscovered</title>
 <meta name="description" content="Can we predict which unconnected fields of science start citing each other? The backtest, its numbers and its examples.">
 <style>
   :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a;
@@ -25,8 +25,8 @@
   body { margin: 0; background: var(--bg); color: var(--fg);
          font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
   main { max-width: 760px; margin: 0 auto; padding: 48px 16px 80px; }
-  nav { font: 14px system-ui, sans-serif; margin-bottom: 32px; }
-  nav a { color: var(--muted); text-decoration: none; }
+  details.more { margin-top: 40px; border-top: 1px solid var(--rule); padding-top: 14px; }
+  details.more > summary { font: 600 15px system-ui, sans-serif; color: var(--accent); cursor: pointer; }
   h1 { font-size: 2rem; margin: 0 0 8px; }
   h2 { font: 600 0.95rem system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em;
        color: var(--muted); margin: 44px 0 10px; }
@@ -68,13 +68,20 @@
   .timeline text.on-accent { fill: var(--bg); font-weight: 600; }
   .timeline .freeze { stroke: var(--fg); stroke-width: 1.5; }
 </style>
+<link rel="stylesheet" href="site.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <main>
-  <nav><a href="./">undiscovered</a> / results</nav>
-  <h1>Backtest results</h1>
+  <header class="top">
+    <a class="brand" href="./">undiscovered</a>
+    <nav><a href="./#examples">Examples</a><a href="./#how">How it works</a><a href="results.html" aria-current="page">Results</a><a class="cta" href="join.html">Take part</a></nav>
+  </header>
+  <h1>First test: results</h1>
   <p>If we had frozen the scientific literature at the end of 2017, could we have predicted
   which unconnected fields would start citing each other by 2023?</p>
+  <p class="note">This test looks back. The <a href="forward.html">forward test</a> ranks pairs of fields
+  now and is judged on the citations of 2026 to 2031.</p>
 
   <div id="verdict" class="verdict">Loading…</div>
   <div id="body"></div>
@@ -392,9 +399,11 @@
     }
     body.appendChild(ul);
 
+    var more = el("details", {class: "more"}, [el("summary", {text:
+      "More detail: robustness checks, the pairs ranked highest, and results by pair of domains"})]);
     if (data.robustness) {
-      body.appendChild(el("h2", {text: "Robustness checks, as planned"}));
-      body.appendChild(el("p", {class: "note", text:
+      more.appendChild(el("h2", {text: "Robustness checks, as planned"}));
+      more.appendChild(el("p", {class: "note", text:
         "H1 again under each variation listed in the plan. As planned, a pair is connected at 3 or " +
         "more citing works and unconnected if at most one linked them up to 2017, content is compared " +
         "with word weights learned from each freeze's own abstracts, and the topics were drawn with " +
@@ -417,15 +426,15 @@
           el("td", {class: "num", text: interval(d.diff_ci)}),
           el("td", {}, [el("span", {class: d.holds ? "yes" : "no", text: d.outcome || (d.holds ? "holds" : "does not hold")})])]));
       });
-      body.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
+      more.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
         el("thead", {}, [el("tr", {}, [el("th", {text: "Variation"}),
           el("th", {class: "num", text: "Pairs (connected)"}), el("th", {class: "num", text: "Difference"}),
           el("th", {class: "num", text: "95% interval"}), el("th", {text: "H1"})])]),
         rtb])]));
     }
 
-    body.appendChild(el("h2", {text: "What the method ranked highest in 2017"}));
-    body.appendChild(el("p", {class: "note", text:
+    more.appendChild(el("h2", {text: "What the method ranked highest in 2017"}));
+    more.appendChild(el("p", {class: "note", text:
       "The 20 pairs that the network-and-content model ranked first, with how many citing works " +
       "linked them up to 2017 and in 2018 to 2023."}));
     var ptb = el("tbody");
@@ -438,12 +447,12 @@
         el("td", {}, [el("span", {class: p.connected_later ? "yes" : "no",
                                   text: p.connected_later ? "connected" : "not yet"})])]));
     });
-    body.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
+    more.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
       el("thead", {}, [el("tr", {}, [el("th", {class: "num", text: "#"}), el("th", {text: "Topic"}),
         el("th", {text: "Topic"}), el("th", {class: "num", text: "Links"}), el("th", {text: "By 2023"})])]),
       ptb])]));
 
-    body.appendChild(el("h2", {text: "By pair of domains"}));
+    more.appendChild(el("h2", {text: "By pair of domains"}));
     var dtb = el("tbody");
     Object.keys(r.by_domain_pair).forEach(function (k) {
       var d = r.by_domain_pair[k];
@@ -453,11 +462,13 @@
         el("td", {class: "num", text: d.network === undefined ? "too few" : num(d.network, 4)}),
         el("td", {class: "num", text: d.combined === undefined ? "too few" : num(d.combined, 4)})]));
     });
-    body.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
+    more.appendChild(el("div", {class: "scroll"}, [el("table", {}, [
       el("thead", {}, [el("tr", {}, [el("th", {text: "Domains"}), el("th", {class: "num", text: "Pairs"}),
         el("th", {class: "num", text: "Connected"}), el("th", {class: "num", text: "Network AP"}),
         el("th", {class: "num", text: "Combined AP"})])]),
       dtb])]));
+
+    body.appendChild(more);
 
     body.appendChild(el("h2", {text: "Check it yourself"}));
     body.appendChild(el("p", {}, [

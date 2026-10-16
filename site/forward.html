@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Forward test · undiscovered">
+<meta property="og:description" content="Pairs of research fields ranked at the end of 2025, timestamped before the citations that will judge them exist, and scored on the citations of 2026 to 2031.">
+<meta property="og:url" content="https://nicolas-maman.github.io/undiscovered/forward.html">
+<meta property="og:image" content="https://nicolas-maman.github.io/undiscovered/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="undiscovered: research in one field that another field could use, but has never cited.">
+<meta name="twitter:card" content="summary_large_image">
+<title>Forward test · undiscovered</title>
+<meta name="description" content="Pairs of research fields ranked at the end of 2025, timestamped before the citations that will judge them exist, and scored on the citations of 2026 to 2031.">
+<style>
+  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; --band: #f1eee6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0; --band: #1d1c1a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 80px; }
+  a { color: var(--accent); }
+  h1 { font-size: 2.1rem; line-height: 1.2; margin: 8px 0 12px; }
+  .lede { font-size: 1.12rem; }
+  h2 { font-size: 1.35rem; margin: 48px 0 8px; }
+  .facts { display: grid; gap: 14px; margin: 20px 0 0; }
+  .facts div { background: var(--band); border-radius: 8px; padding: 14px 18px; }
+  .facts .label { display: block; font: 600 12px system-ui, sans-serif; text-transform: uppercase;
+                  letter-spacing: .07em; color: var(--muted); margin-bottom: 2px; }
+  .facts p { margin: 0; }
+  .bets { padding-left: 28px; margin: 16px 0 0; }
+  .bets li { padding: 8px 0; border-bottom: 1px solid var(--rule); }
+  .bets .dom { font: 12px system-ui, sans-serif; color: var(--muted); white-space: nowrap; }
+  .bets .and { color: var(--muted); font-style: italic; }
+  .bets .t { display: block; }
+  .note { color: var(--muted); font-size: .92rem; }
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--rule);
+           color: var(--muted); font-size: .9rem; }
+</style>
+<link rel="stylesheet" href="site.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<main>
+  <header class="top">
+    <a class="brand" href="./">undiscovered</a>
+    <nav><a href="./#examples">Examples</a><a href="./#how">How it works</a><a href="results.html" aria-current="page">Results</a><a class="cta" href="join.html">Take part</a></nav>
+  </header>
+
+  <h1>Forward test</h1>
+  <p class="lede">The <a href="results.html">first test</a> looked back at 2018 to 2023, and the people who
+  ran it knew roughly what had happened. This one ranks pairs of fields now, and is judged on citations
+  that have not been written yet.</p>
+
+  <div class="facts">
+    <div><span class="label">What was ranked</span>
+      <p>26,475 pairs of research topics from different domains (physical, life, health and social
+      sciences) that had at most one citing work between them up to the end of 2025, drawn from the first
+      test's 300 topics.</p></div>
+    <div><span class="label">By what</span>
+      <p>The first test's network model, unchanged: it reads only the shape of the citation network
+      around each pair, not what the topics are about. A ranking by the topics' size and growth is
+      kept as the comparison.</p></div>
+    <div><span class="label">Locked in</span>
+      <p>The ranking, both models and the records they were computed from are published with
+      checksums, timestamped in Bitcoin block 971017 (01:11 UTC, 12 October 2026). Anyone can check
+      that they have not changed since, without trusting this project or GitHub.</p></div>
+    <div><span class="label">How it is judged</span>
+      <p>A pair counts as connected if at least 3 works published from 2026 to 2031 cite across it.
+      Counts are made each year from 2027 and labelled interim; the result is read in mid 2032. The
+      test passes if the network ranking beats the size and growth ranking, with the 95% interval of
+      the difference above zero.</p></div>
+  </div>
+
+  <h2>The model's top ten</h2>
+  <p>The ten pairs ranked most likely to connect. Some look surprising: the model sees only how the two
+  topics sit in the citation network, which is exactly what this test checks.</p>
+  <ol class="bets">
+    <li><span class="t">Peanut Plant Research Studies <span class="dom">Life Sciences</span></span><span class="t"><span class="and">and</span> Water and Land Management <span class="dom">Physical Sciences</span></span></li>
+    <li><span class="t">Antioxidant Activity and Oxidative Stress <span class="dom">Health Sciences</span></span><span class="t"><span class="and">and</span> Opinion Dynamics and Social Influence <span class="dom">Physical Sciences</span></span></li>
+    <li><span class="t">Barrier Structure and Function Studies <span class="dom">Life Sciences</span></span><span class="t"><span class="and">and</span> Microbial Community Ecology and Physiology <span class="dom">Physical Sciences</span></span></li>
+    <li><span class="t">Statistical and numerical algorithms <span class="dom">Physical Sciences</span></span><span class="t"><span class="and">and</span> Information Systems Theories and Implementation <span class="dom">Social Sciences</span></span></li>
+    <li><span class="t">Computational Drug Discovery Methods <span class="dom">Physical Sciences</span></span><span class="t"><span class="and">and</span> Health Education and Validation <span class="dom">Social Sciences</span></span></li>
+    <li><span class="t">COVID-19 diagnosis using AI <span class="dom">Health Sciences</span></span><span class="t"><span class="and">and</span> Opinion Dynamics and Social Influence <span class="dom">Physical Sciences</span></span></li>
+    <li><span class="t">Immune cells in cancer <span class="dom">Life Sciences</span></span><span class="t"><span class="and">and</span> Machine Learning and Data Classification <span class="dom">Physical Sciences</span></span></li>
+    <li><span class="t">Developmental Biology and Gene Regulation <span class="dom">Life Sciences</span></span><span class="t"><span class="and">and</span> Machine Learning and Data Classification <span class="dom">Physical Sciences</span></span></li>
+    <li><span class="t">Chemokine receptors and signaling <span class="dom">Health Sciences</span></span><span class="t"><span class="and">and</span> Opinion Dynamics and Social Influence <span class="dom">Physical Sciences</span></span></li>
+    <li><span class="t">Magnesium in Health and Disease <span class="dom">Health Sciences</span></span><span class="t"><span class="and">and</span> Opinion Dynamics and Social Influence <span class="dom">Physical Sciences</span></span></li>
+  </ol>
+  <p class="note">In the first test, 30 of the network model's top 100 pairs went on to connect.</p>
+
+  <h2>For checking</h2>
+  <p>The <a href="https://github.com/nicolas-maman/undiscovered/blob/main/research/FORWARD-TEST.md">full
+  plan</a>, registered before the ranking was computed, and the
+  <a href="https://github.com/nicolas-maman/undiscovered/tree/main/forward">ranking, models, records and
+  timestamp proof</a>, with instructions to verify them, are on GitHub.</p>
+
+  <footer>
+    Open source (MIT). Data CC0, from <a href="https://openalex.org">OpenAlex</a>.
+    <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
+  </footer>
+</main>
+</body>
+</html>
