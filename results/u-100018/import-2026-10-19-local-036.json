@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-036",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T01:57:42Z",
+ "descriptions": [
+  {
+   "work": "W4391165157",
+   "problem": "A system learns to classify medical signals from short, noisy recordings by identifying patterns associated with specific disease states, using limited training examples where direct supervision is scarce.",
+   "approach": "A model first learns general feature extraction from large-scale visual data, then adapts to medical audio by combining local pattern recognition with attention-based refinement of spatial and temporal signal components."
+  },
+  {
+   "work": "W7203595814",
+   "problem": "A system's performance is monitored over time to detect deviations from expected behavior, identifying patterns that may signal impending failure or degradation in operational stability.",
+   "approach": "Data from operational sensors is continuously analyzed to establish baseline behavior, then compared against established thresholds to flag anomalies requiring intervention."
+  },
+  {
+   "work": "W4397045492",
+   "problem": "A model estimates the risk of a clinical outcome based on a biomarker level and baseline health status, comparing outcomes across different levels of that biomarker while adjusting for known confounding factors.",
+   "approach": "The model groups individuals by the level of a measured substance, analyzes time-to-event outcomes using survival analysis, and adjusts for multiple variables using statistical imputation and regression to isolate the effect of the substance level on health trajectory."
+  },
+  {
+   "work": "W3007400339",
+   "problem": "The system estimates the true state of a fluid at each junction based on observed measurements that contain noise, using physical laws that govern mass balance and the limits of how components can combine under non-equilibrium conditions.",
+   "approach": "It applies a statistical method to find the most probable state that fits observed data, solving a constrained optimization problem where mass is conserved and component blending cannot exceed physical limits."
+  },
+  {
+   "work": "W4400766925",
+   "problem": "A system is designed to produce a specific antigenic component in a living host cell culture, optimizing its yield through genetic modifications and environmental control to trigger a measurable immune response when administered orally.",
+   "approach": "A genetic construct links the antigen to a stabilizing partner sequence, with expression boosted at lower temperatures. Immune markers are measured in response to the administered agent in a living organism."
+  },
+  {
+   "work": "W2889737628",
+   "problem": "A group of people uses digital tools to share and refine their understanding of land rights, adapting their views based on interactions across connected platforms.",
+   "approach": "They gather input from diverse participants, refine shared interpretations over time, and adjust how information is presented based on how it is received and reused in different digital environments."
+  },
+  {
+   "work": "W4367190801",
+   "problem": "A material's resistance to deformation under load and its performance under sliding contact are evaluated across different reinforcement levels and processing conditions.",
+   "approach": "A continuous process shapes powder-based material into a dense form. The resulting structure's internal arrangement and performance under stress and wear are analyzed through repeated testing under controlled conditions."
+  },
+  {
+   "work": "W3160663839",
+   "problem": "A system estimates future patterns in a dynamic process influenced by both repeating daily and weekly cycles, and spatial relationships among entities. It analyzes sequences of observations over time and across interconnected units to predict future values with high accuracy.",
+   "approach": "It splits the data into two temporal streams, each processed through a module that captures local and global relationships. A recurrent unit refines temporal patterns, while a dual-path mechanism separately models connectivity and proximity-based dependencies."
+  },
+  {
+   "work": "W4285250010",
+   "problem": "The proportion of medically attended respiratory infections occurring in a specific population group during their first exposure season is estimated, broken down by gestational age, preexisting health conditions, and level of medical care involved.",
+   "approach": "A statistical model analyzes health records from diverse insurance sources to identify and categorize cases of respiratory illness in early life, adjusting for risk factors and care settings to determine the relative contribution of different demographic and health profiles."
+  },
+  {
+   "work": "W2192566869",
+   "problem": "The pattern of household-level use of working livestock for agricultural tasks is estimated from observed activity and demographic data collected across a defined rural population.",
+   "approach": "A structured data collection method is applied to households with working livestock, recording age, initial herd size, breed preference, and task types. Responses are aggregated and analyzed to identify trends in usage, starting conditions, and constraints affecting performance."
+  },
+  {
+   "work": "W2997191435",
+   "problem": "A system detects and quantifies how disruptions in signaling pathways affect the shape and development of a sensory structure, particularly when regional gene expression patterns are misaligned.",
+   "approach": "A computational model simulates interactions between inhibitory and stimulatory signals across a developing tissue, adjusting gene activity based on local signal concentration to predict structural outcomes and identify mutations that disrupt balance."
+  },
+  {
+   "work": "W3127942145",
+   "problem": "The task is to identify key host components that influence the replication and spread of a pathogen in living systems, by measuring how changes in host biology affect pathogen behavior across different biological contexts.",
+   "approach": "A systematic perturbation method is applied to living systems to test how altering specific host elements affects pathogen dynamics. Results are analyzed using computational models to predict outcomes and link genetic variations to biological effects in real-world health data."
+  },
+  {
+   "work": "W2997758568",
+   "problem": "A system is designed to assign operations to a sequence of positions in a linear flow, where operation durations are not known precisely and may vary. The goal is to determine the best arrangement that minimizes inefficiency while ensuring no single position is assigned too many operations.",
+   "approach": "A mathematical model uses historical patterns to represent unknown operation durations as possible ranges. It evaluates all feasible groupings and selects the one that best fits constraints under variable timing, using a stepwise search to find the most efficient structure."
+  },
+  {
+   "work": "W3171878040",
+   "problem": "The amount of fat stored within a specific bodily region is assessed across individuals with varying levels of movement intensity over time, and compared between groups with different movement patterns.",
+   "approach": "Movement intensity is tracked using wearable sensors, and movement duration is segmented into defined activity levels. Fat content in the region is measured non-invasively, and statistical relationships are evaluated between movement duration and fat accumulation."
+  },
+  {
+   "work": "W3177207791",
+   "problem": "A pattern of protein expression is mapped across a biological sample, and its functional impact is assessed in response to varying environmental or physiological conditions.",
+   "approach": "A computational model analyzes spatial and contextual data to infer how a molecular factor influences cellular behavior, using known interactions and observed changes to predict outcomes under different scenarios."
+  },
+  {
+   "work": "W4402753704",
+   "problem": "A system estimates correct outcomes from uncertain observations by identifying consistent patterns in how data points relate to one another across a network of associations.",
+   "approach": "It uses a reverse neighborhood rule to find stable groupings in data, then refines predictions by emphasizing consistency among related instances during training."
+  },
+  {
+   "work": "W4392352399",
+   "problem": "A system is evaluated to determine its effectiveness across multiple health-related functions, including immune modulation, infection response, and tissue protection, based on observed outcomes in biological systems.",
+   "approach": "A set of natural substances is analyzed for their performance in diverse physiological conditions using empirical evidence from experimental and observational studies to assess consistency and potential for further development."
+  },
+  {
+   "work": "W3123557006",
+   "problem": "A sudden onset of cardiac damage is observed in a patient with a rare anatomical variation of the heart's blood supply, and the link between this variation and a viral infection is investigated to explain the triggering event.",
+   "approach": "The patient's medical history, lab results, and imaging data are analyzed to trace the sequence of events, with a focus on identifying patterns between a known infectious agent and the timing of tissue damage."
+  },
+  {
+   "work": "W2990090781",
+   "problem": "A system estimates an individual's capacity to achieve positive transformation based on their belief in their own ability to act and their expectation of favorable outcomes.",
+   "approach": "The system evaluates patterns in behavioral engagement and past outcomes to adjust expectations and reinforce confidence, using iterative feedback to strengthen belief in actionable progress."
+  },
+  {
+   "work": "W2969206202",
+   "problem": "A sudden onset of a severe and rapidly progressing blood cell disorder is observed in a previously healthy individual, raising the possibility that a previously mild infection may have initiated the development of a malignant condition.",
+   "approach": "A longitudinal medical record is analyzed to track changes in blood cell counts and tissue structure over time, with comparisons made between early infection signs and later tissue abnormalities to identify potential causal links."
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-19-local-013",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:39Z",
+ "descriptions": [
+  {
+   "work": "W4409771207",
+   "problem": "The task is to estimate or predict something that cannot be precisely defined, and to explain why this is necessary or important. This is done using data or evidence that shows the absence of a clear target.",
+   "approach": "The procedure involves proposing a fundamental assumption that the target does not exist in reality, and then using this assumption to develop a theoretical foundation for handling situations where the target cannot be precisely defined."
+  },
+  {
+   "work": "W4409630874",
+   "problem": "This work estimates the effect of varying levels of energy production on the ability of cells to survive and proliferate, and compares the impact of different levels of oxygen availability on this effect. It also explains how changes in the physical properties of the cells' surroundings affect their response to a particular treatment.",
+   "approach": "The researchers use a combination of experiments and data analysis to investigate the relationship between energy production, oxygen levels, and cell behavior. They apply a range of conditions and measurements to understand how these factors influence the cells' response to a treatment."
+  },
+  {
+   "work": "W2786824658",
+   "problem": "This work estimates the performance of a model on unseen data by comparing its predictions to a set of known outcomes. It also optimises a scoring mechanism to predict the confidence of the model's predictions.",
+   "approach": "The approach uses a two-model system: a base model that makes predictions, and a meta-model that learns from the base model's successes and failures. The meta-model uses a subset of the base model's features to make its predictions."
+  },
+  {
+   "work": "W4412174673",
+   "problem": "This research estimates the effect of a material on the health and appearance of a critical organ, comparing its impact on the organ's protective functions and water retention. It predicts the material's role in maintaining the organ's homeostasis and optimizes its potential applications.",
+   "approach": "The researchers used a combination of laboratory experiments and 3D models to investigate the material's effects on the organ's cells and structure, analyzing gene expression and protein levels to understand its mechanisms."
+  },
+  {
+   "work": "W2917628625",
+   "problem": "This work estimates the form of a mathematical object that describes how certain quantities behave in a specific kind of problem. It predicts that these quantities take the same form as a similar object in a different kind of problem.",
+   "approach": "The researchers use a mathematical model to compute the object's behavior in a specific situation. They follow a procedure that involves applying a set of rules to the model to obtain the desired result."
+  },
+  {
+   "work": "W4386907666",
+   "problem": "This research estimates the incidence of a rare but severe condition in patients who have received a transplant, and compares the causes and prognosis of different types of this condition. It also explains the management of this condition in various situations.",
+   "approach": "The researchers used data from consecutive patients who received a transplant over a period of 12 years, and analyzed the timing of the condition to identify patterns and correlations."
+  },
+  {
+   "work": "W2803418357",
+   "problem": "This research estimates the effect of a substance on a biological process, comparing the levels of the substance and its effects on a specific outcome. It predicts the outcome of a substance on a biological process, comparing the levels of the substance and its effects.",
+   "approach": "The researchers used a specific method to identify the substance's effect on a biological process. They fed a group of mice with a substance, collected samples, and analyzed them to identify the substance's effect on a specific outcome."
+  },
+  {
+   "work": "W4406536743",
+   "problem": "This work estimates the standard of care for a specific medical procedure, comparing the use of a particular technology to determine its effectiveness and necessity. It also compares opinions on the technology's implementation across different practice types and locations.",
+   "approach": "The researchers surveyed a large group of medical practitioners, analyzing their responses using a statistical test to identify patterns and trends. They used a specific statistical method and software to analyze the data and draw conclusions."
+  },
+  {
+   "work": "W4414488510",
+   "problem": "This work estimates the number of animal bones found in a specific area, compares it to a known quantity, and optimizes a model to make a more accurate prediction. It uses data from various sources to support its findings.",
+   "approach": "The procedure involves collecting and analyzing data from different types of evidence, such as drawings and photographs, to make a more accurate estimate. The model is optimized through a process of comparison and refinement, using a team of experts and laborers to guide the process."
+  },
+  {
+   "work": "W4404704354",
+   "problem": "This work estimates the effectiveness of a combination of two substances against two types of viruses. It predicts how well these substances can reduce the presence of these viruses in a test.",
+   "approach": "The researchers used a test to see how well these substances can kill viruses. They applied the substances to a mixture of viruses and measured the remaining viruses to see how well they were killed."
+  },
+  {
+   "work": "W4389482159",
+   "problem": "This work estimates the impact of global changes on the productivity of a specific type of agriculture in Russia, comparing the effects of rising temperatures over a 40-year period.",
+   "approach": "The researchers analyzed statistical data on temperature records and solar radiation levels to draw conclusions and propose measures for improving the productivity of this type of agriculture in a changing climate."
+  },
+  {
+   "work": "W4387785150",
+   "problem": "This work estimates the effect of a certain substance on various biological markers in mice that have been induced to age prematurely. It aims to compare the impact of this substance on oxidative stress, skin aging, and cardiac hypertrophy in mice that have been aged with and without the substance.",
+   "approach": "The researchers divided the mice into six groups and gave them different combinations of the substance, vitamin C, and a control substance. They then measured various biological markers in the mice's hearts and skin tissues to compare the effects of the different groups."
+  },
+  {
+   "work": "W3107672203",
+   "problem": "This research estimates the effects of different ingredient combinations on the quality and safety of a food product, comparing the results to determine the best approach. It aims to explain how changes in the ingredients and cooking methods affect the product's properties.",
+   "approach": "The study uses a combination of sensory evaluation, chemical analysis, and cooking methods to determine the optimal ingredient combination and cooking method. The results are compared to establish the best approach for creating a food product with desirable properties."
+  },
+  {
+   "work": "W3196848749",
+   "problem": "This research investigates how different substances affect the muscles in a rat's airway, and whether certain channels in the muscle cells are involved in this effect. It aims to understand how these substances work and what channels are responsible for the response.",
+   "approach": "The researchers tested how different substances affect the muscles in a rat's airway, and used special blockers to see how the channels in the muscle cells respond. They then analyzed the results to understand how the substances work and which channels are involved."
+  },
+  {
+   "work": "W4385417300",
+   "problem": "This work estimates the impact of a sudden change in the system's power supply on its stability, and predicts how the system's frequency and stability will change over time. It compares the system's performance under different scenarios to determine the most effective control strategy.",
+   "approach": "The approach involves analyzing the system's behavior using a simplified model, and then using this analysis to develop a control strategy that can adapt to changing conditions. The strategy is tested using a computer model to see how well it works in practice."
+  },
+  {
+   "work": "W7005206487",
+   "problem": "This study investigates how changes in work arrangements and technology influence the dynamics of teams with diverse backgrounds. It aims to understand the impact of these changes on team behavior and decision-making.",
+   "approach": "The research uses a case study approach, gathering data through ethnographical fieldwork. The data is then analyzed using a method that identifies patterns and relationships in the data to gain insights into the team's behavior and decision-making processes."
+  },
+  {
+   "work": "W3130289900",
+   "problem": "This study aims to determine if a specific therapy can help recover a common complication after a surgical procedure, and whether it can be done safely and effectively at home. It estimates the recovery rate of a specific function after the therapy is applied.",
+   "approach": "The researchers used a therapy that sends electrical signals to help a specific function recover, and they tested it on a group of patients who had a similar surgical procedure. They compared the results to a group of patients who did not receive the therapy."
+  },
+  {
+   "work": "W2790586408",
+   "problem": "This research estimates the relationship between a certain condition and a biomarker, comparing the levels of the biomarker in two groups to see if there is a correlation. It also predicts the presence of the condition based on the biomarker levels.",
+   "approach": "The researchers used a statistical analysis approach, comparing the levels of the biomarker in two groups and using various tests to determine the significance of the correlation and the accuracy of the predictions."
+  },
+  {
+   "work": "W4401223574",
+   "problem": "This study estimates the effectiveness of a specific treatment protocol in a psychiatric facility, predicts the likelihood of certain interventions, and compares the actual practices to established guidelines. It also explains the reasons behind the deviations and optimizes the treatment process.",
+   "approach": "The researchers analyzed patient records to assess the sequence of interventions, the choices of interventions, and the documentation of patient monitoring. They applied statistical methods to analyze the data and identify areas for improvement."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-001",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:37Z",
+ "descriptions": [
+  {
+   "work": "W2987343426",
+   "problem": "This research estimates the reliability and validity of a memory screening tool in a specific population, comparing its performance to other health-related measures. It aims to explain how well the tool works and whether it can be used to screen for memory problems in this group.",
+   "approach": "The researchers used statistical models to analyze data from a large sample of women, applying a combination of factor analysis and regression techniques to examine the tool's performance and identify potential issues."
+  },
+  {
+   "work": "W4415960419",
+   "problem": "This research investigates the relationship between a specific gene and its role in a process that affects how cells change and move, and how this process is connected to the characteristics of tumors and patient outcomes. It aims to identify factors that can predict the likelihood of tumor recurrence and survival.",
+   "approach": "The researchers used a technique to analyze tissue samples from patients, looking for the presence of specific proteins and their connections to other proteins. They also collected data on patient characteristics and outcomes, and used this data to identify patterns and make predictions about patient survival."
+  },
+  {
+   "work": "W4406817376",
+   "problem": "This research estimates the effectiveness of a treatment on a group of people with a common condition, characterised by a specific imbalance in their cells. It compares the results of this treatment to the outcomes of people without this condition.",
+   "approach": "The researchers used data from patients with this condition to train a model that predicts the outcome of the treatment. They then tested this model on a separate group of patients to see if it accurately predicted the results of the treatment."
+  },
+  {
+   "work": "W4416683173",
+   "problem": "This work estimates the resistance of different types of grains to being infested by a certain insect, and compares the effectiveness of various grain traits in preventing infestation. It also predicts the potential fitness advantage of insects that can feed on larger seeds.",
+   "approach": "The researchers used a combination of experiments to evaluate the resistance of different grain types, including tests to measure how many insects can survive and reproduce on each type of grain, and how much the grain's hardness affects this. They also compared the preferences of the insects for different types of grains."
+  },
+  {
+   "work": "W3123241984",
+   "problem": "This research aims to understand how individuals in a complex organization balance multiple responsibilities and adapt to changing needs. It seeks to identify the key factors that influence their ability to do so.",
+   "approach": "The study uses a combination of interviews and coding to analyze the processes and structures established by key figures in the organization. It follows a qualitative approach, focusing on themes and patterns in the data to inform recommendations for improvement."
+  },
+  {
+   "work": "W4221121267",
+   "problem": "This research estimates the effect of a specific technique on the properties of a material made from a metal alloy and a ceramic reinforcement. It predicts how the properties will change when the technique is applied to different amounts of the ceramic reinforcement.",
+   "approach": "The technique involves mixing the metal alloy and ceramic reinforcement together using a special method, and then applying a high-frequency vibration to the mixture. The researcher then examines the resulting material using various methods to analyze its properties and structure."
+  },
+  {
+   "work": "W4416299237",
+   "problem": "This research aims to understand the prevalence and impact of certain social practices, rooted in outdated gender norms and superstition, on public health, human rights, and social development. It estimates the number of publications on this topic, compares different perspectives, and identifies gaps in the literature.",
+   "approach": "The study uses a systematic search of academic databases to identify relevant publications, and then analyzes the data using network visualization and thematic clustering techniques to identify key themes and trends."
+  },
+  {
+   "work": "W4285733685",
+   "problem": "This work estimates the effect of a specific type of food on the body's fat storage and muscle mass in a certain animal model. It compares the results of two groups of animals, one that eats a standard food and one that eats a food rich in a certain type of nutrient.",
+   "approach": "The researchers used a procedure where they gave two groups of animals a standard food and a food rich in a certain type of nutrient, and then examined the changes in their body fat and muscle mass after a certain period of time."
+  },
+  {
+   "work": "W4388022109",
+   "problem": "This work estimates the stability of a certain type of delivery system over time, comparing its performance under different conditions. It predicts the effectiveness of this system in delivering a specific compound through the skin.",
+   "approach": "The researchers varied the composition of the delivery system and the conditions it was exposed to, then measured its physical properties and performance over time. They used this data to compare the performance of two different types of delivery systems."
+  },
+  {
+   "work": "W4313340123",
+   "problem": "This work estimates the distribution of certain types of underwater plants in coastal areas with limited access and monitoring. It predicts the extent of these plants in different regions and compares the results to understand the impact of certain environmental factors.",
+   "approach": "The study uses satellite images to identify and measure the area of these underwater plants. It follows a procedure that involves analyzing the images, applying certain rules to detect the plants, and then comparing the results to understand the impact of environmental factors."
+  },
+  {
+   "work": "W4409528177",
+   "problem": "This research estimates the potential of a certain type of plant material to kill cancer cells, and compares it to other similar materials. It also predicts the effects of these materials on human cells and explains the underlying reasons for these effects.",
+   "approach": "The researchers used a combination of laboratory experiments and computer simulations to investigate the properties of the plant material. They isolated and analyzed specific molecules from the material to understand their effects on human cells."
+  },
+  {
+   "work": "W3080167492",
+   "problem": "Estimate the long-term financial, safety, and security impacts of a global health threat on a major industry, and compare these to the current state of the industry.",
+   "approach": "Use historical data and expert opinions to predict the industry's future performance, and then apply this analysis to a hypothetical scenario to identify key challenges and lessons."
+  },
+  {
+   "work": "W2896624700",
+   "problem": "This work estimates and compares the effectiveness of two different surgical procedures to improve the physical function of patients with a specific condition. It aims to determine which procedure is better for each patient.",
+   "approach": "The researchers analyzed data from 28 patients who underwent one of two surgical procedures. They measured and compared the results of each procedure to see which one produced better outcomes."
+  },
+  {
+   "work": "W7124456422",
+   "problem": "This work estimates the accuracy of different models in classifying images of people's lungs into normal and diseased groups. It predicts which model will perform best and compares the results to see which one is most accurate.",
+   "approach": "The study uses pre-trained models to classify images, comparing their performance. It then adds a new component to one of the models to see if it improves the results and makes the model more interpretable."
+  },
+  {
+   "work": "W4365514919",
+   "problem": "This work identifies and characterizes a family of proteins that help control plant growth and development, specifically flower induction and stem length. It estimates the number of proteins in this family, predicts their functions, and compares their expression in different tissues.",
+   "approach": "The researchers use evolutionary analysis to group these proteins into categories, and then study their expression patterns and subcellular localization to understand their roles in plant development."
+  },
+  {
+   "work": "W4409448474",
+   "problem": "This work aims to understand and describe the impact of a new approach to teaching skills that involve creativity and appreciation of traditional culture on students' quality of life and skills. It estimates the effectiveness of this approach based on data from students who have used it.",
+   "approach": "The work uses a combination of data analysis and comparison to evaluate the effectiveness of this approach. It follows a procedure that involves analyzing existing data, identifying trends and patterns, and drawing conclusions about the impact of this approach on students' skills and quality of life."
+  },
+  {
+   "work": "W2986519692",
+   "problem": "This research estimates the rate of progression of a rare, chronic condition characterized by the accumulation of calcium and phosphate deposits in the lungs, leading to respiratory insufficiency and death. It predicts the outcome of patients with this condition, who often have minimal symptoms until respiratory failure sets in.",
+   "approach": "The researchers use data from published cases to identify the optimal time for referring patients to a life-saving intervention, which has shown benefit in end-stage cases. They analyze the outcomes of patients who have undergone this intervention and compare them to those who have not."
+  },
+  {
+   "work": "W2618705568",
+   "problem": "This work studies how to make a fair and profitable deal between two people who have different information about something they want to trade. It tries to find the best way to share the value of the thing being traded.",
+   "approach": "The researchers use a mathematical model to figure out the best way to make a deal. They start with a set of rules and test them with different types of data to see if they work."
+  },
+  {
+   "work": "W3009967987",
+   "problem": "This work estimates how professionals in organisations that provide services for elderly people use new technology to simplify their work and make it more predictable. It compares the effectiveness of different approaches to using new technology.",
+   "approach": "The researchers use a systems theory approach to study how professionals make decisions when using new technology. They follow a procedure where they observe and document how professionals use new technology in practice."
+  },
+  {
+   "work": "W4311496565",
+   "problem": "This work estimates the optimal way to produce large components by breaking them down into smaller parts that can be made with standard tools. It predicts the best way to assemble these parts into a final product.",
+   "approach": "The approach involves breaking down a 3D model of the component into smaller parts using predefined connections. The parts are then assembled into a final product using a combination of standard tools and a mobile machine tool."
+  }
+ ]
+}

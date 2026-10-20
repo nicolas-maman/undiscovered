@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-039",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:42Z",
+ "descriptions": [
+  {
+   "work": "W4405278664",
+   "problem": "Estimate the impact of climate change on the availability and affordability of healthy and cheap options for a large population, and assess the effectiveness of current measures to address this issue.",
+   "approach": "Use historical data on global economic recoveries and market transformations to inform predictions about the future, and apply this knowledge to optimize policies and interventions aimed at ensuring universal access to healthy and affordable options."
+  },
+  {
+   "work": "W3033664674",
+   "problem": "This research estimates the decline in a certain agricultural product's production over time, comparing it to the growth in the population involved in agriculture. It aims to explain the reasons behind this decline and provide recommendations for improvement.",
+   "approach": "The study uses historical data to identify trends and patterns in the production of this agricultural product. It then recommends a balanced approach to production and a collaborative effort to establish facilities for this product."
+  },
+  {
+   "work": "W2990650295",
+   "problem": "This work aims to improve the reliability and security of complex systems that make critical decisions, such as those used in monitoring and healthcare. It estimates the impact of errors on these systems and compares the performance of different approaches to mitigate these errors.",
+   "approach": "The approach involves training models on large datasets and then testing their performance under simulated errors. The goal is to find the best balance between the model's accuracy and its ability to withstand errors."
+  },
+  {
+   "work": "W4391914002",
+   "problem": "This research estimates the effectiveness of a certain plant in reducing the frequency and length of a common cold, and compares the results of various studies to determine if it is a reliable remedy. It also aims to explain the bioavailability, pharmacokinetics, and toxicity of the plant.",
+   "approach": "The study uses a combination of in vitro and in vivo data to evaluate the plant's effects on the immune system, and clinical trial results to assess its effectiveness in reducing cold symptoms."
+  },
+  {
+   "work": "W7115690606",
+   "problem": "This work estimates the effectiveness of a global health response system in protecting people's health and wellbeing during times of crisis, and compares it to the current state of international disaster response. It aims to explain how a similar system could be developed for disasters.",
+   "approach": "The approach involves using data from global health responses to inform the development of a new system for disaster response, following a procedure that involves identifying key similarities and differences between the two fields."
+  },
+  {
+   "work": "W3138233816",
+   "problem": "This research aims to identify and describe the most effective health-promotion practices for individuals who need support with daily tasks and maintaining their physical, mental, and emotional well-being. It estimates the benefits of these practices on the quality of life and cost-effectiveness.",
+   "approach": "The study uses a holistic approach, considering physical, social, spiritual, and cultural resources, and applies a positive model to support individual health and coping. It follows a procedure that involves analyzing data on health-promotion practices and their outcomes, and optimising these practices for maximum benefit."
+  },
+  {
+   "work": "W3014546279",
+   "problem": "This work optimizes the arrangement of complex components in a design, aiming to minimize the physical area required. It estimates the best solution by searching through a vast number of possible configurations.",
+   "approach": "The approach involves using a modified procedure to guide the search, which is based on a rule that balances the quality of solutions with the speed of the search process. The modified procedure is compared to other methods to determine its effectiveness."
+  },
+  {
+   "work": "W4407283149",
+   "problem": "The task is to estimate the location of objects in a map, using limited information about the objects' surroundings. This is done to create a map with accurate locations.",
+   "approach": "The approach is to use a combination of data from GPS devices and software to project images onto a map system, allowing for the creation of accurate locations."
+  },
+  {
+   "work": "W4385568135",
+   "problem": "This work estimates the optimal way to design a system that rewards users for interacting with ads, while also considering how ads affect other items on the platform. It predicts the best outcome by comparing different design options.",
+   "approach": "The system uses a combination of data and mathematical rules to design the system. It follows a procedure that involves creating a scoring system and an algorithm to allocate rewards to users."
+  },
+  {
+   "work": "W4213140734",
+   "problem": "This study estimates the effect of a specific treatment on two outcomes: the amount of a certain substance used and the level of a specific urge. It compares the results of two groups: one that received the treatment and one that did not.",
+   "approach": "The researchers applied a treatment to a group of people, and then compared the results to a group that did not receive the treatment. They used a specific statistical method to analyze the data and identify any differences between the two groups."
+  },
+  {
+   "work": "W2891851380",
+   "problem": "This work aims to find the best settings for managing a network of pipes that transport a vital resource, by using mathematical models to identify the most efficient way to operate the system. It estimates the performance of the system under different conditions.",
+   "approach": "The approach involves developing a mathematical model to analyze the system's performance, testing it on real data, and comparing the results with those from a different method that uses complex calculations."
+  },
+  {
+   "work": "W7116880393",
+   "problem": "This work estimates the occurrence and characterization of a rare, Gram-negative organism in patients with severe infections, and compares its antimicrobial resistance patterns to those of other common bacteria.",
+   "approach": "It uses molecular identification techniques to confirm the presence of the organism, and then tests its susceptibility to various antibiotics using a diffusion method."
+  },
+  {
+   "work": "W4247433770",
+   "problem": "This research investigates the effects of a specific compound found in a certain type of food on inflammation in the body. It aims to understand how this compound works and whether it can be used to alleviate symptoms of allergic diseases.",
+   "approach": "The researchers analyzed data from a specific type of food to identify the compound and its effects on inflammation. They then tested the compound's effects on various biological processes and found that it has inhibitory effects on certain enzymes and pathways involved in inflammation."
+  },
+  {
+   "work": "W4400614788",
+   "problem": "This work investigates how visual information affects brain activity when people try to trace a shape with their finger, and whether the shape's complexity affects this effect. It aims to understand the underlying mechanisms of how our brain processes visual and sensory information.",
+   "approach": "The researchers used a non-invasive technique to measure brain activity while participants traced a shape with their finger, comparing the results to when they didn't trace anything. They tested different shapes and visual information levels to see how it affects brain activity."
+  },
+  {
+   "work": "W4414376543",
+   "problem": "This research estimates the relationship between traditional media use and trust in government, predicts the effect of social media use on trust, and compares the impact of traditional and social media on trust across different groups. It aims to explain why some people trust government more when they use traditional media.",
+   "approach": "The researchers use a large dataset with multiple waves of participants to analyze the associations between media use and trust. They follow a procedure where they first analyze the data, then control for other factors, and finally compare the results to identify patterns and relationships."
+  },
+  {
+   "work": "W2904220451",
+   "problem": "This work estimates the impact of different rules on the efficiency of a system where buyers and sellers can offer packages to each other. It aims to compare the efficiency of different systems and explain how the number of buyers and package size affect the outcome.",
+   "approach": "The approach involves using mathematical models and numerical experiments to analyze the system. It follows a procedure where the model is applied to different scenarios, and the results are compared to determine the most efficient system."
+  },
+  {
+   "work": "W3003516136",
+   "problem": "This research aims to understand the relationship between a unique auditory experience and the formation of a specific environment. It seeks to identify whether this auditory experience can be considered a 'marker' for an area.",
+   "approach": "The study uses qualitative research with a meta-analysis strategy to analyze the connection between a specific auditory experience and the formation of a particular environment. It examines whether this auditory experience can be considered a unique identifier for an area."
+  },
+  {
+   "work": "W4385439941",
+   "problem": "This study estimates the impact of a foundational species on community structure in two regions, comparing it to a control group and a manipulated group. It also predicts the effects of the species on community diversity and composition.",
+   "approach": "The researcher surveyed community structure at regular intervals, analyzed metrics of community composition and diversity, and tested the ability of a replica to mimic the effects of the species in the field."
+  },
+  {
+   "work": "W3150910047",
+   "problem": "This work estimates the performance of a specific type of connection in a complex device, comparing the results of measurements and calculations to determine the best design. It also compares the performance of different types of connections to identify the most effective one.",
+   "approach": "The researchers use a combination of measurements and calculations to analyze the connection. They extract the necessary information from the measurements and use it to validate their calculations, which are based on a mathematical model of the connection's behavior."
+  },
+  {
+   "work": "W4409664594",
+   "problem": "This work estimates the effectiveness of two plants in improving heart health, compares their benefits to other treatments, and optimizes their potential use in treating various heart-related illnesses.",
+   "approach": "The study uses data from recent clinical trials to summarize the research on the plants' ability to lower blood pressure, increase circulation, and have antioxidant properties, highlighting their potential synergistic effects."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-027",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:40Z",
+ "descriptions": [
+  {
+   "work": "W4411855228",
+   "problem": "This work estimates the clinical significance of a rare anatomical variant, comparing its impact on heart function and predicting the risk of serious complications. It also explains the importance of comprehensive evaluation and individualized patient management.",
+   "approach": "The researchers used a combination of imaging techniques and functional testing to assess the patient's condition, guiding their management decisions."
+  },
+  {
+   "work": "W4324137696",
+   "problem": "This research estimates the risk of a serious health problem (a type of disease) in people who have been exposed to certain chemicals used in agriculture, and compares the risk to that of people who have not been exposed. It also tries to explain why some people may be more or less likely to develop this disease.",
+   "approach": "The researchers used data on people's exposure to these chemicals over many years, and then used a mathematical model to calculate the risk of developing the disease. They also used statistical methods to analyze the data and identify patterns."
+  },
+  {
+   "work": "W4413598275",
+   "problem": "This research aims to determine the impact of changes in daily habits and physical activity on the ability to conceive and regulate body cycles in individuals with a hormonal disorder, who are overweight and have irregular periods.",
+   "approach": "The study uses a comparison method, where a group of people with a hormonal disorder, who are overweight and have irregular periods, are compared to a control group after making changes to their daily habits and physical activity over a period of six months."
+  },
+  {
+   "work": "W4386704918",
+   "problem": "This work identifies a key factor that influences the growth and spread of abnormal cells, and how it affects the effectiveness of a specific treatment. It also explores how this factor contributes to the development of resistance to that treatment.",
+   "approach": "The researchers use data from patients to identify a specific pattern of gene activity that is associated with poor outcomes. They then use this information to understand how this pattern affects the growth and spread of abnormal cells, and how it impacts the effectiveness of a specific treatment."
+  },
+  {
+   "work": "W4306782344",
+   "problem": "This study estimates the effect of varying levels of a certain food additive on the physical characteristics of young animals. It compares the results across different types of animals and levels of the food additive.",
+   "approach": "The researchers randomly assigned a group of young animals to different levels of the food additive and measured their physical characteristics after a set period of time. They then analyzed the data to identify any patterns or differences."
+  },
+  {
+   "work": "W2946116395",
+   "problem": "This study aims to determine if a certain biomarker is elevated in individuals with a specific condition, and if so, whether it is related to the condition. The study estimates the level of this biomarker in a group of people with the condition and a group without it.",
+   "approach": "The researchers collected blood samples from two groups of people and measured the level of a specific biomarker in each sample. They then compared the levels between the two groups to see if there was a difference."
+  },
+  {
+   "work": "W2917588684",
+   "problem": "Estimate and predict the quality of emergency medical procedures in low-income countries, where resources are limited and clinical skills are suboptimal. Compare the quality of procedures to a standard or ideal.",
+   "approach": "Use a consensus-building process to gather expert opinions on a list of procedures, with multiple rounds of feedback and evaluation to reach a final list of essential procedures."
+  },
+  {
+   "work": "W4294030523",
+   "problem": "This work investigates how adding a certain metal to a mixture of materials affects its density, strength, and ability to withstand pressure, as well as its tendency to break or deform.",
+   "approach": "The researchers created a mixture of materials by adding a small amount of metal to the mixture, then tested its properties using various experiments, such as measuring its weight, density, and strength."
+  },
+  {
+   "work": "W3046793325",
+   "problem": "This research estimates the impact of a highly contagious and deadly microorganism on societal and cultural norms, comparing the effects of different levels of awareness and preparedness. It aims to explain the relationship between the microorganism and people's behaviors and attitudes.",
+   "approach": "The study uses data on population awareness, behavior changes, and cultural shifts to develop a predictive model. It follows a step-by-step procedure, starting with data collection, then analyzing the data to identify patterns and trends, and finally using the insights to inform policy and public health strategies."
+  },
+  {
+   "work": "W4296545327",
+   "problem": "This work estimates the optimal stiffness coefficient for a type of device that helps reduce unwanted movements in a flexible structure, and compares it to the stiffness coefficients of other similar devices. It also optimizes the design of this device by finding the best stiffness coefficient.",
+   "approach": "The approach involves calculating the stiffness coefficient using formulas, fabricating a series of devices with adjustable stiffness, and measuring the relationship between the device's movement and the distance it moves. The results are compared to simulations and experiments to verify the optimal stiffness coefficient."
+  },
+  {
+   "work": "W3003027861",
+   "problem": "This research estimates the risk of a certain condition in women who are not typically considered to have that condition. It compares the risk factors of various health indicators, such as weight, hormone levels, and reproductive health, to determine which ones are most closely linked to the condition.",
+   "approach": "The researchers used data from a large group of women to identify the health indicators that are most closely linked to the condition. They then used this information to create a model that can predict which women are most likely to develop the condition."
+  },
+  {
+   "work": "W4407056207",
+   "problem": "This research estimates the relationship between 20-year changes in income stability and cognitive function in young adults, using data from the National Longitudinal Survey of Youth. It compares the effects of income instability on cognitive function, controlling for earlier-life cognitive abilities.",
+   "approach": "The study uses statistical models to analyze the data, averaging z-scores on various cognitive tasks to assess cognitive function. It then examines the association between income instability and cognitive function, adjusting for earlier-life cognitive skills."
+  },
+  {
+   "work": "W4313488431",
+   "problem": "This study estimates the levels of two essential minerals in people with a specific health condition, and compares these levels to those in people who are generally healthy. It aims to explain why these minerals are important for overall health.",
+   "approach": "The researchers used a non-random sampling method to select participants, and then measured the levels of these minerals in their blood. They used a statistical test to compare the results between the two groups."
+  },
+  {
+   "work": "W4379779598",
+   "problem": "This research estimates the likelihood of a general practice closing its doors based on certain characteristics, predicts which areas will be most affected, and compares the impact of different factors on the number of closed practices. It also explains why some practices may close their doors.",
+   "approach": "The researchers used maps to visualize the distribution of closed practices and statistical models to analyze the association between certain characteristics and the likelihood of closed practices. They applied linear and logistic regression to identify the most influential factors."
+  },
+  {
+   "work": "W2889361518",
+   "problem": "An expert's thought process is described by presenting a real case, where sequential pieces of information are given to someone who doesn't know the case. The goal is to understand the expert's thought process.",
+   "approach": "The expert's thought process is revealed by presenting a real case, where sequential pieces of information are given to someone who doesn't know the case. The focus is on the thought processes of both the team caring for the person and the person presenting the case."
+  },
+  {
+   "work": "W3161960351",
+   "problem": "This research estimates the natural oscillations of a complex system, comparing the effects of different lower-level components on the overall system's behavior. It predicts how changes in the lower-level components' stiffness will influence the system's natural frequencies.",
+   "approach": "The researchers use a mathematical model to analyze the system's behavior, controlling the stiffness of the lower-level components to study their impact. They identify the most dominant modes of oscillation for different angles and stiffness levels."
+  },
+  {
+   "work": "W3044901888",
+   "problem": "This work estimates the minimum amount of a substance needed to prevent the growth of certain microorganisms, and compares these estimates to those obtained from a more time-consuming method. It aims to provide a quick and accurate diagnosis of infectious diseases.",
+   "approach": "The procedure involves isolating microorganisms in small containers, treating them with different concentrations of a substance, and observing the effects on their growth and shape. The results are then correlated with those from a more time-consuming method."
+  },
+  {
+   "work": "W4232156893",
+   "problem": "This research estimates the potential of using certain materials to improve the efficiency of a type of machine that converts energy from one form to another, with the goal of reducing the amount of a certain substance released into the environment. It also compares the effectiveness of different methods for achieving this goal.",
+   "approach": "The researchers use data from experiments and tests to develop and test new methods for improving the efficiency of the machine, with a focus on reducing the release of a certain substance. They follow a procedure that involves combining different techniques to achieve the desired outcome."
+  },
+  {
+   "work": "W4411476940",
+   "problem": "This work estimates the effect of different sound frequencies on the growth and biochemical changes of a type of plant-like organism that makes its own food. It compares the growth of these organisms in response to varying sound frequencies and intensities.",
+   "approach": "The researchers applied different sound frequencies to a group of these organisms and measured their growth and biochemical changes. They used a specific range of sound frequencies and intensities to test the impact on the organisms' growth and biochemical parameters."
+  },
+  {
+   "work": "W3213645288",
+   "problem": "This work estimates the effectiveness of new kinds of work systems that have emerged as a result of digital transformation. It compares these systems to existing ones and suggests ways to improve them.",
+   "approach": "The approach involves identifying a new class of systems that are 'distributed' and governed by market mechanisms, and introducing a design principle called 'redundancy of connectivity' to guide design."
+  }
+ ]
+}

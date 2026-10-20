@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-053",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:44Z",
+ "descriptions": [
+  {
+   "work": "W3126764054",
+   "problem": "This work estimates the effectiveness of a new compound against five types of cancer cells, comparing its performance to that of existing treatments. It aims to identify the compound's potential as a new cancer treatment.",
+   "approach": "The researchers used a combination of chemical synthesis and biological testing to evaluate the compound's properties. They applied a specific reaction sequence to create the new compound and then tested its effects on cancer cells."
+  },
+  {
+   "work": "W3045613235",
+   "problem": "This work estimates the performance of a timing system for a network of small devices that measure the distance between them using signals. It predicts how well the system will work over long distances and compares it to a known standard.",
+   "approach": "The system is designed and tested using a combination of theoretical calculations and practical experiments. It verifies the performance of the timing components by measuring their phase noise and comparing it to a high-quality reference."
+  },
+  {
+   "work": "W7217535973",
+   "problem": "This work estimates the impact of using advanced technologies and data analysis methods on economic development in countries. It compares the growth of scientific research and the adoption of new technologies over time.",
+   "approach": "The study uses a data analysis method to identify patterns and trends in research articles from a large database. It creates visual maps to show the relationships between different topics and keywords."
+  },
+  {
+   "work": "W4402555037",
+   "problem": "This research estimates the occurrence of a specific condition in a subset of individuals who have been exposed to a particular stimulus. It predicts the likelihood of this condition developing in response to the stimulus.",
+   "approach": "The researchers used a combination of clinical observations and laboratory tests to identify the condition and determine its cause. They followed the individual's symptoms over time and used a specific treatment to alleviate the symptoms."
+  },
+  {
+   "work": "W7197801253",
+   "problem": "This research estimates how certain human tendencies (such as greed, envy, and pride) can influence marketing decisions. It compares the impact of these tendencies on consumer needs and the actions of manufacturers.",
+   "approach": "The study uses data on human psychology and marketing strategies to show how manufacturers can manipulate consumer needs. It follows a procedure of analyzing the relationships between human tendencies, consumer needs, and marketing actions."
+  },
+  {
+   "work": "W4402654641",
+   "problem": "An unknown growth in the small intestine is causing severe and persistent problems, such as heavy bleeding and weakness, and needs to be diagnosed and treated. The growth is likely to be a type of cancer, but it's rare and can be difficult to diagnose.",
+   "approach": "A medical team used imaging tests to find the problem, and then performed surgery to remove the growth and affected tissue. The team also used laboratory tests to confirm the diagnosis and monitor the patient's recovery."
+  },
+  {
+   "work": "W2980968956",
+   "problem": "This work estimates the optimal alignment of two signals to minimize errors, given variations in the signals' timing due to differences in the underlying technology. It aims to optimize the alignment to achieve a high data transfer rate with low energy consumption.",
+   "approach": "The approach uses a mathematical technique to adjust the timing of one signal to match the other, based on a specific phase relationship. This adjustment is done using a digital algorithm that generates a precise timing signal."
+  },
+  {
+   "work": "W4411546582",
+   "problem": "This work identifies the genetic causes of a rare disorder that affects the body's ability to store fat, leading to metabolic problems and other complications. It estimates the likelihood of this disorder based on genetic mutations and compares it to known cases.",
+   "approach": "The researchers use a genetic testing method to identify the mutations that cause the disorder. They follow a procedure that involves analyzing the genetic code of the affected individuals to determine the underlying cause."
+  },
+  {
+   "work": "W4296841668",
+   "problem": "This work estimates the effectiveness of economic incentives in healthcare systems, comparing the outcomes of different control mechanisms and institutions. It aims to explain how these incentives can be optimised to improve the efficiency and quality of healthcare services.",
+   "approach": "The approach involves using concrete subject areas and data to develop and test economic models, linking institutions and actors to inform economic analysis and decision-making."
+  },
+  {
+   "work": "W4292243094",
+   "problem": "This research estimates how the COVID-19 pandemic has changed the way people conduct research in different locations, and predicts future trends. It compares data from two countries to understand the impact on research habits.",
+   "approach": "The study compares data from two countries, using a questionnaire to gather information about people's research habits and location choices. The data was analyzed to identify patterns and trends."
+  },
+  {
+   "work": "W2962774937",
+   "problem": "This research estimates the effectiveness of a treatment for a child's chronic pain, comparing the child's pain levels before and after treatment. It predicts the child's pain levels will decrease over time.",
+   "approach": "The researchers used data from the child's pain levels and treatment outcomes to develop a model that predicts the child's pain levels. They tested this model by applying it to the child's data and comparing the results to the actual pain levels."
+  },
+  {
+   "work": "W3043463087",
+   "problem": "This work aims to estimate the potential of a new type of treatment for a common condition that causes red, scaly patches on the outer layer of the body. It compares the effectiveness of this treatment to existing ones and aims to explain how it could be improved.",
+   "approach": "The researchers use data from experiments and studies to develop a new approach to treating this condition. They test how different substances interact with the affected area and aim to optimize the treatment by fine-tuning its effects at a molecular and cellular level."
+  },
+  {
+   "work": "W4214517556",
+   "problem": "This research aims to estimate the likelihood of a child's kidney disease being fatal, based on the presence of a specific abnormality in the kidney tissue. It compares the outcomes of children with this abnormality to those without it.",
+   "approach": "The researchers use a case study approach, where they examine a single child's kidney tissue and compare it to a control group of children without the abnormality. They follow the child's health over time to determine the outcome."
+  },
+  {
+   "work": "W3017194250",
+   "problem": "This work estimates the performance of a mechanical component under varying conditions, comparing different models to determine the most accurate one. It aims to optimise the component's operation by considering its material properties and the forces acting upon it.",
+   "approach": "The work uses mathematical models to simulate the component's behavior, comparing different assumptions and models to find the best fit. It also considers the effects of friction on the component's performance and the dependence of material properties on environmental conditions."
+  },
+  {
+   "work": "W4389948917",
+   "problem": "This work aims to improve the efficiency and safety of a complex process involving the exploration, design, and operation of a facility that extracts valuable resources from the earth. It estimates the distribution of useful and harmful components of these resources and assesses the risk level of different design solutions.",
+   "approach": "The approach involves using 3D models to analyze the process, determining patterns of resource distribution, and selecting the most efficient technologies and equipment. This is done to optimize the process and explain the economic efficiency of different design solutions."
+  },
+  {
+   "work": "W4296795917",
+   "problem": "This study estimates the impact of a significant event on mobile market operations, comparing the effects on demand and produce distribution. It also predicts the adaptations needed to maintain effective service and explains the future directions for increasing access to essential goods.",
+   "approach": "The researchers distributed a survey to mobile market operators, gathering data on the changes in demand and produce distribution. They then analyzed the responses to identify patterns and trends in the adaptations employed by mobile markets."
+  },
+  {
+   "work": "W4411405822",
+   "problem": "This research investigates the properties of a new material made from combining two substances to improve its strength and biological compatibility. It aims to estimate the optimal combination of these substances and the resulting material's performance.",
+   "approach": "The researchers created different versions of the material by varying the proportion of the second substance and examining its properties using various tests. They then compared the results to determine the best combination and its performance."
+  },
+  {
+   "work": "W4417364503",
+   "problem": "This research aims to estimate the potential economic benefits of a specific type of travel that focuses on physical and mental well-being, and its impact on local development. It compares the opinions of local stakeholders on the opportunities created by this type of travel.",
+   "approach": "The researcher collected data from primary and secondary sources, including interviews with 100 local stakeholders, to examine their perceptions of the benefits of this type of travel. The data was analyzed using descriptive statistical tools to identify patterns and trends."
+  },
+  {
+   "work": "W4398155811",
+   "problem": "This work estimates the risk of a serious complication in patients who have undergone a major surgery and have a head injury, and compares it to patients who have a milder head injury. It aims to identify the factors that make a patient more or less likely to experience this complication.",
+   "approach": "The researchers used data from 187 patients to identify the factors that increase the risk of a serious complication. They then built a model that uses these factors to predict the risk of the complication."
+  },
+  {
+   "work": "W3113283785",
+   "problem": "This work estimates the availability of services for people who are struggling with substance use and suicidal thoughts, and compares it to the past to see if it has changed over time. It also predicts what might happen in the future based on past trends.",
+   "approach": "The researchers used data from a large survey to examine changes in the number of facilities offering these services over a 7-year period. They looked at the proportion of facilities that offered these services and compared it to the past to see if it had changed."
+  }
+ ]
+}

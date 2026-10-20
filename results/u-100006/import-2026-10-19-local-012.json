@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-012",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T01:57:38Z",
+ "descriptions": [
+  {
+   "work": "W3110301648",
+   "problem": "A new class of fused ring systems is synthesized by combining two modular starting units through a two-step transformation, enabling access to complex, polycyclic structures with defined substitution patterns.",
+   "approach": "Two components are joined via a condensation reaction, followed by a ring-forming reaction under controlled conditions that reduce a reactive group and promote cyclization into a closed, strained ring system."
+  },
+  {
+   "work": "W2945387213",
+   "problem": "The functional performance of a specific enzyme in human cells is measured over time, and the levels of a particular lipid metabolite are monitored to assess downstream biochemical consequences.",
+   "approach": "Cells are maintained under varying conditions, and enzyme activity is quantified using a sensitive mass-based detection method. Candidate compounds are introduced to determine their effect on enzyme function and lipid accumulation in a controlled, repeatable environment."
+  },
+  {
+   "work": "W2913139003",
+   "problem": "The system estimates how effectively an individual uses environmental signals to manage cognitive effort over time during a prolonged task involving repetitive and predictable dynamics.",
+   "approach": "It monitors behavioral and physiological indicators over time, comparing patterns of attention focus and mental resource consumption across individuals with varying levels of signal responsiveness."
+  },
+  {
+   "work": "W3167868727",
+   "problem": "A biochemical transformation converts a sulfur-containing amino acid into a four-carbon keto acid, with reaction progress monitored through spectral shifts indicating intermediate states. Kinetic performance varies across substrates, and the rate depends on the stability of a key reaction intermediate.",
+   "approach": "A purified enzyme catalyzes the conversion through a sequence of proton transfers and bond breakages. Reaction rates are measured under varying conditions, and a linear relationship is established between observed speed and computed energy barriers for bond rupture in the transition state."
+  },
+  {
+   "work": "W4404915783",
+   "problem": "A method is developed to measure and compare the impact of asymmetric load behavior on three-phase systems, evaluating how energy distribution and consumption patterns deviate under real-world operating conditions.",
+   "approach": "A mathematical framework assigns time-dependent values to energy flow components, separating them into balanced and unbalanced parts, then validates these through controlled experiments with physical systems."
+  },
+  {
+   "work": "W4214642538",
+   "problem": "It identifies patterns in how rules are adapted across different sectors to address unique operational challenges and risk profiles.",
+   "approach": "It compares regulatory frameworks across domains using structured analysis of policy responses, then maps commonalities and divergences to infer underlying design principles and adaptation strategies."
+  },
+  {
+   "work": "W4416715011",
+   "problem": "A surgical procedure is designed to isolate and secure a persistent anatomical defect in the pelvic region that may lead to urinary complications after a complex reconstructive surgery.",
+   "approach": "A thread is passed through a defined anatomical pathway and used to encircle and tightly bind the defect, ensuring complete separation from surrounding structures during a reconstructive procedure involving pelvic reorganization."
+  },
+  {
+   "work": "W4313396322",
+   "problem": "The system estimates the integrity of somatosensory pathways in a region of the body affected by a unilateral neurological disturbance, comparing responses across sides and against established normative values.",
+   "approach": "It applies a standardized set of physical stimuli to assess how well a region detects touch, vibration, and temperature. Responses are averaged per side and compared to a reference group using statistical z-scores, with no significant differences observed between sides or over time."
+  },
+  {
+   "work": "W3115513969",
+   "problem": "A system estimates how a critical operational variable changes over time in response to sudden disturbances, using historical patterns and temporal dependencies to forecast future behavior under stress.",
+   "approach": "It analyzes past behavior at different time lags, identifies key influencing factors, and applies a model that learns long-term temporal patterns to generate accurate future estimates based on recent and delayed observations."
+  },
+  {
+   "work": "W4411974349",
+   "problem": "A set of structurally related proteins is analyzed to determine how their expression patterns vary across different tissues and in response to external chemical and environmental signals.",
+   "approach": "Proteins are grouped by sequence and structural similarity, then mapped to regulatory regions and expression profiles. Their activity is assessed under various stimuli using high-throughput sequencing data to identify patterns of activation or suppression."
+  },
+  {
+   "work": "W7216293960",
+   "problem": "A pattern of behavior in digital interaction is assessed to determine its influence on how individuals express themselves online, particularly in response to misleading content and unauthorized use of others' personal material.",
+   "approach": "A structured survey is administered to a group of users to collect self-reported data on their digital habits. Statistical analysis identifies correlations between exposure to false information and the frequency of impersonation or misrepresentation in online exchanges."
+  },
+  {
+   "work": "W4385525451",
+   "problem": "A thin semiconductor device is enhanced with a conductive network embedded in its base side, and multiple such devices are joined together in three dimensions using a bonding technique that relies on material diffusion between solid and liquid phases.",
+   "approach": "A wafer is thinned and patterned to form holes and channels; a dielectric film is deposited and cured at low temperature, followed by metal filling and polishing. Devices are then bonded together through a diffusion-based interface that fuses the surfaces of adjacent units."
+  },
+  {
+   "work": "W2886424280",
+   "problem": "A molecule is designed to bind selectively to a specific cellular target and deliver a cytotoxic payload to cells expressing that target, with potency and specificity tuned through structural modifications.",
+   "approach": "A scaffold is engineered to bind a target site with high affinity, and its structure is modified to enhance binding strength and stability. Linkage to a targeting agent is achieved through chemically defined connections, preserving activity while enabling selective delivery."
+  },
+  {
+   "work": "W4404960077",
+   "problem": "A method is developed to assess how structured, hands-on activities influence the ability of individuals to perform routine tasks involving written information in low-resource environments.",
+   "approach": "A sequence of experiential exercises is designed, delivered in short sessions, and evaluated through performance in real-world scenarios to measure improvement in information processing and response accuracy over time."
+  },
+  {
+   "work": "W4389993245",
+   "problem": "A linear relationship is estimated between an individual's ability to adapt to changing environments and the level of control they experience in their daily interactions with caregivers.",
+   "approach": "A statistical model tests whether observed data points align along a straight line using a correlation threshold; if the deviation from linearity exceeds a set significance level, the relationship is deemed non-linear."
+  },
+  {
+   "work": "W3113028127",
+   "problem": "The system estimates how actors interpret the reliability of others based on observable behaviors and contextual cues, comparing outcomes across different scenarios and conditions.",
+   "approach": "It evaluates patterns in behavior over time and across situations, applying rules that weigh recent actions against historical consistency to predict how others will respond to future interactions."
+  },
+  {
+   "work": "W7116959933",
+   "problem": "A pattern of sustained but non-integrated cooperation between two actors is analyzed, based on shifts in strategic behavior, resource flows, and external constraints observed over time.",
+   "approach": "A dual framework is applied: one maps evolving interactions through shared goals and mutual dependencies, the other evaluates boundaries and friction points using historical precedents and third-party influence."
+  },
+  {
+   "work": "W4402583962",
+   "problem": "A clinical outcome is monitored over time in a vulnerable patient group, with attention to infection severity and response to treatment based on available medical records and laboratory results.",
+   "approach": "A sequence of health indicators is tracked, and treatment decisions are evaluated against known patterns of disease progression and antimicrobial resistance in similar cases to guide future interventions."
+  },
+  {
+   "work": "W4236995474",
+   "problem": "The task is to estimate the risk of transitioning to a sustained, high-intensity support pathway and the likelihood of an adverse health outcome over time, based on individual characteristics and service exposure.",
+   "approach": "Individuals are paired based on age, gender, and baseline functional status. A statistical model tracks the probability of transitioning to a high-intensity support pathway or an adverse health event, adjusting for observed differences in starting conditions."
+  },
+  {
+   "work": "W3163629004",
+   "problem": "A rare condition is identified where a single abnormal structure causes two distinct types of external fluid loss from the same internal source, one through the digestive tract and one into the abdominal cavity.",
+   "approach": "The system monitors physiological signals over time and detects a pattern where two separate output events originate from a shared internal anomaly, using temporal and spatial consistency to infer a singular underlying cause."
+  }
+ ]
+}

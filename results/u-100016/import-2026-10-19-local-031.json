@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-031",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:41Z",
+ "descriptions": [
+  {
+   "work": "W4403079053",
+   "problem": "This work estimates the effectiveness of a new type of device in rehabilitating a patient with a road traffic injury, and compares it to traditional methods. It predicts the success of the device in various scenarios, including cases with poor quality tissue.",
+   "approach": "The researchers used a combination of data and evidence to evaluate the device's performance. They inserted the device into the patient's tissue and loaded it with a fixed dental appliance, then assessed the results."
+  },
+  {
+   "work": "W2997136621",
+   "problem": "This research aims to estimate the effectiveness of using a byproduct from a manufacturing process as a raw material, and to identify a method to remove a specific impurity that makes it unusable. The goal is to determine if this byproduct can be safely used in a different process.",
+   "approach": "The researchers collected samples from different stages of the manufacturing process and tested a simple method to extract the impurity from the byproduct. They found that the method was effective in removing the impurity, and built a prototype to enable industrial-scale use."
+  },
+  {
+   "work": "W4389797029",
+   "problem": "This work estimates the properties of a material made from calcium oxide, which is derived from a natural source, and optimizes its structure by adding a metal dopant. The goal is to create a material with specific properties, such as a certain ratio of calcium to phosphorus.",
+   "approach": "The researcher starts by heating a natural source to high temperatures to extract the calcium oxide. They then mix the calcium oxide with a chemical solution to create a new material, and add a metal dopant to it. The material is then heated again to create a powder, which is analyzed using various techniques to confirm its structure and properties."
+  },
+  {
+   "work": "W7215695326",
+   "problem": "This work estimates the effectiveness of different industrial policies in improving material resource efficiency, predicts the impact of these policies on sustainable development, and compares the results across various countries. It aims to explain the key approaches and provide recommendations for global improvement.",
+   "approach": "The study uses data from multiple countries to analyze their strategies and policies, identifying successful approaches and providing recommendations for global improvement. It follows a procedure of analysis, comparison, and recommendation, using a model that considers the efficiency of material resource supply systems."
+  },
+  {
+   "work": "W3012907804",
+   "problem": "This work estimates the performance of a critical component in a complex system, comparing its efficiency and effectiveness before and after a maintenance procedure. It aims to identify the impact of this procedure on the system's overall performance.",
+   "approach": "The study uses data collection and analysis to compare the system's performance before and after the maintenance procedure, using methods such as literature review, observation, and data processing."
+  },
+  {
+   "work": "W2895492217",
+   "problem": "This research estimates the relationship between the amount of water saved by forests and the amount invested in fixed infrastructure. It predicts the amount of water saved from 2014 to 2020 based on historical data.",
+   "approach": "The study uses statistical methods to analyze the correlation between the amount of water saved and the investment in fixed infrastructure. It then uses these results to make predictions about future water savings."
+  },
+  {
+   "work": "W4317481155",
+   "problem": "This work estimates the effectiveness of different treatments for a group of patients with a chronic illness, comparing the outcomes of various interventions. It aims to identify the most effective approach.",
+   "approach": "The researchers used data from patient records and medical literature to develop a model that predicts treatment outcomes. They then tested this model on a new dataset to validate its accuracy."
+  },
+  {
+   "work": "W4313246048",
+   "problem": "This study investigates the relationship between the presence of elderly caregivers in a household and the health and life outcomes of younger family members. It aims to determine whether having these caregivers at home has a positive effect on the health and life outcomes of younger family members.",
+   "approach": "The researchers collected data through surveys and used a statistical method to analyze the relationship between the presence of elderly caregivers and the health and life outcomes of younger family members. They controlled for other factors that might influence the results."
+  },
+  {
+   "work": "W3039664512",
+   "problem": "A person, who has a history of reacting to certain substances, is experiencing a worsening skin condition that is causing discomfort and is difficult to treat. The condition has been present for a long time and has changed over the years.",
+   "approach": "The approach is to use a combination of observation and prediction to understand the condition and its progression. A model is used to analyze the data and make predictions about the future state of the condition."
+  },
+  {
+   "work": "W3035248842",
+   "problem": "This work aims to design and implement a system that helps customers navigate and manage information about products in a retail setting, using a mobile device to access information and a server to store and manage data.",
+   "approach": "The system uses a mobile app to access information about products, which is linked to a server that stores and manages data. The server is accessed through a private network, and the system is tested using case studies to evaluate its efficiency."
+  },
+  {
+   "work": "W4390053502",
+   "problem": "This study estimates the characteristics of a rare condition in women, where they experience prolonged genital sensations without desire or stimulation. It compares these women to healthy controls to identify differences in their mental and physical health.",
+   "approach": "The researchers compared 26 women with this condition to 26 age-matched healthy controls, using a variety of investigations including physical and mental examinations, and imaging tests. They also gathered detailed information about the women's experiences and triggers."
+  },
+  {
+   "work": "W4403746025",
+   "problem": "This work estimates the effectiveness of a new technique for removing small, smooth or rough growths from the inside of a hollow organ, and compares it to established methods. It aims to explain the benefits of this technique, such as minimal damage and quick recovery.",
+   "approach": "The technique uses a combination of a special tool, a device that helps see clearly, and a method to apply heat to stop bleeding. It follows a step-by-step procedure to remove the growths, and the results are based on data from 14 patients."
+  },
+  {
+   "work": "W4295540598",
+   "problem": "The task is to estimate the amount of certain substances in a plant-based material, compare the results to identify the most abundant substances, and explain the relevance of these substances to the material's properties.",
+   "approach": "The researchers used two solvents to dissolve the material, then used a machine to measure the amount of substances in the solvents, and another machine to identify the types of substances present."
+  },
+  {
+   "work": "W3107396842",
+   "problem": "This study aims to describe the underlying and figurative values in a type of oral literary work. It estimates the presence of these values in a specific context.",
+   "approach": "The research uses qualitative methods, collecting primary data through observation and recording sounds in a specific setting. It then analyzes the data using a semantic theory framework to identify the underlying and figurative values."
+  },
+  {
+   "work": "W2948456775",
+   "problem": "This work estimates the role of a protein in a disease process, comparing the effects of its presence or absence on a specific condition. It predicts the impact of the protein's activity on the disease's progression.",
+   "approach": "The researchers used data from a specific group of animals to compare the effects of the protein's presence or absence on the disease process. They then applied a treatment to see if it could improve the outcome."
+  },
+  {
+   "work": "W3195871929",
+   "problem": "This work investigates the relationship between a specific type of abnormal growth in the lungs and the surrounding airways, estimating the frequency and pattern of this relationship in a large dataset. It aims to explain how these growths affect the airways and whether they can be predicted or optimised.",
+   "approach": "The researchers used a type of imaging technology to review images of the lungs and airways, dividing the data into two groups based on the location of the abnormal growths. They then used a specific procedure to classify the relationships between the growths and the airways."
+  },
+  {
+   "work": "W3208083961",
+   "problem": "This work estimates the publication status of a large collection of rules and court decisions in a specific geographic region, comparing the completeness and accessibility of these records across different sources.",
+   "approach": "It uses a systematic review of existing records to identify gaps and inconsistencies, then optimizes the data by creating a unified, standardized format for easy access and comparison."
+  },
+  {
+   "work": "W4390502466",
+   "problem": "This work estimates the concentration of a certain substance in water samples using two different methods. One method compares the amount of the substance to a known amount, while the other method identifies the substance and measures its amount.",
+   "approach": "The methods involve treating the water samples with a substance to extract the target substance, then using a technique to compare the substance to a known amount or identify it and measure its amount. The technique used is a combination of a chemical reaction and a measurement device."
+  },
+  {
+   "work": "W4415455917",
+   "problem": "This research aims to understand how individuals with a certain attention disorder perceive their surroundings differently from those without it. It estimates and compares how these individuals experience and evaluate their learning environments.",
+   "approach": "The researchers selected participants using a convenient sampling method and measured the sound levels in four environments using a specific standard. They then analyzed the data to compare how individuals with and without the disorder evaluate these environments."
+  },
+  {
+   "work": "W2996983652",
+   "problem": "This work estimates the performance improvement of a system that reduces pollution from a common source, given various conditions and constraints. It predicts the effectiveness of this system in reducing pollution, and compares it to other methods.",
+   "approach": "The system uses data from past experiments and observations to develop a model that predicts the performance of the system. It then optimizes the system's design to achieve the best results."
+  }
+ ]
+}

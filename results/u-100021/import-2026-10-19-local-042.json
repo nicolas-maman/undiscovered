@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-042",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T01:57:42Z",
+ "descriptions": [
+  {
+   "work": "W3142682108",
+   "problem": "A rate is estimated for a condition occurring in live births over time and space, and differences in access to a medical procedure are assessed across various personal and geographic factors.",
+   "approach": "Patient records are linked across databases to identify individuals with a diagnosis and their procedural history. Groupings are formed based on procedure type and personal attributes, then compared across demographic and location-based variables."
+  },
+  {
+   "work": "W3088729852",
+   "problem": "A quantitative relationship is estimated between the resistance to deformation and the resistance to surface indentation in a material composed of recycled components and added fillers, based on varying proportions of those fillers.",
+   "approach": "A mathematical model links the measured resistance to deformation with a theoretical prediction derived from a uniform internal structure, adjusting for real-world variability in material bonding and microstructure."
+  },
+  {
+   "work": "W4214729404",
+   "problem": "A structured learning environment is designed to adapt content and pace to individual needs, measuring how well diverse engagement strategies support varied understanding levels and outcomes.",
+   "approach": "A dynamic framework assigns tasks and feedback cycles based on real-time performance, adjusting complexity and support in response to individual progress and interaction patterns."
+  },
+  {
+   "work": "W3138359823",
+   "problem": "A system estimates how well an individual performs in real-time verbal communication by analyzing and adjusting vocal characteristics such as tone, rhythm, and intensity during a performance.",
+   "approach": "The system generates a responsive, interactive feedback loop that mimics human behavior in real time, adjusting vocal parameters based on observed patterns and providing immediate, personalized guidance to improve performance quality."
+  },
+  {
+   "work": "W4377288021",
+   "problem": "A system determines how specific chemical treatments and timing of stimuli affect plant size, shape, and the timing of a reproductive transition, based on measurements of growth dimensions and structural form over time.",
+   "approach": "A structured experiment applies two treatment levels—presence or absence of a growth-modulating agent—and tests five distinct application times of a signaling compound. Outcomes are evaluated by comparing plant dimensions and structural ratios across treatment combinations."
+  },
+  {
+   "work": "W4394842828",
+   "problem": "A substance's ability to prevent protein structural changes is measured across varying concentrations, and its effect is compared to a known effective agent.",
+   "approach": "A standardized test is applied to assess how much a formulation slows down unwanted protein unfolding. Results are recorded at different input levels and benchmarked against a reference compound to determine relative effectiveness."
+  },
+  {
+   "work": "W7217415446",
+   "problem": "A pattern of recurring and persistent health disruptions in young individuals is being assessed, with attention to possible links between early-life exposures and long-term organ system dysfunction.",
+   "approach": "A statistical model analyzes longitudinal health records to identify associations between early-life events and later-occurring chronic conditions, adjusting for known risk factors and evaluating consistency across diverse populations."
+  },
+  {
+   "work": "W2971875386",
+   "problem": "A system identifies variables that influence how individuals interpret and respond to their health condition, using self-reported data from a group in a structured care setting.",
+   "approach": "A model evaluates patterns in responses to a set of statements about treatment outcomes and personal beliefs, applying statistical tests to detect differences and relationships among groups and individual reports."
+  },
+  {
+   "work": "W4400261065",
+   "problem": "A distinction is made between two types of disease based on clinical, imaging, and microscopic traits, aiming to identify patterns that differentiate one from the other in terms of onset age, spread, and tissue structure.",
+   "approach": "Cases are analyzed by comparing age at onset, number and location of affected areas, imaging appearance, and tissue structure under magnification, using standardized criteria to classify and interpret differences in morphology and surrounding tissue response."
+  },
+  {
+   "work": "W3208203122",
+   "problem": "A statistical assessment is made to determine whether exposure to a chronic parasitic infection correlates with the presence of an acute infectious response in a shared population.",
+   "approach": "Blood samples are collected and tested for markers of both infections. The frequency of each marker is recorded. A measure of association between the two markers is computed using a ratio-based estimate, with confidence bounds derived from observed frequencies."
+  },
+  {
+   "work": "W4401695487",
+   "problem": "A material's response to an electric field is measured, including how much it deforms and how its internal structure changes under field influence, especially when the field is strong and rapidly varying.",
+   "approach": "A model simulates how atomic-scale distortions shift in response to electric fields, showing that certain small impurities cause large, dynamic deformations that persist across a wide range of frequencies and lead to significant structural changes."
+  },
+  {
+   "work": "W4410137784",
+   "problem": "The ways in which instructional responses are interpreted and applied by individuals during practice are examined, particularly in relation to learning objectives and immediate activity outcomes.",
+   "approach": "Participants reflect on specific instances of responses given during instruction, and these are categorized based on how they connect to intended learning goals or remain disconnected from them."
+  },
+  {
+   "work": "W4210973534",
+   "problem": "A system's ability to adjust its resonant behavior over a wide range is evaluated, and its physical footprint is minimized while maintaining performance under varying operational conditions.",
+   "approach": "A mathematical model captures the relationship between structural dimensions and dynamic response. Parameters are iteratively refined using evolutionary rules to balance performance and size, with validation through physical testing."
+  },
+  {
+   "work": "W3166786019",
+   "problem": "The performance of different crop varieties under environmental stress is assessed to determine how effectively they can increase yield and quality when exposed to specific chemical treatments.",
+   "approach": "A factorial design applies treatments to multiple crop types across different environmental conditions, measuring outcomes like growth, output, and economic return through controlled field trials with repeated observations."
+  },
+  {
+   "work": "W2982563886",
+   "problem": "A system estimates how body parts move and the internal forces driving those movements, using observed motion and known physical constraints to predict internal forces and spatial relationships across joints and soft tissues.",
+   "approach": "It maps observed motion to internal forces by iteratively adjusting internal force distributions to match observed motion and physical constraints, using optimization to align predicted and measured joint responses across multiple levels of structure."
+  },
+  {
+   "work": "W7220928686",
+   "problem": "A system evaluates the rationality of different actions when entities assess the likelihood of detection, successful intervention, and mutual benefits from shared information or joint action among unknown parties.",
+   "approach": "It models decisions based on the success of an action, the risk of being discovered, the persistence of defensive capabilities, and the expected value of exchanging information or aligning goals under uncertain conditions."
+  },
+  {
+   "work": "W4226282846",
+   "problem": "A system estimates how accurately movement patterns in a network can be inferred from a subset of moving agents equipped with observational tools, and how this accuracy changes with the fraction of agents providing such observations.",
+   "approach": "A model reconstructs movement rates across time and space using incomplete observations, applying a method that fills gaps in observed patterns by leveraging temporal and spatial consistency in movement behavior."
+  },
+  {
+   "work": "W4390457729",
+   "problem": "A long-term sequence of spatial extents is estimated from repeated observations, capturing how the size and shape of a surface body change over time.",
+   "approach": "A threshold is derived from pixel intensity patterns using a statistical segmentation rule, then applied consistently across time to extract and track the surface's edge positions in each observation."
+  },
+  {
+   "work": "W3175620243",
+   "problem": "A system's response to high-energy input is measured and compared under different stimulation conditions to determine how energy dissipation is regulated in metabolic tissues.",
+   "approach": "A specific enzyme isoform is identified as central to energy dissipation in response to stimulation. Its activity is quantified in isolated cellular compartments and linked to metabolic output under varying conditions."
+  },
+  {
+   "work": "W7217294210",
+   "problem": "A protocol is estimated for cultivating a plant under commercial conditions, focusing on growth efficiency, environmental controls, and reproductive output based on observed performance across different growing conditions.",
+   "approach": "A step-by-step method is applied, adjusting environmental inputs like water, nutrients, and light based on plant response, using repeated trials to refine conditions for consistent and scalable output."
+  }
+ ]
+}

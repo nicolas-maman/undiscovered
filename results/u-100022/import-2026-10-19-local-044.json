@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-044",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.7,
+ "at": "2026-10-20T01:57:43Z",
+ "descriptions": [
+  {
+   "work": "W4323893806",
+   "problem": "The system estimates how underground water movement affects structural stability and project risk during early development stages, using observations from subsurface conditions and environmental signals.",
+   "approach": "It analyzes patterns in water flow through different soil layers and evaluates how changes in moisture levels influence ground behavior, adjusting predictions based on real-time environmental inputs and historical site behavior."
+  },
+  {
+   "work": "W3194969640",
+   "problem": "A system's response to a stressor is measured across multiple cellular states, including growth, movement, and structural changes, using molecular and functional readouts. The influence of a regulatory RNA on these responses is assessed through its interaction with a microRNA and a downstream protein involved in cell cycle control.",
+   "approach": "A regulatory RNA is shown to sequester a microRNA, preventing it from suppressing a target protein. This interaction is validated through genetic manipulation and functional assays that track changes in cell behavior and molecular expression under stress."
+  },
+  {
+   "work": "W2954539386",
+   "problem": "A system evaluates clinical scenarios to guide practitioners through a structured sequence of diagnostic reasoning, using patient history, physical findings, and test results to identify likely underlying conditions.",
+   "approach": "The system presents a sequence of questions and observations, updating the probability of various conditions based on incoming data, and directs users to next steps in diagnosis by prioritizing likely explanations and relevant investigations."
+  },
+  {
+   "work": "W3098797071",
+   "problem": "A system of local policies is being challenged by centralized authority, creating tension over how local decisions are made and enforced in the face of top-down mandates.",
+   "approach": "Local entities evaluate the legal standing of their policies against directives from a higher governing body, using precedent and constitutional principles to determine whether local autonomy is preserved or overridden."
+  },
+  {
+   "work": "W4414436213",
+   "problem": "A system estimates the impact of automated systems on human risk exposure and operational output in a constrained, high-risk environment where environmental conditions change dynamically and human presence is limited.",
+   "approach": "It analyzes historical operational data and real-time sensor inputs to model outcomes under varying automation levels, then compares performance across scenarios to identify patterns in risk reduction and output stability."
+  },
+  {
+   "work": "W4416421553",
+   "problem": "The strength of a consumer's willingness to engage with a product is estimated based on their perception of its environmental benefits and the organization's demonstrated commitment to ethical practices, with a focus on how trust in those practices mediates the relationship.",
+   "approach": "A statistical model links environmental attributes, organizational transparency, and trust to consumer behavior using observed data, testing whether the influence of environmental attributes on behavior is strengthened through trust in the product's values."
+  },
+  {
+   "work": "W7110658321",
+   "problem": "The effectiveness of a structured training program is assessed in improving frontline responders' ability to manage complex patient interactions involving cognitive impairments.",
+   "approach": "A curriculum is delivered to individuals with limited prior exposure to such scenarios, using real-world case examples and community-based expert input to build practical response strategies and foster empathetic engagement."
+  },
+  {
+   "work": "W3099180722",
+   "problem": "A system monitors neural signal integrity in real time during a surgical procedure involving manipulation of a major blood vessel. It detects when signals from a specific brain region stop appearing, possibly due to reduced blood flow to that region.",
+   "approach": "The system continuously tracks signal strength from a cortical region and compares it to baseline patterns. When a drop exceeds a threshold, it triggers a warning and halts manipulation until signals return to normal."
+  },
+  {
+   "work": "W4403870628",
+   "problem": "A list of substances is identified that pose a high risk of accumulation and adverse effects when used by individuals whose body's waste removal capacity is severely reduced.",
+   "approach": "An initial broad survey of relevant substances is conducted to find those most commonly encountered in routine care. Experts then iteratively evaluate and refine the list through multiple rounds of discussion until a clear, agreed-upon set of top substances is established for cautious use in such cases."
+  },
+  {
+   "work": "W3119325327",
+   "problem": "A quantitative relationship is estimated between the expression levels of two biomolecules in a tissue sample and its surrounding microenvironment, assessing how changes in one correlate with changes in the other across multiple patient samples.",
+   "approach": "A statistical model compares expression levels across paired tissue samples, using reverse transcription and real-time amplification to measure relative abundance, then evaluates the strength and direction of association between the two biomolecules."
+  },
+  {
+   "work": "W2950986738",
+   "problem": "A sequence of three reports is retrieved from a historical archive, each detailing public activities and cultural events organized by a government body during a specific administrative period.",
+   "approach": "The system identifies and compiles documents from a digital repository, then extracts and organizes information about civic engagement initiatives, their timing, locations, and key personnel involved in their execution."
+  },
+  {
+   "work": "W3157859051",
+   "problem": "The task is to estimate the presence and quantity of specific microbial groups in a mixed community based on physical and chemical traits measured in real-time across time.",
+   "approach": "A two-step model first determines whether a group is present using pattern recognition in measured traits, then estimates its relative quantity using statistical relationships derived from known trait-group associations."
+  },
+  {
+   "work": "W4386259650",
+   "problem": "A system's resilience under stress is evaluated by measuring the levels of oxidative damage and protective mechanisms in biological tissue, using markers of molecular degradation and enzyme activity in both tissue and blood samples.",
+   "approach": "A controlled experiment applies a simulated disruption to a biological system and monitors changes in molecular stability and enzymatic activity over time, comparing outcomes across different stress conditions and baseline states."
+  },
+  {
+   "work": "W4412794479",
+   "problem": "A system is set up to observe how two types of biological units interact over time, with one type responding to signals from the other, under controlled environmental conditions.",
+   "approach": "Two distinct populations are introduced into a confined space, then separated to allow independent growth. After stabilization, they are allowed to exchange signals and influence each other, with interactions monitored over time."
+  },
+  {
+   "work": "W3007462275",
+   "problem": "A material is evaluated for its ability to resist fluid flow and deform under repeated stress in a water-retaining structure exposed to cyclic environmental forces.",
+   "approach": "A performance model simulates long-term behavior under variable loading and environmental exposure, comparing outcomes across different material configurations and environmental conditions to guide deployment decisions."
+  },
+  {
+   "work": "W3163713004",
+   "problem": "A learning activity is designed to help learners connect the structural features of complex biological systems to their functional roles, using hands-on or digital representations.",
+   "approach": "Learners investigate a system, create a tangible or digital model to represent its components, and present their understanding through interactive manipulation or explanation to peers."
+  },
+  {
+   "work": "W7120698413",
+   "problem": "A pattern of knowledge development is observed in a group of individuals who interact regularly and share practices through lived experiences. The process is analyzed to determine how information flows, transforms, and is preserved across interactions, comparing it to a known model of knowledge evolution.",
+   "approach": "Interactions among individuals and their tools, materials, and routines are mapped over time. The flow of information is tracked through observation and narrative, then compared to a structured model of knowledge progression."
+  },
+  {
+   "work": "W4410842184",
+   "problem": "The system estimates how a two-dimensional image can induce a three-dimensional visual experience when viewed under specific conditions, using patterns of light and observer movement.",
+   "approach": "It processes visual input by simulating depth cues through spatial frequency modulation and directional light patterns, then applies a transformation that maps 2D input to a perceptual depth effect based on viewer position and viewing angle."
+  },
+  {
+   "work": "W4413214186",
+   "problem": "The level of a specific lipid-related protein in the blood is associated with increased expression of a gene involved in interferon signaling, and elevated levels of a chemokine are observed in individuals with high lipid levels.",
+   "approach": "Blood samples are collected from individuals with varying levels of a lipid-related factor and matched for age and sex. Gene expression and protein levels are measured in isolated immune cells. No differences in the openness of regulatory DNA regions are found between groups."
+  },
+  {
+   "work": "W4361800032",
+   "problem": "The structure and depth of layered materials beneath a surface are inferred from temperature responses induced by controlled energy input, aiming to map subsurface layers without damaging the surface.",
+   "approach": "A sequence of controlled energy pulses is applied to a surface, and the resulting temporal and spectral responses are analyzed to extract subsurface features through time-based and frequency-based signal processing."
+  }
+ ]
+}

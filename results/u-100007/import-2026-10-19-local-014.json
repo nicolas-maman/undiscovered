@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-19-local-014",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.7894736842105263,
+ "at": "2026-10-20T01:57:39Z",
+ "descriptions": [
+  {
+   "work": "W4409771207",
+   "problem": "A system must learn to perform a task when the ideal outcome cannot be observed or measured directly in practice.",
+   "approach": "It uses a model that adapts by continuously refining its predictions based on real-world feedback, even when the perfect target is absent, and treats discrepancies as essential signals for improving performance."
+  },
+  {
+   "work": "W4409630874",
+   "problem": "The system estimates how cellular energy dynamics and migration behavior change under varying oxygen levels and mechanical stress during exposure to ionizing energy pulses.",
+   "approach": "It simulates energy production shifts under different environmental conditions by applying controlled stress and oxygen fluctuations, then maps how cellular responses evolve over time in response to energy input and physical constraints."
+  },
+  {
+   "work": "W2786824658",
+   "problem": "A system estimates how reliably a complex model performs on new inputs by analyzing internal signals across its layers.",
+   "approach": "A secondary model learns to assign a reliability score based on patterns in intermediate layer outputs, using simple, interpretable rules to evaluate consistency and stability of the primary model's internal activity."
+  },
+  {
+   "work": "W4412174673",
+   "problem": "A substance is tested to determine its effect on the expression of genes linked to barrier integrity and water retention in living tissue cultures that mimic real-world tissue structure.",
+   "approach": "The substance is applied to cells and tissue models, and gene activity is measured over time. The effect is evaluated by comparing gene expression levels with and without the substance, and by blocking a key regulatory pathway to assess its influence on downstream molecular responses."
+  },
+  {
+   "work": "W2917628625",
+   "problem": "The structure of correlation patterns among four observable events in a two-dimensional space is analyzed to determine whether they follow a consistent mathematical form across different physical systems.",
+   "approach": "A model is constructed that maps the interaction strengths between four events to a known symmetric pattern, and checks whether this pattern holds uniformly across distinct sets of data derived from the same underlying physical rules."
+  },
+  {
+   "work": "W4386907666",
+   "problem": "A pattern of adverse events is identified and categorized by when they occur after transplantation, with distinct rates, underlying causes, and outcomes for each timing group.",
+   "approach": "Events are observed over time and grouped into early, unexpected, and late phases. For each phase, the frequency, triggers, and long-term consequences are analyzed and compared across groups."
+  },
+  {
+   "work": "W2803418357",
+   "problem": "The effect of a compound derived from a dietary substance on cellular responses to a stressor is estimated, specifically its influence on the production of reactive molecules and the expression of genes involved in stress response and cellular protection.",
+   "approach": "A compound is administered to an organism over time, and tissue samples are analyzed to measure its concentration. In vitro, the compound is exposed to a stress signal, and outputs such as molecule levels and gene activity are monitored to assess its impact on cellular behavior."
+  },
+  {
+   "work": "W4406536743",
+   "problem": "A practice pattern is assessed across a group of medical professionals to determine how frequently a specific real-time feedback technique is used during spinal procedures, and how strongly it is believed to prevent adverse outcomes.",
+   "approach": "A structured questionnaire is distributed to practitioners, and responses are aggregated and compared across different settings. Statistical analysis evaluates the consistency of usage and beliefs across demographic and operational groups."
+  },
+  {
+   "work": "W4414488510",
+   "problem": "A pattern of material remains is analyzed to determine the relative abundance and distribution of different types of biological remains across a defined spatial region.",
+   "approach": "A grid-based sampling method is applied to group observations by location. Statistical clustering identifies recurring associations between types of remains and environmental contexts, enabling inference about past human activity and resource use."
+  },
+  {
+   "work": "W4404704354",
+   "problem": "The effectiveness of a combined chemical agent in reducing the infectivity of airborne pathogens is estimated from repeated exposure tests using controlled environmental conditions and quantified pathogen load measurements.",
+   "approach": "A standardized exposure protocol is applied, where the pathogen is exposed to the agent, and the resulting decrease in biological activity is measured over time through direct counting of surviving units."
+  },
+  {
+   "work": "W4389482159",
+   "problem": "The average temperature and solar exposure over time in specific geographic regions are analyzed to assess how environmental conditions have shifted and how these changes may affect crop productivity and regional agricultural outcomes.",
+   "approach": "Historical temperature and solar radiation data are compared across regions and time periods. Trends are identified and mapped to regional patterns, then used to infer how current and future environmental conditions may influence agricultural performance."
+  },
+  {
+   "work": "W4387785150",
+   "problem": "A substance is evaluated for its effect on biological systems showing signs of deterioration over time, measuring changes in tissue structure, stress levels, and molecular markers of damage and repair across different treatment schedules.",
+   "approach": "Animals are exposed to a model of progressive decline, then treated either before or after the onset of decline. Tissue samples are analyzed for biochemical and structural changes, and outcomes are compared across treatment timing and control groups."
+  },
+  {
+   "work": "W3107672203",
+   "problem": "A set of food products is evaluated for changes in color, fat uptake, and chemical stability under different processing conditions and ingredient blends.",
+   "approach": "Products are exposed to two distinct heat treatments and combined with varying ingredient ratios. Results are compared across batches using standardized measurements of visual appearance, fat retention, and oxidative degradation indicators."
+  },
+  {
+   "work": "W3196848749",
+   "problem": "A mechanism is estimated that induces relaxation in airway muscle tissue, with effects mediated by specific ion channels and signaling molecules involved in cellular membrane potential regulation and vascular tone control.",
+   "approach": "A series of compounds are applied to muscle tissue, and responses are measured under conditions where specific ion channels and signaling pathways are inhibited to determine which pathways drive the observed relaxation."
+  },
+  {
+   "work": "W4385417300",
+   "problem": "A method is developed to maintain stability in a power network when sudden changes in supply occur, coordinating responses to keep both frequency and voltage within safe operational limits.",
+   "approach": "A dynamic model captures how system states evolve under sudden load or generation shifts. It uses real-time feedback to adjust responses from energy storage, balancing rapid adjustments with long-term stability to restore equilibrium quickly."
+  },
+  {
+   "work": "W7005206487",
+   "problem": "The system's behavior is observed and interpreted across diverse human groups working together to develop and maintain digital tools, with attention to how decisions, narratives, and technical processes shift based on group interactions and shared environments.",
+   "approach": "Data is collected through immersive observation and iterative analysis of real-time interactions within shared digital environments, identifying patterns in how decisions unfold and how tools evolve in response to human collaboration and context."
+  },
+  {
+   "work": "W3130289900",
+   "problem": "The rate of functional recovery in a specific neural pathway is measured over time and compared to a baseline group that did not receive intervention.",
+   "approach": "Patients receive a consistent, timed external signal applied immediately after surgery, with recovery progress assessed at multiple time points using standardized functional scoring."
+  },
+  {
+   "work": "W2790586408",
+   "problem": "A quantitative measure is estimated to determine its association with a specific vascular condition characterized by abnormal dilation. The strength and independence of this relationship are assessed using clinical and laboratory data from matched patient groups.",
+   "approach": "A statistical model compares two groups on a continuous biomarker level, using tests for differences and correlations. It evaluates the predictive power of the biomarker through regression and diagnostic performance metrics like sensitivity and area under the curve."
+  },
+  {
+   "work": "W4401223574",
+   "problem": "A pattern of intervention sequences is evaluated to determine how consistently prescribed care steps are followed, including pre-treatment checks and monitoring after action. The frequency and timing of actions are compared across cases to identify deviations and gaps in procedural consistency.",
+   "approach": "Patient encounter logs are reviewed to trace the sequence of actions taken. Each step is checked against a defined care pathway, and deviations are recorded. Post-action observation is assessed for completeness and timing."
+  }
+ ]
+}

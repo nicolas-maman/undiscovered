@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-045",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:43Z",
+ "descriptions": [
+  {
+   "work": "W4249546275",
+   "problem": "This study aims to identify the most important factors that influence the safe use of toxic substances in agriculture, and to prioritize these factors to inform health laws and policies. The goal is to estimate the most critical elements that need to be improved to prevent negative effects on people.",
+   "approach": "The researchers collected data from 100 respondents who have knowledge about these toxic substances. They used a questionnaire to gather information on various aspects of their use, and then analyzed the data to determine the priority of these aspects."
+  },
+  {
+   "work": "W3153262618",
+   "problem": "This research estimates the effect of adding a certain ingredient to a drink on consumer preference, comparing different levels of the ingredient to see which one is most preferred. It also explains why the addition of the ingredient affects some parameters but not others.",
+   "approach": "The study uses a controlled experiment with multiple groups, each with a different amount of the ingredient added. The results are analyzed using statistical tests to determine if there is a significant difference between the groups."
+  },
+  {
+   "work": "W3001180775",
+   "problem": "This research estimates and predicts the themes and semantic fields of a specific type of artistic work, comparing and optimising the use of images to convey meaning. It explains how this work provides dynamism to verbal language and builds conceptual understanding of key terms.",
+   "approach": "The research uses a rhytmic-formal analysis to examine three examples of this type of work, applying a procedure that involves breaking down the text into its constituent parts and reassembling them to reveal underlying structures and meanings."
+  },
+  {
+   "work": "W7140128462",
+   "problem": "This work estimates the future demand for a type of facility that uses complex systems to process information, and predicts how this demand will change over time. It also compares different regions to see which ones will be the largest users of this type of facility.",
+   "approach": "The study uses a combination of mathematical models and simulations to make these predictions. It starts by breaking down the facility's demand into smaller parts, and then uses these parts to make predictions about the future demand."
+  },
+  {
+   "work": "W4253729510",
+   "problem": "This work estimates the value of maps by adding multimedia content and comparing it to the value of maps without this content. It predicts that the value of maps will increase when multimedia content is added.",
+   "approach": "The approach involves adding QR codes to maps, storing multimedia content on a cloud, and using a camera and internet to access and interpret the codes. The procedure follows a simple rule: attach a QR code to a map, store multimedia content on a cloud, and use a camera and internet to access and interpret the code."
+  },
+  {
+   "work": "W2972960195",
+   "problem": "This work estimates the optimal amount of water needed to support the growth and quality of a specific type of plant, and compares the effects of different water levels on various plant characteristics.",
+   "approach": "The study used a combination of data collection and mathematical modeling to determine the best water level for the plant's growth and quality. It followed a completely randomized design, applying different water levels to a group of plants and measuring their responses."
+  },
+  {
+   "work": "W4407944097",
+   "problem": "This work estimates the performance of a certain type of material under specific environmental conditions, comparing the results to a baseline model. It aims to predict the material's behavior based on historical data and evidence.",
+   "approach": "The approach involves training a set of models using a combination of data and optimization techniques to find the best fit. The models are then evaluated based on their accuracy and stability."
+  },
+  {
+   "work": "W4294713304",
+   "problem": "This work estimates the feasibility of a minimally invasive surgical approach for a specific type of abdominal growth, aiming to remove the growth while preserving surrounding nerves. It compares the effectiveness of this approach to traditional methods.",
+   "approach": "The procedure involves a step-by-step removal of a specific type of tissue, followed by the removal of nerves that are at risk of damage. The approach is based on a model that simulates the surgical process and evaluates its outcomes."
+  },
+  {
+   "work": "W4390078277",
+   "problem": "This work estimates and explains the characteristics of people's mental states when they are not actively engaged in tasks, using data from audio recordings of participants' verbal descriptions of their internal experiences. It compares these characteristics across different groups of people, including those with different ages and levels of creativity.",
+   "approach": "The researchers used a think-aloud technique, where participants verbalized their internal experiences while performing a simple task, and then analyzed the content and dynamic patterns of their verbalizations using automated text analysis and external coders."
+  },
+  {
+   "work": "W3021603015",
+   "problem": "This work estimates the number of unique animals in a certain region, compares it to neighboring areas, and identifies which families are most at risk of extinction. It also compares the region's animals to global and national lists of endangered animals.",
+   "approach": "The procedure involves generating a list of all animals in the region, comparing it to lists of neighboring areas, and analyzing the risk of extinction for each family of animals. The analysis is based on data from the International Union for Conservation of Nature and the Mexican government's environmental agency."
+  },
+  {
+   "work": "W4236494623",
+   "problem": "This work estimates the impact of a character's free expression of their attraction to multiple genders on societal norms and attitudes, comparing it to traditional conceptions of relationships and identity.",
+   "approach": "The approach involves using a critical framework to analyze the character's behavior and its implications, following a procedure that involves examining the representation of the character's identity and relationships through a lens of social and cultural critique."
+  },
+  {
+   "work": "W2938006743",
+   "problem": "This work estimates the relationship between the number of structural components in a complex system and its overall performance. It aims to find a formula that describes how the system's behavior changes as the number of components increases.",
+   "approach": "The researcher uses a combination of mathematical induction and computational methods to derive the formula. They start with simpler systems and build up to more complex ones, solving a system of linear equations to find the forces in each component."
+  },
+  {
+   "work": "W2991007139",
+   "problem": "This research estimates the risk factors contributing to the transmission of a zoonotic disease in pastoral communities living near wildlife areas. It compares the transmission risks of two different lifecycles of the disease, one domestic and one wildlife-based.",
+   "approach": "The study uses a questionnaire to collect data from 740 residents, and then identifies risk factors such as human interaction with wildlife, poor hygiene, and environmental contamination. The approach involves analyzing the data to determine the associated risk factors and transmission risks."
+  },
+  {
+   "work": "W7126026077",
+   "problem": "This work estimates the shape and size of a certain type of microscopic organism, comparing its features to those of other similar organisms. It predicts the distribution and habitat of this organism based on observations of its shape and size.",
+   "approach": "The researchers used a combination of light microscopy and scanning electron microscopy to examine the shape and size of the organism. They compared their findings to those of other similar organisms to identify the organism's characteristics."
+  },
+  {
+   "work": "W3108334553",
+   "problem": "This research aims to determine the most effective way to improve the overall health and productivity of a complex system, which is critical for the well-being of both the system's users and the environment. It seeks to identify the optimal management strategy that balances these competing goals.",
+   "approach": "The research uses a combination of data and expert knowledge to develop a framework for evaluating and optimizing the performance of the system. It involves partnering with experienced practitioners to test and refine the approach."
+  },
+  {
+   "work": "W4386273572",
+   "problem": "This work estimates the presence of a specific type of infection in a subject with a history of a chronic disease, and compares the results to a set of diagnostic criteria. It also predicts the likely cause of a set of symptoms and provides a treatment plan.",
+   "approach": "The procedure involves collecting data on the subject's symptoms and test results, and then using a combination of diagnostic techniques to identify the presence of the infection. The treatment plan is based on a set of established protocols and is tailored to the subject's specific needs."
+  },
+  {
+   "work": "W2911434348",
+   "problem": "This work estimates the presence of a rare, benign tumor in a patient's body, based on imaging data and tissue samples. It compares the tumor's characteristics to those of normal cells to determine if it's malignant or not.",
+   "approach": "The researchers used a combination of imaging data and tissue samples to identify the tumor. They then examined the tumor cells under a microscope to look for signs of malignancy."
+  },
+  {
+   "work": "W4321844401",
+   "problem": "This work aims to optimize the performance of a system that converts energy from a natural source into a usable form. It estimates the optimal settings for this system based on various environmental factors.",
+   "approach": "The system uses a mathematical model to simulate different scenarios and find the best settings. It then compares the results to real-world data to validate its findings."
+  },
+  {
+   "work": "W4317212740",
+   "problem": "This work aims to estimate the likelihood of a life-threatening condition caused by a parasite, which can lead to death within 10 years if left untreated. It compares the effectiveness of different medical tests and imaging methods to identify the condition.",
+   "approach": "The approach involves combining patient medical history, imaging findings, and test results to make an educated prediction about the presence of the condition. The goal is to optimize early detection and treatment of the condition, especially in cases with cystic growths."
+  },
+  {
+   "work": "W4286624995",
+   "problem": "This work aims to find the best way to deliver a natural substance with antioxidant properties to improve skin health, using a combination of ingredients to improve its stability and effectiveness.",
+   "approach": "The researchers used a method to mix and test different combinations of ingredients, and then used a device to measure the size and stability of the resulting mixture, and another device to measure how well the substance was trapped and released."
+  }
+ ]
+}

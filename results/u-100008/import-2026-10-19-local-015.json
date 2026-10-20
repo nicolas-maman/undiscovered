@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-015",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:39Z",
+ "descriptions": [
+  {
+   "work": "W2992880500",
+   "problem": "This work aims to improve the accuracy of estimates of land values and their market prices, comparing them to assess the efficiency of land use in urban areas. It also aims to explain the ecological impact of land use on the environment.",
+   "approach": "The approach involves developing a system that uses data to generate assessment cards and maps showing the efficiency of land use, and optimising these assessments to reduce ecological tension."
+  },
+  {
+   "work": "W3094050181",
+   "problem": "This work estimates the accuracy of two methods for predicting the outcome of a medical treatment in a specific group of people who have a serious condition that has spread to their bones. It compares the results of these methods to the actual outcomes.",
+   "approach": "The researchers looked at the data from 103 people who had this condition and underwent surgery, and compared the predicted outcomes to the actual outcomes. They used a statistical method to measure how well the predicted outcomes matched the actual outcomes."
+  },
+  {
+   "work": "W2992772247",
+   "problem": "This work estimates the structure and function of a protein complex that helps cells stick to the inner layer of blood vessels during an inflammatory response. It predicts how the protein complex behaves in different environments and optimizes its function.",
+   "approach": "The researchers use biochemical and biophysical methods to study the behavior of a specific part of the protein complex. They then use computer modeling to understand how the complex is assembled and how it affects cell behavior."
+  },
+  {
+   "work": "W4386269223",
+   "problem": "This research aims to investigate the effect of a specific substance on a common health issue in older adults, specifically those with high pressure in their arteries. It estimates the change in pressure levels in these individuals after consuming the substance.",
+   "approach": "The study uses a case study method, collecting data through interviews and observations. It follows a simple procedure: administering the substance to participants and measuring their pressure levels before and after a set period."
+  },
+  {
+   "work": "W4388924971",
+   "problem": "This work aims to determine the effectiveness of a surgical procedure in treating a severe infection of the cornea, and to evaluate the outcomes of this procedure in terms of the recovery of the cornea's function and structure.",
+   "approach": "The procedure involves analyzing medical records of individuals who underwent the surgery, and comparing the outcomes of those who received the treatment with those who did not. The analysis focuses on the recovery of the cornea's function and structure, and the rate of complications."
+  },
+  {
+   "work": "W3165377713",
+   "problem": "This work estimates the origins of a historical event, comparing different sources of information to determine the most likely explanation. It also explains the context and significance of the event.",
+   "approach": "The researcher uses a combination of historical texts and other evidence to build a narrative about the event. They follow a step-by-step procedure to evaluate and synthesize the information, ultimately producing a coherent and well-supported account."
+  },
+  {
+   "work": "W4404039774",
+   "problem": "This work estimates the capabilities of systems that can perform tasks such as recognizing visual information, making decisions, and interacting with humans in a collaborative way. It predicts how these systems will evolve and compare them to human cognitive abilities.",
+   "approach": "The approach is to use a framework that groups these capabilities based on how they relate to human abilities, and to explore the historical development, current state, and future trends of these systems. The goal is to understand how these systems can be integrated with human workforces and to consider the ethical implications of their growing autonomy."
+  },
+  {
+   "work": "W4406213799",
+   "problem": "This work aims to improve the chances of successful reproduction in animals by investigating the effects of certain compounds on their reproductive health. It estimates the impact of these compounds on the reproductive success of animals.",
+   "approach": "The researchers added these compounds to the food or drink of the animals before they reproduced, or gave them to the animals orally, and then measured the outcome. They used mice as test subjects and compared the results to see if the compounds had a positive effect."
+  },
+  {
+   "work": "W2791835266",
+   "problem": "This work aims to balance the performance of two types of users with different control modes: those that require centralized control and those that can manage on their own. It estimates the optimal balance between these two types of users to maximize the overall system performance.",
+   "approach": "The approach involves using randomized power control and a step-by-step process to optimize the system within a predetermined level of performance for the users that require centralized control. The goal is to find the best balance between these two types of users to achieve the highest overall performance."
+  },
+  {
+   "work": "W2968833638",
+   "problem": "This work estimates the impact of genetic differences on the performance of 30 different varieties, comparing the effects of different characteristics on growth and quality. It also predicts the effectiveness of selection in improving these characteristics.",
+   "approach": "The study uses data from 30 varieties to calculate the influence of genetic differences on growth and quality. It then uses this information to determine the best approach for improving these characteristics through selection."
+  },
+  {
+   "work": "W4386307197",
+   "problem": "This study aims to determine the effect of adding a certain material and a byproduct of wood processing on the physical and mechanical properties of a composite material. The goal is to estimate the impact of these additives on the material's density, porosity, and water absorption, as well as its resistance to compression, tension, and bending.",
+   "approach": "The researchers used a combination of measurements and visual inspections to compare the properties of two different composite materials. They analyzed the microstructure of the materials using a scanning electron microscope to identify any differences in the material's appearance and composition."
+  },
+  {
+   "work": "W2889811997",
+   "problem": "This research estimates the effectiveness of a specific type of self-improvement program in changing people's behaviors and identities, and compares the outcomes of participants who underwent this program to those who did not. It also examines how these changes relate to broader societal issues.",
+   "approach": "The researchers followed a group of individuals who used a particular method to try to change their behavior and identity, and analyzed the results to see how it affected them. They also looked at how these changes were connected to other social and cultural factors."
+  },
+  {
+   "work": "W4412136111",
+   "problem": "This work estimates the relationship between levels of a certain mineral and the presence of a narrowing of a major blood vessel, as well as its connection to a type of damage caused by free radicals. It also predicts the likelihood of this narrowing based on the mineral's levels.",
+   "approach": "The researchers compared data from 84 patients to see if the mineral's levels were different between those with the narrowing and those without. They used various statistical tests to analyze the data and draw conclusions."
+  },
+  {
+   "work": "W4287801962",
+   "problem": "This work describes the structure of a material, estimating the arrangement of its constituent parts and comparing it to known patterns. It predicts the distances between these parts and explains how they fit together.",
+   "approach": "The researchers used data on the material's shape and size to create a model of its internal structure. They applied rules to this model to determine the arrangement of the material's parts and the distances between them."
+  },
+  {
+   "work": "W4296041515",
+   "problem": "This work aims to estimate the effect of a certain substance on the efficiency of a chemical reaction involving a solid material, a liquid, and heat. It compares the results of different experiments to find the optimal conditions for the reaction.",
+   "approach": "The researchers used a combination of the substance and the solid material to create a new compound, and then tested its performance in a series of chemical reactions. They varied the conditions of the reaction to see how the results changed."
+  },
+  {
+   "work": "W4307640606",
+   "problem": "This work estimates the prevalence of a certain virus in a group of individuals with a specific illness, compares the results to a control group, and optimizes the diagnosis by identifying the most significant factors contributing to the diagnosis. The data used is from paired samples collected from these individuals.",
+   "approach": "The procedure involves testing these paired samples using a specific method, and then analyzing the results to identify the most significant factors contributing to the diagnosis, including the time of sample collection and the presence of other symptoms."
+  },
+  {
+   "work": "W4412915590",
+   "problem": "This work estimates the potential benefits of a naturally occurring, organic compound on human health, comparing its effects to those of other substances. It aims to explain how this compound can be used to improve health outcomes, particularly in relation to cancer treatment.",
+   "approach": "The study uses data on various types of cancer and their treatment, as well as information on the compound's properties and effects on human physiology. It follows a procedure that involves analyzing and comparing the compound's effects to those of other substances."
+  },
+  {
+   "work": "W3111655084",
+   "problem": "This work identifies and selects the most valuable characteristics from a large collection of genetic material to improve the quality of a specific type of crop. It estimates the potential benefits of these characteristics and compares them to the characteristics of existing crops.",
+   "approach": "The researchers use a combination of data and evidence to evaluate the genetic material. They follow a procedure that involves screening, selection, and comparison of the characteristics to identify the most valuable ones."
+  },
+  {
+   "work": "W4312093838",
+   "problem": "This research estimates the impact of two environmental factors on the availability of a key resource to a specific type of organism. It predicts how this resource affects the organism's ability to thrive, and compares the responses of different species to these factors.",
+   "approach": "The study uses data from laboratory experiments and field surveys to determine the effect of increased water flow on the organism's ability to take in a vital resource. It then examines how different species adapt to varying levels of this resource."
+  },
+  {
+   "work": "W4385631273",
+   "problem": "This research aims to evaluate and diagnose a 70-year-old woman's symptoms of shortness of breath, palpitations, and weakness, and to identify the underlying cause of her condition. The goal is to determine the type of condition she has and to develop a treatment plan.",
+   "approach": "The researcher uses a combination of physical examination, laboratory tests, and medical history to diagnose the condition. The approach involves testing for various conditions, such as gastrointestinal bleeding, cardiac problems, and nutritional deficiencies, and using laboratory results to differentiate between possible causes."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-019",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:39Z",
+ "descriptions": [
+  {
+   "work": "W2996463184",
+   "problem": "This work estimates the effects of exposure to a certain substance on the health of a specific group of living organisms over a prolonged period. It predicts the impact of varying doses of the substance on the organisms' health and compares the results to determine the most harmful dose.",
+   "approach": "The researchers used a combination of biochemical and physiological tests to evaluate the substance's effects. They measured various chemical markers and physical changes in the organisms' tissues and compared the results to determine the substance's impact on the organisms' health."
+  },
+  {
+   "work": "W4412740088",
+   "problem": "This work estimates the effectiveness of participating in institutions that shape global systems, and compares the benefits and drawbacks of doing so. It predicts that some individuals will still engage in this activity despite the potential risks.",
+   "approach": "The researchers use a 'perspective of investment' to understand why individuals participate in institutions that may not fully align with their goals. They analyze data on economic development and transitional justice to identify patterns and trends."
+  },
+  {
+   "work": "W7146948262",
+   "problem": "This work estimates the ambient temperature of a medium adjacent to a wall, based on indirect monitoring of the wall's temperature, and predicts the consequences of varying the medium's temperature. It compares the model's results to known data to improve its accuracy.",
+   "approach": "The approach uses simplified models to represent the medium's behavior, and adapts these models to the specific object being studied. It then uses known data to fine-tune the model and improve its predictions."
+  },
+  {
+   "work": "W3100478105",
+   "problem": "This work estimates the timing requirements for a complex system to function accurately, and compares these requirements to the capabilities of the system's components. It aims to optimise the performance of the system by adjusting the timing sequence of the components.",
+   "approach": "The system uses a feedback loop to adjust the timing sequence of the components, allowing them to work together accurately. This approach enables the system to meet the required timing requirements."
+  },
+  {
+   "work": "W4390616638",
+   "problem": "This research aims to improve the performance of a sensitive device used in various fields, such as aviation and aerospace, by enhancing its ability to detect small changes in mass and force. The goal is to increase the device's sensitivity and reliability.",
+   "approach": "The researchers used a combination of theoretical analysis, simulations, and experiments to design and optimize the device. They focused on optimizing key processes, such as releasing suspended particles and shaping the device's structure, to achieve the desired performance."
+  },
+  {
+   "work": "W4396957484",
+   "problem": "This work estimates the definition of a specific type of regulation, which is the influence of a governing body on the behavior of individuals and collectives, with the goal of organizing and developing them. It also compares and optimizes the concept of regulation, distinguishing it from coercion and rigid prescription.",
+   "approach": "The work uses a theoretical approach, analyzing and classifying various concepts and phenomena to define and explain the specific type of regulation. It follows a systematic and methodical procedure, using a combination of dictionary, reference, and specialized sources to formulate original definitions and identify distinctive features."
+  },
+  {
+   "work": "W4414147429",
+   "problem": "This work estimates the patterns of how thoughts and experiences are structured into a specific type of text, in order to help understand how to translate these thoughts into that text. It compares different patterns to see which ones work best.",
+   "approach": "It uses a combination of existing ideas and data to develop a new way of thinking about how to structure thoughts and experiences into a specific type of text. The procedure involves analyzing patterns in a type of text and using this analysis to make predictions about how to structure thoughts and experiences in a similar way."
+  },
+  {
+   "work": "W4399388871",
+   "problem": "This research aims to determine the effect of a certain substance on the pressure of a fluid in the body of women who experience a certain condition, which is known to cause the fluid pressure to rise. The researchers estimate that this substance may help reduce the fluid pressure.",
+   "approach": "The researchers used a simple experiment with two groups, one that received the substance and one that did not, and compared the results to see if the substance had an effect. They used a statistical test to determine if the difference in pressure was significant."
+  },
+  {
+   "work": "W4400419535",
+   "problem": "This study aims to identify the underlying reasons that drive individuals to secretly access and use information from computers. It examines a large dataset of court cases related to this issue.",
+   "approach": "The researchers analyzed 300 court cases, looking for patterns and commonalities. They categorized the cases into two groups: those driven by financial gain and those not driven by financial gain."
+  },
+  {
+   "work": "W4415995653",
+   "problem": "This work estimates the existence of two distinct conditions that affect people's ability to produce written text, and compares their features, causes, and impact on learning and development. It aims to explain the differences between these conditions to improve diagnosis and treatment.",
+   "approach": "The study uses a combination of international standards and cross-cultural perspectives to identify the key characteristics of these conditions. It follows a procedure that involves analyzing data and evidence from various sources to draw conclusions and make recommendations."
+  },
+  {
+   "work": "W4389637633",
+   "problem": "This study aims to estimate the effect of a plant extract on two key health metrics: blood pressure and fat levels in a specific animal model. The researchers compare the effects of different doses of the extract to a standard treatment and a control group.",
+   "approach": "The researchers use a controlled experiment with multiple groups of animals, each receiving a different treatment: a standard diet, a high-fat diet, a medication, or one of three doses of the plant extract. The experiment involves measuring key health metrics over time."
+  },
+  {
+   "work": "W4205890696",
+   "problem": "This work estimates the similarity between images taken from different sources, and it compares them to determine the most accurate match. It aims to improve the matching process by considering the underlying patterns and features in the images.",
+   "approach": "The method uses a template matching procedure to find the most similar area in the entire image. It relies on a non-dimensional metric that focuses on the patterns and features of the images, rather than their light and dark changes."
+  },
+  {
+   "work": "W2914578411",
+   "problem": "This work estimates the accuracy of a timing system, predicting the minimum time difference between two signals. It compares this prediction to the actual time difference, aiming to optimise the system's performance.",
+   "approach": "The approach involves designing a timing system that can accurately measure and control the timing of signals, using a buffer stage to reduce energy consumption. The system is built using a specific type of semiconductor technology and is tested for its performance and accuracy."
+  },
+  {
+   "work": "W4321514456",
+   "problem": "This work estimates the relationship between land use and sustainable development in European countries, comparing indicators such as land area, land per person, and land prices across different countries. It aims to explain how changes in land prices will impact the formation of a transparent land market.",
+   "approach": "The study groups European countries by land ownership and land price levels, then compares these groups to identify trends and patterns in land use and development."
+  },
+  {
+   "work": "W3182322383",
+   "problem": "This work estimates the potential of a country to improve its international influence and attract investment by linking its name with high-quality products or services. It compares the country's current situation with the desired outcome and identifies the necessary policies to achieve the goal.",
+   "approach": "The approach involves analyzing data on the country's products or services and their international reputation, and then using this information to identify the necessary policies to improve the country's influence and attract investment."
+  },
+  {
+   "work": "W4313546440",
+   "problem": "This work estimates the effectiveness of a tool in assessing the safety of people who are no longer able to perform daily activities on their own, and compares it to a traditional assessment method. It aims to determine if the tool is reliable and useful in guiding decisions about whether someone should be allowed to continue driving.",
+   "approach": "The tool is evaluated by comparing its results to a traditional assessment method, and by assessing the tool's reliability and usefulness in different situations. The evaluation is based on a systematic review of existing research, which examines the quality of the studies and the results of the tool."
+  },
+  {
+   "work": "W4416033446",
+   "problem": "This work aims to estimate the best cases for a specific treatment to shorten the time it takes to fix a broken tooth in the back of the mouth, making it more efficient and cost-effective. It compares different approaches to find the most suitable ones.",
+   "approach": "The researchers used a systematic search of existing studies to gather evidence, looking at data from various databases. They then manually reviewed the findings to identify the most effective cases."
+  },
+  {
+   "work": "W4409207042",
+   "problem": "This work estimates the factors that influence how people use a system that recommends content based on their past interactions, and how this use affects their ability to critically evaluate the information they receive.",
+   "approach": "The study compares the impact of different features, such as protecting users' rights and interests, and content preferences, on how people use this system, and optimizes the system's design to improve its effectiveness."
+  },
+  {
+   "work": "W4412663727",
+   "problem": "This research estimates the impact of a new type of training program on people's likelihood of finding work. It compares the outcomes of people who received the training to those who did not, using data from phone surveys.",
+   "approach": "The researchers used a special statistical method to account for the fact that some people who were not in the training program might have started it anyway. They also looked for patterns in the data to see if the training program had a different effect on people who were already interested in finding work."
+  },
+  {
+   "work": "W7221243561",
+   "problem": "Estimate the distribution of a shared ancestral territory between two groups, where conflicts arise due to competing claims over land. The goal is to understand the underlying social dynamics.",
+   "approach": "Use a combination of literature reviews and discussions with local sources to identify patterns and similarities in the ancestral territory's geography and the groups' social structures."
+  }
+ ]
+}

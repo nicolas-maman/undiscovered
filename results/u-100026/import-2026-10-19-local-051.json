@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-051",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:44Z",
+ "descriptions": [
+  {
+   "work": "W3163985610",
+   "problem": "This study estimates and explains the common themes and ideas expressed in a set of 6 works, comparing and contrasting them to identify patterns and trends in the author's writing.",
+   "approach": "The study uses a qualitative approach, involving an in-depth reading of each work to identify and analyze the underlying ideas and concepts, and to compare and contrast them across the different works."
+  },
+  {
+   "work": "W2904988074",
+   "problem": "This research estimates the importance of a specific process in the development of a complex structure, compares its effects on different parts of the structure, and optimizes its role in the structure's functioning. It explains how this process affects the structure's growth and development.",
+   "approach": "The researchers used a combination of genetic manipulation and observation to study the role of a particular process in the development of a complex structure. They applied specific genetic tools to manipulate the process and observe its effects on different parts of the structure."
+  },
+  {
+   "work": "W4409571689",
+   "problem": "This study estimates the level of support for wood-based innovations in the media, predicts their potential impact on the market, compares the coverage of different types of innovations, optimizes the effectiveness of the media in promoting these innovations, and explains the limitations of the current discussion.",
+   "approach": "The study uses a critical analysis of media articles to identify the tone and content of the coverage, and to compare the representation of different types of innovations, using a theoretical framework to guide the analysis and provide recommendations for improvement."
+  },
+  {
+   "work": "W4390538786",
+   "problem": "This research aims to understand how certain words and symbols on a popular online platform create and spread certain ideas and beliefs, and how these ideas affect the platform and its users.",
+   "approach": "The study uses a qualitative method to analyze the words and symbols, looking at how they are used in different contexts and how they change over time, to see if certain ideas are being embedded in the platform."
+  },
+  {
+   "work": "W2922369086",
+   "problem": "Estimate, predict, compare, optimise or explain the health disparities between different age groups in a specific geographic area, using data on hospitalizations, insurance rates, and community resources.",
+   "approach": "Use a combination of demographic data, hospitalization records, and community resource data to identify specific geographic areas with high concentrations of individuals at risk, and then apply a practical focus to develop interventions that address these disparities."
+  },
+  {
+   "work": "W2883037174",
+   "problem": "This work estimates what types of knowledge are most valuable to professionals who provide emergency medical services, and compares these types across different individuals. It aims to explain the importance of this knowledge in their work.",
+   "approach": "The researchers used a survey method, where 36 individuals rated and ranked different types of knowledge, and then compared the top 10 types. The top types were then identified as the most valuable knowledge for these professionals."
+  },
+  {
+   "work": "W4282962336",
+   "problem": "This work estimates the relationship between a certain brain chemical and how patients feel and behave during a treatment program. It compares the levels of this chemical in patients who received a structured treatment program versus those who received a standard support program.",
+   "approach": "The researchers used a procedure that involves analyzing data from two groups of patients and comparing it to data from a group of healthy individuals. They also used various mathematical models to understand the relationship between the brain chemical and the patients' symptoms."
+  },
+  {
+   "work": "W4320518384",
+   "problem": "This work estimates the effectiveness of various beauty treatments, predicts the outcomes of combining different treatments, and compares the results of different treatments to explain their benefits. It also optimizes the choice of treatment for individual users.",
+   "approach": "The approach involves analyzing data on the outcomes of different treatments, using a combination of non-invasive methods and expert advice to make predictions and comparisons. The procedure follows a step-by-step process of selecting treatments, evaluating their outcomes, and making recommendations for individual users."
+  },
+  {
+   "work": "W3082137951",
+   "problem": "This work estimates the potential for a new way to mark and identify items, allowing for changes to be made to the information without having to replace the marking entirely. It aims to reduce waste and costs associated with frequent changes.",
+   "approach": "The approach involves creating a new type of marking that can be modified, using data encryption and a special layer that can be added to the marking. The marking is then encoded and decoded using a specific method."
+  },
+  {
+   "work": "W2808863191",
+   "problem": "This research estimates the relative content of two types of connective tissue in the skin and lungs of individuals with a lung condition complicated by a spontaneous air leak, and compares it to a group without the condition. It also explains the correlation between the two types of connective tissue in both groups.",
+   "approach": "The study uses a comparison method to analyze the content of two types of connective tissue in skin and lung samples. It employs a specialized microscopy technique to reveal the correlation between the two types of connective tissue in both groups."
+  },
+  {
+   "work": "W4200174304",
+   "problem": "This work estimates the number of steps required to find a solution to a complex problem, and compares it to the number of steps required by other methods. It predicts the efficiency of a proposed algorithm for finding solutions to a specific type of problem.",
+   "approach": "The algorithm uses a set of rules to find a solution to the problem, and it can work in parallel or sequentially. The approach involves applying the rules in a specific order to find a solution that satisfies the conditions of the problem."
+  },
+  {
+   "work": "W4392421354",
+   "problem": "This research estimates the impact of various factors on the security of essential resources, such as economic development, political stability, and access to resources. It compares different scenarios to identify the main risks and challenges that threaten this security.",
+   "approach": "The study uses a combination of statistical analysis, case study, and SWOT analysis to develop recommendations for improving the security of these resources. It proposes a set of principles for public policy that can help address these challenges and improve the situation."
+  },
+  {
+   "work": "W7215566210",
+   "problem": "This study investigates the cultural factors influencing the decision to have more or fewer offspring, specifically among a particular group living in a region with a high proportion of this group.",
+   "approach": "The researchers divided the group into smaller subgroups and asked them questions about their attitudes and behaviors related to family planning and childcare, then analyzed the results to identify patterns and trends."
+  },
+  {
+   "work": "W4414649554",
+   "problem": "An estimate of the outcome of a vote among a group of experts is presented, along with the actual outcome and the text of the revised rules that were approved.",
+   "approach": "The outcome of the vote was estimated based on the opinions of the group's members, and the revised rules were presented as a result of this estimation, with the actual outcome being the approved text."
+  },
+  {
+   "work": "W4226209972",
+   "problem": "This work estimates the costs, efficiency, and construction periods of three different methods for building a foundation in a region with unstable ground. It compares these methods to determine which one is the most cost-effective and efficient.",
+   "approach": "The work uses data from the three methods to compare their costs, efficiency, and construction periods. It follows a procedure of describing each method, comparing the results, and drawing conclusions based on the analysis."
+  },
+  {
+   "work": "W4366251063",
+   "problem": "The task is to estimate the suitability of a job for a given set of tasks, based on the characteristics of the two types of tasks. This helps to choose the most efficient approach to complete the job.",
+   "approach": "A procedure is followed to categorize the tasks into simple, medium, or complex types, based on how well they can be separated. This categorization helps to identify the most suitable approach for each type of task."
+  },
+  {
+   "work": "W2923697431",
+   "problem": "This work investigates the effectiveness of using a certain type of material to remove a specific type of contaminant from water. It aims to estimate the amount of contaminant that can be removed and the conditions under which this removal occurs.",
+   "approach": "The researchers first test the material in a laboratory setting to see how it affects the contaminant's removal. They then use a computer program to simulate the process and predict the results, validating the simulation with the actual laboratory data."
+  },
+  {
+   "work": "W2927110233",
+   "problem": "This research aims to identify and compare interventions that support the overall quality of life of individuals with complex challenges, including physical, emotional, social, and environmental difficulties. It estimates the effectiveness of these interventions and identifies gaps in current services.",
+   "approach": "The researchers used a systematic review to analyze existing studies on interventions that address these challenges. They followed a procedure that involved identifying and evaluating interventions that support comprehensive quality of life, with a focus on the most frequently described dimensions."
+  },
+  {
+   "work": "W4391189330",
+   "problem": "This study estimates the effect of different types of materials on the physical and mechanical properties of a manufactured product. It compares the properties of the product made with different materials and adhesives to determine the most suitable combination.",
+   "approach": "The researchers used a combination of data collection and analysis to determine the relationship between the variables. They tested the product using a standardized method and analyzed the results using statistical techniques."
+  },
+  {
+   "work": "W7135710046",
+   "problem": "An expert in a specific area of study is trying to identify a rare condition in a person who is showing symptoms that are not typical of common conditions. The expert is trying to distinguish this condition from others that are more common.",
+   "approach": "The expert uses their knowledge of patterns and symptoms to make an educated guess about the condition, and then verifies their diagnosis with further investigation and treatment."
+  }
+ ]
+}

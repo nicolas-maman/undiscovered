@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-19-local-011",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:38Z",
+ "descriptions": [
+  {
+   "work": "W2945387213",
+   "problem": "This work estimates the efficiency of different methods for growing cells from patients with a certain disease, and compares the activity of an enzyme and the levels of certain lipids in these cells. It also predicts the effectiveness of certain compounds in increasing the enzyme's activity.",
+   "approach": "The researchers compared the results of different methods for growing cells from patients and control subjects, and used a technique called tandem mass spectrometry to measure the enzyme's activity and lipid levels. They also tested the effectiveness of certain compounds in increasing the enzyme's activity in these cells."
+  },
+  {
+   "work": "W2913139003",
+   "problem": "This study estimates how well participants can use information to guide their actions during a long, complex task that involves following a pattern of activity. It compares performance and resource use in two different conditions.",
+   "approach": "The researchers used a combination of self-reported data and physiological measures to compare performance and resource use in two conditions: one where participants had to follow a pattern, and one where they had to follow a more complex pattern."
+  },
+  {
+   "work": "W3167868727",
+   "problem": "This research estimates the rate of a chemical reaction, compares the efficiency of different substrates, and optimizes the conditions for the reaction to occur. It explains the underlying mechanisms and identifies the most rate-limiting steps.",
+   "approach": "The researchers used a combination of experimental methods, including spectroscopy and kinetic analysis, to study the reaction. They also used computational models to simulate the reaction and predict the activation energies for different steps."
+  },
+  {
+   "work": "W4404915783",
+   "problem": "This work estimates the impact of unbalanced and complex devices on a large-scale energy system, comparing their effects on energy consumption and costs. It aims to optimize the performance of the system by penalizing polluting components and rewarding or discharging others.",
+   "approach": "The approach involves using a mathematical framework to analyze the energy behavior of these devices, integrating their effects over time to measure and bill energy usage. This framework is applied to experimental data to validate the results and provide a generalizable model."
+  },
+  {
+   "work": "W4214642538",
+   "problem": "This work estimates the effectiveness of various methods for managing information in different industries, comparing the outcomes of different approaches to optimise information security. It aims to explain the most suitable strategies for each industry.",
+   "approach": "The study uses a combination of data analysis and comparison of industry-specific features to identify the most effective methods. It follows a procedure of data collection, analysis, and comparison to determine the best approach for each industry."
+  },
+  {
+   "work": "W4416715011",
+   "problem": "This work estimates the effectiveness of a new surgical technique for treating a specific type of complication in a certain medical condition. It predicts that this technique can reduce the incidence of urologic complications and improve patient outcomes.",
+   "approach": "The technique involves introducing a thread into the pelvic region to encircle and secure a specific abnormal connection. The procedure is performed during a minimally invasive surgery, and the thread is left in place for a period of time after the surgery."
+  },
+  {
+   "work": "W4313396322",
+   "problem": "This research aims to determine the quality of touch and pressure sensations in patients with a condition that affects the muscles on one side of the face, and whether this quality is different on the affected side compared to the unaffected side.",
+   "approach": "The researchers used a standardized test to assess how well patients can feel different sensations, such as heat, touch, and vibrations, on both sides of their face. They compared the results to a group of healthy people to see if there were any differences."
+  },
+  {
+   "work": "W3115513969",
+   "problem": "This work estimates the future state of a system's stability, specifically the frequency at which it operates, based on historical data. It aims to predict this state to inform decisions about how to maintain stability.",
+   "approach": "The system uses a type of artificial neural network to make predictions. It processes data about the system's past behavior, including factors such as energy usage and grid capacity, to make a forecast."
+  },
+  {
+   "work": "W4411974349",
+   "problem": "This work identifies and analyzes a family of proteins that help regulate growth and development in a certain type of plant, and examines how they respond to different environmental conditions. It estimates the number of proteins in this family, compares their structure and function, and explains their role in the plant's responses.",
+   "approach": "The researchers use a combination of computational and experimental methods to analyze the proteins, including comparing their structure and function, identifying patterns in their distribution, and examining how they respond to different conditions. They follow a procedure that involves identifying the proteins, analyzing their structure and function, and comparing their responses to different conditions."
+  },
+  {
+   "work": "W7216293960",
+   "problem": "This research aims to estimate the impact of a specific type of wrongdoing on the behavior of young people when communicating with each other through a popular online platform. It compares the behavior of these young people to a control group to see if there is a significant difference.",
+   "approach": "The researchers used a questionnaire to collect data from 100 young people, and then analyzed the results to see if there was a correlation between the wrongdoing and the behavior of communication. The study followed a quantitative methodology, which means it used numbers and statistics to draw conclusions."
+  },
+  {
+   "work": "W4385525451",
+   "problem": "This work estimates the formation and 3D arrangement of thin, flexible electronic components with a hidden power distribution system. It predicts the optimal structure and procedure for these components, comparing different methods and materials.",
+   "approach": "The procedure involves simultaneously forming a hidden power distribution system and the electronic components' structure, using a series of thinning, etching, and filling steps. The components are then bonded together using a special adhesive, allowing for multiple layers to be stacked on top of each other."
+  },
+  {
+   "work": "W2886424280",
+   "problem": "This work estimates the effectiveness of a new class of compounds that can damage a specific type of molecule in cells, and compares their effectiveness to a similar but less effective class of compounds. It also predicts that these new compounds can be used to improve the therapeutic index of a treatment.",
+   "approach": "The researchers used a combination of structure-activity relationship studies and experiments to identify and modify compounds that can damage the target molecule. They then tested these modified compounds in various cell lines and found that they were highly effective."
+  },
+  {
+   "work": "W4404960077",
+   "problem": "This study aims to estimate the effectiveness of a new method for improving the reading skills of non-professional workers in educational settings, using data from their daily activities. It compares the outcomes of this method with traditional learning approaches.",
+   "approach": "The study uses a model that follows these steps: (1) it collects data on the daily activities of non-professional workers, (2) it applies the new method to these activities, (3) it compares the results with those from traditional learning approaches, and (4) it optimizes the new method based on the outcomes."
+  },
+  {
+   "work": "W4389993245",
+   "problem": "This study investigates the relationship between how much control one group of people has over another group and how well the second group can make decisions on their own. It aims to understand if there is a connection between how much control is exercised and the ability to self-regulate.",
+   "approach": "The researchers used a survey to collect data from this group of people, which is a type of data that can be easily verified. They then analyzed the data to see if there is a linear relationship between the amount of control and the ability to self-regulate."
+  },
+  {
+   "work": "W3113028127",
+   "problem": "This work estimates the importance of a certain quality in international interactions, compares the effectiveness of different approaches to understanding this quality, and optimizes the conditions under which this quality is most influential. It explains how people make judgments about this quality based on various factors.",
+   "approach": "The authors use a framework to evaluate collective progress, critique existing research, and suggest future research directions. They follow a procedure that involves analyzing and comparing different studies to identify gaps in current understanding and propose new avenues for investigation."
+  },
+  {
+   "work": "W7116959933",
+   "problem": "This work estimates the nature of the relationship between Russia and Iran, comparing their interests and actions to understand the dynamics of their partnership. It predicts how their relationship will evolve in response to external factors.",
+   "approach": "The study uses two books as a starting point, combining their ideas to create a new framework for understanding the relationship. It then critiques this framework, adding new insights and perspectives to refine the analysis."
+  },
+  {
+   "work": "W4402583962",
+   "problem": "This work estimates the risk of infection from a certain type of environmental microorganism in a specific population, and compares it to the effectiveness of various treatments. It aims to reduce the number of deaths and illnesses caused by this type of infection.",
+   "approach": "The researchers use data from a specific medical facility to identify cases of infection and compare the outcomes of different treatments, with the goal of finding the best approach to prevent further infections."
+  },
+  {
+   "work": "W4236995474",
+   "problem": "This study estimates the risk of long-term dependence and death in two groups of people who need help with daily activities, and compares these risks. It aims to explain whether one group has a lower risk of needing long-term help and dying.",
+   "approach": "The researchers matched people who need help with daily activities based on their age, sex, and ability to perform daily tasks, and then analyzed the risks of long-term dependence and death in the two groups."
+  },
+  {
+   "work": "W3163629004",
+   "problem": "An estimate or prediction is made about the likelihood of a specific condition (a pouch-like protrusion in the digestive tract) causing two types of bleeding (bright red and dark) in a patient. This prediction is based on data from previous cases.",
+   "approach": "A general discussion is conducted to understand the variability and diversity of this condition, following the presentation of a specific case."
+  }
+ ]
+}

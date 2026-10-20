@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-032",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T01:57:41Z",
+ "descriptions": [
+  {
+   "work": "W4403079053",
+   "problem": "A restoration strategy is evaluated for stability and success under functional loading in scenarios where the supporting structure is irregular or compromised.",
+   "approach": "A set of anchoring elements is placed directly into compromised or non-uniform tissue sites and connected to a fixed prosthesis, enabling early functional use without prior tissue augmentation."
+  },
+  {
+   "work": "W2997136621",
+   "problem": "A process is designed to remove a specific impurity from a solid material after it has been processed through a series of industrial stages, where the impurity's presence affects the final product's performance and safety.",
+   "approach": "A solid material is exposed to a liquid medium under controlled conditions, and the removal efficiency is measured. The procedure is then scaled to replicate the same outcome in larger, industrial settings."
+  },
+  {
+   "work": "W4389797029",
+   "problem": "A material composed of calcium, phosphorus, and oxygen is prepared with a controlled ratio of calcium to phosphorus, and a small amount of a metal component is introduced to modify its structure and properties.",
+   "approach": "Calcium is extracted from a natural inorganic source and reacted with phosphorus under buffered conditions to form a crystalline structure. The metal component is introduced via a plant-based reagent, then combined with the structure and heated to stabilize the final form."
+  },
+  {
+   "work": "W7215695326",
+   "problem": "A system is evaluated to determine how effectively it recovers, reuses, and manages raw inputs to reduce waste and support long-term operational stability across economic units.",
+   "approach": "A framework maps how decisions about input flow, processing, and output recycling are structured across different regions, identifying patterns in policy design that enhance input retention and reduce environmental strain."
+  },
+  {
+   "work": "W3012907804",
+   "problem": "A system's operational effectiveness is assessed before and after a maintenance intervention, measuring changes in energy transfer efficiency and uncontrolled flow losses through physical components.",
+   "approach": "Data from operational logs and sensor readings are collected over time. Performance metrics are compared pre- and post-intervention using statistical analysis to quantify improvements in energy retention and leakage reduction."
+  },
+  {
+   "work": "W2895492217",
+   "problem": "A quantity representing long-term environmental stability is estimated based on historical patterns and external conditions, showing a strong, consistent relationship with investment in long-term infrastructure.",
+   "approach": "A statistical model correlates the observed environmental stability with cumulative investment over time, adjusting for delays in effect and other influencing factors such as land cover and regional development."
+  },
+  {
+   "work": "W4317481155",
+   "problem": "A system estimates the likelihood of a chronic condition worsening over time based on patient-reported symptoms and longitudinal health records.",
+   "approach": "It uses a statistical model that adjusts predictions by weighting recent symptom changes and medical history, then compares outcomes across individuals with similar profiles to identify patterns of progression."
+  },
+  {
+   "work": "W4313246048",
+   "problem": "A statistical model estimates the influence of a household-based caregiver presence on the frequency of acute health events and consistent participation in structured educational activities, using self-reported data from multiple time points.",
+   "approach": "A multivariate regression model analyzes patterns in health event occurrence and activity engagement, adjusting for parental presence and household resource constraints, then identifies associations between caregiver presence and observed outcomes."
+  },
+  {
+   "work": "W3039664512",
+   "problem": "A pattern of evolving skin nodules is observed over time, with new growths appearing in the same area and changes in texture and size. The behavior of these nodules is tracked across time to understand how they respond to environmental or internal triggers and whether they follow a predictable progression.",
+   "approach": "A sequence of observations is recorded and analyzed to detect patterns in the timing, size, and physical characteristics of nodules. Changes are monitored to determine if growth, stability, or regression follows a consistent rule or is influenced by external factors."
+  },
+  {
+   "work": "W3035248842",
+   "problem": "A system estimates user navigation efficiency and transaction speed in a physical space by linking visual markers to product details and service workflows.",
+   "approach": "A central database stores item attributes and location data, accessible via handheld devices. Users scan physical tags to retrieve real-time product and location information, enabling instant access to inventory and service options."
+  },
+  {
+   "work": "W4390053502",
+   "problem": "A pattern of persistent sensory disturbances in specific body regions is assessed and compared to a control group with similar demographics. The goal is to identify associations between these disturbances and co-occurring mental health conditions, lifestyle factors, and physical manifestations.",
+   "approach": "Participants undergo detailed interviews and physical evaluations. Data on sensory experiences, environmental triggers, relief factors, and mental health comorbidities are collected and analyzed across groups using statistical comparison and pattern recognition."
+  },
+  {
+   "work": "W4403746025",
+   "problem": "A procedure is designed to remove small, non-surface abnormalities from internal body cavities using minimally invasive tools, with the goal of accurately identifying and eliminating them based on real-time visual and tactile feedback during intervention.",
+   "approach": "A sequence of actions is performed: a protective cap is placed over the target area, a looped instrument is used to grasp and cut the abnormal tissue, and a controlled energy source is applied to seal the tissue edges and prevent leakage."
+  },
+  {
+   "work": "W4295540598",
+   "problem": "The relative abundance of various organic and inorganic components in a plant-based material is estimated and compared across two different solvent-based processing methods.",
+   "approach": "A sample is processed using two distinct solvent systems, then analyzed via chromatographic and spectroscopic techniques to separate, quantify, and identify key organic and inorganic constituents based on their chemical behavior and interaction with detection systems."
+  },
+  {
+   "work": "W3107396842",
+   "problem": "A system analyzes oral poetic expressions to extract explicit and implicit layers of cultural and moral significance derived from everyday life and symbolic imagery.",
+   "approach": "It listens to spoken verses, records them, and decodes their literal content and deeper symbolic expressions using semantic frameworks to identify patterns of value, emotion, and social function within the spoken tradition."
+  },
+  {
+   "work": "W2948456775",
+   "problem": "The extent of tissue scarring driven by collagen accumulation is measured in response to a sustained mechanical stress stimulus, and compared across groups with and without a specific receptor pathway intervention.",
+   "approach": "A biological system is exposed to a controlled stressor, and the response is monitored over time using histological and molecular markers. A targeted intervention is applied, and its effect on collagen-related signaling and structural changes is evaluated through quantitative and qualitative assessments."
+  },
+  {
+   "work": "W3195871929",
+   "problem": "A pattern is identified in how a benign lung lesion interacts with nearby airways, based on imaging data. The interaction is classified into five types depending on whether the airway is blocked, compressed, enclosed, or absent.",
+   "approach": "Imaging data is analyzed using cross-sectional views to reconstruct 3D structures. Lesions are categorized by their spatial relationship to airways, with specific rules defining when an airway is cut off, contained, compressed, or not connected."
+  },
+  {
+   "work": "W3208083961",
+   "problem": "A system identifies and organizes official rules and judicial decisions across multiple jurisdictions, tracking their publication status, access conditions, and formats to support consistent retrieval and interpretation.",
+   "approach": "It maps authoritative rulings and regulations into a structured network, linking them through shared criteria, formats, and access policies, enabling automated discovery and cross-jurisdictional comparison."
+  },
+  {
+   "work": "W4390502466",
+   "problem": "A substance's concentration is estimated in diverse environmental samples after isolation and purification using a common preprocessing step. The performance of two analytical strategies is compared across sample types and concentration ranges, focusing on sensitivity, accuracy, and practicality under field conditions.",
+   "approach": "Samples are processed through a consistent extraction step to transfer the target compound into a solvent. Two distinct measurement techniques are applied: one detects signal changes under applied potential, the other separates and identifies the compound using a sensitive mass-based detection system."
+  },
+  {
+   "work": "W4415455917",
+   "problem": "A group of individuals with varying cognitive sensitivities is assessed to determine how they experience the acoustic character of shared physical spaces, particularly in relation to environmental noise and overall comfort.",
+   "approach": "Acoustic levels are measured in situ across multiple locations during typical use. Participants rate their subjective experience of the space's noise, structure, and emotional tone, and these ratings are compared across groups with differing sensory responsiveness."
+  },
+  {
+   "work": "W2996983652",
+   "problem": "The efficiency of a thermal system is assessed under conditions of reduced exhaust gas temperature, with the goal of minimizing pollutant release while maintaining energy output.",
+   "approach": "A thermal model simulates heat transfer between flue gases and a secondary fluid, adjusting operating parameters to optimize energy recovery while reducing emissions under varying load and ambient conditions."
+  }
+ ]
+}

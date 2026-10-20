@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-009",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:38Z",
+ "descriptions": [
+  {
+   "work": "W2943177608",
+   "problem": "The task is to compare the effectiveness of three methods for detecting a common cause of illness in young children, and to determine if one method is superior to the others.",
+   "approach": "The researchers collected samples from 288 children and tested them using a laboratory technique to detect the presence of the illness-causing agent. They compared the results to see if the three methods produced similar results."
+  },
+  {
+   "work": "W7216769808",
+   "problem": "This work aims to improve the appearance of a common skin condition that causes inflammation and leads to permanent damage, affecting self-esteem and quality of life. It seeks to find a more effective and safer method to reduce the visibility and depth of these damages.",
+   "approach": "The study uses a non-invasive method to heat and stimulate collagen production, aiming to reduce the appearance of these damages. It involves a series of sessions with a device that uses heat to stimulate collagen production, and the results are compared to a control group."
+  },
+  {
+   "work": "W7115690867",
+   "problem": "This study estimates and predicts the changes in the balance of a closed system over a short period, comparing the results to historical data. It aims to explain the underlying mechanisms driving these changes.",
+   "approach": "The researchers use a combination of data from observations, reanalysis, and equations to analyze the dynamics of the system's balance components, including precipitation, inflow, evaporation, and level changes."
+  },
+  {
+   "work": "W7108723596",
+   "problem": "This work aims to improve community development by boosting intervention in a specific area, with the goal of strengthening community bonds and overall human development. It estimates the effectiveness of this approach and compares it to other methods.",
+   "approach": "The researchers use a combination of data and evidence to establish a link between community development, animation, and the area in question. They follow a procedure that involves identifying key factors and using them to inform their approach."
+  },
+  {
+   "work": "W2943134066",
+   "problem": "Estimate the cause of a sudden onset of weakness or paralysis in a specific area of the body, and identify the most likely cause when other symptoms are absent or unclear.",
+   "approach": "Use a combination of thorough history-taking and diagnostic imaging to identify the underlying cause, and rule out other possible causes through a process of elimination."
+  },
+  {
+   "work": "W4283446937",
+   "problem": "This research estimates the effectiveness of various genotypes in resisting two types of disease, which can cause severe plant damage and yield loss. It predicts which genotypes are most resistant and compares their resistance levels to those of other genotypes.",
+   "approach": "The researchers used a bioassay to test the resistance of 13 genotypes to these diseases. They measured the resistance of each genotype and compared the results to identify the most resistant genotypes."
+  },
+  {
+   "work": "W2897894431",
+   "problem": "This work aims to identify and rule out a specific type of infection that may be hidden behind more common symptoms, such as shaking and swollen areas. It estimates the likelihood of this hidden infection based on available data and evidence.",
+   "approach": "The approach involves using a model to compare and weigh the evidence from various sources, including symptoms and test results. The goal is to identify and rule out this hidden infection, and to provide a more accurate understanding of the patient's condition."
+  },
+  {
+   "work": "W2943340242",
+   "problem": "This work aims to find the best way to arrange components on a circuit board to make it easier to build and test, using data from many different boards and arrangements. It tries to predict which arrangement method will work best for a given board and components.",
+   "approach": "It uses a type of computer program that can learn from examples to make predictions, and tests it on many different boards and arrangements to see how well it works. The program is able to choose the best arrangement method with a high degree of accuracy."
+  },
+  {
+   "work": "W4312881376",
+   "problem": "This study aims to understand how knowledge affects the quality of service provided by non-experts in a department. It estimates the impact of different knowledge management practices on service quality.",
+   "approach": "The researcher uses a statistical method to analyze data from 202 non-experts in the department. It compares the level of service quality with various knowledge management practices."
+  },
+  {
+   "work": "W4236245194",
+   "problem": "This research aims to identify the main reasons for long transportation times for fresh produce in a specific region, which affects the quality and ultimately leads to wasted products. It seeks to understand the impact of transportation on the quality of these products.",
+   "approach": "The study uses data from surveys and interviews to analyze the factors affecting transportation times. It examines the effects of various factors on transportation times and identifies practical measures to reduce them."
+  },
+  {
+   "work": "W4390584237",
+   "problem": "This study aims to identify and quantify the risks of a certain medication on a specific group of patients, who are more susceptible to its side effects due to their condition. The goal is to estimate the likelihood of severe and potentially fatal side effects in this population.",
+   "approach": "Data was collected through a survey of patient reports, which were then analyzed statistically to identify correlations between medication dosage and the occurrence of severe side effects. The analysis used predetermined statistical significance and suitable tests to determine the relationship between variables."
+  },
+  {
+   "work": "W4386448353",
+   "problem": "This research aims to understand the representation of a specific group in a particular institution, and whether the institution's policies and practices are adequate to promote equal representation. It estimates the current level of representation, predicts future trends, and compares the institution's policies to the group's needs.",
+   "approach": "The researchers used a qualitative research methodology to collect data through in-depth interviews, and then analyzed the data using a thematic analysis technique to identify patterns and themes in the participants' responses."
+  },
+  {
+   "work": "W3158034217",
+   "problem": "This work aims to estimate the impact of a specific treatment on the outcome of a disease, comparing the effects of different treatments on a group of subjects. It predicts the outcome of a disease based on the treatment and the characteristics of the subjects.",
+   "approach": "The procedure involves administering a treatment to a group of subjects, then analyzing the effect of the treatment on the outcome of the disease. The approach follows a rule: if the treatment is administered early, it may worsen the outcome, but if it is administered late, it may improve it."
+  },
+  {
+   "work": "W4409141981",
+   "problem": "This work estimates and predicts the impact of various external factors on a particular type of business, comparing their effects on financial stability and competitiveness. It also explains how to minimize these negative impacts and find opportunities for growth.",
+   "approach": "The procedure involves using statistical analysis, scenario modeling, and other methods to analyze and assess risks, and then using this information to make informed management decisions."
+  },
+  {
+   "work": "W3110626826",
+   "problem": "This work estimates the population of a certain group, compares their living conditions to the general population, and explains their economic status. It also predicts the value of their production and compares it to the general population's living standards.",
+   "approach": "The researchers use data from a census and government reports to gather information about the group's population, living conditions, and economic status. They then use this data to estimate the value of their production and compare it to the general population's living standards."
+  },
+  {
+   "work": "W4391685650",
+   "problem": "This research estimates the effect of certain factors on the growth and adult height of individuals with a specific genetic condition. It compares the growth of these individuals to a control group and optimizes the timing of a treatment to maximize adult height.",
+   "approach": "The researchers used data from past cases to identify the factors that are most closely related to growth and adult height. They followed a specific procedure to analyze the data and draw conclusions about the best approach to treatment."
+  },
+  {
+   "work": "W2884893419",
+   "problem": "An unusual case of a fungal infection in a healthy individual is reported, where a common type of fungus is found to cause an infection in the eye. The infection is treated and resolved, but the individual is otherwise healthy.",
+   "approach": "A sample from the eye is sent for microbiological analysis, and the fungus is grown in a culture. The individual is then treated with a medication that is effective against this type of fungus, and the infection is resolved."
+  },
+  {
+   "work": "W4398146658",
+   "problem": "This work estimates the level of knowledge, awareness, and practices regarding a specific health issue among a group of individuals. It aims to identify the extent of understanding and identify areas for improvement.",
+   "approach": "The researchers used a survey to collect data from a large group of people, analyzing the results to compare the level of knowledge and practices among different groups."
+  },
+  {
+   "work": "W2982966582",
+   "problem": "This study estimates the effect of four different concentrations of a certain type of insecticide on the fertility of male rats. It compares the fertility of rats exposed to these concentrations to that of rats not exposed, and optimizes the minimum concentration that does not cause harm.",
+   "approach": "The researchers administered varying amounts of a certain type of insecticide to 20 male rats each, over a period of 11 weeks. They compared the effects of these concentrations to a control group that received a solvent instead."
+  },
+  {
+   "work": "W4399980947",
+   "problem": "This work estimates the yield of a chemical reaction and optimizes the conditions for a more efficient process. It compares the results of different methods to determine the best approach.",
+   "approach": "The researchers used a specific type of catalyst to speed up the reaction and a controlled environment to test different conditions. They applied a chemical reaction to a specific type of molecule to create a new material."
+  }
+ ]
+}

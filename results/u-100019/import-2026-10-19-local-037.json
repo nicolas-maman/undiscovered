@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-037",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:42Z",
+ "descriptions": [
+  {
+   "work": "W4401926213",
+   "problem": "This work estimates the impact of a certain sector on overall economic and social progress, comparing its contribution to green innovation and its effect on job creation in other sectors. It aims to explain why this sector is crucial for achieving a set of global development goals.",
+   "approach": "The report uses data on green innovation and job creation to estimate the sector's impact. It compares the sector's contribution to other sectors and explains why it is essential for achieving the desired development goals."
+  },
+  {
+   "work": "W3047140446",
+   "problem": "This work estimates the effect of changing the shape and size of a device used to apply a magnetic field to a specific area of the body on the response of that area's electrical signals. It predicts how these changes might improve the accuracy of the device.",
+   "approach": "The researchers use computer simulations to test how different designs of the device affect the electrical signals in a specific area of the body. They compare their results to a detailed model of the body's electrical activity."
+  },
+  {
+   "work": "W3022062859",
+   "problem": "Estimate the effectiveness of a treatment for a condition that affects the outer layer of a person's body, and identify a way to improve the delivery of a substance to this layer. The substance is difficult to deliver due to the layer's hardness and the limited amount of substance that can pass through.",
+   "approach": "Use a combination of physical and chemical techniques to disrupt or enhance the reactivity of the outer layer, allowing for improved delivery of a substance. This can be achieved by using various methods to alter the layer's structure or properties."
+  },
+  {
+   "work": "W3093775485",
+   "problem": "This work estimates the presence of a certain type of parasite in various animal species in a specific geographic region, based on samples of muscle tissue. It compares the results to previous studies and identifies a new species.",
+   "approach": "The researchers collected muscle samples from five different animal species and tested them for the presence of the parasite using a specific laboratory technique. They then compared the results to previous studies and identified the new species based on the characteristics of the parasite found in the samples."
+  },
+  {
+   "work": "W7160931774",
+   "problem": "This work estimates the effectiveness of India's international influence based on its population size, geographical area, and connection to the sea, as well as its location between hostile countries. It compares India's influence to that of China.",
+   "approach": "The researchers use a combination of data on population size, geographical area, and connection to the sea to estimate India's influence. They then compare this influence to that of China."
+  },
+  {
+   "work": "W4323667964",
+   "problem": "This work estimates the effect of a certain class of medications on patients with a specific disease, and compares it to the effect of a different class of medications. It also tries to explain why this effect occurs.",
+   "approach": "The researchers use data from previous studies to identify the mechanisms behind the effect of these medications. They follow a procedure that involves analyzing changes in blood pressure, nerve activity, and other physiological measures to understand the underlying biological processes."
+  },
+  {
+   "work": "W3173253673",
+   "problem": "A rare growth of abnormal cells and fatty deposits is estimated to be present in a specific area of the body, likely associated with a genetic disorder that affects the body's ability to process a certain type of fat. This growth is compared to a known condition that affects the same area.",
+   "approach": "A patient's symptoms and test results are used to determine the presence and severity of the growth, and to predict the outcome of a treatment. The treatment involves surgically removing the growth and repairing the damaged area, and the patient's progress is monitored over time."
+  },
+  {
+   "work": "W3177231398",
+   "problem": "This work estimates how changes in the time it takes for a population to grow affect the diversity of different types of individuals within that population. It also compares these estimates to data from individual organisms to see if the patterns hold.",
+   "approach": "The researchers use mathematical models to simulate how changes in growth rate might influence the variety of different types of individuals. They then compare their predictions to real-world data from individual organisms."
+  },
+  {
+   "work": "W3044699737",
+   "problem": "This research aims to determine the best solution to increase the amount of a specific type of plant grown in a particular type of soil, in order to improve the quality of animal feed and maintain soil health.",
+   "approach": "The researchers tested different types of this plant, grown in two types of soil, to see which ones perform best in terms of growth, resistance to disease, and overall yield. They compared the results to a standard and calculated the relationship between the plant's growth and weather conditions."
+  },
+  {
+   "work": "W3130216904",
+   "problem": "This work estimates the impact of international medical services on the health and safety of patients in host countries, compares the economic benefits to the potential risks and drawbacks, and optimizes the allocation of resources to ensure equitable access to medical services.",
+   "approach": "The procedure involves analyzing the relationships between economic disparities, cultural differences, and the provision of medical services, using data on international medical services, economic indicators, and cultural norms to inform the analysis."
+  },
+  {
+   "work": "W2955092640",
+   "problem": "This study estimates the effect of a certain compound on the release of a specific type of tiny particle from two types of cells, and compares it to the effect of another compound. It also predicts the effect of the compound on the rate at which these cells multiply.",
+   "approach": "The researchers used a procedure that involves adding the compound to the cells, then measuring the release of the tiny particles and the rate at which the cells multiply. They also tested the effect of blocking a specific receptor and the compound's ability to inhibit the activity of a specific enzyme."
+  },
+  {
+   "work": "W4295067544",
+   "problem": "This work estimates the presence of 17 common pathogens in clinical samples from patients, predicts the likelihood of infection based on the sample, compares the results to a standard method, optimizes the detection of certain pathogens, and explains the limitations of the approach.",
+   "approach": "The procedure involves analyzing a large number of samples using a sensitive detection method, comparing the results to a standard method, and evaluating the performance of the detection method based on its sensitivity, specificity, and predictive values."
+  },
+  {
+   "work": "W2971427607",
+   "problem": "This study aims to estimate the incidence of a specific anatomical feature in a certain number of specimens, and compare it to the incidence of another feature. It also predicts the relationship between these features and a specific disease.",
+   "approach": "The researchers dissected 100 specimens and observed the presence of a specific feature in relation to another feature. They then counted the number of specimens with each feature and compared the results."
+  },
+  {
+   "work": "W4401685892",
+   "problem": "This research aims to evaluate the financial viability of a business by comparing its expected income and expenses, and determining whether it is a good investment opportunity. It estimates the potential return on investment and payback period.",
+   "approach": "The study uses a case study approach, analyzing data from primary and secondary sources. It calculates key financial metrics, such as net present value, internal rate of return, and return on investment, to make a feasibility judgment."
+  },
+  {
+   "work": "W2912933855",
+   "problem": "This work estimates the ability of a certain type of molecule to assemble itself into a larger structure, and compares it to the same molecule in different states (solid vs solution). It also optimises the conditions for this assembly to occur.",
+   "approach": "The researchers use a synthesis procedure to create the molecule, and then test its ability to self-assemble in two different environments. They compare the results to see if the conditions affect the assembly."
+  },
+  {
+   "work": "W4372268730",
+   "problem": "The task is to estimate the presence of a serious illness that can be life-threatening if not identified and treated promptly, based on a visual representation of the body's condition. This is done to provide timely treatment and improve patient outcomes.",
+   "approach": "A complex model is used to analyze the visual representation, and it is trained on a large dataset of examples to learn the patterns and characteristics of the illness. The model then makes a prediction about the presence of the illness based on the visual representation."
+  },
+  {
+   "work": "W4240577063",
+   "problem": "Estimate the effectiveness of different targets for a pathogen that causes a serious infectious disease, and compare their potential to disrupt the pathogen's life cycle.",
+   "approach": "Use data from the pathogen's genome sequence and study its interactions with the host's outside components to identify promising targets."
+  },
+  {
+   "work": "W4396874809",
+   "problem": "Estimate and predict the likelihood of various childhood illnesses, and compare the effectiveness of different prevention and treatment methods.",
+   "approach": "Use a large dataset of historical cases and outcomes to train a model that can make predictions and recommendations for healthcare professionals."
+  },
+  {
+   "work": "W7162645679",
+   "problem": "This work estimates the relationship between the time it takes to make a decision and the level of competition among alternatives. It predicts how the time should change when the competition level changes, and compares this prediction to the actual data.",
+   "approach": "The approach uses a mathematical model to compare the observed data to a theoretical prediction, and checks for deviations that might indicate the presence of certain biases or errors in the data."
+  },
+  {
+   "work": "W4391974303",
+   "problem": "This work estimates the origins and characteristics of a traditional sports game, and predicts its future development and potential as a competitive sport. It compares the game's current state to its past and future, and optimizes its rules and methods for improvement.",
+   "approach": "The study uses relevant literature to analyze the game's history, rules, and educational value, and follows a procedure of research and comparison to provide a brief analysis and predictions."
+  }
+ ]
+}

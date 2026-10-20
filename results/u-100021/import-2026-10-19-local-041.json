@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-041",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:42Z",
+ "descriptions": [
+  {
+   "work": "W3142682108",
+   "problem": "This study estimates the number of cases of a birth defect in a specific population over a long period, comparing the results to a larger population. It also compares the characteristics of patients who received different types of treatment for this defect.",
+   "approach": "The researchers used a method called data linkage to combine data from different sources, such as birth records and medical records, to identify patients with the defect. They then analyzed the data to identify patterns and trends."
+  },
+  {
+   "work": "W3088729852",
+   "problem": "This work estimates the relationship between the stiffness and strength of materials developed from recycled parts made from a metal alloy, reinforced with a type of mineral and a type of shell. It compares the results of experiments to theoretical predictions.",
+   "approach": "The researchers used a mathematical method to evaluate the influence of the added materials on the properties of the materials. They analyzed the data using a specific mathematical technique to understand the relationship between the properties."
+  },
+  {
+   "work": "W4214729404",
+   "problem": "This research estimates the effectiveness of a new approach to learning, where the focus is on individual learners and their progress is tracked. It compares the outcomes of this approach to traditional methods.",
+   "approach": "The researchers used data on learner progress and outcomes to test the effectiveness of the new approach. They followed a procedure where the approach was applied in a controlled environment and the results were analyzed."
+  },
+  {
+   "work": "W3138359823",
+   "problem": "This work estimates the effectiveness of using AI technology to help people improve their ability to deliver presentations confidently and effectively, by comparing the results of students who used AI technology with those who did not.",
+   "approach": "The researchers used a statistical test to compare the results of two groups, and then used the results to explain how AI technology can be used to improve people's confidence in delivering presentations."
+  },
+  {
+   "work": "W4377288021",
+   "problem": "This work aims to understand how to make certain plants grow smaller and produce flowers faster, by testing different amounts of a plant growth regulator and a gas that helps plants produce flowers.",
+   "approach": "The researchers used a special way of arranging the plants to test the effects of the plant growth regulator and the gas on the plants' growth and flower production. They tested different amounts of the gas at different times to see how it affects the plants' growth and flower production."
+  },
+  {
+   "work": "W4394842828",
+   "problem": "This work estimates the effectiveness of a herbal mixture in reducing the damage caused by a specific type of protein, and compares it to the effect of a common medicine. It aims to explain whether the mixture can be used as a natural alternative to reduce this type of damage.",
+   "approach": "The researchers used a test to see how much damage the mixture can prevent, and repeated the test with different amounts of the mixture to see how it changes. They compared the results to those of a common medicine to see if the mixture is effective."
+  },
+  {
+   "work": "W7217415446",
+   "problem": "This work estimates the frequency of a growing problem in children, comparing it to the number of cases of certain chronic conditions and malformations. It also predicts the potential impact of this problem on children's quality of life.",
+   "approach": "The researchers use data on the number of cases of these conditions and malformations to make their estimates and predictions. They follow a procedure that involves comparing and analyzing the data to identify patterns and connections."
+  },
+  {
+   "work": "W2971875386",
+   "problem": "This study aims to identify the factors that influence how individuals perceive their health condition and how this perception affects their behavior and opinions. It estimates the impact of various factors on this perception.",
+   "approach": "The study collects data from a group of people receiving treatment, using a set of questions to gather information about their thoughts and feelings. It then uses statistical tests to analyze the data and identify patterns and correlations."
+  },
+  {
+   "work": "W4400261065",
+   "problem": "This work estimates and compares the characteristics of two types of diseases that affect the same organ, trying to distinguish between them. It aims to explain the differences in how these diseases manifest clinically, through imaging, and through microscopic examination of tissue samples.",
+   "approach": "The researchers collected data from 27 cases of a specific disease, comparing the clinical features, imaging results, and microscopic characteristics of two types of the disease. They then analyzed and compared these data to identify the differences between the two types of disease."
+  },
+  {
+   "work": "W3208203122",
+   "problem": "This research investigates the relationship between a certain disease caused by parasites and another disease caused by a virus. It aims to determine if the presence of parasites in a community affects the effectiveness of a treatment for the virus.",
+   "approach": "The researchers collected blood samples from people living in areas where parasites are common. They tested the blood for signs of the virus and the parasites, and analyzed the results to see if there was a connection between the two."
+  },
+  {
+   "work": "W4401695487",
+   "problem": "This work investigates how the addition of a small amount of a certain metal ion to a material affects its ability to change shape in response to an electric field. It estimates the amount of change and compares it to other materials.",
+   "approach": "The researchers use a combination of data and calculations to understand the changes. They compare their results to other materials and use computer simulations to model the changes."
+  },
+  {
+   "work": "W4410137784",
+   "problem": "This study investigates how new professionals in a field that involves training others in physical activities experience the value of feedback in their work. It aims to understand how feedback is used, its purpose, and what it contains, and whether the training they received prepares them for this task.",
+   "approach": "The researchers collected data through interviews and group discussions with eight new professionals, and then analyzed the data to understand how they experience feedback in their work. They used a method that helps identify how people think and feel about something, and how it relates to their goals and activities."
+  },
+  {
+   "work": "W4210973534",
+   "problem": "This work aims to improve the performance of a device that regulates a physical quantity, such as a magnetic field, by minimizing its size and increasing its range. It estimates the device's behavior under different conditions and compares it to a traditional design.",
+   "approach": "The work starts by analyzing the device's magnetic circuit theoretically, then uses a simulation model to test its behavior. It uses a combination of mathematical rules and a search algorithm to find the best parameters for the device, and finally builds a prototype to test its performance."
+  },
+  {
+   "work": "W3166786019",
+   "problem": "This work estimates the effect of different treatments on the growth and yield of a certain crop, comparing the results to a control. It predicts the optimal treatment for a specific condition, and explains the economic benefits of each treatment.",
+   "approach": "The experiment uses a combination of different crop varieties and treatments, with multiple replications to ensure accuracy. The results are compared to a control, and the treatment with the highest benefit is identified."
+  },
+  {
+   "work": "W2982563886",
+   "problem": "This work estimates the movement of a human hand from data about its surface landmarks, and predicts the forces that control its movement. It also compares the results with real-world measurements to validate its accuracy.",
+   "approach": "The approach involves creating a series of mathematical representations of the hand's movement and forces, and then optimising these representations to best match the real-world data. The process involves identifying the best way to use the data to make accurate predictions and comparisons."
+  },
+  {
+   "work": "W7220928686",
+   "problem": "This work estimates the rationality of different strategies for interacting with unknown, potentially hostile entities. It compares the attractiveness of these strategies based on various factors, such as the risk of attack failure, the survival of retaliatory capabilities, and the potential benefits of cooperation.",
+   "approach": "The approach involves analyzing the attractiveness of different strategies as a function of several factors, and determining the conditions under which each strategy becomes rational. The analysis shows that not all strategies are stable equilibria, and that cooperation can be a viable option."
+  },
+  {
+   "work": "W4226282846",
+   "problem": "This work estimates the accuracy of speed measurements based on incomplete data from a network of vehicles equipped with cameras or sensors, and compares it to the accuracy of measurements based on data from vehicles that are not equipped with these devices.",
+   "approach": "The approach involves using a specific algorithm to fill in missing data points and then using this data to make speed measurements, with the goal of improving the accuracy of these measurements."
+  },
+  {
+   "work": "W4390457729",
+   "problem": "This work estimates the spatial and temporal distribution of a large body of liquid over time, using data from images taken from space. It aims to provide a long-term record of changes in the size and shape of this body, to support research on its impact on the environment and economy.",
+   "approach": "The researchers used a combination of image analysis and mathematical algorithms to extract information from images taken from space. They calculated a key parameter and used a specific method to determine a threshold, which allowed them to create a detailed record of changes over time."
+  },
+  {
+   "work": "W3175620243",
+   "problem": "This research estimates the effect of a specific enzyme on the energy production in a type of fat cell, and compares it to the effect of a lack of a specific nutrient on the same process. It also optimizes the understanding of how a particular molecule regulates energy production in these cells.",
+   "approach": "The researchers use genetic experiments to study the role of a specific enzyme in regulating energy production in fat cells. They compare the effects of the enzyme and the nutrient on the cells' energy production and identify the key molecule involved."
+  },
+  {
+   "work": "W7217294210",
+   "problem": "This work aims to estimate the best conditions for growing a particular type of plant in a controlled environment, such as a greenhouse, to produce it on a large scale. It also tries to predict the outcomes of different management strategies, like watering and fertilizing, and compare them to each other.",
+   "approach": "The researchers use data from experiments and observations to develop a set of rules for managing the plant's growth, including the composition of the soil it's grown in and the frequency of watering and fertilizing. They test these rules by applying them to different types of data and evaluating the results."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-048",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T01:57:43Z",
+ "descriptions": [
+  {
+   "work": "W4416203887",
+   "problem": "A pattern of economic change is assessed, where initiatives aim to shift local economic structures from extractive models to alternative models, and the underlying power dynamics within those shifts are evaluated for consistency and equity.",
+   "approach": "A framework maps funding allocations and project designs to local conditions, then compares how these initiatives address or overlook structural imbalances in control, resources, and decision-making authority."
+  },
+  {
+   "work": "W4311169573",
+   "problem": "A hypothesis about the origin of an observed object is evaluated based on its consistency with available observations and the potential for biological material to survive and transfer between systems.",
+   "approach": "Multiple origin scenarios are considered, with only one being testable through direct observation. The most plausible scenario is selected if it aligns with all observed features and allows for a mechanism by which biological material could be transported."
+  },
+  {
+   "work": "W4402515375",
+   "problem": "A system with multiple interconnected units responds to sudden changes in power demand or supply. The performance of this response is evaluated based on how quickly and accurately key operational variables return to equilibrium under varying conditions and uncertainties.",
+   "approach": "A dynamic control mechanism is tuned using an iterative optimization process. It adjusts its parameters in response to time delays and system variations to minimize response time and improve stability across different operating scenarios."
+  },
+  {
+   "work": "W3177034450",
+   "problem": "The task is to infer structured labels from unstructured narrative records, predicting specific disease categories based on textual content and evaluating performance across diverse datasets.",
+   "approach": "A set of text representations is generated from narrative inputs, then used to assign labels via a linear model. Key terms in predictions are identified to ensure clinical relevance, and performance is assessed across different data sources with consistent labeling outcomes."
+  },
+  {
+   "work": "W4205276400",
+   "problem": "A score is assigned to each entity based on its operational scale, geographic spread, and network diversity to determine its standing among peers in a global network.",
+   "approach": "A composite score is computed by combining fleet size, number of international connections, and continent coverage, with continent coverage weighted more heavily. The entity’s position is then evaluated relative to its immediate neighbors in the ranking to assess its competitive context."
+  },
+  {
+   "work": "W3112068822",
+   "problem": "A metric is derived to quantify how changes in ambient noise levels correlate with the diversity and activity of living organisms in a given space.",
+   "approach": "Audio data is processed to extract patterns in background noise and biological vocalizations. These patterns are transformed into numerical indicators that reflect the balance between human-generated noise and natural vocal activity over time."
+  },
+  {
+   "work": "W4412672191",
+   "problem": "A system tracks changes in the scale and participation of 16 structured support programs over time, comparing trends across program types and identifying shifts driven by policy transitions or external events.",
+   "approach": "It analyzes temporal patterns in program activity using historical records, applies temporal filtering to isolate effects of specific policy endings, and models participation rates against funding levels to detect underlying drivers of change."
+  },
+  {
+   "work": "W3014996114",
+   "problem": "The relative abundance of a dominant microbial group across different environmental settings is estimated and compared, revealing how specific conditions influence its distribution.",
+   "approach": "A statistical model identifies which environmental variables most strongly correlate with the group's presence and proportion, adjusting for site-specific conditions and applying a weighting scheme based on observed environmental gradients."
+  },
+  {
+   "work": "W2805422296",
+   "problem": "A system generates a visual image for a user's eye using light scattered from a structured volume. The performance is evaluated across different viewing positions and angles, measuring how effectively light is redirected to form a clear, stable image.",
+   "approach": "A spatially varying pattern is recorded using two distinct light sources. The system adjusts the pattern's geometry based on viewing position to improve light redirection and maintain consistent image quality across the field of view."
+  },
+  {
+   "work": "W4410936582",
+   "problem": "The performance of growing animals under different feeding regimes is assessed to compare growth rate, resource use efficiency, and financial returns across groups with varying intake schedules.",
+   "approach": "Animals are assigned to groups with distinct intake patterns: continuous intake, reduced intake, or alternating intake cycles. Growth, resource consumption, and financial outcomes are tracked over time to evaluate which pattern maximizes output per unit of input."
+  },
+  {
+   "work": "W4229625393",
+   "problem": "A system estimates the likelihood of a specific condition in a crop based on observed symptoms and environmental factors, comparing how well different hypotheses explain the available data.",
+   "approach": "The system evaluates each possible cause by updating the probability of a hypothesis as new observations are input, using a rule that adjusts confidence based on how consistent the evidence is with each potential explanation."
+  },
+  {
+   "work": "W4387157228",
+   "problem": "A set of interventions is evaluated based on their outcomes in individual or group cases, with emphasis on effectiveness and reported results across diverse patient experiences.",
+   "approach": "A structured search of published accounts is conducted, filtering only those that describe both an intervention and a follow-up outcome. Evidence is compiled and summarized by type of intervention and patient response rate."
+  },
+  {
+   "work": "W4401248562",
+   "problem": "A quantitative assessment is made to compare how well a dietary intervention reduces symptom duration and improves patient outcomes relative to standard care, using data from controlled studies involving human participants.",
+   "approach": "Studies are systematically identified, data extracted, and combined using statistical methods to evaluate differences in outcome measures between groups receiving the intervention and those receiving standard care."
+  },
+  {
+   "work": "W4376527692",
+   "problem": "A structured process is inferred from observed patterns in how individuals engage with complex tasks over time, aiming to identify key components that drive meaningful engagement and long-term retention of core ideas.",
+   "approach": "A sequence of stages is constructed, each built on prior experience and guided by real-world scenarios, where goals, challenges, and feedback loops are iteratively refined to support deeper understanding and adaptive response."
+  },
+  {
+   "work": "W4321268562",
+   "problem": "A pattern of creative development is analyzed across distinct cultural and political contexts, aiming to reveal how local practices are shaped by and interact with broader regional and international influences.",
+   "approach": "A comparative framework is applied to examine how artistic expressions emerge from specific historical and social conditions, integrating diverse influences while maintaining contextual integrity and avoiding oversimplified narratives."
+  },
+  {
+   "work": "W4226284551",
+   "problem": "A temporal pattern in environmental conditions is assessed across multiple monitoring sites, comparing current and prior periods to detect shifts in key indicators influenced by reduced human activity.",
+   "approach": "A statistical model aligns and compares measurements from repeated observations over time, using multivariate analysis to identify dominant sources and quantify changes in pollutant loads and overall system health."
+  },
+  {
+   "work": "W2899755180",
+   "problem": "A survival outcome is estimated based on the time it takes to complete a prescribed treatment regimen after initial surgery. The effect of delays beyond a certain threshold on long-term survival is compared across groups.",
+   "approach": "A statistical model identifies a critical time point separating better and worse outcomes. Survival probabilities are then calculated for individuals who finish treatment within or beyond that time."
+  },
+  {
+   "work": "W2995120552",
+   "problem": "A system estimates the load-bearing capacity of a structure supported by a combination of surface materials and deep anchoring elements under variable stress conditions.",
+   "approach": "It evaluates performance by simulating stress transfer through layered materials and deep anchors, adjusting the anchor depth and surface support based on load magnitude and material response."
+  },
+  {
+   "work": "W4396573968",
+   "problem": "A system of interacting units is analyzed to understand how their collective behavior evolves over time under different interaction rules. The behavior is studied in both unconstrained and confined environments, focusing on how interactions influence long-term patterns and stability.",
+   "approach": "Units update their positions based on predefined interaction rules that depend on distance and relative orientation. The evolution is tracked over time, and patterns in movement and clustering are identified across different environmental constraints and interaction types."
+  },
+  {
+   "work": "W4308554571",
+   "problem": "A system is evaluated to determine the relationship between serum magnesium levels and the development of adverse cardiac outcomes, including arrhythmias and structural heart changes, in individuals with metabolic dysfunction.",
+   "approach": "A statistical model integrates longitudinal biomarker measurements, medication history, and gut microbial indicators to predict the likelihood of adverse cardiac events based on baseline and changing magnesium concentrations over time."
+  }
+ ]
+}

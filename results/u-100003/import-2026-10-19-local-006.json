@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-19-local-006",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.8947368421052632,
+ "at": "2026-10-20T01:57:38Z",
+ "descriptions": [
+  {
+   "work": "W4400476474",
+   "problem": "A set of molecular candidates is evaluated for their interaction strength with a key bacterial enzyme target, with emphasis on binding affinity and safety profiles derived from physicochemical and toxicity predictions.",
+   "approach": "Molecular candidates are filtered by structural rules and binding energy scores. High-affinity binders are assessed for metabolic stability and adverse effects using computational models to rank their potential as effective and safe agents."
+  },
+  {
+   "work": "W4385273843",
+   "problem": "A set of observations is analyzed to determine a pattern of change over time, where the change is composed of multiple distinct components that evolve at different rates.",
+   "approach": "The data is modeled as a combination of base functions that grow or decay at fixed rates. Parameters for each function are adjusted so that the sum of these components best matches the observed values across time."
+  },
+  {
+   "work": "W4403722263",
+   "problem": "A procedure is evaluated for its ability to fully remove a defined internal growth from the gastrointestinal tract, assessing how often it succeeds and how frequently complications occur.",
+   "approach": "Patients with similar growths are reviewed over time; outcomes are assessed based on complete removal, procedural success, and post-procedure issues, using standardized criteria for adverse events."
+  },
+  {
+   "work": "W2979978742",
+   "problem": "A set of molecular signals is identified and compared across developmental regions to determine which are selectively concentrated in a specific cellular structure during early development.",
+   "approach": "Transcript levels are measured in distinct tissue fragments, and the expression patterns of localized molecules are tested for functional roles in establishing and maintaining a specialized cell lineage."
+  },
+  {
+   "work": "W4306407920",
+   "problem": "A system is analyzed to determine how a structural domain at one end of a protein influences the folding and pairing of a distinct domain at the opposite end, especially in the presence of a regulatory segment.",
+   "approach": "A dynamic model simulates how interactions between a catalytic region and a terminal domain are modulated by a bound regulatory element, with outcomes evaluated under varying concentrations and structural constraints."
+  },
+  {
+   "work": "W4399017378",
+   "problem": "A system's behavior under varying conditions is inferred from observed interactions and environmental signals, with focus on how dynamic shifts in cellular states influence long-term outcomes and response to external interventions.",
+   "approach": "A model tracks state transitions in response to stimuli, using feedback loops to simulate how persistent signals drive persistent changes in function and behavior over time."
+  },
+  {
+   "work": "W4414307096",
+   "problem": "The system estimates how variations in material composition affect heat transfer dynamics across a sample's surface over time, using spatially resolved temperature responses under controlled heating conditions.",
+   "approach": "A periodic heating pulse is applied to a sample, and the resulting surface temperature changes are recorded over time. These responses are analyzed to infer internal structural and compositional differences through pattern recognition and signal decomposition."
+  },
+  {
+   "work": "W4405052633",
+   "problem": "A measurable compound derived from platelet activity is assessed to detect early signs of a hypercoagulable state before clot formation occurs, distinguishing individuals with heightened clotting potential from those without, using blood-based signals.",
+   "approach": "The compound's concentration is measured in blood samples, and its levels are compared across individuals with and without elevated clotting risk, while controlling for known suppressive treatments. A dynamic range and stability over time are leveraged to detect subtle shifts before observable clot events occur."
+  },
+  {
+   "work": "W2904943656",
+   "problem": "A system is evaluated to determine whether decisions emerge from internal dynamics or are influenced by external factors during the moment of choice, based on observed patterns of agent behavior and reasoning processes.",
+   "approach": "The system models decision moments as involving two competing internal states that either persist together during deliberation or dynamically shift in weight based on real-time evaluation of available inputs."
+  },
+  {
+   "work": "W2889856185",
+   "problem": "A system estimates the presence and concentration of a specific contaminant in a biological fluid by measuring a change in signal intensity that occurs when the contaminant binds to a structured molecular probe.",
+   "approach": "A probe forms a stable, folded structure in the presence of the contaminant, shielding it from degradation. This folding enhances a reporter molecule's interaction with the structure, producing a measurable signal proportional to the contaminant's concentration."
+  },
+  {
+   "work": "W4200390612",
+   "problem": "A pattern is estimated in how treatment decisions change with patient age and gender, based on observed prescribing behaviors over time.",
+   "approach": "Patient records are analyzed to map treatment choices and levels across age groups, adjusting for gender. Guidelines are reviewed to assess how well they address treatment in older individuals."
+  },
+  {
+   "work": "W3136205820",
+   "problem": "The timing of exposure to a compound influences its biological effects and systemic availability, with peak adverse outcomes occurring at specific times of day and reduced effects at others, depending on biological rhythms.",
+   "approach": "Exposure is administered at various times, and the resulting concentration in blood and tissue is measured. The rate of breakdown and removal of the compound is assessed across time points, revealing patterns tied to internal biological timing."
+  },
+  {
+   "work": "W4289799624",
+   "problem": "A system evaluates how well various inputs—such as land, labor, and materials—are combined and utilized to produce outputs, aiming to identify factors that influence performance and outcomes across different operational contexts.",
+   "approach": "The system models input-output relationships by analyzing how changes in resource allocation and environmental conditions affect production results, using comparative and aggregated patterns to identify optimal configurations and performance drivers."
+  },
+  {
+   "work": "W4411575821",
+   "problem": "A long-term projection of greenhouse gas output is made based on the operational characteristics of a stable, continuous process that produces power without releasing gaseous byproducts during use.",
+   "approach": "A model simulates the impact of a consistent, weather-independent process on overall gas release over decades, adjusting for known technical and economic constraints and integrating it with variable natural resource availability."
+  },
+  {
+   "work": "W4410604275",
+   "problem": "A system estimates the presence and location of hidden anomalies within a material by analyzing spatial and temporal variations in a measured signal.",
+   "approach": "The system divides the signal into smaller, overlapping segments and clusters them based on similarity patterns. It then evaluates the likelihood that each segment corresponds to an anomaly using statistical thresholds derived from known signal behavior."
+  },
+  {
+   "work": "W2988272793",
+   "problem": "A system is designed to map how decisions are formed and carried out across different levels of an entity, linking inputs, goals, and actions through a structured sequence of interdependent stages.",
+   "approach": "A hierarchical model links actions to outcomes across levels, where each stage depends on the prior one, and feedback loops ensure alignment with overarching objectives and environmental conditions."
+  },
+  {
+   "work": "W3158936944",
+   "problem": "A system's ability to store and release energy efficiently while minimizing unwanted energy loss is evaluated under varying electrical conditions and structural constraints.",
+   "approach": "A layered structure is engineered with controlled atomic substitutions and interface layers to balance conductivity, energy retention, and signal integrity across frequency ranges."
+  },
+  {
+   "work": "W2910625641",
+   "problem": "A system estimates how much resource consumption is tied to data storage and retrieval operations, aiming to reduce the environmental impact of information handling processes.",
+   "approach": "It models operations based on environmental conditions and adjusts processing loads dynamically to minimize resource use during data access and storage tasks."
+  },
+  {
+   "work": "W7217849245",
+   "problem": "A complex mixture's composition is inferred from multiple sources of observational and experimental data, including historical records and modern analytical results. The relative abundance and biological relevance of key components are evaluated across diverse contexts and conditions.",
+   "approach": "A structured synthesis integrates diverse data streams using pattern recognition and comparative analysis. Outcomes are weighted by consistency, reproducibility, and contextual relevance to form a coherent picture of the material's properties and potential effects."
+  }
+ ]
+}

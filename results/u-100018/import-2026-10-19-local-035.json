@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-035",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:41Z",
+ "descriptions": [
+  {
+   "work": "W4391165157",
+   "problem": "This work estimates the effectiveness of using pre-trained models from one type of data to classify another type of data. It predicts the performance of these models on a new, unseen dataset.",
+   "approach": "The researchers use a combination of two types of models: one that is pre-trained on a large dataset of images, and another that combines this model with a different type of model that is good at processing certain types of data. They then test these models on a new dataset of heart sounds and compare their performance to each other."
+  },
+  {
+   "work": "W7203595814",
+   "problem": "This study aims to identify a specific equipment failure or a concerning trend in equipment performance, beyond accepted limits based on past experience. This is done to prevent or take action to maintain equipment functionality.",
+   "approach": "The analysis uses a model to compare data from equipment performance over time, identifying patterns or anomalies that indicate a potential issue. The procedure involves evaluating data from past experiences to establish limits and then monitoring current data to detect deviations."
+  },
+  {
+   "work": "W4397045492",
+   "problem": "This study estimates the relationship between the level of a certain essential nutrient and the risk of a specific health outcome in a group of individuals with a chronic condition. It aims to provide insights for managing this nutrient in individuals with this condition.",
+   "approach": "The researchers used data from a large database to categorize individuals into three groups based on the level of this nutrient. They then analyzed the risk of a specific health outcome in each group, adjusting for other factors that might influence the outcome."
+  },
+  {
+   "work": "W3007400339",
+   "problem": "Estimate the amount of a specific substance in a system, given some measurements of related substances. The measurements are likely to be noisy due to measurement errors.",
+   "approach": "Use a mathematical model to calculate the substance's amount, taking into account the system's properties and the measurements' noise. The model uses a method that finds the best fit to the data, and then optimizes the result to satisfy certain constraints."
+  },
+  {
+   "work": "W4400766925",
+   "problem": "This work estimates the effectiveness of a new way to make a specific part of a virus that causes foot-and-mouth disease in animals. It compares the immune response of mice to different versions of this part of the virus.",
+   "approach": "The researchers used a combination of trial and error to find the best way to attach a specific part of the virus to a microorganism. They tested different versions of the attachment and found that one version worked best."
+  },
+  {
+   "work": "W2889737628",
+   "problem": "This work estimates the effectiveness of a social movement's online presence in addressing land ownership debates, comparing its reach and engagement to that of other movements. It predicts the potential for online activism to influence policy changes.",
+   "approach": "The researchers use a theoretical-methodological approach to analyze the movement's online activities, focusing on how information is shared and acted upon within a networked society. They examine the movement's use of virtual space to inform its actions and strategies."
+  },
+  {
+   "work": "W4367190801",
+   "problem": "This work investigates how adding a certain type of material to a mixture affects its properties. It estimates and compares the effects of this material on the mixture's strength, weight loss, and friction coefficient.",
+   "approach": "The researchers created a mixture by combining the material with a base material and then tested its properties. They used a process to shape the mixture into rods and analyzed its properties using various tests."
+  },
+  {
+   "work": "W3160663839",
+   "problem": "This work estimates the future state of a complex system with many interconnected parts, using historical data to make predictions about its behavior over time. It aims to improve the accuracy of these predictions by capturing the relationships between the system's parts.",
+   "approach": "The model uses a combination of two main components: one extracts patterns in the system's behavior over time, and the other captures the relationships between the system's parts. It then uses these patterns to make predictions about the system's future state."
+  },
+  {
+   "work": "W4285250010",
+   "problem": "This work estimates the burden of medically attended illnesses caused by a common virus among young people born in the United States between 2016 and 2020. It compares the number of illnesses across different types of insurance data to understand the scope of the problem.",
+   "approach": "The researchers analyzed data from insurance claims to identify the number of medically attended illnesses, and then compared the results to understand the scope of the problem. They used different definitions to estimate the burden of illnesses and stratified the results by factors such as birth weight and medical care level."
+  },
+  {
+   "work": "W2192566869",
+   "problem": "This research estimates the age distribution of people who own and use a certain type of work helper on small plots of land, and compares it to the age distribution of people who do not own these helpers. It also explains the constraints faced by these helpers' owners.",
+   "approach": "The researchers collected data from a small group of people who own and use these helpers, using a pre-made questionnaire to gather information about their age, the type of helper they use, and the challenges they face."
+  },
+  {
+   "work": "W2997191435",
+   "problem": "This research estimates the importance of specific proteins in regulating the growth and shape of a particular organ, and compares their effects on different types of cells within that organ. It also predicts the consequences of genetic mutations that affect those proteins.",
+   "approach": "The researchers used a combination of experiments and data analysis to investigate the role of these proteins in the organ's development. They tested the effects of genetic mutations on the organ's growth and shape, and compared the results to understand the underlying mechanisms."
+  },
+  {
+   "work": "W3127942145",
+   "problem": "This work aims to identify the key interactions between a pathogen and its host, in order to find potential therapeutic targets. It estimates the impact of these interactions on the pathogen's ability to infect and replicate within the host.",
+   "approach": "The approach involves using a technique to 'knock out' specific genes in host cells, allowing researchers to study the effects on the pathogen. The results are then combined with data from patients and medical records to identify potential treatments."
+  },
+  {
+   "work": "W2997758568",
+   "problem": "This research estimates the optimal way to arrange tasks on a production line to minimize delays, given that the time it takes to complete each task is uncertain. It aims to find the best arrangement to minimize delays and optimize production.",
+   "approach": "The researchers use a new method to model uncertain task times, incorporating historical data into their calculations. They then develop a procedure to solve the problem, using a combination of mathematical rules and computational steps to find the optimal solution."
+  },
+  {
+   "work": "W3171878040",
+   "problem": "This study investigates the relationship between the amount of time spent being physically active and the amount of fat stored in the leg area of people who are not yet elderly and those who are. It aims to understand how much fat is stored in the leg area when people are moderately active.",
+   "approach": "The researchers measured the size of the leg area using a special machine and the amount of time spent being physically active using a device that tracks movement. They compared the results to see if there was a connection between the amount of physical activity and the amount of fat stored in the leg area."
+  },
+  {
+   "work": "W3177207791",
+   "problem": "This research aims to estimate the distribution and biological functions of a hormone in specific parts of the body, and to predict its potential role in preventing or treating a certain condition. It also compares the hormone's effects in different groups of people.",
+   "approach": "The researchers used data from various studies to identify patterns and relationships between the hormone and its effects. They then used a mathematical model to analyze and predict the hormone's behavior in different situations."
+  },
+  {
+   "work": "W4402753704",
+   "problem": "The task is to train a complex model using imperfect data, where the model's performance is compromised by incorrect or misleading information. The goal is to improve the model's performance despite the presence of incorrect data.",
+   "approach": "The approach involves using a complex algorithm to refine the model's performance by selecting the most accurate data points and reducing the impact of incorrect data. The algorithm uses a technique called reverse k-NN to improve the model's feature representation and prevent over-fitting."
+  },
+  {
+   "work": "W4392352399",
+   "problem": "This research aims to estimate the effectiveness of a specific compound found in a medicinal plant in preventing or treating various diseases, such as infections and cancer. It also compares the compound's properties to those of other substances.",
+   "approach": "The researchers use data from studies on the plant's properties and the compound's effects to develop a model that predicts its potential benefits. They then use this model to identify areas where further research is needed to develop new properties and improve its effectiveness."
+  },
+  {
+   "work": "W3123557006",
+   "problem": "This work estimates the likelihood of a rare heart condition in a patient, based on their age and medical history. It predicts the patient's heart condition and compares it to a normal heart condition.",
+   "approach": "The researchers used a combination of clinical observations, laboratory tests, and modern medical technologies to understand the patient's condition. They followed a step-by-step procedure to identify the underlying cause of the patient's heart condition."
+  },
+  {
+   "work": "W2990090781",
+   "problem": "This work estimates the level of positive change that individuals expect to occur as a result of their own efforts, and compares this to their confidence in their ability to achieve that change. It aims to explain the relationship between these two factors and their impact on outcomes.",
+   "approach": "The approach involves using a mathematical model to combine the individual's expectations and self-efficacy, and then applying this to a dataset of past experiences to make predictions about future outcomes."
+  },
+  {
+   "work": "W2969206202",
+   "problem": "This research estimates the likelihood of a rare and aggressive disease in a previously healthy child, based on a viral infection. It compares the child's immune system to a normal one, and predicts the potential development of a serious disease.",
+   "approach": "The researchers used a combination of clinical observations and medical tests to identify the disease. They followed up with the child over time to see if the disease developed, and analyzed the results to draw conclusions about the role of the viral infection in triggering the disease."
+  }
+ ]
+}

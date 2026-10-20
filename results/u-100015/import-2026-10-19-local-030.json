@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-030",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:41Z",
+ "descriptions": [
+  {
+   "work": "W2995074949",
+   "problem": "A pattern is estimated across a spatial gradient over time, comparing how ecological metrics change under different environmental conditions and locations. Metrics include diversity, density, and productivity, observed across multiple time points and locations with varying flow and habitat features.",
+   "approach": "Samples are collected at multiple sites along a linear stretch, repeated across different flow regimes. Data are analyzed to identify trends in community structure and environmental correlates, using statistical models to detect spatial and temporal variations."
+  },
+  {
+   "work": "W7212362355",
+   "problem": "A model relating two measured quantities is estimated, where uncertainties in both quantities affect the relationship between them, and the data exhibit correlated errors across observations.",
+   "approach": "A linear model is fitted by minimizing the influence of measurement errors, using a weighted metric that accounts for how errors in both variables propagate and correlate across all data points."
+  },
+  {
+   "work": "W3128606038",
+   "problem": "The accuracy of individual predictions is evaluated and compared to the performance of a group of similar predictions, especially when individuals have refined their judgment through experience.",
+   "approach": "Predictions are collected and combined across individuals, but only if individual responses show meaningful variation. When variation is minimal, the group's performance is improved by including diverse, independent judgments rather than repeating the same outcome."
+  },
+  {
+   "work": "W3046462704",
+   "problem": "A system is designed to integrate and interpret diverse user interactions, environmental cues, and digital service behaviors to predict how human activities and digital tools co-evolve in dynamic social settings.",
+   "approach": "A layered framework assigns functional roles to autonomous agents based on their interaction depth with users and environments, using existing digital infrastructure as prototypes to simulate and refine their behavior over time."
+  },
+  {
+   "work": "W4402941704",
+   "problem": "A system evaluates how well digital platforms convey service details, support visitor navigation, and present facility features to attract users seeking reliable, accessible, and well-informed experiences across diverse geographic regions.",
+   "approach": "A structured analysis compares digital content across multiple locations using predefined criteria, assessing performance in clarity, completeness, user guidance, and alignment with user expectations through systematic observation and scoring."
+  },
+  {
+   "work": "W3022187111",
+   "problem": "A system estimates the likely type of a medical condition based on observed symptoms and patient history, aiming to identify patterns that match known expert diagnoses and provide early warnings for potential complications.",
+   "approach": "The system starts with available patient data and applies a set of predefined rules to evaluate possible conditions, progressing step by step until a match is found with known diagnostic patterns."
+  },
+  {
+   "work": "W4391594505",
+   "problem": "A system's internal signal integrity is enhanced by relocating critical connections to a secondary surface, reducing voltage loss and improving signal distribution efficiency across complex circuits.",
+   "approach": "A layered fabrication process is used, where processing begins on one surface, then continues on the opposite after physical transfer. Post-processing stabilization and selective contact formation are applied to maintain performance and reduce parasitic effects."
+  },
+  {
+   "work": "W4287708522",
+   "problem": "A three-dimensional arrangement of atoms is inferred from known spatial and chemical interactions, where specific sites hold elements with distinct local environments and distances to surrounding entities.",
+   "approach": "A model maps positions of elements based on their connections to neighbors, using consistent distance ranges and coordination numbers to define local structures across multiple repeating units."
+  },
+  {
+   "work": "W3196612143",
+   "problem": "A social movement is evaluated to determine its effectiveness in fostering collective action and alternative living models in urban environments with limited natural and recreational resources.",
+   "approach": "Community-led initiatives are analyzed through structured dialogues with participants, comparing outcomes across different spatial and demographic settings to assess the impact of collaborative, non-consumptive practices on personal and group well-being."
+  },
+  {
+   "work": "W4392859536",
+   "problem": "A biological intervention is evaluated for its effect on growth efficiency and muscle tissue quality in a living organism, comparing outcomes across different treatment levels and measuring changes in metabolic activity and tissue composition.",
+   "approach": "A model tracks metabolic flux in muscle tissue, measuring gene expression and enzyme activity linked to energy production and storage, then correlates these with physical performance and structural defects in muscle tissue."
+  },
+  {
+   "work": "W4392728366",
+   "problem": "A system is evaluated that delivers personalized nutritional interventions to individuals with chronic health conditions, assessing outcomes such as improved health management, reduced healthcare spending, and better access to essential nutrients.",
+   "approach": "A structured framework analyzes real-world data from community-based programs, comparing health and resource use before and after intervention, using longitudinal records and participant feedback to refine delivery methods and identify effective patterns."
+  },
+  {
+   "work": "W3080425354",
+   "problem": "A narrative is analyzed to determine how religious and moral teachings are embedded within its structure and character development, using specific patterns of instruction and guidance to assess their alignment with established ethical and doctrinal principles.",
+   "approach": "The narrative is examined through a structured framework that identifies and categorizes instructional elements across factual, conceptual, procedural, and reflective dimensions to evaluate their educational and behavioral impact."
+  },
+  {
+   "work": "W4394738597",
+   "problem": "A system tracks the progression of a disease following surgical removal, identifying distant spread through repeated imaging and tissue analysis over time.",
+   "approach": "A model integrates sequential imaging and tissue samples to detect patterns of disease spread, using temporal changes in signal intensity and structural features to infer metastatic behavior."
+  },
+  {
+   "work": "W7219935035",
+   "problem": "The task is to identify regions where a crop exhibits the greatest variation in physical traits, environmental adaptation, and underlying biological relationships, using data from field observations, environmental conditions, and spatial distribution patterns.",
+   "approach": "A mathematical model reduces complex environmental and trait data into key discriminant factors. These are then combined with spatial data to map regions where trait diversity, environmental fit, and biological distinctiveness converge."
+  },
+  {
+   "work": "W4407276570",
+   "problem": "A compound is administered to a group of animals to assess its impact on survival, body mass, reproductive organ size, hormonal levels, and mating behavior over time.",
+   "approach": "Animals are exposed to a formulated substance for a set duration under controlled conditions. After exposure, physiological and behavioral outcomes are measured at multiple time points to evaluate long-term effects on population dynamics and reproductive function."
+  },
+  {
+   "work": "W3029816143",
+   "problem": "A long-term technological trajectory is estimated, forecasting the performance and feasibility of systems under evolving operational and environmental conditions over decades.",
+   "approach": "A structured design framework is applied, iteratively refining system configurations based on input constraints, performance metrics, and feedback from simulated operational scenarios across multiple time horizons."
+  },
+  {
+   "work": "W3125635027",
+   "problem": "A system predicts how agents choose among options when they lack precise knowledge of outcomes, and how these choices affect overall market outcomes and information sharing.",
+   "approach": "It models agent behavior using two rules: one where decisions average outcomes with varying confidence, and another where agents pick the most favorable outcome among possible beliefs. It then simulates how these rules influence group-level decisions and market dynamics over time."
+  },
+  {
+   "work": "W7128336774",
+   "problem": "A system estimates the proportion of cells exhibiting a specific genetic variant within a population of cells, comparing observed frequencies to established thresholds for clinical significance.",
+   "approach": "Samples are processed using a fluorescent probe to label specific genetic markers; under a microscope, cell populations are scored for probe intensity, and the fraction of cells showing a variant signal is computed and evaluated against predefined limits."
+  },
+  {
+   "work": "W7213629029",
+   "problem": "A system estimates the effectiveness of natural resource-based treatments by analyzing user outcomes and expert input across diverse geographic and cultural settings.",
+   "approach": "It evaluates treatment success by comparing reported health improvements against standardized medical benchmarks, using longitudinal data and peer-reviewed observations to refine and validate therapeutic protocols over time."
+  },
+  {
+   "work": "W4291021140",
+   "problem": "A system is designed to generate and control spatial arrangements of interacting units based on defined rules, using a limited set of interaction signals to produce predictable and repeatable structural layouts across diverse conditions.",
+   "approach": "A set of four distinct interaction signals is applied to units in a structured environment, where each signal can be present or absent to define a spatial rule. These signals are combined in all possible combinations to generate a complete set of spatial configurations through a tiling-based algorithm."
+  }
+ ]
+}

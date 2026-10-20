@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-19-local-023",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:40Z",
+ "descriptions": [
+  {
+   "work": "W7215483973",
+   "problem": "This research estimates the likelihood of people choosing reserved seats for special groups based on their current satisfaction, societal behavior, and empathy. It predicts the most effective approach to promote this behavior and compares the results of different methods.",
+   "approach": "The study uses a combination of experiments and surveys to analyze the decision-making process. It follows a procedure that involves creating influence from those around and displaying images or symbols of the special group in visible areas to promote the desired behavior."
+  },
+  {
+   "work": "W4389958737",
+   "problem": "This study estimates the effects of a certain type of food on the health of small animals, comparing their gut health and bodily chemicals to a control group. It aims to explain how this food might contribute to certain diseases.",
+   "approach": "The researchers used a combination of DNA sequencing and chemical analysis to compare the gut health and bodily chemicals of the animals that ate this food to those that didn't. They looked for patterns and changes in the data to understand the impact of this food on the animals' health."
+  },
+  {
+   "work": "W2904001071",
+   "problem": "This research aims to determine the best energy source for a specific type of machine, given a scarcity of another common energy source and high costs. It estimates the impact of blending a certain percentage of a plant-based substance with a common liquid on the machine's performance and emissions.",
+   "approach": "The researchers varied the percentage of the plant-based substance added to the common liquid and tested the machine's performance and emissions at different speeds and equivalence ratios. They used data from these tests to compare the effects of the different blends."
+  },
+  {
+   "work": "W2903055994",
+   "problem": "This work estimates the performance of a device that converts light into a physical signal, allowing for precise measurements of a physical property. It compares the device's performance to a theoretical model, aiming to explain the observed effects.",
+   "approach": "The researchers use a mathematical model to describe the device's behavior, taking into account the properties of the materials used. They then use this model to identify and minimize the effects that were observed in the actual measurements."
+  },
+  {
+   "work": "W4360827072",
+   "problem": "This work estimates the quality of low-quality images of underwater creatures and classifies them into species. It compares the results to original, unenhanced images and optimizes the classification accuracy.",
+   "approach": "The approach uses a complex computer model to generate improved images from raw images, and then uses another model to classify the improved images into species. The model follows a procedure of training on a dataset, generating enhanced images, and then classifying the enhanced images into species."
+  },
+  {
+   "work": "W3081767974",
+   "problem": "Estimate the optimal conditions for a complex educational activity to achieve a specific goal, considering the complexity and multicomponentity of the activity.",
+   "approach": "Use a set of guiding principles to evaluate and refine the conditions, taking into account the interrelated nature of the activity and the need for balance between conscious and intuitive approaches."
+  },
+  {
+   "work": "W4405012756",
+   "problem": "This work estimates the relationships between different types of data (e.g. expression levels, mutations, promoter methylation) to identify patterns of regulation that are unique to each individual. It also compares these patterns to known characteristics of the individual (e.g. age, sex, treatment history).",
+   "approach": "The method uses a combination of data from multiple sources to build a network of relationships. It then scales this network to accommodate large amounts of data and highlights the impact of certain factors (e.g. age) on the patterns of regulation."
+  },
+  {
+   "work": "W4412028673",
+   "problem": "This work estimates the effectiveness of a new teaching method in a medical education setting, comparing the outcomes of students who used this method to those who did not. It aims to explain how this method can improve learning outcomes and student engagement.",
+   "approach": "The method uses a combination of interactive, annotated content and feedback from a subset of participants to evaluate its effectiveness and identify areas for improvement. It involves collecting and analyzing data from a survey and free-text feedback to inform the development of the teaching method."
+  },
+  {
+   "work": "W4412548564",
+   "problem": "This work estimates the sensitivity of a certain condition to a treatment, using data about the condition's characteristics. It aims to identify the most important characteristics that affect the treatment's effectiveness, and to predict the treatment's success for new patients.",
+   "approach": "The approach uses a combination of techniques to analyze the data and make predictions. It starts by reducing the complexity of the data, then uses a special algorithm to identify the most important characteristics and make predictions about the treatment's success."
+  },
+  {
+   "work": "W3181227519",
+   "problem": "This work estimates the likelihood of a device being compromised by a cyber-attack based on its energy usage patterns. It compares these patterns to known normal patterns to determine if the device is at risk.",
+   "approach": "The system uses a universal model to compare the device's energy usage patterns to a set of known normal patterns. It then optimizes the model to detect anomalies in real-time."
+  },
+  {
+   "work": "W7140329697",
+   "problem": "Estimate the future development of a sector that is heavily influenced by external factors, such as trade agreements and climate change. Predict the potential consequences of different scenarios and identify the most likely outcomes.",
+   "approach": "Use a combination of analysis and synthesis to study the sector's development, including the analysis of strengths and weaknesses, opportunities and threats. Employ a probabilistic model, such as the Monte Carlo method, to interpret the probability distribution of possible development scenarios."
+  },
+  {
+   "work": "W4396834262",
+   "problem": "This work aims to estimate and predict the quality of global geographic information data, comparing it to other data sources to improve its accuracy. It also optimizes the creation of various data products, such as land cover data and elevation models, from different types of data.",
+   "approach": "The approach involves developing a technical framework that combines uncontrolled data collection, interpretation of typical elements, and hybrid collection of data from multiple sources. It uses software tools to create various data products in different scales and types."
+  },
+  {
+   "work": "W4380448065",
+   "problem": "This study estimates the relationship between exposure to a certain substance and the progression of a specific organ in patients with a particular disease. It compares the effects of this substance on the disease's progression and predicts the likelihood of adverse outcomes.",
+   "approach": "The researchers followed a large group of patients over several years, measuring the level of this substance in their bodies and tracking the progression of the disease. They used statistical methods to identify patterns and correlations between the substance's exposure and the disease's progression."
+  },
+  {
+   "work": "W4360614794",
+   "problem": "This work estimates and predicts the existence of certain transformations that map a set to a two-dimensional plane, and compares and optimizes these transformations based on the properties of the group of orthogonal transformations.",
+   "approach": "The approach involves using a mathematical model to describe these transformations, which follow a specific procedure: the model uses a set of elements and a two-dimensional plane, and applies a set of rules to determine the relationships between these elements and the transformations."
+  },
+  {
+   "work": "W3110772232",
+   "problem": "This research estimates the role of a specific barrier in controlling the entry of immune cells and other substances into a protected area, comparing different types of immune responses and changes in the area.",
+   "approach": "It uses data from the protected area and the immune cells that enter it, following a procedure that involves recruiting, skewing, and suppressing immune cells based on the barrier's unique properties."
+  },
+  {
+   "work": "W4386747554",
+   "problem": "This research estimates the acceptance of certain activities in different foundations of society, such as family, education, religion, health, and economy. It compares the level of acceptance across these foundations and explains why the acceptance is low.",
+   "approach": "The study follows a procedure where it examines the relationships between the foundations and the activities in question, using data from a global survey conducted in 2021."
+  },
+  {
+   "work": "W4400854307",
+   "problem": "This work estimates the economic benefits of creating a pool of spare equipment for emergency use. It compares the costs and benefits of this approach to other options.",
+   "approach": "The method involves modeling the performance of a complex system to identify the most efficient way to maintain it. It uses data from the system's operation to inform the model and make predictions about its future performance."
+  },
+  {
+   "work": "W4286978442",
+   "problem": "This work estimates the effectiveness of a new system for managing a chronic condition in children, using a combination of robotic assistants and data from various sources. It aims to compare the outcomes of different approaches to managing this condition.",
+   "approach": "The system uses a model that combines data from sensors and user input to predict the child's condition and provide personalized advice. It optimizes the delivery of support services based on the child's needs and the availability of resources."
+  },
+  {
+   "work": "W4401792757",
+   "problem": "This study aims to improve the accuracy of predicting the position of the Earth's axis over time, which is essential for various applications such as navigation and climate studies. It estimates the position of the axis based on historical data and optimizes the model to reduce the error.",
+   "approach": "The researchers used a combination of two methods: one that uses historical data to make predictions and another that uses a mathematical formula to analyze the patterns in the data. They tested this approach with different sets of data and compared the results to find the most accurate one."
+  }
+ ]
+}

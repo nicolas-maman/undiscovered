@@ -1,0 +1,602 @@
+{
+ "batch": "2026-10-19-local",
+ "by": "nicolas-maman",
+ "note": "Qwen3-4B-Instruct-2507 and Llama-3.2-3B-Instruct, 4-bit MLX builds served by mlx_lm.server on the maintainer's Apple M1 Pro, run through the Python client's own describing code with the units' instructions of 19 October 2026",
+ "at": "2026-10-20T01:57:36Z",
+ "results": [
+  {
+   "id": "import-2026-10-19-local-001",
+   "file": "u-100001.md",
+   "unit": "u-100001",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100001, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-002",
+   "file": "u-100001.md",
+   "unit": "u-100001",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100001, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-003",
+   "file": "u-100002.md",
+   "unit": "u-100002",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 19 descriptions for u-100002, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-004",
+   "file": "u-100002.md",
+   "unit": "u-100002",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 19 descriptions for u-100002, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-005",
+   "file": "u-100003.md",
+   "unit": "u-100003",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 19 descriptions for u-100003, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-006",
+   "file": "u-100003.md",
+   "unit": "u-100003",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 19 descriptions for u-100003, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-007",
+   "file": "u-100004.md",
+   "unit": "u-100004",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100004, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-008",
+   "file": "u-100004.md",
+   "unit": "u-100004",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100004, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-009",
+   "file": "u-100005.md",
+   "unit": "u-100005",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100005, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-010",
+   "file": "u-100005.md",
+   "unit": "u-100005",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100005, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-011",
+   "file": "u-100006.md",
+   "unit": "u-100006",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 19 descriptions for u-100006, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-012",
+   "file": "u-100006.md",
+   "unit": "u-100006",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100006, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-013",
+   "file": "u-100007.md",
+   "unit": "u-100007",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 19 descriptions for u-100007, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-014",
+   "file": "u-100007.md",
+   "unit": "u-100007",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 19 descriptions for u-100007, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-015",
+   "file": "u-100008.md",
+   "unit": "u-100008",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100008, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-016",
+   "file": "u-100008.md",
+   "unit": "u-100008",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100008, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-017",
+   "file": "u-100009.md",
+   "unit": "u-100009",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100009, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-018",
+   "file": "u-100009.md",
+   "unit": "u-100009",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100009, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-019",
+   "file": "u-100010.md",
+   "unit": "u-100010",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100010, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-020",
+   "file": "u-100010.md",
+   "unit": "u-100010",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100010, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-021",
+   "file": "u-100011.md",
+   "unit": "u-100011",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100011, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-022",
+   "file": "u-100011.md",
+   "unit": "u-100011",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100011, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-023",
+   "file": "u-100012.md",
+   "unit": "u-100012",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 19 descriptions for u-100012, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-024",
+   "file": "u-100012.md",
+   "unit": "u-100012",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100012, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-025",
+   "file": "u-100013.md",
+   "unit": "u-100013",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100013, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-026",
+   "file": "u-100013.md",
+   "unit": "u-100013",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100013, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-027",
+   "file": "u-100014.md",
+   "unit": "u-100014",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100014, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-028",
+   "file": "u-100014.md",
+   "unit": "u-100014",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100014, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-029",
+   "file": "u-100015.md",
+   "unit": "u-100015",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100015, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-030",
+   "file": "u-100015.md",
+   "unit": "u-100015",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100015, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-031",
+   "file": "u-100016.md",
+   "unit": "u-100016",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100016, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-032",
+   "file": "u-100016.md",
+   "unit": "u-100016",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100016, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-033",
+   "file": "u-100017.md",
+   "unit": "u-100017",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100017, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-034",
+   "file": "u-100017.md",
+   "unit": "u-100017",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100017, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-035",
+   "file": "u-100018.md",
+   "unit": "u-100018",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100018, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-036",
+   "file": "u-100018.md",
+   "unit": "u-100018",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100018, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-037",
+   "file": "u-100019.md",
+   "unit": "u-100019",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100019, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-038",
+   "file": "u-100019.md",
+   "unit": "u-100019",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100019, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-039",
+   "file": "u-100020.md",
+   "unit": "u-100020",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100020, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-040",
+   "file": "u-100020.md",
+   "unit": "u-100020",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100020, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-041",
+   "file": "u-100021.md",
+   "unit": "u-100021",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100021, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-042",
+   "file": "u-100021.md",
+   "unit": "u-100021",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100021, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-043",
+   "file": "u-100022.md",
+   "unit": "u-100022",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100022, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-044",
+   "file": "u-100022.md",
+   "unit": "u-100022",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100022, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-045",
+   "file": "u-100023.md",
+   "unit": "u-100023",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100023, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-046",
+   "file": "u-100023.md",
+   "unit": "u-100023",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100023, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-047",
+   "file": "u-100024.md",
+   "unit": "u-100024",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100024, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-048",
+   "file": "u-100024.md",
+   "unit": "u-100024",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100024, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-049",
+   "file": "u-100025.md",
+   "unit": "u-100025",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100025, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-050",
+   "file": "u-100025.md",
+   "unit": "u-100025",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100025, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-051",
+   "file": "u-100026.md",
+   "unit": "u-100026",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100026, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-052",
+   "file": "u-100026.md",
+   "unit": "u-100026",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100026, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-053",
+   "file": "u-100027.md",
+   "unit": "u-100027",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100027, made with mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible). It needs descriptions from 1 more model(s), not mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible), from anyone. Thank you."
+  },
+  {
+   "id": "import-2026-10-19-local-054",
+   "file": "u-100027.md",
+   "unit": "u-100027",
+   "model": {
+    "provider": "openai-compatible",
+    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+   },
+   "accepted": true,
+   "reply": "Accepted: 20 descriptions for u-100027, made with mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible). The unit is complete. Thank you."
+  }
+ ]
+}

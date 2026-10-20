@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-010",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:38Z",
+ "descriptions": [
+  {
+   "work": "W2943177608",
+   "problem": "The presence of a specific pathogen in a patient is estimated from multiple sample types collected from the same individual, with the goal of determining whether any one sample type reliably indicates the pathogen's presence across different conditions and patient groups.",
+   "approach": "Samples are tested using a sensitive molecular technique to detect the pathogen's genetic material. Results from each sample are compared across pairs, and the consistency of detection across all sample types is evaluated to determine if one is significantly more effective than the others."
+  },
+  {
+   "work": "W7216769808",
+   "problem": "A method is used to assess changes in skin surface appearance and depth following a series of non-invasive interventions, aiming to determine how well the outcome improves subjective and objective visual metrics over time.",
+   "approach": "A sequence of controlled sessions is applied to a group of individuals with persistent skin surface irregularities. Outcomes are evaluated through repeated visual and structural assessments to measure changes in surface topography and perceived smoothness."
+  },
+  {
+   "work": "W7115690867",
+   "problem": "The system estimates how changes in surface inputs and losses affect a body's level over time, comparing the influence of different environmental drivers across months and years.",
+   "approach": "It uses observed and modeled inputs and outputs to compute level changes, applying a balance equation that tracks how input and loss components shift monthly and annually in response to environmental conditions."
+  },
+  {
+   "work": "W7108723596",
+   "problem": "A process is designed to assess how human engagement in shared spaces fosters collective identity and long-term social cohesion among diverse groups.",
+   "approach": "A structured framework iteratively evaluates interactions between individuals and local environments, adjusting strategies based on observed patterns of participation and evolving group dynamics over time."
+  },
+  {
+   "work": "W2943134066",
+   "problem": "A condition is identified when a sudden onset of symptoms occurs without an obvious cause, and other potential explanations are ruled out through careful review of patient history and imaging evidence.",
+   "approach": "A systematic review of patient history and diagnostic imaging is conducted to exclude known causes, and the pattern of symptoms is matched against known conditions with distinct clinical and imaging features."
+  },
+  {
+   "work": "W4283446937",
+   "problem": "A system identifies and quantifies resistance traits in genetically diverse plants under controlled disease exposure, measuring how effectively they limit pathogen spread and symptom development across different environmental conditions.",
+   "approach": "A set of plant lines is exposed to pathogen-induced stress in isolated leaf conditions, and the resulting disease progression is monitored over time. Traits such as lesion size, spread rate, and pathogen reproduction are recorded and correlated across different genotypes to detect consistent protective patterns."
+  },
+  {
+   "work": "W2897894431",
+   "problem": "A pattern of symptoms is observed, and a common explanation is assumed based on prior experience. The likelihood of a less frequent but serious underlying cause is underestimated despite conflicting evidence.",
+   "approach": "A set of symptoms is evaluated using a dominant initial hypothesis. A second, more severe but rare condition is assessed by reweighting evidence against the initial assumption, using clinical data to challenge the first interpretation."
+  },
+  {
+   "work": "W2943340242",
+   "problem": "A system evaluates a set of design strategies and selects the most effective one based on performance across diverse circuit configurations and hardware platforms.",
+   "approach": "It analyzes input characteristics like circuit complexity and hardware structure to predict which strategy will yield optimal results, using learned patterns from past performance outcomes."
+  },
+  {
+   "work": "W4312881376",
+   "problem": "A system's performance is assessed based on how well internal processes support consistent, responsive, and reliable interactions with external stakeholders. The strength and nature of relationships between knowledge practices and service outcomes are evaluated using observed data.",
+   "approach": "A statistical model correlates observed service outcomes with the frequency and effectiveness of knowledge-related activities. Linear relationships are tested across multiple domains to identify which practices most strongly predict performance."
+  },
+  {
+   "work": "W4236245194",
+   "problem": "The time it takes to move fresh goods from origin to a major distribution hub is estimated and analyzed to identify key contributors to delays.",
+   "approach": "Data from field operators is collected and segmented by product type. Factors influencing delay are assessed through structured interviews and statistical analysis to determine patterns and actionable insights."
+  },
+  {
+   "work": "W4390584237",
+   "problem": "A pattern of adverse health events is assessed across a group of patients receiving long-term treatment, with specific outcomes linked to dosage levels and co-occurring symptoms. The strength and nature of these associations are determined from historical records and statistical analysis.",
+   "approach": "Patient records are reviewed over time to track symptom onset and treatment intensity. Statistical models identify correlations between dosage levels and adverse events, using thresholds to determine significant associations."
+  },
+  {
+   "work": "W4386448353",
+   "problem": "A pattern of underrepresentation is assessed across military ranks, comparing observed participation levels to institutional policies and societal perceptions of inclusion in combat and leadership roles.",
+   "approach": "In-depth interviews are conducted with participants from a specific unit until key themes saturate; responses are coded thematically and analyzed to identify systemic barriers and perceived shifts in inclusion over time."
+  },
+  {
+   "work": "W3158034217",
+   "problem": "The extent and timing of a specific immune cell population's infiltration into infected lung tissue is measured to determine its impact on disease progression and outcome.",
+   "approach": "A treatment is administered at a defined time point after infection, and the number of immune cells in the lung is quantified at a later stage to assess changes in cellular response and disease outcome."
+  },
+  {
+   "work": "W4409141981",
+   "problem": "A system continuously monitors and evaluates external and internal variables to anticipate disruptions, diagnose current conditions, prevent adverse outcomes, protect core operations, adjust to environmental shifts, and maintain ongoing oversight of performance.",
+   "approach": "A multi-layered framework processes real-time and historical inputs using statistical patterns, hypothetical scenarios, strength and weakness assessments, and environmental feedback loops to generate adaptive responses and maintain operational resilience."
+  },
+  {
+   "work": "W3110626826",
+   "problem": "A pattern of human activity in a dynamic environment is observed over time, involving local knowledge passed through generations to manage resource use and predict outcomes under changing conditions.",
+   "approach": "A system maps recurring behaviors in response to environmental cues, using historical records and observational data to identify consistent rules governing resource access, timing, and success rates across generations."
+  },
+  {
+   "work": "W4391685650",
+   "problem": "The relationship between early life indicators and final adult outcomes is estimated, specifically how pre-treatment biological and demographic features influence growth trajectories during a developmental intervention.",
+   "approach": "A statistical model evaluates how baseline characteristics and treatment intensity interact to affect growth changes, adjusting for individual developmental timing and prior growth patterns."
+  },
+  {
+   "work": "W2884893419",
+   "problem": "A rare form of fungal infection affecting the eye surface is identified in a person with normal immune function, based on laboratory growth of a fungus from a tissue sample.",
+   "approach": "A tissue sample is collected and cultured to detect fungal presence. If the fungus grows, treatment with a specific topical antifungal agent is administered, and recovery is confirmed after a defined period of symptom resolution."
+  },
+  {
+   "work": "W4398146658",
+   "problem": "An estimate is made of how well individuals understand key features of a common eye condition, their beliefs about its causes and treatment, and their behaviors related to prevention and care, based on self-reported responses to a structured set of questions.",
+   "approach": "A set of standardized questions is administered to a group of individuals. Responses are tallied by category, and statistical summaries are generated to compare group-level trends, with differences considered significant if they fall below a predefined threshold."
+  },
+  {
+   "work": "W2982966582",
+   "problem": "A quantitative assessment of how varying chemical concentrations affect biological systems over time is performed, measuring changes in physiological and functional outcomes in exposed individuals and their offspring.",
+   "approach": "A controlled exposure regimen is applied over a set duration, with repeated measurements of physiological indicators and offspring production outcomes. A dose-response relationship is established by comparing outcomes across different exposure levels and identifying thresholds where observable changes begin."
+  },
+  {
+   "work": "W4399980947",
+   "problem": "A repeating chain structure is formed from a monomer and a coupling agent, using a transition metal catalyst to link molecular units through a specific bond formation pathway.",
+   "approach": "A monomer is activated and reacts with a halogenated aromatic compound via a metal-catalyzed bond-forming reaction, resulting in a polymer chain through repeated condensation and bond formation."
+  }
+ ]
+}

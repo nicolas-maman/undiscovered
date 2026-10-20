@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-018",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T01:57:39Z",
+ "descriptions": [
+  {
+   "work": "W4205309716",
+   "problem": "A pattern of neurological symptoms is assessed to determine whether they stem from a disorder involving fluid accumulation in brain cavities, particularly when those symptoms appear after a prior injury.",
+   "approach": "A diagnostic test is performed to evaluate the response to fluid removal; if symptoms improve significantly and persist over time, it suggests the disorder is linked to impaired fluid drainage and reabsorption."
+  },
+  {
+   "work": "W4390201887",
+   "problem": "The relative abundance of specific molecular compounds is measured across different processing conditions, and the resulting formulations are evaluated for consistency and performance in delivering a desired therapeutic effect.",
+   "approach": "Plant material is processed under varying time and temperature regimes to yield different compound profiles. The resulting mixtures are combined with a base to form a stable, deliverable form, and their physical and functional properties are systematically assessed."
+  },
+  {
+   "work": "W7217204137",
+   "problem": "A set of biological variants is assessed across different environmental conditions to determine which perform best in terms of key output traits and their relationships to environmental inputs.",
+   "approach": "A statistical model identifies dominant patterns in trait performance across environments using dimension reduction and grouping, then maps how trait responses correlate with input levels and environmental clusters."
+  },
+  {
+   "work": "W4416910398",
+   "problem": "A system is estimated that links internal microbial activity to host metabolic outcomes, particularly in regulating fat-related physiological states and their long-term health consequences.",
+   "approach": "A dynamic model integrates environmental inputs and host responses to simulate how microbial byproducts influence metabolic pathways, adjusting behavior based on real-time feedback from host physiology and dietary factors."
+  },
+  {
+   "work": "W3014549797",
+   "problem": "A set of biological samples is analyzed to determine unique patterns of molecular presence or absence across individuals, with the goal of distinguishing between them based on shared and distinct features in their genetic material.",
+   "approach": "A series of targeted molecular tests are applied to each sample. Results are compiled into binary records. Similarity between samples is computed using a distance metric based on shared features, and clusters are formed using a hierarchical grouping method."
+  },
+  {
+   "work": "W3081251550",
+   "problem": "A statistical relationship is estimated between an inherited metabolic trait and two health outcomes: the frequency of a specific adverse event and the rate of mortality from a related condition across diverse populations.",
+   "approach": "Data from global health records are analyzed using distribution tests and rank-based correlation to identify patterns. The strength and direction of association are quantified and used to inform preventive strategies based on individual genetic and dietary profiles."
+  },
+  {
+   "work": "W2953683071",
+   "problem": "A system estimates the frequency content of a time-varying signal, comparing results across different sampling conditions to detect inconsistencies in amplitude and phase.",
+   "approach": "The signal is modeled as a piecewise polynomial over a defined interval, and its frequency components are derived through integration of the signal's time-domain representation over time."
+  },
+  {
+   "work": "W2803899812",
+   "problem": "A scale is evaluated to determine how well it measures a person's confidence in managing a chronic health condition across diverse cultural contexts.",
+   "approach": "The scale is tested for consistency, fairness, and reliability using responses from individuals in a new linguistic and cultural environment, with statistical methods to assess how well it preserves its original structure and predictive power."
+  },
+  {
+   "work": "W4367625496",
+   "problem": "A method is developed to separate and isolate complex natural compounds from a biological matrix based on their chemical structure and solubility properties, using available physical and chemical conditions to enhance yield and purity.",
+   "approach": "A stepwise process applies solvent-based techniques and selective binding agents to partition components, followed by iterative refinement using physical separation principles like filtration, distillation, or chromatographic interaction."
+  },
+  {
+   "work": "W4388220043",
+   "problem": "A long-term health metric is reduced through changes in daily habits and dietary patterns, with measurable improvements in multiple physiological indicators over a short intervention period.",
+   "approach": "A structured regimen limits intake of energy-dense components and increases physical activity, with daily routines focused on consistent, low-energy food sources and regular movement to shift internal balance."
+  },
+  {
+   "work": "W2899274218",
+   "problem": "The presence and relative abundance of specific molecular features in a natural plant material are determined from spectral signatures across a wide range of vibrational frequencies.",
+   "approach": "A sample is treated with two different liquid environments to alter its surface chemistry, then analyzed using a technique that maps how bonds vibrate. Peaks at distinct frequencies are matched to known molecular patterns to identify key chemical components."
+  },
+  {
+   "work": "W4407955092",
+   "problem": "A material's physical and chemical traits are assessed across distinct radial layers of a plant structure to determine which layers best suit specific functional applications.",
+   "approach": "The material is divided into segments along its radial axis, and each segment undergoes analysis for composition, mechanical strength, thermal behavior, and surface structure to identify optimal performance under different usage conditions."
+  },
+  {
+   "work": "W4312659043",
+   "problem": "A statistical relationship is estimated between an individual's daily dietary balance and the frequency of menstrual discomfort, using self-reported data from a group of adolescents.",
+   "approach": "Data is collected through structured questionnaires, then analyzed using a chi-square test to determine if differences in discomfort levels are significantly linked to dietary balance, with a threshold of 5% for statistical significance."
+  },
+  {
+   "work": "W2791527097",
+   "problem": "A system detects how a specific protein fragment influences the rate at which a mineral surface expands under varying concentrations, revealing a narrow range where growth is enhanced and elsewhere it is suppressed.",
+   "approach": "The interaction between the protein fragment and a mineral surface is measured through force-dependent binding events, with growth rates and binding strength analyzed across concentration gradients to identify thresholds and mechanisms of surface modulation."
+  },
+  {
+   "work": "W3120566041",
+   "problem": "A set of behavioral indicators is assessed to determine consistency and reliability across a group of individuals using structured self-report data and demographic information.",
+   "approach": "The data is analyzed through statistical modeling to evaluate internal consistency, factor structure, and relationships between items. A model is fitted to verify that observed patterns align with expected underlying constructs, ensuring the tool performs consistently across different groups."
+  },
+  {
+   "work": "W4200567714",
+   "problem": "A system of interconnected flexible segments is deformed under controlled forces until its structure conforms to a specified curved surface, with the shape determined by the balance of internal forces and geometric constraints at connection points.",
+   "approach": "The deformation of each segment is modeled using known bending functions with quadratic displacement correction. Iterative adjustments compute internal forces at joints until the final shape matches the target surface through local equilibrium and geometric alignment."
+  },
+  {
+   "work": "W4387080914",
+   "problem": "A dynamic regulatory pattern across time and space is inferred from gene and small RNA expression levels across distinct developmental phases, to identify key control nodes that influence growth and decline trajectories.",
+   "approach": "Expression data is clustered into temporal segments, then mapped to co-occurring gene and regulatory element patterns to build a network where nodes represent active regulatory units and edges represent strength of interaction across phases."
+  },
+  {
+   "work": "W7125278085",
+   "problem": "A pattern of medication usage is estimated across a group of hospitalized individuals, analyzing how often different drug classes are prescribed based on demographic and clinical characteristics.",
+   "approach": "Medical records are reviewed for a defined period, and usage frequencies are calculated by patient group, then compared across age, sex, and treatment categories using a random sample of cases."
+  },
+  {
+   "work": "W7214925693",
+   "problem": "A comprehensive synthesis of evidence is performed to evaluate the biological effectiveness of a widely used compound across multiple disease contexts, including infectious and non-infectious conditions, by analyzing reported outcomes from diverse scientific sources.",
+   "approach": "A systematic review process is applied, gathering and analyzing findings from peer-reviewed studies using standardized search terms across global scientific repositories to identify patterns in observed effects and potential mechanisms of action."
+  },
+  {
+   "work": "W7132522816",
+   "problem": "The rate and pattern of heat loss and gain in a material are measured over time to infer its internal energy content and thermal stability under controlled environmental conditions.",
+   "approach": "A material is first heated uniformly and its temperature decline is tracked over time. Then, it is allowed to return to ambient conditions, and its temperature rise is monitored. The two processes are compared against known reference values derived from standard physical testing."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-043",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:43Z",
+ "descriptions": [
+  {
+   "work": "W4323893806",
+   "problem": "This work aims to estimate the risks associated with construction projects by analyzing the properties of the ground and its impact on the project's stability and safety. It compares the effects of various ground conditions on the project's success.",
+   "approach": "The study uses data from construction sites to analyze the properties of the ground and its impact on the project's stability and safety. It proposes effective measures to minimize risks and optimize the project's success."
+  },
+  {
+   "work": "W3194969640",
+   "problem": "This research aims to understand how a certain type of molecule affects the ability of cancer cells to withstand damage from a treatment. It estimates the impact of this molecule on the cancer cells' ability to grow, migrate, and invade.",
+   "approach": "The researchers measured the levels of this molecule and two other molecules in cancer cells using various techniques. They then tested how these molecules affect the cancer cells' behavior and how they interact with each other."
+  },
+  {
+   "work": "W2954539386",
+   "problem": "This work estimates the effectiveness of a digital tool in supporting clinical decision making for a specific group, comparing the tool's use to a traditional teaching method. It aims to explain how the tool can improve the process of clinical decision making.",
+   "approach": "The researchers used a digital tool to guide a group through a series of cases, then asked the group to reflect on their experience with the tool. They collected anonymous feedback from the group to understand how the tool was used and its impact."
+  },
+  {
+   "work": "W3098797071",
+   "problem": "This work estimates the impact of a broken federal government on local governance and individual liberties, comparing the effects of national populism on local policies and laws. It predicts the consequences of divergent views on a key issue on the lives of local communities.",
+   "approach": "The procedure follows a model that examines the legal and social implications of a polarizing issue, using a combination of historical context, constitutional analysis, and case law to evaluate the constitutionality of laws and policies."
+  },
+  {
+   "work": "W4414436213",
+   "problem": "This work aims to estimate the efficiency of using autonomous technologies to improve safety and reduce costs in a complex, high-risk environment where workers are exposed to hazards such as unstable structures, accidents, and toxic substances.",
+   "approach": "The approach involves comparing the effectiveness of autonomous technologies, such as robots and sensors, with traditional methods to identify areas for improvement and optimize safety and efficiency."
+  },
+  {
+   "work": "W4416421553",
+   "problem": "This research estimates the effect of perceived environmental quality and commitment to social responsibility on the willingness to buy products from a particular brand, with trust in the brand's environmental practices as a key factor. It compares the influence of these factors on buying decisions and finds that some factors have a stronger impact than others.",
+   "approach": "The researchers used a quantitative approach, collecting data from 350 consumers of a particular brand of natural beauty products. They analyzed this data using a statistical method to identify relationships between variables and test hypotheses about the influence of environmental quality and social responsibility on buying decisions."
+  },
+  {
+   "work": "W7110658321",
+   "problem": "This work estimates the usefulness of a training program for healthcare professionals who interact with elderly patients who may have cognitive impairments. It aims to improve their ability to assess and care for these patients.",
+   "approach": "The researchers developed a training program and evaluated its effectiveness by measuring the participants' understanding and skills in caring for patients with cognitive impairments. They also assessed the program's impact on the participants' knowledge of community resources and support systems."
+  },
+  {
+   "work": "W3099180722",
+   "problem": "This work estimates the impact of a specific medical procedure on a patient's brain function, comparing the effects of a particular action on a person's neurological state. It predicts the outcome of a procedure that may cause temporary brain damage.",
+   "approach": "The researchers use a combination of data from multiple sources to make this prediction, including measurements of brain activity and blood flow. They follow a procedure that involves monitoring the patient's brain function before, during, and after the procedure, and adjusting the procedure as needed to minimize harm."
+  },
+  {
+   "work": "W4403870628",
+   "problem": "Estimate the most hazardous substances for individuals with severely impaired kidney function, and identify those that should be avoided or adjusted to prevent harm.",
+   "approach": "Use a systematic search of existing research to identify substances that are likely to accumulate and cause harm in individuals with severely impaired kidney function, and then use a consensus-building process to establish a list of the most hazardous substances."
+  },
+  {
+   "work": "W3119325327",
+   "problem": "This work estimates the level of a protein in two types of tissue samples, comparing the levels in a disease state to a normal state. It predicts the relationship between the protein levels and the growth of new blood vessels in the disease state.",
+   "approach": "The researchers took tissue samples from 15 patients, extracted the genetic material, and used a special test to measure the levels of a specific protein and a related growth factor. They then compared the levels in the disease state to the normal state and looked for patterns."
+  },
+  {
+   "work": "W2950986738",
+   "problem": "This work estimates the number of people who benefited from a government program aimed at promoting social and recreational activities, by comparing data from three different years.",
+   "approach": "It uses historical records to make predictions about the program's impact, and optimizes its effectiveness by analyzing the data from each year."
+  },
+  {
+   "work": "W3157859051",
+   "problem": "This research estimates the presence and abundance of certain types of microorganisms in a community, using data from a variety of sources. It compares these estimates to data from other sources, such as observations of the community's behavior, to improve accuracy.",
+   "approach": "The research uses a combination of machine learning models to analyze data from a type of laboratory equipment that measures the size and properties of individual microorganisms. It follows a two-stage process: first, a model predicts whether a certain type of microorganism is present, and second, a model predicts how abundant it is."
+  },
+  {
+   "work": "W4386259650",
+   "problem": "This research estimates the impact of a severe condition on the body's ability to protect itself from damage, and compares the effects of this condition with a related condition that is also severe. It predicts the outcome of a combination of these two conditions.",
+   "approach": "The researchers used a model to simulate the severe condition, and then studied the effects of this condition and the related condition on the body's protective mechanisms. They measured the levels of certain chemicals in the body to understand the impact of these conditions."
+  },
+  {
+   "work": "W4412794479",
+   "problem": "This work estimates the optimal conditions for combining two types of tissue to work together, predicting how they will interact and affect each other's growth. It compares the effects of different setups to find the best one.",
+   "approach": "The researchers use a technique where they add the two types of tissue to a special container, let it settle, and then remove the container to allow the tissues to interact and grow together. They follow a procedure where they test different setups and choose the one that works best."
+  },
+  {
+   "work": "W3007462275",
+   "problem": "This work estimates the performance of a certain material in a specific application, comparing its properties to those of other materials. It aims to explain how this material can be used to counter a particular force or energy.",
+   "approach": "The procedure involves using data on the material's properties and its performance in various tests to develop a set of guidelines for its use. The approach follows a rule-based model that considers the material's characteristics and the application's requirements."
+  },
+  {
+   "work": "W3163713004",
+   "problem": "This work estimates the effectiveness of a 3D printing project in teaching students about the structure-function relationships of biological entities. It compares the results of different versions of the project, with and without hands-on manipulation, to assess their impact on learning outcomes.",
+   "approach": "The project involves three steps: researching a biological entity, designing a 3D printed learning aid, and presenting a learning module incorporating hands-on manipulation. The approach follows a procedure of designing, testing, and refining the project to improve learning outcomes."
+  },
+  {
+   "work": "W7120698413",
+   "problem": "This research estimates the effectiveness of shared knowledge in empowering a community, compares it to traditional models, and explains how it is created through social interaction and shared communication codes.",
+   "approach": "The study uses a network mapping approach to visualize the relationships between people and non-human elements, and compares the observed knowledge creation model to a specific model, revealing similarities and differences."
+  },
+  {
+   "work": "W4410842184",
+   "problem": "This work estimates the characteristics of 3D perception from 2D images, predicts how objects appear in 3D, and compares these predictions to real-world observations. It aims to optimise the way we understand and interpret 3D visual information.",
+   "approach": "The approach involves creating large, transparent screens using mechanical components and computer technology. It uses computer algorithms to calculate and process visual data, and compares the results to real-world observations of 2D images."
+  },
+  {
+   "work": "W4413214186",
+   "problem": "This research estimates the effect of high levels of a certain protein on the behavior of a type of cell, and compares it to cells from people with low levels of the protein. It also predicts the levels of certain chemicals in the blood of people with high levels of the protein.",
+   "approach": "The researchers collected blood samples from people with high and low levels of the protein, and analyzed the behavior of a specific type of cell from these samples. They used various techniques to measure the behavior of these cells and the levels of certain chemicals in the blood."
+  },
+  {
+   "work": "W4361800032",
+   "problem": "This work aims to extract hidden information about the layers beneath a painting without damaging it, using a low-power energy source to avoid altering the artwork. It also seeks to understand the layering structure of the artwork.",
+   "approach": "The researchers used a technique that combines data analysis and signal processing to gain insight into the hidden layers. They applied this method to a painting during restoration, using data from the painting's temperature changes."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-026",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:40Z",
+ "descriptions": [
+  {
+   "work": "W3206466784",
+   "problem": "A pattern of behavior is identified in individuals seeking specialized services across geographic boundaries, based on personal preferences, health goals, and available options. The frequency and nature of such decisions are compared across different populations and service environments.",
+   "approach": "A structured framework maps decisions made by individuals when selecting services based on perceived benefits, accessibility, and personal alignment. This framework evaluates how external influences and personal characteristics shape choices over time."
+  },
+  {
+   "work": "W4412398125",
+   "problem": "The relationship between household location and access to a local resource is estimated, specifically how proximity influences usage frequency and patterns.",
+   "approach": "Distance metrics are calculated from household locations to the nearest resource node, then modeled using statistical methods that account for spatial clustering and repeated observations over time."
+  },
+  {
+   "work": "W2805518655",
+   "problem": "A set of economic and demographic metrics from 29 administrative regions is examined over time to detect shifts in growth patterns and identify when and how those shifts occur.",
+   "approach": "Time-series data is analyzed using linear trend fitting and statistical tests to detect abrupt changes. Growth rate trajectories are compared across regions to identify periods of structural change, and patterns are used to infer underlying drivers of change in economic and population dynamics."
+  },
+  {
+   "work": "W4414072014",
+   "problem": "A pattern of co-occurring conditions is evaluated to determine whether one condition may be triggered or worsened by treatment for another, based on observed responses over time.",
+   "approach": "A patient's response to a specific intervention is monitored and compared to historical cases. If the intervention suppresses one condition but not another, a different intervention is proposed based on prior outcomes in similar situations."
+  },
+  {
+   "work": "W4382196335",
+   "problem": "A change in a specific amino acid is assessed for its effect on a biological system's response to a key signaling molecule, comparing outcomes across different species and evaluating whether the change alters the system's overall sensitivity or output.",
+   "approach": "A modified version of a protein complex is introduced into different biological systems. The resulting response is measured under controlled conditions, and the total activity is quantified to determine if changes in output stem from altered protein assembly or surface expression."
+  },
+  {
+   "work": "W2992785534",
+   "problem": "Estimate how different routes of contact between humans and chemical agents contribute to internal exposure, especially when exposure occurs through everyday activities, work, or environmental contact.",
+   "approach": "Analyze existing studies to map and quantify how various human interactions with treated environments or substances lead to internal absorption, focusing on underexamined sources like household practices and indirect environmental transfer."
+  },
+  {
+   "work": "W2794588882",
+   "problem": "A procedure is performed to remove a localized, often recurrent, intraluminal mass that has telescoped into an adjacent segment, with the goal of determining whether the mass originates from the mucosal layer and can be safely excised without surgical intervention.",
+   "approach": "A patient is first evaluated with imaging to confirm the mass's location and depth. A reduction technique is applied, followed by a complete removal of the mass using a specialized endoscopic tool under general anesthesia, with real-time monitoring for bleeding and healing."
+  },
+  {
+   "work": "W2884319186",
+   "problem": "A system's performance across multiple objectives—efficiency, safety, and environmental impact—is assessed under varying operating conditions and interdependent subsystem behaviors.",
+   "approach": "A model integrates real-time operational data from auxiliary systems and load variations to simulate how changes in input mix and process parameters affect overall system stability and resource use."
+  },
+  {
+   "work": "W4407933389",
+   "problem": "The process estimates how decisions are made and enforced in interactions between service providers, users, and regulatory bodies, evaluating factors that either support or obstruct fair and effective resolution of disputes.",
+   "approach": "A framework maps the roles and behaviors of participants in service-based interactions, analyzing how rules, expectations, and power dynamics influence outcomes and the consistency of fair treatment across different cases."
+  },
+  {
+   "work": "W2912576600",
+   "problem": "A pattern of inflammation is identified in cartilaginous and connective tissue, characterized by recurrent episodes of redness, swelling, and metabolic activity hotspots, alongside tissue necrosis and immune cell infiltration.",
+   "approach": "A longitudinal assessment tracks changes in tissue metabolism and structural damage over time, using imaging and histological markers to detect inflammatory flares and recovery, with treatment response monitored through repeated scans and clinical symptom resolution."
+  },
+  {
+   "work": "W4238712513",
+   "problem": "A material derived from waste rock layers is evaluated to determine if it can substitute for a scarce natural resource in building applications by comparing its physical and mechanical performance under controlled conditions.",
+   "approach": "The material is processed and tested for key physical traits like particle size distribution, water retention, and strength. Samples are then mixed into construction units, and their performance is measured over time to assess structural suitability."
+  },
+  {
+   "work": "W3215808875",
+   "problem": "A compound is identified and tested for its ability to block communication signals among microorganisms and prevent the formation of structured, protective communities that promote resistance and persistence.",
+   "approach": "The compound is extracted from a plant-based source and evaluated in controlled lab settings using assays that measure inhibition of signal production and suppression of microbial group behavior in response to environmental cues."
+  },
+  {
+   "work": "W2917869155",
+   "problem": "A relationship is estimated between the amount of water bound by a material and the water activity at constant temperature, across a range of environmental conditions.",
+   "approach": "Data from static weight measurements under controlled humidity are fitted to mathematical models to determine binding behavior. Thermodynamic changes during water uptake and release are derived from temperature-dependent equilibrium measurements."
+  },
+  {
+   "work": "W2594318359",
+   "problem": "A material's ability to transfer heat through a thin film attached to a conductive base is estimated from temperature measurements taken over time after a sudden heat input.",
+   "approach": "Temperature signals are fitted to a mathematical model of heat flow through three distinct regions. Parameters are adjusted to minimize the difference between predicted and observed temperature changes using iterative optimization."
+  },
+  {
+   "work": "W4280604004",
+   "problem": "A quantitative relationship is established between an initial condition and a resulting force, where the force is observed to scale linearly with the initial condition across multiple material samples under repeated loading.",
+   "approach": "A linear model is fitted to data points from repeated load cycles, where the force response is expressed as a constant multiplier times the initial state, and the optimal initial state is identified where no residual deformation occurs."
+  },
+  {
+   "work": "W3115296768",
+   "problem": "A long-term trend in vehicle volume is estimated from short-term observations and auxiliary demographic and economic indicators across a region.",
+   "approach": "A growth pattern is derived from daily vehicle counts and population trends, then adjusted using a power-based fit. Future volumes are projected annually, and the resulting load on a transportation corridor is assessed under different lane capacities."
+  },
+  {
+   "work": "W2793129106",
+   "problem": "The frequency of a rare vascular anomaly where a major blood vessel arises from a pulmonary artery branch is estimated in a group of patients with a complex congenital heart and lung condition.",
+   "approach": "Medical records and imaging data are reviewed to identify cases where a major vessel originates from a pulmonary artery branch. The rate of occurrence is computed from the total number of patients and the number of such anomalies observed."
+  },
+  {
+   "work": "W4404609444",
+   "problem": "The probability of detecting a new type of organism in a given area is estimated from repeated observations over time, using patterns in how often and which types of organisms appear in each observation.",
+   "approach": "A model tracks changes in observed patterns across time, identifies which types of organisms are most frequently detected in new samples, and evaluates how sampling effort and timing affect detection rates."
+  },
+  {
+   "work": "W7125507843",
+   "problem": "A system-wide change caused by prolonged anti-inflammatory treatment is assessed for its impact on structural integrity and neural presence within a tissue scaffold. The effect of a low-dose, periodic intervention is evaluated against control and treatment-only conditions to determine its influence on both structural preservation and neural maintenance.",
+   "approach": "A longitudinal analysis is conducted using microscopic and molecular markers to track changes in tissue architecture and neural activity over time. An intervention is applied at regular intervals and its effect is compared across groups to determine whether it reduces deterioration without disrupting neural patterns."
+  },
+  {
+   "work": "W3006949132",
+   "problem": "A quantitative assessment of the volume and value of byproducts from farming operations is performed, comparing their output across time and sectors, and evaluating how they are transformed or disposed of under current practices.",
+   "approach": "A model estimates the total volume of byproducts based on input volumes and known yield ratios, then maps their flow through processing, recovery, or disposal pathways using established technological and economic parameters."
+  }
+ ]
+}

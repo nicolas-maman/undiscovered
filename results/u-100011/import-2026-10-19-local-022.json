@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-022",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.8,
+ "at": "2026-10-20T01:57:40Z",
+ "descriptions": [
+  {
+   "work": "W3201160510",
+   "problem": "A system is evaluated to determine how long-standing human practices influence the growth and resilience of rural economic activities, particularly in relation to local resource use and sustainability.",
+   "approach": "A framework maps historical practices to current economic outcomes, assessing how integration of local experience with modern tools affects productivity, investment, and community-based value creation over time."
+  },
+  {
+   "work": "W2792989585",
+   "problem": "The relative allocation of resources between tangible and intangible services is compared across two distinct population groups, assessing how changes in economic exposure influence spending patterns and shifts in service-oriented consumption behavior.",
+   "approach": "A model tracks how economic integration affects spending decisions by analyzing income distribution, service demand, and regional differences in consumption priorities over time."
+  },
+  {
+   "work": "W2981164734",
+   "problem": "A system estimates how deeply a set of ideas is tied to external observations, by analyzing patterns in how they are interpreted across different contexts and compared to known empirical outcomes.",
+   "approach": "The system maps relationships between abstract concepts and observable phenomena, adjusting its interpretation based on consistency with known data and the coherence of connections across diverse interpretive frameworks."
+  },
+  {
+   "work": "W2936364436",
+   "problem": "Identify persistent gaps in educational frameworks that prevent institutions from aligning with evolving labor market demands and future economic needs.",
+   "approach": "Analyze long-term educational design patterns through practitioner experience and institutional reform history to detect recurring structural flaws requiring systemic revision."
+  },
+  {
+   "work": "W3095018840",
+   "problem": "The resistance of a material to surface deformation under pressure and gradual surface loss is evaluated across varying proportions of added particles.",
+   "approach": "A model is built using a base material and incremental amounts of a hard, wear-resistant additive. Performance is tested under controlled conditions, and results are analyzed to determine how the addition level influences resistance to surface damage and deformation."
+  },
+  {
+   "work": "W3161312533",
+   "problem": "A model predicts how preferences evolve over time across different types of resources, balancing consumption choices that vary in nature and timing. It determines when and how decisions today affect future choices, based on observed patterns in resource use and time preferences.",
+   "approach": "The model evaluates how choices across time and types of resources are linked through a consistent rule. If choices are made uniformly across time or follow a simple power law, the pattern is stable and predictable across all time periods."
+  },
+  {
+   "work": "W4412712776",
+   "problem": "The activity of digestive proteins in bodily fluids is measured over time across different life stages and delivery conditions, comparing changes in secretion levels and their variation based on delivery timing and method.",
+   "approach": "Proteins are detected using substrate-specific reactions that measure enzymatic breakdown rates; data are collected from biological samples and analyzed across groups to identify patterns in secretion dynamics and temporal shifts."
+  },
+  {
+   "work": "W3013205273",
+   "problem": "A system's output is regulated in response to variable input conditions, with real-time adjustments made to maintain optimal performance across a range of operating speeds and environmental loads.",
+   "approach": "A feedback loop monitors input conditions and adjusts a key control parameter dynamically. When inputs fall below a threshold, a tracking mechanism engages to follow the highest possible output. When inputs exceed that threshold, a mechanical damping action is applied to prevent overload."
+  },
+  {
+   "work": "W3113695700",
+   "problem": "A dynamic physiological state is monitored over time, with key indicators showing abrupt and divergent trends. The system's response to an intervention is evaluated against baseline and expected outcomes to determine effectiveness.",
+   "approach": "A longitudinal tracking system records and compares vital parameters. An intervention is introduced and its impact is assessed through changes in parameter stability and recovery patterns over time."
+  },
+  {
+   "work": "W4402274228",
+   "problem": "A quantitative relationship is established between the concentration of specific bioactive compounds in a plant material and the strength of its ability to inhibit a key enzyme involved in a biological process affecting neural function.",
+   "approach": "Samples are prepared under varying conditions, and their compound levels are measured alongside enzyme suppression data. A statistical model links compound concentration to inhibition potency, identifying optimal conditions for maximizing biological effect."
+  },
+  {
+   "work": "W4406403577",
+   "problem": "A system is developed to forecast the likelihood of a severe internal infection based on patient symptoms, vital signs, and time-based clinical observations.",
+   "approach": "The system analyzes patterns in real-time health data over time, applying statistical rules to identify early warning signals, then adjusts predictions as new observations are added to improve accuracy."
+  },
+  {
+   "work": "W4400293379",
+   "problem": "A group of individuals consumes a specific plant-based substance at two different dosages over a set period and evaluates changes in their daily energy levels, mental clarity, and overall physical sensations before and after consumption.",
+   "approach": "Participants are assigned to two dosage groups and complete structured self-assessments at baseline and after a fixed duration. Responses are compared across groups to determine the relative impact of dosage size on perceived physiological and cognitive outcomes."
+  },
+  {
+   "work": "W2989856772",
+   "problem": "A method is developed to reconstruct medium-sized tissue losses in regions with complex surface contours, using adjacent tissue to restore natural shape and continuity without requiring external grafts or staged procedures.",
+   "approach": "A single-step procedure transfers tissue from a nearby region, preserving its original boundaries and vascular supply, using a hybrid design that combines multiple vascular pathways to ensure stable and durable tissue survival."
+  },
+  {
+   "work": "W2889222533",
+   "problem": "A system estimates how strongly individuals are likely to choose products aligned with environmental values, based on their beliefs about those products' quality, trustworthiness, and overall benefit.",
+   "approach": "The model uses structured surveys to collect responses from users, then applies statistical analysis to test relationships between perceived attributes and behavioral tendencies, identifying key drivers through a validated framework."
+  },
+  {
+   "work": "W7215212764",
+   "problem": "A pattern of expressive variation in speech and storytelling is analyzed to understand how it shapes character depth and societal critique within a cultural context.",
+   "approach": "Speech patterns are mapped across characters and settings, then evaluated for consistency, irony, and social implications, using contextual cues to infer underlying intentions and audience effects."
+  },
+  {
+   "work": "W4413792862",
+   "problem": "A pattern of discrepancy is observed between external observations of an individual's engagement in structured environments and their internal sense of belonging and progress within those settings.",
+   "approach": "A framework evaluates reported behaviors, achievements, and emotional responses across multiple sources to detect mismatches. It then maps these to internal self-reports and adjusts weights based on consistency across time and context to infer underlying emotional and cognitive alignment."
+  },
+  {
+   "work": "W3157849906",
+   "problem": "A system reconstructs a three-dimensional scene by combining views from two distinct depth layers, producing a more immersive and detailed spatial representation than standard methods.",
+   "approach": "A structured optical element divides incoming light into two spatial patterns, each focused on a different depth range, then merges the resulting views into a unified spatial output using alignment and spatial mapping."
+  },
+  {
+   "work": "W4412159439",
+   "problem": "A pattern of collective behavior is analyzed to understand how a single event triggers widespread public response and organizational change within an educational institution.",
+   "approach": "An algorithm maps the spread of content across digital networks, tracks the rise of shared symbols, and correlates user engagement with shifts in institutional policies and public discourse over time."
+  },
+  {
+   "work": "W3012436383",
+   "problem": "A material is designed to maintain structural integrity under heat and mechanical stress, with properties such as solubility, flexibility, and resistance to flame being evaluated across multiple variants.",
+   "approach": "A series of compounds are synthesized by reacting a diamine precursor with diverse cyclic anhydride monomers, then heated to form cross-linked networks. Physical and thermal performance is assessed through controlled heating, mechanical testing, and solvent compatibility trials."
+  },
+  {
+   "work": "W2796056200",
+   "problem": "The rate at which a material undergoes internal structural transformation is estimated over time, based on changes in its physical properties observed across multiple time points.",
+   "approach": "A dynamic simulation models how fluid interactions with a porous structure evolve, using time-varying inputs to track how internal forces shift as the material develops new physical characteristics."
+  }
+ ]
+}

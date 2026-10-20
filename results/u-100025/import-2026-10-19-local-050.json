@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-050",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:43Z",
+ "descriptions": [
+  {
+   "work": "W7134551027",
+   "problem": "The process determines how changes in a material's composition and processing conditions affect the resulting microstructure and physical performance, especially in achieving a dense, uniform structure with minimal defects.",
+   "approach": "A set of controlled conditions is varied systematically, and the resulting material properties are measured. Additives are introduced to influence phase development, and the outcomes are analyzed to identify optimal conditions for structural integrity and consistency."
+  },
+  {
+   "work": "W2953022266",
+   "problem": "A system detects and evaluates deviations in routine behavior that occur without conscious intent, assessing whether an action was intentionally performed or executed unintentionally due to habitual or automatic processes.",
+   "approach": "The system monitors behavioral sequences over time, comparing observed actions to expected patterns, and flags inconsistencies that suggest a shift from deliberate control to habitual execution."
+  },
+  {
+   "work": "W4412512179",
+   "problem": "A system is designed to create complex ring-based molecules with specific functional groups at defined positions, where one group can both participate in and inhibit a key reaction pathway, and the outcome is evaluated based on structural and optical properties.",
+   "approach": "A reaction combines three components to form a ring structure, but when a reactive formyl group is placed at a specific site, a side reaction occurs, diverting the pathway to form a different ring system with altered properties."
+  },
+  {
+   "work": "W4313365531",
+   "problem": "A system estimates the time between symptom onset and diagnosis, and compares patient recovery outcomes across two diagnostic strategies based on clinical and treatment records.",
+   "approach": "It analyzes patient data to compute diagnostic delays and visual outcomes, then compares these across groups using culture-based and imaging-based diagnostic methods to determine which leads to faster diagnosis and better recovery."
+  },
+  {
+   "work": "W4285741428",
+   "problem": "A rate is estimated for a behavior pattern involving immersive, emotionally charged mental simulations that interfere with daily functioning, based on self-reported experiences and clinical validation in diverse populations.",
+   "approach": "Participants report on the frequency and intensity of such simulations using a standardized scale. Those meeting a threshold are assessed through structured interviews to confirm the presence and impact of the behavior, adjusting the final estimate based on interview outcomes."
+  },
+  {
+   "work": "W4206304682",
+   "problem": "A system of collective beliefs and spatial patterns is analyzed to understand how human interactions and environmental contexts co-evolve over time, producing observable behaviors and societal responses.",
+   "approach": "A model maps interactions between people and places using observed patterns in daily decisions, identifying feedback loops where environment and behavior mutually influence each other over time."
+  },
+  {
+   "work": "W4404263443",
+   "problem": "A chemical pathway is explored that converts carbon dioxide and a reactive nitrogen-containing compound into a stable, cyclic product through a transient intermediate.",
+   "approach": "A bimolecular reaction is initiated by a phosphorus-based catalyst, forming a strained ring structure that undergoes rearrangement, followed by release of a stable product and regeneration of the catalyst."
+  },
+  {
+   "work": "W4389327131",
+   "problem": "A scoring system is developed to evaluate how strongly individuals perceive themselves as effective models for promoting healthy behaviors in community settings.",
+   "approach": "Data from a group of practitioners is collected and analyzed using statistical tests to assess associations between personal characteristics and self-reported health behavior influence. A scale is created and validated through repeated measurement to ensure consistency and reliability."
+  },
+  {
+   "work": "W3024254079",
+   "problem": "A treatment's impact on healing progression is assessed over time by measuring surface reduction in two comparable areas of a lesion under different intervention protocols.",
+   "approach": "Two identical areas are assigned to distinct intervention methods. Surface changes are monitored at regular intervals using visual records and software analysis. Differences in reduction rates are compared across time points to evaluate relative effectiveness."
+  },
+  {
+   "work": "W2783523651",
+   "problem": "A system is analyzed to determine how different actors—based on resources, location, and social networks—gain or lose opportunity to be seen and heard in public discourse.",
+   "approach": "A model maps how access to platforms and communication tools influences the frequency and reach of individual expressions, using patterns of interaction and participation over time to identify structural biases in representation."
+  },
+  {
+   "work": "W4414046387",
+   "problem": "The protective effect of a single dose of a weakened pathogen is assessed against a virulent version of the same pathogen, using biological indicators of infection and immune response.",
+   "approach": "Animals are exposed to a weakened version of the pathogen to trigger an immune response. Later, they are challenged with the full-strength version. Disease progression, immune markers, and viral load in blood are monitored and compared across groups."
+  },
+  {
+   "work": "W4232631753",
+   "problem": "A system is inferred that maps how complex interactions among entities grow in scale and variety over time, based on patterns observed in large-scale, interconnected behaviors.",
+   "approach": "A model iteratively clusters and traces patterns across vast networks of interacting units, identifying recurring structures and emergent behaviors that persist under varying conditions of input and connection density."
+  },
+  {
+   "work": "W4293770512",
+   "problem": "A method is developed to embed moral and spiritual principles into the teaching of scientific concepts, ensuring that learning fosters both intellectual understanding and a deeper connection to a higher purpose.",
+   "approach": "Scientific content is taught by referencing foundational texts and traditional teachings, then using guided inquiry and dialogue to help learners connect factual knowledge with ethical and existential dimensions."
+  },
+  {
+   "work": "W4210527089",
+   "problem": "A pattern of disease spread is tracked across a geographic area using repeated observations from multiple ownership groups. The frequency and location of cases are analyzed to identify high-risk zones and potential sources of infection.",
+   "approach": "Samples are collected from various population segments and tested for the presence of a pathogen. Results are aggregated over time and space to detect trends, and risk factors are evaluated to inform preventive actions."
+  },
+  {
+   "work": "W3186740225",
+   "problem": "A material's ability to retain structural integrity under high-temperature exposure is evaluated across multiple compositional variants to identify the most effective formulation.",
+   "approach": "A layered formulation is applied to a surface, with variable proportions of two components adjusted in a controlled environment. Performance is measured under sustained thermal stress, and the variant demonstrating optimal stability under those conditions is selected."
+  },
+  {
+   "work": "W4318253764",
+   "problem": "A spatial model's accuracy is assessed against a high-resolution reference dataset across diverse terrain types, measuring deviations in elevation values and analyzing how these errors relate to landscape features and orientation.",
+   "approach": "Elevation differences are computed across regions with distinct surface characteristics. Error patterns are mapped and grouped by terrain type, slope direction, and elevation bands to identify consistent biases and propose simple adjustments for improvement."
+  },
+  {
+   "work": "W3021522836",
+   "problem": "The influence of two additives on the flow behavior and structural integrity of a polymer matrix is assessed, with comparisons made across different processing conditions and final form stability.",
+   "approach": "A blend is formed by incorporating the additives into the base material, then subjected to controlled deformation and stress testing under varying temperatures. Results are evaluated based on flow resistance, shape retention, and resistance to thermal degradation during fabrication."
+  },
+  {
+   "work": "W4205125975",
+   "problem": "A score is estimated for each individual based on self-reported experiences reflecting access to resources, health, and stability. This score is compared across individuals to assess its relationship with health outcomes and other measurable factors like income, education, and physical condition.",
+   "approach": "A short, structured set of questions is used to gather self-reported data. The responses are processed using a standardized scoring system that assigns a value reflecting the level of deprivation, based on patterns in the data and known associations with health outcomes."
+  },
+  {
+   "work": "W4408158242",
+   "problem": "A system estimates the likelihood of a disease spreading beyond a primary site based on circulating cell counts and clinical indicators such as tumor stage and lymph node involvement.",
+   "approach": "It uses a statistical model that assigns weights to cell levels and patient features, then combines them into a score. This score is evaluated across repeated data splits to ensure consistent performance in predicting disease spread risk."
+  },
+  {
+   "work": "W2784695695",
+   "problem": "A system observes and tracks patterns of activity across interconnected cellular units over time, aiming to detect, classify, and respond to changes in behavior under both normal and disrupted conditions.",
+   "approach": "A sensor network continuously records signals from individual units and their collective interactions, applying real-time analysis to identify structural or functional shifts, then adjusts stimulation or feedback based on observed dynamics."
+  }
+ ]
+}

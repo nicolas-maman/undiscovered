@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-047",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:43Z",
+ "descriptions": [
+  {
+   "work": "W4416203887",
+   "problem": "This work estimates the effectiveness of economic transition programmes in southern West Virginia, comparing their outcomes to a baseline of no transition. It also predicts the impact of these programmes on local communities and optimises the allocation of resources to achieve the best results.",
+   "approach": "The authors use historical data and personal reflections to understand the shift from contentious to uncontentious economic transition efforts, blending discussion of funding programmes with contextual analysis."
+  },
+  {
+   "work": "W4311169573",
+   "problem": "This work estimates the origin of a mysterious object from another star system, compares it to other objects, and optimizes the likelihood of life being transferred between systems. It also explains the nature of the object and the possibility of life transfer.",
+   "approach": "The researchers review various hypotheses about the object's origin, using observations and evidence from multiple objects. They use a process of elimination and falsifiability to determine the most plausible explanation."
+  },
+  {
+   "work": "W4402515375",
+   "problem": "This work estimates the performance of a system that manages the balance of energy supply and demand, comparing different scenarios to determine the best outcome. It predicts how the system will behave under various conditions and optimizes the results to achieve the best possible outcome.",
+   "approach": "The system uses a mathematical model to simulate different scenarios and test the performance of a proposed solution. It follows a procedure that involves optimizing a complex system using a specific algorithm to achieve the best possible outcome."
+  },
+  {
+   "work": "W3177034450",
+   "problem": "This work aims to extract useful information from unstructured text about common health conditions, and to improve the accuracy of codes used to describe these conditions. It does this by comparing the text to a set of known codes and predicting which codes are most likely to be correct.",
+   "approach": "The approach involves using a combination of old and new techniques to analyze the text, and then using a statistical model to predict the correct codes. The model is tested on two different sets of data to see how well it generalizes."
+  },
+  {
+   "work": "W4205276400",
+   "problem": "This work estimates the likelihood of an airline being a major global carrier based on its fleet size, number of international destinations, and continents served. It aims to provide a basis for assessing an airline's global reach and potential future status.",
+   "approach": "The approach involves using three key metrics to gauge an airline's global reach, ranking airlines based on these metrics, and comparing the airline's performance to its competitors."
+  },
+  {
+   "work": "W3112068822",
+   "problem": "This work aims to create a tool to evaluate the quality of environments and detect early signs of environmental stress caused by human activity. It estimates the impact of human presence on natural environments and predicts the effects of increasing human activity.",
+   "approach": "The analysis uses a combination of acoustic and ecological indices to distinguish between different environments. It follows a procedure of data analysis and comparison to identify patterns and correlations between human-generated noise and species abundance."
+  },
+  {
+   "work": "W4412672191",
+   "problem": "This work estimates the total annual budget of 16 large programs that help millions of people, and compares the budget from one year to the next. It also explains changes in the programs' budgets over time.",
+   "approach": "The work uses preliminary data from a large database to calculate the budget, and then compares the budget from one year to the next. It also looks at recent research reports that provide additional information about the programs."
+  },
+  {
+   "work": "W3014996114",
+   "problem": "This work estimates the structure of a community of microorganisms in a body of water, comparing different samples to identify the factors that influence this structure. It predicts the proportions of different types of microorganisms in these samples.",
+   "approach": "The researchers use data from multiple samples to identify the key factors that affect the structure of these microorganisms. They then use these factors to predict the proportions of different types of microorganisms in new samples."
+  },
+  {
+   "work": "W2805422296",
+   "problem": "This work estimates the efficiency of a system that displays images to a user's eyes. It predicts how well the system will work for different viewing angles and pixel sizes.",
+   "approach": "The system uses a special kind of image display that concentrates energy onto a small area. It records and plays back images in a way that varies across the surface, causing a decrease in efficiency. A revised design is presented to improve efficiency and image quality."
+  },
+  {
+   "work": "W4410936582",
+   "problem": "This study aims to determine how different methods of managing a group of young, healthy animals affect their growth and productivity. It estimates the impact of these methods on their weight, efficiency, and economic value.",
+   "approach": "The researchers used a controlled experiment with three groups of animals, each with a different method of managing their food intake. They measured the animals' weight, efficiency, and economic value over a set period of time."
+  },
+  {
+   "work": "W4229625393",
+   "problem": "This work estimates the likelihood of a pest being present on a certain type of object, based on characteristics of the object and the pest. It predicts the most likely pest and provides countermeasures.",
+   "approach": "The approach uses a mathematical model to calculate the probability of a pest being present, based on evidence from the object. It follows a procedure of calculating probabilities and making decisions based on those probabilities."
+  },
+  {
+   "work": "W4387157228",
+   "problem": "This work aims to collect and compare information on various methods used to help a rare, skin condition that causes collagen degeneration. It estimates the effectiveness of different methods and identifies the most promising ones.",
+   "approach": "The researchers searched for studies on various methods used to help this condition, and then analyzed the results to identify the most effective methods. They looked at case reports and series, but wanted more randomized controlled trials to compare the effectiveness of different methods."
+  },
+  {
+   "work": "W4401248562",
+   "problem": "This work aims to estimate the effectiveness of a specific type of food in helping a common condition in young children, and to compare the results of different studies to provide evidence-based guidance. It also aims to explain the benefits of this food in a way that can be applied to real-world situations.",
+   "approach": "The researchers used a systematic search of existing studies to gather data, and then analyzed the results using a statistical software program to identify patterns and trends. They compared the results of different studies to draw conclusions about the effectiveness of this food."
+  },
+  {
+   "work": "W4376527692",
+   "problem": "This research aims to estimate the effectiveness of a learning plan in promoting deep learning, predicts the impact of different design elements on student outcomes, compares the results of various approaches to learning plan design, optimizes the learning process by identifying the most effective elements, and explains the underlying principles of deep learning.",
+   "approach": "The study uses a framework that combines learning objectives, knowledge structure, problem design, scenario creation, reflection, and evaluation to create a logical process for deep learning. The approach follows a problem-oriented guide with an ideological development purpose."
+  },
+  {
+   "work": "W4321268562",
+   "problem": "This research aims to explain the importance of studying the past development of a particular cultural phenomenon, which was shaped by interactions with other cultures, and to correct common misconceptions about its place in the broader cultural landscape.",
+   "approach": "The researcher uses a comparative approach, analyzing the cultural phenomenon in question alongside other similar phenomena from different cultural contexts, and presenting the findings in a way that avoids oversimplification or bias."
+  },
+  {
+   "work": "W4226284551",
+   "problem": "This research estimates and compares the quality of a certain environment over time, using data from multiple sampling points. It aims to identify changes and improvements in the environment's condition.",
+   "approach": "The study uses data from 13 sampling points to compare the quality of the environment over three time periods: a recent period, a pre-period, and an eleven-year trend. The data is analyzed using statistical methods to identify changes and improvements."
+  },
+  {
+   "work": "W2899755180",
+   "problem": "This work estimates the impact of delays on the overall duration of a treatment on the survival of individuals with a specific type of brain cancer. It compares the survival outcomes of individuals who complete the treatment within a certain timeframe to those who experience delays.",
+   "approach": "The researchers used a large dataset to identify a threshold for the treatment duration. They then analyzed the data to determine the relationship between the treatment duration and the survival outcomes."
+  },
+  {
+   "work": "W2995120552",
+   "problem": "An estimate is made of the strength of a foundation system, which is compared to a set of pre-existing data to determine its suitability for a specific application. The goal is to optimise the design of the foundation system to meet the required conditions.",
+   "approach": "A mathematical model is used to calculate the strength of the foundation system, following a series of steps that involve inputting data on the properties of the underlying material and the loads it will bear. The model is then compared to a set of pre-existing data to validate its results."
+  },
+  {
+   "work": "W4396573968",
+   "problem": "This work estimates the behavior of individual or cells under various mechanisms that push them apart, comparing the results to understand how these mechanisms affect their movement. It also predicts how these mechanisms will behave in different scenarios.",
+   "approach": "The researchers use a mathematical model to study the behavior of these mechanisms, following a procedure that involves analyzing different types of interactions between individual or cells, and comparing the results to understand the underlying mechanisms."
+  },
+  {
+   "work": "W4308554571",
+   "problem": "This research estimates the frequency of a certain condition in a population compared to a healthy group, and identifies factors that contribute to this condition. It also predicts the risk of developing a related condition based on the presence of this condition.",
+   "approach": "The study uses data from a population to identify the relationship between a specific nutrient and the risk of developing a related condition. It follows a procedure of data collection, analysis, and comparison to draw conclusions about the relationship."
+  }
+ ]
+}

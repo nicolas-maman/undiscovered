@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-054",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:44Z",
+ "descriptions": [
+  {
+   "work": "W3126764054",
+   "problem": "A new fused ring structure is designed and synthesized, with its biological effect measured across multiple cancer cell types to assess its ability to inhibit uncontrolled cell growth.",
+   "approach": "A reaction pathway is reversed to build the target structure efficiently, and the resulting compounds are evaluated for their impact on cell survival under conditions mimicking disease progression."
+  },
+  {
+   "work": "W3045613235",
+   "problem": "A system is designed to synchronize multiple remote sensors to measure phase differences in signals over time, enabling precise spatial mapping of electromagnetic waves. The timing accuracy and stability are evaluated across varying environmental conditions and signal propagation delays.",
+   "approach": "A timing network is constructed using stable oscillators and distributed feedback mechanisms. Phase coherence is maintained through real-time error correction and continuous validation against a reference signal under dynamic conditions."
+  },
+  {
+   "work": "W7217535973",
+   "problem": "A pattern of research interest is identified across time and topics, where specific themes cluster and shift in prominence based on emerging trends and technological advancements.",
+   "approach": "Data from published studies is collected and analyzed by grouping related topics based on their co-occurrence and citation patterns, revealing evolving focus areas and emerging interdisciplinary directions over a defined period."
+  },
+  {
+   "work": "W4402555037",
+   "problem": "A single, prolonged episode of localized swelling in the limbs is observed alongside a rise in a type of white blood cell count, occurring after a viral illness with known acute onset and recovery.",
+   "approach": "A clinical timeline is constructed from symptom onset and laboratory markers, and the response to a short-term anti-inflammatory treatment is evaluated to determine if the swelling and cellular response are linked to the illness and resolve with intervention."
+  },
+  {
+   "work": "W7197801253",
+   "problem": "A system identifies how internal psychological states influence human behavior and decision-making, particularly in response to incentives, fears, and desires. It analyzes how external stimuli can shape actions by exploiting vulnerabilities in perception and motivation.",
+   "approach": "A model maps behavioral patterns to underlying mental states and external triggers. It applies rules to simulate how incentives, emotional responses, and situational pressures can shift individual choices over time."
+  },
+  {
+   "work": "W4402654641",
+   "problem": "A rare, slowly progressing tumor is identified in a patient with persistent digestive blockage and unexplained systemic blood loss, despite normal responses to common gastrointestinal triggers.",
+   "approach": "Imaging detects a localized mass causing mechanical disruption of the digestive tract. Surgical exploration confirms the mass, and histological analysis determines its cellular characteristics, guiding a comprehensive resection and long-term monitoring plan."
+  },
+  {
+   "work": "W2980968956",
+   "problem": "A system estimates and corrects timing misalignments between incoming data and a reference signal to ensure accurate reception at high speed, using low energy per bit.",
+   "approach": "It uses a phase reference midway between two orthogonal signal states to realign data, applying a digital phase adjustment to maintain synchronization across varying signal conditions."
+  },
+  {
+   "work": "W4411546582",
+   "problem": "A pattern of systemic symptoms is identified in two individuals, including early onset of metabolic disease and distinctive physical features, and is linked to specific genetic variants through analysis of DNA sequence data.",
+   "approach": "Genomic data is scanned across all protein-coding regions to detect rare, likely causative variants; these variants are then correlated with clinical symptoms to establish a biological association and infer disease mechanism."
+  },
+  {
+   "work": "W4296841668",
+   "problem": "A system of decision-making is analyzed where resource allocation depends on incentives and institutional rules, and the outcomes of different control mechanisms are compared across real-world settings.",
+   "approach": "A set of rules defines how actors respond to rewards and penalties within a structured environment, and the resulting behaviors are simulated under varying conditions to predict system-wide effects."
+  },
+  {
+   "work": "W4292243094",
+   "problem": "A pattern of human activity across different physical settings is analyzed to determine how shifts in routine and environment affect productivity and decision-making during a period of widespread disruption.",
+   "approach": "A structured survey collects self-reported data on location preferences and activity patterns over time, then compares trends across regions with differing levels of flexibility in daily operations."
+  },
+  {
+   "work": "W2962774937",
+   "problem": "A pattern of progressive motor weakness and sensory disturbances is observed over time, with symptoms worsening and new pain responses emerging in response to stimuli.",
+   "approach": "A longitudinal imaging study tracks structural changes in neural pathways and surrounding tissues, using statistical modeling to correlate symptom onset with anatomical shifts and treatment response over time."
+  },
+  {
+   "work": "W3043463087",
+   "problem": "A system is evaluated to determine how effectively it can deliver a biological agent to a specific tissue layer and modulate local inflammation through targeted molecular interactions.",
+   "approach": "A delivery mechanism is designed to carry a therapeutic agent directly to a diseased tissue interface, where it is released in response to local biochemical cues, enabling precise regulation of inflammatory signals and minimizing off-target effects."
+  },
+  {
+   "work": "W4214517556",
+   "problem": "A rare condition in young individuals is identified through tissue examination, where a specific pattern of cellular changes is detected early, often before symptoms become severe. The goal is to predict the likelihood of a poor outcome based on the presence and characteristics of this pattern.",
+   "approach": "A model analyzes microscopic images of tissue samples to detect a distinct cellular arrangement. It then evaluates the pattern's consistency and spatial distribution to assess the risk of adverse progression."
+  },
+  {
+   "work": "W3017194250",
+   "problem": "A system's operational regimes are determined by monitoring how much energy is dissipated and transferred under varying conditions, based on real-time measurements of internal energy distribution and surface exchange rates.",
+   "approach": "A computational model simulates energy flow through a layered material under motion, using discrete heat sources to represent friction. It evaluates performance across different load and speed combinations, adjusting material property values dynamically to match observed energy transfer behavior."
+  },
+  {
+   "work": "W4389948917",
+   "problem": "A system estimates the spatial distribution and behavior of underground resources to support decision-making across exploration, planning, and operations using 3D representations of subsurface structures and material properties.",
+   "approach": "It integrates historical and real-time observations into a unified 3D model, simulates various development sequences, evaluates risks and costs, and selects optimal operational strategies based on predictive outcomes and performance metrics."
+  },
+  {
+   "work": "W4296795917",
+   "problem": "A system observes changes in service delivery patterns and community demand following a widespread disruption event, estimating how operations adapt in response to new constraints and opportunities.",
+   "approach": "A set of operators reports on shifts in service volume, delivery methods, and operational costs; responses are aggregated and analyzed to identify trends in demand and operational flexibility across different community settings."
+  },
+  {
+   "work": "W4411405822",
+   "problem": "A material's strength and resistance to bacterial growth are evaluated under varying reinforcement levels and internal structural designs to determine optimal performance for tissue repair applications.",
+   "approach": "A set of layered, porous structures is fabricated with different filler concentrations and internal geometries. Performance is assessed through stress response, degradation behavior, and surface fracture analysis under controlled environmental conditions."
+  },
+  {
+   "work": "W4417364503",
+   "problem": "A set of stakeholders is surveyed to assess the potential for a growing economic activity centered on personal and physical well-being, based on local environmental and lifestyle factors.",
+   "approach": "Data is collected through structured interviews with a diverse group of individuals, then analyzed using summary statistics to determine consensus on the expected benefits of a new economic model driven by natural resources and individual health priorities."
+  },
+  {
+   "work": "W4398155811",
+   "problem": "A model estimates the likelihood of a medical complication worsening over time based on patient characteristics and procedural factors, comparing outcomes across different risk profiles using observed patterns in clinical data.",
+   "approach": "The model evaluates multiple patient attributes over time, plots their influence as evolving trends, and assigns risk scores that reflect the probability of a negative outcome worsening, using statistical thresholds to guide prediction."
+  },
+  {
+   "work": "W3113283785",
+   "problem": "The proportion of health facilities offering emergency psychiatric support and substance use interventions is estimated over time, comparing shifts in service provision across different types of care settings.",
+   "approach": "A statistical model analyzes trends in service availability by fitting observed rates to time-based patterns, adjusting for facility characteristics and regional variations to detect significant changes in service delivery."
+  }
+ ]
+}

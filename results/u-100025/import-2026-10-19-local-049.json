@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-049",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T01:57:43Z",
+ "descriptions": [
+  {
+   "work": "W7134551027",
+   "problem": "This work aims to optimise the properties of ceramic materials by adjusting their composition and processing conditions. It estimates the required properties of the materials and compares them to the existing ones.",
+   "approach": "The researchers use a combination of theoretical calculations and experimental tests to study the effects of different additives on the properties of the materials. They follow a procedure that involves synthesizing the necessary phases from raw materials and adjusting the processing conditions to achieve the desired properties."
+  },
+  {
+   "work": "W2953022266",
+   "problem": "This work estimates the likelihood of a person performing a specific action (e.g., putting on clothes) without conscious intention, and compares it to the likelihood of the same action being performed with conscious intention. It also explains why this might happen.",
+   "approach": "The researcher uses a combination of data from past experiences (e.g., past actions, observations of others) and evidence from their own observations of their own behavior to make these estimates and comparisons."
+  },
+  {
+   "work": "W4412512179",
+   "problem": "This work estimates the synthesis of a specific type of molecule from commercially available reagents, predicts the yield of the reaction, and compares the results to previous methods. It also explains the challenges in preparing a specific type of molecule with a particular functional group.",
+   "approach": "The procedure involves combining the reagents in a mixture of water and methanol, with the addition of a catalyst, to facilitate the reaction. The reaction is optimized by adjusting the conditions to increase the yield of the desired molecule."
+  },
+  {
+   "work": "W4313365531",
+   "problem": "This study compares the outcomes of patients with a certain eye infection, comparing those who were diagnosed and treated with or without the use of a special imaging technique. The goal is to determine if this technique can help diagnose the infection more quickly and improve patient outcomes.",
+   "approach": "The researchers looked back at the medical records of 23 patients who had the infection and compared the time it took to diagnose the infection, the patient's vision, and the need for surgery. They used a special imaging technique to help diagnose the infection in some patients, and compared the results to those who were diagnosed based on other methods."
+  },
+  {
+   "work": "W4285741428",
+   "problem": "This research estimates the frequency of a certain type of excessive, narrative, emotional fantasy activity in a large group of people, and compares it to a control group to see if there is a significant difference. It also tries to explain why this activity might be more common in certain age groups.",
+   "approach": "The researchers use a combination of self-reported data and clinical interviews to gather information. They then analyze the data to see if it supports the idea that this activity is a legitimate psychological phenomenon, and if so, what its characteristics might be."
+  },
+  {
+   "work": "W4206304682",
+   "problem": "This work estimates the impact of daily experiences on the collective understanding of a shared concept, which is shaped by the interactions of three key aspects: the physical environment, common sense, and social atmosphere. It compares these aspects to understand the complexity and instability of this concept.",
+   "approach": "The work uses a combination of semantic analysis and case studies to examine the relationships between these aspects. It follows a procedure that involves identifying patterns and meanings in the data, and then using these insights to anticipate the behavior of the concept."
+  },
+  {
+   "work": "W4404263443",
+   "problem": "This work estimates the rate of a chemical reaction between a gas (CO2) and a compound that can form a new type of molecule, using data from experiments. It compares the results of these experiments to predict the outcome of the reaction.",
+   "approach": "The researchers used a combination of data from experiments and mathematical models to understand the reaction. They applied a procedure that involves reacting the gas with the compound, then analyzing the resulting molecules to identify the key intermediate in the reaction."
+  },
+  {
+   "work": "W4389327131",
+   "problem": "This work estimates and predicts the level of self-perception as a role model for health promotion among a specific group, comparing it to their health practices and social characteristics. It aims to explain the relationship between these factors and provide recommendations for improving health promotion programs.",
+   "approach": "The study uses a direct interview approach to collect data from a selected group, analyzing the results using statistical tests to identify associations and correlations between variables."
+  },
+  {
+   "work": "W3024254079",
+   "problem": "This study aims to determine which method is more effective in healing a certain type of injury, and whether one method is better than the other in terms of healing speed and quality. It estimates the healing speed of two different methods over time.",
+   "approach": "The study uses a simple procedure: it divides the injured area into two parts, applies one method to one part and the other method to the other part, and then measures the healing progress over time using photographs and software."
+  },
+  {
+   "work": "W2783523651",
+   "problem": "This work estimates the potential of a particular platform to facilitate social engagement and activism, but notes that this potential is hindered by unequal access to its benefits. It compares the effectiveness of this platform in different contexts.",
+   "approach": "The study uses a theoretical framework to explore the relationship between a particular economic system and the ability of individuals to express themselves and be heard. It follows a procedure of first examining the potential for this platform to facilitate social engagement, and then analyzing how unequal access to its benefits affects its effectiveness."
+  },
+  {
+   "work": "W4414046387",
+   "problem": "This work estimates the effectiveness of a single immunization with a weakened virus against infection with a similar, more virulent virus, and compares the outcomes in vaccinated and unvaccinated groups. It aims to explain why a particular vaccine candidate failed to protect against a specific disease.",
+   "approach": "The researchers used a weakened virus to immunize a group of animals, then challenged them with a more virulent version of the same virus to see how their immune systems responded. They measured the animals' immune responses and clinical signs to determine the vaccine's effectiveness."
+  },
+  {
+   "work": "W4232631753",
+   "problem": "This work estimates the diversity of social life in a large system, comparing it to the complexity of the system's interactions. It aims to explain whether the diversity is a result of the system's actions or a necessary illusion.",
+   "approach": "The approach involves combining data from various sources to understand the relationships between the system's components and the diversity of social life. It uses a rule-based model to identify patterns and make predictions about the system's behavior."
+  },
+  {
+   "work": "W4293770512",
+   "problem": "This research aims to describe how to combine two seemingly separate concepts: the pursuit of knowledge (science) and the understanding of a higher power (spirituality). It seeks to explain how to integrate these concepts in a way that is both intellectually stimulating and spiritually fulfilling.",
+   "approach": "The researcher uses a qualitative approach, gathering data through observation, interviews, and documentation. They then analyze this data using a specific method to identify patterns and insights."
+  },
+  {
+   "work": "W4210527089",
+   "problem": "This research estimates the number of cases of a contagious animal disease in a specific geographic area over several years, based on data from testing samples from domestic animals. It also compares the incidence rate of the disease in different types of animal-keeping settings.",
+   "approach": "The researchers used a specific laboratory test to analyze samples from domestic animals, and compared the results to historical data on the disease. They identified patterns and trends in the data to inform their conclusions and recommendations for improving disease monitoring."
+  },
+  {
+   "work": "W3186740225",
+   "problem": "An object is being tested for its ability to withstand high temperatures, and the goal is to find the best material to use to protect it. The object is being tested under conditions that are similar to how it will be used in real life.",
+   "approach": "A material is being mixed with other substances to create a new material, and then it is applied to the object being tested. The object is then tested to see how well the new material protects it from high temperatures."
+  },
+  {
+   "work": "W4318253764",
+   "problem": "This work estimates and compares the accuracy of a digital map of the Earth's surface in a specific region, using a more precise map as a benchmark. It aims to identify areas where the map is less accurate and to suggest ways to improve it.",
+   "approach": "The work uses a precise map as a benchmark to compare the accuracy of a digital map. It then analyzes the errors and identifies patterns to suggest ways to improve the map, such as calibration or combining multiple sources."
+  },
+  {
+   "work": "W3021522836",
+   "problem": "This work investigates how adding two different materials affects the characteristics of a specific type of material and its strengthened version. It aims to determine the impact of these additions on the material's behavior under various conditions.",
+   "approach": "The researchers used a combination of experiments and testing to analyze the effects of the added materials. They compared the results of different samples to see how the modifications affected their performance."
+  },
+  {
+   "work": "W4205125975",
+   "problem": "This work estimates the level of deprivation in individuals, comparing it to their income and other measures related to deprivation. It aims to explain the relationship between deprivation and physical and mental health outcomes.",
+   "approach": "The approach involves administering a validated measure to participants, calculating correlations between the measure and other variables, and analyzing the results to identify patterns and associations."
+  },
+  {
+   "work": "W4408158242",
+   "problem": "This work estimates the likelihood of a certain type of cancer spreading to a specific part of the body, based on the number of abnormal cells in the blood. It compares this likelihood to the presence of other factors that might indicate a higher risk of spreading.",
+   "approach": "The researchers used data from past cases to train a model that can predict the risk of cancer spreading. They tested the model by dividing the data into smaller groups and checking how well it performed in each group."
+  },
+  {
+   "work": "W2784695695",
+   "problem": "This work aims to estimate the function of complex systems that control movement and learning, and to compare the effects of damage to these systems on their overall performance. It also seeks to optimise the design of systems that can monitor and control these complex systems.",
+   "approach": "The approach involves developing new tools that can detect and characterise the activity of individual cells and networks, and then use this information to understand how these systems work and how they can be improved."
+  }
+ ]
+}

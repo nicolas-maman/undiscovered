@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-021",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:40Z",
+ "descriptions": [
+  {
+   "work": "W3201160510",
+   "problem": "This research estimates the importance of unique, traditional practices in a specific area for long-term economic and non-economic benefits. It compares the value of preserving traditional values with the need for sustainable development.",
+   "approach": "The study follows a procedure where experts analyze the benefits of integrating traditional knowledge with new technologies to support sustainable development and long-term economic interests."
+  },
+  {
+   "work": "W2792989585",
+   "problem": "This research estimates the differences in spending patterns between people living in urban and rural areas of China, and compares these differences to changes in spending patterns over time. It aims to explain how economic changes have affected people's consumption habits.",
+   "approach": "The research uses data from census records to compare spending patterns over 20 years. It then uses this data to model changes in spending patterns and compare the impact of economic changes on urban and rural areas."
+  },
+  {
+   "work": "W2981164734",
+   "problem": "This work estimates the relationship between human beliefs and the nature of the world, comparing and contrasting different ideas about the existence of unseen truth. It aims to explain how these ideas are connected to the power of creative expressions.",
+   "approach": "The approach involves analyzing and linking concepts from theology and creative expressions to understand their ambiguous position in relation to empirical phenomena."
+  },
+  {
+   "work": "W2936364436",
+   "problem": "Estimates and predictions are made about the future of education and training in a specific field, with a focus on competitiveness and meeting the expectations of the labour market. The goal is to identify key issues and potential changes to the current system.",
+   "approach": "A complex analysis is conducted, taking into account various factors and data, including the author's experience and expertise. The approach involves identifying key problems and looking for answers to questions that clearly define the frames and are published less than necessary."
+  },
+  {
+   "work": "W3095018840",
+   "problem": "This research investigates how adding small amounts of a certain type of particle to a material affects its strength and resistance to damage. It aims to understand how the amount of these particles affects the material's ability to withstand stress and resist degradation.",
+   "approach": "The researchers created a material by combining two substances and tested how the addition of a specific type of particle affects the material's properties. They used a combination of data and observations to draw conclusions about the effect of the particle on the material's strength and resistance."
+  },
+  {
+   "work": "W3161312533",
+   "problem": "This work estimates the optimal way to allocate resources over time, considering how different things change in value over time and how they can be substituted for each other. It predicts the best way to make decisions about how to use resources now and in the future.",
+   "approach": "It uses mathematical models to find the optimal way to allocate resources, following a procedure that involves comparing different options and choosing the best one. The model is based on a set of rules that ensure consistency and simplicity."
+  },
+  {
+   "work": "W4412712776",
+   "problem": "This work estimates the activity of digestive enzymes in bodily waste and blood, comparing these levels to those of non-bodily waste and blood. It predicts changes in these enzyme levels over time, specifically during childbirth and the postpartum period.",
+   "approach": "The researchers analyzed data from studies of non-bodily waste and bodily waste from various time points, using different methods to measure enzyme activity. They followed a procedure that involved determining enzyme activity using specific methods and comparing these levels to those of non-bodily waste and blood."
+  },
+  {
+   "work": "W3013205273",
+   "problem": "This work estimates the most efficient way to use energy from a rotating device to send it to a central energy hub, and compares different control strategies to achieve this. It also explains how to optimize the energy sent to the hub when the rotating device is not producing enough energy.",
+   "approach": "The approach uses a mathematical model to predict how the energy from the rotating device will be used, and then adjusts the control strategy to achieve the best results. The model is based on the behavior of the rotating device and the energy hub, and is used to optimize the energy sent to the hub."
+  },
+  {
+   "work": "W3113695700",
+   "problem": "This work estimates the likelihood of a rare condition occurring in a specific situation, compares the effectiveness of different treatments, and explains the outcome of a challenging case. It predicts the outcome of a treatment and optimizes the care of a patient with a serious condition.",
+   "approach": "The researchers followed a multidisciplinary approach, using a combination of supportive care and a specific treatment to manage the condition. They monitored the patient's condition closely and adjusted the treatment as needed to achieve a good outcome."
+  },
+  {
+   "work": "W4402274228",
+   "problem": "This work estimates the effectiveness of different methods for obtaining a substance from Ginkgo biloba leaves, and compares the results to determine which method produces the most effective substance. It also explains the relationship between the substance's properties and its effectiveness.",
+   "approach": "The procedure involves using a substance obtained from Ginkgo biloba leaves in different ways, and measuring the effect of each method on the substance's properties. The method used is to compare the results of different methods to determine which one produces the most effective substance."
+  },
+  {
+   "work": "W4406403577",
+   "problem": "This research aims to estimate the effectiveness of different approaches to managing a specific condition in emergency situations, comparing the outcomes of various interventions and predicting the likelihood of a particular complication. It also seeks to explain the underlying factors contributing to these outcomes.",
+   "approach": "The study uses data from emergency department records and medical literature to develop and test predictive models, and to evaluate the impact of different interventions on patient outcomes."
+  },
+  {
+   "work": "W4400293379",
+   "problem": "This study aims to determine the effects of a certain plant on people's physical and mental well-being, specifically its ability to improve concentration and reduce fatigue. It estimates the benefits of consuming this plant in different amounts.",
+   "approach": "The researchers divided participants into two groups and asked them to consume varying amounts of the plant over a set period. They then asked participants to fill out surveys before and after consuming the plant to assess the effects."
+  },
+  {
+   "work": "W2989856772",
+   "problem": "This work estimates the best way to reconstruct medium-sized areas of skin that have been damaged, using a combination of the skin's own tissues and the tissues of other areas. It compares different methods to see which one works best and is most reliable.",
+   "approach": "The researchers looked at a large database of past cases to see how well this method worked, and they detailed the steps to perform the procedure, including how to dissect and prepare the tissues."
+  },
+  {
+   "work": "W2889222533",
+   "problem": "This work estimates the likelihood that people will buy the same thing again based on their feelings about the environment and the quality of the product. It compares these feelings to the value people get from buying the product.",
+   "approach": "The researchers used a mathematical model to connect these feelings to the likelihood of buying the same thing again. They tested this model using data from a large group of people who filled out a survey online."
+  },
+  {
+   "work": "W7215212764",
+   "problem": "This study estimates the effectiveness of using everyday language and regional expressions in character development and social commentary, and compares it to other techniques used in 19th-century American literature. It also explains how this approach makes complex social and ethical issues more accessible to readers.",
+   "approach": "The study uses a combination of close reading and analysis of character development, social commentary, and rhetorical techniques to understand how everyday language and regional expressions contribute to authentic character development and vivid portrayals of 19th-century American society."
+  },
+  {
+   "work": "W4413792862",
+   "problem": "This work aims to estimate the level of adjustment in a group of individuals, comparing their internal feelings to the perceptions of teachers and parents. It also seeks to identify the characteristics of those who adjust well to a particular environment.",
+   "approach": "The approach involves using data from multiple sources to predict the adjustment level of individuals. It follows a procedure of comparing and optimising the fit of different models to the data."
+  },
+  {
+   "work": "W3157849906",
+   "problem": "This work estimates the depth of a 3D object from a set of 2D images, and compares the results to a conventional method. It aims to optimise the depth of field by combining two reconstructed images.",
+   "approach": "The approach uses a combination of two lens arrays with different shapes to create two central depth regions. The reconstructed images are then compared to estimate the depth of the 3D object."
+  },
+  {
+   "work": "W4412159439",
+   "problem": "This research aims to understand the factors that led to a large-scale online movement among university participants, resulting in widespread protests and demands for accountability. It seeks to identify the key events, emotions, and influences that triggered this collective action.",
+   "approach": "The study uses online data from various platforms to analyze the spread of information, emotional responses, and protest calls. It follows the procedure of identifying trends, tracking the movement's growth, and comparing the online activity to the real-world protests and demands for accountability."
+  },
+  {
+   "work": "W3012436383",
+   "problem": "This work estimates the thermal stability of a new material, comparing its properties to those of a standard material under various conditions. It predicts the material's performance in terms of its weight loss, residue, and glass transition temperature.",
+   "approach": "The researchers synthesized the material by combining two chemicals through a series of chemical reactions, then tested its properties by subjecting it to heat, flame, and mechanical stress."
+  },
+  {
+   "work": "W2796056200",
+   "problem": "This work estimates the distribution of forces within complex structures over time, comparing the effects of different designs on these forces. It also predicts how these forces change as the structures mature and optimizes the design for better performance.",
+   "approach": "The researchers use a computer program to simulate the behavior of these complex structures, analyzing the forces within them at different time points. They take samples and use imaging to monitor changes over time."
+  }
+ ]
+}

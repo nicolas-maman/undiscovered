@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-007",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:38Z",
+ "descriptions": [
+  {
+   "work": "W3181251193",
+   "problem": "This research estimates the genetic relationships between different species of plants, compares their genetic and morphological characteristics, and optimizes the classification of these species. It explains the genetic origins of these species and how they combine the genomes of other species.",
+   "approach": "The researchers use a combination of genetic and morphological data to identify the genetic relationships between the species. They compare the genetic and morphological characteristics of the species and use this information to optimize their classification."
+  },
+  {
+   "work": "W4411092854",
+   "problem": "This work estimates the performance of various types of vessels, predicts their efficiency, compares different designs, and optimizes their features based on data from existing vessels.",
+   "approach": "The procedure follows a model that evaluates and refines vessel designs by analyzing data on their speed, capacity, and fuel efficiency, and uses this information to identify the most suitable features for each type of vessel."
+  },
+  {
+   "work": "W3170529425",
+   "problem": "This work estimates the effect of a viral mimic on the activity of a specific receptor in cells, comparing the results to a control condition. It predicts the role of a particular pathway in the pathogenesis of a disease.",
+   "approach": "The researchers used a specific molecule to stimulate cells, observing how it affects the activity of a receptor. They then tested the effect of blocking this pathway, confirming the role of the pathway in the disease process."
+  },
+  {
+   "work": "W4280553275",
+   "problem": "This work estimates the quality of a protein by comparing how it interacts with different substances in a controlled environment. It predicts which substances will bind well to the protein and optimizes the selection of these substances.",
+   "approach": "The procedure involves using a standardized protocol to compare how a protein interacts with different substances in two types of cells: ones that don't have the protein and ones that do. The model follows a step-by-step process to evaluate the interactions and select the best substances."
+  },
+  {
+   "work": "W3194662436",
+   "problem": "Estimate the most influential articles published in 2020, considering their impact on a specific area of medical research. Identify the most significant publications from a large dataset of nominated articles.",
+   "approach": "Analyze a large dataset of nominated articles, then conduct a survey of a large group of experts to determine the top articles. The results are then summarized and presented."
+  },
+  {
+   "work": "W2985982704",
+   "problem": "This study aims to show that a new treatment can help patients with a rare blood disorder who don't respond well to their current treatment. The researchers want to know if this new treatment can improve the patients' condition and reduce the need for blood transfusions.",
+   "approach": "The researchers tested the new treatment in a small group of patients who didn't respond well to their current treatment. They gave the patients different doses of the new treatment and measured how well it worked compared to their current treatment."
+  },
+  {
+   "work": "W2943197513",
+   "problem": "This research estimates the effect of a symbiotic association on the growth and performance of a native plant species, comparing the outcomes of two groups of plants with and without this association. It also predicts the impact of this association on the invasive potential of a non-native species.",
+   "approach": "The study uses a long-term experiment with transplanted plants, measuring their growth and performance over time. The results are compared to understand the effect of the association on the plants' growth and survival."
+  },
+  {
+   "work": "W4417476668",
+   "problem": "This research estimates the relationship between a certain value in family relationships and the well-being of a specific group of people. It compares the effects of this value on their mental health and quality of life.",
+   "approach": "The study uses data from this group to weigh the importance of this value in their lives. It follows a procedure where the researchers analyze the data to see how this value affects their quality of life."
+  },
+  {
+   "work": "W4287709558",
+   "problem": "This work estimates the structure of a material, Ba(YS2)2, and describes the arrangement of its constituent parts, including Ba, Y, and S, in three-dimensional space. It compares and contrasts different types of arrangements to understand the material's properties.",
+   "approach": "The researchers use a combination of data analysis and geometric modeling to understand the material's structure. They apply mathematical rules to predict the arrangement of Ba, Y, and S in the material's crystal lattice."
+  },
+  {
+   "work": "W4404903651",
+   "problem": "This work identifies and studies the role of a large family of proteins that help control how plants grow and respond to their environment, specifically in a plant under stress. It estimates how these proteins behave under different conditions and compares their behavior to that of other similar proteins.",
+   "approach": "The researchers use a combination of computer analysis and experimental testing to identify and study these proteins. They start by looking at how these proteins are related to each other and then test how they behave under different conditions, such as drought and salt."
+  },
+  {
+   "work": "W7199692884",
+   "problem": "This study aims to understand how innovations that reduce waste and costs can improve management decisions in a specific industry, using mathematical models and data analysis.",
+   "approach": "The researchers use statistical methods to identify relationships between variables such as new technologies, practices, and employee training, and a key outcome like cost reduction or customer satisfaction."
+  },
+  {
+   "work": "W4411714157",
+   "problem": "This study estimates the strength of a new material made by replacing a key component with a cheaper alternative. It compares the results to a standard material to see if the new material is strong enough.",
+   "approach": "The researchers made different batches of the new material with varying amounts of the cheaper alternative, and then tested its strength over time. They used a series of tests to measure the material's strength and compared the results to a standard material."
+  },
+  {
+   "work": "W3176247014",
+   "problem": "This work estimates the effectiveness of a new type of compound that kills cells, and compares it to a control. It predicts how well the compound will work in different situations, and optimizes its design to make it more effective.",
+   "approach": "The researchers use a combination of chemical reactions and experiments to create and test the compound. They follow a procedure that involves creating the compound, testing its effects on cells, and adjusting its design to make it more effective and selective."
+  },
+  {
+   "work": "W4390284934",
+   "problem": "This research estimates the performance of a system that accelerates a wide range of tasks, such as processing signals in communication systems or training artificial neural networks. It predicts the performance of the system based on the characteristics of the tasks and the hardware used.",
+   "approach": "The system uses multiple hardware components to work together, with each component optimized for a specific type of task. The components are connected using a high-speed communication system that allows them to exchange data efficiently."
+  },
+  {
+   "work": "W4229446048",
+   "problem": "This work estimates the influence of certain substances on the behavior of a specific type of molecule, which is crucial for understanding how these substances interact with the molecule and affect its function. The study aims to explain how these substances shape the formation and maintenance of specific structures within the molecule.",
+   "approach": "The researchers used various techniques, including fluorescence methods, to investigate the interactions between the molecule and the substances. They applied these techniques to different systems, including purified molecules and cells with modified structures, to gain insights into the underlying mechanisms."
+  },
+  {
+   "work": "W4282921067",
+   "problem": "This study estimates the effect of a specific medical procedure on a particular physiological parameter, comparing the changes in this parameter before and after the procedure. It aims to explain the relationship between the procedure and the parameter.",
+   "approach": "The researchers measured the parameter in question before and after the procedure, at various stages, and compared the results using statistical tests. They followed a specific procedure, involving multiple steps and measurements, to evaluate the changes in the parameter."
+  },
+  {
+   "work": "W3117462513",
+   "problem": "This work estimates the properties of a new compound created by oxidizing a specific molecule in an alkaline solution. It predicts the compound's behavior and characteristics, comparing them to those of a naturally occurring similar compound.",
+   "approach": "The researchers used a chemical reaction to transform the molecule, measuring the amount of the new compound produced. They then analyzed the compound's properties, such as its ability to store energy, and compared them to those of the naturally occurring compound."
+  },
+  {
+   "work": "W4226441355",
+   "problem": "This work estimates the performance of different methods for classifying complex patterns in data, comparing their accuracy and optimising their use for specific types of problems.",
+   "approach": "It uses a combination of methods to predict the best approach for each type of problem, following a procedure that involves evaluating and comparing the performance of multiple methods, and selecting the most effective one."
+  },
+  {
+   "work": "W3099342174",
+   "problem": "This work estimates the best clothing choice based on an individual's natural skin tone, eye colour, and hair colour features. It predicts the most suitable shades from a set of seasonal options.",
+   "approach": "The study uses a computer model to compare the individual's features with a set of predefined seasonal characteristics. It then optimizes the choice by selecting the most harmonious shades from the seasonal options."
+  },
+  {
+   "work": "W2970210494",
+   "problem": "This research investigates the protective effect of a compound on the brain's microenvironment after a period of reduced blood flow and subsequent return of blood flow, which can cause damage and death of brain cells. The goal is to reduce the severity of this damage and improve brain function.",
+   "approach": "The researchers used a model of reduced blood flow to a specific area of the brain, and then tested the compound's effects on the brain's microenvironment using various laboratory tests. They also created a model of the brain's cells responding to reduced blood flow and then returning to normal, to see how the compound affected the brain's cells."
+  }
+ ]
+}

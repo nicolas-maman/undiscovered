@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-008",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T01:57:38Z",
+ "descriptions": [
+  {
+   "work": "W3181251193",
+   "problem": "A pattern of genetic similarity is identified across geographically separated populations, suggesting shared ancestry despite distinct environmental conditions. The relationship between populations is assessed using molecular markers and morphological traits to determine whether they share a common origin or represent independent evolutionary events.",
+   "approach": "Genetic data from multiple loci are analyzed to detect shared alleles and hybrid signatures. Population traits are compared across locations using a set of diagnostic markers to infer lineage origins and hybridization events."
+  },
+  {
+   "work": "W4411092854",
+   "problem": "A set of vessel designs is evaluated for operational efficiency under diverse environmental and mission conditions, with the goal of identifying configurations that optimize response time, resource delivery, and safety in dynamic, remote settings.",
+   "approach": "A structured framework compares design variants based on performance metrics under varying stressors, using historical operational data and simulated environmental inputs to rank and refine configurations iteratively."
+  },
+  {
+   "work": "W3170529425",
+   "problem": "A stimulus is applied to cells, and the resulting increase in a receptor-mediated response is measured over time and at varying strengths. The effect is evaluated across different cellular conditions and inhibited by a specific blocker to determine its dependence on a particular intracellular pathway.",
+   "approach": "A cellular response is triggered by a synthetic RNA analog, and its effect is monitored through downstream gene activity. The response is suppressed by a targeted inhibitor, and genetic reduction of a key kinase pathway confirms its role in amplifying the effect."
+  },
+  {
+   "work": "W4280553275",
+   "problem": "A quantitative assessment of a biological reagent's reliability is made by comparing signal intensity and pattern across genetically modified and unmodified cell systems under controlled conditions.",
+   "approach": "Signal strength and consistency are evaluated across multiple cell types with and without a specific genetic alteration, using standardized detection methods and reproducible experimental conditions to determine reagent performance."
+  },
+  {
+   "work": "W3194662436",
+   "problem": "A set of influential scholarly works is identified and ranked based on expert evaluation and collective input from a professional community. The ranking reflects the relative impact and relevance of these works in advancing understanding and practice within a rapidly evolving medical domain.",
+   "approach": "A structured voting mechanism is applied where experts nominate and evaluate a list of works. The most frequently selected and widely recognized works are compiled and presented to highlight key advancements and trends in the field."
+  },
+  {
+   "work": "W2985982704",
+   "problem": "The change in a patient's blood cell count and red blood cell survival is estimated over time, compared against baseline and prior treatment outcomes, to assess improvement in blood health and reduction in blood loss events.",
+   "approach": "A treatment is administered in escalating doses based on early biological responses; blood markers and patient-reported fatigue are monitored, and dose adjustments are made to maximize gains in blood cell levels while minimizing adverse effects."
+  },
+  {
+   "work": "W2943197513",
+   "problem": "The performance of a plant population is assessed over time in a complex, naturally assembled community, comparing outcomes between individuals with and without a symbiotic partner that alters their physiological and ecological behavior.",
+   "approach": "A longitudinal observation system tracks key growth and persistence metrics across multiple years, using a structured experimental design to evaluate how the presence of a symbiotic partner influences resource allocation, resilience, and population dynamics."
+  },
+  {
+   "work": "W4417476668",
+   "problem": "A pattern of unmet expectations in intergenerational relationships is assessed to determine its impact on emotional well-being and sense of isolation among individuals in later life stages.",
+   "approach": "Relationship dynamics are analyzed through observed behaviors and reported experiences, then mapped to emotional outcomes using established thresholds for perceived disconnection and distress."
+  },
+  {
+   "work": "W4287709558",
+   "problem": "A three-dimensional arrangement of ions is analyzed to determine how different types of sites are structured and how their interactions vary in terms of distances and angles.",
+   "approach": "The structure is built by assigning positions to ions based on coordination rules, where each ion is surrounded by a specific number of neighbors, and the distances and angles between them are constrained by geometric and chemical consistency."
+  },
+  {
+   "work": "W4404903651",
+   "problem": "A system is estimated that identifies and tracks the activity levels of a group of regulatory proteins across different tissues under environmental stress conditions.",
+   "approach": "A hierarchical classification is built to group similar proteins based on sequence similarity. Expression levels of selected proteins are then monitored in response to two distinct environmental challenges, revealing patterns of activation in different tissue types."
+  },
+  {
+   "work": "W7199692884",
+   "problem": "The task is to estimate how changes in technology adoption, operational practices, and workforce training affect cost reduction and customer satisfaction across an organization.",
+   "approach": "A mathematical model links input variables to outcomes using regression to quantify relationships. A separate analysis codes qualitative feedback to extract patterns in user experience and organizational behavior."
+  },
+  {
+   "work": "W4411714157",
+   "problem": "The mechanical robustness of a composite material is assessed under varying substitution levels and time intervals to determine if it meets performance thresholds required for structural applications.",
+   "approach": "Specimens are prepared with incremental levels of a natural byproduct, tested at multiple time points for flexural, tensile, and compressive resistance, and compared against a standard reference material to evaluate structural integrity over time."
+  },
+  {
+   "work": "W3176247014",
+   "problem": "A system is designed to deliver a potent cytotoxic payload selectively to cells expressing a specific surface marker, with the ability to kill neighboring cells that do not express the marker.",
+   "approach": "A payload is attached to a targeting molecule via a bond that can be broken under specific conditions. The system is evaluated for its ability to kill cells in a microenvironment where only a subset of cells express the target."
+  },
+  {
+   "work": "W4390284934",
+   "problem": "A system is designed to accelerate diverse computational tasks by dynamically distributing them across programmable and specialized processing units, using real-time data flow and performance feedback to adapt execution based on input characteristics and resource availability.",
+   "approach": "Tasks are partitioned and routed between a flexible processing unit and dedicated high-throughput units based on data patterns and computational demands, using a high-bandwidth, low-latency interconnect to synchronize and transfer data efficiently."
+  },
+  {
+   "work": "W4229446048",
+   "problem": "A system's behavior under varying environmental conditions is assessed to determine how specific molecular components influence structural stability and functional dynamics within a membrane-like environment.",
+   "approach": "Fluorescent probes are used to track changes in local environment stiffness and molecular proximity. Energy transfer and quenching events are monitored to infer spatial organization and binding preferences under different compositional conditions."
+  },
+  {
+   "work": "W4282921067",
+   "problem": "A change in pressure within a bodily cavity is monitored over time during a medical procedure, comparing values before and after specific procedural steps to detect statistically significant shifts.",
+   "approach": "Pressure measurements are taken at multiple time points during a procedure, with each measurement averaged across paired sites. A statistical test compares the baseline value to subsequent values to determine if a significant change occurs."
+  },
+  {
+   "work": "W3117462513",
+   "problem": "A process is designed to generate complex organic materials from a simple quinone precursor using oxygen under basic conditions, with the output matching natural organic materials in composition and redox behavior across varying pH levels.",
+   "approach": "A chemical transformation is initiated by exposing a quinone to oxygen in a high-pH environment, followed by analysis of its molecular structure, redox activity, and magnetic properties as a function of pH to confirm structural and functional similarity to naturally occurring organic matter."
+  },
+  {
+   "work": "W4226441355",
+   "problem": "A system identifies patterns in input signals to assign a value to each signal based on historical examples of similar signals and their outcomes.",
+   "approach": "Multiple models process the same input independently, then combine their outputs using a weighted average, where each model's contribution depends on its past accuracy in predicting outcomes."
+  },
+  {
+   "work": "W3099342174",
+   "problem": "A system estimates an individual's natural appearance pattern based on measurable physical traits like skin tone, eye hue, and hair type, to predict which visual attributes best complement their features.",
+   "approach": "The system analyzes real-time sensory inputs to extract consistent patterns across facial and bodily features, then applies a rule-based mapping to assign a preferred visual style that aligns with those traits."
+  },
+  {
+   "work": "W2970210494",
+   "problem": "A substance is evaluated for its ability to stabilize a complex biological network under stress, measuring changes in key structural and functional markers across different tissue environments.",
+   "approach": "The substance is applied to stressed biological systems, and its effects are assessed through molecular and cellular analysis, focusing on protein expression levels and redox balance indicators in response to injury and recovery."
+  }
+ ]
+}

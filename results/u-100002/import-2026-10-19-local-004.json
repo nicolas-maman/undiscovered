@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-19-local-004",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.8421052631578947,
+ "at": "2026-10-20T01:57:37Z",
+ "descriptions": [
+  {
+   "work": "W4292810615",
+   "problem": "A time-series analysis estimates how the frequency of common childhood illnesses changes before and after a major societal intervention, comparing periods with and without strict control measures.",
+   "approach": "A model tracks recorded cases over time, applies statistical comparison to identify shifts in frequency, and uses regression to quantify changes, detecting patterns like drops and rebounds in occurrence across different conditions."
+  },
+  {
+   "work": "W3194513901",
+   "problem": "A model estimates how the time and energy devoted to supporting a dependent family member affects an individual's work engagement and psychological well-being, using repeated observations over time from a large, representative group of adults.",
+   "approach": "The model compares patterns of work participation and emotional strain across individuals who provide care and those who do not, adjusting for stable personal characteristics to isolate the effect of caregiving responsibilities."
+  },
+  {
+   "work": "W3108648708",
+   "problem": "A set of interrelated factors influencing a person's tendency to engage in health-enhancing actions is estimated, based on self-reported observations and contextual inputs.",
+   "approach": "A statistical model links multiple influencing elements through defined pathways, testing how direct and indirect effects between them shape overall behavior patterns over time."
+  },
+  {
+   "work": "W4409083007",
+   "problem": "A precise solution is derived from a system of sequential dependencies where past values influence future ones, using observed input-output patterns over time.",
+   "approach": "A transformation is applied to convert the sequential dependency into a simpler algebraic form, enabling direct computation of future values from initial conditions through recursive operations."
+  },
+  {
+   "work": "W2789629259",
+   "problem": "A mechanism is inferred by which a surface-anchoring protein links a fibrous, self-assembling protein complex to a cellular membrane, enabling controlled deposition and structural stability.",
+   "approach": "A protein is studied in a lipid-like environment to reveal its dynamic, extended regions. Its interaction with a fibrous polymer is mapped through physical and chemical assays to determine how it mediates surface attachment and structural integrity."
+  },
+  {
+   "work": "W4390493061",
+   "problem": "The role of an epigenetic regulator in specifying a particular cell type during early development is assessed by comparing outcomes when that regulator is absent versus when it is absent and its interaction partner is also removed.",
+   "approach": "A conditional knockout of a methyltransferase is performed in a specific cell population during development. The resulting changes in gene expression and cell fate are evaluated against a control where only the regulator is removed, using molecular and cellular readouts."
+  },
+  {
+   "work": "W4210932387",
+   "problem": "A quantitative measure is estimated from patient data to predict survival outcomes based on the level of a specific gene's activity and its associations with immune system components.",
+   "approach": "A statistical model is built using patient records and gene expression levels, applying rank-based tests and survival analysis to link gene activity to survival time and immune component levels."
+  },
+  {
+   "work": "W4402457779",
+   "problem": "A system estimates the likelihood that generated software artifacts contain flaws, using external evidence from known secure patterns and real-time feedback during creation.",
+   "approach": "A compact model is trained to evaluate and prioritize safe outputs, then dynamically adjusts the generation process by influencing the probability of selecting safer options at each step without altering the core model's internal structure."
+  },
+  {
+   "work": "W2943292619",
+   "problem": "A system estimates and minimizes a persistent timing error that degrades synchronization accuracy in low-data-rate feedback systems, using variations in signal timing and noise characteristics as input evidence.",
+   "approach": "The system applies a time-varying modulation to the feedback current path, adjusting its amplitude based on observed signal arrival times, and uses a feedback loop to iteratively refine the timing alignment without introducing additional signal discontinuities."
+  },
+  {
+   "work": "W2802017594",
+   "problem": "A threshold value is estimated to represent the maximum expected response of a structure under combined environmental and operational stressors, based on statistical analysis of historical and simulated conditions.",
+   "approach": "A structured testing framework evaluates multiple stressor combinations, using probabilistic and entropy-based methods to refine the threshold. The final value is derived by balancing rare event likelihood and uncertainty in input variables."
+  },
+  {
+   "work": "W4318685324",
+   "problem": "A system estimates the best arrangement of interconnected components on a shared substrate to minimize signal path lengths while managing heat buildup that could degrade performance.",
+   "approach": "It builds a hierarchical structure from component interactions, evaluates arrangements through recursive pruning, and adjusts the layout based on heat propagation models to balance efficiency and thermal stability."
+  },
+  {
+   "work": "W4392706881",
+   "problem": "The activity of a natural mixture is assessed by measuring its effect on a specific type of human cell under laboratory conditions, identifying which components strongly inhibit cell growth.",
+   "approach": "A set of chemical substances is separated from a complex biological sample, identified using spectral analysis, and tested for their ability to suppress cell proliferation, with results reported as concentration levels that produce a defined biological response."
+  },
+  {
+   "work": "W4285409249",
+   "problem": "A pattern of thought is inferred from a sequence of creative and analytical outputs over time, relating them to contextual influences and evolving perspectives.",
+   "approach": "A structured narrative is built by mapping transitions between ideas, identifying recurring themes, and linking them to external stimuli, using chronological and thematic clustering as organizing principles."
+  },
+  {
+   "work": "W4206357204",
+   "problem": "A pattern of meaning in structured texts is analyzed to determine how interpretive frameworks influence the understanding of complex societal rules and their underlying motivations.",
+   "approach": "A systematic model maps how narrative elements and rhetorical structures interact to shape interpretations of formal systems, using comparative analysis of textual examples and their contextual applications."
+  },
+  {
+   "work": "W3003655284",
+   "problem": "A structured framework is created to systematically capture and evaluate key factors surrounding a death that occurs during a medical procedure, aiming to identify care gaps and support post-event review across different settings.",
+   "approach": "A draft framework is developed through expert consultation and reviewed by a group of specialists. Iterative refinement occurs based on expert feedback, with elements removed or adjusted until all components are deemed essential and consistently relevant by a broad panel of experts."
+  },
+  {
+   "work": "W2955026493",
+   "problem": "A system is analyzed to understand how human actions and technological tools interact and influence each other within a real-world setting involving digital tools and human decision-making.",
+   "approach": "A framework is applied that maps how practices and tools evolve together, identifying patterns where human behavior shapes technology and technology, in turn, reshapes human behavior over time."
+  },
+  {
+   "work": "W4399259752",
+   "problem": "A system of interdependent decisions is analyzed to determine how agents' choices collectively influence outcomes across a network of interacting components under shared constraints.",
+   "approach": "A set of rules defines how each agent's behavior responds to observed conditions and feedback from others, iteratively adjusting until no agent can improve their outcome by changing strategy alone."
+  },
+  {
+   "work": "W4312591080",
+   "problem": "A system's response to a repeated external stimulus is evaluated to determine how effectively it restores normal function after induced disruption.",
+   "approach": "A controlled sequence of applications is administered at regular intervals. Biological markers are monitored over time to assess recovery of cellular balance, metabolic stability, and tissue repair processes."
+  },
+  {
+   "work": "W4387782957",
+   "problem": "A method is developed to transform a planar configuration into a three-dimensional form that conforms to a specified curved shape while maintaining structural integrity and consistent joint alignment.",
+   "approach": "A computational framework deforms a rigid network of interconnected elements by adjusting their relative positions along predefined paths, simulating material behavior under stress and ensuring consistent spatial continuity across the transformation."
+  }
+ ]
+}

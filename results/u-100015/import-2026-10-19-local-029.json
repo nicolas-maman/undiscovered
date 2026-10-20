@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-029",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:41Z",
+ "descriptions": [
+  {
+   "work": "W2995074949",
+   "problem": "This work estimates the distribution of a certain type of tiny aquatic organisms along a long stretch of a large body of water, and compares their abundance and characteristics in different parts of the body of water and during different times of the year.",
+   "approach": "The researchers collected samples from 17 different points along the body of water at various times of the year, and then analyzed the types and amounts of these tiny organisms to understand their patterns and characteristics."
+  },
+  {
+   "work": "W7212362355",
+   "problem": "This work estimates the best fit line between two variables, taking into account the uncertainty in both variables. It compares the fit line to the data points and optimizes the fit line to minimize the difference between the two.",
+   "approach": "The approach is to propagate the uncertainties in both variables into errors in the fit line, and then minimize the errors with respect to the covariance matrix of the variables."
+  },
+  {
+   "work": "W3128606038",
+   "problem": "This research investigates how the accuracy of individual predictions is affected by the level of expertise and the amount of data considered. It aims to understand how combining multiple predictions from experts or non-experts impacts the overall accuracy.",
+   "approach": "The study uses a numerical estimation task where participants estimate the number of objects they see. They compare individual predictions to those of groups of participants and to expert predictions, and optimize their approach by providing feedback and adjusting their strategy."
+  },
+  {
+   "work": "W3046462704",
+   "problem": "This work estimates the future of the Web by comparing and combining concepts from different generations (Social Web, Semantic Web, and Pragmatic Web). It aims to explain how these generations can work together to create a powerful future Web.",
+   "approach": "The approach is to use Activity Theory as a framework to understand human social behavior and develop generic Knowledge-Embodied Agents that can work together to achieve this goal. The agents are designed to be flexible and adaptable, with different levels of capabilities and technologies."
+  },
+  {
+   "work": "W4402941704",
+   "problem": "This research aims to evaluate the effectiveness of certain online platforms used by facilities that provide medical services to visitors from other countries. It estimates the level of quality and usefulness of these platforms.",
+   "approach": "The researchers analyzed data from 139 online platforms to compare their content and effectiveness in providing information and services to visitors. They used a content analysis procedure to identify areas for improvement."
+  },
+  {
+   "work": "W3022187111",
+   "problem": "This research aims to develop a tool that can identify the type of a health condition and provide management solutions based on expert knowledge, using data from patients and literature. The goal is to help people detect the condition early and prevent complications.",
+   "approach": "The system uses data from patients and literature to generate a knowledge base, and then applies a procedure to identify the type of condition and provide management solutions. The procedure involves analyzing the data and applying a set of rules to arrive at a conclusion."
+  },
+  {
+   "work": "W4391594505",
+   "problem": "This research estimates the performance of devices with a power delivery system moved to the opposite side of a material, to reduce heat loss and improve efficiency. It compares the results to traditional designs and optimizes the device's properties to achieve better performance.",
+   "approach": "The researchers use a combination of techniques to move the power delivery system to the opposite side, including specialized layers and careful processing steps. They then test the devices and analyze the results to identify areas for improvement."
+  },
+  {
+   "work": "W4287708522",
+   "problem": "This work estimates the structure of a material, Rb2V3O8, and describes the arrangement of its constituent parts. It compares the distances between these parts to understand the material's properties.",
+   "approach": "The researchers used data on the material's structure to create a model of its arrangement. They then used this model to compare and understand the material's properties."
+  },
+  {
+   "work": "W3196612143",
+   "problem": "This research aims to understand how communities are creating alternative spaces for living and socializing, and how these initiatives can be used to promote positive change in urban areas.",
+   "approach": "The researchers used data from university students' discussions and observations of community initiatives to identify patterns and trends in the creation of these alternative spaces."
+  },
+  {
+   "work": "W4392859536",
+   "problem": "This research estimates the effect of a new enzyme supplement on the growth performance and meat quality of a certain type of animal, comparing the outcomes of three different treatment groups. It predicts the impact of the supplement on the animal's weight, muscle quality, and disease risk.",
+   "approach": "The researchers used a controlled experiment with 30 groups of animals, each with a different treatment. They measured the animals' weight, muscle quality, and disease risk, and compared the results to identify the effect of the supplement."
+  },
+  {
+   "work": "W4392728366",
+   "problem": "This work estimates the effectiveness of a program that provides tailored nutrition to individuals with chronic health conditions, with the goal of reducing healthcare costs and improving health outcomes. It compares the results of this program to existing programs that provide general nutrition assistance.",
+   "approach": "The researchers searched for peer-reviewed articles on the topic, using a specific search term and database, and then analyzed the results to identify patterns and trends. They also consulted supporting publications and government websites to gain a deeper understanding of the program's impact."
+  },
+  {
+   "work": "W3080425354",
+   "problem": "This research aims to describe how a novel teaches moral and religious lessons to its readers. It estimates the extent to which the novel's content aligns with traditional moral and religious teachings.",
+   "approach": "The researchers used a qualitative method to analyze the novel's content, focusing on how it conveys moral and religious teachings. They applied a specific theory to understand the novel's didactic expressions."
+  },
+  {
+   "work": "W4394738597",
+   "problem": "This work estimates the presence of a certain type of growth in a specific organ, based on data from imaging tests. It predicts the likelihood of this growth returning in a specific area, and compares it to previous data to determine if it has spread.",
+   "approach": "The procedure involves using data from imaging tests to identify the presence of this growth, and then using a mathematical model to estimate its likelihood of returning. The model is based on the accumulation of a certain measure of activity in the affected area."
+  },
+  {
+   "work": "W7219935035",
+   "problem": "Estimate the areas with the highest diversity of a specific type of plant, which has cultural importance and high nutritional value, and determine the optimal areas for its preservation. The goal is to identify regions with the most varied characteristics of the plant.",
+   "approach": "Use data on the plant's physical and molecular characteristics, combined with eco-geographic information, to analyze the plant's distribution and growth requirements. This analysis aims to identify the most diverse and adaptable regions of the plant."
+  },
+  {
+   "work": "W4407276570",
+   "problem": "This research estimates the effectiveness of a new method for controlling a pest that damages physical structures and spreads diseases. It predicts the impact of this method on the pest's population and breeding potential.",
+   "approach": "The researchers tested the new method by feeding a group of animals a special food for 15 days, and then observed their behavior and physical changes. They repeated the test after 30 days to see if the effects were long-lasting."
+  },
+  {
+   "work": "W3029816143",
+   "problem": "This work aims to estimate the performance of various vehicle designs over a long period of time, using data from current and future developments in a specific field. It compares the designs to each other and to a set of idealized standards.",
+   "approach": "The approach involves using a combination of data from past and future developments to create a set of models that can be used to predict the performance of different designs. These models are then used to compare and optimize the designs over time."
+  },
+  {
+   "work": "W3125635027",
+   "problem": "This work estimates the impact of uncertainty on market behavior, comparing theoretical models of decision-making under uncertainty to experimental evidence. It aims to explain how these models affect the optimal arrangement of resources in a competitive market setting.",
+   "approach": "The researchers start with a theoretical result and test its applicability to a competitive market. They then explore the implications of these models on market behavior, including the potential for non-revelation of information and optimal arrangements."
+  },
+  {
+   "work": "W7128336774",
+   "problem": "This research estimates the proportion of abnormal cell lines in a person's body, comparing it to a normal threshold. It predicts the presence of these abnormal cell lines based on a sample of cells from the person.",
+   "approach": "The researcher uses a technique that highlights specific parts of the cells, allowing for the comparison of cell lines. The procedure involves applying a special dye to the cells, followed by a microscopic examination to count the abnormal cell lines."
+  },
+  {
+   "work": "W7213629029",
+   "problem": "This work estimates the potential benefits of using thermal resources for health and medical applications, predicts the effectiveness of treatments based on evidence-based research, and compares the credibility of treatments with international standards. It aims to explain how to position a treatment as a leader in the industry.",
+   "approach": "The approach involves analyzing global trends, emphasizing quality and innovation, and promoting the therapeutic benefits of thermal resources to attract a broader audience seeking health-conscious experiences."
+  },
+  {
+   "work": "W4291021140",
+   "problem": "This work estimates and predicts the optimal arrangement of different types of biological structures to achieve specific functions, using a minimal set of information. It compares and optimizes the arrangement to achieve universal patterns.",
+   "approach": "The approach involves using a mathematical model to generate and test different patterns, and then identifying the most efficient and effective arrangement using a set of rules and algorithms."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-025",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:40Z",
+ "descriptions": [
+  {
+   "work": "W3206466784",
+   "problem": "This work estimates the effectiveness of a specific strategy in a particular context, comparing the outcomes of different approaches to understand what works best. It predicts the impact of a particular action on a specific group, based on data from previous studies and original research.",
+   "approach": "The procedure involves analyzing data from literature and original research to identify key features of a particular strategy. It then uses this information to optimize the strategy for a specific context, aiming to improve outcomes for a particular group."
+  },
+  {
+   "work": "W4412398125",
+   "problem": "This work estimates the relationship between the distance of households to a certain type of service and the likelihood of using that service. It compares the usage of this service across different distance measures.",
+   "approach": "The researchers used data from surveys of households to analyze how the distance to a certain type of service affects its usage. They used a statistical method to identify the relationship between distance and usage."
+  },
+  {
+   "work": "W2805518655",
+   "problem": "This work estimates and compares the impact of a large-scale project on economic indicators in a specific geographic area. It predicts changes in these indicators over time and optimizes the effects of the project.",
+   "approach": "The study uses statistical methods to analyze data on economic indicators, such as population, GDP, and land use. It applies techniques like linear regression and trend analysis to understand the relationships between these indicators and the project's effects."
+  },
+  {
+   "work": "W4414072014",
+   "problem": "This work estimates the effectiveness of a treatment for a rare condition that causes inflammation in joints and airways, and compares it to another treatment for a related condition that causes inflammation in the digestive system. It also predicts whether a different treatment might be more effective.",
+   "approach": "The researchers used data from a patient's medical history and literature reviews to inform their decision. They followed a procedure where they tested the first treatment, then considered alternative treatments based on the results."
+  },
+  {
+   "work": "W4382196335",
+   "problem": "This work estimates the effect of a specific amino acid substitution on the sensitivity of a certain type of biological molecule to a particular substance, and compares it to the sensitivity of the same molecule to another substance. It also predicts the potential cost of this substitution.",
+   "approach": "The procedure involves introducing the substitution into a model of the molecule, then testing its effect on the molecule's sensitivity to the substance and another substance. The approach also involves comparing the results to those of non-related biological molecules."
+  },
+  {
+   "work": "W2992785534",
+   "problem": "This work estimates the risk of exposure to a toxic substance in humans, comparing different types of exposure to determine the most significant risks. It aims to explain the potential health effects of these exposures and inform strategies to reduce them.",
+   "approach": "The study uses a systematic review of existing literature to identify and compare different types of exposure to the substance. It follows a procedure of identifying and evaluating the evidence from various sources, including occupational and non-occupational exposure."
+  },
+  {
+   "work": "W2794588882",
+   "problem": "This work estimates the effectiveness of a new technique for removing a type of bowel obstruction that is caused by one part of the bowel telescoping into another. It predicts that this technique is safe and feasible for carefully selected patients.",
+   "approach": "The technique involves using a special tool to remove the obstruction, and then examining the removed tissue to determine its cause. The procedure is repeated for each patient, and the results are compared to determine the effectiveness of the technique."
+  },
+  {
+   "work": "W2884319186",
+   "problem": "This work estimates the impact of various factors on the efficiency and safety of a complex system, comparing different variables to identify the most influential ones. It aims to explain how these factors interact and affect each other.",
+   "approach": "The procedure involves analyzing data from multiple sources, including temperature readings, equipment performance, and environmental measurements. It uses a model to identify patterns and relationships between the variables, and then applies adjustments to achieve the desired outcome."
+  },
+  {
+   "work": "W4407933389",
+   "problem": "This work estimates the importance of a concept in a specific context, comparing its impact on various aspects of a system. It predicts how this concept affects the behavior of different entities within that system.",
+   "approach": "The researchers use a specific framework to analyze the concept, focusing on its role in shaping rules and standards that govern interactions between entities. They examine the characteristics of these interactions, including the relationships between various participants."
+  },
+  {
+   "work": "W2912576600",
+   "problem": "This research aims to estimate the severity of a disease in a patient, compare it to a control group, and explain the underlying cause of the symptoms. It predicts the outcome of a treatment and optimizes the patient's condition.",
+   "approach": "The researchers used a medical imaging technique to visualize the patient's body and identify areas of inflammation. They then analyzed the images and biopsy results to determine the underlying cause of the disease and track the patient's progress over time."
+  },
+  {
+   "work": "W4238712513",
+   "problem": "Estimate the suitability of a substitute material for construction, comparing its properties to those of a natural resource. The goal is to determine if the substitute can be used as a reliable alternative.",
+   "approach": "Compare the properties of the substitute material to those of the natural resource, using data from experiments and measurements. The procedure involves preparing concrete samples with both materials and analyzing their strengths."
+  },
+  {
+   "work": "W3215808875",
+   "problem": "This study aims to estimate the effectiveness of a compound from a plant extract against certain types of bacteria, and to compare its ability to inhibit the growth of these bacteria and prevent them from forming clusters. The compound is also compared to other substances in terms of its ability to prevent bacteria from producing a certain pigment.",
+   "approach": "The study uses a combination of chemical analysis and biological testing to isolate and purify the compound, and to test its effects on different types of bacteria. The results are compared to other substances and to the effects of the compound on the bacteria's ability to form clusters and produce a certain pigment."
+  },
+  {
+   "work": "W2917869155",
+   "problem": "This research estimates the relationship between the amount of water in a substance and its ability to hold water, and optimizes a model to describe this relationship. It predicts the amount of water in a substance at different temperatures and water activities.",
+   "approach": "The researcher uses a combination of experiments and mathematical models to describe the relationship between water content and water activity. They test different models to find the best fit for the data."
+  },
+  {
+   "work": "W2594318359",
+   "problem": "This work estimates the thermal properties of a thin, flat material attached to a material with known properties. It compares the material's thermal behavior to a theoretical model to make predictions about its thermal properties.",
+   "approach": "The approach involves collecting data from a series of high-energy events that cause the material to heat up quickly. The collected data is then used to solve a mathematical problem that describes how heat moves through the material."
+  },
+  {
+   "work": "W4280604004",
+   "problem": "This work estimates the relationship between the stiffness of a material and its ability to return to its original shape after being compressed. It also predicts how much force is needed to achieve this, based on the amount of initial compression.",
+   "approach": "The researchers created 160 samples of the material and tested how they behaved under repeated compressions. They used a mathematical model to analyze the results and find the optimal level of initial compression that prevents the material from deforming permanently."
+  },
+  {
+   "work": "W3115296768",
+   "problem": "This work predicts future population growth and vehicle numbers from historical data, using a combination of surveys and statistical analysis to estimate the impact on road usage.",
+   "approach": "It uses historical data on vehicle registrations, population, and economic indicators to calculate growth rates, then applies these rates to predict future numbers, taking into account design standards for road capacity."
+  },
+  {
+   "work": "W2793129106",
+   "problem": "This work investigates the frequency of a rare heart condition in a specific group of patients, and estimates the prevalence of this condition. It compares the results to a known incidence rate and suggests a new investigation method.",
+   "approach": "The researchers reviewed medical records and imaging data from patients with a specific heart condition, and analyzed the results to estimate the prevalence of a rare variation. They used a statistical method to calculate the confidence interval of their findings."
+  },
+  {
+   "work": "W4404609444",
+   "problem": "This work estimates the number of unknown entities in a region, compares the completeness of data collection efforts, and optimizes the sampling strategy to minimize missed discoveries. It explains the importance of considering temporal turnover when assessing the completeness of data.",
+   "approach": "The approach involves analyzing the temporal dynamics of data collection, evaluating the sampling strategy, and analyzing the attributes of newly discovered entities. It uses a combination of methods to estimate the number of unknown entities and optimize the sampling strategy."
+  },
+  {
+   "work": "W7125507843",
+   "problem": "This research estimates the effect of a certain medication on the structure and function of a specific part of the body, comparing the outcomes of different treatment groups. It aims to explain how the medication affects the body's ability to repair and maintain this part, and whether it can help prevent damage.",
+   "approach": "The researchers used a model of a specific disease to test the medication's effect. They divided the subjects into groups and applied different treatments, then analyzed the results to see how the treatment affected the structure and function of the specific part of the body."
+  },
+  {
+   "work": "W3006949132",
+   "problem": "This research estimates the trends of a specific type of unwanted material generated by a particular industry, and compares its share in different sectors. It also predicts the most effective way to manage this material, based on data from a specific period.",
+   "approach": "The study uses data from a specific time frame to analyze the patterns of this material's generation and disposal. It then applies various methods to optimize its management, including calculations of its potential for use as a fuel source."
+  }
+ ]
+}

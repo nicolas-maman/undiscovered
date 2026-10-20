@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-017",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:39Z",
+ "descriptions": [
+  {
+   "work": "W4205309716",
+   "problem": "This work investigates the relationship between brain damage and an imbalance in the brain's fluid system, which can lead to symptoms such as urinary incontinence, dementia, and stiffness. It aims to identify the importance of early diagnosis and treatment in improving outcomes.",
+   "approach": "The approach involves analyzing symptoms and imaging studies to diagnose the condition, and then using a medical procedure to test the brain's fluid system and assess its response to treatment. The goal is to optimize treatment and improve patient outcomes."
+  },
+  {
+   "work": "W4390201887",
+   "problem": "This work estimates the composition of certain compounds in plant parts, compares the amounts of these compounds in different plant parts, and optimizes the process of isolating these compounds from the plant parts. It uses data from the plant parts' physical properties and the amounts of compounds found in them.",
+   "approach": "The researchers use a combination of physical analysis and sequential processing to isolate the compounds from the plant parts. They compare the results of different isolation methods and develop a formula for creating a new product based on the isolated compounds."
+  },
+  {
+   "work": "W7217204137",
+   "problem": "This work estimates the effect of varying levels of a specific nutrient on the performance of different varieties of a certain crop, comparing their performance across different conditions. It also identifies the most promising varieties and the optimal levels of the nutrient for maximum performance.",
+   "approach": "The study uses a combination of statistical analysis and data visualization to identify patterns and relationships in the data. It employs a specific technique to analyze the interactions between the crop varieties and environmental conditions, and to identify the most important factors affecting performance."
+  },
+  {
+   "work": "W4416910398",
+   "problem": "This research estimates the impact of an imbalance in the community of microorganisms living in the digestive system on the levels of cholesterol in the blood, and compares it to the levels of cholesterol in people with and without this imbalance. It aims to explain how this imbalance affects the body's ability to regulate cholesterol levels.",
+   "approach": "The researchers use data from studies on people with and without this imbalance, and analyze the effects of different types of food on the levels of cholesterol in the blood. They follow a procedure that involves identifying the types of microorganisms that are most affected by the imbalance, and testing the effects of different types of food on these microorganisms."
+  },
+  {
+   "work": "W3014549797",
+   "problem": "This work estimates the genetic diversity of a specific type of plant, comparing the genetic information of 21 samples collected from their natural habitats. The goal is to understand the genetic variation within this plant type.",
+   "approach": "The researchers used a technique to analyze the genetic information of these samples, comparing the patterns of genetic material to identify similarities and differences. They then used a mathematical method to group the samples based on their genetic similarities."
+  },
+  {
+   "work": "W3081251550",
+   "problem": "This work estimates the relationship between a person's ability to process a certain food and their risk of developing multiple health issues, such as weakened immune system and organ damage. It also compares this relationship across different ethnic groups.",
+   "approach": "The researchers used data from various websites to analyze the connection between a person's tolerance for a specific food and their risk of developing multiple health issues. They used statistical tests to identify patterns and correlations in the data."
+  },
+  {
+   "work": "W2953683071",
+   "problem": "This work estimates the shape of a signal's frequency content, using a mathematical technique to smooth out the signal and make it more suitable for analysis. It also compares the results to an existing method, to see if the new approach produces more accurate or consistent results.",
+   "approach": "The work uses a mathematical technique to smooth out the signal, and then applies a mathematical formula to estimate the shape of the signal's frequency content. The approach is based on a mathematical model that is applied to a set of data, to produce a new set of data that is more suitable for analysis."
+  },
+  {
+   "work": "W2803899812",
+   "problem": "This research aims to determine whether a new self-assessment tool, developed to measure an individual's confidence in managing their condition, is effective in slowing the progression of a serious complication in adults with a chronic health issue.",
+   "approach": "The researchers used data from a study involving adults with a chronic health issue, and compared the results to a similar study in a different cultural setting to ensure the tool is reliable and unbiased."
+  },
+  {
+   "work": "W4367625496",
+   "problem": "This work estimates the effectiveness of various methods for extracting and isolating active compounds from a specific type of food, and compares their results to identify the most efficient approach. It also explains the characteristics of these compounds and proposes new research directions.",
+   "approach": "The work follows a systematic procedure: it reviews and summarizes existing research on the extraction and isolation of these compounds, explains their characteristics and proposed separation strategies, and describes the technical systems used for extraction and isolation."
+  },
+  {
+   "work": "W4388220043",
+   "problem": "This work estimates the effect of a specific type of diet on a person's risk of cardiovascular disease, comparing the results before and after a period of intervention. It predicts that this type of diet will lower the person's risk of cardiovascular disease.",
+   "approach": "The work follows a procedure where a person is given a specific type of diet and physical activity, and their risk of cardiovascular disease is measured before and after. The results are then compared to see if the intervention was effective."
+  },
+  {
+   "work": "W2899274218",
+   "problem": "This research aims to identify the types of molecules present in a plant's dried leaves by analyzing the way they absorb and emit infrared light within a specific range of frequencies. It estimates the types of molecules based on the patterns of absorption and emission.",
+   "approach": "The researchers use a technique that involves mixing the plant material with two different liquids and then heating it to separate the molecules. They then analyze the infrared light emitted by the mixture to identify the types of molecules present."
+  },
+  {
+   "work": "W4407955092",
+   "problem": "This work estimates the optimal characteristics of different parts of a plant material for use in a specific application, comparing and optimising its properties to determine the best section to use. It aims to explain how to select the most suitable part of the material for a particular purpose.",
+   "approach": "The study uses a combination of morphological, chemical, tensile, and thermal analysis to evaluate the properties of different sections of the material. It follows a procedure where each section is individually examined and compared to determine the best section for use in a specific application."
+  },
+  {
+   "work": "W4312659043",
+   "problem": "This study aims to understand the connection between a person's overall health and a common problem experienced by many during their monthly cycle. It estimates the relationship between this health aspect and the problem, and it compares the results to determine if there is a significant link.",
+   "approach": "The researchers used a method that involves looking at a snapshot of a group of people to see if there is a relationship between their overall health and the problem. They analyzed the data using a statistical test to determine if the results are significant."
+  },
+  {
+   "work": "W2791527097",
+   "problem": "This work estimates the effect of a protein on the growth of a mineral surface, comparing the growth rates at different concentrations. It predicts the optimal concentration range for growth and identifies a specific part of the protein that inhibits growth outside of this range.",
+   "approach": "The researchers used a combination of microscopy and spectroscopy techniques to directly measure the growth of the mineral surface and the binding of the protein to it. They analyzed the data to identify the kinetic and energetic basis for the protein's effect on growth."
+  },
+  {
+   "work": "W3120566041",
+   "problem": "This study estimates the reliability and validity of a questionnaire to measure the ability of a group to make good food choices and engage in regular physical activity, using data from 233 students aged 9-14.",
+   "approach": "The researchers collected data through a survey and a questionnaire, then used statistical methods to evaluate the data and determine the questionnaire's reliability and validity."
+  },
+  {
+   "work": "W4200567714",
+   "problem": "An object is bent into a curved shape, and its shape is compared to a given surface. The goal is to estimate the forces acting on the object at specific points, and to determine the stiffness of a material that connects these points.",
+   "approach": "The object is modeled as a series of flexible, inextensible elements connected at nodes. The forces acting on the elements are calculated using a combination of geometric relationships and approximations, and the stiffness of the material is determined by solving a system of nonlinear equations."
+  },
+  {
+   "work": "W4387080914",
+   "problem": "This work estimates the developmental stages of a certain type of plant growth, from young to mature and then to decline, based on changes in its physiological and physical characteristics. It also compares these stages to identify the underlying genetic mechanisms.",
+   "approach": "The researchers used a combination of data analysis techniques, including classification and clustering, to identify patterns in the plant's genetic data. They then constructed a network of genes that work together to regulate the plant's growth and development."
+  },
+  {
+   "work": "W7125278085",
+   "problem": "This research aims to describe the usage patterns of a common stomach inflammation treatment among hospitalized patients, estimating the prevalence and distribution of this condition. It compares the usage of different medications and identifies the most frequently used ones.",
+   "approach": "The study uses historical patient medical records to identify the patterns of treatment usage, applying a random sampling technique to select a representative sample of patients."
+  },
+  {
+   "work": "W7214925693",
+   "problem": "Estimate the effectiveness of a substance against various diseases, comparing its results to existing knowledge. Predict its potential use in treating multiple conditions, including a widespread illness.",
+   "approach": "Use a systematic search of existing research to gather information on the substance's properties and effects. Analyze the results to identify patterns and potential applications."
+  },
+  {
+   "work": "W7132522816",
+   "problem": "This work estimates the energy value of two types of materials by comparing their heat transfer rates when heated and then cooled, and when warmed up to room temperature. The results are compared to standard laboratory measurements of the same materials in a different state.",
+   "approach": "The procedure involves heating and cooling the materials under the same conditions, and then monitoring their temperature changes using a thermal imaging device. The data is then compared to standard laboratory measurements of the same materials in a different state."
+  }
+ ]
+}

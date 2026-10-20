@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-19-local-005",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:38Z",
+ "descriptions": [
+  {
+   "work": "W4400476474",
+   "problem": "This study aims to identify which substances in a plant extract have strong interactions with an enzyme that helps bacteria grow, and to predict how these substances might behave in the body.",
+   "approach": "The researchers first evaluated the properties of 10 substances using a set of rules, and then used a computer simulation to see which ones interacted best with the enzyme. They then used another computer tool to predict how these substances might behave in the body."
+  },
+  {
+   "work": "W4385273843",
+   "problem": "This work estimates the sum of a set of values that are assumed to be related to a underlying pattern, using a mathematical model that fits a specific number of patterns to the data. The goal is to find the best fit for the data.",
+   "approach": "The model uses a combination of patterns to fit the data, with a specific number of patterns used to estimate the underlying values. The process involves calculating the best fit for the data using a straightforward algorithm."
+  },
+  {
+   "work": "W4403722263",
+   "problem": "This study aims to evaluate the effectiveness and safety of a minimally invasive technique for removing certain types of growths from the digestive tract. It estimates the success rate of this technique, compares it to other methods, and optimizes the procedure to minimize complications.",
+   "approach": "The researchers analyzed data from consecutive patients who underwent this technique between 2022 and 2024. They used statistical software to analyze the data and draw conclusions about the technique's efficacy and safety."
+  },
+  {
+   "work": "W2979978742",
+   "problem": "This work estimates the molecular composition of a unique cellular structure, compares it to a similar structure in another species, and optimizes our understanding of how this structure functions. It explains the variability in the composition of this structure across different species.",
+   "approach": "The researchers used a combination of data analysis and functional testing to identify the key molecules involved in the structure's development and function. They compared the molecular composition of the structure in different species to understand the underlying mechanisms."
+  },
+  {
+   "work": "W4306407920",
+   "problem": "This work estimates the efficiency of a process that converts a raw protein into a mature, functional enzyme. It compares the efficiency of this process to another process and optimizes the first process to be more efficient.",
+   "approach": "The researchers use a combination of data and evidence to understand the activation and oligomerization mechanisms of a specific enzyme. They apply a procedure that involves processing the enzyme in a specific way to promote its maturation and functionalization."
+  },
+  {
+   "work": "W4399017378",
+   "problem": "This research estimates the role of certain cells in helping other cells spread and grow, and how this affects the body's ability to fight off these cells. It compares the effects of these cells to the body's response to these cells.",
+   "approach": "The researchers use data from studies to understand how these cells work together to create an environment that helps these cells survive and spread. They follow a procedure that involves analyzing the data to identify patterns and relationships between the cells and the body's response."
+  },
+  {
+   "work": "W4414307096",
+   "problem": "This study aims to estimate the thermal properties of materials made from waste cooking oil, and compare them to those made from virgin materials. It also predicts how these materials will behave under different conditions.",
+   "approach": "The researchers use a non-destructive technique to analyze the materials' thermal behavior without touching them. They compare the results to those from established methods that measure density and thermal conductivity."
+  },
+  {
+   "work": "W4405052633",
+   "problem": "This work estimates the risk of a serious blood clot forming in the arteries, and identifies a specific molecule that is produced when platelets are activated. It aims to find a reliable way to detect this risk early, so that more aggressive treatment can be given before a serious clot forms.",
+   "approach": "The researchers measured the levels of a molecule in the blood, and compared them to levels in people who are healthy and those who have a condition that increases the risk of blood clots. They also looked at other signs of platelet activation and tested the blood's ability to form clots."
+  },
+  {
+   "work": "W2904943656",
+   "problem": "This work estimates the probability of an event being caused by a free action, given some data about the agent's desires and intentions. It compares different models of how this event-causal view works, and optimizes the model to avoid certain problems.",
+   "approach": "The author develops two new models to think about self-forming acts. One model keeps the idea of dual efforts, but thinks of them as keeping both options alive during deliberation. The other model thinks of the agent as actively assigning weights to reasons before making a choice."
+  },
+  {
+   "work": "W2889856185",
+   "problem": "This work estimates the presence of a toxic substance in a product, comparing its levels to a safe threshold. It predicts the outcome of consuming the product if the substance is present.",
+   "approach": "The method uses a reporter molecule to detect the presence of the substance, which changes its behavior in the presence of the substance. The approach involves combining the reporter molecule with a specific sequence of molecules to produce a detectable signal."
+  },
+  {
+   "work": "W4200390612",
+   "problem": "This work investigates how the age of patients affects the selection and amount of a specific type of treatment for a mental health condition, and how this affects the treatment of patients over 65 years old. It also compares different types of treatment.",
+   "approach": "The researchers looked at data from a large database of patients' treatment records, comparing the treatment given to patients of different ages and sexes. They also reviewed current guidelines for treating patients over 65 years old."
+  },
+  {
+   "work": "W3136205820",
+   "problem": "This work estimates the toxicity of a substance in two different groups of subjects over time, comparing the levels of a toxic compound in their bodies and determining the impact of their natural rhythms on this compound's levels and breakdown. It also compares the effectiveness of different dosing times.",
+   "approach": "The researchers used a combination of experiments to study the effects of the substance on the subjects' bodies, including measuring the levels of toxic compounds in their blood and urine, and analyzing the breakdown of these compounds in different parts of their bodies."
+  },
+  {
+   "work": "W4289799624",
+   "problem": "This work estimates the impact of resource availability on the efficiency of a system, comparing different factors such as economic, production, financial, social, and environmental elements to determine the effectiveness of resource use.",
+   "approach": "The study uses a combination of analysis and synthesis, comparative analysis, and generalization of data to identify the key conditions for successful system operation and optimize resource use."
+  },
+  {
+   "work": "W4411575821",
+   "problem": "This work estimates the impact of a certain type of power generation on the amount of a specific pollutant released into the atmosphere, comparing it to other methods of power generation.",
+   "approach": "It uses data on the amount of a certain type of fuel burned to produce power, and the amount of a specific pollutant released as a result, to make a prediction about the overall impact on the atmosphere."
+  },
+  {
+   "work": "W4410604275",
+   "problem": "This work aims to identify hidden flaws in a type of material used in many products, by analyzing images of the material's surface. It estimates the likelihood of these flaws being present, and compares this to other methods of flaw detection.",
+   "approach": "The researchers used a modified version of a clustering technique to group similar images together, and then used a probability analysis to determine how likely it is that the flaws are actually present. They tested this approach against other methods and found it to be more effective."
+  },
+  {
+   "work": "W2988272793",
+   "problem": "This work estimates and predicts the quality and effectiveness of decisions based on the level of competence of management personnel. It compares the performance of different levels of management and optimizes the decision-making process.",
+   "approach": "The researcher uses a multi-factor causal model to analyze the relationship between decision-making and the process of action. The approach involves developing a hierarchy of goals to ensure the adoption and implementation of decisions."
+  },
+  {
+   "work": "W3158936944",
+   "problem": "This work aims to improve the performance of a specific type of material used in energy storage and microwave applications. It estimates and compares the properties of this material under different conditions.",
+   "approach": "The researchers created a new material by combining two other materials in a specific order and using a modified process. They then studied the material's structure and properties using various techniques, such as X-ray diffraction and scanning electron microscopy."
+  },
+  {
+   "work": "W2910625641",
+   "problem": "This work aims to estimate the most efficient way to store and manage information, using a limited amount of a valuable resource, to minimize waste and optimize its use. It compares different methods to achieve this goal.",
+   "approach": "The approach involves designing a new method that integrates a valuable resource with the storage and management of information, using a combination of data analysis and optimization techniques to achieve the best results."
+  },
+  {
+   "work": "W7217849245",
+   "problem": "This work estimates the composition and properties of a complex substance, comparing its various constituents and their effects on human health. It predicts the potential benefits and risks of using this substance, and optimizes its use to ensure safety and efficiency.",
+   "approach": "The procedure involves analyzing the substance's chemical makeup and its interactions with the body, using a combination of historical research and modern scientific techniques to summarize and interpret existing findings."
+  }
+ ]
+}

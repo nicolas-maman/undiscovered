@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-002",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T01:57:37Z",
+ "descriptions": [
+  {
+   "work": "W2987343426",
+   "problem": "A set of questions is evaluated to determine how well they measure a specific cognitive experience, assessing how individuals respond across different levels of that experience and whether responses vary systematically by demographic or clinical factors.",
+   "approach": "A statistical model fits individual responses to a latent trait, testing whether the questions behave consistently across different groups and under varying conditions of the trait being measured."
+  },
+  {
+   "work": "W4415960419",
+   "problem": "A system-wide pattern of protein activity is assessed to determine its relationship with disease progression and survival outcomes across a group of tissue samples.",
+   "approach": "Protein expression levels are measured in tissue samples and correlated with clinical outcomes. A statistical model identifies which protein interactions and expression levels independently predict survival and disease spread."
+  },
+  {
+   "work": "W4406817376",
+   "problem": "A measure of disease recurrence frequency is estimated from patient records over time, comparing outcomes under different treatment regimens based on observed health events and environmental exposure levels.",
+   "approach": "A statistical model assigns weights to treatment variables and environmental factors, then predicts infection rates using historical patterns and adjusts for baseline health indicators to identify treatment effects."
+  },
+  {
+   "work": "W4416683173",
+   "problem": "The performance of different cereal varieties under insect attack is assessed by measuring survival, reproduction, and physical traits of the pest, and the relationship between seed characteristics and pest outcomes is evaluated.",
+   "approach": "Insects are exposed to multiple seed types under controlled conditions to observe survival and reproduction. Seed hardness and size are analyzed for their influence on pest behavior and output, using statistical comparisons to identify patterns and correlations."
+  },
+  {
+   "work": "W3123241984",
+   "problem": "A central figure in an educational setting is assessed on their ability to coordinate diverse responsibilities while maintaining focus on improving learning outcomes through consistent, adaptive practices.",
+   "approach": "A structured process is developed where multiple stakeholders contribute to decision-making, and regular feedback loops are established to adjust strategies in response to evolving conditions and performance indicators."
+  },
+  {
+   "work": "W4221121267",
+   "problem": "The effect of a controlled vibrational process on the uniformity and alignment of ceramic particles within a metal matrix is assessed, using physical and mechanical measurements to evaluate performance improvements.",
+   "approach": "A material is prepared with varying amounts of ceramic particles, subjected to a controlled vibrational treatment during mixing, then analyzed for internal structure, bonding, and strength under different conditions."
+  },
+  {
+   "work": "W4416299237",
+   "problem": "The task is to map and analyze patterns in scholarly work focused on socially entrenched behaviors that disproportionately affect specific groups, identifying dominant themes, evolving research trends, and gaps in interdisciplinary coverage over time.",
+   "approach": "A systematic review of published works is conducted using co-authorship and keyword networks, then visualized and clustered to reveal thematic groupings, institutional contributions, and temporal shifts in research focus and collaboration."
+  },
+  {
+   "work": "W4285733685",
+   "problem": "A system is evaluated to determine how a specific nutritional input affects body fat distribution and metabolic activity in a living organism over a short period.",
+   "approach": "A controlled intervention is applied, and changes in fat cell size, hormone expression, and energy-burning capacity are measured through microscopic analysis of tissue samples and associated molecular markers."
+  },
+  {
+   "work": "W4388022109",
+   "problem": "The performance and durability of a lipid-based delivery system are evaluated under varying environmental conditions and with different payload types, measuring how well the system maintains structural integrity and functional output over time.",
+   "approach": "A system is designed with adjustable payload concentration and environmental triggers, then monitored for size, surface charge, and payload retention across time and temperature. Performance is compared across conditions using standardized metrics of stability and transport efficiency."
+  },
+  {
+   "work": "W4313340123",
+   "problem": "A spatial pattern of surface cover is estimated from high-resolution images taken at different times, where the cover is visible only under specific environmental conditions, such as low water levels or calm runoff.",
+   "approach": "A model computes a surface reflectance index from image bands, then applies a threshold to detect patches of cover. Detected patches are spatially aggregated and analyzed for size and location, with results adjusted for environmental disturbances like water movement or sediment input."
+  },
+  {
+   "work": "W4409528177",
+   "problem": "The effect of a natural extract on cancer cell viability is assessed using cell culture models to determine its ability to inhibit cell growth.",
+   "approach": "A series of fractions are separated from a plant-derived extract, and their impact on cells is tested. Molecular simulations support experimental findings by predicting interactions with cellular targets."
+  },
+  {
+   "work": "W3080167492",
+   "problem": "A system evaluates the long-term consequences of a widespread disruption on a structured activity involving human interaction, financial resources, and established rules, assessing how these elements shift in response to sudden, uncontrollable events.",
+   "approach": "The system analyzes historical performance data, financial records, and operational decisions before and after an event, then models how changes in safety protocols, resource allocation, and rule enforcement affect outcomes across different stakeholder groups."
+  },
+  {
+   "work": "W2896624700",
+   "problem": "The task is to evaluate how effectively two different surgical techniques improve the balance and movement of a side of the face during a natural expression, measuring symmetry and range of motion in multiple directions.",
+   "approach": "A model compares outcomes across two interventions by analyzing changes in spatial alignment and movement range before and after treatment, using repeated measurements from patients during expressive actions to quantify differences in performance and consistency."
+  },
+  {
+   "work": "W7124456422",
+   "problem": "A system learns to distinguish between normal and abnormal patterns in medical images by analyzing visual content and assigning a label based on observed features.",
+   "approach": "A pre-existing image analysis model is fine-tuned with a module that dynamically emphasizes important regions and feature types, improving its ability to detect subtle differences in image structure."
+  },
+  {
+   "work": "W4365514919",
+   "problem": "A set of regulatory proteins is characterized across a plant species, with attention to their expression patterns in specific tissues and under stress conditions, and their role in developmental timing and growth regulation.",
+   "approach": "Proteins are grouped by evolutionary relationships and mapped to functional regions in the genome. Their activity is inferred from expression data and subcellular positioning, and their impact on development is tested through overexpression in a model organism."
+  },
+  {
+   "work": "W4409448474",
+   "problem": "A system is designed to assess how effectively cultural practices are preserved and transmitted through interactive, technology-mediated experiences.",
+   "approach": "It maps user engagement patterns across platforms and correlates them with participation in cultural activities, using feedback loops to refine content delivery and learning pathways over time."
+  },
+  {
+   "work": "W2986519692",
+   "problem": "A rare, chronic condition is identified by the presence of spherical, calcified deposits in lung tissue that form over time and are linked to a specific genetic mutation affecting phosphate transport in a key cell type.",
+   "approach": "A model identifies patients with early signs of calcification and minimal symptoms, and recommends intervention only when respiratory function declines significantly, based on imaging and clinical progression."
+  },
+  {
+   "work": "W2618705568",
+   "problem": "A seller with private knowledge of a good's traits designs a rule to assign it to buyers based on their signals, aiming to maximize total gains while ensuring buyers trust the disclosed traits and act accordingly.",
+   "approach": "The seller proposes a rule that maps buyer signals to a good's features and assigns it to buyers, adjusting the outcome based on how much information is shared and how buyers value the revealed traits."
+  },
+  {
+   "work": "W3009967987",
+   "problem": "Human practitioners assess how tools affect their ability to respond to changing needs in real time, evaluating how these tools influence the consistency and flexibility of service delivery.",
+   "approach": "Practitioners evaluate tool performance through repeated interaction, adjusting usage based on observed outcomes, and either rejecting, fully integrating, or creatively reconfiguring the tools to fit evolving operational and ethical expectations."
+  },
+  {
+   "work": "W4311496565",
+   "problem": "A complex object is divided into smaller, manageable pieces based on the physical and operational limits of available equipment. The goal is to predict how these pieces can be produced efficiently and joined together to form the complete structure.",
+   "approach": "The object's digital blueprint is split into sections matching the capabilities of existing tools. Each section is processed using a rule-based method that matches its shape and constraints to available equipment, then assembled using energy-based joining and refined with localized finishing."
+  }
+ ]
+}

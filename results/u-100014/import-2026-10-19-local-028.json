@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-028",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T01:57:40Z",
+ "descriptions": [
+  {
+   "work": "W4411855228",
+   "problem": "A system's behavior under varying physiological conditions is assessed to determine whether structural features lead to functional impairment, especially when combined with dynamic mechanical stress.",
+   "approach": "Multiple imaging techniques are integrated to map spatial anatomy and functional responses over time, with stress-induced changes monitored to evaluate risk of tissue damage or performance degradation."
+  },
+  {
+   "work": "W4324137696",
+   "problem": "A pattern of health outcomes is assessed across individuals based on their exposure history to specific chemical agents used in agricultural practices, evaluating whether prolonged or repeated contact correlates with changes in disease risk over time.",
+   "approach": "Exposure durations and frequencies are mapped to known chemical agents using a crop-specific exposure model. Risk associations are estimated through statistical modeling that adjusts for time and other factors, then refined by combining exposure intensity with duration to compute cumulative exposure scores."
+  },
+  {
+   "work": "W4413598275",
+   "problem": "A change in daily habits is evaluated to determine its impact on reproductive function and cycle consistency in individuals with hormonal imbalances and elevated body mass.",
+   "approach": "Participants undergo a structured intervention involving dietary adjustments and physical activity tracking over six months, with outcomes measured through repeated assessments of hormonal response and cycle pattern stability."
+  },
+  {
+   "work": "W4386704918",
+   "problem": "A system-wide regulatory factor is identified that enhances the expression of a key DNA repair gene, leading to increased cellular resilience against targeted therapies in disease states with compromised treatment response.",
+   "approach": "A transcriptional complex is formed and targeted to a specific gene promoter, where it amplifies expression of a DNA repair enzyme. This activity is suppressed by a small-molecule inhibitor combined with a targeted agent, resulting in reduced survival of resistant disease cells."
+  },
+  {
+   "work": "W4306782344",
+   "problem": "The relative weights of various body components are estimated and compared across different genetic lines and dietary treatments to identify patterns in growth and tissue distribution.",
+   "approach": "A group of animals is assigned to distinct dietary regimens and genetic groups. After a set period, body parts are separated and weighed. Statistical analysis determines which combinations yield consistent or divergent outcomes in part weights."
+  },
+  {
+   "work": "W2946116395",
+   "problem": "A biological marker's concentration is measured across a group of individuals with a specific anatomical condition and a matched group without it, to determine if the marker differs significantly or correlates with the condition.",
+   "approach": "Blood samples are collected and stored for later analysis. The concentration of a stress-responsive substance is quantified using a standardized assay. Results are compared between groups using statistical evaluation to detect differences or associations."
+  },
+  {
+   "work": "W2917588684",
+   "problem": "A set of essential clinical skills is identified for training medical students in high-pressure, resource-limited healthcare settings, based on expert input and iterative agreement.",
+   "approach": "An iterative process gathers input from experienced instructors, refines a list of skills through repeated evaluation, and finalizes a set of widely agreed-upon procedures through structured feedback and consensus building."
+  },
+  {
+   "work": "W4294030523",
+   "problem": "The performance of a material is evaluated across multiple physical and structural metrics under varying composition, including density, resistance to deformation, and strength under load, as a function of added component concentration.",
+   "approach": "A systematic variation of component content is introduced, and the resulting material is subjected to controlled testing conditions to measure its response. Observed changes are attributed to improved internal cohesion and reduced void content."
+  },
+  {
+   "work": "W3046793325",
+   "problem": "A pattern of behavior in response to a widespread health threat is analyzed to understand how societal institutions influence individual actions and decision-making under uncertainty.",
+   "approach": "A model maps interactions between community leaders and individuals, using observed actions and reported outcomes to simulate how trust in authority shapes compliance with public guidance over time."
+  },
+  {
+   "work": "W4296545327",
+   "problem": "A quantitative measure of a system's resistance to deformation under load is determined and evaluated across a range of operating conditions to identify the value that maximizes performance in dynamic response.",
+   "approach": "A mathematical model is developed to relate the load applied to a system to its displacement, assuming a linear relationship. Experimental and simulation results are used to validate the model and identify the parameter value that yields the most effective suppression of dynamic response."
+  },
+  {
+   "work": "W3003027861",
+   "problem": "A model estimates the likelihood of a physiological response to hormonal stimulation based on pre-treatment biomarkers and reproductive anatomy, comparing individuals who experience the response to those who do not.",
+   "approach": "The model evaluates multiple pre-stimulation indicators, applies statistical weighting to identify key predictors, and uses a regression framework to assign risk probabilities, with the strongest influence coming from metabolic and structural traits related to hormonal sensitivity and ovarian structure."
+  },
+  {
+   "work": "W4407056207",
+   "problem": "A longitudinal pattern is estimated linking financial instability during early to mid-adulthood with performance on cognitive tasks assessed later in life, controlling for earlier cognitive abilities.",
+   "approach": "Annual or semi-annual financial changes are quantified by measuring variation in income levels and the frequency of sharp declines. Cognitive performance is averaged across multiple task outcomes, and statistical models link these financial patterns to later cognitive outcomes while adjusting for early cognitive performance."
+  },
+  {
+   "work": "W4313488431",
+   "problem": "A pattern of physiological markers is measured in individuals with a chronic metabolic condition and compared to a group of individuals without the condition to determine if differences exist and whether those differences are statistically significant.",
+   "approach": "A set of numerical values is collected from each individual and grouped by condition. A statistical test is applied to assess whether the average values differ significantly between the two groups, using a predefined threshold for significance."
+  },
+  {
+   "work": "W4379779598",
+   "problem": "A spatial pattern of healthcare providers ceasing new patient intake is identified and analyzed to determine which regions and provider traits are linked to this decline.",
+   "approach": "Geographic maps are used to visualize the spread of inactive providers. Statistical models assess relationships between provider attributes and regional factors, identifying which combinations are most predictive of cessation of new patient intake."
+  },
+  {
+   "work": "W2889361518",
+   "problem": "A sequence of observations is presented, and a pattern of change over time is inferred from them, with the goal of identifying a likely underlying mechanism driving the observed behavior.",
+   "approach": "The information is processed step by step, with each new piece integrated into a developing narrative. The narrative is refined as more data arrives, and the most plausible explanation is selected based on consistency with prior observations and known patterns of behavior."
+  },
+  {
+   "work": "W3161960351",
+   "problem": "The system's dynamic response is assessed under varying stiffness conditions of a supporting base, to determine how the overall behavior changes with the base's rigidity.",
+   "approach": "A model is built where the base's stiffness is adjusted systematically, and the resulting frequency response of the entire system is computed, revealing shifts in dominant motion patterns based on the base's rigidity level."
+  },
+  {
+   "work": "W3044901888",
+   "problem": "A system estimates the effect of a chemical agent on living cells by monitoring changes in cell structure and growth over time under controlled conditions.",
+   "approach": "Cells are isolated in a confined, gel-based environment and exposed to varying concentrations of a substance. Growth and structural changes are observed in real time, with results compared across conditions to determine the threshold at which cellular activity is suppressed."
+  },
+  {
+   "work": "W4232156893",
+   "problem": "A system estimates the efficiency and environmental impact of converting organic material into a liquid energy form using thermal and chemical processing methods.",
+   "approach": "It applies rapid heating followed by chemical treatment to transform raw organic matter into a usable liquid product, evaluating performance across different input conditions and processing parameters."
+  },
+  {
+   "work": "W4411476940",
+   "problem": "The effect of specific sound frequencies and intensities on the rate of growth and biochemical changes in a photosynthetic, autotrophic organism is measured under controlled laboratory conditions.",
+   "approach": "A set of sound stimuli with defined frequencies and amplitudes is applied to a culture of the organism. Growth and metabolic markers are monitored over time to determine how the stimuli influence development and internal chemical activity."
+  },
+  {
+   "work": "W3213645288",
+   "problem": "A system is analyzed to determine how interactions between human actors and digital tools evolve across networks, predicting how performance, resilience, and control shift under decentralized coordination and market-driven incentives.",
+   "approach": "A model maps how connectivity between components increases through multiple, overlapping pathways, with performance evaluated under variable levels of autonomy, feedback, and external influence across dynamic networks."
+  }
+ ]
+}

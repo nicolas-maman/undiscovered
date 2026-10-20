@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-19-local-003",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T01:57:37Z",
+ "descriptions": [
+  {
+   "work": "W4292810615",
+   "problem": "This study estimates the trends of a certain type of illness in children before and after a significant change in how people interacted with each other, and compares these trends to what happened before the change. It also explains why some of these trends changed.",
+   "approach": "The researchers collected data from a large group of doctors who specialize in treating this type of illness, and used this data to compare the number of cases over time. They used a statistical method to analyze the data and identify patterns."
+  },
+  {
+   "work": "W3194513901",
+   "problem": "This research estimates the effect of providing care to young children on the ability to work and the mental health of older adults, using data from a large survey of adults aged 50-59. It compares the outcomes of those who provide care to those who do not.",
+   "approach": "The researchers use a statistical model to analyze the data, controlling for individual differences that do not change over time. They then apply this model to the data to estimate the effect of providing care on working hours and mental health."
+  },
+  {
+   "work": "W3108648708",
+   "problem": "This research aims to understand how certain behaviors promote good health in a specific group of people, and how to improve these behaviors. It estimates the relationships between different factors and behaviors, and compares the results to a theoretical model.",
+   "approach": "The researchers used a mathematical model to analyze data from a survey of people over 65 living in Korea. They followed a procedure that involved fitting the model to the data and checking its fit, using various statistical measures to evaluate the results."
+  },
+  {
+   "work": "W4409083007",
+   "problem": "This work estimates the exact solution to a mathematical problem involving a type of equation that describes how a function changes over time, based on past values of the function. It compares this solution to a known solution, and optimizes the process of finding the solution.",
+   "approach": "The work uses a mathematical transformation to simplify the problem, and then applies a set of rules to find the solution. It uses historical data of the function to train a model that can predict the solution."
+  },
+  {
+   "work": "W2789629259",
+   "problem": "This work characterizes the properties of a protein that helps attach large, protein-based structures to the surface of cells. It estimates the structure of this protein and how it interacts with other proteins and lipids.",
+   "approach": "The researchers use a combination of biochemical and biophysical techniques to determine the structure of the protein. They then analyze the protein's interactions with other molecules to understand its role in attaching large protein structures to the cell surface."
+  },
+  {
+   "work": "W4390493061",
+   "problem": "This work estimates the role of a protein in the development of a specific type of cell, and compares its function to another protein. It predicts that the protein's function is not dependent on its interaction with another protein.",
+   "approach": "The researchers used a specific genetic knockout to test the protein's function, and found that the protein's function is not affected by the loss of the other protein. They also observed the protein's co-expression with the other protein in a specific tissue during development."
+  },
+  {
+   "work": "W4210932387",
+   "problem": "This work estimates the relationship between the expression levels of a protein and patient survival, and compares the survival rates of patients with varying levels of protein expression. It also aims to explain the underlying mechanisms and identify potential biomarkers for patient survival.",
+   "approach": "The study uses various computational tools to analyze data from a large dataset, including statistical tests, regression analysis, and network analysis. It follows a procedure of data collection, analysis, and model creation to identify patterns and relationships in the data."
+  },
+  {
+   "work": "W4402457779",
+   "problem": "This research estimates the likelihood of generating vulnerable software from a large language model, predicts the effectiveness of a security model in guiding the model's generation towards more secure code, and compares the results across different models.",
+   "approach": "The approach involves training a smaller security model to guide the generation of a target model, adjusting the probability distributions of model outputs during each step, and improving the average security ratio of the target model by 5.02%-37.14% while maintaining its functional correctness."
+  },
+  {
+   "work": "W2943292619",
+   "problem": "This work aims to reduce the error in a timing control system, which is used to synchronize the timing of two signals. It estimates the error and predicts how it will change over time, and then optimizes the system to minimize the error.",
+   "approach": "The system uses a mathematical model to analyze the error and the proposed technique reduces the error by at least half. It uses computer simulations to test the technique and shows that it is more effective than a standard system."
+  },
+  {
+   "work": "W2802017594",
+   "problem": "This study aims to estimate the maximum amount of movement that a certain type of concrete structure can withstand before it becomes unsafe. It also predicts the likelihood of this movement occurring and compares it to the actual movement to determine the structure's safety.",
+   "approach": "The researchers use a combination of mathematical models and statistical methods to analyze the structure's movement. They break down the movement into different components, such as temperature, time, and pressure effects, and then use these components to estimate the maximum movement and predict the likelihood of it occurring."
+  },
+  {
+   "work": "W4318685324",
+   "problem": "This work aims to find the most efficient way to connect components in a complex system, taking into account the heat generated by these connections. It estimates the minimum amount of material needed to connect the components, and compares it to a baseline.",
+   "approach": "The approach uses a tree-like structure to represent the connections, and a method to prune branches that are unlikely to be the most efficient. It then uses a technique to optimize the connections and reduce the heat generated."
+  },
+  {
+   "work": "W4392706881",
+   "problem": "This work estimates the chemical composition of a substance collected from a specific insect, and compares its effects on a particular type of cell. It aims to identify which compounds in the substance are most likely to harm or help these cells.",
+   "approach": "The researchers used a combination of laboratory tests to identify the individual compounds present in the substance. They then tested these compounds on a specific type of cell to see which ones were most effective at stopping its growth."
+  },
+  {
+   "work": "W4285409249",
+   "problem": "This text estimates the significance of Per Aage Brandt's life and work, comparing his achievements in science, art, and scholarship to provide an overview of his impact.",
+   "approach": "The author presents a summary of Brandt's key contributions, following a procedure that involves identifying and summarizing his main ideas, artistic practices, and scholarly accomplishments."
+  },
+  {
+   "work": "W4206357204",
+   "problem": "This work estimates the importance of literature in understanding a particular field, compares it to other related fields, and optimizes the way this field is introduced to new readers. It explains the significance of rhetoric and hermeneutics in this field.",
+   "approach": "The author reviews a new book that provides an introduction to this field, highlighting its key principles and stimulating critical thinking. The review aims to pinpoint essential ideas and offer insights that can help readers understand the subject."
+  },
+  {
+   "work": "W3003655284",
+   "problem": "An estimate or prediction is made about the causes of deaths during medical procedures, and this is compared to existing knowledge to identify areas for improvement. The goal is to explain why certain deaths occur and to optimize medical practices to prevent them.",
+   "approach": "A model is used to develop a new framework for evaluating the causes of deaths during medical procedures. Experts review and refine the framework through a series of discussions and ratings, ultimately resulting in a comprehensive and validated system."
+  },
+  {
+   "work": "W2955026493",
+   "problem": "This research aims to evaluate how a well-structured framework can help identify and understand the connections between social issues, technology, and the practices of a leading institution in Bangladesh that provides financial services to individuals.",
+   "approach": "The researchers used a case study approach, examining the connections between social issues, technology, and practices at the institution, and providing suggestions on how technology can be more meaningful to the practitioners."
+  },
+  {
+   "work": "W4399259752",
+   "problem": "This research estimates the optimal financial decisions for a group of entities, comparing their outcomes to a baseline scenario. It predicts the best course of action to achieve a desired level of financial stability.",
+   "approach": "The study uses a mathematical model to compare the outcomes of different financial decisions, following a procedure that involves identifying the key factors influencing financial stability, formulating a set of possible decisions, and evaluating their outcomes using historical data."
+  },
+  {
+   "work": "W4312591080",
+   "problem": "This research estimates the effectiveness of using a type of water rich in certain substances to treat a skin condition in animals. It aims to compare the outcomes of using this water to a standard treatment.",
+   "approach": "The researchers used a model of the skin condition in rats, applying the water every other day for 20 minutes over 6 sessions. They then examined the rats' skin and blood to see if the water had any beneficial effects."
+  },
+  {
+   "work": "W4387782957",
+   "problem": "This work estimates the optimal shape of a three-dimensional structure that can be built from short and small components, and compares it to real-world models. It aims to explain how to design and construct such a structure using a new method.",
+   "approach": "The approach involves creating a flexible, elastic framework that can be built from flat components. It uses numerical analysis and simulation to test the structure's behavior and optimize its design."
+  }
+ ]
+}

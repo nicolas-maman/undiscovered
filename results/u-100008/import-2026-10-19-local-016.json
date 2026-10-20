@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-19-local-016",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T01:57:39Z",
+ "descriptions": [
+  {
+   "work": "W2992880500",
+   "problem": "A system estimates the economic worth of land parcels based on spatial and environmental factors, and generates visual summaries of land use efficiency and environmental stress patterns across a region.",
+   "approach": "The system integrates spatial data on land features and environmental conditions, applies rules to assign value based on location and context, and produces maps showing patterns of resource use and stress across defined areas."
+  },
+  {
+   "work": "W3094050181",
+   "problem": "A method is evaluated to predict the likelihood of a clinical outcome based on a set of observed features, comparing how well two scoring systems estimate the probability of a specific prognosis group.",
+   "approach": "A statistical model assigns a numerical value to each case based on input features, then compares the predicted group membership to actual observed group assignments across a dataset of cases with known outcomes."
+  },
+  {
+   "work": "W2992772247",
+   "problem": "A system's ability to mediate binding between cells and a surface is assessed under varying conditions, with the strength of interaction measured across different structural configurations.",
+   "approach": "A structural component is tested for its tendency to form stable, cooperative assemblies in lipid-based environments versus random, non-cooperative forms, and its functional impact on binding is evaluated through controlled surface interactions."
+  },
+  {
+   "work": "W4386269223",
+   "problem": "A change in a physiological metric is measured over time in individuals with a chronic condition, comparing pre- and post-intervention values to determine if a specific substance influences the outcome.",
+   "approach": "A structured observation and reporting protocol is applied over a fixed period. The intervention involves daily administration of a specific substance, and the resulting change in the metric is recorded and analyzed for statistical significance."
+  },
+  {
+   "work": "W4388924971",
+   "problem": "The outcome of a surgical intervention for a severe, invasive infection is assessed, including survival of the graft, preservation of the anatomical structure, and recovery of functional vision, based on clinical records and follow-up data.",
+   "approach": "A retrospective analysis is conducted using medical records to track the success of a surgical procedure over time, evaluating survival rates, structural integrity, and visual recovery in individuals with prolonged infection and surgical intervention."
+  },
+  {
+   "work": "W3165377713",
+   "problem": "A historical narrative is reconstructed from fragmented records to explain the emergence of a geopolitical account involving two major powers and a contested boundary region.",
+   "approach": "A systematic review of surviving documents is performed, cross-referencing linguistic patterns, temporal sequences, and regional references to infer the development of a formalized account from earlier, informal sources."
+  },
+  {
+   "work": "W4404039774",
+   "problem": "A system identifies and evaluates distinct functional capabilities in autonomous machines, predicting how these abilities perform under varying operational conditions based on observed behavior and design principles.",
+   "approach": "It maps each capability to a set of predefined cognitive functions, then analyzes performance patterns across different environments using structured observation and historical data to determine effectiveness and adaptability."
+  },
+  {
+   "work": "W4406213799",
+   "problem": "The success rate of combining gametes in a controlled environment is enhanced by adding specific bioactive molecules to the culture conditions or through direct delivery to an organism.",
+   "approach": "A compound is introduced into a liquid environment where cells are exposed to it before a key biological interaction. Alternatively, the compound is delivered directly to an organism to influence its internal state and improve outcomes of a reproductive event."
+  },
+  {
+   "work": "W2791835266",
+   "problem": "A system must manage dynamic user access patterns where some users stay stable and others move in and out frequently. The goal is to balance performance between stable and transient users while maintaining efficient communication for all.",
+   "approach": "A randomized power allocation method is applied to incoming users. Stable users are served with consistent signal strength, while transient users are handled with adaptive signal strength adjustments based on current network conditions."
+  },
+  {
+   "work": "W2968833638",
+   "problem": "The degree to which differences in performance among individuals are due to inherited factors is estimated, and the potential for improvement through selection is assessed using data from multiple environmental conditions.",
+   "approach": "Differences in performance across individuals are analyzed under varying conditions. A statistical model evaluates the influence of inherited factors versus environmental noise, and identifies which features show strong response to selection based on the consistency and magnitude of performance differences."
+  },
+  {
+   "work": "W4386307197",
+   "problem": "The task is to evaluate how varying the proportions of two natural materials and a binding agent influence the resulting material's density, porosity, water uptake, and resistance to deformation under load.",
+   "approach": "A set of mixtures is prepared with different ratios of components. Each mixture is subjected to physical and mechanical testing. Results are analyzed to determine how ingredient distribution affects internal structure and performance under stress."
+  },
+  {
+   "work": "W2889811997",
+   "problem": "A group of individuals seeks to transform their sexual identity through structured behavioral and spiritual practices, aiming to align with societal expectations of moral and social order in a context marked by intense social and cultural pressures.",
+   "approach": "They engage in daily self-monitoring, follow prescribed routines in speech and movement, and interpret their personal transformation as contributing to broader societal stability and moral renewal."
+  },
+  {
+   "work": "W4412136111",
+   "problem": "A numerical value is estimated to predict the presence of a specific physiological condition, and its relationship to another measurable biological indicator is assessed. The strength and direction of this relationship are evaluated using rank-based statistical methods, and the predictive power of the value is quantified through a performance curve.",
+   "approach": "A model compares a patient's level of a specific bodily substance to a reference group, using rank-based correlation to assess its link to a biological marker. It then determines a threshold value to classify individuals into a condition group based on performance metrics."
+  },
+  {
+   "work": "W4287801962",
+   "problem": "A three-dimensional arrangement of ions is analyzed to determine how different positions of cations and anions are connected through shared interactions, and how these connections vary in strength and pattern across multiple sites.",
+   "approach": "A model assigns each position to a set of neighboring units, with specific interaction strengths and coordination numbers. It maps how each unit links to others, forming a network where connections vary in length and number across distinct locations."
+  },
+  {
+   "work": "W4296041515",
+   "problem": "The efficiency of a chemical conversion process is evaluated under varying conditions of a key component's purity, and its effect on product composition, reaction stability, and byproduct levels is analyzed.",
+   "approach": "A material is prepared using a base substance and a purified additive in a controlled mixing process. The reaction is run under fixed conditions, and the resulting product's properties are measured across multiple cycles to assess performance and consistency."
+  },
+  {
+   "work": "W4307640606",
+   "problem": "The presence and persistence of a pathogen in bodily fluids are assessed across different time points and sample types to determine its diagnostic value and clinical associations.",
+   "approach": "Paired samples are collected and tested for pathogen presence using molecular amplification. Results are analyzed by comparing detection rates, co-occurrence, and disease features across time and sample types, adjusting for statistical significance."
+  },
+  {
+   "work": "W4412915590",
+   "problem": "A system's impact on biological and environmental health is evaluated across diverse applications, including disease resistance, productivity, and protective effects in living organisms and ecosystems.",
+   "approach": "A model analyzes interactions between natural organic compounds and biological systems using empirical observations from varied environments, adjusting predictions based on exposure history and response patterns across species and conditions."
+  },
+  {
+   "work": "W3111655084",
+   "problem": "A set of traits related to growth efficiency and environmental resilience is identified across diverse genetic materials. The goal is to determine which sources best support performance under varying conditions and predict their combined effects on yield and stability.",
+   "approach": "A systematic evaluation compares genetic variants based on performance metrics across environments. Each variant is scored for its ability to maintain performance under stress and in resource-limited settings, using historical observations and phenotypic records."
+  },
+  {
+   "work": "W4312093838",
+   "problem": "A system's uptake efficiency of a key nutrient is assessed under varying environmental conditions, including flow and chemical concentration, to determine how these factors influence performance across different physiological strategies.",
+   "approach": "The system evaluates how performance changes with flow intensity and chemical concentration, applying a rule that performance improves with flow when passive uptake is dominant, but remains stable when active mechanisms are engaged regardless of flow."
+  },
+  {
+   "work": "W4385631273",
+   "problem": "A system estimates the likely cause of a persistent low energy state in an older individual, predicting whether it stems from a loss of cellular components, a reduced ability to utilize stored resources, or an underlying condition suppressing production.",
+   "approach": "The system analyzes laboratory indicators including cell size, stored material levels, and production efficiency. It compares these to known patterns to assign a most probable origin, then recommends interventions based on the nature and severity of the underlying deficit."
+  }
+ ]
+}
