@@ -102,8 +102,9 @@ def test_the_same_description_for_two_papers_is_asked_again():
 
 def test_a_model_that_keeps_failing_is_stopped_before_anything_is_sent():
     unit = {"unit": "u-100000", "works": ["W1"], "instructions": INSTRUCTIONS}
-    with pytest.raises(distill.Unusable, match="failed the checks for 1 of 1"):
+    with pytest.raises(distill.Unusable, match="failed the checks for 1 of 1") as stopped:
         distill.distill_unit(FakeAPI(), FakeModel(["nope", "still nope"]), unit)
+    assert stopped.value.described == [] and stopped.value.failed == [("W1", "the answer was not a JSON object")]
 
 
 def test_the_result_follows_the_protocol():

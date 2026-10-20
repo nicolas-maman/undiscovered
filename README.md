@@ -132,6 +132,9 @@ Now:
   (Google, Groq and OpenRouter give free ones). Or
   [use the command-line client](https://nicolas-maman.github.io/undiscovered/join.html#terminal)
   for many units unattended.
+- [Start from a paper of your own](https://nicolas-maman.github.io/undiscovered/describe.html#own):
+  paste its title and abstract, and see which papers in other fields do the
+  most similar thing.
 - [Explore](https://nicolas-maman.github.io/undiscovered/explore.html): the map
   of every paper, the pairs across fields and the words that made them, a
   search by what papers do, and everything the checking job has accepted or
@@ -145,9 +148,8 @@ Now:
 As each part ships, you will be able to:
 
 - rate the proposed connections that touch your field;
-- run the tool on your own machine with a paper, an ORCID iD or a short
-  description, and see which distant fields work on the same problem.
-  Nothing leaves your machine unless you choose to share it.
+- start from an ORCID iD, and see which distant fields work on the same
+  problems as all of a researcher's papers at once.
 
 Clients follow one [protocol](PROTOCOL.md). Two collect the map now: the
 [Python client](clients/python/README.md), and the [Aether client](clients/aether/README.md),

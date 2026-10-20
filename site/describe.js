@@ -85,6 +85,7 @@
   function refresh() {
     ["browser", "hosted", "local"].forEach(function (k) { $("panel-" + k).hidden = kind() !== k; });
     $("test").disabled = !ready() || state.running;
+    $("own-go").disabled = !ready() || state.running || !$("own-abstract").value.trim();
     $("start").disabled = !ready() || state.running;
     if (!state.running && !state.finished) { status("unit-status", ready() ? "Ready." : "Choose a model first."); }
     if (kind()) { save("kind", kind()); }
@@ -391,11 +392,66 @@
     if (!shown) { box.appendChild(el("p", {class: "note", text: "Nothing close yet; that changes as more papers are described."})); }
   }
 
+  // ---- one paper of the visitor's own ---------------------------------------
+
+  var published = null;     // the published descriptions, as a search index, loaded once
+  async function publishedIndex() {
+    if (published) { return published; }
+    var docs = [], r = await fetch(RAW + "combined/descriptions.jsonl", {cache: "no-store"});
+    if (r.ok) {
+      (await r.text()).split("\n").forEach(function (line) {
+        if (!line.trim()) { return; }
+        var p = JSON.parse(line);
+        docs.push({id: p.work, field: p.field || p.domain || "", title: p.title || p.topic_name || p.work, d: p.descriptions[0],
+                   text: p.descriptions.map(function (d) { return d.problem + " " + d.approach; }).join(" ")});
+      });
+    }
+    published = new text.Index(docs);
+    return published;
+  }
+
+  async function ownPaper() {
+    var m = model(), out = $("own-out");
+    remember();
+    $("own-go").disabled = true;
+    out.textContent = "";
+    status("own-status", m.provider === "webllm" ? "Loading the model..." : "Describing...");
+    try {
+      var index = await getJSON(RAW + "units/index.json");
+      var instructions = index.units[0].instructions;
+      var desc = await core.describe(function (s, u) { return ask(m, s, u, function (msg) { status("own-status", msg); }); },
+        instructions, {title: $("own-title").value.trim(), abstract: $("own-abstract").value.trim()}, [], 99, new Set());
+      out.appendChild(el("div", {class: "desc", style: "margin-left:0"}, [el("p", {}, [el("b", {text: "Problem"}), desc.problem]),
+                                                                       el("p", {}, [el("b", {text: "Approach"}), desc.approach])]));
+      status("own-status", "Looking among the published descriptions...");
+      var idx = await publishedIndex();
+      var hits = idx.search(desc.problem + " " + desc.approach, 8);
+      if (!idx.docs.length) {
+        status("own-status", "Described. No paper has been described and published yet to compare it with; that changes as volunteers send units.", "ok");
+        return;
+      }
+      status("own-status", "The " + hits.length + " published papers most like it, of " + idx.docs.length + ":", "ok");
+      hits.forEach(function (h) {
+        out.appendChild(el("div", {class: "match"}, [
+          el("div", {}, [el("a", {href: "https://openalex.org/" + h.doc.id, target: "_blank", rel: "noopener", text: h.doc.title}),
+                         el("span", {class: "note", text: " (" + h.doc.field + ")"})]),
+          el("div", {class: "note", text: h.doc.d.problem}),
+          el("div", {class: "why", text: "similarity " + h.score.toFixed(2) + "; shared words: " +
+                                         h.shared.map(function (x) { return x[0]; }).join(", ")})]));
+      });
+    } catch (e) {
+      status("own-status", (e.name === "Unusable" ? "The model's answer could not be used: " : "Stopped: ") + e.message, "bad");
+    } finally {
+      refresh();
+    }
+  }
+
   // ---- wiring --------------------------------------------------------------
 
   document.querySelectorAll("input[name=kind]").forEach(function (r) { r.addEventListener("change", refresh); });
   ["provider"].forEach(function (id) { $(id).addEventListener("change", function () { showProvider(); refresh(); }); });
-  ["key", "hosted-model", "local-base", "local-model", "webllm-model"].forEach(function (id) { $(id).addEventListener("input", refresh); });
+  ["key", "hosted-model", "local-base", "local-model", "webllm-model", "own-abstract"].forEach(function (id) { $(id).addEventListener("input", refresh); });
+  $("own-go").addEventListener("click", ownPaper);
   $("list-hosted").addEventListener("click", function () { listModels(model(), "hosted-models", "test-status"); });
   $("list-local").addEventListener("click", function () { listModels(model(), "local-models", "test-status"); });
   $("test").addEventListener("click", test);

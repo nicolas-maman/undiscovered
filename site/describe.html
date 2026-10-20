@@ -43,6 +43,8 @@
   .panel { background: var(--band); border-radius: 8px; padding: 14px 16px; margin: 10px 0; }
   .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0; }
   label.f { display: flex; flex-direction: column; gap: 3px; font: 13px system-ui, sans-serif; color: var(--muted); flex: 1 1 220px; }
+  textarea { padding: 7px 9px; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--fg);
+             width: 100%; font: 15px/1.45 system-ui, sans-serif; }
   input[type=text], input[type=password], input[type=url], select { padding: 7px 9px; border: 1px solid var(--rule);
           border-radius: 5px; background: var(--bg); color: var(--fg); width: 100%; }
   button { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--accent); background: var(--bg); color: var(--accent);
@@ -157,6 +159,16 @@
   <h2>What your papers resemble</h2>
   <div id="resemble"><p class="note">Once the unit is described, the papers from other fields that its
   descriptions are most like appear here: in this unit, and among the descriptions already published.</p></div>
+
+  <h2 id="own">Or start from your own paper</h2>
+  <p>Paste a paper's title and abstract, yours or any other. The model you chose above describes it without its
+  field's words, and the page finds the papers already described, in other fields, that do the most similar
+  thing. Nothing is sent anywhere but to your model, and nothing is published.</p>
+  <div class="row"><label class="f">Title <input type="text" id="own-title" spellcheck="false"></label></div>
+  <div class="row"><label class="f">Abstract <textarea id="own-abstract" rows="6"></textarea></label></div>
+  <div class="row"><button type="button" id="own-go" disabled>Describe it and look</button>
+    <span class="status" id="own-status"></span></div>
+  <div id="own-out"></div>
 
   <h2>How a result is checked</h2>
   <ol class="how">

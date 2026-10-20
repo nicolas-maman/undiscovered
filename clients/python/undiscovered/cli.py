@@ -153,6 +153,12 @@ def cmd_work(args) -> None:
                 print(f"Stopped: {e}. Run the same command tomorrow.")
                 return
             except Unusable as e:
+                for wid, why in e.failed:
+                    print(f"  {wid}: {why}")
+                if e.described:
+                    out = Path(f"undiscovered-{unit['unit']}-partial.md")
+                    out.write_text(describe_body(unit, model.provenance, e.described), encoding="utf-8")
+                    print(f"saved what the model did describe in {out}; it cannot be submitted as it is")
                 sys.exit(f"Stopped: {e}. Nothing was submitted.")
             body = describe_body(unit, model.provenance, descriptions)
             if args.dry_run:

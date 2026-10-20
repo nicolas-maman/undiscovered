@@ -73,6 +73,14 @@
   describing work below: plain descriptions of them, without each field's words, should bring each set
   together.</p>
 
+  <section id="found" hidden>
+    <h2>Found so far</h2>
+    <p class="sub">The pairs of papers from distant fields that two volunteers' models describe most alike,
+    read live from the project's data. Leads for a reader to judge, not findings.</p>
+    <div class="examples" id="found-pairs"></div>
+    <p><a href="explore.html#pairs">All the pairs, and why each was made</a></p>
+  </section>
+
   <h2>Where the idea comes from</h2>
   <p>In 1986 the information scientist Don Swanson read two sets of papers that had never cited each
   other. One showed that fish oil lowers blood viscosity, platelet aggregation and vascular reactivity.
@@ -117,6 +125,9 @@
   minutes, and the page shows what your papers resemble in other fields as soon as it is done.
   <a href="describe.html">Start</a>, or <a href="join.html#terminal">use the command-line client</a> to run
   many units unattended.</p>
+  <p><strong>Start from a paper of your own.</strong> Paste its title and abstract; a model describes it
+  without its field's words and the page finds the papers in other fields that do the most similar thing.
+  Nothing is published. <a href="describe.html#own">Try it</a></p>
   <p><strong>Explore and check.</strong> The <a href="explore.html">explorer</a> has the map of the set, the
   pairs and the words that made them, a search by what papers do, and everything the checking job has
   accepted or turned away, and why.</p>
@@ -131,6 +142,34 @@
 </main>
 <script src="examples.js"></script>
 <script>
+  // The best pairs so far, when there are any; the section stays hidden until then.
+  fetch("https://raw.githubusercontent.com/nicolas-maman/undiscovered/distill-2025/combined/twins.json", {cache: "no-store"})
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (t) {
+      var best = ((t && t.twins) || []).filter(function (x) { return x.trust === "two models agree"; }).slice(0, 3);
+      if (!best.length) { return; }
+      var box = document.getElementById("found-pairs");
+      function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text) { e.textContent = text; } return e; }
+      best.forEach(function (x) {
+        var card = el("article", "example"), list = el("ul", "papers");
+        card.appendChild(el("h3", "", (x.a.field || x.a.domain) + " and " + (x.b.field || x.b.domain)));
+        card.appendChild(el("p", "detail", x.a.descriptions[0].problem));
+        [x.a, x.b].forEach(function (side) {
+          var li = el("li");
+          li.appendChild(el("span", "field", side.field || side.domain || ""));
+          var a = el("a", "title", side.title || side.work);
+          a.href = "https://openalex.org/" + side.work;
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+        card.appendChild(list);
+        card.appendChild(el("p", "names", "Alike in: " + x.why.map(function (w) { return w[0]; }).join(", ")));
+        box.appendChild(card);
+      });
+      document.getElementById("found").hidden = false;
+    })
+    .catch(function () {});
+
   // Live progress from the data branch; the paragraph reads the same without it.
   fetch("https://raw.githubusercontent.com/nicolas-maman/undiscovered/distill-2025/progress.json", {cache: "no-store"})
     .then(function (r) { return r.ok ? r.json() : null; })

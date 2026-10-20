@@ -3,9 +3,26 @@
 Describing papers needs an AI model, and any model will do: one on your own
 computer, a free service in the cloud, or one you already pay for. The
 project prescribes none and pays for none. Every result records which model
-made it, and each unit is described by two volunteers, so models are compared
-on the same papers and the results page will show which ones do this well.
-Nobody knows yet which those are.
+made it, and each unit is described by two different models, so models are
+compared on the same papers and the
+[explorer](https://nicolas-maman.github.io/undiscovered/explore.html#models)
+shows how well each agrees with the others.
+
+Two small open models running on a laptop (Qwen3 4B and Llama 3.2 3B, 4-bit,
+on an Apple M1) passed every check on the first try for five units, at four
+to five seconds a paper, and agreed with each other beyond chance on 84% of
+the papers (October 2026). A model of that size is enough.
+
+## In the browser: nothing to install
+
+[Describe papers in your browser](https://nicolas-maman.github.io/undiscovered/describe.html)
+runs a model in the page itself with [WebLLM](https://github.com/mlc-ai/web-llm)
+(Qwen3 4B, Llama 3.2 3B or Qwen3 1.7B; a one-time download of 2 to 4 GB that
+the browser keeps), in a recent Chrome, Edge or Safari with WebGPU. The same
+page also takes a key for any of the services below, or the address of a
+server on your computer, and opens the GitHub form for the result.
+
+## The command-line client
 
 `undiscovered setup` asks which model to use and offers the options below.
 To change it later, run `undiscovered setup` again.

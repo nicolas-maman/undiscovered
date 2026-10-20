@@ -41,7 +41,16 @@ THINKING = re.compile(r"<think>.*?</think>", re.S | re.I)
 
 
 class Unusable(ValueError):
-    """The model's answer cannot be used; the message says why, in words the model is shown."""
+    """The model's answer cannot be used; the message says why, in words the model is shown.
+
+    When a whole unit is given up, `described` holds what the model did manage
+    and `failed` each paper it failed on, with the reason, so the volunteer can
+    see what went wrong.
+    """
+
+    def __init__(self, message: str, described: list[dict] | None = None, failed: list[tuple[str, str]] | None = None):
+        super().__init__(message)
+        self.described, self.failed = described or [], failed or []
 
 
 def fetch_works(api: OpenAlex, ids: list[str]) -> dict[str, dict]:
@@ -160,10 +169,10 @@ def distill_unit(api: OpenAlex, model: Model, unit: dict, progress=lambda done, 
                 taken.add(fingerprint(desc))
                 out.append({"work": wid, **desc})
             except Unusable as e:
-                failed.append(wid)
+                failed.append((wid, str(e)))
                 last = str(e)
         progress(i + 1, len(unit["works"]))
     if len(failed) * 4 > len(unit["works"]):
         raise Unusable(f"the model's answers failed the checks for {len(failed)} of {len(unit['works'])} "
-                       f"papers (last: {last}); a larger model may do better")
+                       f"papers (last: {last}); a larger model may do better", out, failed)
     return out
