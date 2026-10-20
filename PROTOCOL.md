@@ -193,6 +193,13 @@ A `distill` result is checked in three ways before it counts:
   result that passed the client's checks passes these. `max_avoided` is 2
   until the first trial runs, which set it; the value is published in every
   unit.
+- About the right papers, when it arrives. Each description is compared, by
+  TF-IDF cosine, with the abstracts of the papers the result describes (from
+  `abstracts.jsonl` on the branch), and should find its own paper's abstract
+  in the top 15% of them, 3 of a unit of 20. At least half of a result's
+  descriptions must. Real descriptions do it eight or nine times in ten,
+  even without the field's words; descriptions of other papers, or of none,
+  about three times in twenty.
 - Two models, before a unit is complete. A unit's `quorum` counts different
   models, not people: a unit needs descriptions from `quorum` different
   models, from anyone, including one volunteer running two models. A

@@ -266,6 +266,44 @@ def check_descriptions(result: dict, unit: dict) -> list[dict]:
     return descs
 
 
+RELEVANT_TOP = 0.15       # a description should find its own paper's abstract in this top share of the unit's
+RELEVANT_SHARE = 0.5      # share of a result's descriptions that must, where the abstracts are known
+
+
+def relevance(descs: list[dict], abstracts: dict[str, str]) -> float | None:
+    """Share of descriptions whose own paper's abstract is among the most like them in the unit.
+
+    Each description is compared, by TF-IDF cosine, with the abstracts of the
+    papers the result describes, and should find its own in the top
+    RELEVANT_TOP of them (3 of a unit of 20). Descriptions written for the
+    right papers find their own abstract first eight or nine times in ten,
+    even without the field's words (two small models on five units, October
+    2026); descriptions of the wrong papers, or of none, find it by chance,
+    about three times in twenty. None when fewer than four abstracts are known.
+    """
+    known = [d for d in descs if abstracts.get(d["work"])]
+    if len(known) < 4:
+        return None
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    texts = [abstracts[d["work"]] for d in known] + [f"{d['problem']} {d['approach']}" for d in known]
+    M = TfidfVectorizer(stop_words="english", sublinear_tf=True).fit_transform(texts)
+    sims = (M[len(known):] @ M[:len(known)].T).toarray()
+    top = max(1, round(RELEVANT_TOP * len(known)))
+    hits = sum(int((sims[i] > sims[i, i]).sum()) < top for i in range(len(known)))
+    return hits / len(known)
+
+
+def unit_abstracts(dist_dir: Path, works: list[str]) -> dict[str, str]:
+    """Title and abstract of each of a unit's papers, from the branch's abstracts.jsonl."""
+    path, want, out = dist_dir / "abstracts.jsonl", set(works), {}
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            row = json.loads(line)
+            if row["work"] in want and row.get("abstract"):
+                out[row["work"]] = f"{row.get('title', '')} {row['abstract']}"
+    return out
+
+
 def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
     """Process one distill result against a checkout of the distill branch. Returns the reply."""
     index_path = dist_dir / "units" / "index.json"
@@ -279,6 +317,10 @@ def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
     if unit["status"] == "done":
         return f"Unit {unit['unit']} already has all the results it needs. Thank you all the same."
     descs = check_descriptions(result, unit)
+    match = relevance(descs, unit_abstracts(dist_dir, unit["works"]))
+    if match is not None and match < RELEVANT_SHARE:
+        raise Reject(f"only {round(match * 100)}% of the descriptions find their own paper's abstract among the "
+                     "most like them in the unit; they may describe other papers, or nothing")
     folder = dist_dir / "results" / unit["unit"]
     earlier = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))]
     from undiscovered.distill import model_name
@@ -289,7 +331,8 @@ def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
     folder.mkdir(parents=True, exist_ok=True)
     (folder / f"{issue}.json").write_text(json.dumps(
         {"issue": issue, "author": author, "client": result.get("client"), "model": result["model"],
-         "prompt": result["prompt"], "descriptions": descs}, indent=1, ensure_ascii=False), encoding="utf-8")
+         "prompt": result["prompt"], "relevance": match, "at": _now(), "descriptions": descs},
+        indent=1, ensure_ascii=False), encoding="utf-8")
     unit["models"] = sorted({model_name(r["model"]) for r in earlier} | {model})
     have = len(unit["models"])
     unit["status"] = "done" if have >= unit.get("quorum", 2) else "check"

@@ -65,9 +65,14 @@ MAX_AVOIDED = 2             # of them a description may still use (provisional: 
 QUORUM = 2
 SEED = 2025
 WORD = re.compile(r"[^\W\d_]+")
-INSTRUCTIONS = ("Describe the problem this work addresses and how it goes about it, so that a researcher "
-                "in any field would recognise the problem. Do not name the field, its methods or its "
-                "objects of study, and do not reuse terms from the abstract that only that field would use.")
+# The task as a computation, as Kulikowski (2026) found matches across fields: what is worked out, from
+# what, and by what procedure, with the field's own names replaced by what they stand for.
+INSTRUCTIONS = ("Describe the task this work carries out as an abstract computation, so that a researcher in "
+                "any field could recognise the same task in their own work. In the problem, say what is "
+                "estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. "
+                "In the approach, say the procedure: the model, the steps or the rule it follows. Do not name "
+                "the field, its methods or its objects of study; say what they are and what they do instead, "
+                "and do not reuse terms from the abstract that only that field would use.")
 
 
 def sample_works(topic: str, key: str = "") -> list[dict]:

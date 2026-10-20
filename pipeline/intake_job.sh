@@ -27,6 +27,8 @@ for attempt in 1 2 3 4 5 6; do
   python pipeline/intake.py | tail -n 1 > verdict.json
   if [ "$kind" = "distill" ]; then
     python pipeline/combine.py store > /dev/null
+    python pipeline/maps.py store > /dev/null
+    python pipeline/cites.py store > /dev/null
     python pipeline/known_twins.py result store > /dev/null
   fi
   if [ -z "$(git -C store status --porcelain)" ]; then

@@ -88,6 +88,18 @@ the forward test's job. The benchmark is small, 18 families, so the
 interval will be wide, and a result either way is a first indication, not a
 settled answer.
 
+## Notes after writing
+
+**19 October 2026, before any paper was described.** The instructions in
+every describing unit, these papers' included, now ask for the task a paper
+carries out as an abstract computation: what is estimated, predicted,
+compared, optimised or explained, from what kind of data, and by what
+procedure. Before, they asked for "the problem this work addresses and how
+it goes about it". The change follows the framing of Kulikowski (2026),
+whose benchmark this test uses; it was made on that published evidence
+alone, with no description of any paper yet in existence. The measure,
+the papers and what would count are unchanged.
+
 ## Credit
 
 Kulikowski, E. (2026). Same Problem, Different Field: Cross-Domain Solution

@@ -181,3 +181,21 @@ def test_a_rejected_result_leaves_its_reason_on_the_branch(tmp_path, monkeypatch
     assert not verdict["accepted"] and "only 2 of the unit's 4" in verdict["reply"]
     assert logged["reason"] in verdict["reply"] and logged["author"] == "carol" and logged["unit"] == u["unit"]
     assert logged["model"] == {"provider": "openai-compatible", "id": "qwen3:8b"}
+
+
+def test_descriptions_of_other_papers_are_turned_away(tmp_path):
+    u = unit()
+    d = branch(tmp_path, u)
+    abstracts = [  # each paper's abstract, in its field's words, about what DISTINCT[i] describes
+        "Proline accumulation in leaves measured by ninhydrin colour as a marker of tissue water deficit.",
+        "Aftershock occurrence modelled as a self-exciting point process in which each shock triggers others nearby.",
+        "Ranking football teams that played different opponents with an eigenvector score of the teams they beat.",
+        "A Kalman filter tracks a hidden state from noisy sensor readings, correcting the estimate as each arrives."]
+    (d / "abstracts.jsonl").write_text("\n".join(json.dumps({"work": w, "title": "", "abstract": a})
+                                                 for w, a in zip(u["works"], abstracts)), encoding="utf-8")
+    rotated = [{"work": w, **own((i + 1) % 4)} for i, w in enumerate(u["works"])]
+    with pytest.raises(intake.Reject, match="find their own paper's abstract"):
+        intake.intake_distill(d, issue(u, rotated), "alice", 11)
+    assert "Accepted" in intake.intake_distill(d, issue(u), "alice", 12)
+    stored = json.loads((d / "results" / u["unit"] / "12.json").read_text(encoding="utf-8"))
+    assert stored["relevance"] == 1.0
