@@ -17,7 +17,13 @@
   }
   function n(x) { return (x || 0).toLocaleString("en"); }
   function oa(w, label) { return el("a", {href: "https://openalex.org/" + w, target: "_blank", rel: "noopener", text: label || w}); }
-  function issue(i) { return el("a", {href: "https://github.com/" + REPO + "/issues/" + i, target: "_blank", rel: "noopener", text: "#" + i}); }
+  // Where a result came from: its GitHub issue, or a maintainer's import, whose record is on the data branch.
+  function issue(i) {
+    if (typeof i === "number") { return el("a", {href: "https://github.com/" + REPO + "/issues/" + i, target: "_blank", rel: "noopener", text: "#" + i}); }
+    var batch = String(i).replace(/^import-/, "").replace(/-\d+$/, "");
+    return el("a", {href: "https://github.com/" + REPO + "/blob/distill-2025/imports/" + batch + ".json", target: "_blank",
+                    rel: "noopener", title: String(i), text: "imported"});
+  }
 
   // Each file is optional: a missing one (404) means that part has nothing yet.
   function get(path, as) {

@@ -203,3 +203,25 @@ def test_descriptions_of_other_papers_are_turned_away(tmp_path):
     assert "Accepted" in intake.intake_distill(d, issue(u), "alice", 12)
     stored = json.loads((d / "results" / u["unit"] / "12.json").read_text(encoding="utf-8"))
     assert stored["relevance"] == 1.0
+
+
+def test_a_maintainers_import_goes_through_the_same_checks_and_is_recorded(tmp_path):
+    import import_results
+    u = unit()
+    (tmp_path / "branch").mkdir()
+    d = branch(tmp_path / "branch", u)
+    good, junk = tmp_path / "good.md", tmp_path / "junk.json"
+    good.write_text(issue(u), encoding="utf-8")
+    template = [{"work": w, "problem": f"Find out how one quantity responds when another is changed, case {c}.",
+                 "approach": "Take repeated readings under steady conditions and compare them with a simple rule."}
+                for w, c in zip(u["works"], ("amber", "birch", "cobalt", "delta"))]
+    junk.write_text(json.dumps(intake.json_block(issue(u, template, model_id="llama3.1:8b"))), encoding="utf-8")
+    out = import_results.run(d, "maintainer", "2026-10-19-test", "two local models", [good, junk])
+    assert out == {"batch": "2026-10-19-test", "results": 2, "accepted": 1}
+    stored = json.loads((d / "results" / u["unit"] / "import-2026-10-19-test-001.json").read_text(encoding="utf-8"))
+    assert stored["issue"] == "import-2026-10-19-test-001" and stored["author"] == "maintainer"
+    assert "almost the same" in json.loads((d / "rejected" / "import-2026-10-19-test-002.json").read_text())["reason"]
+    record = json.loads((d / "imports" / "2026-10-19-test.json").read_text(encoding="utf-8"))
+    assert [r["accepted"] for r in record["results"]] == [True, False] and record["note"] == "two local models"
+    index = json.loads((d / "units" / "index.json").read_text())["units"][0]
+    assert index["results"][0]["issue"] == "import-2026-10-19-test-001"

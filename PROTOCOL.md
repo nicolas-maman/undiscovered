@@ -295,6 +295,15 @@ Every result that is turned away is kept with its reason in
 `rejected/<issue>.json` on its data branch, beside the accepted ones, so
 the site can show what goes wrong and why.
 
+A maintainer's own batch of describing results, made with the project's
+clients on the maintainer's machine, can be imported without issues by
+`pipeline/import_results.py`. It runs the same intake on every result, so
+the same checks apply; accepted results are named `import-<batch>-<n>`
+instead of an issue number, and the import is recorded in
+`imports/<batch>.json` on the data branch: who ran it, when, how the
+results were made, and what became of each. The site marks such results as
+imported and links to that record.
+
 ## Versioning
 
 `protocol` is an integer in every message. A client refuses units with a

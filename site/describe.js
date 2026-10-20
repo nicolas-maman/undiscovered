@@ -7,9 +7,9 @@
   var RAW = "https://raw.githubusercontent.com/" + REPO + "/distill-2025/";
   var WEBLLM = "https://esm.run/@mlc-ai/web-llm@0.2.86";
   var WEBLLM_MODELS = [
-    {id: "Qwen3-4B-q4f16_1-MLC", label: "Qwen3 4B: the best of these, about 3.4 GB of graphics memory"},
-    {id: "Llama-3.2-3B-Instruct-q4f16_1-MLC", label: "Llama 3.2 3B: about 2.3 GB"},
-    {id: "Qwen3-1.7B-q4f16_1-MLC", label: "Qwen3 1.7B: lighter, about 2 GB"}
+    // Qwen3 1.7B was tried and left out: in this page it reused the paper's own words on 13 of 20 papers.
+    {id: "Qwen3-4B-q4f16_1-MLC", label: "Qwen3 4B (recommended): about 3.4 GB of graphics memory"},
+    {id: "Llama-3.2-3B-Instruct-q4f16_1-MLC", label: "Llama 3.2 3B: about 2.3 GB"}
   ];
   var PROVIDERS = {
     gemini: {label: "Google Gemini", kind: "google", base: "https://generativelanguage.googleapis.com/v1beta",

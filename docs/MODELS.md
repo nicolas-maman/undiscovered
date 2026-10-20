@@ -17,8 +17,11 @@ the papers (October 2026). A model of that size is enough.
 
 [Describe papers in your browser](https://nicolas-maman.github.io/undiscovered/describe.html)
 runs a model in the page itself with [WebLLM](https://github.com/mlc-ai/web-llm)
-(Qwen3 4B, Llama 3.2 3B or Qwen3 1.7B; a one-time download of 2 to 4 GB that
-the browser keeps), in a recent Chrome, Edge or Safari with WebGPU. The same
+(Qwen3 4B or Llama 3.2 3B; a one-time download of about 2.5 to 3.5 GB that
+the browser keeps), in a recent Chrome, Edge or Safari with WebGPU. On an
+Apple M1, Qwen3 4B described a whole unit in the page in four and a half
+minutes, every paper passing the checks; Qwen3 1.7B, tried too, reused the
+papers' own words too often and is not offered. The same
 page also takes a key for any of the services below, or the address of a
 server on your computer, and opens the GitHub form for the result.
 

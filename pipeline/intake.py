@@ -305,8 +305,19 @@ def unit_abstracts(dist_dir: Path, works: list[str]) -> dict[str, str]:
     return out
 
 
-def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
-    """Process one distill result against a checkout of the distill branch. Returns the reply."""
+def received(r: dict):
+    """Results in the order they arrived: issues by number, then a maintainer's imports by name."""
+    ref = r["issue"]
+    return (0, ref, "") if isinstance(ref, int) else (1, 0, str(ref))
+
+
+def intake_distill(dist_dir: Path, body: str, author: str, issue: int | str) -> str:
+    """Process one distill result against a checkout of the distill branch. Returns the reply.
+
+    `issue` is the GitHub issue the result came in, or, for results a
+    maintainer imports with pipeline/import_results.py, the import's own name
+    for it (import-<batch>-<n>). Both go through every check below.
+    """
     index_path = dist_dir / "units" / "index.json"
     index = json.loads(index_path.read_text(encoding="utf-8"))
     result = json_block(body)
@@ -338,7 +349,7 @@ def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
     unit["results"] = sorted([{"issue": r["issue"], "author": r["author"], "model": model_name(r["model"]),
                                "relevance": r.get("relevance")} for r in earlier] +
                              [{"issue": issue, "author": author, "model": model, "relevance": match}],
-                             key=lambda r: r["issue"])
+                             key=received)
     have = len(unit["models"])
     unit["status"] = "done" if have >= unit.get("quorum", 2) else "check"
     index_path.write_text(json.dumps(index, indent=1), encoding="utf-8")
@@ -362,8 +373,8 @@ def log_rejection(store: Path, issue: dict, reason: str) -> None:
         {"issue": issue["number"], "author": issue["user"]["login"], "title": issue.get("title", ""),
          "unit": result.get("unit"), "client": result.get("client"), "model": result.get("model"),
          "reason": reason, "at": _now()}, indent=1, ensure_ascii=False), encoding="utf-8")
-    log = sorted((json.loads(f.read_text(encoding="utf-8")) for f in folder.glob("[0-9]*.json")),
-                 key=lambda r: -r["issue"])
+    log = sorted((json.loads(f.read_text(encoding="utf-8")) for f in folder.glob("*.json") if f.name != "index.json"),
+                 key=received, reverse=True)
     (folder / "index.json").write_text(json.dumps({"rejected": len(log), "latest": log[:REJECTED_SHOWN]},
                                                   indent=1, ensure_ascii=False), encoding="utf-8")
 
