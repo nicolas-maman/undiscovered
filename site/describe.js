@@ -9,7 +9,7 @@
   var WEBLLM_MODELS = [
     // Qwen3 1.7B was tried and left out: in this page it reused the paper's own words on 13 of 20 papers.
     {id: "Qwen3-4B-q4f16_1-MLC", label: "Qwen3 4B (recommended): about 3.4 GB of graphics memory"},
-    {id: "Llama-3.2-3B-Instruct-q4f16_1-MLC", label: "Llama 3.2 3B: about 2.3 GB"}
+    {id: "Llama-3.2-3B-Instruct-q4f16_1-MLC", label: "Llama 3.2 3B: about 2.3 GB, slower here, a few papers left out"}
   ];
   var PROVIDERS = {
     gemini: {label: "Google Gemini", kind: "google", base: "https://generativelanguage.googleapis.com/v1beta",

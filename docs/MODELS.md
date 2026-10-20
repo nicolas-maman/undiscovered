@@ -20,8 +20,10 @@ runs a model in the page itself with [WebLLM](https://github.com/mlc-ai/web-llm)
 (Qwen3 4B or Llama 3.2 3B; a one-time download of about 2.5 to 3.5 GB that
 the browser keeps), in a recent Chrome, Edge or Safari with WebGPU. On an
 Apple M1, Qwen3 4B described a whole unit in the page in four and a half
-minutes, every paper passing the checks; Qwen3 1.7B, tried too, reused the
-papers' own words too often and is not offered. The same
+minutes, every paper passing the checks; Llama 3.2 3B took thirteen and a
+half, and left out 3 of 20 papers whose answers were not valid JSON, still
+enough to send. Qwen3 1.7B, tried too, reused the papers' own words on 13 of
+20 papers and is not offered. The same
 page also takes a key for any of the services below, or the address of a
 server on your computer, and opens the GitHub form for the result.
 
