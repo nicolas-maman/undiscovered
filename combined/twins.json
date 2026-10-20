@@ -1,4 +1,5 @@
 {
  "method": "tf-idf cosine",
- "twins": []
+ "twins": [],
+ "known_cases": []
 }

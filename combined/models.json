@@ -3,6 +3,7 @@
  "papers": 0,
  "method": "tf-idf cosine",
  "reliable_percentile": 95,
+ "distinct_percentile": 99,
  "models": [],
- "note": "fewer than 40 descriptions so far: nothing to compare yet"
+ "note": "Fewer than 40 descriptions so far: nothing to compare yet."
 }
