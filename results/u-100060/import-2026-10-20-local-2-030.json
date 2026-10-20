@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-030",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:45Z",
+ "descriptions": [
+  {
+   "work": "W3016385419",
+   "problem": "This study estimates the impact of community capacities on the effectiveness of erosion control networks, compares the availability of resources to the needs of rural populations, and optimizes the use of available resources to promote sustainable subsistence production.",
+   "approach": "The study uses a mixed-methods approach, combining quantitative data from structured surveys and qualitative insights from focus group discussions, to analyze the relationships between community capacities, resource availability, and sustainable subsistence production."
+  },
+  {
+   "work": "W4214901217",
+   "problem": "This work estimates the amount of toxic waste that can be converted into a harmless substance, and compares it to the amount of waste that is eliminated through a different process. It also optimizes the conversion process to minimize waste.",
+   "approach": "The procedure involves coupling the toxic waste to a key molecule, which then generates a harmless substance with an excess of a certain group. The process is repeated to generate the final product, which can donate groups to create other substances."
+  },
+  {
+   "work": "W3111475374",
+   "problem": "This work estimates the impact of certain types of beneficial organisms on the ability of certain organisms to withstand stress caused by lack of water. It also compares the effectiveness of different types of beneficial organisms in helping the organisms withstand this stress.",
+   "approach": "The approach involves gathering and analyzing data on the effects of these beneficial organisms on the organisms' ability to withstand stress. The data is analyzed using robust statistical methods to identify patterns and relationships."
+  },
+  {
+   "work": "W3112050941",
+   "problem": "This work estimates the deformation of a spherical object made of a material that changes shape when exposed to a magnetic field. It predicts how this material will behave under different conditions and compares its behavior to a similar material that is known to change shape in a certain way.",
+   "approach": "The researchers built a numerical model to simulate the behavior of this material under different conditions. They used this model to show that the material's shape changes in a way that is different from what was previously thought."
+  },
+  {
+   "work": "W4389610710",
+   "problem": "This work identifies and explains issues that can cause problems in the design of complex systems that process information in a series of steps. It estimates the likelihood of these problems occurring and compares them to known data.",
+   "approach": "The approach involves analyzing the relationships between different components of the system and identifying the most critical factors that contribute to these problems. It uses a systematic procedure to evaluate and optimize the design of the system."
+  },
+  {
+   "work": "W4281788281",
+   "problem": "Estimate the effectiveness of a barrier that regulates the flow of substances between two spaces, and identify strategies to improve its ability to block unwanted substances while allowing essential ones to pass.",
+   "approach": "Use data from experiments and simulations to model the behavior of this barrier, and explore new methods to optimize its performance and improve the delivery of substances to a specific space."
+  },
+  {
+   "work": "W4395044255",
+   "problem": "This work estimates the effectiveness of a new treatment strategy for a serious condition, comparing the outcomes of a novel approach with established methods. It predicts the success of this approach in specific cases and explains the results in terms of safety and feasibility.",
+   "approach": "The procedure involves combining a stabilizing technique with a high-energy beam treatment, which is applied during a single session to achieve precise targeting. The approach follows a step-by-step process, using navigation and imaging to control the treatment and ensure accurate dosing."
+  },
+  {
+   "work": "W3122887694",
+   "problem": "This research estimates the effect of a specific molecule on the growth and death of a particular type of abnormal growth, and compares its impact on the growth and death of these abnormal growths in different conditions. It also explains how this molecule affects the growth and death of these abnormal growths.",
+   "approach": "The researchers used a combination of experiments to measure the levels of the molecule and its effects on the growth and death of these abnormal growths. They used various techniques to analyze the relationships between the molecule and other molecules involved in the growth and death of these abnormal growths."
+  },
+  {
+   "work": "W4223551335",
+   "problem": "This research estimates the effect of a specific molecule on the growth and division of a type of cancerous tissue, comparing its impact on the rate of growth and the likelihood of the tissue dividing. It also predicts the role of another molecule in this process and explains how the first molecule affects it.",
+   "approach": "The researchers used various experiments to analyze the molecule's effect on the tissue's growth and division, including tests on the molecule's structure and how it interacts with other molecules. They also used techniques to study the molecule's role in the tissue's growth and division, such as observing how it affects the tissue's structure and function."
+  },
+  {
+   "work": "W4310936570",
+   "problem": "Estimate the potential of using non-fossil resources for materials and energy production, and compare it to current practices. Predict the benefits of switching to these resources.",
+   "approach": "Use existing data on non-fossil resource usage and their benefits to develop a theoretical framework for improving resource efficiency."
+  },
+  {
+   "work": "W2900738499",
+   "problem": "This work aims to identify the most important parts of a material that could be damaged, from images taken while the material is being heated and cooled in a controlled way. It estimates the likelihood of damage in these parts, based on the patterns of heat that are generated.",
+   "approach": "The method uses a mathematical technique to separate the different parts of the material's heat patterns, and then combines the most important parts to create a new image that highlights the areas that are most likely to be damaged."
+  },
+  {
+   "work": "W4392680617",
+   "problem": "This work estimates the performance of a system that combines light from multiple sources to improve image quality for augmented reality glasses. It predicts how the system will behave under different conditions and compares its performance to other possible designs.",
+   "approach": "The researchers use a combination of mathematical models and computer simulations to optimize the system. They use ray tracing to simulate how light behaves and geometric calculations to determine the best design for the system."
+  },
+  {
+   "work": "W4391538152",
+   "problem": "This research aims to estimate the impact of policies on the relationship between family support and the well-being of older people, and to compare the effects of different institutional and social arrangements on this relationship.",
+   "approach": "The study uses a variety of quantitative and qualitative methods to analyze data from multiple countries and to examine the consequences of policy changes on family support and older people's well-being."
+  },
+  {
+   "work": "W7106165355",
+   "problem": "This work estimates the impact of early-life events on adult health outcomes, comparing the effects of different types of events on the likelihood of experiencing role limitations in later life. It also predicts the absolute reduction in risk of these outcomes when certain events change over time.",
+   "approach": "The researchers use statistical models to analyze data from a large cohort study, comparing the effects of different types of early-life events on adult health outcomes. They then use these models to predict the impact of changes in these events on the risk of role limitations."
+  },
+  {
+   "work": "W3011354265",
+   "problem": "This research estimates the effect of different methods on the ability to detect changes in motor function in patients undergoing surgery. It compares the results from two groups of patients to determine which method is better at detecting these changes.",
+   "approach": "The researchers used a technique to apply a series of electrical impulses to patients' muscles to test their motor function. They then compared the results from two groups of patients who received different types of treatment."
+  },
+  {
+   "work": "W2973965275",
+   "problem": "This research estimates how people perceive color on a body, comparing their judgments to cultural influences and predicting how these influences affect their actions in social situations.",
+   "approach": "It uses a model that follows these steps: (1) collect data on people's color judgments of bodies from different cultural backgrounds, (2) compare these judgments to each other and to cultural norms, (3) use this information to predict how cultural influences affect people's actions in social situations."
+  },
+  {
+   "work": "W2969944890",
+   "problem": "The researchers estimated the likelihood of a sudden, unexplained change in a patient's airway pressure and hemodynamic stability during a complex surgery, and compared it to the expected outcome. They aimed to explain the cause of this change and provide a guideline for managing similar situations.",
+   "approach": "They used a temporary, makeshift solution to drain the air that had accumulated in the patient's chest cavity, and later supplemented it with a standard device. The patient's condition improved, and they were discharged a few days later."
+  },
+  {
+   "work": "W2969862138",
+   "problem": "This work estimates the role of a protein in multiple diseases, compares its expression levels in different tissues, and optimizes its potential as a therapeutic target. It aims to explain the relationship between the protein's expression and disease development.",
+   "approach": "The study uses data from various tissues and diseases to identify patterns and correlations. It follows a procedure of summarizing and analyzing existing research to provide new insights and potential targets."
+  },
+  {
+   "work": "W2996439180",
+   "problem": "This study aims to investigate and explain the occurrence of unethical and illegal activities in the supply of a widely consumed commodity, highlighting the underlying issues and 'scandal scripts' that amplify these problems.",
+   "approach": "The study uses a systematic review of existing literature, combined with qualitative research methods, including documentary analysis and narrative inquiry, to examine the supply practices and business ethics of a specific industry."
+  },
+  {
+   "work": "W2980929177",
+   "problem": "This research estimates the effectiveness of a common plant extract in preventing the infection of certain viruses that cause illness in humans. It compares the extract's ability to stop these viruses from infecting cells, and optimizes the extract's concentration to achieve the best results.",
+   "approach": "The researchers used a combination of cell culture experiments and chemical analysis to evaluate the extract's effects on the viruses. They tested different concentrations of the extract and identified the specific compounds responsible for its effects."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-039",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:47Z",
+ "descriptions": [
+  {
+   "work": "W3217162235",
+   "problem": "A system's performance is reduced by the buildup of a hard, insoluble deposit that forms over time. The rate at which this deposit is reduced is estimated based on operating conditions and their interactions.",
+   "approach": "A model maps how changes in treatment duration, input velocity, and field strength affect deposit reduction. It uses observed outcomes to predict performance and identifies optimal settings through statistical analysis of experimental results."
+  },
+  {
+   "work": "W4410454227",
+   "problem": "A biological intervention is evaluated for its ability to reduce lipid accumulation and preserve tissue structure in a living organism over time, using measurable biochemical and microscopic indicators.",
+   "approach": "A group of organisms is exposed to a standard stressor and a candidate substance, then monitored for changes in metabolic markers and tissue integrity over a defined period using repeated measurements and visual analysis."
+  },
+  {
+   "work": "W3123119555",
+   "problem": "The system estimates how strongly human actions depend on internal conditions and external influences, comparing the influence of internal processes to environmental factors in shaping behavior.",
+   "approach": "It models behavior as a function of internal dynamics and external inputs, using observed patterns to determine the extent to which decisions reflect internal states or are shaped by external conditions."
+  },
+  {
+   "work": "W4206900368",
+   "problem": "The frequency and thematic focus of public discourse on key societal topics are analyzed, along with the nature and tone of user-generated responses to official narratives over a defined time period.",
+   "approach": "A narrative framework is applied to categorize and compare topic emphasis and expression patterns across multiple official platforms, identifying dominant themes and recurring rhetorical strategies in user engagement."
+  },
+  {
+   "work": "W2913216235",
+   "problem": "A system detects and quantifies the accumulation of reactive, protein-modifying compounds formed when cellular components undergo oxidative degradation under stress conditions.",
+   "approach": "The system monitors changes in chemical adducts over time and across environmental conditions, using sensitive assays to track their levels and correlate them with stress exposure and biological resilience."
+  },
+  {
+   "work": "W2921503668",
+   "problem": "The relative influence of a food's processing method and its biological source on the microbial communities in an organism is estimated from longitudinal samples of microbial diversity and abundance.",
+   "approach": "A controlled feeding regimen is applied, followed by sequencing of microbial DNA to track community shifts. A statistical model compares changes across processing and origin variables, identifying dominant taxa and patterns of variation."
+  },
+  {
+   "work": "W4401835907",
+   "problem": "The influence of a high concentration of a negatively charged ion on physiological stress responses and blood pressure regulation is assessed using animal models exposed to varying ionic environments over time.",
+   "approach": "Animals are exposed to controlled ionic conditions for a set duration, then monitored for changes in systemic pressure, tissue inflammation markers, and gene expression related to ion transport and stress response pathways."
+  },
+  {
+   "work": "W4243266285",
+   "problem": "A process is designed to separate and recover key components from a fibrous, organic material after it has been processed, by applying heat in a controlled environment with a chemical agent to extract inorganic material and produce a carbon-rich residue with high surface area.",
+   "approach": "The material is heated under inert conditions with a chemical additive, triggering decomposition of organic matter and fusion of inorganic components. The temperature and additive ratio are adjusted to maximize separation efficiency and surface area of the resulting carbon product."
+  },
+  {
+   "work": "W4388739281",
+   "problem": "A system adjusts its output to counteract distortions caused by changing network conditions, maintaining balance between detected disturbances and the system's response.",
+   "approach": "The system continuously monitors the phase relationship between input signals and the network, recalibrating its output magnitude and timing to ensure opposition to disturbances regardless of environmental shifts."
+  },
+  {
+   "work": "W2997710631",
+   "problem": "A system is evaluated to understand the essential capabilities and obstacles in having a highly trained professional available to manage urgent, complex cases in a high-volume setting.",
+   "approach": "Expert opinions are gathered and grouped into thematic patterns through iterative analysis, focusing on the core functions and constraints that affect decision-making under time pressure and resource limitations."
+  },
+  {
+   "work": "W4408167600",
+   "problem": "It estimates how well public trust aligns with environmental promises in product design, compares economic costs across material options, and evaluates the performance of new material forms under real-world usage conditions.",
+   "approach": "It models decision-making under uncertainty by simulating trade-offs between environmental impact, cost, and user confidence, using observed behavior and financial data to refine predictions iteratively."
+  },
+  {
+   "work": "W4224302225",
+   "problem": "A set of observed positions along a moving object's path is used to estimate its straight-line path through space, with each observation's reliability influenced by its distance from the observer and the object's position.",
+   "approach": "A mathematical model adjusts the path by assigning weights to observations based on their spatial relationship to the object and observer positions, then computes the best-fit line that minimizes discrepancies across all observations."
+  },
+  {
+   "work": "W4387604787",
+   "problem": "A system is designed to monitor and enhance biological signal dynamics over time, integrating electrical stimulation with living cell activity to promote functional recovery in damaged biological networks.",
+   "approach": "A self-assembling, degradable material forms a conductive and adhesive layer that interfaces with biological tissues, enabling stable signal transmission and cell interaction while gradually breaking down in response to environmental cues."
+  },
+  {
+   "work": "W2794504653",
+   "problem": "A quantitative measure of peripheral signal transmission efficiency is estimated from physiological responses in a controlled animal model, using data collected over time from stimulated and recorded output sites.",
+   "approach": "A stepwise protocol is followed: surgical intervention is performed, signal is elicited and monitored, data is processed to extract amplitude and latency metrics, and results are validated through anatomical correlation and cross-species consistency."
+  },
+  {
+   "work": "W4247232384",
+   "problem": "A pattern of behavior is identified where actions occur without clear mental transitions between intention and execution, and outcomes are interpreted as intentional when they may stem from real-time responses to environmental pressures.",
+   "approach": "A framework maps actions to situational inputs, treating them as emergent from immediate context, and evaluates whether a sequence of steps implies intention or simply reflects adaptive responses to changing conditions."
+  },
+  {
+   "work": "W4281951480",
+   "problem": "A system is designed to manipulate audio signals so that they are misclassified by recognition models under various conditions, including different environments and devices, and across multiple models with distinct training data and assumptions.",
+   "approach": "A framework iteratively adjusts input signals using a set of loss functions tailored to specific source-target pairs, simulates real-world signal degradation, and evaluates performance across diverse model architectures and environmental conditions."
+  },
+  {
+   "work": "W2975417612",
+   "problem": "A system is evaluated to determine how it identifies and selects individuals based on their ability to effectively engage with and support diverse groups within a community, particularly in educational environments where such engagement influences outcomes for different population segments.",
+   "approach": "Job postings, recruitment materials, and selection processes are analyzed to identify explicit and implicit criteria used to assess an individual's capacity to work effectively across diverse backgrounds and respond to the needs of varied community groups."
+  },
+  {
+   "work": "W4413939851",
+   "problem": "A treatment protocol is applied to a patient with prolonged reproductive failure and irregular menstrual cycles, aiming to restore hormonal balance and improve the likelihood of conception through a structured, individualized intervention.",
+   "approach": "A multi-step regimen begins with systemic detoxification, followed by targeted nutritional and hormonal support, and concludes with a procedure designed to influence central regulatory mechanisms governing reproductive function."
+  },
+  {
+   "work": "W4247120305",
+   "problem": "A system identifies and evaluates how entities interact with their surroundings through continuous, co-constituted experiences, detecting patterns where participation shapes the structure and dynamics of shared environments.",
+   "approach": "The system models interactions as evolving configurations where each entity contributes to and is shaped by the environment, using feedback loops to detect when changes in engagement produce stable, emergent behaviors over time."
+  },
+  {
+   "work": "W4303184706",
+   "problem": "A material's electrical conductivity and mechanical strength are optimized by adjusting the amount of conductive filler and the degree of directional alignment of its internal structure.",
+   "approach": "A process applies controlled deformation to align internal components and orient molecular chains, with the extent of deformation tuned to balance electrical performance and mechanical resilience based on filler concentration."
+  }
+ ]
+}

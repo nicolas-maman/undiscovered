@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-002",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:39Z",
+ "descriptions": [
+  {
+   "work": "W3120236169",
+   "problem": "This work estimates the effectiveness of a new treatment strategy that combines a specific type of protein with a substance that stimulates the immune system to fight cancer cells. It aims to improve the immune system's ability to recognize and attack cancer cells.",
+   "approach": "The researchers used a combination of laboratory tests and experiments to evaluate the treatment strategy. They analyzed data from mass spectrometry and biological assays to understand how the substance affects the immune system's behavior."
+  },
+  {
+   "work": "W4205360402",
+   "problem": "This study aims to determine if exposure to certain substances increases the risk of developing or worsening a specific respiratory condition in a particular age group, and if it affects another condition in the same age group.",
+   "approach": "The researchers searched for studies using a specific question and combined the results of multiple studies to draw a conclusion, using a method that ensures the quality of the findings."
+  },
+  {
+   "work": "W4300003201",
+   "problem": "This work estimates the number of deaths and disability years that would have occurred if a certain level of sodium consumption was not present in a population. It compares the actual number of deaths and disability years to a hypothetical number if sodium consumption was reduced to a lower level.",
+   "approach": "The work uses a statistical method to compare the actual number of deaths and disability years to a hypothetical number if sodium consumption was reduced to a lower level. It uses data from multiple surveys and literature to estimate the prevalence of a certain condition and the relative risks associated with it."
+  },
+  {
+   "work": "W2796232328",
+   "problem": "This research estimates the effect of a specific substance on the productivity of a certain type of plant, which grows on a particular type of ground, and compares it to other variants. It aims to explain how this substance influences the plant's growth and development.",
+   "approach": "The researchers used a combination of data and evidence to determine the impact of the substance on the plant's weight and acidity. They tested different doses and phases of application to find the most effective method."
+  },
+  {
+   "work": "W4392525109",
+   "problem": "This work estimates the degree of responsibility in individuals with a certain condition, based on empirical data. It compares the results to the concept of this condition and argues that the condition is not consistent.",
+   "approach": "The study uses data from experiments to test a hypothesis about the relationship between the condition and responsibility. It examines the results carefully and rejects the hypothesis due to inconsistencies in the data."
+  },
+  {
+   "work": "W3116548102",
+   "problem": "This work estimates the extent to which a particular field of study has overlooked or undervalued the contributions of women, and compares the impact of different approaches to understanding this field. It also aims to explain why certain perspectives have been overlooked and optimizes the representation of underrepresented voices.",
+   "approach": "The work uses a list of key figures to illustrate the difference between traditional and avant-garde approaches to the field, and highlights the importance of considering a broader range of perspectives and voices."
+  },
+  {
+   "work": "W2941929307",
+   "problem": "This research aims to understand how people's identities and life stories influence their purchasing habits and contribute to more sustainable ways of living. It estimates and predicts the drivers of impactful consumption patterns.",
+   "approach": "The research uses a step-by-step method to analyze and interpret data from people's stories and experiences. It follows a procedure that involves collecting and analyzing data to gain insights into people's habits and behaviors."
+  },
+  {
+   "work": "W3029290947",
+   "problem": "This research estimates the effectiveness of certain surgical procedures for a specific medical condition, predicts the likelihood of certain complications, and compares the outcomes of different groups of patients. It also explains the quality of life for patients after undergoing these procedures.",
+   "approach": "The researchers followed a group of patients who underwent specific surgeries, evaluated their complications and functional outcomes, and compared their results to a control group. They used a scoring system to assess the patients' bowel function and growth."
+  },
+  {
+   "work": "W4304787433",
+   "problem": "This research estimates the binding affinity of certain molecules to specific receptors, predicts the effect of these molecules on the receptors' activity, and compares the results to known ligands. It also optimizes the design of new molecules and explains the similarities between different species.",
+   "approach": "The researchers use a combination of laboratory experiments and computational analysis to identify and characterize the molecules and their receptors. They follow a procedure that involves isolating and characterizing the molecules, testing their binding affinity and activity, and analyzing the results using various computational tools."
+  },
+  {
+   "work": "W3134991981",
+   "problem": "This research aims to design a new type of vehicle that helps people keep their health better by making it easier to take care of their health. It's estimated that many people don't take care of their health as well as they should, and this vehicle could help.",
+   "approach": "The research starts by looking at the types of people who might use this vehicle and how it could make their lives easier. It then uses data from market surveys to predict that more and more people will want to use this vehicle in the future."
+  },
+  {
+   "work": "W3217703879",
+   "problem": "This work estimates the effectiveness of different methods for removing a disease-causing agent from various surfaces, and compares the results to determine which method is most effective. It also explains why some surfaces are more resistant to removal than others.",
+   "approach": "The researcher applies a disease-causing agent to small pieces of different surfaces, then applies different methods to try and remove the agent. The results are compared to determine which method is most effective and why some surfaces are more resistant to removal."
+  },
+  {
+   "work": "W4315782494",
+   "problem": "This research aims to estimate the severity of a patient's condition based on their symptoms and medical history, and to determine the underlying cause of their symptoms. It compares the patient's symptoms to a set of known conditions and optimizes the diagnosis by ruling out other possible causes.",
+   "approach": "The researcher uses a combination of clinical observations, medical tests, and diagnostic procedures to gather evidence and make a diagnosis. The approach involves analyzing the patient's symptoms, medical history, and test results to make a conclusion about the underlying cause of their symptoms."
+  },
+  {
+   "work": "W3011566318",
+   "problem": "This study estimates and predicts problems with a system used to store and share medical images, and compares the satisfaction of different groups with how well the system is managed. It also explains how problems are handled and optimizes the system for other hospitals.",
+   "approach": "The researchers sent a survey to 162 people to gather data, and then analyzed the responses to identify the most common problems and how they are handled. They also compared the satisfaction of different groups with the system's performance."
+  },
+  {
+   "work": "W4387733898",
+   "problem": "This research estimates the presence of a rare, benign growth in the small intestine, which can be mistaken for a more serious condition. It compares this growth to other possible causes of a similar appearance, and optimizes treatment by controlling stomach acid.",
+   "approach": "The researchers used a combination of endoscopic examination and imaging tests to identify the growth. They then took a sample from the growth and examined it under a microscope to confirm its benign nature."
+  },
+  {
+   "work": "W4312448173",
+   "problem": "This research aims to understand how children's purchasing habits change depending on their geographical location and socio-economic background, while also considering their age. The study seeks to identify patterns and correlations between these factors.",
+   "approach": "The researchers use data from children aged 6-15, comparing their purchasing habits in rural and urban areas, and analyzing the impact of their socio-economic background and age on these habits."
+  },
+  {
+   "work": "W2905702374",
+   "problem": "This work estimates the potential of a new development method to improve the efficiency of a complex system. It compares the performance of different approaches to achieve the best results.",
+   "approach": "The approach follows a mathematical model that uses historical data to predict the outcomes of different scenarios. It optimises the results by identifying the most effective combination of factors."
+  },
+  {
+   "work": "W2788866330",
+   "problem": "This research estimates the impact of a certain condition on two types of cognitive abilities: recognizing certain smells and identifying people's emotional states. It also compares these abilities across different groups and finds that the condition affects one group more than the other.",
+   "approach": "The researchers used standardized tests to assess these abilities in two groups: those with the condition and those without. They also looked at other factors, such as age and working memory, to see how they relate to these abilities."
+  },
+  {
+   "work": "W4403426114",
+   "problem": "This research estimates and compares the quality of a certain environment over time, using data from various parameters and pollutants. It aims to explain the factors that affect this quality and propose strategies for improvement.",
+   "approach": "The study uses a combination of data analysis and evaluation indices to assess the environmental quality. It then identifies the main sources of pollution and proposes control measures and optimization strategies based on these sources."
+  },
+  {
+   "work": "W4385538751",
+   "problem": "Estimate the likelihood of success for a treatment option based on the characteristics of the underlying condition, and compare it to a standard approach. The goal is to determine whether the alternative treatment is likely to be more effective for a specific subset of individuals.",
+   "approach": "Use a combination of data analysis and expert judgment to evaluate the potential benefits and risks of the alternative treatment. The approach involves identifying key factors that influence treatment success, such as the volume and location of the underlying condition, and the patient's overall health status."
+  },
+  {
+   "work": "W7145058225",
+   "problem": "This research estimates the long-term effects of a specific agricultural practice on a particular population's food security, comparing the results to historical data and optimising the model for better predictions.",
+   "approach": "The researchers used a statistical model to compare the historical data with the current data, and then used machine learning algorithms to optimise the model and make predictions about the population's food security."
+  }
+ ]
+}

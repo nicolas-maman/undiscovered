@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-007",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:41Z",
+ "descriptions": [
+  {
+   "work": "W4200416544",
+   "problem": "This work aims to improve the analysis of images that show the presence or absence of certain features, using a combination of mathematical techniques to extract and enhance these features. It estimates the effectiveness of different methods for this task, comparing their results.",
+   "approach": "The researchers use a series of mathematical operations to process the images, including identifying areas where the image changes suddenly or smoothly. They apply these operations to a set of images to see how well each method works."
+  },
+  {
+   "work": "W4413907251",
+   "problem": "This study investigates why people choose to work from home or come to a central location, and what factors influence their decision. It aims to understand the reasons behind people's preferences for working from home or in a central location.",
+   "approach": "The study uses a combination of interviews with people who work from home and those who work in a central location to gather information. It involves asking questions about their experiences, challenges, and preferences, and analyzing the data to identify patterns and trends."
+  },
+  {
+   "work": "W4205661930",
+   "problem": "This research aims to understand how an imbalance in the immune system affects the growth of a specific type of reproductive organ, leading to poor reproductive outcomes. It estimates the levels of certain proteins and immune cells in a fluid surrounding the reproductive organ.",
+   "approach": "The researchers studied a group of women with reproductive problems, analyzing the structure and function of a key component of the reproductive organ. They used various tests to measure the levels of specific proteins and immune cells in a fluid surrounding the reproductive organ."
+  },
+  {
+   "work": "W7117945418",
+   "problem": "This work estimates the parameters of a continuous-time signal that is being observed against a noisy background. It compares the signal to a noisy version of itself to determine the unknown parameters.",
+   "approach": "The researchers use a mathematical procedure to find the best fit for the signal, by minimizing the difference between the signal and its noisy version. They use a specific method to analyze the results and determine the unknown parameters."
+  },
+  {
+   "work": "W4387964668",
+   "problem": "This research estimates the reaction of people on social media to a decision not to air a TV series, and compares it to other reactions to similar decisions. It predicts how people will behave when they feel strongly about an issue.",
+   "approach": "The researchers analyzed tweets on social media using a method called thematic analysis, which involves looking for patterns in the language used. They followed a procedure that involved identifying and coding the tweets, then looking for common themes and ideas."
+  },
+  {
+   "work": "W2799717438",
+   "problem": "This work investigates how to manipulate the connection between two systems in a way that allows them to be linked together in a specific way, and to control the strength of this connection. It also examines how well this connection can withstand external influences.",
+   "approach": "The researchers use a combination of data from the systems and mathematical models to understand how to manipulate the connection between the systems. They test different ways of controlling the connection and see how well it works."
+  },
+  {
+   "work": "W4379530468",
+   "problem": "This study investigates the protective effect of a certain plant extract and polyphenolic compounds on the kidneys of male rats that have been exposed to a toxic substance. The researchers estimate the impact of these substances on the rats' kidneys and compare the results to a control group.",
+   "approach": "The researchers divided the rats into four groups and applied different substances to them over a period of 30 days. They then measured various physiological parameters, such as the concentration of certain substances in the blood, and compared the results to the control group."
+  },
+  {
+   "work": "W2921319344",
+   "problem": "This research estimates the effect of combining two environmental technologies on the growth of a specific plant, comparing the results to determine the most effective method. It aims to explain how the combined method influences the plant's energy and growth.",
+   "approach": "The researchers used a controlled experiment to test the impact of varying factors (time, dose, temperature) on the plant's growth. They developed a mathematical model to predict the optimal combination of these factors."
+  },
+  {
+   "work": "W2805871241",
+   "problem": "This work estimates and compares the physical characteristics of two types of plants, one with a wider leaf and the other with a narrower leaf, to understand their differences and similarities. It also aims to explain how these differences affect their growth and development.",
+   "approach": "The researcher uses a combination of observation, measurement, and microscopic analysis to study the physical characteristics of the plants. They compare their findings with those of other similar plants and discuss how environmental conditions and breeding practices may have influenced their results."
+  },
+  {
+   "work": "W4387459711",
+   "problem": "This work estimates the effectiveness of certain plant extracts as pesticides, comparing their ability to inhibit seed germination, a chemical enzyme, and the growth of certain fungi. It also compares the effectiveness of different concentrations of these extracts.",
+   "approach": "The researchers used a combination of laboratory experiments to evaluate the extracts' effectiveness. They analyzed the chemical composition of the extracts using a specific technique and then tested their effects on various biological systems."
+  },
+  {
+   "work": "W4286669034",
+   "problem": "Estimate the prevalence of a social problem among a specific population, and explain its causes and effects. The problem is complex and difficult to quantify.",
+   "approach": "Analyze existing guidelines and research on the topic using a thematic content analysis, and apply the socio-ecological model to structure the study."
+  },
+  {
+   "work": "W4309524192",
+   "problem": "This research aims to estimate the level of public awareness, attitudes, and practices related to dietary salt in Sri Lanka, with the goal of informing a behaviour change communication campaign to reduce salt intake. It compares the current situation to a desired outcome.",
+   "approach": "The study follows a procedure where data is collected from a sample of the population, and then analysed using statistical methods to identify trends and patterns. The results are then used to inform the development of a communication campaign."
+  },
+  {
+   "work": "W3092492135",
+   "problem": "This work aims to create a custom, aesthetically pleasing device to help a child's face look normal after a serious eye condition has been treated. It estimates the best shape and size of the device based on the child's eye shape and needs.",
+   "approach": "The approach involves using a mathematical model to fit the device to the child's eye, with the goal of creating a symmetrical and attractive appearance. The model is based on the child's eye shape and is used to optimize the device's design and size."
+  },
+  {
+   "work": "W4294991328",
+   "problem": "This work estimates the activity level of a certain disease in patients based on the levels of a specific protein in their bodily fluids. It also predicts the outcomes of these patients.",
+   "approach": "The researchers used data from patients' bodily fluids to train a model that compares the levels of the protein to the disease's activity and outcome. The model is then used to make predictions about the patients' future conditions."
+  },
+  {
+   "work": "W4390949828",
+   "problem": "This work estimates the effectiveness of a transportation system in reducing environmental, visual, and noise pollution, congestion, land use conflicts, and other related challenges. It predicts the impact of sustainable development on this system and compares the results to identify areas for improvement.",
+   "approach": "The procedure involves using a systematic literature review to gather data from academic databases, analyzing the findings to identify key elements and drivers of sustainable development, and identifying implications for further research."
+  },
+  {
+   "work": "W7124228718",
+   "problem": "An agent's influence on another is estimated based on the trust they have in each other. The goal is to predict the final opinion of all agents in a network, with one agent having a higher influence.",
+   "approach": "An agent's opinion is controlled based on the trust they have in other agents. The control is applied to a network of agents, with one agent having a higher influence, and the outcome is compared to different levels of influence."
+  },
+  {
+   "work": "W4386967486",
+   "problem": "This study estimates the ideal number of children for families in South Africa, comparing the preferences of two groups and examining the impact of various factors on these preferences. It also explains how these preferences change based on the current family situation.",
+   "approach": "The researchers used data from a survey to compare the ideal family sizes of two groups, and then analyzed the impact of different factors on these preferences. They found that cultural and social factors had a significant impact on these preferences."
+  },
+  {
+   "work": "W4403978146",
+   "problem": "This work estimates the optimal conditions for breaking down certain compounds in a mixture of nutrients and anti-nutrients, and predicts the efficiency of these conditions. It compares the effectiveness of different conditions and explains the results in terms of the breakdown of these compounds.",
+   "approach": "The researchers used a combination of experiments and mathematical models to identify the key factors influencing the breakdown of these compounds. They then optimized these conditions using a series of experiments and mathematical calculations."
+  },
+  {
+   "work": "W4286603608",
+   "problem": "This work estimates the similarity between collections of biological patterns, comparing their patterns to determine how similar they are. It also optimises the comparison process to achieve high accuracy.",
+   "approach": "The approach uses a novel way of representing these patterns as a combination of simpler patterns, and then compares these representations to determine similarity. The comparison is done using a metric space structure that allows for efficient and accurate comparisons."
+  },
+  {
+   "work": "W3016983159",
+   "problem": "This work estimates the effect of inhibiting a protein that decreases the activity of two key regulators of salt sensitivity in the body. It predicts that inhibiting this protein will increase the sensitivity of the body to salt, leading to higher blood pressure.",
+   "approach": "The researchers used a combination of experiments and data collection to investigate the effect of inhibiting this protein. They measured the changes in pressure in mice that received different diets and either the protein inhibitor or a placebo."
+  }
+ ]
+}

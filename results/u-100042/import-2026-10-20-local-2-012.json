@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-012",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:42Z",
+ "descriptions": [
+  {
+   "work": "W3137644060",
+   "problem": "This work aims to estimate the effectiveness of a plant-based treatment in preventing and treating a common and widespread cause of death, which is a major public health concern. It compares the treatment's performance against a placebo in various clinical trials.",
+   "approach": "The researchers used cell cultures and in vivo studies to investigate the treatment's ability to stop the replication of a wide range of pathogens. They also reviewed existing clinical trials to determine the treatment's efficacy."
+  },
+  {
+   "work": "W3162759217",
+   "problem": "This work estimates the impact of environmental conditions on the properties of a common substance used for energy. It compares different values of a key property, which can vary significantly depending on the conditions.",
+   "approach": "The study uses data from specific locations to investigate how changes in a certain factor affect the substance's properties. It then uses mathematical models to analyze the relationships and make predictions about the substance's behavior."
+  },
+  {
+   "work": "W4380433846",
+   "problem": "This research estimates the future demand of a complex system, using historical data to predict its performance. It aims to provide reliable predictions to inform planning and decision-making.",
+   "approach": "The approach combines two types of neural networks: one that learns patterns in time series data, and another that analyzes relationships between different components of the system. The combined model is trained on historical data to make accurate predictions."
+  },
+  {
+   "work": "W4389648912",
+   "problem": "This research aims to estimate the effectiveness of a specific method in improving a cosmetic condition, which is a common issue in a particular medical condition. The goal is to compare the results of this method with the current standard of care and identify the most optimal approach.",
+   "approach": "The research uses a specific device to emit a high-intensity beam of light, and the settings and protocol are carefully controlled to achieve the best results. The outcome is evaluated by comparing the initial and follow-up results, and the findings are used to explain the success of the method."
+  },
+  {
+   "work": "W2965108579",
+   "problem": "This work estimates the optimal control action to minimize the cost of managing energy resources in a complex system, while keeping the system stable and respecting the limitations of these resources. It compares different control options to find the best solution.",
+   "approach": "The work uses a mathematical model that describes how the system behaves, taking into account the limitations of the energy resources. It follows a procedure that involves minimizing a cost function, which is calculated based on the system's performance and the resources' limitations."
+  },
+  {
+   "work": "W2948284799",
+   "problem": "This work estimates the impact of human activities on the natural world, comparing the effects of increased human numbers and aspirations on the potential of certain plants. It also explains how these changes can reduce the potential of these plants by a certain percentage.",
+   "approach": "The approach involves using data from various sources to model the relationship between human activities and the potential of these plants. It follows a procedure of collecting and analyzing evidence, identifying patterns and trends, and using this information to make predictions and estimates."
+  },
+  {
+   "work": "W4206630838",
+   "problem": "This research estimates the emergence of complex structures in a system of living cells, predicting how these structures form and evolve over time. It compares different models to understand how these structures are generated and optimized.",
+   "approach": "The approach is to use computational models to simulate the behavior of these systems. The models are based on mathematical equations that describe how the cells communicate and respond to each other."
+  },
+  {
+   "work": "W7220047331",
+   "problem": "This research aims to estimate the importance of promoting good health for working-age adults, who are crucial for the country's social productivity and care for others. It predicts the risks of chronic non-communicable diseases among this group.",
+   "approach": "The study uses data from various media and information technology to apply guidelines for health promotion, focusing on building public policy, creating supportive environments, and developing personal skills."
+  },
+  {
+   "work": "W3014443746",
+   "problem": "This work aims to estimate the optimal depth of treatment for a specific condition, compare the effectiveness of different treatments, and explain the rationale behind optimal intervals between treatments. It also aims to explain the role of various substances in enhancing treatment outcomes.",
+   "approach": "The approach involves using mathematical models to determine the optimal depth of treatment based on the condition being treated, and comparing the effectiveness of different treatments using empirical data. The intervals between treatments are optimized based on the titres of specific substances in the body."
+  },
+  {
+   "work": "W3010869202",
+   "problem": "This work estimates the relationship between two types of rules that govern human behavior, and compares their effects on society. It aims to explain how these rules interact and influence each other.",
+   "approach": "The researchers use data from various sources to identify patterns and relationships between these rules. They analyze these patterns to understand how the rules interact and affect each other."
+  },
+  {
+   "work": "W2797020252",
+   "problem": "This research aims to determine the optimal level of a specific enzyme supplement to improve growth performance and a key indicator of overall health in young animals, by comparing the effects of different levels of this supplement on their growth and health.",
+   "approach": "The researchers used a controlled experiment with a large group of animals, varying the level of the enzyme supplement and measuring the effects on their growth and health, using statistical analysis to compare the results."
+  },
+  {
+   "work": "W3153245888",
+   "problem": "This study estimates the impact of air travel from Australia and New Zealand on the number of visitors to four island nations in the South Pacific. It compares these numbers to see if there is a relationship between air travel and visitor numbers.",
+   "approach": "The researchers use a special statistical method to analyze the data, and apply it to two groups of data: the number of visitors and the number of flights. They then use this method to see if the number of flights is related to the number of visitors."
+  },
+  {
+   "work": "W4296510589",
+   "problem": "This study estimates the effect of different concentrations of a plant's secondary metabolites on the levels of damage markers in a model of a certain type of fish's tissue. It predicts the impact of these substances on the tissue's health and compares the results to controls.",
+   "approach": "The researchers use a model of the fish's tissue to test the substances' effect. They follow a procedure of mixing the substances with the tissue, incubating it, and then analyzing the results to see how the substances affect the levels of damage markers."
+  },
+  {
+   "work": "W2002221189",
+   "problem": "This work estimates the development of a new idea over time, comparing it to the evolution of other related concepts. It aims to explain how this idea replaced an older notion of unity between different groups.",
+   "approach": "The author uses a chronological approach, tracing the growth of a central idea and its gradual shift in emphasis over time. The work is based on a comprehensive analysis of various texts and institutions from a specific time period."
+  },
+  {
+   "work": "W4362473326",
+   "problem": "This research estimates the genetic characteristics of a virus from animal samples, compares these characteristics to those of previously known virus samples, and optimizes a new virus sample for use in a control program. It aims to determine the genetic variation between different virus samples.",
+   "approach": "The research uses a combination of laboratory tests and computer analyses to compare the genetic characteristics of the virus samples. It follows a procedure of extracting genetic information from the virus samples, comparing this information to that of previously known samples, and using this comparison to optimize the new virus sample."
+  },
+  {
+   "work": "W4406105626",
+   "problem": "This work estimates the influence of past experiences on current decisions, compares the effectiveness of different approaches, and optimizes treatment options based on scientific evidence. It aims to explain why certain decisions are made and how they can be improved.",
+   "approach": "The procedure involves analyzing past outcomes, reviewing relevant literature, and engaging in introspection to identify the underlying reasons for decisions. This self-reflection helps to distinguish between evidence-based choices and those driven by personal experiences or tradition."
+  },
+  {
+   "work": "W4392888940",
+   "problem": "This research estimates the effect of a certain substance on a process that worsens over time, and compares it to a control group. It predicts the outcome of this process and optimizes the outcome by modifying a specific pathway.",
+   "approach": "The researchers used a combination of data points, including enzyme levels and tissue damage, to evaluate the substance's effect. They then applied a specific procedure to the pathway, involving the activation of certain proteins and the regulation of others."
+  },
+  {
+   "work": "W7117154180",
+   "problem": "This research estimates and compares the levels of certain substances in a bodily fluid to identify patterns of disease involvement. It predicts which patterns are most likely to be associated with specific diseases.",
+   "approach": "The researchers used a complex test to measure the levels of many substances in the bodily fluid, and then compared these levels across different groups of people. They used a special computer program to analyze the data and identify patterns of disease involvement."
+  },
+  {
+   "work": "W2944538956",
+   "problem": "This work aims to control and optimize the performance of a system that supplies a complex and variable power source, ensuring the quality of the output energy and maintaining a stable frequency. It estimates and predicts the behavior of this system under different conditions.",
+   "approach": "The system uses a combination of control techniques to achieve this goal, including adjusting parameters to filter out unwanted energy patterns and maintaining a stable output energy level."
+  },
+  {
+   "work": "W2907431974",
+   "problem": "This work estimates the antioxidant and protective effects of certain substances on damaged liver cells, comparing them to a control group with damaged liver cells. It predicts that these substances can reverse the damage and restore normal liver function.",
+   "approach": "The researchers isolate and analyze the substances from a plant, then test them in a laboratory setting to see how well they can neutralize free radicals and protect liver cells from damage. They use a combination of chemical and biological tests to evaluate the effectiveness of the substances."
+  }
+ ]
+}

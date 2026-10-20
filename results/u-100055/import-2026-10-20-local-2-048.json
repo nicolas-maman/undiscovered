@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-048",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:48Z",
+ "descriptions": [
+  {
+   "work": "W4200370758",
+   "problem": "A group of immune cells is identified that exhibit altered activity in metabolic pathways, and their presence is linked to worse disease outcomes and increased spread of cancer cells.",
+   "approach": "A computational model detects patterns in gene expression that reflect metabolic reprogramming. It identifies a cell subset responding to signals from cancer cells, which in turn promotes migration of cancer cells through a secreted factor, and shows that dietary manipulation amplifies this effect."
+  },
+  {
+   "work": "W4414871777",
+   "problem": "The rate and intensity of a sudden release of material from a barrier are estimated under identical inflow conditions, comparing how different internal compositions affect the speed and volume of the release.",
+   "approach": "A physical setup simulates the barrier's response to water pressure, and a computational model reproduces the dynamics using known physical laws, adjusting parameters to match observed outcomes and identifying key factors influencing the release behavior."
+  },
+  {
+   "work": "W3111037057",
+   "problem": "A dynamic process is monitored over time to predict how outcomes evolve based on pre-existing conditions and interventions applied before and after a procedure.",
+   "approach": "A sequence of stages is tracked with time-dependent feedback, and decisions are adjusted in real-time based on patient response, using historical patterns to guide future actions and support long-term stability."
+  },
+  {
+   "work": "W4378374202",
+   "problem": "A quantitative assessment is made of a patient's response to a natural remedy versus no active treatment, measuring changes in functional outcomes and subjective well-being over time.",
+   "approach": "Patients are randomly assigned to receive either the remedy or a neutral intervention. Outcomes are tracked across a set period with periodic evaluations to determine if the remedy leads to statistically significant improvements in reported health and performance metrics."
+  },
+  {
+   "work": "W4386284107",
+   "problem": "A system evaluates the success of a medical procedure by measuring how well a device is positioned, how often unintended bleeding occurs, and the amount of imaging energy used during follow-up checks.",
+   "approach": "It analyzes historical records of patient outcomes and imaging data, classifies positioning and bleeding into predefined levels, and compares imaging energy metrics to established benchmarks to determine performance and safety."
+  },
+  {
+   "work": "W2978210548",
+   "problem": "Individuals are modeled to form preferences based on social influence, with their decisions shaped by the strength of their internal sense of belonging to a collective. The resulting choices are compared to observed patterns in human decision-making data.",
+   "approach": "Each individual interacts with peers who share similar views, exchanging ideas that can shift preferences. The influence of a message depends on the individual's existing commitment to the group, and outcomes are aggregated to reflect collective choices."
+  },
+  {
+   "work": "W4382060842",
+   "problem": "A method is developed to predict how students engage with learning tasks based on their initial interest levels and the structure of classroom activities.",
+   "approach": "Students are observed during sessions, and their participation patterns are analyzed. A model adjusts teaching strategies in real time based on observed engagement levels and past performance trends."
+  },
+  {
+   "work": "W4311537226",
+   "problem": "A pattern of inherited social disadvantage is identified and traced through theological interpretations, where certain groups are portrayed as inherently inferior and subject to systemic subjugation across legal, medical, and cultural domains.",
+   "approach": "A model analyzes how biblical narratives are reinterpreted to assign biological and social traits, using these interpretations to justify exclusion, and evaluates how such views evolve from abstract moral judgments to concrete societal controls."
+  },
+  {
+   "work": "W4399168049",
+   "problem": "A system estimates the likelihood of a medical device malfunctioning due to improper physical or electrical conditions during use, based on preoperative checks and real-time operational feedback.",
+   "approach": "The system evaluates device status by comparing current operational parameters against known safe thresholds, using a structured diagnostic protocol that accounts for environmental and power system characteristics."
+  },
+  {
+   "work": "W4391129015",
+   "problem": "A system estimates the likelihood that a physical item, linked to a user's identity, has been legitimately issued and held by that user during a time-sensitive event.",
+   "approach": "The system generates a unique, time-bound identifier tied to a user's location and device. It verifies the presence of this identifier at a specific place and time, using real-time positional data to confirm ownership and prevent unauthorized use."
+  },
+  {
+   "work": "W4413108633",
+   "problem": "A pattern of widespread smooth muscle growth is identified on the inner lining of the abdominal cavity, occurring alongside a large, solitary mass in a patient with no prior invasive procedures or hormonal exposure.",
+   "approach": "A postoperative examination of tissue samples reveals extensive, well-defined nodules with a uniform cellular structure, and the pattern is correlated with the presence of a large, solitary mass and absence of prior invasive events."
+  },
+  {
+   "work": "W7166019380",
+   "problem": "A system is designed to maintain continuity of learning during disruptions by enabling remote access to instructional materials and interactive tools. It evaluates how effectively these tools support knowledge transfer and teacher-student interaction under constrained conditions.",
+   "approach": "A networked platform is deployed to deliver content and facilitate real-time engagement. It prioritizes open-source software to ensure broad accessibility and resilience during system failures or resource shortages."
+  },
+  {
+   "work": "W3119006693",
+   "problem": "The effect of a therapeutic cell type on a disease-driving cell population is assessed by measuring changes in cell growth, movement, and the production of key structural proteins associated with tissue overgrowth.",
+   "approach": "Cells are grown together in a shared environment. Growth, movement, and protein output are monitored over time. Molecular signals linked to tissue overgrowth are measured to determine if the therapeutic effect alters the activation of a key regulatory pathway."
+  },
+  {
+   "work": "W2952331051",
+   "problem": "A set of aerial images from a long period ago is transformed into a precise, geographically aligned representation to enable accurate comparison of land surface features over time.",
+   "approach": "Using known camera geometry and ground control points, the images are mathematically adjusted to correct perspective distortions and align spatially, producing a consistent, high-resolution map of the landscape at a specific time."
+  },
+  {
+   "work": "W4415321465",
+   "problem": "A measure of public engagement with locally relevant content is estimated based on observed viewer responses and program exposure data. The relationship between exposure to a public media source and interest in regional traditions is assessed using statistical analysis of survey and observational evidence.",
+   "approach": "A model evaluates how frequent and consistent exposure to a regional media program correlates with viewer interest in local traditions. It uses regression and hypothesis testing to determine if changes in exposure lead to measurable shifts in public attention."
+  },
+  {
+   "work": "W4402479797",
+   "problem": "The task is to quantify how different levels of financial stability and time spent in structured activities relate to patterns of health-related behaviors and outcomes across a population.",
+   "approach": "It uses statistical models to compare groups based on income and activity levels, adjusting for known influences, and estimates the strength and direction of associations through weighted comparisons and regression analysis of observed patterns."
+  },
+  {
+   "work": "W4413680353",
+   "problem": "A system is analyzed to determine how the presence and concentration of a reducing compound affect the stability and production of a photochemically formed gas, depending on the energy output of the light source and the overall chemical environment.",
+   "approach": "Simulations are run across a range of gas concentrations and light intensities to track the rates of formation and destruction of the photochemically formed gas, adjusting for chemical feedbacks and energy absorption in different environmental conditions."
+  },
+  {
+   "work": "W4322759035",
+   "problem": "A set of plant lineages is tracked over time to evaluate changes in their physical and aesthetic traits following controlled breeding and environmental exposure.",
+   "approach": "A structured process is applied to select and propagate lineages based on consistent trait expression, using repeated observations and environmental conditions to refine and document outcomes across generations."
+  },
+  {
+   "work": "W2898612125",
+   "problem": "A method is developed to restore a large, irregularly shaped area of the body surface using tissue from a nearby region, with the goal of achieving natural color, texture, and long-term survival of the transferred tissue.",
+   "approach": "The process involves three sequential phases: first, a temporary tissue reservoir is placed and expanded to grow tissue; second, the expanded tissue is transferred and connected to a blood supply; third, a portion of the original tissue is used to fill remaining gaps, ensuring structural and vascular continuity."
+  },
+  {
+   "work": "W4318828626",
+   "problem": "A pattern in the vertical accumulation of a key material is estimated across different environmental conditions, using measurements taken at multiple locations. The pattern is predicted and compared across distinct land cover types to determine which function best represents how the material builds up with depth.",
+   "approach": "A set of mathematical functions is applied to depth-based measurements to model how a material accumulates over time. The function that best fits the observed data across conditions is selected based on statistical accuracy and consistency in prediction."
+  }
+ ]
+}

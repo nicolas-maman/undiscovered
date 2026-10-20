@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-051",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T14:41:49Z",
+ "descriptions": [
+  {
+   "work": "W3198290475",
+   "problem": "A dynamic process involving chronic low-level inflammation is being assessed to determine how natural compounds influence disease progression and early warning signs in long-term conditions.",
+   "approach": "A model evaluates how combinations of plant-derived substances modulate biological pathways linked to inflammation and metabolic balance, using data from preclinical and observational studies to predict outcomes under varying lifestyle and environmental conditions."
+  },
+  {
+   "work": "W4393640859",
+   "problem": "A set of on-road evaluations is analyzed to determine how well individuals perform under real-world driving conditions, with the goal of assessing consistency and reliability across different testing scenarios.",
+   "approach": "Each test is evaluated using a defined scoring framework, and the quality of each evaluation is assessed for potential flaws. Results are synthesized to compare outcomes and identify patterns across diverse testing environments and conditions."
+  },
+  {
+   "work": "W4312541392",
+   "problem": "The impact of structured training on crop yield is estimated and compared before and after intervention, using observational data from a group of agricultural producers. A statistical model assesses the strength and significance of associations between training practices and output changes.",
+   "approach": "A structured training program is implemented and monitored over time. Output is measured repeatedly, and changes are analyzed using statistical tests to determine which specific practices most strongly influence yield improvements."
+  },
+  {
+   "work": "W4406806395",
+   "problem": "A framework is developed to trace how interpretive structures evolve from initial observations of human expression to deeper ethical implications in action and decision-making.",
+   "approach": "A sequence of interpretive stages is mapped, each building on the previous by integrating lived experience with moral consequences, using patterns in human behavior and contextual responses as input."
+  },
+  {
+   "work": "W4410785771",
+   "problem": "A systematic framework is constructed to map the clinical presentation, diagnostic pathways, and treatment strategies for a wide range of pathogenic agents across different biological domains.",
+   "approach": "A structured model integrates symptom patterns, laboratory findings, and therapeutic responses to generate a unified reference for managing acute and chronic conditions caused by diverse agents."
+  },
+  {
+   "work": "W2803721575",
+   "problem": "The change in key biochemical and physical properties of a food product over time under varying environmental conditions is measured and compared across different treatment methods and storage settings.",
+   "approach": "A product is exposed to a pre-treatment solution, then subjected to two distinct processing techniques and stored at three different temperatures for a fixed duration. Changes in mass, water content, and chemical composition are tracked and analyzed to determine the most stable and beneficial outcome."
+  },
+  {
+   "work": "W4285688822",
+   "problem": "A pattern is identified in how daily intake habits correlate with biochemical markers of fat transport and cellular membrane structure in individuals exposed to risk factors for early vascular disease.",
+   "approach": "Daily intake patterns are compared to biological measurements from blood and cell samples using standardized thresholds and statistical analysis to detect consistent deviations in fat-related biomarkers across different health statuses."
+  },
+  {
+   "work": "W4226284158",
+   "problem": "The duration and distribution of water movement through a system are estimated from isotopic signatures in flowing water, comparing observed patterns to those expected under different assumptions about water age and residence time.",
+   "approach": "A statistical model evaluates how long water remains in a system by fitting observed isotopic variations to theoretical functions that assume different flow pathways and retention behaviors over time."
+  },
+  {
+   "work": "W4287810967",
+   "problem": "A three-dimensional arrangement of atoms is characterized by identifying distinct positions for different types of elements, each forming specific coordination environments with surrounding atoms, and mapping how these positions connect through shared geometric features.",
+   "approach": "A computational model assigns each element to a site based on its local environment, then defines how these sites link through shared spatial configurations, using geometric and connectivity rules to describe the overall structure's topology and atomic interactions."
+  },
+  {
+   "work": "W2900426650",
+   "problem": "The spatial pattern of tumor-related changes after treatment is estimated and compared across patient groups to identify distinct regional tendencies in lesion appearance and spread.",
+   "approach": "A standardized brain coordinate system is used to align patient data, then voxel-level intensity patterns are averaged and compared between groups using statistical testing to detect significant regional differences in distribution."
+  },
+  {
+   "work": "W4386493974",
+   "problem": "A system estimates the velocity of a moving vehicle based on its historical position over time, using real-time location records to infer future motion patterns.",
+   "approach": "First, a sequence model analyzes past position changes to capture temporal dynamics. Then, a final layer refines the velocity estimate using multiple independent predictions, averaging them to improve confidence and stability."
+  },
+  {
+   "work": "W2417138536",
+   "problem": "A rare condition involving the body's failure to produce sufficient blood cells is assessed, with attention to how physiological changes during a specific life stage may exacerbate the disease and alter clinical presentation.",
+   "approach": "A model integrates patient history, lab results, and exposure data to evaluate the likelihood of immune-mediated stem cell destruction, adjusting predictions based on hormonal and environmental factors."
+  },
+  {
+   "work": "W7216956450",
+   "problem": "A pattern of social behavior is examined that challenges established norms and official narratives, revealing hidden dynamics and unspoken tensions in public discourse.",
+   "approach": "A structured analysis identifies deviations from dominant interpretations, using creative expression as a lens to expose suppressed or marginalized elements of societal experience and institutional understanding."
+  },
+  {
+   "work": "W3087319169",
+   "problem": "A physical property of porous material is estimated under conditions close to full saturation, based on how fluid moves through it under controlled flow and pressure gradients.",
+   "approach": "A column of material is exposed to a controlled flow at the top and suction at the bottom. Flow rates and pressure changes are monitored over time. A steady-state flow is detected, and the movement is used to compute a flow property using a known physical law relating flow rate to pressure gradient."
+  },
+  {
+   "work": "W4405197148",
+   "problem": "A method is developed to assess the effectiveness of an alternative therapeutic strategy for individuals who do not respond to standard neuromodulation-based treatments for persistent mood disorders.",
+   "approach": "A structured evaluation is performed by combining physiological interventions with a rapidly acting pharmacological agent, then measuring symptom reduction over time using standardized behavioral and cognitive metrics."
+  },
+  {
+   "work": "W4402581701",
+   "problem": "A quantitative measure of an organism's physiological state is assessed over time in response to handling and experimental manipulation. Changes in this measure are compared across different time points and conditions to determine the impact of disturbance on internal balance.",
+   "approach": "A repeated sampling protocol is applied to monitor a biological indicator over several days. Data are aggregated and compared across time points to detect trends, with statistical analysis identifying significant shifts in response to external handling."
+  },
+  {
+   "work": "W2810595817",
+   "problem": "The strength of internal processes that promote learning is estimated against the extent to which individuals exchange information and experiences within a group.",
+   "approach": "A statistical model links sets of observed behaviors related to learning processes with observed patterns of information exchange, using factor analysis to simplify and correlate the underlying structures."
+  },
+  {
+   "work": "W3110018239",
+   "problem": "The frequency of a specific biological marker in human blood is estimated and linked to clinical symptoms and immune responses across different urban populations.",
+   "approach": "Blood samples are processed to isolate plasma, then tested for a specific antibody response. Clinical symptoms and infection levels are recorded and analyzed to determine associations between immune activity, symptom occurrence, and infection status."
+  },
+  {
+   "work": "W7216902473",
+   "problem": "The quality and consistency of a plant-based resource are assessed across different growing conditions and seasons to determine its metabolic stability and biological activity levels.",
+   "approach": "A series of chemical and biological tests are applied to samples from various cultivation densities and environments. Results are compared across conditions to identify patterns in metabolite concentration and biological response, with standardized thresholds established for safe and effective use."
+  },
+  {
+   "work": "W4307127241",
+   "problem": "A pattern of repeated, unexplained emotional and cultural disconnections is identified in individuals from mixed or displaced backgrounds, where personal identity fragments and traditional narratives fail to hold.",
+   "approach": "Data from personal accounts and linguistic samples are analyzed to detect recurring structural gaps in self-representation, then mapped against environmental and generational stressors to reveal underlying psychological and social mechanisms."
+  }
+ ]
+}

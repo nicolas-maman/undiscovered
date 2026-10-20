@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-011",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:42Z",
+ "descriptions": [
+  {
+   "work": "W4407404421",
+   "problem": "This work aims to accurately align two types of images that are complementary but have different characteristics, which is essential for further analysis and collaboration. It estimates the best alignment between these images, despite their differences.",
+   "approach": "The method uses a combination of feature matching and spatial alignment to optimize the alignment. It employs a special module to help the computer recognize the structural features of the images and reduce the differences between them."
+  },
+  {
+   "work": "W4235894165",
+   "problem": "Estimate the effectiveness of regulatory agencies in ensuring access to and quality of public services, facilitating market neutrality, and protecting against uncertainty. Compare their performance over time.",
+   "approach": "Use historical data on regulatory agency performance to train a model that predicts their future effectiveness. The model will be trained on data from various sources, including reports, surveys, and market trends."
+  },
+  {
+   "work": "W4391603327",
+   "problem": "This work estimates the effectiveness of a traditional remedy for memory problems, comparing its benefits to those of other treatments. It aims to explain how this remedy works and whether it is safe to use.",
+   "approach": "The researchers used data from various studies on the remedy's effects on blood circulation and brain changes, and compared these findings to those from other treatments."
+  },
+  {
+   "work": "W3206936286",
+   "problem": "This study aims to determine whether a specific protein helps identify a condition where nerve cells are missing from a part of the digestive system. It estimates the effectiveness of this protein in identifying the condition, compared to other methods.",
+   "approach": "The researchers looked at old tissue samples from people who might have the condition, and used a special test to see if the protein was present. They then compared the results to other tests to see how well the protein worked."
+  },
+  {
+   "work": "W2802639367",
+   "problem": "This work estimates the existence of a rare abnormal growth in the air sacs of a male, which may be caused by a past injury. It compares this growth to other types of abnormal growths and suggests that it may be a benign change rather than a separate disease.",
+   "approach": "The researchers used imaging tests to identify the abnormal growth, and then examined the tissue under a microscope to understand its structure and composition. They followed up with the patient after surgery to see how they recovered."
+  },
+  {
+   "work": "W4223600007",
+   "problem": "This research estimates the effect of certain plant extracts on the release of a molecule that helps blood vessels relax, and compares it to the degradation of this molecule. It also predicts the potential benefits of these extracts on various health risks, such as high blood pressure and high cholesterol.",
+   "approach": "The researchers use data from preclinical studies to develop a model that predicts the effects of these plant extracts on the body. They follow a procedure that involves analyzing the data, creating a mathematical model, and testing the model with new data to refine it."
+  },
+  {
+   "work": "W3005336785",
+   "problem": "This work estimates the best approach for complex surgeries by comparing different methods and tools. It predicts how well trainees will understand and apply the new methods, and optimizes the educational resources to improve their performance.",
+   "approach": "The procedure involves creating 3D models from real patient data, and then testing trainees on their understanding and application of the new methods. The models are compared to traditional 2D resources to see which one is more effective."
+  },
+  {
+   "work": "W2800391176",
+   "problem": "This work estimates the effect of a specific protein on the development of a particular trait in a species. It predicts the outcome of manipulating the protein's activity on this trait.",
+   "approach": "The researchers use data from experiments where the protein's activity is varied to observe the effect on the trait's development. They follow a procedure where the protein's activity is manipulated, and the outcome is measured and compared to control data."
+  },
+  {
+   "work": "W4391340226",
+   "problem": "This work estimates the optimal density of a certain type of perennial plant to maximize its growth and minimize its impact on the environment, while also considering the limitations of the region's resources.",
+   "approach": "The study uses experimental plots with varying densities to investigate the relationships between plant density, environmental factors, and the plant's growth and impact on the environment."
+  },
+  {
+   "work": "W4205372940",
+   "problem": "This work aims to optimize the efficiency of a production process by minimizing idle time and improving the balance of tasks. It estimates the optimal arrangement of tasks to achieve this goal.",
+   "approach": "The approach involves designing a mathematical model to represent the process, then using a rule-based method to find the best arrangement of tasks. The model is tested using multiple instances of data to compare the results and evaluate the effectiveness of the approach."
+  },
+  {
+   "work": "W3037614261",
+   "problem": "This work aims to estimate the optimal cost per click to maximize a desired outcome, given a large dataset of past events. It compares different approaches to achieve this goal and optimizes the chosen method to achieve the best results.",
+   "approach": "The approach uses a machine learning framework to learn from the data and make predictions about the optimal cost. It follows a procedure that involves designing a reward function to measure the desired outcome and generating a method to produce the optimal cost based on theoretical results."
+  },
+  {
+   "work": "W3204035143",
+   "problem": "This work estimates the effects of various conditions on the shape and size of a material, comparing different outcomes and trying to find the best conditions to achieve a desired result. It aims to explain how these conditions impact the material's properties and performance.",
+   "approach": "The study uses a special machine to process thin samples of the material under controlled conditions, then examines their shape using a special light microscope. The process is repeated multiple times to analyze changes and understand the relationships between conditions and material properties."
+  },
+  {
+   "work": "W4293036448",
+   "problem": "This work estimates the effectiveness of different materials in preventing the spread of a substance through small holes in objects, and compares their ease of removal. It aims to explain which materials are best suited for this purpose.",
+   "approach": "The procedure involves classifying the materials into groups and testing their ability to prevent the spread of the substance over time. The results are compared to determine which materials are most effective and easiest to remove."
+  },
+  {
+   "work": "W3116446308",
+   "problem": "This work estimates the performance of a biological device in response to sound pulses, predicts how it will behave over time, and compares its performance to that of man-made devices. It aims to optimise the use of this biological device in a larger system.",
+   "approach": "The researchers use a biological device to detect sound pulses, record neural signals, and control the motion of a larger system. They follow a procedure where the neural signals are processed and used to make decisions about the system's motion."
+  },
+  {
+   "work": "W2961096643",
+   "problem": "This work estimates the likelihood of cooperation among states in a region with diverse economic and social characteristics, and compares it to a benchmark from a more developed region.",
+   "approach": "It uses a model that considers the underlying pattern of strategic interaction among states and the conflicting goals of major powers to design a framework for cooperation."
+  },
+  {
+   "work": "W4206816601",
+   "problem": "Estimate the efficiency of using land for growing crops, and identify areas where land is not being used effectively. Compare the quality of different types of land to determine which ones are suitable for specific uses.",
+   "approach": "Use data on land use and quality to develop a system that optimizes land allocation. Analyze historical data on land use and create maps to identify areas of inefficient land use."
+  },
+  {
+   "work": "W4410049866",
+   "problem": "This research estimates the impact of hybrid work arrangements on the stability and predictability of cooperative interactions, comparing the effects of physical and digital environments on team performance. It predicts that workers rely on digital stability while neglecting physical stability, leading to lost opportunities for face-to-face interactions.",
+   "approach": "The study uses an ethnographic approach to analyze how individuals create and negotiate hybrid arrangements, following a procedure that involves identifying patterns of stability and predictability in digital and physical environments, and designing hybrid infrastructures to facilitate cooperation across multiple locations and dimensions."
+  },
+  {
+   "work": "W2900305022",
+   "problem": "Estimate the impact of changes in transportation options on the ability to stay healthy, safe, and engaged in later life. Compare the effects of different transportation options on the quality of life of older adults.",
+   "approach": "Use data from surveys and interviews to estimate the impact of changes in transportation options on the quality of life of older adults. Analyze the effects of different transportation options on the quality of life of older adults by comparing data from different groups."
+  },
+  {
+   "work": "W3094234506",
+   "problem": "This work estimates the distribution of a certain type of organism on two isolated islands, comparing the number of different types found on each island. It also predicts the likelihood of new discoveries on each island.",
+   "approach": "The researchers used data from previous surveys to compare the types of organisms found on the two islands, and to identify new discoveries. They followed a procedure of comparing and contrasting the data to make their estimates and predictions."
+  },
+  {
+   "work": "W3004137465",
+   "problem": "This study estimates the relationship between the levels of physical activity and a certain protein in the blood of identical twins. It compares these levels to see if there is a connection.",
+   "approach": "The researchers used a questionnaire to collect data on the twins' physical activity, and then took a blood sample to measure the levels of a specific protein. They followed a standard procedure to analyze the protein levels using a kit provided by the manufacturer."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-010",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:41Z",
+ "descriptions": [
+  {
+   "work": "W4402147339",
+   "problem": "This research estimates the outcomes of a group of individuals with a congenital disorder that affects their digestive system, caused by the absence of certain nerve cells. It predicts the likelihood of certain problems, such as bowel movements and infections, and compares the results across different groups.",
+   "approach": "The researchers used a descriptive analysis approach, examining data from individuals who underwent a specific surgical procedure to treat the disorder. They followed up with these individuals over time to assess their outcomes and identify any potential issues."
+  },
+  {
+   "work": "W3197121743",
+   "problem": "This work investigates how to control the behavior of two types of waves that travel in opposite directions, and how to use tiny particles to manipulate this behavior. It aims to understand how to use these particles to control the behavior of these waves in a specific way.",
+   "approach": "The researchers use a mathematical model to simulate how the behavior of these waves changes when the particles are added. They adjust a key factor, the relative phase angle of the particles, to control the behavior of the waves."
+  },
+  {
+   "work": "W4205153076",
+   "problem": "This study aims to determine the impact of a specific health program on the knowledge of a particular group about a common health issue. It estimates the effect of the program on the group's knowledge and compares it to a control group.",
+   "approach": "The researchers used a quantitative study design with a quasi-experimental approach, collecting data from 42 respondents using questionnaires and analyzing it with a dependent T-test to determine the influence of the program on the group's knowledge."
+  },
+  {
+   "work": "W4391284999",
+   "problem": "Estimate the impact of a policy change on the environmental and economic outcomes of a sector, given certain conditions and targets.",
+   "approach": "Use historical data and trends to predict the effects of the policy change, and compare the results to the desired outcomes, adjusting the approach as needed to optimize the sector's performance."
+  },
+  {
+   "work": "W4293414338",
+   "problem": "This research estimates the costs of uncertainty in decision-making, comparing the impact of ambiguity on outcomes when precise information is available. It predicts the maximum losses and potential penalties that can result from uncertainty.",
+   "approach": "The analysis uses a mathematical model to evaluate the effects of uncertainty on decision-making, considering a simple decision problem with varying levels of information. The approach follows a straightforward procedure, comparing outcomes under different levels of uncertainty."
+  },
+  {
+   "work": "W7215835477",
+   "problem": "This research aims to improve the ability of a group to throw and catch small objects by modifying a traditional activity based on working together. It estimates the effectiveness of this modification and compares the results before and after the change.",
+   "approach": "The researchers used a method that involves planning, doing, observing, and thinking about what was done. They repeated this process twice to see if the changes made a difference."
+  },
+  {
+   "work": "W4302362746",
+   "problem": "This work estimates the likelihood of disease introduction into a specific area based on human behaviors and management practices. It predicts the risk level of disease introduction for each area and makes recommendations for improvement.",
+   "approach": "The study uses expert opinions to weight risk factors, categorizing areas into high, medium, and low risk levels. It identifies gaps in current standards and training, and recommends revisions to address these gaps."
+  },
+  {
+   "work": "W4415387428",
+   "problem": "This work estimates the future direction of research in a common health problem that affects many people, especially in a specific geographic region. It predicts which areas of research will continue to develop and identify potential new areas to improve treatment.",
+   "approach": "The study uses a large dataset of published research to identify patterns and trends. It then uses a network approach to map the predicted research directions and identifies potential new areas to improve treatment."
+  },
+  {
+   "work": "W2984932619",
+   "problem": "This research aims to determine the impact of varying levels of a key nutrient on the growth and productivity of a specific type of farm animal, and to compare the costs and outcomes of different feeding strategies.",
+   "approach": "The study uses a controlled experiment with multiple groups, each receiving a different amount of a nutrient-rich food source, and evaluates the results over a set period of time."
+  },
+  {
+   "work": "W4283700676",
+   "problem": "This work investigates how adult stem cells maintain their identity and differentiate into new cells. It aims to understand the mechanisms that control the transition from a stem-like state to a specialized cell type.",
+   "approach": "The researchers use a specific type of cell, which is a type of insect, to study the process of cell differentiation. They analyze the effects of removing a key gene on the cell's ability to differentiate, and compare the results to the effects of introducing a different gene that promotes cell differentiation."
+  },
+  {
+   "work": "W2993836325",
+   "problem": "This work aims to improve the efficiency of a process where items are taken apart and reassembled. It estimates the best way to do this by considering the amount of resources used and the value created.",
+   "approach": "The researchers use a new method to find the best way to do this by considering multiple factors, such as time, energy, and value. They use a special kind of computer program that can handle many different goals at once."
+  },
+  {
+   "work": "W4408930180",
+   "problem": "This work estimates the likelihood of a specific type of eye inflammation being caused by a particular group of viruses, based on past research. It compares the results of multiple studies to determine which viruses are most likely to cause this type of inflammation.",
+   "approach": "The researchers used a systematic review to evaluate the existing literature on the topic, following a procedure that involves identifying relevant studies, extracting data from them, and then combining the results to draw conclusions about the viruses' role in the inflammation."
+  },
+  {
+   "work": "W4411133213",
+   "problem": "This research estimates the size and shape of a certain type of parasite that lives in fish, and compares it to the way it interacts with the stomach lining of humans. It aims to help doctors identify and remove the parasite during a medical procedure.",
+   "approach": "The researchers used a special tool to look inside the stomach of a living person, and took detailed pictures of the parasite's entry point. They used these pictures to help doctors find and remove the parasite more easily."
+  },
+  {
+   "work": "W4401023883",
+   "problem": "The task is to estimate the optimal way to design a system where users can buy products or services at a lower price in exchange for seeing ads, and to compare the revenue and welfare of the system with and without this feature.",
+   "approach": "The system uses data on how users interact with ads to determine the best way to offer discounts, and then uses this information to optimize the revenue of the system."
+  },
+  {
+   "work": "W3010192276",
+   "problem": "This work estimates the relationship between certain characteristics of a certain type of food and its potential harm to humans. It also compares the effects of different versions of a particular trait on the food's characteristics.",
+   "approach": "The researchers used a combination of experiments and data analysis to identify the characteristics that are associated with the food's ability to withstand a certain type of harm. They used a technique called genome-wide association study to compare the characteristics of many different versions of the food."
+  },
+  {
+   "work": "W4386370959",
+   "problem": "This study aims to estimate the level of knowledge and awareness about a common hormonal disorder that affects women's reproductive health, particularly in a specific region of India. It seeks to compare the prevalence of this disorder and its associated symptoms across different populations.",
+   "approach": "The study uses a standardized questionnaire to collect data from a large sample size, aiming to minimize bias and increase accuracy. The approach involves analyzing the data to identify patterns and trends in knowledge and awareness of the disorder."
+  },
+  {
+   "work": "W4286717382",
+   "problem": "This research aims to evaluate the relationship between two types of development: one focuses on using resources efficiently and reducing waste, while the other focuses on economic growth and social well-being. It estimates the level of coordination between these two types of development.",
+   "approach": "The researchers use a combination of methods to analyze data from 2011 to 2020, including assigning weights to different factors, modeling the relationships between them, and forecasting future trends."
+  },
+  {
+   "work": "W4391652169",
+   "problem": "This research aims to understand the extent to which people in a specific age group are being targeted or harassed through digital means, and whether this varies between men and women. It seeks to identify the scope of this issue and how it can be addressed.",
+   "approach": "The study uses a questionnaire to collect data on participants' experiences, anxiety, and exposure to online harassment. It then analyzes this data to compare the levels of harassment between men and women."
+  },
+  {
+   "work": "W3204273400",
+   "problem": "This work estimates the effectiveness of various strategies for improving collaboration between researchers and those who make decisions, and compares the results to identify the most promising approaches. It aims to explain how to transform the relationship between these two groups.",
+   "approach": "The authors propose a four-step plan to achieve this transformation, involving prioritizing research utilization, changing the academic culture, engaging policymakers with research, and exploring the underlying cultures of both groups."
+  },
+  {
+   "work": "W3091875939",
+   "problem": "This experiment aims to improve the growth of a specific type of plant by applying different substances to its stems, to see how it affects the plant's ability to grow new stems and roots. The goal is to find the best way to help the plant grow without using special facilities.",
+   "approach": "The researchers applied different concentrations of two types of substances to the plant's stems using a spray method, and then measured the effects on the plant's growth, including the number of new stems and roots, and the length of the roots."
+  }
+ ]
+}

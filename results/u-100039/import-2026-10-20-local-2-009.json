@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-009",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:41Z",
+ "descriptions": [
+  {
+   "work": "W4403876238",
+   "problem": "This work estimates the role of certain changes in the structure and organization of a specific system in a group of people or animals, and compares them to a control group. It also predicts the consequences of these changes on the function of the system.",
+   "approach": "The researchers use a combination of data from a specific type of analysis and evidence from a related field to identify patterns and changes in the system. They then use these findings to propose a new understanding of the system's behavior and its relationship to a specific condition."
+  },
+  {
+   "work": "W7117408144",
+   "problem": "This research aims to estimate the strength of a certain type of plant material based on its appearance and other non-invasive characteristics. It compares the material's strength to its visual and other physical attributes.",
+   "approach": "The researchers used a statistical method to analyze the relationship between the material's strength and its visual and physical attributes. They used a computer vision technique to help with the analysis."
+  },
+  {
+   "work": "W4403467185",
+   "problem": "This research estimates the level of interest in a certain type of health treatment among a group of young people, and compares it to their own health behaviour. It also predicts which groups of people are more likely to be interested in this type of treatment.",
+   "approach": "The researchers used a survey to collect data from a large group of young people, and then analyzed the results to identify patterns and trends. They used a visual scale to measure people's opinions about the treatment, and compared the results to their own health habits."
+  },
+  {
+   "work": "W4241690781",
+   "problem": "This work estimates the future development of a transport hub around Moscow, 110 years after initial discussions. It compares past developments and unfulfilled ideas to current plans and goals.",
+   "approach": "The researchers use historical reports and data to inform their analysis, applying a procedure that involves selecting and analyzing relevant materials, comparing past and present plans, and identifying areas for improvement or future development."
+  },
+  {
+   "work": "W3123593395",
+   "problem": "This work estimates the stability of a specific compound under various conditions, comparing its properties to those of other materials. It predicts the optimal conditions for the compound's existence and explains its behavior using data from different experiments.",
+   "approach": "The researchers used a combination of experiments to gather data, including measurements of the compound's structure and properties at different temperatures. They then analyzed this data to identify patterns and trends, which helped them understand the compound's behavior and make predictions about its stability."
+  },
+  {
+   "work": "W2906160042",
+   "problem": "This work estimates the performance of a system that uses a type of storage device to help control the frequency of a network of interconnected devices. It compares the performance of two different methods for controlling the frequency of these devices.",
+   "approach": "The system uses a combination of two existing methods to evaluate the performance of the storage device. It follows a procedure that involves simulating the system and comparing the results of the two methods."
+  },
+  {
+   "work": "W2957161370",
+   "problem": "An estimate or prediction is made about the effectiveness of a certain method of communication between companies and their customers, based on data about how well the method works in a specific context.",
+   "approach": "A procedure is followed to compare the results of using this method with the results of not using it, and to optimise the method for better performance."
+  },
+  {
+   "work": "W2942401455",
+   "problem": "Estimate the likelihood of harm to certain organisms from the release of certain substances into a body of water that can be used by boats and other watercraft.",
+   "approach": "Use data on the effects of these substances on these organisms to compare their likelihood of harm and optimise the conditions under which they can be safely released into the water."
+  },
+  {
+   "work": "W2997890540",
+   "problem": "Estimate the impact of changes in education and societal trends on the quality of care provided by a group of caregivers, and identify the challenges and opportunities that arise from these changes.",
+   "approach": "Use data on caregiver performance and societal trends to develop a model that predicts the effects of these changes on care quality, and then optimize the model to minimize the negative impacts and maximize the benefits."
+  },
+  {
+   "work": "W3122709117",
+   "problem": "This work estimates the relationship between a tendency to experience a certain state of mind (e.g., feeling uninterested or uninspired) and various measures of well-being, such as life satisfaction and emotional state. It also compares the strength of these relationships across different characterizations of this state of mind.",
+   "approach": "The researchers tested these relationships using data from two large samples, comparing the strength of associations between the state of mind and well-being measures across three different ways of characterizing this state of mind."
+  },
+  {
+   "work": "W4206712754",
+   "problem": "This work estimates the value of a person's own experiences and wisdom compared to the value of external knowledge and traditions. It predicts that people tend to prefer external sources over their own internal guidance.",
+   "approach": "The approach involves comparing internal experiences and wisdom to external knowledge and traditions, using a model that follows a step-by-step procedure of data analysis and pattern recognition."
+  },
+  {
+   "work": "W3132398447",
+   "problem": "This work estimates the best settings for a complex model to achieve good results, using data from two real examples. It compares the performance of different models and optimizes the settings to achieve the best results.",
+   "approach": "The approach uses a special kind of computer program to automatically try many different settings and choose the best one. It follows a procedure where the program tries many settings, evaluates the results, and repeats the process to find the best settings."
+  },
+  {
+   "work": "W4221094271",
+   "problem": "This work estimates the composition of a substance in different parts of a system, comparing the results to understand how the substance changes as it moves through the system. It aims to explain the source of the substance and the processes that affect its composition.",
+   "approach": "The procedure involves collecting samples from various compartments of a system, using a method that allows for direct sampling. The results are then compared to a standard reference point to calculate the contribution of different sources to the system."
+  },
+  {
+   "work": "W7107992899",
+   "problem": "This research aims to improve the accessibility and equity of health services for people who need them most, by identifying the best way to deliver these services. It estimates that current systems are not meeting this need, and proposes a new approach to address this issue.",
+   "approach": "The research proposes a new model for delivering health services, with a focus on door-to-door service and comprehensive support. It suggests that this approach should be supported by a well-designed policy framework and innovative use of technology."
+  },
+  {
+   "work": "W7134239990",
+   "problem": "This research aims to understand the motivations behind unwanted online behavior, specifically when individuals fixate on a person for an extended period. It seeks to explain how this pattern of behavior relates to a broader concept of 'unwanted attention' in a digital setting.",
+   "approach": "The study uses data from past research to estimate the prevalence of this behavior, then compares it to a specific case study to draw broader conclusions. It uses a statistical analysis approach, likely involving a model that predicts or explains the behavior based on the data."
+  },
+  {
+   "work": "W2943539911",
+   "problem": "This research aims to identify and describe a rare condition that affects a specific type of tissue, which is unusual in a particular demographic group. It also seeks to understand the underlying causes and progression of this condition, and to determine the best course of treatment.",
+   "approach": "The researchers use imaging data to make a positive diagnosis, and then confirm the diagnosis through detailed studies of the affected tissue. They also investigate the potential for the condition to transform into a more serious disease, and develop treatment plans based on this analysis."
+  },
+  {
+   "work": "W4406987348",
+   "problem": "This research estimates the impact of historical events on the well-being of a community, comparing the effects of cultural preservation and integration into new societies. It predicts the outcomes of acculturation stress and identity struggles on the community's resilience.",
+   "approach": "The study uses a combination of historical data and psychological research to understand the interplay between cultural preservation and integration. It follows a procedure of data analysis, model development, and strategy formulation to inform strategies for fostering resilience and well-being in the face of adversity."
+  },
+  {
+   "work": "W4396890495",
+   "problem": "This work estimates and compares the properties of two types of food products, one made from animal sources and the other from alternative sources. It aims to explain the advantages and challenges of these products and identify potential solutions to address the challenges.",
+   "approach": "The approach involves analyzing data from these products, comparing their properties, and testing a specific enzyme to mitigate the challenges. The goal is to improve the properties of the alternative products."
+  },
+  {
+   "work": "W4388867666",
+   "problem": "Estimate the likelihood of a specific condition being present in a patient based on their symptoms and medical history, but be cautious of overlapping symptoms with other conditions.",
+   "approach": "Use a combination of clinical signs, laboratory tests, and histological examination to identify the condition, and consider the possibility of co-occurrence with other conditions."
+  },
+  {
+   "work": "W3158500310",
+   "problem": "This work estimates the relationship between a certain nutrient level and a specific health issue in individuals with a particular condition. It compares the nutrient level to a health indicator in these individuals, and finds a correlation.",
+   "approach": "The researchers used data from a group of individuals with a certain condition, and a specific health issue. They looked for a pattern between the nutrient level and the health issue, and found that the nutrient level was inversely related to the health issue in one group, but not in the other."
+  }
+ ]
+}

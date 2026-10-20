@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-014",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:42Z",
+ "descriptions": [
+  {
+   "work": "W3127237053",
+   "problem": "This research estimates the amount of a specific compound in different types of food samples, comparing the results to a traditional method. It also predicts the environmental impact of a technique and compares the effectiveness of two different methods.",
+   "approach": "The technique uses a combination of data from two different methods to make these estimates and predictions. It follows a procedure that involves applying a mathematical model to the data to make the comparisons and predictions."
+  },
+  {
+   "work": "W3132223643",
+   "problem": "The task is to estimate the characteristics of a system's behavior when it is running, and to compare these characteristics to those of known systems to determine whether the system is behaving abnormally. This is done by analyzing the system's behavior over time.",
+   "approach": "The approach involves extracting features from the system's memory, which can reveal information about its behavior, and then using these features to train a classifier that can distinguish between normal and abnormal behavior."
+  },
+  {
+   "work": "W4366089913",
+   "problem": "This research estimates the effect of varying the size of a natural material on the mechanical and wear properties of a metal alloy. It predicts how different sizes of this material will influence the alloy's performance.",
+   "approach": "The study uses a combination of experiments and analysis to compare and contrast the properties of two metal alloys reinforced with different sizes of a natural material. The results are based on data from microstructural, mechanical, and wear tests on the samples."
+  },
+  {
+   "work": "W3125415676",
+   "problem": "This work estimates the future demand for travel within a specific region, based on historical data and various factors that influence demand. It aims to provide a long-term plan for the region's transportation needs.",
+   "approach": "The approach involves analyzing historical data to identify the most influential factors, and then using various statistical and machine learning techniques to predict future demand. The goal is to develop a model that can accurately estimate future demand and inform business decisions."
+  },
+  {
+   "work": "W4407885233",
+   "problem": "This work estimates the impact of a specific development on foreign direct investment, comparing the effects of different approaches to achieve sustainable development. It aims to explain how changes in regulations and market conditions can affect investment decisions.",
+   "approach": "The study uses data on investment decisions and market conditions to develop a model that predicts the impact of sustainable development on foreign direct investment. The model follows a step-by-step procedure to analyze the relationships between variables and estimate the effects of different approaches."
+  },
+  {
+   "work": "W7119046025",
+   "problem": "This work estimates the temperature at which a system undergoes a phase transition, and compares different measures of how mixed states are connected. It also explains how these measures behave near the transition point.",
+   "approach": "The researchers use a mathematical model to calculate how different properties of the system behave at different temperatures. They compare these properties to see if they can detect the phase transition."
+  },
+  {
+   "work": "W2962696746",
+   "problem": "This research aims to improve blood flow to a damaged area of the brain after a stroke. It estimates the effectiveness of a new method to revive the brain area by comparing it to a control group.",
+   "approach": "The researchers created a blockage in the blood flow to one side of the brain, then used a small hole in the skull to allow blood to flow from the other side. They gave some rats a special protein to help their bodies make new blood vessels, and measured the results."
+  },
+  {
+   "work": "W4365519186",
+   "problem": "This work estimates the impact of human activities and global climate change on the storage of a valuable resource in coastal ecosystems. It compares the effects of degradation and restoration on this resource, and predicts the future trends.",
+   "approach": "The study uses a systematic review of existing research to understand the processes and mechanisms involved. It follows a procedure that involves analyzing data on the resource's storage, degradation, and restoration, and developing a technical system for restoration based on the findings."
+  },
+  {
+   "work": "W2980519386",
+   "problem": "This work estimates the effect of a certain substance on the functioning of a specific brain region, comparing its impact on the flow of signals between neurons. It predicts how this substance affects the brain's ability to process information, and optimizes its understanding of this process.",
+   "approach": "The researchers used a laboratory experiment to investigate the effect of this substance on the functioning of a specific brain region. They used a specialized technique to measure the flow of signals between neurons in this region, and compared their results to understand the underlying mechanisms."
+  },
+  {
+   "work": "W4221132506",
+   "problem": "This work estimates the effectiveness of two methods for detecting damage to delicate tissues during a medical procedure. It compares the results of these methods to determine which one is better at detecting damage.",
+   "approach": "The researchers used data from an animal model to compare the performance of these two methods. They tested how well each method could detect damage of varying severity."
+  },
+  {
+   "work": "W4392825054",
+   "problem": "This work estimates the response of a material to an external influence, comparing it to the influence's strength. It predicts the occurrence of a phenomenon that can lead to errors in detecting a specific effect.",
+   "approach": "The researchers use a model object to study the material's response. They follow a procedure where they increase the influence's strength and observe the material's reaction, comparing it to the influence's strength."
+  },
+  {
+   "work": "W4221125438",
+   "problem": "This work estimates the effect of pressure changes on the movement of a certain substance through a network of tiny spaces. It compares the influence of different types of pressure changes on the movement of this substance.",
+   "approach": "The work uses a controlled system to simulate different types of pressure changes and measure their effect on the movement of the substance. It follows a procedure where pressure changes are created in a series of connected spaces and the movement of the substance is measured and compared."
+  },
+  {
+   "work": "W4406054091",
+   "problem": "This work estimates and predicts the presence of abnormal levels of certain substances in the blood of young individuals, who may not exhibit typical symptoms. It compares these levels to established criteria, and optimizes treatment plans based on the results.",
+   "approach": "The procedure involves analyzing data from clinical cases, using a combination of laboratory tests and specialized diets to identify and manage the condition. The approach follows a rule-based model, where the presence of certain symptoms and laboratory results is used to confirm a diagnosis and guide treatment."
+  },
+  {
+   "work": "W2886635291",
+   "problem": "This work estimates the relationship between two concepts, one abstract and the other concrete, and compares their properties to identify a common underlying pattern. It predicts the emergence of a new understanding when the two concepts are combined.",
+   "approach": "The author uses a combination of sensory details and poetic language to describe a moment of connection between two people, creating a sense of unity and shared experience. The approach is highly subjective and relies on the reader's interpretation of the text."
+  },
+  {
+   "work": "W4413620702",
+   "problem": "This work estimates the accuracy of a classification system for medical records, comparing the results of different models to determine which one performs best. It also explains the effectiveness of these models in identifying specific entities within the records.",
+   "approach": "The researchers created a dataset of medical records, manually identifying and categorizing specific information. They then trained and evaluated several machine learning models to see which one could accurately identify these entities."
+  },
+  {
+   "work": "W4394741783",
+   "problem": "This work estimates the biological activity of various compounds and compares their properties to determine which ones are most effective. It also optimizes the design of these compounds by examining their conformational properties.",
+   "approach": "The researchers use a combination of data and evidence to model the properties of these compounds. They follow a procedure that involves creating and testing multiple versions of the compounds to determine their effectiveness."
+  },
+  {
+   "work": "W3035087566",
+   "problem": "This work estimates the effect of pressure on the strength of a container made of a specific type of material, and compares it to the strength of the same material when there is no pressure. It also predicts how the strength of the material changes when the pressure increases.",
+   "approach": "The researchers used a method to measure the strength of the material under pressure, and then compared the results to the strength of the material when there was no pressure. They also looked at how the strength of the material changed when the pressure increased."
+  },
+  {
+   "work": "W2944970587",
+   "problem": "This research aims to estimate the impact of antenna orientation on the quality and quantity of a communication system's signal. It predicts the effect of changing antenna tilt and power on the system's performance, specifically the Ec/Io ratio and Rx level.",
+   "approach": "The research uses simulation to compare the effects of different antenna orientations and power levels on the system's performance. It follows a procedure of modeling the system, applying different scenarios, and analyzing the results to identify the most influential factors."
+  },
+  {
+   "work": "W4391997400",
+   "problem": "This research estimates the amount of a certain substance that can be retained in solution when mixed with another substance, and compares it to the amount that can be retained when the substance is not mixed with anything. It also optimizes the conditions under which this retention occurs.",
+   "approach": "The researchers used a combination of physical measurements, such as light scattering and electron microscopy, to observe the formation of small clusters of the substance and the other substance. They then tested how these clusters affect the absorption of the substance in a model of the digestive system."
+  },
+  {
+   "work": "W2973736820",
+   "problem": "This work estimates the sensitivity of certain parameters to the performance of a complex system, specifically how changes in these parameters affect the system's strain and stress levels. It compares the effects of different parameter values on the system's behavior.",
+   "approach": "The researchers used a combination of numerical analysis and statistical methods to test the sensitivity of eight parameters. They analyzed the variance of the system's response to changes in these parameters."
+  }
+ ]
+}

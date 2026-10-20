@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-20-local-2-004",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:40Z",
+ "descriptions": [
+  {
+   "work": "W7125230000",
+   "problem": "This research estimates and explains how a person's creative activity (writing) helped them cope with difficult emotions and self-awareness, by transforming frustration into an aesthetic experience and obscuring the origin of distress.",
+   "approach": "The researcher uses a theory of thinking to build a new understanding of how this creative activity worked, and how it might be applied to other people's lives, by comparing it to the way people deal with difficult emotions and self-awareness today."
+  },
+  {
+   "work": "W3035635979",
+   "problem": "The task is to estimate the presence of a highly resistant bacteria in upper respiratory specimens from outpatient clinics, and to compare the results with existing data to inform healthcare practices.",
+   "approach": "The approach involves using data from outpatient clinics to train a model that can predict the presence of the bacteria, and then comparing the model's predictions with existing data to optimize healthcare practices."
+  },
+  {
+   "work": "W3215059648",
+   "problem": "This work estimates the likelihood of a serious medical condition based on a 2D image, comparing it to a set of normal examples. It aims to improve doctors' ability to diagnose and treat diseases more accurately.",
+   "approach": "The method uses image processing techniques to extract features from the image, and then applies a classification algorithm to determine whether the image is normal or abnormal. The algorithm is trained on a set of examples to increase its accuracy."
+  },
+  {
+   "work": "W3191354110",
+   "problem": "This work aims to improve the delivery of substances to a specific part of the body by weakening a barrier that prevents them from passing through. It estimates the effectiveness of a substance in doing so over a certain period of time.",
+   "approach": "The researchers use a combination of experiments and mathematical models to understand how the substance works. They compare the results of the substance with a control substance to see if it is more effective."
+  },
+  {
+   "work": "W4404006502",
+   "problem": "This work estimates the development of a new approach to representing a country's interests in international relations, comparing it to traditional methods. It predicts the advantages and disadvantages of this new approach.",
+   "approach": "The author used a combination of theoretical models, chronological analysis, and comparative studies to design a theoretical framework for this new approach. The framework outlines the features and tools of this new approach, including its flexibility, informality, and potential biases."
+  },
+  {
+   "work": "W3195359067",
+   "problem": "This study aims to estimate the future demand for a specific type of medical care, based on historical data and trends in population growth and age-related health issues. It predicts the number of people who will require this type of care in the future.",
+   "approach": "The study uses a statistical model to compare past data with projected trends, and then optimizes a formula to estimate the future demand. The model follows a procedure of data analysis, trend identification, and formula refinement to provide a reliable prediction."
+  },
+  {
+   "work": "W7117358596",
+   "problem": "This work estimates the optimal parameters for a system to remain stable under various conditions, such as changes in speed and load. It predicts the system's response to these changes and compares it to the initial state.",
+   "approach": "The system uses a model that takes into account the nonlinear behavior of the system's components. It follows a procedure where the model is simulated under different conditions, and the results are analyzed to determine the optimal parameters for stability."
+  },
+  {
+   "work": "W4206063893",
+   "problem": "This study investigates the protective effect of a natural substance on damage caused by a certain type of medication, which can harm the stomach lining. It aims to compare the effects of this substance alone, with another substance, and with a combination of the two.",
+   "approach": "The researchers gave a certain medication to some animals, then gave them a natural substance, and a combination of the two, to see how it affected the damage caused by the medication. They then looked at the levels of certain chemicals and markers in the animals' bodies to see the effects."
+  },
+  {
+   "work": "W4414833156",
+   "problem": "Estimate the effectiveness of a set of policies aimed at increasing the use of renewable sources and energy storage systems, and identify the main barriers to their implementation.",
+   "approach": "Use a set of tools and guidelines to assess the current situation and propose practical reforms to overcome the identified barriers and advance the transition to cleaner sources."
+  },
+  {
+   "work": "W4242271510",
+   "problem": "This work estimates the compatibility of two concepts: a traditional cultural tradition and a non-traditional lifestyle. It predicts how these concepts interact in online environments.",
+   "approach": "The researcher uses interviews to gather data on people's online and physical behaviors, then analyzes these data to understand how a cultural tradition influences people's identities and practices in online settings."
+  },
+  {
+   "work": "W4205789398",
+   "problem": "This work aims to improve the accuracy of measuring temperature information in a 2D grid, by eliminating the interference caused by unwanted signals. It estimates the correct temperature values from noisy measurements.",
+   "approach": "The method uses a mathematical transformation to solve a complex problem, and then uses an iterative algorithm to refine the solution. It uses a combination of simulated data and real-world experiments to test its effectiveness."
+  },
+  {
+   "work": "W3175837017",
+   "problem": "This study aims to determine the weight and proportion of certain body parts in animals, and whether adding a specific substance to their diet improves their weight and efficiency without harming their internal functions.",
+   "approach": "The researchers used a controlled experiment with three groups of animals, each given a different type of diet, and measured the weight and proportion of certain body parts in each group."
+  },
+  {
+   "work": "W4399355816",
+   "problem": "This work estimates the optimal design of structures that can switch between multiple stable states, with the ability to change the stable states as desired. It predicts the performance of these structures and compares them to simpler designs.",
+   "approach": "The approach involves designing and analyzing structures with specific properties, then manufacturing and testing them. The procedure follows a set of rules to create structures with multiple stable states, allowing for more flexibility and design options."
+  },
+  {
+   "work": "W4386558183",
+   "problem": "This work estimates the impact of various factors on the aging process of a specific type of tissue, and compares the effects of different interventions to improve its appearance. It aims to explain the underlying causes of age-related changes and optimize treatment options.",
+   "approach": "The study uses a literature review to analyze the effects of external and internal factors on the aging process. It examines various methods of aesthetic correction and evaluates their advantages and disadvantages."
+  },
+  {
+   "work": "W4316464312",
+   "problem": "This study estimates the level of interest in pursuing a specialized field among individuals who have recently completed a training program, and compares this interest across different demographic groups. It also identifies the factors that influence this interest.",
+   "approach": "The researchers used a survey to collect data from a large group of individuals, and analyzed this data using statistical software to identify patterns and correlations. The results were then compared to identify trends and influences."
+  },
+  {
+   "work": "W3210008241",
+   "problem": "This work estimates the time difference between two events with high precision, and compares it to a reference value to determine the accuracy of the measurement. It also optimizes the resolution of the measurement by using a unique approach to measure the time fraction of a clock cycle.",
+   "approach": "The approach uses a high-frequency clock signal to measure the time difference, and a specialized arrangement of the clock signal to increase the resolution. The measurement is then compared to a reference value to determine the accuracy."
+  },
+  {
+   "work": "W4313199109",
+   "problem": "This work estimates the effectiveness of various treatments for a specific condition, comparing the outcomes of different interventions and predicting the best course of action for patients. It uses data from multiple sources to make these estimates.",
+   "approach": "The procedure involves selecting a representative study from each of several international groups, analyzing the study's findings, and summarizing the key results in a concise abstract."
+  },
+  {
+   "work": "W4401501295",
+   "problem": "This work aims to estimate the risks and detection techniques for a common additive used to artificially increase the protein content of various food products and industrial materials. It compares the effects of this additive on human health and the environment.",
+   "approach": "The approach involves comparing the effects of this additive on human health and the environment, using data from various sources, including news reports and scientific studies. It uses analytical techniques such as mass spectroscopy and high performance liquid chromatography to detect and quantify the additive's presence."
+  },
+  {
+   "work": "W3085657447",
+   "problem": "This research estimates the effectiveness of a substance in preventing a certain enzyme from breaking down complex carbohydrates, which is important for treating a metabolic disease. It also compares the effectiveness of different forms of this substance.",
+   "approach": "The researchers used a combination of data points, including the amount of a certain compound and the ability of the substance to prevent the enzyme from working, to determine the effectiveness of the substance. They then compared the results to determine which form of the substance is more effective."
+  }
+ ]
+}

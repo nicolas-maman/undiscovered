@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-032",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:45Z",
+ "descriptions": [
+  {
+   "work": "W4403876238",
+   "problem": "A pattern of structural and molecular changes in brain support tissues is assessed across healthy and diseased states to identify consistent alterations that may precede and influence the decline of neural function.",
+   "approach": "A computational model analyzes gene expression profiles from individual tissue units across different conditions, grouping similar expression patterns into distinct types and tracking how these types shift in number and function over time."
+  },
+  {
+   "work": "W7117408144",
+   "problem": "A system estimates the strength of a natural material based on measurable, non-invasive features observed in its structure, such as density and thickness, using statistical relationships derived from prior observations.",
+   "approach": "A mathematical model correlates observed structural dimensions with mechanical performance through regression, using a set of input variables to predict output strength with a defined level of accuracy."
+  },
+  {
+   "work": "W4403467185",
+   "problem": "A group of future healthcare professionals is assessed on their interest in and personal engagement with health practices involving natural environments and thermal interventions, and how these relate to their views on the relevance of such practices in formal education.",
+   "approach": "Respondents rate their belief in the modernity and effectiveness of specific wellness routines using a continuous scale. Their self-reported participation in related behaviors is recorded and linked to perceived relevance of these practices in medical training."
+  },
+  {
+   "work": "W4241690781",
+   "problem": "A pattern of movement and connectivity between key urban centers is inferred from historical records of transport decisions and infrastructure changes over time.",
+   "approach": "A network is constructed from documented decisions and their outcomes, then analyzed to identify which linkages were sustained, modified, or abandoned based on observed usage and structural changes."
+  },
+  {
+   "work": "W3123593395",
+   "problem": "A material's phase composition is determined from its elemental ratios and thermal behavior, with a specific phase forming only within a narrow range of composition and exhibiting a transition in atomic arrangement at a defined temperature.",
+   "approach": "A model maps elemental proportions to phase stability, detecting a structural change at a threshold temperature and identifying a continuous mixing state beyond that point, based on temperature-dependent structural measurements."
+  },
+  {
+   "work": "W2906160042",
+   "problem": "A metric is developed to assess how well a responsive resource contributes to stabilizing frequency deviations across interconnected systems by measuring its output behavior under dynamic load changes.",
+   "approach": "The evaluation uses a weighted output factor derived from time-varying response patterns and compares performance against a baseline standard, adjusting the assessment based on system-wide deviation signals to reflect real-time coordination with other stabilizing elements."
+  },
+  {
+   "work": "W2957161370",
+   "problem": "A system estimates the likelihood of user engagement with a product-based information channel based on product details and user interaction history.",
+   "approach": "A digital identifier is embedded in a product unit and linked to a database of product attributes and user interactions. When scanned, it retrieves and presents curated information in a structured format for immediate access."
+  },
+  {
+   "work": "W2942401455",
+   "problem": "A regulatory threshold is estimated for the safe release of chemical substances into shared environmental systems, based on observed impacts and legal constraints to prevent harm to aquatic life and public health.",
+   "approach": "A decision rule evaluates proposed releases against environmental thresholds, using historical data and legislative proposals to determine whether a formal authorization is required or if existing rules suffice."
+  },
+  {
+   "work": "W2997890540",
+   "problem": "A system is evaluated to predict how changes in societal, medical, and policy conditions affect the delivery and quality of care over time.",
+   "approach": "A dynamic model simulates responses to evolving environmental and structural inputs, adjusting operational strategies based on real-time feedback to maintain performance under uncertainty and stress."
+  },
+  {
+   "work": "W3122709117",
+   "problem": "A pattern of individual differences is assessed across three distinct interpretations: how often a person experiences a sense of disengagement, how strongly they feel it, and their overall evaluation of daily experiences as unstimulating. The strength and consistency of these interpretations are evaluated in relation to other outcomes related to well-being.",
+   "approach": "Three distinct dimensions are measured and compared across different groups and settings. Each dimension is tested for its ability to predict patterns in outcomes related to personal fulfillment and daily functioning, with emphasis on which dimension shows the most consistent and strong links."
+  },
+  {
+   "work": "W4206712754",
+   "problem": "A pattern of preference is inferred from repeated choices between two distinct options under varying conditions, where one option is personally owned and the other is externally sourced.",
+   "approach": "The system observes decisions made across multiple scenarios and assigns weights to each option based on consistency and context. It then predicts future choices by evaluating the relative value of personal versus external sources in given circumstances."
+  },
+  {
+   "work": "W3132398447",
+   "problem": "A system identifies optimal settings for a complex model to improve its accuracy in classifying images based on patterns in high-dimensional data.",
+   "approach": "It uses a simplified, faster model to simulate the performance of the complex model across various settings, then selects the best settings by evaluating outcomes across multiple test scenarios."
+  },
+  {
+   "work": "W4221094271",
+   "problem": "The movement and transformation of fluid through a plant's structure is estimated, and how it changes along a vertical pathway from source to endpoint is compared across different sampling locations.",
+   "approach": "A continuous flow is sampled directly from the base to the top of a plant, and its composition is tracked as it moves through the system using real-time extraction under controlled conditions, with baseline measurements taken from a standard reference sample."
+  },
+  {
+   "work": "W7107992899",
+   "problem": "A system is evaluated to determine how well it meets the diverse and evolving health needs of a growing population, focusing on equity, access, and service effectiveness under increasing demand and resource constraints.",
+   "approach": "A framework is applied that integrates local implementation patterns with technological and structural innovations to enhance service reach, personalization, and operational efficiency through centralized planning and decentralized delivery models."
+  },
+  {
+   "work": "W7134239990",
+   "problem": "A pattern of repeated, unwanted interactions is assessed to determine whether it constitutes a sustained and distressing engagement involving intentional emotional disruption.",
+   "approach": "An algorithm evaluates behavioral sequences over time, identifying recurring actions that escalate in frequency and intensity, then compares them to known thresholds of persistent interference in digital spaces."
+  },
+  {
+   "work": "W2943539911",
+   "problem": "A pattern of soft tissue growth is identified in the absence of known triggering factors, with imaging showing widespread, non-invasive spread and consistent tissue characteristics across multiple sites. The presence and spread are assessed from repeated scans and tissue analysis.",
+   "approach": "A model maps tissue distribution and growth patterns over time, using imaging and microscopic features to distinguish benign proliferation from invasive or malignant change. Growth is monitored for stability, and interventions are applied if mass increases or tissue behavior changes."
+  },
+  {
+   "work": "W4406987348",
+   "problem": "A pattern of long-term adversity is analyzed to understand how it shapes the behaviors, beliefs, and social dynamics of a group across generations and environments.",
+   "approach": "Historical events are mapped to present-day social outcomes using longitudinal data. Transmission pathways and adaptive responses are modeled to identify conditions under which resilience emerges in response to sustained external pressure."
+  },
+  {
+   "work": "W4396890495",
+   "problem": "The bioavailability and balance of key dietary components such as iron, zinc, and essential amino acids are assessed across different protein sources, comparing their performance under real-world consumption conditions.",
+   "approach": "A model evaluates how enzymatic treatment modifies the accessibility of these components, adjusting for changes in absorption efficiency while preserving the physical structure and sensory properties of the final product."
+  },
+  {
+   "work": "W4388867666",
+   "problem": "A pattern of progressive organ dysfunction is assessed to determine whether a specific metabolic deficiency is present, given overlapping symptoms with other known disorders.",
+   "approach": "A computational model integrates clinical signs, laboratory biomarkers, and tissue-level abnormalities to evaluate the likelihood of a rare enzymatic deficiency, adjusting for coexisting conditions through weighted evidence from historical and diagnostic records."
+  },
+  {
+   "work": "W3158500310",
+   "problem": "A quantitative relationship is estimated between a bodily fluid concentration and a lipid-related marker in individuals with chronic metabolic conditions who show poor response to standard treatments.",
+   "approach": "A statistical model computes the correlation between the fluid level and the lipid marker across a group of individuals, then evaluates whether this link differs significantly between two subgroups defined by disease duration or treatment history."
+  }
+ ]
+}

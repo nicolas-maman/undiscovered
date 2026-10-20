@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-026",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:44Z",
+ "descriptions": [
+  {
+   "work": "W7217417113",
+   "problem": "This work estimates a time-varying influence on a system, given some initial conditions and a set of rules governing how the system evolves over time. It aims to reconstruct this influence from a limited amount of data.",
+   "approach": "The approach involves using a mathematical model to fit a hypothetical influence to the given data, following a procedure that ensures the solution is both plausible and consistent with the initial conditions."
+  },
+  {
+   "work": "W3127935822",
+   "problem": "This work estimates the effect of varying salt content on the crystal structure and morphologies of a specific material, and compares the results to determine the optimal salt content. It also predicts the properties of the material when it is transformed into a solid form.",
+   "approach": "The researchers used a procedure involving the controlled addition of salt to a solution, heating it to a high temperature, and then analyzing the resulting material's structure and properties. They followed a rule that involved adjusting the salt content to achieve the desired properties."
+  },
+  {
+   "work": "W4210493973",
+   "problem": "This work investigates whether institutions providing basic-level training can also provide higher-level training, and whether these institutions meet the standards required for higher-level training.",
+   "approach": "The approach is to compare the standards and requirements for institutions providing higher-level training, and to argue that institutions providing basic-level training do not meet these standards."
+  },
+  {
+   "work": "W4312963998",
+   "problem": "This work estimates the importance of a particular concept in a broad context, comparing its impact to a more localized alternative. It aims to explain why the broader concept is more meaningful.",
+   "approach": "The approach involves defining the concept and comparing its global impact to a more localized one, following a logical and holistic procedure."
+  },
+  {
+   "work": "W3119269716",
+   "problem": "This work aims to improve the repair of a specific type of material used in naval applications, which is prone to degradation when repaired using traditional methods. The goal is to estimate the optimal conditions for a new repair method that maintains the material's performance.",
+   "approach": "The researchers used a trial-and-error approach to find the best conditions for the new repair method, analyzing the results of each test to determine the optimal parameters. They plan to use these parameters to simulate and test the repair method's performance in the future."
+  },
+  {
+   "work": "W7197256925",
+   "problem": "This research estimates the impact of urbanization on the health of people's immune systems, comparing the effects of natural and urban environments on the diversity of microorganisms in the environment. It aims to explain why people are getting more sick and how nature can help.",
+   "approach": "The study collects data on the types of microorganisms present in natural and urban environments, using a technique that looks at the genetic material of these microorganisms. It then uses statistical methods to compare the diversity of microorganisms in these environments."
+  },
+  {
+   "work": "W4408522436",
+   "problem": "This study estimates the knowledge and perception of a specific environmental issue among a certain group of people, using data from a questionnaire survey and in-depth interviews. It compares the responses to identify patterns and trends.",
+   "approach": "The researchers used a combination of random sampling and key informant interviews to collect data, and then analyzed the results to identify the main indicators and practices related to the issue."
+  },
+  {
+   "work": "W4413992819",
+   "problem": "This work estimates the affinity of new compounds for specific binding sites in the brain, comparing their ability to displace known radioligands. It predicts the effect of introducing a chlorine atom into the molecule on its affinity for these sites.",
+   "approach": "The procedure involves synthesizing new compounds, studying their affinity using radioligand analysis, and determining the effect of substituent positions on their binding tropism."
+  },
+  {
+   "work": "W3131511718",
+   "problem": "This research estimates the levels of certain molecules in the blood that are associated with the presence of a particular disease. It predicts the likelihood of having the disease based on these levels and compares them to levels found in people without the disease.",
+   "approach": "The researchers use a combination of data from small groups of people with the disease and healthy people to identify the molecules. They then use a statistical model to analyze the data and identify the molecules that are most closely associated with the disease."
+  },
+  {
+   "work": "W4254275487",
+   "problem": "This research estimates the accuracy of combining multiple pieces of information to support decision-making, comparing the results to see if precise values are better than vague ranges. It also explains why precise values are more helpful when calculations are involved.",
+   "approach": "The researchers used a procedure where participants averaged and multiplied sets of probabilities, comparing their results to see if precise values were better than vague ranges. They tested this with different groups of people and controlled for how participants worked."
+  },
+  {
+   "work": "W4408685102",
+   "problem": "This work estimates the frequency components of a signal that represents the sound of a person's heartbeat, comparing these frequencies to identify patterns that may indicate healthy or unhealthy heart conditions.",
+   "approach": "The researchers use a mathematical procedure to break the signal into its individual components, filtering out noise and identifying the most prominent frequencies, which are then compared to each other to spot any anomalies."
+  },
+  {
+   "work": "W4414309509",
+   "problem": "This work estimates the amount of energy from a specific type of light that is emitted by the Sun and affects the Earth's atmosphere. It aims to provide precise and continuous measurements of this energy to study its impact on the atmosphere and improve space weather forecasting.",
+   "approach": "The approach involves using a compact device with two mirrors that rotate to measure the light in a specific range, providing high-resolution data. The device is designed to be small and portable, making it suitable for use on a small satellite platform."
+  },
+  {
+   "work": "W3208875084",
+   "problem": "This work aims to improve the efficiency and reduce the risk to humans and the environment in the production processes of a specific organisation, by estimating the best way to achieve this through a set of established methods.",
+   "approach": "The approach involves using a set of established methods to compare the current production processes with the most efficient ones, and to identify the best way to achieve the desired outcome, based on data and evidence from the organisation's operations."
+  },
+  {
+   "work": "W4405117638",
+   "problem": "This research aims to understand how a specific online platform influences the formation of social bonds among people in a country experiencing crisis. It estimates the impact of this platform on social relationships.",
+   "approach": "The study uses a combination of documentary analysis and interviews to examine the actions taken by this platform to foster social connections. It follows a logic of actions approach to understand the platform's contributions to social harmony."
+  },
+  {
+   "work": "W2898309699",
+   "problem": "This work estimates the prevalence of a certain growth in the small intestine, predicts the risk of it turning into a cancerous growth, and compares the characteristics of these growths to determine which ones are more likely to become cancerous. It also explains the best ways to identify and treat these growths.",
+   "approach": "The researchers used data from peer-reviewed studies and their own experiences to develop a classification system for these growths, based on their characteristics and risk of turning into cancer. They followed a step-by-step procedure to identify and treat these growths, with a focus on recognizing the most cancerous types."
+  },
+  {
+   "work": "W4386244527",
+   "problem": "This work estimates the optimal hand movement patterns for individuals to read text efficiently, comparing the performance of different hand movement patterns. It also explains how the way people move their hands affects their ability to read text quickly and accurately.",
+   "approach": "The approach involves analyzing the movement patterns of individuals as they read text aloud, using specialized tracking systems to record their hand movements. The results are then compared to identify the most efficient hand movement patterns."
+  },
+  {
+   "work": "W4396629235",
+   "problem": "This research estimates the impact of a specific type of infection on the balance of diverse communities of tiny organisms living in a particular part of the body, which plays a crucial role in overall health and disease. It predicts how these infections might disrupt the balance of these communities.",
+   "approach": "The study uses data from infected individuals to compare their balance of tiny organisms to that of healthy individuals. It then optimizes models to understand the mechanisms underlying these changes and their implications for health outcomes."
+  },
+  {
+   "work": "W2796298854",
+   "problem": "This work estimates the effectiveness of different microorganisms in promoting the growth of a specific type of organism, comparing their abilities to produce various substances that help the organism thrive. It also compares the growth of the organism in different conditions.",
+   "approach": "The researchers isolated and characterized microorganisms that can produce substances to help the organism grow, and then tested their effectiveness in different conditions, comparing the results to a control group."
+  },
+  {
+   "work": "W3185336401",
+   "problem": "This work estimates the effect of introducing a new type of cell into a specific area of an animal's body on its weight and metabolic markers. It predicts whether this new cell type will cause weight loss in the area around the introduction site.",
+   "approach": "The researchers introduced a new type of cell into one side of an animal's body, while injecting a control substance into the other side. They then measured the weight and metabolic markers in the area around the introduction site six weeks later."
+  },
+  {
+   "work": "W3108513864",
+   "problem": "This research aims to improve the ability of a group of people to read, count, and communicate by providing them with a place to learn, and to measure the effectiveness of this approach.",
+   "approach": "The researchers followed a structured process, starting with identifying the needs of the group, planning the learning activities, projecting the outcomes, assessing the progress, evaluating the results, and monitoring the impact."
+  }
+ ]
+}

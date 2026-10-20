@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-20-local-2-001",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9473684210526315,
+ "at": "2026-10-20T14:41:39Z",
+ "descriptions": [
+  {
+   "work": "W2944576151",
+   "problem": "The goal is to create a method for delivering drugs through the skin that is less invasive and painless, and can be done without the need for trained people. The method aims to improve the amount of drug that is absorbed by the body.",
+   "approach": "The approach involves using a combination of laser technology and 3D printing to create a device that can deliver drugs through the skin. The device is made from a biodegradable and biocompatible material, and is designed to be easy to produce and use."
+  },
+  {
+   "work": "W4289535070",
+   "problem": "This work estimates the impact of harvesting a certain type of plant on the variety of other plants and animals that live in a specific type of wetland ecosystem. It predicts how different environmental factors affect the variety of these plants and animals.",
+   "approach": "The study uses data from eight wetland ecosystems to find patterns and relationships between environmental factors and the variety of plants and animals. It then uses these patterns to make recommendations for sustainable management and harvesting practices."
+  },
+  {
+   "work": "W3036084153",
+   "problem": "This study estimates the effectiveness of a certain type of Chinese plant extract in preventing damage to brain cells in a common degenerative brain disorder. It also compares the chemical makeup of this extract with a similar extract from a different plant.",
+   "approach": "The researchers used a combination of laboratory tests to analyze the extract's chemical makeup and its effects on brain cells. They identified specific compounds and compared their levels in the two extracts."
+  },
+  {
+   "work": "W7219944432",
+   "problem": "This study aims to measure the impact of a health education program on people's ability to control their salt and sodium intake, which is a risk factor for a serious health condition. It estimates the effectiveness of the program in improving knowledge and behaviors related to salt and sodium consumption.",
+   "approach": "The researchers used a comparison design, where they divided participants into two groups and compared their changes over time. They analyzed data using statistical tests to identify significant differences between the groups."
+  },
+  {
+   "work": "W4210573678",
+   "problem": "This work estimates the effectiveness of removing certain structures and boundaries in creating a just, fair, and peaceful world. It compares the outcomes of different approaches to achieving this goal.",
+   "approach": "The researchers use a consistent global viewpoint to evaluate the implications of exiting these structures and boundaries. They follow a procedure that involves analyzing and managing the removal of these structures and boundaries."
+  },
+  {
+   "work": "W2898218812",
+   "problem": "This work estimates the impact of new technologies on society, comparing the effects of digital practices on various aspects of life, such as demographics and literacy trends. It predicts how these changes will shape the way people interact with information and each other.",
+   "approach": "The study uses a method called PEST analysis to examine the relationships between technological advancements, social and economic factors, and societal outcomes. It follows a step-by-step procedure, starting with an examination of the current state of digital practices and then scaling up to consider the broader implications of these changes."
+  },
+  {
+   "work": "W4283326501",
+   "problem": "This study estimates the long-term outcomes of a surgical procedure that aims to restore a person's ability to smile and express emotions, and compares these outcomes to a control group. It also predicts how these outcomes will change over time and explains the results in terms of patient satisfaction and quality of life.",
+   "approach": "The researchers used a combination of quantitative data (measured using software) and qualitative data (gathered through interviews) to evaluate the outcomes of the procedure. They followed up with patients over a long period of time to assess how their abilities had changed."
+  },
+  {
+   "work": "W3206150924",
+   "problem": "This research estimates the age of animals based on changes in their genetic material, comparing the results to their actual age. It also compares the age of different sexes and identifies patterns of change in their genetic material.",
+   "approach": "The researchers used a special array to measure changes in the genetic material of blood cells from a large group of animals. They trained models to predict age based on these changes and compared the results to the animals' actual age."
+  },
+  {
+   "work": "W4281640465",
+   "problem": "This work estimates the effect of a certain class of pain medication on the risk of a specific type of disease returning, based on data from past studies. It compares the results of different studies to answer a question about whether this medication should be used in a particular medical procedure.",
+   "approach": "The researchers searched for relevant studies using specific keywords, extracted data from 45 studies, and analyzed the results to draw conclusions. They found that the available evidence is not enough to make a definitive decision about the use of this medication in this procedure."
+  },
+  {
+   "work": "W4405114109",
+   "problem": "This research estimates the risk of fire when a specific type of laser interacts with various objects used in a medical procedure. It predicts the likelihood of fire, smoke, or perforation in different materials and under different conditions.",
+   "approach": "The researchers used experiments to test the interactions between the laser and the objects, following a procedure that involved applying the laser to different parts of the objects and measuring the resulting effects."
+  },
+  {
+   "work": "W4411127944",
+   "problem": "Estimate the likelihood of a life-threatening condition caused by an abnormal increase in pressure within a cavity, which can lead to impaired function of vital organs. This condition is often associated with a buildup of gas in a specific area of the body.",
+   "approach": "Use data from medical records and observations to compare the effects of increased pressure on the body's vital functions, and identify the signs that indicate a life-threatening condition. The goal is to predict the likelihood of this condition and determine the best course of action to prevent harm."
+  },
+  {
+   "work": "W4405256183",
+   "problem": "The task is to identify a rare cause of a specific medical condition, which is associated with abnormal growths in a specific part of the body. The abnormal growths are estimated to be present in a certain number of cases.",
+   "approach": "The approach is to compare data from medical imaging tests to identify the abnormal growths, and then to use this information to estimate the likelihood of the rare cause being present in a patient's medical history."
+  },
+  {
+   "work": "W4399498002",
+   "problem": "This research estimates the efficiency of different strategies for improving the sustainability of a complex system in uncertain economic conditions. It compares the effectiveness of various approaches to achieve this goal.",
+   "approach": "The study uses a combination of systemic analysis and process thinking to develop a methodology for evaluating the sustainability of complex systems. It identifies key factors that influence the success of these strategies and provides a framework for their implementation."
+  },
+  {
+   "work": "W4321471990",
+   "problem": "This work estimates the fair share of resources that each agent should receive, and optimizes the allocation of these resources over multiple rounds. It compares the agents' ideal utilities to their actual utilities, and shows that a certain mechanism can guarantee that each agent receives at least half of their ideal utility.",
+   "approach": "The mechanism uses a first-price auction with a selective reserve, where each agent submits their desired use and a per-round offer. The agent with the highest offer wins and gets to use the resource for their desired amount."
+  },
+  {
+   "work": "W7160506619",
+   "problem": "This study aims to estimate the frequency and characteristics of certain symptoms in people with a chronic metabolic condition that affects how their body regulates itself. It also compares the severity of these symptoms with the severity of their condition.",
+   "approach": "The researchers collected data from 40 patients by asking them about their symptoms, examining their condition, and running some tests. They then looked at the data to see how common each symptom was and how it related to the patients' condition."
+  },
+  {
+   "work": "W2900862591",
+   "problem": "This research aims to understand how applying certain substances to plants affects the way they smell and the types of building blocks that make up their smell. It also looks at how these substances affect the overall amount of these building blocks.",
+   "approach": "The researchers applied different amounts of two substances to plants and measured the results. They looked at the types of smells produced and the amounts of certain types of building blocks that were present."
+  },
+  {
+   "work": "W4293578213",
+   "problem": "Estimate the effectiveness of a product that claims to remove unwanted growths from the body, and compare it to other products on the market. The product's ingredients and instructions are also being evaluated.",
+   "approach": "The product's effectiveness is being estimated by analyzing customer reviews and ratings from multiple sources. The approach involves comparing the product's results to those of other products, and evaluating the product's ingredients and instructions for safety and efficacy."
+  },
+  {
+   "work": "W4200401870",
+   "problem": "This work aims to understand how certain DNA sequences control the activity of other DNA sequences, and how these interactions affect the expression of proteins in different cell types. It estimates the importance of these interactions and compares them to known patterns of protein expression.",
+   "approach": "The approach involves combining data from different experiments, such as how cells open up their DNA (open chromatin data) and how they express RNA (RNA-seq), to infer the interactions between DNA sequences. The method also uses data on how cells are connected (Hi-C data) to build a network of interactions."
+  },
+  {
+   "work": "W4377246061",
+   "problem": "This research estimates the diversity of local fruit varieties in different markets around the world, predicts which ones are most popular and preferred by consumers, and compares their characteristics to identify the most resistant and desirable ones.",
+   "approach": "It follows a procedure where data is collected from local markets, and a model is used to categorise and compare the characteristics of the fruit varieties, identifying the most popular and preferred ones."
+  }
+ ]
+}

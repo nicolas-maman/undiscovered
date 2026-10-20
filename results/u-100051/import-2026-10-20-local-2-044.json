@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-044",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.8,
+ "at": "2026-10-20T14:41:47Z",
+ "descriptions": [
+  {
+   "work": "W2994794392",
+   "problem": "A method is developed to reliably detect a specific bacterial species from complex microbial samples based on genetic markers that are unique to that species and absent in others.",
+   "approach": "A set of sequence-specific probes is designed to bind only to a conserved region of a target gene. The reaction produces a detectable signal only when the target organism is present, ensuring high specificity and sensitivity in diagnostic testing."
+  },
+  {
+   "work": "W3200935835",
+   "problem": "A set of observable traits associated with a psychological state is identified and compared across diverse contexts to unify understanding of its expression and variation.",
+   "approach": "A structured process collects and organizes descriptions of how a state manifests in different settings, then groups similar expressions into coherent patterns based on shared underlying structures and behaviors."
+  },
+  {
+   "work": "W2916064385",
+   "problem": "A system's internal metabolic activity and early growth dynamics are measured over time following exposure to a controlled physical stimulus, comparing responses across treated and untreated samples.",
+   "approach": "A physical stimulus is applied before the onset of growth initiation. Enzymatic activity, hormone levels, and mass accumulation are monitored at regular intervals to detect changes in metabolic activation and developmental progression."
+  },
+  {
+   "work": "W4398234107",
+   "problem": "A long-standing institution is assessed for its capacity to contribute to interdisciplinary solutions, focusing on a core natural resource that underpins multiple domains of study and practice.",
+   "approach": "A strategic plan is developed by integrating five specialized research and development domains, using existing infrastructure and knowledge to create a coordinated innovation hub focused on resource-based advancements."
+  },
+  {
+   "work": "W4401594742",
+   "problem": "The relative frequency of microbial species present in wound environments is estimated from physical samples collected under controlled conditions, and their response to various antimicrobial agents is assessed.",
+   "approach": "Microbial growth is detected through culture-based detection, and species identity is determined by biochemical and automated testing. Antimicrobial effectiveness is evaluated by measuring survival under exposure to a set of chemical agents."
+  },
+  {
+   "work": "W3164422107",
+   "problem": "A method is developed to help students connect with their personal and communal backgrounds through structured engagement with culturally significant content.",
+   "approach": "Students participate in a three-phase process: initial exploration, active interaction, and reflective review, guided by observation, discussion, and analysis of lived experiences and historical context."
+  },
+  {
+   "work": "W3149223776",
+   "problem": "The rate of sediment accumulation and surface runoff from land-based interventions is estimated from observed physical changes in water flow and deposited material during rainfall events.",
+   "approach": "A set of monitored sites is selected and evaluated over time; sediment deposition is measured, runoff volume is calculated, and economic returns are derived from long-term performance data to assess overall impact and sustainability."
+  },
+  {
+   "work": "W2801791429",
+   "problem": "A method is developed to assess how sensory inputs influence emotional and behavioral responses in interpersonal and intimate contexts, using natural compounds derived from plants.",
+   "approach": "A model applies stimuli derived from plant-based extracts to individuals, measuring changes in emotional states and behavioral patterns over time through repeated exposure and observation."
+  },
+  {
+   "work": "W7131621231",
+   "problem": "A material's internal development over time is assessed through physical and chemical changes observed under controlled conditions, comparing outcomes when a treatment is applied at different stages versus no treatment.",
+   "approach": "A sequence of samples is exposed to a treatment at one or both of two key phases. Physical and chemical signatures are measured to track changes in internal structure and performance over time."
+  },
+  {
+   "work": "W4406716550",
+   "problem": "A material's ability to store and transmit electromagnetic energy efficiently is evaluated under high-frequency operation, with performance measured by its loss resistance and frequency response stability.",
+   "approach": "A compositional modification introduces a new ion that alters atomic bonding and microstructure, reducing energy dissipation through controlled phase formation and suppressing internal electron movement."
+  },
+  {
+   "work": "W4251953934",
+   "problem": "A pattern of mental resilience is assessed across a large group of individuals based on their responses to structured self-reports about future expectations and emotional reactions to challenges.",
+   "approach": "Responses are grouped by emotional tone and analyzed using statistical models that identify trends in how individuals perceive change over time and respond to uncertainty in personal and academic contexts."
+  },
+  {
+   "work": "W4233693013",
+   "problem": "A system's ability to break down lipid substrates is assessed across different biological sources and conditions to determine the origin and functional role of the activity.",
+   "approach": "Activity is measured through chemical reactivity of specific thiol groups in purified samples, and compared across species and sample types to infer enzymatic function and source."
+  },
+  {
+   "work": "W2950583080",
+   "problem": "The extent and focus of research on affective factors in learning environments is assessed, comparing attention given to learners versus instructors and evaluating how these factors are treated as outcomes versus tools in instructional processes.",
+   "approach": "A structured analysis of published studies is conducted using predefined selection criteria, then grouped by subject focus and conceptual framing to identify patterns in research emphasis and integration with other educational variables."
+  },
+  {
+   "work": "W4407982150",
+   "problem": "The system's internal state is estimated under varying external environmental conditions, including ambient and fluid-induced heating, to predict how these factors influence performance and longevity across different operational settings.",
+   "approach": "A detailed 3D model is used to simulate the flow of a working medium through a mechanical component, and the resulting internal state is computed under different environmental inputs using a discretized spatial and temporal framework."
+  },
+  {
+   "work": "W4409987075",
+   "problem": "A process is observed where a group of cells aggregates and undergoes internal structural changes, leading to the emergence of new cell types with distinct morphological features over time.",
+   "approach": "Cells are cultured under specific conditions that promote clustering and internal reorganization; over days, new cell types appear within the cluster, suggesting a non-linear developmental pathway involving intermediate stages."
+  },
+  {
+   "work": "W2914427948",
+   "problem": "A trait involving a structured, compact growth form is analyzed to determine its underlying regulatory mechanisms, using patterns observed across generations and biochemical signals at specific developmental stages.",
+   "approach": "A model integrates hormonal dynamics and gene expression patterns to simulate developmental outcomes, comparing them across different developmental phases and genetic variants to infer regulatory networks."
+  },
+  {
+   "work": "W2996626167",
+   "problem": "A procedure is evaluated to determine the success and safety of a minimally invasive surgical technique for treating a lung condition involving air accumulation and tissue damage, based on patient records and surgical outcomes.",
+   "approach": "Patients are assessed for age, gender, medical history, and postoperative recovery. Surgical outcomes are compared across first, second, and repeated episodes, with attention to complications, recovery time, and procedural success."
+  },
+  {
+   "work": "W7217112636",
+   "problem": "A system estimates how light intensity varies across different colors as it passes through a medium, and determines whether an external light source was present during capture.",
+   "approach": "It analyzes intensity differences across color channels to infer depth and light source presence. Then, it adjusts color balance based on residual signal patterns and applies frequency-based noise reduction to improve clarity."
+  },
+  {
+   "work": "W7215151196",
+   "problem": "A material derived from agricultural byproducts is evaluated for its impact on the mechanical strength and water retention properties of a composite mixture. The performance is assessed across different inclusion rates to determine optimal conditions for structural performance and durability.",
+   "approach": "A series of samples are prepared with varying proportions of the byproduct. Mechanical tests and surface analysis are conducted to measure strength, water uptake, and chemical composition under controlled conditions."
+  },
+  {
+   "work": "W4296926687",
+   "problem": "A clinical sign pattern is assessed to detect a rare inherited metabolic disorder characterized by abnormal cellular accumulation and systemic organ enlargement, using peripheral blood and tissue-based indicators.",
+   "approach": "A tissue sample is examined for specific cellular morphology and staining characteristics; genetic sequencing is performed to identify a known pathogenic mutation confirming the disorder's presence."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-038",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:46Z",
+ "descriptions": [
+  {
+   "work": "W4300003070",
+   "problem": "A quantitative measure of a cellular component's expression level is estimated under varying environmental conditions, using a fluorescent signal that reflects its natural regulatory context and spatial behavior.",
+   "approach": "A targeted genetic modification is performed using programmable nucleases to insert a reporter gene at a specific genomic site, guided by sequence-specific binding. The inserted reporter is under the control of native regulatory elements and is expressed at levels consistent with its natural biological context."
+  },
+  {
+   "work": "W3096828239",
+   "problem": "The influence of a metabolically active tissue on the response to a specific drug is assessed by measuring changes in growth suppression and programmed cell death under controlled conditions.",
+   "approach": "A model system links two types of tissue through a physical barrier allowing exchange of soluble signals. Drug response is evaluated by tracking growth rates and cell death rates in the presence and absence of the tissue interaction."
+  },
+  {
+   "work": "W4405118636",
+   "problem": "The effect of certain natural compounds on cellular damage caused by oxidative stress is assessed, comparing outcomes across different treatment concentrations and control conditions.",
+   "approach": "Cells are exposed to oxidative stress, then treated with varying concentrations of a natural extract. Cell survival is measured after a set time using a colorimetric assay to quantify viability under different conditions."
+  },
+  {
+   "work": "W4409073742",
+   "problem": "A biological agent is evaluated for its effect on cell growth, programmed cell death, and cellular recycling processes in a model system. The impact on a key signaling pathway is assessed to determine how it influences cell fate decisions.",
+   "approach": "Cell viability is measured over time. Cell death and recycling markers are quantified. A cascade of intracellular signals is monitored to detect changes in pathway activity and downstream outcomes."
+  },
+  {
+   "work": "W3217184768",
+   "problem": "A pattern is estimated in how genetic variation influences physical performance metrics across a group of individuals aged 60 and above, specifically relating to muscle function and overall physical activity levels.",
+   "approach": "Genetic markers are analyzed using molecular detection to identify specific variants. Physical performance is measured through standardized tests and activity logs. Statistical comparisons are made across genotypes to determine associations with observed outcomes."
+  },
+  {
+   "work": "W4389135836",
+   "problem": "A system is designed to evaluate and optimize decisions across a network of operational units by analyzing historical performance and financial inputs to identify patterns and improve efficiency in resource allocation.",
+   "approach": "A model processes structured input streams, applies statistical grouping to identify usage trends, and generates visual and numerical summaries to support strategic adjustments based on observed behavior and cost outcomes."
+  },
+  {
+   "work": "W4405709040",
+   "problem": "A character in a fictional society attempts to reshape a decaying political system by introducing new institutions and enforcing strict rules, aiming to achieve stability and moral progress through strategic manipulation and force.",
+   "approach": "The character analyzes historical models of governance, adapts them to current conditions, implements reforms, and monitors outcomes, adjusting actions based on resistance and unintended consequences."
+  },
+  {
+   "work": "W4408426078",
+   "problem": "The likelihood of a patient's condition worsening after a surgical procedure is estimated based on the type of sedative used during the operation and historical patient outcomes.",
+   "approach": "A model evaluates patterns in patient recovery data, comparing outcomes across different sedative regimens using statistical inference to identify consistent trends in postoperative health trajectories."
+  },
+  {
+   "work": "W2947163090",
+   "problem": "A device is designed to replace a missing sensory organ to restore functional and visual continuity in a patient's daily experience.",
+   "approach": "A pre-existing template is adapted to match the patient's remaining eye structure, using measured dimensions and surface features to ensure alignment and natural appearance during use."
+  },
+  {
+   "work": "W4322101611",
+   "problem": "A system of interconnected members transfers loads through rigid joints, and the forces within them are adjusted to maintain structural stability under real-world deformations. The goal is to find the best force distribution that balances internal stresses and external loads across the structure.",
+   "approach": "A step-by-step iterative rule updates force values based on observed displacements and known geometry. Each iteration adjusts forces until the resulting deformations match those predicted by a detailed physical simulation of the entire system."
+  },
+  {
+   "work": "W4313478526",
+   "problem": "The relationship between daily living conditions and emotional well-being in young populations is examined across diverse settings, focusing on how social and economic factors influence long-term emotional outcomes.",
+   "approach": "A structured synthesis of diverse sources is conducted, grouping evidence by context and outcome, then analyzing patterns through established theoretical lenses to identify consistent influences and resilience factors across different environments."
+  },
+  {
+   "work": "W4377227122",
+   "problem": "A statistical model estimates the likelihood of a medical device requiring surgical revision or failure after implantation, comparing outcomes across individuals with different pre-existing health conditions and demographic traits.",
+   "approach": "A matching algorithm pairs individuals with similar background characteristics, excluding the condition being studied, to compare outcomes. Outcomes are then analyzed using standardized medical code data to assess relative risk and statistical significance."
+  },
+  {
+   "work": "W3161556698",
+   "problem": "A protocol is designed to detect and respond to real-time shifts in a system's functional state during a medical intervention, aiming to anticipate and prevent adverse outcomes in a patient's neurological function.",
+   "approach": "A monitoring system continuously tracks dynamic responses of a neural network to procedural changes, using predefined thresholds to trigger alerts or adjustments in the procedure's execution."
+  },
+  {
+   "work": "W4232474476",
+   "problem": "A system aims to improve decision quality by integrating diverse perspectives from affected groups during rule-making processes.",
+   "approach": "It involves structured interaction with stakeholders to collect insights, evaluate policy impacts, and build trust, while ensuring no single group exerts undue influence over the outcome."
+  },
+  {
+   "work": "W7216527923",
+   "problem": "A pattern of behavior and beliefs is analyzed to understand the social positioning of individuals within a community, comparing how different groups express themselves through religious practices and daily interactions.",
+   "approach": "A descriptive model is applied to interpret observed behaviors and societal structures, grouping individuals based on lifestyle, values, and interactions, then mapping how these groups relate to one another in terms of influence and social dynamics."
+  },
+  {
+   "work": "W2891145500",
+   "problem": "A system is studied to determine how a regulatory protein influences energy production pathways in response to calcium dynamics within cellular compartments.",
+   "approach": "Calcium levels are monitored in response to cellular stimulation; a signaling cascade is triggered that activates a transcriptional regulator, leading to increased expression of genes involved in fatty acid utilization and energy production."
+  },
+  {
+   "work": "W3121834128",
+   "problem": "A set of processing conditions is evaluated to determine how they influence the stability, solubility, and chemical composition of a food-based material, with variations observed across different types of raw material and processing methods.",
+   "approach": "A series of conditions are applied to a raw material, and the resulting outcomes are measured across multiple attributes. These outcomes are then compared across different processing techniques and raw material types to identify patterns and optimal configurations."
+  },
+  {
+   "work": "W2902107957",
+   "problem": "A blend of two components is evaluated to determine the optimal ratio that maximizes the nutritional value across multiple key attributes, including protein, moisture, fiber, and mineral content, based on experimental measurements.",
+   "approach": "A mathematical model is built using a designed set of ratios to predict outcomes across various nutritional traits. The model identifies the ratio that best balances all traits, with statistical validation confirming its predictive accuracy and consistency."
+  },
+  {
+   "work": "W4320498489",
+   "problem": "The effect of introducing specific crop species on soil salinity reduction is estimated by comparing salt leaching volumes and soil salt concentration changes over time across different land management scenarios.",
+   "approach": "Soil and water data are collected over a growing season, and salt movement and soil accumulation are tracked. A comparison is made between cropped and uncropped plots to determine how crop presence alters the rate and extent of salt removal from the soil profile."
+  },
+  {
+   "work": "W4402633479",
+   "problem": "The extent to which diverse populations can influence public discourse through digital tools is assessed, especially in settings where traditional channels are restricted.",
+   "approach": "A model analyzes patterns of communication flow and user engagement across networks, identifying how information spreads and gains traction under different conditions of access and control."
+  }
+ ]
+}

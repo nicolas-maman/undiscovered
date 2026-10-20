@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-047",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:48Z",
+ "descriptions": [
+  {
+   "work": "W3016553481",
+   "problem": "A system's performance is evaluated based on how effectively it uses available inputs over time, considering both the volume and quality of outputs produced across different operational units.",
+   "approach": "Inputs are measured and categorized by their duration of use—whether they are consumed immediately or retained for future use. Output patterns are then compared across units to determine how efficiently resources are transformed into results over time."
+  },
+  {
+   "work": "W4288686890",
+   "problem": "A pattern of infection is identified in a patient with prolonged respiratory symptoms and systemic inflammation, where initial treatment based on a common respiratory illness leads to worsening outcomes.",
+   "approach": "A microscopic examination of fluid from a bodily cavity reveals unusual bacterial structures; this finding is cross-referenced with known infection profiles to detect a distinct, slow-growing microbial agent missed by standard diagnostic protocols."
+  },
+  {
+   "work": "W4402054497",
+   "problem": "A system estimates real-time changes in a joint's angular position from continuous physiological signal streams, using patterns in the signal over time and across short and long temporal windows.",
+   "approach": "A model processes signal segments with local pattern recognition followed by long-term temporal context integration, combining short-term feature extraction with memory of past signal dynamics to refine predictions."
+  },
+  {
+   "work": "W4393323377",
+   "problem": "A system predicts how heat spreads over time in a complex material structure under varying external conditions, extending observations beyond the original range of input conditions.",
+   "approach": "A physical model simulates heat transfer dynamics over time, capturing spatial and temporal variations. A data-driven model learns patterns from the simulation outputs and extrapolates behavior to unseen conditions."
+  },
+  {
+   "work": "W4394928736",
+   "problem": "A system's ability to transfer energy between two flowing streams is measured and compared across different operating conditions to determine performance under varying input and environmental factors.",
+   "approach": "Energy transfer rates and performance metrics are computed using real-time flow rates, temperature differences, and surface area data, then analyzed to identify optimal operating conditions and performance trends over time."
+  },
+  {
+   "work": "W7118260944",
+   "problem": "A system's collapse is analyzed when internal dynamics—such as overconfidence, trust erosion, symbolic authority decay, and inability to adapt—interact to undermine stability under stress.",
+   "approach": "A model maps how escalating confidence without feedback, loss of shared meaning, and failure to adjust in response to change lead to systemic breakdown when external pressures increase."
+  },
+  {
+   "work": "W4413443246",
+   "problem": "A process is evaluated to determine how effectively it preserves and enhances the concentration of bioactive molecules while removing harmful inorganic components present in a natural substance.",
+   "approach": "A controlled workflow is applied to transform the substance through physical separation and purification steps. The resulting product is analyzed using spectral and chemical techniques to compare molecular profiles, functional group signatures, and elemental presence across different batches."
+  },
+  {
+   "work": "W3035542341",
+   "problem": "A framework is developed to evaluate how decisions in a system affect societal and environmental outcomes, particularly when traditional models overlook real-world complexities like market distortions and public intervention.",
+   "approach": "A structured model integrates multiple interacting forces—such as market influence, external costs, and institutional roles—into a single analytical framework to guide decision-making under conditions of uncertainty and interdependence."
+  },
+  {
+   "work": "W4285495698",
+   "problem": "The effect of a habitual behavior on physiological responses is assessed under varying levels of a bodily fluid's concentration, and how this interaction influences long-term health outcomes is evaluated.",
+   "approach": "A statistical model evaluates how a behavior modifies a physiological response when combined with different levels of a fluid's concentration, using longitudinal data and adjusting for interactions between the behavior and the fluid level."
+  },
+  {
+   "work": "W2883186487",
+   "problem": "A pattern of tissue inflammation is identified and evaluated against known disease signatures to determine if it mimics a malignant condition.",
+   "approach": "A statistical model compares observed tissue features to known immune response profiles, adjusting for treatment effects and using prior knowledge of immune-mediated tissue changes to assign likelihood scores."
+  },
+  {
+   "work": "W7220531551",
+   "problem": "A set of historical records describing a specific political era is examined to identify and correct inaccuracies, gaps, and misinterpretations in previously published summaries of the same records.",
+   "approach": "A systematic review compares original sources with existing summaries, detects inconsistencies in narrative details, and reevaluates factual claims using direct evidence to produce a more accurate and complete account."
+  },
+  {
+   "work": "W4401024352",
+   "problem": "A system estimates future values of a dynamic process based on historical observations and spatial relationships, while also capturing non-spatial, scale-invariant patterns that evolve over time.",
+   "approach": "A model learns from multi-scale temporal and spatial features using a structured attention mechanism. It then transfers knowledge from a pre-trained system to a new model, enabling the latter to combine spatial structure with independent, non-geometric dynamics."
+  },
+  {
+   "work": "W4387784714",
+   "problem": "It estimates how different technological pathways in various regions can lead to improved outcomes in resource use and societal well-being, based on local conditions and available inputs.",
+   "approach": "It evaluates potential strategies by simulating how changes in technology adoption and policy responses affect environmental impact and development outcomes across diverse settings."
+  },
+  {
+   "work": "W4412905885",
+   "problem": "The spread and persistence of a linguistic form across a group of interacting entities is estimated over time, based on how individuals choose to adopt or maintain it in response to peer behavior, economic rewards, and external rules.",
+   "approach": "Entities interact in a structured web of connections that change over time. Each entity updates its linguistic preference based on interactions, local conditions, and external incentives, with the overall pattern emerging from repeated local decisions."
+  },
+  {
+   "work": "W4411583874",
+   "problem": "A transformation is performed that forms a new carbon–carbon bond by incorporating a carbon atom from a gaseous oxide source into an organic substrate, enabling modification of complex molecules under mild conditions.",
+   "approach": "A cyclic process involving sequential redox states of a metal center facilitates the reaction, with a key intermediate stabilizing the transition state to allow bond formation and functional group retention."
+  },
+  {
+   "work": "W3197893902",
+   "problem": "A system is evaluated to determine the effectiveness of a natural extract in delivering specific bioactive compounds, based on its chemical composition and observed biological responses across multiple health conditions.",
+   "approach": "The extract's performance is assessed by measuring the concentration of key compounds and their impact on oxidative stress, lipid metabolism, and microbial inhibition, using standardized biological assays and comparative analysis of different formulations."
+  },
+  {
+   "work": "W2982694918",
+   "problem": "The effectiveness and safety of a minimally invasive procedure for treating chronic, severe pain in patients with advanced disease are assessed, comparing outcomes across different treatment protocols and evaluating the consistency and reliability of reported results.",
+   "approach": "A structured review of multiple studies is conducted, extracting and synthesizing data on patient outcomes using a standardized evaluation framework. Evidence is graded based on study quality and methodological rigor to determine the strength and certainty of observed effects."
+  },
+  {
+   "work": "W7217030954",
+   "problem": "A system is evaluated to determine how well it detects and responds to environmental hazards reported by the public, comparing patterns across time and types of sources.",
+   "approach": "Data from reports submitted by individuals is analyzed over time, grouping incidents by source type and environmental impact, then mapped to identify trends and response delays in official handling."
+  },
+  {
+   "work": "W4410115037",
+   "problem": "A liquid formulation is modified to enhance its flow and stability in biological environments, with the goal of improving its ability to be delivered through narrow channels and maintain structural integrity after placement.",
+   "approach": "A polymer is introduced to increase the resistance to flow and surface interactions. The resulting mixture is evaluated for its behavior under controlled conditions, including time-dependent changes in consistency and structural formation."
+  },
+  {
+   "work": "W7164906826",
+   "problem": "A system identifies and retains impactful, concise statements that influence behavior or perception over time, based on observed patterns in human interaction and response.",
+   "approach": "The system evaluates input scenarios for emotional resonance and long-term retention, then selects and reiterates statements that consistently trigger recall and behavioral alignment in recipients."
+  }
+ ]
+}

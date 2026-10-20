@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-019",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:43Z",
+ "descriptions": [
+  {
+   "work": "W2973377295",
+   "problem": "This research estimates the effect of different time intervals on the quality of a certain type of food, and compares it to different types of food. It also tries to optimize the quality of the food by varying the amount of a certain nutrient.",
+   "approach": "The researchers grew different types of food in different conditions and used a special technique to measure the quality of the food. They tested different time intervals and nutrient levels to see how they affected the quality of the food."
+  },
+  {
+   "work": "W4406967886",
+   "problem": "Estimate the needs and preferences of individuals with mild to moderate functional decline and restricted mobility, who can articulate their needs but have not been properly investigated. This may compromise adherence to interventions aimed at maintaining physical functioning and independence.",
+   "approach": "Use semi-structured interviews with individuals who can understand and speak a common language, and apply thematic analysis to identify patterns and themes in the data."
+  },
+  {
+   "work": "W4225410261",
+   "problem": "This study estimates the effect of a certain medication on the immune system of patients with a specific mental health condition, and compares it to the impact of a viral infection on the same patients. It also aims to explain why some patients may experience a decrease in their immune system's response.",
+   "approach": "The researchers collected data from patients with a specific mental health condition who were treated with a certain medication and infected with a viral disease. They then analyzed the data to see if there was a correlation between the medication and the immune system's response."
+  },
+  {
+   "work": "W2907676467",
+   "problem": "Estimate the suitability of new materials for use in vessels, considering factors such as weight, cost, environmental impact, and efficiency. Compare these materials to existing ones, with the goal of finding alternatives that meet or exceed current standards.",
+   "approach": "Use atomic and molecular level analysis, combined with nanotechnology, to study the properties of new materials and evaluate their potential for use in vessels."
+  },
+  {
+   "work": "W3081235294",
+   "problem": "This dataset estimates the number of publications about a certain topic before a certain year, and compares them to each other. It also optimizes the reuse of the data by providing a reference tool for a specific field of study.",
+   "approach": "The data is extracted from a publication and stored on a research data repository site, where it can be accessed and reused by others. The data is organized in a way that allows for efficient comparison and analysis of the publications."
+  },
+  {
+   "work": "W4416099926",
+   "problem": "This work estimates the number of independent charges that can be associated with a certain type of field in a specific space-time, and compares these charges to a known charge. It also explains how these charges are related to each other and to a fundamental concept in the field.",
+   "approach": "The researchers use a mathematical technique called symplectic renormalization to identify these charges, and then apply a process called Hodge decomposition to understand their structure. They also use a power expansion to analyze the field's behavior."
+  },
+  {
+   "work": "W4411291825",
+   "problem": "This research estimates the time it takes for a person to detect a delay between their movement and the feedback they receive, and compares this to the time it takes for them to attribute their actions to themselves. It also optimizes the understanding of how people maintain their sense of self-control despite impairments in their physical abilities.",
+   "approach": "The researchers used a combination of tasks to measure the time it takes for a person to detect delays and attribute their actions to themselves. They compared the results of patients with a specific type of brain damage to those without it."
+  },
+  {
+   "work": "W3044135866",
+   "problem": "This work estimates the properties of a material made from a blend of two types of plastic waste, without separating or cleaning the waste first. It compares the strength of this material to a similar material made from new, unused plastic.",
+   "approach": "The researchers created a material by mixing the two types of plastic waste together and tested its strength in different ways. They analyzed the material's structure and how it affects its strength."
+  },
+  {
+   "work": "W3121515314",
+   "problem": "This work estimates the level of physical and health education in primary education levels across different countries, comparing the emphasis on these areas and the quality of education for those who value them. It predicts the outcomes of countries that prioritize physical and health education, and explains the differences in education quality.",
+   "approach": "The procedure involves comparing data on physical and health education content, timing, and quality across different countries, using a combination of legislative and educational standards to assess the emphasis on these areas."
+  },
+  {
+   "work": "W4412900047",
+   "problem": "This study aims to evaluate the quality of services and management of a large health organization, using subjective perspectives of stakeholders to identify areas for improvement.",
+   "approach": "The researchers collected data through a satisfaction scale, developed specifically for this study, and analyzed the results to identify patterns and trends."
+  },
+  {
+   "work": "W7217600797",
+   "problem": "This research estimates the effect of different substances on the growth of a plant, specifically how it influences the plant's ability to produce new growth and reproduce. It also compares the results of different treatments and seasons.",
+   "approach": "The study uses a combination of experiments and observations to determine the impact of various substances on plant growth. It follows a procedure where the plant is treated with different substances and the results are measured and compared over time."
+  },
+  {
+   "work": "W4327926340",
+   "problem": "This research aims to estimate the amount of oxygen present in a system that affects the efficiency of a process, which in turn reduces the release of harmful substances into the environment. The goal is to improve the accuracy of this estimation using a combination of data and a predictive model.",
+   "approach": "A predictive model is used to analyze images of a system under different conditions, and the results are compared to test data to determine the oxygen content. The model is trained on a dataset of images and their corresponding oxygen levels."
+  },
+  {
+   "work": "W4389148359",
+   "problem": "This work estimates the stability of organic matter pools and the potential for these pools to be replenished in degraded areas. It compares the effects of different systems on the amount and type of organic matter in the top layers of the ground.",
+   "approach": "The researchers used data from five different systems, each involving a combination of trees and crops. They measured the density and type of organic matter at different depths and compared the results to identify the most effective system."
+  },
+  {
+   "work": "W3035966603",
+   "problem": "This research aims to explain and address the complex and varied symptoms of a condition, which is caused by an imbalance in the body's response to stress, and is characterized by widespread pain and discomfort. The goal is to identify the underlying causes and develop effective treatments.",
+   "approach": "The approach involves analyzing data from skin biopsies and medical examinations to identify patterns and underlying mechanisms. A patient-centered approach is taken, where the patient plays a key role in their own rehabilitation and lifestyle changes are made to improve symptoms."
+  },
+  {
+   "work": "W2989674878",
+   "problem": "This work estimates the therapeutic index of a new treatment by comparing its effects on two different models. It predicts the benefits of a new treatment method by comparing its results to a standard method.",
+   "approach": "The researchers used a systematic approach to compare the effects of two different methods of attaching a new medicine to a protein. They followed a procedure that involved attaching the medicine to the protein in a specific way, and then testing its effects on two different models."
+  },
+  {
+   "work": "W4245397015",
+   "problem": "This work investigates how errors in measuring the time it takes for a sound to travel through a substance affect the accuracy of a technique that uses multiple measurements to create a map of a substance's properties. It aims to find the best way to minimize these errors.",
+   "approach": "The study uses a statistical approach to analyze the impact of errors on the technique. It finds that increasing the number of measurements can reduce errors, but when errors occur, there is an optimal configuration that minimizes these errors."
+  },
+  {
+   "work": "W4382795724",
+   "problem": "This study estimates the medieval views on laughter and its role in bringing pleasure to readers, comparing them to modern understandings. It predicts how these views influenced the representation of certain subjects in comic plots.",
+   "approach": "The study uses a combination of historical research and close reading of literary works to tease out the underlying social and cultural context. It follows a procedure of exploring medieval attitudes, analyzing specific plots, and comparing these to modern interpretations."
+  },
+  {
+   "work": "W3111901618",
+   "problem": "This research estimates the motivation behind providing help to family members, comparing the influence of helping with household chores and taking care of grandchildren on the likelihood of receiving help in return. It also examines the impact of helping one's own parents on the likelihood of receiving help from one's children.",
+   "approach": "The researchers used a statistical model to analyze data from a large survey, testing the relationships between helping family members and the likelihood of receiving help in return. They found that helping with household chores and taking care of grandchildren increased the likelihood of receiving help, while helping one's own parents decreased it."
+  },
+  {
+   "work": "W4206062719",
+   "problem": "This work estimates the optimal distribution of a certain quantity across a network of interconnected facilities, comparing different scenarios to find the best solution. It aims to explain how to allocate resources efficiently.",
+   "approach": "The procedure involves using a mathematical model to compare different distribution plans, selecting the one that minimizes waste and maximizes efficiency. The model is applied to real data from the functioning of the network, using a programming language to perform the calculations."
+  },
+  {
+   "work": "W4400927184",
+   "problem": "A rare but life-threatening complication of a medical procedure is being treated with a surgical intervention to repair damage to a vital organ. The goal is to prevent further damage and promote healing.",
+   "approach": "A surgical procedure is being used to repair damage to a vital organ, with a secondary goal of reinforcing a weakened area to prevent further damage. The procedure involves a combination of direct suturing and a secondary surgical intervention to achieve this goal."
+  }
+ ]
+}

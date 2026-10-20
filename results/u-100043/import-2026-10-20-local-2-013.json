@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-013",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:42Z",
+ "descriptions": [
+  {
+   "work": "W3210048135",
+   "problem": "This work estimates the optimal temperature for a specific material to achieve a desired property, and compares the results to a standard method. It also explains how a new substance can improve the performance of a device.",
+   "approach": "The researchers used a combination of data and experimentation to develop a new method for improving the material's properties. They tested the material at different temperatures and compared the results to a standard method."
+  },
+  {
+   "work": "W4206191532",
+   "problem": "This work estimates the extent of disease activity in a group of individuals with a condition that causes inflammation and scarring in their cartilage and respiratory system. It predicts the severity of symptoms and disease progression based on imaging data.",
+   "approach": "The researchers used a type of imaging test that uses a radioactive substance to highlight areas of inflammation and scarring. They analyzed the data to identify patterns and correlations between the imaging results and the individuals' symptoms and disease activity."
+  },
+  {
+   "work": "W2905372231",
+   "problem": "This work estimates the solution to a mathematical equation that describes how something changes over time in a cylindrical shape, with a changing direction of change. It compares the solution to a set of conditions that must be met at the edges of the shape.",
+   "approach": "The researchers use a combination of mathematical techniques to solve the equation, starting with a method that approximates the solution and then adjusting it to fit the conditions. They also use a way of measuring the error in their solution, which helps them understand how accurate it is."
+  },
+  {
+   "work": "W3091217043",
+   "problem": "This work estimates the level of a certain type of molecule in tissues, compares it to levels in healthy tissues, and finds that it is lower in unhealthy tissues. It also predicts the effect of a certain treatment on cells with this molecule.",
+   "approach": "The researchers use a combination of experiments to determine the effect of this molecule on cell behavior. They use various techniques to measure the molecule's level, the effect of a treatment on cells, and the molecule's interaction with other molecules."
+  },
+  {
+   "work": "W4405741265",
+   "problem": "This work estimates the level of confidence in a sequence of genetic information based on the properties of four distinct bases. It aims to optimize the accuracy of this sequence.",
+   "approach": "The approach uses three input characteristics: height, width, and distance between the bases. It employs a model that combines these characteristics using fuzzy logic to generate efficient results."
+  },
+  {
+   "work": "W3128226137",
+   "problem": "This work estimates the location of a specific structure in the brain, and predicts the outcome of surgery based on that location. It compares the results of different methods of mapping the structure and optimizes the approach to minimize damage to the surrounding tissue.",
+   "approach": "The researchers used a combination of two methods to map the structure: one method involved using a probe to detect electrical signals in the brain, and the other method involved using a device to apply electrical impulses to the brain. The procedure involved monitoring the electrical signals and impulses in real-time during the surgery."
+  },
+  {
+   "work": "W2963913177",
+   "problem": "This work estimates the likelihood of a specific type of pneumonia in adults, comparing the severity of the disease to the age and health status of the individuals. It also predicts the need for mechanical ventilation and identifies biomarkers to help manage the disease.",
+   "approach": "The researchers used data from a ten-year period to analyze the characteristics of the pneumonia, including the age and health status of the individuals, and the types of bacteria that were present. They compared the severity of the disease to these factors to identify patterns and trends."
+  },
+  {
+   "work": "W4414238936",
+   "problem": "This research aims to summarize and compare the effectiveness of a natural substance in treating a specific type of injury, particularly in cases where the injury is difficult to heal. The goal is to determine if this substance is a viable alternative to existing treatments.",
+   "approach": "The researchers will analyze data from studies that tested the substance's ability to reduce the size of the injury, promote tissue growth, and prevent infection. They will compare the results to those of standard treatments or no treatment."
+  },
+  {
+   "work": "W4294307820",
+   "problem": "This work estimates the success rate of a treatment for a condition that causes a bowel obstruction, and compares it to a meta-analysis report. It also explains the complications of the treatment and the factors that affect its success.",
+   "approach": "The approach involves using data from a large number of cases to train a model that can predict the success of the treatment. The model is trained on data from a specific group of people with experience in performing the treatment."
+  },
+  {
+   "work": "W4407908149",
+   "problem": "This research estimates the relationship between a certain condition (high levels of fat in the blood) and the integrity of a protective barrier in the brain, and whether this condition interacts with a specific genetic marker to affect the barrier's function.",
+   "approach": "The researchers measured the condition and the genetic marker in a large group of patients, and then analyzed the data using statistical models to identify patterns and interactions."
+  },
+  {
+   "work": "W4409697097",
+   "problem": "This research aims to estimate the effectiveness of a specific intervention in reducing the likelihood of repeat crimes, and to compare the outcomes of different approaches to addressing this issue. It also seeks to explain why some individuals are more likely to reoffend.",
+   "approach": "The research uses data from a specific program to test the impact of a particular strategy, which involves identifying key factors that contribute to repeat crimes and adjusting the intervention accordingly."
+  },
+  {
+   "work": "W4387321178",
+   "problem": "This work estimates the composition of a plant extract and its potential benefits against a toxic substance's negative effects on cognitive function. It predicts the effectiveness of the extract in mitigating these effects and explains the underlying mechanisms.",
+   "approach": "The study uses a combination of high-performance liquid chromatography (HPLC) and mass spectrometry (MS) to identify the extract's compounds. It then tests the extract's effects on cognitive function in rats, using behavioral tests and histological examination to evaluate the results."
+  },
+  {
+   "work": "W4386764947",
+   "problem": "This work aims to compare the efficiency of two methods when working with a large amount of data: a complex model with many parameters, and a rule-based system. The goal is to determine which method is better suited for high and low data volumes.",
+   "approach": "The approach involves using a complex model to estimate the performance of the rule-based system, and then comparing the two methods. The rule-based system is also investigated in combination with the complex model, where the rules are revised based on the model's guidance."
+  },
+  {
+   "work": "W2915412222",
+   "problem": "This work estimates the performance of a new method for a User Equipment to initiate a connection with a base, comparing it to an existing method. It predicts the number of errors that will occur when using the new method, and optimizes it to reduce errors by an order of magnitude.",
+   "approach": "The new method uses a combination of multiple signals to reduce the chance of errors, and allows the User Equipment to send more information along with the initial signal, making the network more efficient."
+  },
+  {
+   "work": "W4410525536",
+   "problem": "This work estimates the quality of measurement instruments by breaking them down into their components and evaluating each part. It aims to explain how to design and understand studies on the properties of these instruments.",
+   "approach": "The approach involves identifying the 5 key components of measurement instruments: equipment, data collection, processing, storage, and scoring. It follows a systematic procedure to evaluate each component and assess the overall quality of the instrument."
+  },
+  {
+   "work": "W2996552006",
+   "problem": "This research aims to estimate the effectiveness of strategies to improve student outcomes for vulnerable students by comparing the impact of different approaches to promoting social change in educational institutions.",
+   "approach": "The study uses empirical data to predict the success of collaborative initiatives that foster a culture of inclusivity and social responsibility among educators, and to optimize the implementation of these strategies."
+  },
+  {
+   "work": "W4410898940",
+   "problem": "This research aims to estimate the levels of a toxic substance in food samples from different regions, comparing them to a set standard to ensure safety. It also predicts whether certain food samples are safe for consumption based on the levels of this substance.",
+   "approach": "The study uses a laboratory test to measure the levels of a specific compound in food samples, following established procedures to obtain accurate results. The test is repeated for multiple samples to confirm the findings and ensure the results are reliable."
+  },
+  {
+   "work": "W2953539859",
+   "problem": "This work estimates the impact of changes in climate conditions on the amount of water available from the land to the surface in a specific region. It predicts how this change will affect the amount of water available in the future.",
+   "approach": "The researchers use a mathematical model to compare the predictions of different climate models. They apply this model to data from five different climate models to estimate the current amount of water available and the potential future changes."
+  },
+  {
+   "work": "W2801930614",
+   "problem": "This work estimates the social status of individuals based on the type of horse they own or ride, and compares this to the characterization methods used in literature to convey power dynamics between men and women.",
+   "approach": "The approach involves analyzing literary examples to identify patterns in how horses are described and used to convey social class, nobility, and occupation, and to explore how these descriptions can be used to understand power relationships between men and women."
+  },
+  {
+   "work": "W2911546633",
+   "problem": "This work aims to understand how the density of a certain type of material affects its ability to withstand pressure, and how to use this knowledge to improve the construction of structures made from this material. It estimates the relationship between density and the material's ability to resist pressure.",
+   "approach": "The researchers created samples of varying densities and measured the material's properties. They compared their results to existing data and found a good match, suggesting that density can be used to predict the material's ability to resist pressure."
+  }
+ ]
+}

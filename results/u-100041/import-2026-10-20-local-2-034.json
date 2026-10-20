@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-034",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:46Z",
+ "descriptions": [
+  {
+   "work": "W4407404421",
+   "problem": "A system estimates how two types of images align in space by matching their underlying patterns, despite differences in brightness, texture, and appearance across modalities.",
+   "approach": "It uses a dual learning process where one branch extracts and refines spatial details at multiple scales, while the other adjusts and aligns features to minimize differences, using attention to focus on consistent structures across the images."
+  },
+  {
+   "work": "W4235894165",
+   "problem": "A system is designed to infer how decisions in a dynamic environment evolve over time, based on observed patterns and external shifts.",
+   "approach": "It continuously updates its understanding by integrating new inputs, adjusting response rules in real time, and evaluating outcomes against predefined criteria for consistency and adaptability."
+  },
+  {
+   "work": "W4391603327",
+   "problem": "A long-lived, fan-shaped tree species is evaluated for its use in traditional health practices, focusing on its potential to support cognitive function and circulatory health through oral consumption.",
+   "approach": "Evidence from historical use, biological observations, and physiological claims is compiled and analyzed to determine the consistency and plausibility of its effects on brain and blood systems across diverse populations."
+  },
+  {
+   "work": "W3206936286",
+   "problem": "A marker is assessed to detect the absence of ganglion cells in a segment of the digestive tract, based on tissue samples and microscopic observations of cellular structure and distribution.",
+   "approach": "Tissue sections are stained and analyzed for the presence or absence of a specific cellular signal in nerve-rich regions. Results are compared to standard histological findings to determine whether the absence of that signal correlates with a known condition involving missing nerve cells."
+  },
+  {
+   "work": "W2802639367",
+   "problem": "A rare, benign tissue formation is identified and characterized based on imaging and microscopic features, with attention to its possible origin in response to prior trauma or as a developmental anomaly.",
+   "approach": "Tissue is examined for structural patterns and cellular composition; a correlation is made between the observed features and a history of external physical stress, suggesting a possible adaptive or reactive response to prior injury."
+  },
+  {
+   "work": "W4223600007",
+   "problem": "A quantity related to blood vessel function is estimated based on observed effects in living systems and laboratory models.",
+   "approach": "A model simulates how plant-derived compounds influence biological pathways, using data from controlled experiments to predict changes in vascular signaling and metabolic markers over time."
+  },
+  {
+   "work": "W3005336785",
+   "problem": "The task is to evaluate how well individuals understand spatial relationships and decision-making in complex medical scenarios involving variable internal structures and their interactions.",
+   "approach": "A model is created from detailed scans of real cases, then compared against traditional 2D representations. Users interact with the 3D model to assess comprehension and confidence in selecting appropriate strategies for different internal configurations."
+  },
+  {
+   "work": "W2800391176",
+   "problem": "A biological regulator influences the development of an organism's sex based on environmental conditions, specifically temperature. The system determines whether a developing individual follows a path leading to one developmental outcome or another, depending on external cues.",
+   "approach": "A regulatory protein binds to a specific genomic region and modulates gene activity. When its activity is reduced, the developmental trajectory shifts, resulting in a change from one outcome to a different one."
+  },
+  {
+   "work": "W4391340226",
+   "problem": "A threshold is estimated beyond which a plant community's ability to retain moisture diminishes, despite increased coverage. The relationship between plant density and moisture retention, loss, and surface flow is analyzed using observed growth and environmental conditions.",
+   "approach": "Plant density is varied across plots, and responses in coverage, moisture retention, and surface flow are measured. A mathematical model links density to these outcomes, identifying a peak performance point where further increases no longer improve moisture retention."
+  },
+  {
+   "work": "W4205372940",
+   "problem": "A system is designed to distribute tasks across a fixed sequence of workstations to minimize idle time and ensure consistent workload across stations.",
+   "approach": "Tasks are ranked by a composite score reflecting their dependencies and durations. A rule-based method assigns each task to a workstation, adjusting assignments to maintain flow and minimize gaps in processing time."
+  },
+  {
+   "work": "W3037614261",
+   "problem": "A system estimates how much to spend per interaction to meet a desired outcome rate while maximizing the number of successful interactions under a competitive pricing model.",
+   "approach": "It uses feedback from past interactions to adjust spending dynamically, applying a reward signal tied to outcome success and adjusting spending in real time based on observed performance and auction rules."
+  },
+  {
+   "work": "W3204035143",
+   "problem": "The relationship between controlled environmental conditions and resulting material structure is estimated, including how variations in temperature, pressure, and time affect the shape, size, and spatial arrangement of features within a material.",
+   "approach": "A sample is subjected to repeated cycles of controlled heating, cooling, and mechanical stress while being monitored under optical conditions. The resulting patterns are recorded and analyzed to identify how changes in conditions influence the final structural outcome."
+  },
+  {
+   "work": "W4293036448",
+   "problem": "A measure of how well a material resists fluid passage through a small hole is assessed over time, and how easily it can be extracted after hardening is evaluated across different time points.",
+   "approach": "A standardized test applies a fluid-based indicator to a set of samples, measuring how much penetrates over time. The time required to remove the material after it has hardened is recorded and compared across different materials and durations."
+  },
+  {
+   "work": "W3116446308",
+   "problem": "A system detects and responds to acoustic stimuli by translating vibrational inputs into physical movement patterns.",
+   "approach": "A biological sensory unit is interfaced with a mechanical system; neural activity triggered by sound pulses is captured and mapped to control parameters that drive motion in real time."
+  },
+  {
+   "work": "W2961096643",
+   "problem": "A pattern of cooperative frameworks is assessed across diverse geopolitical settings, where regional actors balance competing objectives and adapt structures to local conditions.",
+   "approach": "A model evaluates how external pressures and internal dynamics shape the design, stability, and success of shared systems, adjusting parameters based on historical precedents and regional diversity."
+  },
+  {
+   "work": "W4206816601",
+   "problem": "A system is estimated that maps underutilized parcels of land and evaluates their suitability for reassignment based on spatial and quality indicators, aiming to improve land use efficiency over time.",
+   "approach": "A spatial model processes land records and environmental data to generate maps of underused areas, assigns performance scores based on location and conditions, and proposes transfer rules using historical and current usage patterns."
+  },
+  {
+   "work": "W4410049866",
+   "problem": "A system estimates how individuals shift between multiple physical and virtual environments over time, and how these shifts affect coordination and shared presence among groups.",
+   "approach": "The system tracks movement patterns and interaction signals across locations, then models how stability in digital signals supports coordination while reducing engagement with physical environments, suggesting design rules to enhance consistent, tangible group experiences."
+  },
+  {
+   "work": "W2900305022",
+   "problem": "The extent to which individuals maintain independence in accessing essential services and social connections as they age is estimated from self-reported experiences and observed patterns of daily activity.",
+   "approach": "A structured framework analyzes shifts in routine behaviors and living arrangements, mapping how access to transportation and residential settings influences engagement with community and health maintenance over time."
+  },
+  {
+   "work": "W3094234506",
+   "problem": "The distribution of a group of organisms across two geographically isolated locations is analyzed to determine how environmental differences influence their presence and abundance.",
+   "approach": "A comparison is made between two sets of observations from distinct ecosystems, identifying shared and unique members. The frequency of each member in each location is tallied and used to infer patterns of environmental adaptation and dispersal."
+  },
+  {
+   "work": "W3004137465",
+   "problem": "The relationship between lifestyle habits and a biomarker in blood is assessed across genetically similar individuals who differ in their daily behaviors. The strength of this association is evaluated using data from self-reported activity levels and biological measurements.",
+   "approach": "Pairs of individuals with shared genetics and similar backgrounds are studied. Each pair reports their daily activity patterns and provides a biological sample for analysis. Statistical comparison determines whether differences in activity correlate with differences in the biomarker levels."
+  }
+ ]
+}

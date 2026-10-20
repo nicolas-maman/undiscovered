@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-033",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T14:41:45Z",
+ "descriptions": [
+  {
+   "work": "W4402147339",
+   "problem": "The functional recovery and risk of post-surgical inflammation are estimated from clinical records of individuals who undergo a specific surgical intervention for a congenital condition involving absent nerve cells in the digestive tract.",
+   "approach": "A structured surgical procedure is applied, and outcomes are evaluated using standardized scoring systems for bowel control and signs of inflammation, with results compared across different surgical techniques and patient subgroups."
+  },
+  {
+   "work": "W3197121743",
+   "problem": "A system with two distinct propagation directions is studied to control how strongly signals maintain their phase relationship over time, especially under asymmetric interactions. The strength and directionality of this phase maintenance are evaluated across varying conditions and boundary effects.",
+   "approach": "A dynamic model couples two propagating signals through a non-symmetric, non-linear interaction that depends on a tunable phase offset. The system's behavior is simulated under conditions where symmetry is broken, and its response is tracked near a critical point where eigenmodes become degenerate."
+  },
+  {
+   "work": "W4205153076",
+   "problem": "A change in an individual's understanding of a biological process is assessed after exposure to a sensory-rich instructional tool, comparing pre- and post-exposure levels of knowledge.",
+   "approach": "A statistical test evaluates differences in knowledge scores before and after intervention, using a structured questionnaire and a paired comparison method to determine if the intervention led to significant improvement."
+  },
+  {
+   "work": "W4391284999",
+   "problem": "A system is evaluated to determine how effectively it reduces reliance on non-renewable energy and synthetic inputs, and how well it supports long-term ecological balance and resource resilience under external stressors.",
+   "approach": "A model simulates the impact of policy-driven changes in input usage and land management over time, adjusting for environmental feedbacks and external shocks to project outcomes under varying conditions of resource availability and regulatory pressure."
+  },
+  {
+   "work": "W4293414338",
+   "problem": "A system evaluates the performance degradation caused by uncertain input signals compared to known, precise signals, measuring how decisions diverge under uncertainty.",
+   "approach": "A decision rule is defined that selects actions based on the worst-case scenario within a bounded set of possible inputs, then computes the resulting outcome distribution under varying levels of uncertainty."
+  },
+  {
+   "work": "W7215835477",
+   "problem": "The effectiveness of a structured physical activity involving group interaction and repetitive motion is assessed to determine its impact on participants' ability to accurately transfer and receive small, moving objects under controlled conditions.",
+   "approach": "A cycle-based refinement process is applied, where initial interactions are observed, adjusted based on performance feedback, and retested to improve consistency and accuracy in object transfer between individuals."
+  },
+  {
+   "work": "W4302362746",
+   "problem": "A system is analyzed to identify human-driven factors that lead to disease spread within isolated production units, with the goal of classifying units by risk level based on observed behavioral and management patterns.",
+   "approach": "Risk factors are assessed through expert input and weighted to rank units by vulnerability. Units are grouped into low, medium, and high risk categories based on the frequency and impact of specific human-related actions and oversight failures."
+  },
+  {
+   "work": "W4415387428",
+   "problem": "A pattern of scientific inquiry is identified across a 27-year period of published work, aiming to forecast emerging research priorities based on evolving thematic focus and connectivity among studies.",
+   "approach": "A network of thematic clusters is constructed from keyword frequencies, then analyzed to detect growth trends and high-impact connections, guiding predictions about future development in intervention strategies and mechanistic understanding."
+  },
+  {
+   "work": "W2984932619",
+   "problem": "A quantitative assessment is made of how varying levels of a biological supplement in a diet affect growth, feed efficiency, body composition, and overall cost-effectiveness over time.",
+   "approach": "Animals are divided into groups receiving different amounts of the supplement, all fed a consistent base diet. Performance and economic outcomes are measured over a fixed duration, with results analyzed to determine the optimal dosage for cost reduction without compromising output quality."
+  },
+  {
+   "work": "W4283700676",
+   "problem": "A system determines whether a cell transitions from a maintenance state to a differentiation state, based on gene activity levels and cellular context.",
+   "approach": "A regulatory factor is detected that activates a key differentiation gene; when this factor is absent, cells remain in a maintenance state. The activation of the gene is confirmed by its expression pattern and functional rescue when artificially induced."
+  },
+  {
+   "work": "W2993836325",
+   "problem": "A system is designed to evaluate how well a production process allocates tasks across workstations to maximize three performance dimensions: time, energy, and output value, while considering the cost and effort required for handling different types of components.",
+   "approach": "A computational model uses two parallel groups of solutions to iteratively refine task assignments, adjusting workloads based on component characteristics and resource constraints to achieve a balanced outcome across all three performance metrics."
+  },
+  {
+   "work": "W4408930180",
+   "problem": "A pattern of tissue inflammation is assessed to determine which pathogen is most likely to cause it, based on observed clinical signs and laboratory findings.",
+   "approach": "Clinical symptoms and biological markers are analyzed to identify which pathogen correlates most strongly with the observed disease pattern across different patient cases."
+  },
+  {
+   "work": "W4411133213",
+   "problem": "A fine-scale structural assessment of a parasitic organism embedded in a host's digestive tract is performed to identify its entry site and physical characteristics within the mucosal layer.",
+   "approach": "High-resolution optical imaging is applied to capture detailed surface features of the organism in real time, enabling precise localization and morphological analysis during direct observation in a living system."
+  },
+  {
+   "work": "W4401023883",
+   "problem": "A system estimates the best way to offer incentives to users to influence their engagement and conversion with a product, aiming to maximize revenue while ensuring users benefit and are motivated to act.",
+   "approach": "The system evaluates different incentive levels across user interactions, models user response patterns, and selects a strategy that balances user participation and platform gains under constraints of fairness and motivation."
+  },
+  {
+   "work": "W3010192276",
+   "problem": "A set of biological samples is tested for their response to a harmful compound under controlled conditions, and a subset showing low production is identified. The variation in this response across samples is linked to specific genetic differences across the genome.",
+   "approach": "Samples are exposed to a known stressor and measured for output. Genome-wide patterns are scanned for statistical associations with the response, identifying specific genetic variants that correlate strongly with reduced output."
+  },
+  {
+   "work": "W4386370959",
+   "problem": "A measure of understanding about a common endocrine condition is estimated from self-reported information collected across a defined geographic region.",
+   "approach": "A standardized set of questions is used to gather responses from individuals, and the consistency and patterns in their answers are analyzed to assess the level of public knowledge about the condition's signs and implications."
+  },
+  {
+   "work": "W4286717382",
+   "problem": "A measure is computed to assess how well two interdependent development trajectories progress together over time, using historical data across multiple domains.",
+   "approach": "A weighted composite index is formed from diverse indicators, then analyzed through a model that evaluates balance, synergy, and trend alignment, projecting future performance based on past patterns and structural dynamics."
+  },
+  {
+   "work": "W4391652169",
+   "problem": "A pattern of repeated, unwanted, and intrusive online behaviors is assessed to determine how common it is among young adults, and how it varies by gender.",
+   "approach": "Participants report their exposure to persistent and intrusive digital behaviors, along with personal anxiety and observed patterns in social networks, using a standardized behavioral scale to quantify and compare experiences."
+  },
+  {
+   "work": "W3204273400",
+   "problem": "A pattern of influence is assessed between independent knowledge production and real-world decision-making processes, evaluating how effectively insights from investigation are translated into action.",
+   "approach": "A structured framework is applied that maps the flow of knowledge from generation to implementation, identifying key points of friction and proposing iterative refinements to strengthen alignment and responsiveness between discovery and action."
+  },
+  {
+   "work": "W3091875939",
+   "problem": "A quantity related to plant development is measured across different treatment levels, with outcomes varying by the specific compound and concentration applied.",
+   "approach": "A substance is applied to plant material at multiple concentration levels, and the resulting growth response is observed and recorded over time to determine how the response changes with dose and compound type."
+  }
+ ]
+}

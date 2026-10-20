@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-031",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T14:41:45Z",
+ "descriptions": [
+  {
+   "work": "W3115532440",
+   "problem": "A system of rules is evaluated over time to assess how well they adapt to changing societal conditions and operational demands. The effectiveness of these rules is measured by how consistently they are applied across different levels of governance and in response to evolving circumstances.",
+   "approach": "A hierarchical structure is used to break down broad policy directives into more specific, actionable guidelines. Each level refines and adjusts the previous one based on real-world feedback, economic, social, and procedural inputs."
+  },
+  {
+   "work": "W7215240554",
+   "problem": "A system estimates how human decisions in forested, high-altitude environments affect long-term ecological balance and agricultural productivity through local observation and experience.",
+   "approach": "Data from community members is organized into structured patterns like networks and sequences, then stored and accessed using rules that link actions to outcomes based on observed patterns over time."
+  },
+  {
+   "work": "W4385213656",
+   "problem": "A pattern of shared engagement is observed across diverse groups, and the nature of individual involvement within that pattern is assessed using self-reported and observational records.",
+   "approach": "Participants report their level of immersion, interaction frequency, and emotional response over time, then cluster similar responses to identify distinct engagement profiles and their underlying dynamics."
+  },
+  {
+   "work": "W3037545511",
+   "problem": "A structure is analyzed to identify elements that remain unchanged under internal operations and those that behave consistently across different contexts, with the goal of identifying invariant patterns and relational symmetries within a system.",
+   "approach": "A set of operations is defined that preserve structure under transformation, and a subset of transformations is isolated that commute with all others. The resulting structure is shown to inherit symmetry properties when quotiented by the set of transformations that leave all elements unchanged."
+  },
+  {
+   "work": "W4386365824",
+   "problem": "A system estimates how effectively raw observations are transformed into usable forms for training models, by evaluating how well data is structured, validated, and made consistent across different sources and formats.",
+   "approach": "It evaluates patterns in data flow and user feedback to determine which methods best detect inconsistencies, guide decisions on data structure, and ensure reliability through visual inspection and consistency checks."
+  },
+  {
+   "work": "W4411758637",
+   "problem": "A model estimates the likelihood that a mature reproductive cell will develop into a genetically normal embryo based on visual features from images taken shortly after a key intervention.",
+   "approach": "The model processes image data through a learned pattern recognition system that assigns a numerical score reflecting the probability of a favorable genetic outcome, with higher scores consistently linked to better genetic results across different input groups."
+  },
+  {
+   "work": "W4389782986",
+   "problem": "A system estimates the economic impact of recurring outbreaks in animal populations by analyzing trade restrictions and productivity losses linked to viral spread across regions.",
+   "approach": "It uses genetic variation data from circulating pathogens to match vaccine effectiveness, then models economic outcomes under different containment scenarios based on regional infection patterns and movement rates."
+  },
+  {
+   "work": "W4409300953",
+   "problem": "A method is developed to preserve a plant-based material by removing water while maintaining its active compound levels and structural integrity, comparing outcomes across different processing conditions.",
+   "approach": "A sequence of conditions is applied to a material, measuring how quickly water is removed and how well key chemical and physical traits are retained, with outcomes evaluated across multiple processing times and environmental settings."
+  },
+  {
+   "work": "W7169492303",
+   "problem": "A disease process is identified that begins outside the body and spreads through tissue, forming visible and draining lesions. The origin and route of infection are traced to a contaminated external object used for injection.",
+   "approach": "A patient's symptoms and lesion characteristics are observed over time. The infection's origin is linked to a specific external exposure, and the pattern of tissue involvement is compared to known cases with similar exposure histories."
+  },
+  {
+   "work": "W4288717650",
+   "problem": "A system is designed to enhance the efficiency of a molecular export mechanism by identifying and selecting variants that improve the amount of a functional marker present outside the cell.",
+   "approach": "A mutagenesis process generates diverse variants, which are then screened at the single-cell level based on fluorescence output. Only those with increased signal are retained and used to produce subsequent generations of variants."
+  },
+  {
+   "work": "W4411659229",
+   "problem": "A numerical score is estimated to reflect the degree of exposure to a nutrient-related condition linked to multiple organ dysfunction. The strength and shape of the relationship between this score and the likelihood of developing a complex, multi-system disease progression are assessed across diverse demographic and behavioral subgroups.",
+   "approach": "A statistical model evaluates how changes in the score affect disease risk across a range of values, testing for linearity and interactions with lifestyle factors. It also determines the best threshold for detecting disease risk using performance metrics derived from observed outcomes."
+  },
+  {
+   "work": "W4400777344",
+   "problem": "A system's dynamic behavior is inferred from observations of how components interact over time, including changes in activity levels and response patterns under varying conditions.",
+   "approach": "A mathematical framework maps input stimuli to output responses through a network of interacting units, using temporal sequences of measurements to update state transitions and predict future behavior under new conditions."
+  },
+  {
+   "work": "W4238290809",
+   "problem": "A pattern of disease onset is estimated based on exposure to contaminated food sources and neurological symptoms observed over time.",
+   "approach": "A model tracks the progression of symptoms from initial exposure to clinical presentation, using imaging and blood markers to identify and classify disease stages across different populations and time periods."
+  },
+  {
+   "work": "W3001813984",
+   "problem": "A system learns to produce inputs that cause a model to misclassify predictions by introducing small, carefully designed changes to the original input.",
+   "approach": "The system models how output changes with small input shifts using a local mathematical expansion. It then finds the optimal change that maximizes misclassification while staying within a small, detectable deviation from the original input."
+  },
+  {
+   "work": "W4403963333",
+   "problem": "A pattern of written output is examined to assess its influence on the development of military personnel's beliefs and behaviors over a specific timeframe.",
+   "approach": "A structured analysis is performed by identifying recurring themes, language use, and content trends across a sequence of published materials, then correlating these with documented changes in personnel conduct and institutional practices."
+  },
+  {
+   "work": "W4400174536",
+   "problem": "A pattern of chronic inflammation affecting connective tissues and skin is observed in a patient with comorbidities. The relationship between this inflammation and a distinct skin condition is evaluated to determine if shared underlying mechanisms exist.",
+   "approach": "A treatment is initiated and monitored over time. Clinical responses are tracked to assess whether a single therapeutic agent can resolve both systemic and skin manifestations of the condition."
+  },
+  {
+   "work": "W2979572776",
+   "problem": "A set of research goals is identified from diverse stakeholder input, based on existing knowledge and expert consensus, to guide future investigation efforts in a healthcare setting.",
+   "approach": "A structured review of prior work is conducted, followed by iterative rounds of expert evaluation and refinement to converge on a clear and actionable list of research directions."
+  },
+  {
+   "work": "W7160290837",
+   "problem": "A quantitative assessment determines whether engaging in a structured hands-on activity influences a group's ability to generate original and adaptive responses in a developmental setting.",
+   "approach": "A controlled experiment compares outcomes before and after intervention using observational records and standardized scoring. Statistical analysis evaluates whether differences are significant, using a variance-based test to detect effects beyond random variation."
+  },
+  {
+   "work": "W2995390893",
+   "problem": "A biological system is studied to identify key regulatory elements that control the development of distinct reproductive phenotypes in a plant species.",
+   "approach": "A high-resolution genetic map is constructed using genomic sequencing data to locate and characterize specific regions influencing trait expression. Candidate regulatory sequences are analyzed to determine how their activity patterns correlate with developmental outcomes."
+  },
+  {
+   "work": "W4415795157",
+   "problem": "A statistical model estimates the relationship between limited access to essential resources and the likelihood of experiencing a specific health condition, adjusting for demographic and behavioral factors.",
+   "approach": "The model uses weighted data from a longitudinal population sample, applying a statistical framework to compare outcomes across groups with and without access to resources, while controlling for age, social status, and lifestyle behaviors."
+  }
+ ]
+}

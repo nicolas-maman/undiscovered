@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-015",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:42Z",
+ "descriptions": [
+  {
+   "work": "W4300003070",
+   "problem": "This work estimates the abundance and distribution of molecules within cells, determining their structure and function. It compares these distributions to understand how cells respond to environmental changes.",
+   "approach": "The approach involves creating a modified version of a molecule within the cell's own DNA, allowing it to behave naturally. This is done using a precise editing tool and a modular cloning framework for efficient assembly and transformation."
+  },
+  {
+   "work": "W3096828239",
+   "problem": "This work estimates the effect of a certain type of tissue on the efficacy of a therapy in a specific type of disease, and compares the results to see if the tissue reduces the therapy's effectiveness. It also explains why this might happen.",
+   "approach": "The researchers use a special setup to allow the tissue and disease cells to interact with each other through invisible signals. They then measure the effect of this interaction on the disease cells' growth and death."
+  },
+  {
+   "work": "W4405118636",
+   "problem": "This study estimates the effect of certain substances on liver cells damaged by a specific chemical, and compares the results to determine if these substances can protect liver cells. It also aims to explain why these substances might be effective in protecting liver cells.",
+   "approach": "The researchers used a cell line to test the effect of these substances on liver cells damaged by a chemical, and measured the cell viability after adding the substances. They compared the results to determine if the substances can protect liver cells."
+  },
+  {
+   "work": "W4409073742",
+   "problem": "This research estimates the effect of a certain substance on the growth and death of a specific type of cell, and compares it to a normal state. It aims to explain how this substance works and whether it could be used to prevent or treat a particular disease.",
+   "approach": "The researchers used a test to see how the substance affected the cells, and then looked at the changes in the cells' behavior and the underlying mechanisms. They used a combination of tests to understand how the substance works and how it could be used to help the cells."
+  },
+  {
+   "work": "W3217184768",
+   "problem": "This research estimates the relationship between a genetic variation (ACE I/D polymorphism) and muscle strength in older adults, comparing the effects of different genotypes on physical performance tests such as standing time and leg strength.",
+   "approach": "The study used a questionnaire to assess physical activity, fitness tests like SPPB and Up&Go, and PCR to analyze the genetic variation. The results showed associations between genotypes and physical performance, but did not confirm a clear impact on muscle strength and health."
+  },
+  {
+   "work": "W4389135836",
+   "problem": "This work estimates the value of using data to manage categories of goods and services, comparing different approaches to optimise supply chain performance. It predicts the benefits of data-driven decision-making in a specific field, where complex networks and relationships are involved.",
+   "approach": "The procedure involves using data analytics tools and techniques to visualise and analyse data, and to classify and compare different categories of goods and services. This approach is used to inform decision-making and optimise supply chain performance in a specific field."
+  },
+  {
+   "work": "W4405709040",
+   "problem": "This work estimates the effectiveness of a specific approach to transforming a corrupt system into a virtuous one, comparing the outcomes of different attempts to achieve this goal. It predicts the consequences of a particular strategy and explains why it might or might not be successful.",
+   "approach": "The study uses a close analysis of a historical figure's actions to test a theoretical idea about how to achieve lasting and positive change in a system. It follows a step-by-step procedure to evaluate the effectiveness of this approach."
+  },
+  {
+   "work": "W4408426078",
+   "problem": "This work estimates the impact of different techniques on patient outcomes in a specific medical context. It predicts whether these techniques will influence the recurrence of a particular disease or survival rates in patients.",
+   "approach": "The study uses data from patients undergoing a specific type of surgery to compare the effects of different techniques on patient outcomes. It follows a procedure of reviewing existing research and analyzing the results to draw conclusions."
+  },
+  {
+   "work": "W2947163090",
+   "problem": "This work estimates the effectiveness of a custom-made replacement for a missing eye, comparing it to a standard, pre-made version. It aims to explain how this replacement improves the patient's physical and mental well-being.",
+   "approach": "The researchers use a pre-made eye shell as a base and add custom features to create a more natural-looking replacement. They follow a step-by-step procedure to assemble and test the replacement, using data from the patient's medical history and the replacement's performance to inform their design."
+  },
+  {
+   "work": "W4322101611",
+   "problem": "This work estimates the optimal force distribution in a network of connected structures to support a heavy load, taking into account the redundancy of the system and the influence of non-linear effects on the structure's behavior.",
+   "approach": "The approach involves using a simplified method to calculate the forces and comparing the results to those obtained from a more complex computer simulation, which is widely used in engineering practice."
+  },
+  {
+   "work": "W4313478526",
+   "problem": "This research aims to understand how living conditions affect the long-term health and wellbeing of young people, and identifies factors that can promote better health. It seeks to explain how social and cultural dynamics impact young people's health.",
+   "approach": "The researchers use a framework that combines social theory concepts with the perspectives of young people to understand the complex relationships between living conditions, health, and cultural dynamics. They analyze data and evidence from various sources to develop a comprehensive understanding."
+  },
+  {
+   "work": "W4377227122",
+   "problem": "This study aims to identify the factors that increase the risk of needing to fix or replace a device implanted in men to improve their ability to get an erection, and to compare the rates of this risk in different groups of men.",
+   "approach": "The researchers used a large database of real-time data from many healthcare organizations around the world to analyze the data and identify patterns. They matched the data to ensure that the groups being compared were similar in terms of certain characteristics."
+  },
+  {
+   "work": "W3161556698",
+   "problem": "This work estimates the optimal protocol for monitoring a patient's nervous system during a delicate procedure, predicting their recovery afterwards. It compares different methods to determine the best approach.",
+   "approach": "The researchers use data from various procedures to develop a model that detects changes in the patient's nervous system state. They apply this model to a specific procedure to determine the optimal protocol."
+  },
+  {
+   "work": "W4232474476",
+   "problem": "Estimates the effectiveness of decision-making processes by gathering information from relevant groups to improve the quality of decisions, promote confidence, and address broader issues.",
+   "approach": "Uses a systematic procedure to analyze key issues, involving the collection and analysis of data from various groups, and helps identify relevant groups to improve decision-making."
+  },
+  {
+   "work": "W7216527923",
+   "problem": "This study aims to describe the religious aspects of a main character and the social lives of two groups within a community, comparing and contrasting their values and behaviors.",
+   "approach": "The research uses a descriptive qualitative approach, analyzing data from a literary work to understand the characteristics and relationships between the groups."
+  },
+  {
+   "work": "W2891145500",
+   "problem": "This study aims to understand how a protein affects the way cells use energy and make new energy-producing structures. It estimates how much energy is used and produced, and how this is affected by the protein.",
+   "approach": "The researchers used special mice and cells to test the protein's effect. They looked at how the protein affects the flow of energy and the growth of new energy-producing structures."
+  },
+  {
+   "work": "W3121834128",
+   "problem": "This research estimates the effects of different methods on the quality of a food product. It compares the quality of the product after being treated with different methods, and optimizes the method that produces the best results. The results are based on data from two types of food.",
+   "approach": "The research uses a combination of methods to analyze the quality of the food product. It follows a procedure where the food product is first treated with different methods, and then its quality is analyzed and compared."
+  },
+  {
+   "work": "W2902107957",
+   "problem": "The researcher is trying to find the best combination of two ingredients to achieve good quality attributes. They estimate the nutritional properties of the blends and compare them to see which one is the best.",
+   "approach": "The researcher uses a mathematical model to test many different combinations of the ingredients and measures the results. They use a special statistical method to analyze the data and find the best combination."
+  },
+  {
+   "work": "W4320498489",
+   "problem": "This research aims to estimate the effect of growing certain plants on the amount of salt in the soil, and compare it to uncultivated fields. It also tries to predict the amount of salt that will be leached from the soil during different seasons.",
+   "approach": "The researchers planted two types of plants and monitored the amount of salt in the soil over time. They compared the results to the amount of salt in uncultivated fields and calculated the difference in salt leaching rates."
+  },
+  {
+   "work": "W4402633479",
+   "problem": "This work estimates the impact of a new technology on the balance of power between different groups, comparing the benefits and drawbacks of its adoption. It predicts how this technology will shape the relationships between these groups over time.",
+   "approach": "The study uses historical data on the use of a particular medium to understand how it has influenced the balance of power. It then applies this understanding to the new technology, using a combination of quantitative and qualitative analysis to identify its potential effects."
+  }
+ ]
+}

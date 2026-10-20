@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-023",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:44Z",
+ "descriptions": [
+  {
+   "work": "W4307033993",
+   "problem": "This work synthesizes a specific type of material with a unique structure, and then uses various tests to understand its properties and behavior. It estimates the temperature range where the material is stable, compares its properties to predictions, and optimizes its characteristics.",
+   "approach": "The researchers follow a detailed procedure to create the material, and then use a range of tests to measure its properties. They analyze the results to understand the material's behavior and identify the underlying causes of any discrepancies."
+  },
+  {
+   "work": "W4403615337",
+   "problem": "This research aims to understand and describe the characteristics and outcomes of a specific medical condition in a subset of patients who present with unusual or challenging cases. It estimates and explains the patterns and barriers to identifying this condition.",
+   "approach": "The researchers collected data from a group of patients who were diagnosed with this condition and presented with unusual cases. They used statistical methods to analyze the data and identify patterns and barriers to identifying the condition."
+  },
+  {
+   "work": "W7168411545",
+   "problem": "This work estimates the safety and efficacy of certain microorganisms for use as a nutritional supplement in animals. It predicts their ability to withstand various environmental conditions and resist certain substances.",
+   "approach": "The researchers screened the microorganisms for their ability to cause disease, then tested their resistance to various substances and their tolerance to acidic and bile-rich environments."
+  },
+  {
+   "work": "W4220772663",
+   "problem": "This work estimates the importance of certain factors that affect health outcomes, and compares how well these factors are recorded in a type of written record. It aims to explain how these factors are recorded and how this can be used to improve future studies.",
+   "approach": "The researchers used a computer program to analyze a large set of written records, identifying patterns and categories in the information. They then looked at how well these categories were recorded in each record."
+  },
+  {
+   "work": "W4226079806",
+   "problem": "This research investigates how a certain substance affects the quality of cells that can help create new life, and whether a known antioxidant can protect these cells from damage. It aims to understand the impact of this substance on cells and whether the antioxidant can improve their quality.",
+   "approach": "The researchers used a combination of observations and experiments to study the effects of the substance on cells. They added a known antioxidant to the cells and observed the results, comparing the effects of the substance with and without the antioxidant."
+  },
+  {
+   "work": "W4400872206",
+   "problem": "This work estimates the effectiveness of different approaches to finding the best solution from a variety of options, and compares them to identify the most efficient one. It aims to explain how individuals can use their cognitive abilities to make better decisions.",
+   "approach": "The approach involves designing a process to create an effective sequence of micro-solutions, taking into account both logical and accidental factors. It seeks to understand the nature of individual decision-making and use it to improve decision-making processes."
+  },
+  {
+   "work": "W4413848561",
+   "problem": "This research estimates the role of a specific structure in the growth and development of a type of female reproductive cell. It predicts how this structure changes and behaves over time, and compares its behavior to other cellular components.",
+   "approach": "The researchers used various microscopy techniques to observe and analyze the structure's behavior and changes. They followed the structure's behavior over time, from early growth to early embryonic development."
+  },
+  {
+   "work": "W3198960978",
+   "problem": "This work estimates the minimum environmental impact of a heavy-duty gas turbine at very low operating conditions, and compares it to the original design. It aims to optimize the turbine's performance at these conditions.",
+   "approach": "The approach involves developing a new operating concept that extends the turbine's range to very low conditions, and testing it through validation experiments."
+  },
+  {
+   "work": "W3176018789",
+   "problem": "This study aims to understand how the body predicts its future states and adjusts its internal models accordingly. It estimates the importance of certain regions in the body's control system and compares their roles in different situations.",
+   "approach": "The researchers use a combination of methods to identify the key players in this process. They first look for patterns in how different parts of the body work together, and then use a consensus method to combine the results and identify a large network that seems to be involved in attention and control."
+  },
+  {
+   "work": "W4410795098",
+   "problem": "This work estimates the distribution of a physical quantity in a complex system, using data from multiple points and the system's operating conditions. It aims to predict this quantity's value at any point in the system, and compares its predictions to actual values.",
+   "approach": "The approach uses a type of artificial neural network to learn the relationship between the physical quantity, operating conditions, and data from multiple points. It trains this network on a dataset and then uses it to make predictions on new, unseen data."
+  },
+  {
+   "work": "W7203722364",
+   "problem": "This work estimates the potential impact of a particular approach on educational practice, comparing the effects of this approach to the current state of practice. It predicts how this approach can improve the learning abilities of students and foster understanding of diverse educational contexts.",
+   "approach": "The work uses a combination of analysis and reflection to identify the key techniques and approaches of this approach. It follows a procedure that involves examining and applying these techniques in a daily basis to improve interpersonal understanding and bridge the gap between material and context."
+  },
+  {
+   "work": "W3021313297",
+   "problem": "This research aims to estimate the level of male control and its impact on the status of a particular group, comparing their experiences before and after a period of instability. It predicts the effects of this instability on their confidence and empowerment.",
+   "approach": "The study uses data on the group's experiences and activism to identify cultural and institutional changes needed for their empowerment. It follows a procedure of analysis and comparison to understand the impact of instability on their status."
+  },
+  {
+   "work": "W4407955821",
+   "problem": "This research estimates the level of a certain molecule in cancer cells and its effect on how well the cells can be killed by a chemotherapy drug. It also compares the molecule's level in cancer cells to that in normal cells and optimizes a way to stop the molecule from making the cells resistant to the drug.",
+   "approach": "The researchers used various techniques to detect and measure the molecule's presence and activity, including special tests that can see the molecule's presence in cells and measure how it affects the cells' ability to be killed by the chemotherapy drug."
+  },
+  {
+   "work": "W3200765981",
+   "problem": "This work estimates the frequency of a rare event (a specific type of complication) after a treatment (a form of medical intervention) in a group of individuals (people with a particular condition) who received a certain type of care (a specific medical procedure).",
+   "approach": "The researchers used a procedure involving reviewing past records (a type of data collection) to identify the individuals who received the treatment and to track the outcome of the treatment over time (until death or a certain point in time)."
+  },
+  {
+   "work": "W4307349461",
+   "problem": "This work estimates the effectiveness of a new surface treatment on bone growth, predicts how well the treated surfaces will hold onto bone tissue, compares the results to existing surfaces, optimizes the treatment for better bone growth, and explains the findings in terms of cell interaction and bone formation.",
+   "approach": "The procedure involves applying the new surface treatment to existing surfaces, testing the treated surfaces with cells in a lab, implanting the treated surfaces into animal bones, and analyzing the results using X-rays and tissue samples to measure bone growth and density."
+  },
+  {
+   "work": "W2982276659",
+   "problem": "This research estimates the effects of varying levels of phosphorus and calcium on the health and development of a certain type of animal, and compares the outcomes of different levels of these minerals. It also explains how a specific substance can alleviate the negative effects of low mineral levels.",
+   "approach": "The researchers used a combination of controlled feeding experiments and measurements to study the effects of varying levels of phosphorus and calcium on the health and development of the animals. They tested different levels of a substance that breaks down a specific compound to make minerals more available."
+  },
+  {
+   "work": "W3032992256",
+   "problem": "This work estimates the impact of a treatment on two outcomes: quality of life and participation in social activities. It compares these outcomes before and after the treatment, using data from both the patients themselves and external observers.",
+   "approach": "The study uses a comparison approach, where the treatment is applied to two groups of patients and the outcomes are measured before and after the treatment. The results are then compared to determine the effect of the treatment on the outcomes."
+  },
+  {
+   "work": "W4413965058",
+   "problem": "This work identifies a rare condition where a blood vessel is damaged and filled with blood, causing symptoms that can range from mild to severe. It estimates the likelihood of this condition occurring without any known cause.",
+   "approach": "The researchers use data from electrocardiography, echocardiography, and imaging tests to diagnose the condition. They follow a procedure that involves comparing the test results to identify the damage and estimating the severity of the condition."
+  },
+  {
+   "work": "W3180872921",
+   "problem": "This research aims to estimate the strength of a specific material used in building, comparing its performance under different forces. It seeks to provide a reference for practical applications, helping to reduce the environmental impact of construction.",
+   "approach": "The study uses a combination of testing and data collection to determine the material's strength. It follows a procedure of applying forces to the material and recording the results to create a database of its performance."
+  },
+  {
+   "work": "W4321372432",
+   "problem": "This work estimates the likelihood of multiple stable states in a complex system, and compares their relative merits. It aims to explain how to select the most desirable state from these multiple options.",
+   "approach": "The approach involves using a mathematical model to simulate the system's behavior and evaluate the stability of each potential state. The model follows a procedure that considers the interactions and responses of the system's components."
+  }
+ ]
+}

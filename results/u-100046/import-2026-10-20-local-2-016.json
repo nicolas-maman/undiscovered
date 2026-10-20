@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-016",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:43Z",
+ "descriptions": [
+  {
+   "work": "W3217162235",
+   "problem": "This study aims to estimate the effectiveness of a magnetic field in removing a common problem in systems that carry a liquid: a hard, white substance that forms when minerals in the liquid combine with other substances. The goal is to find the best way to use a magnetic field to remove this substance.",
+   "approach": "The researchers used a combination of experiments and mathematical models to test how different variables (orientation, speed, and strength of the magnetic field) affect the removal of the substance. They used a special machine to apply the magnetic field and measured the results over time."
+  },
+  {
+   "work": "W4410454227",
+   "problem": "This research aims to estimate the effectiveness of a certain substance in reducing the accumulation of harmful substances in the walls of blood vessels, which can lead to serious health issues. It compares the effects of this substance with a control group and a group that receives a known cause of the problem.",
+   "approach": "The researchers created groups of mice with varying levels of exposure to a substance that can cause the problem, and then applied different interventions to these groups. They measured the effects of these interventions on the mice's health and compared the results to determine the effectiveness of the substance."
+  },
+  {
+   "work": "W3123119555",
+   "problem": "This work estimates the importance of a certain aspect of human nature in determining a key concept, and compares it to new evidence from a different field. It also predicts how this concept will be affected by recent findings in a related field.",
+   "approach": "The approach involves maintaining a certain idea about human nature, and then evaluating how it will be impacted by new research findings and evidence from a different area of study."
+  },
+  {
+   "work": "W4206900368",
+   "problem": "This study aims to identify common issues and user opinions on a specific topic, using data from social media platforms. It estimates the frequency and type of issues discussed, and compares the tone and style of user comments across different platforms.",
+   "approach": "The researchers use a qualitative method to collect data from social media platforms, analyzing the content and tone of posts over a set period. They apply a specific theoretical framework to identify patterns and trends in the data."
+  },
+  {
+   "work": "W2913216235",
+   "problem": "This research estimates the impact of stress on the breakdown of complex molecules in a certain type of food, and compares the levels of these breakdown products to the levels of protective substances. It also explains how these substances can affect the quality and nutritional value of the food.",
+   "approach": "The researchers use a combination of data analysis and chemical testing to identify and quantify the breakdown products and protective substances. They follow a procedure that involves measuring the levels of these substances and comparing them to determine the impact of stress on the food's quality and nutritional value."
+  },
+  {
+   "work": "W2921503668",
+   "problem": "This research estimates the impact of different food sources on the balance of tiny life forms in the digestive system, compares the effects of different food sources, and optimizes the balance of these life forms. It explains how these food sources affect the balance of these life forms.",
+   "approach": "The researchers used a model of rats to test the effects of different food sources on the balance of tiny life forms in the digestive system. They followed a procedure where the rats were fed different food sources for a set period of time and then analyzed the balance of these life forms."
+  },
+  {
+   "work": "W4401835907",
+   "problem": "This work estimates the effect of high salt intake on blood pressure in a model of excessive salt consumption. It predicts the role of chloride channels in this process and compares the effects of different salt and chloride combinations.",
+   "approach": "The study uses an experimental model with rats, where different groups are fed with varying salt and chloride combinations for a set period. The researchers then measure and compare various physiological and biochemical markers to understand the effects of these combinations."
+  },
+  {
+   "work": "W4243266285",
+   "problem": "This work aims to find a way to treat a large amount of waste material from a declining industry, and to use it as a resource. It estimates the best conditions for this treatment, and compares the results to see what happens.",
+   "approach": "The researchers used a process to heat the waste material in the absence of air, and added a chemical to help break it down. They then examined the properties of the resulting material and the conditions that produced the best results."
+  },
+  {
+   "work": "W4388739281",
+   "problem": "This work estimates the effect of changing the configuration of a power system on the stability of a control system used to mitigate local distortions in the network. It predicts how these changes will alter the performance of a specific type of control system.",
+   "approach": "The work uses data from the power system to test a control method that adjusts the phase angle of a control system to maintain stability. The method follows a procedure that involves comparing the system's performance under different conditions and optimising the phase angle to achieve the best results."
+  },
+  {
+   "work": "W2997710631",
+   "problem": "This study aims to understand the importance and challenges of having experts with a broad view of treating critical patients and managing emergency departments in educational institutions. It estimates the needs and challenges of these experts based on data from over 2 million patients and authorities in the healthcare system.",
+   "approach": "The researchers used a qualitative approach, gathering information from a small group of experienced experts, authorities, and individuals with a broad view of emergency department management. They analyzed the data to identify key needs and challenges, and determined the optimal presence of these experts in educational institutions."
+  },
+  {
+   "work": "W4408167600",
+   "problem": "Estimate the economic feasibility of proposed sustainable materials and technologies, and compare their costs to traditional alternatives, using data from various sources such as market research, production costs, and environmental impact assessments.",
+   "approach": "Use a cost-benefit analysis model to evaluate the economic viability of sustainable materials and technologies, following a procedure that involves collecting and analyzing data on costs, benefits, and environmental impact, and applying statistical methods to identify trends and patterns."
+  },
+  {
+   "work": "W4224302225",
+   "problem": "This work estimates the best path a small object in space should take, based on observations from multiple locations. It tries to find the path that best fits the data, taking into account the uncertainty of each observation.",
+   "approach": "The work uses a mathematical model to find the best path, considering the relationship between each observation and the object's path. It also uses a new way of weighting the observations to give more importance to the ones with more uncertainty."
+  },
+  {
+   "work": "W4387604787",
+   "problem": "This research aims to estimate the effectiveness of a new type of device that combines electrical stimulation and cell transplantation to repair damaged biological systems. It predicts how well this device will work in different situations and compares its performance to existing methods.",
+   "approach": "The device is made from a flexible, biodegradable material that can be easily integrated into the body. It uses a combination of electrical stimulation and cell transplantation to repair damaged biological systems, and is designed to be completely degraded after a certain period of time."
+  },
+  {
+   "work": "W2794504653",
+   "problem": "This work estimates the effectiveness of new surgical and regeneration techniques for repairing damaged motor axons in small animals, comparing the outcomes to standard methods. It predicts the success of these techniques based on data from animal experiments.",
+   "approach": "The procedure involves preparing the animal for surgery, acquiring data on the animal's motor function, analyzing the data to evaluate the technique's success, and troubleshooting any issues that arise. The approach is standardized and can be applied to multiple species, including mice."
+  },
+  {
+   "work": "W4247232384",
+   "problem": "This work estimates the likelihood of certain actions being taken in response to changing circumstances, and compares these probabilities to identify patterns and trends. It aims to explain why certain actions are taken, even if they don't follow a clear decision-making process.",
+   "approach": "The approach involves analyzing data on past events and identifying the underlying patterns and probabilities that drive these events. It uses this information to make predictions about future events and identify potential areas for improvement."
+  },
+  {
+   "work": "W4281951480",
+   "problem": "This work estimates the effectiveness of a system that tries to mislead a system that identifies people based on their sounds, by creating a fake sound that is similar to the real sound but not identical. It compares the effectiveness of different methods to create this fake sound, and optimizes the best one.",
+   "approach": "The system uses a combination of mathematical models and simulations to generate the fake sound, and tests it on a wide range of real-world data to see how well it works. It also studies how the fake sound behaves when it is transmitted over the air, and how it can be made more robust."
+  },
+  {
+   "work": "W2975417612",
+   "problem": "This research aims to identify how districts advertise, recruit, and hire individuals with the ability to work effectively with diverse groups. It estimates the effectiveness of their hiring practices and provides insights to improve the recruitment of individuals with these skills.",
+   "approach": "The study uses a qualitative approach, collecting data through interviews and document analysis. It examines job descriptions and other documents to assess the district's hiring procedures and identify areas for improvement."
+  },
+  {
+   "work": "W4413939851",
+   "problem": "This research aims to estimate the effectiveness of an alternative treatment approach for a specific health issue, comparing the outcomes of this approach to conventional treatments. It predicts the success rate of this approach in improving a particular health outcome.",
+   "approach": "The research follows a holistic treatment protocol, involving a combination of detoxification, nourishment, and hormonal regulation techniques. It uses a case study to evaluate the success of this approach in improving a specific health outcome."
+  },
+  {
+   "work": "W4247120305",
+   "problem": "This work estimates the importance of dynamic forms of connection and interaction in understanding how living things exist and thrive in their environments. It compares these forms to more traditional views of the world.",
+   "approach": "The approach is based on a theory that explains how living things create their own worlds and understand them through their interactions with their surroundings. It involves analyzing the relationships between living things and their environments to identify patterns and principles that can help us better understand the world."
+  },
+  {
+   "work": "W4303184706",
+   "problem": "This work aims to create a material that can protect sensitive electronic components from damage during transportation and use. It estimates the properties of the material under specific conditions and compares them to requirements.",
+   "approach": "The researchers use a combination of materials to create a new material with improved properties. They apply a process to the material to enhance its mechanical, electrical, and water-resistant properties."
+  }
+ ]
+}

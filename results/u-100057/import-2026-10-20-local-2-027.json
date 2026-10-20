@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-20-local-2-027",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:44Z",
+ "descriptions": [
+  {
+   "work": "W2799196790",
+   "problem": "This work estimates the performance of a communication system with a large number of users, predicting how well it will work with different numbers of users. It compares the performance of two different systems, one using a new spreading code and the other using a traditional code.",
+   "approach": "The system uses a new spreading code to reduce interference and improve performance. It simulates the system with different numbers of users and measures the improvement in terms of signal quality and channel capacity."
+  },
+  {
+   "work": "W2807759379",
+   "problem": "This work estimates the relationship between a specific virus and the development of a chronic autoimmune condition, comparing the presence of certain antibodies in the blood to the onset of symptoms. It predicts the outcome of a treatment and explains the progression of the condition over time.",
+   "approach": "The researchers used a combination of clinical observations, laboratory tests, and medical treatment to diagnose and monitor the condition. They followed the patient's response to treatment and observed changes in the patient's symptoms and antibody levels over time."
+  },
+  {
+   "work": "W4403154777",
+   "problem": "This work estimates the impact of new technologies on educational institutions, comparing their effectiveness to traditional methods. It aims to explain how these technologies can improve the learning process and administrative activities.",
+   "approach": "The study follows a procedure where it examines current trends and examples of technology application, using data and evidence from various sources to inform its conclusions."
+  },
+  {
+   "work": "W4388940972",
+   "problem": "This study aims to characterise the microbiome of a specific surface in cattle, comparing it between healthy and diseased individuals, and estimating the types and amounts of microorganisms present. The goal is to identify which microorganisms are involved in the disease and how they relate to the health of the surface.",
+   "approach": "The researchers used a three-part approach: culturing microorganisms, analysing the relative abundance of microorganisms through DNA sequencing, and using machine learning models to categorise samples as healthy or diseased based on real-time PCR data."
+  },
+  {
+   "work": "W3194776839",
+   "problem": "This work estimates the effectiveness of involving non-experts in scientific decision-making, predicts the benefits of counter-expertise, compares different approaches to science development, optimizes the role of practitioners in policy-related research, and explains the potential for post-normal science to bring about more inclusive debate.",
+   "approach": "The approach involves introducing counter-expertise, a step in the right direction, and considering a methodology that brings about more inclusive debate, encouraging practitioners to focus on scientific and medical aspects, and promoting the involvement of lay people in scientific decision-making."
+  },
+  {
+   "work": "W2997506839",
+   "problem": "This work estimates the geographical origin of a set of biological samples based on their characteristics, comparing them to a reference set of samples from different regions. It aims to group similar samples together.",
+   "approach": "The approach involves creating a mathematical representation of the samples' characteristics, using a graph or neighborhood matrix, and then applying various methods to analyze and compare these representations."
+  },
+  {
+   "work": "W2989665513",
+   "problem": "This work estimates the nature of how people in Kenya express and experience their lives, particularly in relation to their desires and identities, by comparing and contrasting different aspects of their lives, such as law, religion, and cultural codes.",
+   "approach": "It uses a framework that examines how these aspects are produced, shared, and understood, and how they relate to each other, in order to gain a deeper understanding of people's experiences and identities."
+  },
+  {
+   "work": "W4383894825",
+   "problem": "This research estimates the effectiveness of a treatment in preventing a serious disease caused by a parasite that is spread by mosquitoes. It compares the results of laboratory and field studies to determine if the treatment is effective in real-world conditions.",
+   "approach": "The researchers used a combination of three active ingredients to create a treatment, and tested it in two laboratory studies and one field study. They gave the treatment to groups of animals and tested them for the presence of the parasite over time."
+  },
+  {
+   "work": "W4388652047",
+   "problem": "This work aims to estimate the effect of adding a small amount of a specific material to a mixture of substances on the performance of a complex system. It predicts how this addition will change the system's behavior and optimise its efficiency.",
+   "approach": "The researchers use a combination of analysis techniques to determine the properties of the substances. They then test the system with and without the added material, comparing the results to see how the addition affects the system's performance."
+  },
+  {
+   "work": "W4413287509",
+   "problem": "Estimate the number of researchers attending the conference, and compare the results to the actual attendance. Also, explain the theme of the conference and how it relates to the attendees' backgrounds.",
+   "approach": "Use a statistical model to analyze the data from the organizers' report, and apply a regression analysis to predict the attendance based on the number of invited speakers and the conference theme."
+  },
+  {
+   "work": "W7133206738",
+   "problem": "This work identifies a rare condition that can mimic other eye problems and lead to incorrect diagnoses. It estimates the prevalence of this condition in a specific geographic area and compares it to other conditions.",
+   "approach": "The researchers collected data on patients with symptoms that couldn't be explained, and then used this data to identify the underlying cause. They also emphasized the importance of detailed patient interviews and timely surgical treatment for accurate diagnosis and management."
+  },
+  {
+   "work": "W4402704338",
+   "problem": "This work estimates the effect of a certain type of molecule on a biological process that occurs when a molecule breaks down and releases energy. It predicts how this effect might happen and compares it to other known effects on the same process.",
+   "approach": "The procedure follows two possible ways: one involves changing the way the molecule interacts with a key component of the biological process, and the other involves changing the way the molecule affects the way energy is released from the broken-down molecule."
+  },
+  {
+   "work": "W3164438586",
+   "problem": "This work estimates the size and aggressiveness of a rare, benign growth in the lungs, and compares it to other growths that could be malignant. It also explains the growth's behavior and characteristics, and optimizes its diagnosis.",
+   "approach": "The researchers used a combination of data from the growth's size, shape, and microscopic features, as well as comparisons with other growths, to make their estimates and explanations. They used a specific test to confirm the growth's characteristics and rule out other possibilities."
+  },
+  {
+   "work": "W4386463687",
+   "problem": "Estimate the effectiveness of a training program in a cost-efficient manner to address preventable deaths in low- and middle-income countries.",
+   "approach": "Use a framework to develop and deliver a training program for individuals working in emergency situations, with the goal of improving their skills and knowledge in a specific area."
+  },
+  {
+   "work": "W4409730687",
+   "problem": "This study estimates the relationship between a moderate level of concern about environmental issues and people's willingness to make environmentally friendly choices. It compares the importance of different factors in these choices and optimizes the level of concern for making these choices.",
+   "approach": "The researchers used a special technique to ask people to make choices with different attributes and levels, allowing them to understand the importance of different factors. They compared the results to see if a moderate level of concern was the best for making environmentally friendly choices."
+  },
+  {
+   "work": "W4401615115",
+   "problem": "This work estimates the impact of a complex set of influences on individual behavior, comparing different dimensions and trends to understand how they shape attitudes, beliefs, and actions.",
+   "approach": "It uses a multidimensional framework to analyze how various categories, such as geographical location and group affiliations, affect thinking and behavior, and optimizes its findings by considering current trends and influences."
+  },
+  {
+   "work": "W7220671126",
+   "problem": "This work estimates the relationship between two groups with different ideologies in a specific region over time. It compares their presence and influence in different areas, such as local government and industry, to understand the underlying factors driving their interactions.",
+   "approach": "The analysis focuses on the patterns and tensions revealed in the public statements and actions of these groups. It examines three key areas: how they govern the community, their influence in the workplace, and how national events affect their relationships."
+  },
+  {
+   "work": "W2797185165",
+   "problem": "This work investigates how the size of a certain type of filler affects the performance of a material at high temperatures. It aims to find the optimal size for the filler to achieve good performance in terms of energy absorption and mechanical strength.",
+   "approach": "The researchers created a material by mixing a metal with a filler of a certain size and then tested its performance under different conditions. They varied the size of the filler and the frequency of the test to see how it affected the material's performance."
+  },
+  {
+   "work": "W3124269957",
+   "problem": "This research estimates the effect of a certain substance on the body's response to a specific condition, comparing the results to a standard treatment. It also predicts the outcome of a certain situation and explains the underlying mechanisms.",
+   "approach": "The researchers used a combination of chemical tests and animal experiments to evaluate the substance's effect. They followed a procedure that involved preparing a substance, testing its chemical properties, and then administering it to animals to see how it affected their response to a specific condition."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-041",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T14:41:47Z",
+ "descriptions": [
+  {
+   "work": "W3030016222",
+   "problem": "A pattern of physiological traits linked to disease risk is analyzed to determine how genetic variation influences the expression and function of a regulatory protein across different tissues and conditions.",
+   "approach": "A comprehensive review integrates data from genetic studies, tissue expression profiles, and functional assays to map how a specific protein's activity varies in response to environmental and internal cues across multiple biological systems."
+  },
+  {
+   "work": "W4316039957",
+   "problem": "A set of properties related to a compound's behavior in biological systems is estimated, including its likelihood of being safe, metabolized efficiently, and avoiding harmful interactions, using available experimental results from known compounds.",
+   "approach": "A systematic evaluation is performed by testing 18 distinct computational methods on a group of known compounds, comparing their outputs against known outcomes, and assessing consistency, reliability, and predictive performance across different conditions."
+  },
+  {
+   "work": "W4417110595",
+   "problem": "A pattern of human activity over time is inferred from physical remains found in a specific location, using spatial and temporal data from construction records and surface observations.",
+   "approach": "A sequence of events is reconstructed by aligning material findings with known construction timelines, using spatial mapping and contextual evidence to determine the order and nature of past interactions with the site."
+  },
+  {
+   "work": "W3160148339",
+   "problem": "A process is designed to evaluate how community-based creative interventions influence local engagement, trust, and shared outcomes in urban environments over time.",
+   "approach": "A structured cycle is followed: initiate dialogues between residents and creative practitioners, co-develop public installations with local input, and assess changes in community sentiment and participation through iterative feedback and observation."
+  },
+  {
+   "work": "W7128344668",
+   "problem": "A pattern of reproductive output and individual growth is tracked over time across a group of animals under controlled conditions, using records of offspring survival, weight changes, and behavioral observations during key life stages.",
+   "approach": "Data from repeated cycles of reproduction and individual development are collected and analyzed to identify trends in offspring survival, growth rates, and maternal behavior, then compared across time and conditions to evaluate performance and stability."
+  },
+  {
+   "work": "W2895545724",
+   "problem": "A system observes user device behavior and network interactions to estimate how frequently devices communicate with the network, especially during idle periods, and predicts the resulting strain on network resources.",
+   "approach": "The system applies rules to detect when devices can safely enter low-activity states and uses dynamic thresholds to trigger brief, periodic connections instead of continuous background checks, reducing unnecessary network traffic."
+  },
+  {
+   "work": "W4224219195",
+   "problem": "A quantitative synthesis of evidence is performed to assess the relationship between exposure levels of specific organic compounds in food and biological samples and the likelihood of developing a particular type of disease.",
+   "approach": "Multiple studies are systematically reviewed and their numerical outcomes are combined using statistical methods to compute an overall effect size, adjusting for differences in study design, population, and measurement context."
+  },
+  {
+   "work": "W2942094165",
+   "problem": "A system is monitored to understand how changes in lifestyle and mental state affect physiological balance and the regulation of internal feedback loops involving stress and metabolic function.",
+   "approach": "A structured set of physical and breath-based practices is applied regularly to influence bodily rhythms, reduce stress-induced disruptions, and support the stability of internal regulatory networks over time."
+  },
+  {
+   "work": "W3089061580",
+   "problem": "The strength of interaction between a microscopic system and a confined electromagnetic field is measured and compared under two conditions: one with active stabilization of the system's motion and one without.",
+   "approach": "A feedback mechanism is applied to suppress random motion of the system, enhancing its consistent alignment with the field. This alignment increases the effective interaction strength, which is then observed through precise measurements of energy exchange between the system and the field."
+  },
+  {
+   "work": "W4401278612",
+   "problem": "The rate at which fluid is removed from a compromised enclosure is measured under controlled conditions, and the time required to empty the enclosure is predicted for different removal mechanisms.",
+   "approach": "A physical setup simulates fluid ingress through a defined aperture. Four distinct removal systems are tested under identical conditions, and their performance is evaluated by tracking the volume of fluid removed per unit time and the time to achieve full evacuation."
+  },
+  {
+   "work": "W4296396384",
+   "problem": "A material's resistance to deformation and surface degradation under sliding is evaluated across varying reinforcement content and processing conditions.",
+   "approach": "A base material is modified with controlled amounts of added components, processed under consistent mechanical conditions, and analyzed through microstructural inspection and mechanical performance testing across different load and distance regimes."
+  },
+  {
+   "work": "W2949825862",
+   "problem": "A system is evaluated to determine how effectively it allocates scarce environmental services to stakeholders, based on their willingness to engage and the clarity of value they assign to those services.",
+   "approach": "A mechanism is applied where participants submit offers for service delivery, and outcomes are compared under two rules: one where all participants receive equal value, and another where value is distributed based on offer rank and available resources."
+  },
+  {
+   "work": "W4399713076",
+   "problem": "A set of interventions is evaluated to determine which enhance employee physical and mental engagement during routine tasks, based on observed patterns of behavior and environmental interactions.",
+   "approach": "A structured framework is applied to analyze diverse intervention methods, grouping them by mechanism and outcome, then identifying which combinations consistently support sustained attention and reduced stress in daily operations."
+  },
+  {
+   "work": "W4391232342",
+   "problem": "A system's ability to thrive and remain present in a complex, dynamic environment is assessed by measuring its performance under conditions mimicking natural host interactions and its persistence over time.",
+   "approach": "A genetic variant is disabled in a living organism, and its behavior is compared to the wild-type under controlled conditions involving host-derived substrates and long-term exposure to a simulated host niche."
+  },
+  {
+   "work": "W4416867271",
+   "problem": "A pattern of progressive organ damage is assessed to distinguish between causes involving immune-mediated clotting, drug-induced injury, or systemic vascular dysfunction, using clinical, laboratory, and tissue-based evidence.",
+   "approach": "A stepwise evaluation compares vascular changes in tissue sections with blood markers and clinical symptoms, prioritizing findings of widespread vessel occlusion, normal complement levels, and specific autoantibody presence to determine the most likely underlying mechanism."
+  },
+  {
+   "work": "W4409465172",
+   "problem": "The relationship between material composition and electromagnetic response is estimated from measured signals in a frequency-dependent environment.",
+   "approach": "A mathematical model combines the contributions of two components, adjusting their relative influence based on proportion, to predict how wave propagation is affected by the material's internal structure."
+  },
+  {
+   "work": "W2790202026",
+   "problem": "A system is designed to combine multiple functional layers of different material types, each optimized for distinct performance characteristics, while preserving the operational integrity of sensitive components during fabrication.",
+   "approach": "Layers are stacked and separated using a bonding and lifting technique that allows each layer to be processed under conditions that do not disrupt the performance of adjacent layers."
+  },
+  {
+   "work": "W2980156712",
+   "problem": "A system's output force is estimated under varying lengths and time scales, capturing how force changes with state and duration. It predicts how internal dynamics influence observable behavior across different conditions.",
+   "approach": "A dynamic framework updates force based on current state and time, using time and length as inputs. It simulates transitions between states through continuous updates, matching observed patterns in response to external and internal changes."
+  },
+  {
+   "work": "W3195138890",
+   "problem": "A lung lesion with evolving structure and bleeding risk is assessed to determine whether it is a benign tumor or a malignant growth, based on tissue characteristics and cellular markers.",
+   "approach": "A larger tissue sample is obtained and examined for cellular morphology, including patterns of solid growth and papillary formations, and tested for specific protein expression to distinguish between benign and malignant tissue types."
+  },
+  {
+   "work": "W4213029004",
+   "problem": "A system infers the behavior of digital components from input-output mappings and predicts their output under given input conditions, including handling overflow and determining optimal bit width for precision.",
+   "approach": "It maps input patterns to output patterns using lookup tables, applies feedback suppression to prevent infinite loops, and uses standardized primitives to ensure consistent behavior across different hardware implementations."
+  }
+ ]
+}

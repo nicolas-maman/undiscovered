@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-006",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:41Z",
+ "descriptions": [
+  {
+   "work": "W3122250506",
+   "problem": "This work aims to understand how the social and economic status of individuals affects their overall health and risk of serious illnesses, such as heart problems, during a time of widespread illness and economic hardship. It also seeks to identify ways to address these issues and reduce avoidable deaths.",
+   "approach": "The study uses data to compare the health outcomes of people from different social and economic backgrounds, and to predict the impact of stress, economic recession, and quarantine on mental health. It suggests that targeted interventions, such as healthier workplaces and restrictions on unhealthy food and drink, could help reduce these risks."
+  },
+  {
+   "work": "W4389252274",
+   "problem": "This research aims to estimate the effectiveness of a new method for training students in a specific field, comparing the outcomes of students who use this method to those who do not. It also predicts how well students will perform in practical skills and optimizes the use of technology in training.",
+   "approach": "The researchers use data from students who have used this new method to train students, analyzing the results to explain how the method impacts student performance and practical skills."
+  },
+  {
+   "work": "W4395029833",
+   "problem": "This work estimates the performance of different methods for predicting a person's kidney function based on their medical records. It compares these methods to see which one gives the most accurate results and is fair for different racial groups.",
+   "approach": "The researchers built a prediction model using three different approaches and four different models. They tested these models on data from patients' medical records and measured their performance using various metrics such as accuracy and how close their predictions were to the actual values."
+  },
+  {
+   "work": "W4414242859",
+   "problem": "This research estimates the association between housing costs and how households allocate their budget for basic needs, such as food. It also explores how the level of support from a government program affects this association.",
+   "approach": "The researchers used data from a large survey to analyze how housing costs affect households' budget for basic needs. They used a statistical method to compare the effects of housing costs on households' budget and the impact of government support on these effects."
+  },
+  {
+   "work": "W4309362539",
+   "problem": "An estimate of the number of years since a certain event is made based on a person's birth year and the year the event occurred. The estimate is compared to the actual year the event occurred.",
+   "approach": "A simple calculation is used to estimate the number of years, where the difference between the birth year and the event year is divided by 12 and then multiplied by 12 to get the number of years."
+  },
+  {
+   "work": "W2848923681",
+   "problem": "This work estimates the amount of moisture that seeps into the ground in a dry area, and compares it to the amount of moisture that falls from the sky. It also explains how the moisture in the ground changes over time.",
+   "approach": "The researchers used sensors to measure the moisture in the ground and the amount of moisture that falls from the sky. They analyzed the data to see how the moisture in the ground changes when the moisture from the sky increases or decreases."
+  },
+  {
+   "work": "W4312202625",
+   "problem": "This research aims to estimate the impact of increased surveillance on Muslim men in a specific city, comparing their experiences to those of other ethnic groups. It also seeks to explain the relationship between this surveillance and the displacement of these men from their homes.",
+   "approach": "The researcher used a combination of qualitative and quantitative data, including interviews and surveys, to gather evidence and inform a statistical model that predicts the effects of surveillance on these men's lives."
+  },
+  {
+   "work": "W3205603703",
+   "problem": "This research estimates the level of a protein in different types of tissue samples, predicts how the protein affects the growth and death of certain types of tissue, and compares the levels of the protein in different types of tissue samples. It also optimizes the growth of certain types of tissue by increasing the level of the protein.",
+   "approach": "The research uses a combination of data from tissue samples and experiments to determine the effect of the protein on tissue growth and death. It follows a procedure where the protein is increased in certain tissue samples, and the effect on growth and death is observed and measured."
+  },
+  {
+   "work": "W7221107892",
+   "problem": "This work estimates and compares the effectiveness of 22 different plant sources in treating adverse effects, and identifies 23 of them as potentially useful. It aims to explain the best approach to treating these effects.",
+   "approach": "The study uses a literature review approach, where it examines regional sources to identify effective treatments. It follows a procedure of analyzing and comparing data from 23 plant sources to determine their potential benefits."
+  },
+  {
+   "work": "W4376643563",
+   "problem": "This work estimates the efficiency of using frozen deposits from an industrial process to improve the growth of plants on degraded land over a four-year period. It compares the changes in plant diversity and chemical composition of the deposits to a set of standards.",
+   "approach": "The researchers used a four-year experiment to analyze the dynamics of plant growth and chemical changes in the deposits. They followed a procedure that involved monitoring the changes in plant diversity and chemical composition over time."
+  },
+  {
+   "work": "W3097400207",
+   "problem": "This research estimates the presence of air in a specific area of the body, which is not expected to have a clear cause, and compares it to normal findings. It predicts the likelihood of injury to a particular part of the body due to increased pressure.",
+   "approach": "The researchers used imaging tests to identify the presence of air in the area, and then confirmed the findings with a more detailed examination. They also looked at the patient's medical history and symptoms to understand the cause of the air presence."
+  },
+  {
+   "work": "W4384825617",
+   "problem": "This work aims to estimate or predict the state of a complex system with many interconnected parts, where some data is missing. It also compares the performance of different methods to fill in the missing data and optimise the system's state.",
+   "approach": "The method uses a special kind of mathematical model that embeds the system's structure into the data, and then solves a complex mathematical problem to fill in the missing data. It uses a combination of local and global information to make the best predictions."
+  },
+  {
+   "work": "W3122217127",
+   "problem": "The task is to evaluate the effectiveness of a medical device used to divert excess fluid from the brain, and to compare it to other options. The goal is to determine if this device is a viable alternative for patients who cannot use a more commonly used device.",
+   "approach": "The approach involves analyzing data from modern literature to assess the current status of this device as a treatment option. The analysis aims to summarize available information and evaluate the device's potential as a viable alternative."
+  },
+  {
+   "work": "W4401050872",
+   "problem": "This research estimates the prevalence of a rare disease in a specific population, comparing it to other conditions. It predicts that this disease may have been previously identified in clinical research, but was not correctly diagnosed.",
+   "approach": "The researchers used a combination of keywords to identify relevant studies, then reviewed articles that mentioned both the disease and other conditions that might be related to it. They excluded articles that didn't meet certain criteria, such as narrative reviews or case reports."
+  },
+  {
+   "work": "W4324101903",
+   "problem": "This work estimates the relationship between a certain substance and a specific condition, comparing the prevalence of the substance in people with that condition to those without it. It also explores whether the substance has a beneficial or harmful effect on the condition.",
+   "approach": "The researchers review existing data and studies to understand the connection between the substance and the condition, focusing on whether the substance causes or contributes to the condition."
+  },
+  {
+   "work": "W4398238744",
+   "problem": "This research aims to estimate the content of certain substances in a specific product, which is prepared from a plant using a common method, and then altered with a specific type of flower to give it a distinct smell. The goal is to compare the content of these substances in the altered product to a standard.",
+   "approach": "The research uses observations and data from the product to compare its content to a standard. It follows a procedure where the product is prepared, altered, and then analyzed for its content of various substances."
+  },
+  {
+   "work": "W4402594774",
+   "problem": "This work aims to improve the performance and interpretability of a complex system that predicts future events based on past data, taking into account various types of knowledge and different ways of dividing the data into regions.",
+   "approach": "It uses a novel workflow that combines two key factors to design and implement a system that can handle multiple types of knowledge, support different methods for dividing the data, and use advanced models simultaneously."
+  },
+  {
+   "work": "W4288096496",
+   "problem": "This study aims to reduce the use of certain medications that can cause serious problems in older adults, such as confusion and falls. It estimates the number of people who will benefit from these reduced medication use and identifies factors that predict whether doctors will follow the recommended changes.",
+   "approach": "The researchers looked at the records of 187 older adults who received recommendations to reduce their medication use. They used a special method to compare the changes in medication use before and after the recommendations were made."
+  },
+  {
+   "work": "W4399367888",
+   "problem": "This work estimates the level of knowledge and practice of professionals in a specific area, comparing their understanding and actions to established guidelines. It aims to explain the consistency of their practices and identify areas for improvement.",
+   "approach": "The researchers used an online survey to collect data from a large group of professionals, classifying them into three categories based on their level of knowledge and practice. They then compared the results to various factors, such as academic level and previous training, to identify statistically significant differences."
+  },
+  {
+   "work": "W2980829615",
+   "problem": "This research aims to understand how the way adults interact with teenagers affects how teenagers feel about themselves and make decisions. It estimates the influence of the teenager's gender on these feelings and behaviors.",
+   "approach": "The researcher uses a method that looks at the relationships between the way adults interact with teenagers and how teenagers feel about themselves and make decisions. The researcher collects data through questionnaires and uses statistical analysis to identify patterns and correlations."
+  }
+ ]
+}

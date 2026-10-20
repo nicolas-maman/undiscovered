@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-043",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:47Z",
+ "descriptions": [
+  {
+   "work": "W2949120580",
+   "problem": "A system's condition is assessed over time through seasonal sampling to detect changes in key chemical and biological indicators, identifying sources of contamination and predicting degradation trends that impair ecological balance and functionality.",
+   "approach": "Data from two distinct periods are compared to identify shifts in nutrient levels and organic load; changes are linked to human activity patterns, and mitigation strategies are proposed based on observed trends and seasonal variability."
+  },
+  {
+   "work": "W4393111364",
+   "problem": "A system estimates how visual content can be projected through a transparent surface so that users on both sides can see real-world scenes and superimposed digital elements simultaneously.",
+   "approach": "The system uses a layered light modulation technique, where color and intensity are adjusted over time to create a visible image from one side while preserving visibility from the other."
+  },
+  {
+   "work": "W7155500411",
+   "problem": "The tendency for a material to lose structural integrity under low-temperature conditions is assessed, particularly when exposed to varying chemical environments.",
+   "approach": "A system is exposed to controlled chemical conditions that alter surface interactions; outcomes are evaluated based on structural degradation patterns and compared across different environmental settings."
+  },
+  {
+   "work": "W4252965710",
+   "problem": "It estimates how well individuals recognize systematic errors in their own judgment when evaluating uncertain or complex situations involving limited information.",
+   "approach": "It uses a structured sequence of scenarios and feedback loops to observe how participants adjust their confidence and reasoning in response to repeated exposure and reflection on inconsistent outcomes."
+  },
+  {
+   "work": "W4405973678",
+   "problem": "An estimate is made of the number of individuals crossing a regional boundary to access medical services, based on survey responses and administrative records. The factors influencing service choice—such as cost, technology availability, and language—are compared across demographic and geographic groups.",
+   "approach": "A structured model analyzes patterns in service utilization by grouping individuals by age, language proficiency, and access to advanced medical tools. Decisions are mapped through a behavioral framework that links resource availability to user preferences and outcomes."
+  },
+  {
+   "work": "W2935895800",
+   "problem": "It seeks to understand how internal states relate to external experience by mapping how an organism's behavior and perception emerge from its interaction with the environment over time.",
+   "approach": "It models this by simulating how an entity's internal dynamics are shaped through continuous feedback with its surroundings, adjusting internal representations based on real-time environmental input and past interactions."
+  },
+  {
+   "work": "W4301033094",
+   "problem": "The relative strength of immune responses to two distinct viral surface components is measured across individuals after exposure, comparing how strongly different parts of the immune system respond to each component.",
+   "approach": "A standardized assay is used to detect and quantify immune activity against each component, with responses categorized by their similarity to known patterns associated with certain types of immune recognition and structural features."
+  },
+  {
+   "work": "W4385373747",
+   "problem": "A sequence of measured values over time is analyzed to infer underlying trends by identifying a pattern that fits the data better than simple interpolation.",
+   "approach": "A weighted average is computed by combining adjacent data points in a symmetric pattern, where each point's influence decreases as distance from the center increases, resulting in a refined estimate of the underlying trend."
+  },
+  {
+   "work": "W3039875154",
+   "problem": "A pattern of knowledge production is analyzed across a region, examining how research is distributed geographically, by authorship, topic, and methodological approach over time.",
+   "approach": "A structured process scans and categorizes studies from a defined time period and regional sources, then maps trends in research output and methodological choices using statistical and descriptive analysis."
+  },
+  {
+   "work": "W2896378146",
+   "problem": "A system's performance is monitored over time to detect unexpected drops in signal intensity in specific regions, which may indicate a component failure affecting data reliability.",
+   "approach": "A routine check is conducted daily to record and compare signal levels across defined segments. Any deviation below a baseline threshold triggers further investigation to identify and replace a failing component."
+  },
+  {
+   "work": "W3005711130",
+   "problem": "The system estimates how different management practices affect long-term productivity and financial returns under variable environmental conditions, comparing outcomes across scenarios with differing input availability and response times.",
+   "approach": "It integrates pasture growth predictions with animal response dynamics, simulating how changes in resource allocation and recovery timing influence overall system performance over time."
+  },
+  {
+   "work": "W4392092126",
+   "problem": "A system observes fluctuations in supply conditions and estimates the need to inject corrective signals to maintain stable output levels in real time.",
+   "approach": "It uses a network of interconnected circuits with fast-acting signal processing to detect deviations and apply precise, time-varying corrections based on real-time measurements and predefined control rules."
+  },
+  {
+   "work": "W4205139408",
+   "problem": "Identify a set of organisms that consistently thrive in human-modified environments and are strongly associated with urban development, based on their presence across diverse locations and time periods.",
+   "approach": "Analyze spatial patterns of organism occurrence over time and geography using frequency and distribution matrices. Rank locations by consistency of presence, then select a subset with high urban exposure and stable occurrence across multiple surveyed sites."
+  },
+  {
+   "work": "W4290755245",
+   "problem": "A framework is developed to assess whether a theoretical model's structure can consistently account for agent behavior under full information and rational expectations, especially when those agents face complex, interdependent decision environments.",
+   "approach": "A set of rules is applied to test whether the model's internal logic can reproduce consistent outcomes across all agents, without requiring external adjustments or assumptions about unobserved variables."
+  },
+  {
+   "work": "W2986201080",
+   "problem": "A quantity representing the fluctuation intensity of a biological signal is estimated from noisy observations, and its accuracy depends on the signal's modulation and the noise's statistical properties.",
+   "approach": "The signal's fluctuation intensity is estimated by computing the square root of the difference between the signal's squared magnitude and the noise's variance, setting the result to zero if negative, and using this rule for consistent inference."
+  },
+  {
+   "work": "W3093411687",
+   "problem": "The spatial extent and likelihood of a plant's presence across a landscape are estimated under different climate conditions, using historical and current environmental variables as input.",
+   "approach": "A statistical model maps suitable environmental conditions to known locations, then evaluates how those conditions shift under future climate projections, assigning probability scores to each area based on environmental similarity."
+  },
+  {
+   "work": "W7215413160",
+   "problem": "A pattern of societal alignment is inferred between two influential institutions during a period of political upheaval, based on how individuals and groups respond to a public accusation of collusion.",
+   "approach": "A model maps responses across time and location using textual records and public statements, identifying shifts in loyalty and behavior through comparative analysis of official and media sources."
+  },
+  {
+   "work": "W4409034550",
+   "problem": "A large set of genetic sites across a complex organism's DNA is analyzed to identify regions with repeating patterns that can distinguish between different varieties. The frequency and distribution of these patterns are quantified and compared across species to assess their ability to differentiate genetic variants.",
+   "approach": "A scanning process is applied across the entire DNA sequence to detect repeating units. These units are grouped by length and frequency, and a set of primer pairs is generated for each to amplify and detect variation across multiple related species."
+  },
+  {
+   "work": "W2970213417",
+   "problem": "A set of biomarkers in blood is used to distinguish individuals with a specific disease from those without it, based on patterns in biological samples collected from diverse patient groups.",
+   "approach": "A statistical model is trained on a group of samples to identify a combination of markers that best separates diseased from healthy individuals. The model is then tested on separate groups to confirm its ability to consistently detect the disease with high accuracy."
+  },
+  {
+   "work": "W4396738097",
+   "problem": "A system evaluates how well a service meets user expectations by comparing perceived performance to ideal standards, and designs improved service programs based on user needs and cultural context.",
+   "approach": "Data from direct observations and stakeholder conversations is reviewed to identify key service factors. A structured framework maps these factors to user expectations and cultural elements to design more responsive and sustainable service offerings."
+  }
+ ]
+}

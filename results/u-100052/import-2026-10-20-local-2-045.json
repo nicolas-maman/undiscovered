@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-20-local-2-045",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9473684210526315,
+ "at": "2026-10-20T14:41:47Z",
+ "descriptions": [
+  {
+   "work": "W4319925234",
+   "problem": "A detailed biological profile of a rare lung condition is constructed by analyzing genetic variants, gene activity patterns, and imaging-derived features to identify key drivers and suppressive mechanisms.",
+   "approach": "Genetic and expression data from tissue samples are combined with quantitative features extracted from medical images. A unified computational framework integrates and validates these data streams to detect consistent patterns and generate a predictive biological model."
+  },
+  {
+   "work": "W2806981346",
+   "problem": "A change in visual function over time is assessed to determine how it influences a person's behavior in real-world driving conditions, specifically how they adjust their actions in response to perceived visual limitations.",
+   "approach": "A longitudinal model tracks changes in visual performance and corresponding behavioral patterns across different driving scenarios, using statistical analysis to identify which visual improvements correlate with reduced adaptive driving behaviors."
+  },
+  {
+   "work": "W4283319719",
+   "problem": "A system is evaluated to determine whether internal processing amplifies responses to repeated stimuli and correlates with subjective discomfort levels, based on physiological and self-reported symptom data.",
+   "approach": "Repetitive stimulus responses are measured and compared to self-reported distress levels. A statistical model links the response amplification to physiological markers and psychological factors, adjusting for known confounding influences."
+  },
+  {
+   "work": "W4390743390",
+   "problem": "The likelihood and nature of a rare, benign growth in the digestive tract are assessed, particularly in individuals presenting with bleeding symptoms, and its potential link to chronic tissue inflammation is evaluated.",
+   "approach": "Two patient cases are analyzed through medical records and imaging data. Patterns in symptom onset, diagnostic methods, and treatment outcomes are compared to prior documented cases to assess trends and possible associations with inflammation."
+  },
+  {
+   "work": "W3204207334",
+   "problem": "A system must assign tasks to a sequence of workstations to maximize economic benefit while minimizing idle time, under a strict time limit for each task.",
+   "approach": "A dynamic selection process iteratively refines task assignments by evaluating trade-offs between efficiency and time usage, using a fitness function that balances profit and idle time across multiple competing goals."
+  },
+  {
+   "work": "W4402852960",
+   "problem": "A system observes how plant roots influence the movement and distribution of moisture in the upper layers of land, affecting how much moisture is lost to the atmosphere and how much enters deeper layers.",
+   "approach": "The system simulates a natural landscape with and without plant roots, tracking moisture flow over time. It adjusts the flow based on root activity, modeling how moisture is drawn from the upper layers and redirected, altering surface and subsurface dynamics under stress conditions."
+  },
+  {
+   "work": "W4413177445",
+   "problem": "A numerical ratio derived from two biological measurements is evaluated to distinguish individuals with a specific condition from those without it, and to assess its ability to predict disease severity across different clinical subgroups.",
+   "approach": "The ratio is computed from lab values and compared across groups using statistical tests. Its association with disease presence and progression is assessed through correlation and regression analysis, adjusting for known confounding factors."
+  },
+  {
+   "work": "W4404967120",
+   "problem": "A system is designed to estimate the performance of a structural framework under load, focusing on minimizing material usage while maintaining stability, by analyzing how different configurations affect strength and efficiency.",
+   "approach": "A parametric model adjusts component counts and dimensions across a range of designs, simulates internal stress patterns, and evaluates performance metrics using iterative computation and statistical learning to identify patterns in efficiency and consistency."
+  },
+  {
+   "work": "W3041570370",
+   "problem": "A persistent mass develops along a surgically implanted pathway, evolving over time and mimicking a tumor-like lesion. Its presence restricts movement and leads to asymmetrical development of a body region, prompting surgical removal to restore function.",
+   "approach": "A pathway established during a medical intervention undergoes progressive fibrotic change. When the resulting mass reaches a size that disrupts normal anatomy, it is surgically removed to restore mobility and balance."
+  },
+  {
+   "work": "W3096446161",
+   "problem": "The performance of a material is evaluated under mechanical stress and frictional conditions, with key metrics including resistance to deformation, fracture, and surface degradation measured across varying levels of added reinforcement.",
+   "approach": "A standardized test setup applies controlled sliding contact to sample specimens, while mechanical strength and resistance to deformation are assessed through tension, compression, and impact tests at different reinforcement concentrations."
+  },
+  {
+   "work": "W4403720007",
+   "problem": "A pattern of abnormal metabolic activity is assessed to determine its association with adverse clinical outcomes in a patient population. Outcomes such as prolonged recovery, infection risk, and nutritional decline are compared across individuals with and without the pattern, adjusting for known health conditions and demographic factors.",
+   "approach": "A retrospective analysis uses coded medical records to identify individuals exhibiting a specific metabolic disturbance. Statistical models compare health outcomes across groups, controlling for comorbidities and patient characteristics to isolate the effect of the disturbance on recovery and complications."
+  },
+  {
+   "work": "W7217854594",
+   "problem": "A decision is made about the surgical approach for a patient based on anatomical constraints, patient age, cancer risk factors, and recovery expectations, with the goal of minimizing invasiveness and long-term complications.",
+   "approach": "A structured evaluation compares surgical routes and ancillary procedures based on patient characteristics and clinical outcomes, then selects the path that balances risk, recovery time, and patient preferences."
+  },
+  {
+   "work": "W2999758323",
+   "problem": "A substance is tested for its ability to inhibit the formation and growth of fat-storing cells under conditions that promote excessive accumulation of energy stores.",
+   "approach": "The effect is measured in living organisms and cell cultures exposed to conditions that trigger energy storage. Gene activity related to cell differentiation is monitored, and comparisons are made to a control substance with known low activity."
+  },
+  {
+   "work": "W4396723801",
+   "problem": "A system is designed to manage bidirectional power flow between a renewable energy source and a vehicle-based load, optimizing power quality by minimizing waveform distortions under varying operational conditions.",
+   "approach": "A dynamic model simulates real-time interactions between a variable input and a variable load, adjusting power delivery in response to load demand and supply fluctuations using feedback-based regulation to maintain stable and clean output."
+  },
+  {
+   "work": "W4400895262",
+   "problem": "A model estimates how pre-existing biological conditions influence changes in clinical outcomes following the start of a therapeutic intervention, using longitudinal physiological measurements and compositional data from biological samples collected over time.",
+   "approach": "The model analyzes repeated observations from individuals over several time points, applying statistical tests to detect associations between early biological states and later outcome shifts, then identifies patterns that correlate with measurable response changes."
+  },
+  {
+   "work": "W4313707010",
+   "problem": "A measure of biological timing at birth is assessed to see how well it correlates with later performance across multiple skill areas in early life, using standardized assessments administered over time.",
+   "approach": "Two distinct algorithms process molecular data from biological samples to generate a timing estimate. This estimate is then compared against performance outcomes across various domains, adjusting for known birth timing indicators and repeated observations over time."
+  },
+  {
+   "work": "W2892840421",
+   "problem": "Systematic errors in imaging are estimated from a set of images taken from different viewpoints, using only relative positional information between them, without relying on external reference points of known precision.",
+   "approach": "A weighted combination of observed image positions is formed by simulating virtual observations from known viewpoints. These are then used to solve for image distortions through a stable mathematical process that balances consistency across the image set."
+  },
+  {
+   "work": "W3157204031",
+   "problem": "A chronic condition allowing uncontrolled escape of fluid and gas from a bodily cavity is monitored over time to assess recovery and functional outcomes.",
+   "approach": "A simple, low-risk device is used to allow continuous removal of contents while maintaining internal stability. Recovery is tracked through repeated imaging and functional measurements to evaluate long-term physiological changes."
+  },
+  {
+   "work": "W2797661202",
+   "problem": "A system's ability to move toward a distant site is measured under different conditions, and how that movement changes when a specific regulator is altered is determined.",
+   "approach": "A regulator is introduced or removed to alter the surface levels of a receptor involved in directional movement. The effect on movement is assessed by measuring how changes in receptor levels influence cell behavior in response to external signals."
+  }
+ ]
+}

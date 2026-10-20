@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-021",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:43Z",
+ "descriptions": [
+  {
+   "work": "W2994794392",
+   "problem": "This work aims to identify a specific type of bacteria that causes various infections, and to develop a reliable method to detect its presence in samples. It estimates the genetic characteristics of the bacteria and compares them to known data to create a diagnostic tool.",
+   "approach": "The approach involves designing new genetic sequences that are unique to the bacteria, and then testing these sequences to see if they can accurately identify the bacteria in various samples. The method is optimized to ensure the sequences are precise and do not match other types of bacteria."
+  },
+  {
+   "work": "W3200935835",
+   "problem": "This work aims to identify and categorize the common characteristics of a certain concept across various fields of study, using data from multiple disciplines to provide a comprehensive understanding of the concept.",
+   "approach": "It uses a systematic review method to collect and categorize data, following a procedure that involves collecting data from multiple fields, categorizing it, and then creating a framework that summarizes the common characteristics."
+  },
+  {
+   "work": "W2916064385",
+   "problem": "This work estimates the effect of a magnetic field on the growth and development of a certain plant, comparing the changes in its physiological processes after treatment. It predicts the outcomes of this treatment on the plant's growth and development.",
+   "approach": "The researchers applied a magnetic field to a set of plant samples and observed the changes in their growth and development over time. They used a controlled environment to test the effect of the magnetic field on the plant's physiological processes."
+  },
+  {
+   "work": "W4398234107",
+   "problem": "The researchers estimate the potential of modern institutions to address various subjects' issues by studying a common resource, and compare their current state with their historical development and future plans.",
+   "approach": "They analyze the university's history, current specifics, and development strategy, focusing on a project to integrate five clusters and create a scientific and educational center."
+  },
+  {
+   "work": "W4401594742",
+   "problem": "This study aims to identify the types of bacteria that cause infections in patients who have been injured by a severe form of trauma, and to determine which antibiotics are effective against these bacteria.",
+   "approach": "The researchers collected samples from the injured patients and tested them in a laboratory to see which bacteria grew, and then tested the bacteria to see which antibiotics they were resistant to."
+  },
+  {
+   "work": "W3164422107",
+   "problem": "This research aims to help students in their first year of a degree program in Education, focusing on Spanish-Literature, understand and connect with their own cultural identities. It estimates the effectiveness of a specific method to achieve this goal.",
+   "approach": "The researchers applied various methods and techniques, including observation, discussion groups, and analysis of documents, to develop a procedure with three stages: preparation, execution, and evaluation. The approach is based on a systematic and logical analysis of the subject matter, using a combination of inductive and deductive reasoning."
+  },
+  {
+   "work": "W3149223776",
+   "problem": "This research estimates the impact of interventions on soil erosion, water availability, and agricultural productivity, comparing the effects of different treatments on a large dataset. It also predicts the economic viability of the project and explains the need for integration with other departments.",
+   "approach": "The study uses a combination of data collection and analysis to evaluate the effects of interventions. It follows a procedure of data collection, analysis, and comparison to estimate the impact and predict the economic viability of the project."
+  },
+  {
+   "work": "W2801791429",
+   "problem": "This work estimates the effectiveness of using essential oils to reduce stress and anxiety, and to improve mood and intimacy, in people with relationship problems. It compares the effects of essential oils to other treatments for these issues.",
+   "approach": "The researchers use data from studies on the effects of essential oils on emotions and behavior, and analyze the results to identify patterns and correlations."
+  },
+  {
+   "work": "W7131621231",
+   "problem": "This study investigates the effect of a special liquid on the properties of a type of building material. It estimates the impact of this liquid on the material's performance over time.",
+   "approach": "The researchers prepared four different versions of the material, using the special liquid at different stages. They then tested the material's performance using various methods to compare the results."
+  },
+  {
+   "work": "W4406716550",
+   "problem": "This work aims to improve the performance of high-frequency devices by estimating and optimizing the properties of a specific material. It predicts the effects of adding a certain element to the material and compares the results to a baseline.",
+   "approach": "The researchers use a combination of theoretical calculations and experimental tests to determine the impact of the added element on the material's properties. They then design and fabricate a device using the optimized material to demonstrate its potential applications."
+  },
+  {
+   "work": "W4251953934",
+   "problem": "This research aims to estimate the level of optimism and pessimism among students at a large public university, comparing the results to a control group. The goal is to understand how these attitudes affect students' well-being and academic performance.",
+   "approach": "The researchers use a survey to collect data from a large sample of students, comparing their responses to those of a smaller control group. They then use statistical analysis to identify patterns and correlations between the data."
+  },
+  {
+   "work": "W4233693013",
+   "problem": "This work estimates the properties of an enzyme involved in fat digestion, comparing its characteristics across different species. It aims to explain how this enzyme is produced and works.",
+   "approach": "The researchers studied data from human and animal samples to identify the enzyme's properties and its role in digestion. They purified the enzyme and analyzed its free sulfhydryl groups to understand its activity."
+  },
+  {
+   "work": "W2950583080",
+   "problem": "This research aims to understand the current state of emotional well-being in a specific context, where students are the main focus, and the emphasis is on understanding the emotional impact of this context on students rather than on the people who work in it.",
+   "approach": "The study involves a systematic review of existing research, where relevant data is collected from a database, and then analyzed to identify patterns and trends, with the goal of identifying areas for future research and practical applications."
+  },
+  {
+   "work": "W4407982150",
+   "problem": "This work estimates how external conditions affect the performance of a device used to manipulate a fluid, and how this affects its lifespan. It compares the performance of the device under different conditions to optimize its design.",
+   "approach": "The researchers created a detailed model of the device using a computer program, and then used a mathematical method to simulate how the device would perform under different conditions. They used this simulation to analyze the effects of external conditions on the device's performance."
+  },
+  {
+   "work": "W4409987075",
+   "problem": "This work estimates the emergence of a specific type of cluster from a mixture of cells, predicts the formation of large clusters with multiple nuclei, and compares the observed clusters to those seen in vivo. It also explains the development of these clusters and proposes an alternative model for cell development.",
+   "approach": "The researchers used a modified culture medium to stimulate the growth of a mixture of cells, and observed the formation of clusters over time. They followed the growth of these clusters and identified the emergence of large clusters with multiple nuclei."
+  },
+  {
+   "work": "W2914427948",
+   "problem": "This research estimates the effect of a specific environmental factor on the growth of a particular type of plant, and compares the results to a control group. It also predicts the outcome of a specific condition in the plant's development.",
+   "approach": "The researchers used a combination of experiments and data analysis to understand the underlying mechanisms. They followed a procedure that involved isolating a specific variation of the plant, analyzing its growth patterns, and studying the effects of various hormones on its development."
+  },
+  {
+   "work": "W2996626167",
+   "problem": "This research estimates the effectiveness of a minimally invasive surgical technique for treating a lung condition, comparing the outcomes of 46 patients who underwent the procedure. The technique aims to reduce the risk of complications and hospitalization.",
+   "approach": "The researchers used a retrospective analysis of patient data, evaluating factors such as age, gender, and comorbidity. They performed the procedure using a minimally invasive technique, with a focus on safety and applicability."
+  },
+  {
+   "work": "W7217112636",
+   "problem": "This work aims to improve images by removing unwanted light effects and restoring their original color balance. It estimates the distance of objects from the viewer, compares light intensities to detect artificial light sources, and corrects for light loss and color changes.",
+   "approach": "The approach involves estimating the distance of objects from the viewer, segmenting the image into parts, comparing light intensities, and using mathematical techniques to correct for light loss and color changes, followed by noise reduction using frequency filtering."
+  },
+  {
+   "work": "W7215151196",
+   "problem": "This research aims to determine the optimal percentage of a certain agricultural byproduct to be mixed with concrete, and to evaluate its effect on the concrete's strength and water absorption. It also investigates the composition of the byproduct using various analytical techniques.",
+   "approach": "The study uses a combination of literature review and experimental analysis to find the most suitable percentage of the byproduct. It then tests the concrete samples using various methods to measure their strength, water absorption, and composition."
+  },
+  {
+   "work": "W4296926687",
+   "problem": "This research estimates the incidence of a rare genetic disorder in a specific population, predicts the likelihood of a particular condition based on symptoms and test results, and compares the effectiveness of different diagnostic methods. It aims to explain the importance of a specific diagnostic test in early disease detection.",
+   "approach": "The research uses a case study approach, starting with a patient's symptoms and test results, then using genetic testing and enzyme assays to confirm a diagnosis. The results are compared to standard diagnostic methods to highlight their importance."
+  }
+ ]
+}

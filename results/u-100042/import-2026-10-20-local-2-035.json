@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-035",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:46Z",
+ "descriptions": [
+  {
+   "work": "W3137644060",
+   "problem": "A treatment is evaluated for its ability to inhibit the spread of a wide range of airborne pathogens in human hosts, based on outcomes from controlled human trials and laboratory studies using cell cultures.",
+   "approach": "A liquid extract is tested across multiple pathogen strains in cell models and human trials to assess its effectiveness in reducing pathogen replication and symptom duration, with results compared across different populations and conditions to determine consistency and safety."
+  },
+  {
+   "work": "W3162759217",
+   "problem": "A system estimates how variations in environmental conditions affect the measured volume, density, and energy content of a fluid flow through a network.",
+   "approach": "It models the relationship between environmental state and physical properties using observed data points, then applies interpolation to predict how these properties shift across a range of conditions."
+  },
+  {
+   "work": "W4380433846",
+   "problem": "A system estimates future usage patterns across interconnected nodes in a network based on historical observations and current conditions, aiming to predict how activity will evolve over time with high accuracy and low error.",
+   "approach": "It combines a memory-based model that captures temporal dependencies with a spatial model that processes relationships between nodes, using a unified framework to update predictions continuously as new data arrives."
+  },
+  {
+   "work": "W4389648912",
+   "problem": "A dynamic response to a chronic skin condition is assessed over time to evaluate changes in lesion appearance and stability after an intervention.",
+   "approach": "A consistent protocol is applied to a patient's skin, and observations are recorded at defined intervals to track the evolution of lesion intensity and resolution patterns."
+  },
+  {
+   "work": "W2965108579",
+   "problem": "A system estimates how to adjust energy storage and generation to maintain balance between supply and demand over time, minimizing operational cost while respecting physical limits of storage and production capacity.",
+   "approach": "The system repeatedly refines adjustments by computing gradients of a cost function, updating decisions based on local error and system response until changes become negligible and stability is achieved."
+  },
+  {
+   "work": "W2948284799",
+   "problem": "A system estimates how much performance and resilience are lost when diverse, wild forms of a species are no longer available for breeding.",
+   "approach": "It models the outcome of combining limited, domesticated variants with rare, unaltered forms to assess how resilience and function improve under stress and environmental change."
+  },
+  {
+   "work": "W4206630838",
+   "problem": "A system of interacting units is studied to determine whether structured, stable spatial arrangements can emerge from dynamic molecular feedback.",
+   "approach": "A mathematical model simulates how units exchange signals and respond to local conditions, using continuous equations for simple systems or discrete units for complex ones, adjusting parameters to observe pattern formation or instability."
+  },
+  {
+   "work": "W7220047331",
+   "problem": "A system estimates the likelihood of long-term health decline in individuals based on daily behavioral patterns and access to digital health resources.",
+   "approach": "It analyzes patterns in user activity over time, identifies risk indicators, and applies a set of behavioral and environmental rules to predict health outcomes and recommend personalized interventions."
+  },
+  {
+   "work": "W3014443746",
+   "problem": "A treatment protocol is optimized to enhance biological regeneration in response to specific tissue conditions, with parameters adjusted based on the severity and type of tissue damage.",
+   "approach": "Treatment depth is tailored to the condition's severity, with pre- and post-treatment topical agents amplified for effect. Intervals between sessions are set to align with peak biological response, and complementary modalities are introduced to boost outcomes."
+  },
+  {
+   "work": "W3010869202",
+   "problem": "A system of rules is being analyzed to understand how different forms of rule-making interact, influence each other, and shape outcomes in society.",
+   "approach": "A framework is applied that separates rule creation processes based on their scope, timing, and enforcement mechanisms, then evaluates how changes in one process affect the other through observed patterns and historical examples."
+  },
+  {
+   "work": "W2797020252",
+   "problem": "The effect of a dietary supplement on growth rate, feed efficiency, final body weight, and mineral retention in young animals is estimated from repeated measurements over time under controlled nutritional conditions.",
+   "approach": "A stepwise experimental design applies increasing doses of a supplement across multiple treatment groups, then analyzes trends in growth and mineral content using statistical modeling to identify optimal dosage and performance outcomes."
+  },
+  {
+   "work": "W3153245888",
+   "problem": "A relationship is estimated between travel volume from major source regions and economic indicators in destination regions, focusing on how changes in transport accessibility affect movement patterns.",
+   "approach": "A statistical model is applied that accounts for potential biases in observed data by using instrumental variables, then analyzes how movement patterns respond to shifts in source-region income levels."
+  },
+  {
+   "work": "W4296510589",
+   "problem": "The effect of varying concentrations of a plant-derived compound on cellular damage markers is assessed, comparing outcomes across different dose levels to determine the most effective concentration for reducing molecular damage to cellular components.",
+   "approach": "A controlled in vitro system is used where samples are exposed to increasing concentrations of a compound, incubated under defined conditions, and then analyzed for changes in specific damage indicators, with statistical comparison to baseline levels."
+  },
+  {
+   "work": "W2002221189",
+   "problem": "A pattern of societal organization is analyzed to understand how collective governance models evolved over time, based on documented practices, institutional decisions, and societal responses to changing conditions.",
+   "approach": "A framework maps how governance structures and decision-making processes shifted in response to internal and external pressures, identifying key transitions in the balance between unified authority and independent institutions."
+  },
+  {
+   "work": "W4362473326",
+   "problem": "A biological agent's genetic sequence is analyzed to determine its relationship to known reference sequences, assessing how much it has diverged in key regions that influence immune recognition.",
+   "approach": "DNA sequences are extracted and aligned to known variants. Differences in specific protein-coding segments are computed to build a tree showing evolutionary distances. A new version is developed based on the most divergent features found in the field sample."
+  },
+  {
+   "work": "W4406105626",
+   "problem": "A decision-making process is evaluated to determine whether it is based on current evidence or on past experiences and established practices that may no longer be valid.",
+   "approach": "A systematic review of outcomes, peer discussions, and reexamination of past cases is conducted to distinguish between choices driven by experience and those supported by updated data and reasoning."
+  },
+  {
+   "work": "W4392888940",
+   "problem": "A biological agent is assessed for its ability to reduce cellular damage and enhance antioxidant defenses in an organism exposed to age-related stressors, while also evaluating changes in microbial community structure and metabolic regulation.",
+   "approach": "The agent is administered to a model organism undergoing stress; oxidative and cellular damage markers are measured, and changes in microbial composition and metabolic signaling pathways are monitored over time."
+  },
+  {
+   "work": "W7117154180",
+   "problem": "The task is to identify and compare patterns of molecular activity across different disease states by analyzing quantitative measurements from biological fluids, focusing on components that are consistently active in a specific tissue type.",
+   "approach": "A computational model groups molecules by co-occurring expression patterns, then compares these groups across groups using statistical tests, and maps them to biological functions to detect disease-specific changes in molecular behavior."
+  },
+  {
+   "work": "W2944538956",
+   "problem": "A system maintains stable output under varying and complex demand conditions, detecting and suppressing unwanted frequency and amplitude distortions that arise from sudden shifts in usage patterns.",
+   "approach": "A multi-layered feedback mechanism adjusts real-time response parameters based on input dynamics, using adaptive filtering and dynamic regulation to preserve output consistency across changing operational conditions."
+  },
+  {
+   "work": "W2907431974",
+   "problem": "The activity of a compound derived from a natural source is assessed for its ability to neutralize reactive oxygen species and mitigate damage in a biological system exposed to a known toxic agent.",
+   "approach": "A compound is tested in a controlled environment for its capacity to scavenge free radicals and restore balance in oxidative stress markers, using a dose-dependent evaluation against a toxin-induced damage model."
+  }
+ ]
+}

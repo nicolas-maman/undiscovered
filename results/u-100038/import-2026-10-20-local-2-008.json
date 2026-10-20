@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-008",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:41Z",
+ "descriptions": [
+  {
+   "work": "W3115532440",
+   "problem": "This research aims to evaluate the effectiveness of a set of rules in protecting the rights and freedoms of individuals, and to identify the mechanisms that make these rules more specific and enforceable.",
+   "approach": "The researchers use a method that involves analyzing the rules within a system, and tracing the uncertainty created by the person who created the rules to understand how they are implemented and enforced."
+  },
+  {
+   "work": "W7215240554",
+   "problem": "This study estimates the decision-making criteria used by a group of people to manage their forest ecosystem and raise livestock, based on interviews with key representatives. It aims to understand how this knowledge can be used to improve the sustainability of the ecosystem.",
+   "approach": "The researchers used a method to collect and organize the knowledge, creating a visual representation of the information and storing it in a way that makes it easy to access and understand."
+  },
+  {
+   "work": "W4385213656",
+   "problem": "Estimate and compare the effectiveness of X-Culture's coaching program and its impact on students' learning outcomes, based on data collected from participants.",
+   "approach": "Use a combination of quantitative and qualitative data to model the relationships between X-Culture's coaching program, student learning outcomes, and participant experiences, and to identify areas for improvement."
+  },
+  {
+   "work": "W3037545511",
+   "problem": "This work estimates the properties of a certain type of mathematical structure, comparing and optimising its various components. It predicts the existence of specific relationships between these components and explains how they interact.",
+   "approach": "The procedure involves defining and manipulating the structure's components, using a combination of mathematical definitions and logical deductions to derive the desired properties and relationships."
+  },
+  {
+   "work": "W4386365824",
+   "problem": "This work aims to identify how data is prepared for use in models that help computers make decisions without human help. It estimates what features are important for making this process easier and more efficient.",
+   "approach": "The researchers used a systematic review of existing studies to identify the key features of this process. They looked at 6 studies that described how to make this process easier and more efficient."
+  },
+  {
+   "work": "W4411758637",
+   "problem": "This study estimates the likelihood of a certain outcome from images of a specific type of cell, based on their appearance. It compares this prediction to the actual outcome, and optimizes a model to make the best predictions.",
+   "approach": "The model uses images of these cells to identify subtle patterns, and assigns a probability between 0 and 100% of the cell developing into a healthy outcome. The model's performance is evaluated by comparing its predictions to the actual outcomes."
+  },
+  {
+   "work": "W4389782986",
+   "problem": "This work estimates the economic impact of a contagious viral illness on livestock farmers, predicts the effectiveness of control measures, and compares the situation in Ethiopia to the global situation. It aims to explain the importance of understanding the genetic diversity of the virus for effective control strategies.",
+   "approach": "The procedure involves comparing data from Ethiopia with global data, using molecular investigation to understand the genetic diversity of the virus, and applying control measures such as vaccinations to prevent illness."
+  },
+  {
+   "work": "W4409300953",
+   "problem": "This research aims to standardize a method to preserve a plant with medicinal properties by reducing its moisture content. It estimates the optimal level of moisture retention and the time required to achieve it.",
+   "approach": "The study uses a combination of experiments to compare the effects of different methods on the plant's properties. It follows a procedure that involves measuring the plant's properties before and after each method, and then analyzing the results to identify the most effective method."
+  },
+  {
+   "work": "W7169492303",
+   "problem": "This work identifies a rare condition that causes a type of infection, characterised by the formation of holes in the skin that release a type of foreign material. It estimates the likelihood of this condition being acquired through a specific route.",
+   "approach": "The researchers use data from a specific type of medical equipment to make a prediction about the origin of the infection, and then report a case study of the condition."
+  },
+  {
+   "work": "W4288717650",
+   "problem": "This work aims to improve the efficiency of displaying a specific protein on the outside of cells, making it easier to sort and select for the best versions. It estimates the effectiveness of different signal sequences and optimizes them for better display.",
+   "approach": "The researchers use a combination of error-prone DNA replication and single-cell sorting to generate, test, and select for improved signal sequences. They then analyze the results using techniques like gel electrophoresis and fluorescence detection."
+  },
+  {
+   "work": "W4411659229",
+   "problem": "This research estimates the risk of advanced stages of a complex condition that affects multiple organs, leading to premature mortality and excess morbidity. It aims to understand the relationship between a certain measure of nutritional status and the risk of developing these advanced stages.",
+   "approach": "The researchers used data from a large population survey to investigate the relationship between a measure of nutritional status and the risk of advanced stages of the condition. They used statistical models to analyze the data and identify patterns and associations."
+  },
+  {
+   "work": "W4400777344",
+   "problem": "This work aims to estimate the structure and function of complex networks of molecules that transmit information within living organisms, comparing and optimising their interactions to understand how they work.",
+   "approach": "It uses various tools and approaches to characterise and characterise these networks, including analysis of individual components and characterisation of entire systems within living organisms."
+  },
+  {
+   "work": "W4238290809",
+   "problem": "This work estimates the prevalence of a certain condition in humans, comparing the number of cases to a reference value. It also predicts the likelihood of this condition based on travel and immigration history.",
+   "approach": "The procedure involves analyzing data from brain imaging studies and serology tests to support a diagnosis. A model is used to identify patterns and make predictions about the condition's presence in humans."
+  },
+  {
+   "work": "W3001813984",
+   "problem": "This work aims to improve the performance of complex models by generating examples that are intentionally difficult to classify. It estimates the model's output for a range of inputs and compares these estimates to a target value.",
+   "approach": "The method uses a mathematical expansion of the model's output around a central point, then optimizes the result using a technique to find the best fit. It uses this optimized result to generate examples that are likely to be misclassified by the model."
+  },
+  {
+   "work": "W4403963333",
+   "problem": "This work estimates the impact of certain publications on the development of a particular group's thought and practices over a set period of time. It compares the influence of these publications on the group's conceptions and behaviors to the broader social, cultural, and political context.",
+   "approach": "The researchers analyzed a set of historical publications to determine their role in shaping the group's thought and practices. They followed a procedure that involved examining the publications' content and tracing their dissemination and registration in the social, cultural, and political environment."
+  },
+  {
+   "work": "W4400174536",
+   "problem": "This research estimates the effectiveness of a treatment for a rare condition that combines two separate diseases, one of which is an autoimmune disorder affecting cartilage and connective tissue, and the other a skin condition characterized by inflammation and lesions.",
+   "approach": "The researchers used a new treatment to try and cure the condition, and monitored the patient's symptoms over time to see if the treatment was successful."
+  },
+  {
+   "work": "W2979572776",
+   "problem": "Estimate the most important factors influencing the quality of services provided by general practice professionals, and identify the most critical research areas to improve these services.",
+   "approach": "Use a systematic review of existing research to identify key factors, and then conduct a survey of general practice professionals to validate and refine the list, and to determine the relative importance of each factor."
+  },
+  {
+   "work": "W7160290837",
+   "problem": "This study aims to determine the impact of a specific type of interactive game on the ability of a particular group to think outside the box. It estimates the effect of this game on this ability.",
+   "approach": "The researcher uses a controlled experiment to compare the results of a group that plays this game with a group that does not. The data is analyzed using statistical tests to determine if there is a significant difference between the two groups."
+  },
+  {
+   "work": "W2995390893",
+   "problem": "This work estimates the role of specific regions in controlling the sex of a certain plant species. It predicts the function of these regions by comparing data from high-density linkage mapping.",
+   "approach": "The approach involves using a specific region of a Y chromosome to determine the sex of the plant. It follows a procedure where physical mapping is used to reveal the structural details of the sex determination region."
+  },
+  {
+   "work": "W4415795157",
+   "problem": "This research estimates the risk of serious health problems (such as heart attacks and strokes) in people who lack access to enough nutritious food, compared to those who have enough. It also compares the risks of these problems in people who are struggling to get by financially.",
+   "approach": "The researchers used a large dataset of health information from a national survey, and analyzed it using statistical models to identify patterns and relationships. They adjusted for other factors that might affect the results, such as age, income, and health insurance."
+  }
+ ]
+}

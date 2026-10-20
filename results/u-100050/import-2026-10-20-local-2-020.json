@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-020",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:43Z",
+ "descriptions": [
+  {
+   "work": "W2949120580",
+   "problem": "Estimate the suitability of a certain environment for a specific purpose, such as agriculture or ecosystem health. Compare the conditions before and after a seasonal change to identify the cause of degradation.",
+   "approach": "Analyze data from two time points to identify patterns and correlations. Use this information to explain the reasons for degradation and recommend measures to restore the environment."
+  },
+  {
+   "work": "W4393111364",
+   "problem": "This work estimates the performance of a display system that can show information to people on both sides of a transparent screen, and compares it to a system that can only show information to one side. It aims to optimise the display's transparency and control over the information it shows.",
+   "approach": "The system uses a special technology to make the display transparent, and it controls the information it shows by adjusting the light it emits. It uses a strip of light-emitting LEDs to show full-color information, and it does this by processing the light in a specific order."
+  },
+  {
+   "work": "W7155500411",
+   "problem": "This research estimates the impact of certain substances on the structural integrity of a specific process. It predicts how these substances affect the process's outcome, and compares the results to understand the relationship between the substances and the process's behavior.",
+   "approach": "The study uses a combination of data analysis and experimentation to determine the effect of these substances on the process. It follows a procedure where the substances are introduced into the process, and the resulting behavior is observed and recorded."
+  },
+  {
+   "work": "W4252965710",
+   "problem": "This study aims to estimate the prevalence of certain thought patterns that can influence how decisions are made in a specific field, and to compare the results with existing knowledge. It seeks to explain why these thought patterns are more common than previously thought.",
+   "approach": "The researchers used data from a large dataset to identify and quantify the frequency of these thought patterns. They then compared their findings with previous studies to validate their results."
+  },
+  {
+   "work": "W4405973678",
+   "problem": "This study estimates the number of people from a certain country who travel to another country for medical treatment, and examines the factors that influence their decisions. It compares the accessibility of medical services in the second country to the costs and quality of care.",
+   "approach": "The researchers collected data from questionnaires, interviews, and secondary information, and analyzed it using content analysis and a specific model to identify patterns and trends."
+  },
+  {
+   "work": "W2935895800",
+   "problem": "This research aims to understand how a living being's experience is related to its internal state, and how to explain this relationship. It tries to solve a fundamental question about the nature of consciousness.",
+   "approach": "The study uses a combination of detailed observations and measurements to correlate internal states with the being's experience. It then considers how to interpret these correlations in the context of the being's environment and overall functioning."
+  },
+  {
+   "work": "W4301033094",
+   "problem": "This work estimates the levels of antibodies in the blood of 30 healthy adults who have been infected with a certain virus. It compares these levels to the presence of specific proteins on the virus.",
+   "approach": "The researchers use a test to measure how well the immune system can detect these proteins, and they compare the results to see which proteins trigger the strongest immune response."
+  },
+  {
+   "work": "W4385373747",
+   "problem": "This work estimates a functional relationship between a set of values and a desired description, taking into account errors in the observed values. It aims to find a simpler, more accurate way to describe the relationship.",
+   "approach": "The approach uses a specific method to average the data and increase the accuracy of the description, allowing for the estimation of intermediate values not listed in the original data."
+  },
+  {
+   "work": "W3039875154",
+   "problem": "This study aims to identify patterns in research about managing and guiding educational institutions in a specific geographic region, drawing on data from various journals published in the local language over a decade. It estimates trends, compares different types of studies, and optimizes research methods.",
+   "approach": "The study uses quantitative methods to analyze data from multiple databases, focusing on geographic distribution, authorship, study types, research topics, and data collection techniques. It employs a systematic review approach to highlight patterns in the research literature."
+  },
+  {
+   "work": "W2896378146",
+   "problem": "The task is to identify and diagnose a problem with a system that affects the quality of data, and to determine the cause of the issue and take corrective action.",
+   "approach": "The approach involves using data from the system to estimate the status of the system after a change, compare the data to a baseline, and optimise the system by replacing a faulty component with a new one."
+  },
+  {
+   "work": "W3005711130",
+   "problem": "This work estimates the outcomes of different management strategies for a type of agricultural business in a specific region of Australia, based on historical data about rainfall and the availability of food for animals.",
+   "approach": "It uses a combination of mathematical formulas and pre-existing models to simulate the effects of climate variability on the business, and to compare the performance of different strategies."
+  },
+  {
+   "work": "W4392092126",
+   "problem": "This work aims to understand and improve the performance of devices that help regulate and stabilize the quality of energy supply in various industries, particularly in situations where the energy supply is interrupted or fluctuates. It estimates, predicts, and compares the performance of different devices and control strategies.",
+   "approach": "The approach involves analyzing and comparing various device configurations and control techniques, and implementing advanced algorithms to improve the accuracy and precision of the device's performance. It uses digital signal processors or field-programmable gate arrays to control the device."
+  },
+  {
+   "work": "W4205139408",
+   "problem": "This work estimates the distribution of certain types of organisms in different areas, and compares their frequency of appearance to identify the most suitable indicators of urbanization. It aims to explain the relationship between the presence of these organisms and the level of urbanization in various regions.",
+   "approach": "The researchers used a statistical analysis method to analyze data from 162 cities and counties, and 1200 locations. They applied a matrix analysis to identify the most suitable indicators of urbanization by evaluating the distribution grades and appearance rates of the organisms."
+  },
+  {
+   "work": "W4290755245",
+   "problem": "This research estimates the consistency of a researcher's claims about building a new theory on a specific foundation, and compares it to open problems in that foundation. It also examines how the researcher avoids dealing with a difficult issue.",
+   "approach": "The research follows a procedure that involves analyzing the claims, identifying open problems, and evaluating the researcher's approach to avoiding the difficult issue."
+  },
+  {
+   "work": "W2986201080",
+   "problem": "The task is to estimate a measure of signal variability from noisy data, and to determine the best way to do this. The goal is to find the most accurate way to estimate this measure, and to understand how it behaves in different situations.",
+   "approach": "The approach is to use a mathematical model to analyze the data and determine the best way to estimate the signal variability. The model is based on the idea that the signal is a random process with some underlying variability, and that the noise is also random and independent of the signal."
+  },
+  {
+   "work": "W3093411687",
+   "problem": "This work estimates the future distribution of a certain type of tree in a specific mountain range, based on historical data about its current distribution and environmental conditions. It also predicts how the tree's habitat will change in response to global climate changes.",
+   "approach": "The researchers used a statistical model to analyze historical data and make predictions about the tree's future distribution. They tested their model using a subset of the data and compared the results to a larger subset to validate the predictions."
+  },
+  {
+   "work": "W7215413160",
+   "problem": "This research aims to understand how two influential institutions in a region changed their relationship with each other in response to a national conflict, and how this shift affected the people in that region.",
+   "approach": "The researchers analyzed documents and newspaper articles from a specific time period to identify changes and tensions in the relationship between these two institutions, and how they interacted with the local population."
+  },
+  {
+   "work": "W4409034550",
+   "problem": "This work estimates the number of genetic variations in a group of plants, and identifies the most common types of these variations. It also compares the number of variations across different plants and species.",
+   "approach": "The researchers used a systematic procedure to find and identify these variations, starting with a large dataset of genetic information from many plants. They then used this information to develop new tools for identifying and comparing genetic variations."
+  },
+  {
+   "work": "W2970213417",
+   "problem": "This research aims to identify a set of biomarkers that can accurately diagnose a specific type of cancer, which is more likely to occur in people with a certain virus. The researchers want to know if a certain type of molecule can be detected in the blood to predict the presence of this cancer.",
+   "approach": "The researchers used a combination of data analysis techniques to identify the biomarkers. They trained a model on a large dataset and then tested it on two separate datasets to evaluate its accuracy."
+  },
+  {
+   "work": "W4396738097",
+   "problem": "This research aims to estimate the quality of a service by gathering data from parents and then comparing it to a set of standards. It also predicts how well the service meets parents' needs and expectations.",
+   "approach": "The research uses a qualitative approach, collecting data through observation, interviews, and documentation. It then uses a specific method to design a service that aligns with parents' needs and expectations, taking into account local values and environmental factors."
+  }
+ ]
+}

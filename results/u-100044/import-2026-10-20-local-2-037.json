@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-037",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:46Z",
+ "descriptions": [
+  {
+   "work": "W3127237053",
+   "problem": "A quantity in a complex sample is estimated from chemical separation data, comparing results across two different extraction methods to determine which produces a higher concentration of the target compound.",
+   "approach": "A separation process is applied to extract and resolve components in a sample. A simple calibration model relates signal intensity to concentration, and the performance of two extraction conditions is evaluated using a metric that scores environmental impact."
+  },
+  {
+   "work": "W3132223643",
+   "problem": "A system identifies and distinguishes between malicious and normal software behavior by analyzing patterns in runtime memory snapshots, focusing on interactions with the system environment and suspicious operational sequences.",
+   "approach": "Memory data is processed to extract behavioral patterns, transformed into binary representations, and fed into a classification model that learns to differentiate between normal and anomalous runtime activities based on historical examples."
+  },
+  {
+   "work": "W4366089913",
+   "problem": "The strength and durability of a metal base material are evaluated under varying reinforcement scale sizes to determine how size affects performance under load and friction.",
+   "approach": "A systematic variation in reinforcement particle dimensions is introduced, and the resulting material behavior is measured across multiple mechanical and surface interaction tests to identify optimal size for enhanced performance."
+  },
+  {
+   "work": "W3125415676",
+   "problem": "A system estimates future volume of travel activity based on historical patterns and key influencing variables, identifying which variables most strongly affect the trend over time.",
+   "approach": "It evaluates historical data through statistical and machine learning models, testing combinations of variables to find the most accurate prediction. The best result comes from a method that iteratively selects and refines the most impactful variables for long-term trend projection."
+  },
+  {
+   "work": "W4407885233",
+   "problem": "A model estimates how changes in resource deployment affect capital inflows across regions, based on local conditions and long-term environmental goals.",
+   "approach": "It evaluates how policy shifts in resource use influence investment patterns by simulating outcomes under different regulatory and environmental scenarios, adjusting for regional disparities in access and infrastructure."
+  },
+  {
+   "work": "W7119046025",
+   "problem": "A quantity derived from spatial regions is analyzed to detect shifts in system behavior under varying conditions, especially when the system undergoes abrupt or gradual changes in its internal structure at specific thresholds.",
+   "approach": "The behavior of a geometric quantity is computed across different configurations and temperatures, with its rate of change near a critical point following a consistent mathematical pattern regardless of the underlying dynamics."
+  },
+  {
+   "work": "W2962696746",
+   "problem": "A system is evaluated to determine whether a controlled disruption of a barrier enables the formation of new vascular connections from outside to inside a tissue region that was previously deprived of blood supply.",
+   "approach": "A physical intervention is applied to a tissue to initiate vascular signaling, followed by the delivery of a substance that modulates inflammatory and structural responses to enhance vessel growth and stability, with the process being halted by a specific inhibitor."
+  },
+  {
+   "work": "W4365519186",
+   "problem": "A system is estimated that tracks how environmental stressors and recovery efforts affect the long-term retention of carbon in coastal ecosystems, particularly under changing human and climatic pressures.",
+   "approach": "A model integrates stressor impacts and recovery indicators to simulate how ecosystem structure and function influence carbon retention, using field observations and restoration metrics to predict outcomes under multiple interacting disturbances."
+  },
+  {
+   "work": "W2980519386",
+   "problem": "A substance at a specific concentration is tested to determine how it alters electrical signals in neurons, including both the frequency and timing of spontaneous and evoked responses, depending on the presence or absence of selective receptor blockers.",
+   "approach": "The effect is measured by applying the substance and observing changes in signal amplitude, timing, and frequency under different receptor inhibition conditions, with results interpreted through comparisons across blocked and unblocked receptor pathways."
+  },
+  {
+   "work": "W4221132506",
+   "problem": "The performance of two distinct methods for detecting early signs of tissue disruption is evaluated under controlled conditions, comparing their ability to identify subtle changes in response to varying levels of perturbation.",
+   "approach": "A dynamic model simulates the response of a biological system to external inputs, applying two different signal delivery patterns and measuring the consistency and reliability of detected events across a range of perturbation intensities."
+  },
+  {
+   "work": "W4392825054",
+   "problem": "A material's thermal behavior under applied stimulus is observed and analyzed to detect anomalies in heat transfer dynamics. The response is compared across different stimulus intensities to identify deviations from expected thermal equilibrium.",
+   "approach": "A dynamic model simulates how localized conduction pathways form under increasing stimulus. The resulting heat flux patterns are tracked in real time and compared to baseline thermal responses to detect timing mismatches."
+  },
+  {
+   "work": "W4221125438",
+   "problem": "The effect of oscillating pressure gradients on the movement of substances through a porous medium is estimated under controlled conditions, comparing lateral versus axial gradient dynamics across different environmental settings.",
+   "approach": "A system generates periodic pressure variations in a defined space, introducing time delays between regions to create directional pressure differences, then measures how these differences influence transport rates while isolating external variables."
+  },
+  {
+   "work": "W4406054091",
+   "problem": "A system identifies early biological markers indicating a rare, inherited metabolic disturbance in young individuals, where symptoms are ambiguous and standard thresholds differ from adults. It evaluates patterns in blood chemistry and clinical signs to detect deviations that may signal underlying genetic dysfunction.",
+   "approach": "A diagnostic model analyzes longitudinal blood test results and clinical history to detect subtle, persistent abnormalities. It applies threshold adjustments based on age and family history to flag potential underlying genetic conditions requiring specialized intervention."
+  },
+  {
+   "work": "W2886635291",
+   "problem": "A pattern of sensory and spatial changes is inferred from continuous environmental observations, where shifts in temperature, sound, and physical touch are mapped to internal states and their interrelations over time.",
+   "approach": "A dynamic model tracks how subtle environmental cues interact with bodily perception, using recursive feedback loops to detect when sensory inputs align to form a coherent, evolving internal representation of presence and continuity."
+  },
+  {
+   "work": "W4413620702",
+   "problem": "A system identifies and classifies specific pieces of information within medical records, distinguishing between different types of events, treatments, and outcomes based on patterns in textual data.",
+   "approach": "The system trains on manually reviewed examples to recognize key events and their associated details, then applies learned rules to new records using models that weigh evidence and adjust predictions based on context and consistency."
+  },
+  {
+   "work": "W4394741783",
+   "problem": "A set of cyclic compounds is prepared and evaluated for their ability to mimic the three-dimensional structure of peptide segments, and their interactions with biological targets are assessed.",
+   "approach": "A structural framework is designed to restrict bond rotation, enabling stable folding into defined shapes. These shapes are tested for activity in systems where molecular recognition and binding are key."
+  },
+  {
+   "work": "W3035087566",
+   "problem": "The rate at which a thin, flexible boundary structure ruptures under constant stress is measured across varying external pressures. The rate of transverse movement of components within the structure is also tracked under the same conditions.",
+   "approach": "A mathematical model links the rupture rate to the applied stress and external pressure. The movement rate increases with stress, and the stress induced by pressure is derived from the relationship between rupture dynamics and external conditions."
+  },
+  {
+   "work": "W2944970587",
+   "problem": "The effect of adjusting a directional parameter on signal strength and reception performance is estimated and compared across different network conditions, focusing on two key metrics: signal clarity and overall received power.",
+   "approach": "A simulation model adjusts a geometric orientation parameter and evaluates its impact on signal clarity and received power under various environmental and network conditions, then compares outcomes across different configurations."
+  },
+  {
+   "work": "W4391997400",
+   "problem": "A mechanism is identified that prevents the loss of a key nutrient during dietary interactions involving a common dietary inhibitor, by forming a stable, small-scale structure that retains the nutrient in a soluble and absorbable form.",
+   "approach": "A peptide-based stabilizer facilitates the formation of uniform, nanoscale structures under physiological conditions, which are then shown to promote cellular uptake via specific endocytic pathways and intracellular release."
+  },
+  {
+   "work": "W2973736820",
+   "problem": "A set of physical properties influencing material behavior under load is evaluated to determine which ones most strongly affect stress and deformation responses.",
+   "approach": "Multiple combinations of property values are systematically tested using a structured sampling method. Responses are measured and compared across scenarios to identify which properties have the largest impact on outcomes."
+  }
+ ]
+}

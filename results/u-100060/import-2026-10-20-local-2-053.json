@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-053",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:49Z",
+ "descriptions": [
+  {
+   "work": "W3016385419",
+   "problem": "A pattern of changing household activity patterns is assessed to understand how local knowledge systems influence environmental resilience and long-term resource productivity in rural settings.",
+   "approach": "Household data is collected through structured interviews and group discussions, then analyzed to identify shifts in participation and skill transmission across generations, using statistical and thematic methods to detect trends in engagement with land-based conservation practices."
+  },
+  {
+   "work": "W4214901217",
+   "problem": "A system converts a toxic form of nitrogen into a usable form by attaching it to a central molecule, then further modifies it to produce a compound that can transfer nitrogen to other molecules in a metabolic network.",
+   "approach": "A central molecule binds the toxic nitrogen, forming a first product. This product is then transformed into a second compound, which donates its nitrogen to other components, enabling the synthesis of additional nitrogen-containing molecules."
+  },
+  {
+   "work": "W3111475374",
+   "problem": "A system is evaluated to determine how specific symbiotic organisms influence an organism's ability to withstand environmental challenges that reduce its performance and survival.",
+   "approach": "A synthesis of existing evidence is constructed by analyzing physiological and molecular responses across different stress conditions, then comparing outcomes when symbiotic agents are present versus absent, to identify patterns and mechanisms of resilience."
+  },
+  {
+   "work": "W3112050941",
+   "problem": "A material's shape under uniform external force is estimated, particularly how it deforms from a sphere to non-symmetric forms at small and moderate force levels.",
+   "approach": "A numerical model simulates incremental deformation, updating the shape based on internal stress distribution and material response, revealing deviations from simple elongation patterns."
+  },
+  {
+   "work": "W4389610710",
+   "problem": "A system's behavior is observed to exhibit prolonged uncertainty when inputs arrive out of sequence or with insufficient time between transitions, leading to inconsistent output states over time.",
+   "approach": "A timing rule is applied to align input events with a shared time reference, and a switching mechanism is introduced to route signals only when both input and reference conditions are met, minimizing delays and ensuring consistent state transitions."
+  },
+  {
+   "work": "W4281788281",
+   "problem": "A system's permeability to external agents is assessed under normal and perturbed conditions to evaluate how effectively substances enter a protected compartment.",
+   "approach": "A dynamic model simulates transport pathways based on molecular size, charge, and interaction with surrounding components, using experimental observations to refine predictions of entry efficiency and response to external stimuli."
+  },
+  {
+   "work": "W4395044255",
+   "problem": "A treatment protocol is evaluated for its safety and effectiveness in managing advanced, unstable bone tumors that threaten neural function and structural integrity, using real-time imaging and procedural control to guide delivery.",
+   "approach": "A single surgical session integrates stabilization with a focused radiation dose delivered directly to the tumor site, with dose placement and depth adjusted in real time using navigated imaging and immediate feedback."
+  },
+  {
+   "work": "W3122887694",
+   "problem": "A system's behavior is inferred from molecular interactions where a regulatory RNA sequesters a microRNA, leading to changes in a downstream gene's expression level and cellular outcomes like growth suppression and programmed cell death.",
+   "approach": "A regulatory network is mapped by measuring expression levels of key components, testing how altering one element affects another through direct binding, and validating functional outcomes in living models through controlled experimental conditions."
+  },
+  {
+   "work": "W4223551335",
+   "problem": "A regulatory RNA is overexpressed in a disease state and influences the rate of cell division and the timing of cell cycle progression by modulating a key signaling pathway.",
+   "approach": "The RNA binds to a specific microRNA to prevent its degradation, stabilizing a transcription factor. This factor enhances the activity of a downstream pathway, which in turn alters gene expression patterns that drive cell division and delay cell cycle arrest."
+  },
+  {
+   "work": "W4310936570",
+   "problem": "A system is evaluated to determine how effectively resources are transformed into usable forms through coordinated human and institutional efforts, based on documented initiatives and policy environments.",
+   "approach": "A framework is constructed by analyzing existing initiatives and policy support, then mapping how stakeholder collaboration and regulatory conditions influence the scalability and success of resource-based transformations."
+  },
+  {
+   "work": "W2900738499",
+   "problem": "A set of spatial and temporal measurements from a material's surface is analyzed to isolate distinct physical patterns that reflect internal irregularities, with the goal of identifying and emphasizing regions where anomalies occur.",
+   "approach": "A mathematical transformation is applied to decompose the input data into a set of statistically independent signals, then a selection criterion is used to retain only those signals most strongly associated with internal variations."
+  },
+  {
+   "work": "W4392680617",
+   "problem": "The system estimates how light splits and redirects through a layered structure, predicting performance under various input conditions and spatial configurations.",
+   "approach": "It uses a wave-based model to simulate light propagation and a geometric model to track light paths, then iteratively adjusts the structure's shape and material properties to maximize light delivery efficiency and uniformity."
+  },
+  {
+   "work": "W4391538152",
+   "problem": "The extent and impact of household-based support for aging individuals is estimated across diverse societies, using patterns of resource allocation and intergenerational responsibilities as indicators.",
+   "approach": "A framework analyzes how societal structures and regional norms shape the distribution of responsibilities among relatives, using comparative data on support networks, risk exposure, and policy influences across regions."
+  },
+  {
+   "work": "W7106165355",
+   "problem": "The task estimates how early-life exposures influence the likelihood of persistent health issues later in life, comparing outcomes across different exposure levels and identifying which early conditions most strongly affect long-term well-being.",
+   "approach": "It evaluates how changes in early-life conditions alter future health outcomes by modeling risk trajectories, using statistical adjustments for confounding factors and simulating interventions to predict potential health improvements."
+  },
+  {
+   "work": "W3011354265",
+   "problem": "A threshold value is estimated to determine the minimum energy required to detect a motor response in a patient's muscles during surgery.",
+   "approach": "The threshold is compared across two different anesthetic conditions using repeated electrical pulses, and the energy level that produces a detectable response is determined for each patient."
+  },
+  {
+   "work": "W2973965275",
+   "problem": "It estimates how visual perception of hue and saturation changes when applied to human forms, and how those interpretations vary across different cultural exposures and environmental contexts.",
+   "approach": "It uses repeated observations of human figures in varied lighting and settings, then applies statistical models to detect patterns in how hue is interpreted, adjusting for context and prior exposure to similar stimuli."
+  },
+  {
+   "work": "W2969944890",
+   "problem": "A sudden rise in airway pressure and deterioration in blood flow are observed during a complex surgical procedure involving extensive tissue manipulation. The cause is suspected to be a tear in a protective sac surrounding the lungs, leading to air accumulation and impaired lung function.",
+   "approach": "When unexpected changes in pressure and circulation occur, the procedure is evaluated for a breach in a sealed cavity. If confirmed, a temporary opening is made to release air, followed by standard drainage to restore normal function."
+  },
+  {
+   "work": "W2969862138",
+   "problem": "A system-wide pattern of gene activity is assessed to determine how a single regulatory protein influences diverse biological outcomes across different tissue contexts.",
+   "approach": "A computational framework maps the activity of a key regulatory factor across multiple tissue types and disease states, identifying context-dependent outcomes through integration of expression profiles and functional interaction networks."
+  },
+  {
+   "work": "W2996439180",
+   "problem": "An estimate is made of how hidden, organized misconduct occurs within interconnected systems involving multiple stakeholders, based on documented accounts and public narratives. The nature and scale of such misconduct are compared across cases and media portrayals to identify patterns and misrepresentations.",
+   "approach": "A narrative analysis is conducted using documented reports and public accounts to reconstruct events and behaviors. Patterns of misconduct are identified through thematic coding and contrasted with dominant public narratives to reveal underlying structural and ethical failures."
+  },
+  {
+   "work": "W2980929177",
+   "problem": "A mechanism is estimated that inhibits the entry of a pathogen into host cells before it can establish infection, based on biochemical and cellular response data from treated and untreated systems.",
+   "approach": "A compound mixture is applied prior to exposure, and its effect is assessed by measuring inhibition of pathogen attachment and cellular invasion, with specific components identified as key modulators of this interference."
+  }
+ ]
+}

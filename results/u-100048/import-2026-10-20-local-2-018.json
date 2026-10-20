@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-018",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:43Z",
+ "descriptions": [
+  {
+   "work": "W3030016222",
+   "problem": "This research estimates the risk of developing certain health issues, such as Type 2 Diabetes and cardiovascular disease, based on various factors like genetics, age, and ethnicity. It also compares the prevalence of these issues in different groups of people.",
+   "approach": "The researchers used data from large-scale studies to identify patterns and correlations between genetic factors and the development of these health issues. They then analyzed this data to understand how a specific protein, involved in regulating various bodily functions, contributes to the risk of these issues."
+  },
+  {
+   "work": "W4316039957",
+   "problem": "The task is to estimate the safety and efficiency of a new substance, and to predict its properties from data, in order to increase the chances of it becoming a successful drug. This is done by comparing the substance's properties to a set of known substances.",
+   "approach": "The approach is to use a set of free online tools to predict the substance's properties, and to compare the results to experimental data from a set of known substances. The tools are evaluated based on their accuracy and the type of calculations they use."
+  },
+  {
+   "work": "W4417110595",
+   "problem": "An estimate or prediction is made about the past, based on physical evidence from a site where construction work damaged some historical items. The goal is to understand what was present at that site before it was damaged.",
+   "approach": "A team of experts uses a combination of observations, measurements, and documentation to reconstruct the past state of the site, following a procedure that involves surveying, drafting, and recording the findings in a systematic way."
+  },
+  {
+   "work": "W3160148339",
+   "problem": "This research aims to identify and document the key factors that contribute to the success of community improvement projects, and to identify challenges that may arise, using data and evidence from a specific project that brings together local community members and experts in a collaborative effort.",
+   "approach": "The research follows a procedure that involves collecting data through a series of public art installations, and then analyzing this data in relation to existing theory and practice in the field of community engagement and community-led initiatives."
+  },
+  {
+   "work": "W7128344668",
+   "problem": "This work estimates the number of offspring produced by a group of animals over a certain period, based on data from a specific population. It also compares the outcomes of different litters and evaluates the overall health and growth of the animals.",
+   "approach": "The researchers monitor a large group of animals, tracking the number of births, deaths, weight changes, and care of the young. They then analyze the data to make predictions and draw conclusions about the overall health and success of the group."
+  },
+  {
+   "work": "W2895545724",
+   "problem": "This work aims to estimate the impact of smartphone usage on network capacity and optimize network resource utilization to improve end-user experience. It predicts the effect of certain network features on network performance and explains how to efficiently use available resources.",
+   "approach": "The approach involves analyzing the performance of specific network features, such as Cell-PCH and E-FD, to mitigate the pressure on network capacity. It uses data from commercial networks to evaluate the practical performance of these features."
+  },
+  {
+   "work": "W4224219195",
+   "problem": "This work estimates the relationship between the levels of certain substances in food and the risk of a particular disease. It compares the risk of the disease in people with different levels of these substances.",
+   "approach": "The researchers searched for studies that looked at the levels of these substances in people's food and blood, and then combined the results to see if there was a pattern. They used statistical software to analyze the data and draw conclusions about the relationship between the substances and the disease risk."
+  },
+  {
+   "work": "W2942094165",
+   "problem": "This research aims to estimate the impact of lifestyle changes on the frequency of a common disorder affecting women of childbearing age, characterized by irregular cycles and metabolic disturbances. It predicts the effects of a sedentary existence and high-calorie diet on this disorder.",
+   "approach": "The study uses data from India to compare the incidence of this disorder, which is estimated to be between 5% and 10% of women in this age group. The approach involves analyzing the effects of various lifestyle factors on the disorder, with a focus on Ayurvedic and yoga-based interventions."
+  },
+  {
+   "work": "W3089061580",
+   "problem": "This work estimates the efficiency of a process that helps to bring two entities together, and compares it to a different method. It aims to explain why one method is better than the other.",
+   "approach": "The researchers use a combination of data and evidence to improve the process. They use a specific technique to manipulate the data and make the entities work together more efficiently."
+  },
+  {
+   "work": "W4401278612",
+   "problem": "This research aims to determine the most efficient method for removing excess liquid from a vessel, given a specific type of leak, and to compare the performance of different types of devices used for this purpose.",
+   "approach": "The study used a controlled experiment with a prototype vessel, with a small leak introduced, and tested four different types of devices that can remove excess liquid. The results were then compared to determine which device is most effective."
+  },
+  {
+   "work": "W4296396384",
+   "problem": "This work estimates the effect of adding different amounts of a certain type of waste material and a specific type of mineral on the mechanical properties of a metal alloy. It also compares the results to a baseline material.",
+   "approach": "The researchers developed a new material by mixing the metal alloy with varying amounts of the waste material and the mineral, and then tested its mechanical properties using different tests."
+  },
+  {
+   "work": "W2949825862",
+   "problem": "This study investigates why some people are not interested in participating in a process to restore a valuable resource, and what factors make it difficult for them to do so. It estimates the level of interest and barriers to participation, and compares different approaches to understand what works best.",
+   "approach": "The researchers used communication records and interviews to understand the motivations and concerns of people involved in the process. They compared two different methods of allocating resources to achieve the desired outcome, and found that one method was more effective than the other."
+  },
+  {
+   "work": "W4399713076",
+   "problem": "This research estimates the effectiveness of various design strategies on promoting healthy habits among employees, predicts which strategies are most likely to succeed, compares the impact of different approaches, optimizes the design of healthy environments, and explains how these strategies can be used to improve employee well-being.",
+   "approach": "The research uses a systematic analysis of 40 unique designs, applying a set of criteria to evaluate and compare the design strategies, and presents the findings in a clear and concise manner."
+  },
+  {
+   "work": "W4391232342",
+   "problem": "This work estimates the importance of a specific gene in helping certain microorganisms to survive and thrive in a particular environment. It predicts that the gene plays a key role in the persistence of these microorganisms.",
+   "approach": "The researchers used a combination of data analysis and experimental tests to determine the function of the gene. They compared the performance of microorganisms with and without the gene, and tested their ability to grow and adhere to specific substances."
+  },
+  {
+   "work": "W4416867271",
+   "problem": "This research aims to identify the underlying cause of a patient's kidney damage, which is characterized by abnormal blood tests and kidney biopsy results. The goal is to determine the most likely cause of the patient's kidney damage and to explain the underlying mechanisms.",
+   "approach": "The researchers used a combination of clinical data, laboratory tests, and kidney biopsy results to identify the underlying cause of the patient's kidney damage. They compared the patient's test results to those of patients with known kidney diseases to make a diagnosis."
+  },
+  {
+   "work": "W4409465172",
+   "problem": "This work estimates the properties of a material mixture, comparing its performance to individual components and theoretical predictions. It aims to explain how the mixture's properties change with varying amounts of a key material.",
+   "approach": "The researchers created a mixture of two materials and tested its properties. They used a specific method to combine the materials and measured the resulting properties."
+  },
+  {
+   "work": "W2790202026",
+   "problem": "This research aims to overcome a limit in how devices can be connected and perform together, by finding a way to process different materials at a lower heat than usual. It estimates the performance of devices that use these materials and compares them to devices made with traditional materials.",
+   "approach": "The researchers developed a new way to stack and process these materials, using a technique called wafer bonding and a process that lifts off the material from the wafer. They use this approach to integrate these materials into various devices and systems."
+  },
+  {
+   "work": "W2980156712",
+   "problem": "This work estimates and predicts the dynamic behavior of a complex system that generates force over time, taking into account its length and rate of change. It compares and optimizes the system's performance across different conditions.",
+   "approach": "The approach uses a mathematical model that describes the system as a time and length dependent force generator, following a set of rules that relate the system's properties to its behavior."
+  },
+  {
+   "work": "W3195138890",
+   "problem": "This work estimates the presence of a rare lung disease with multiple structural patterns, which can be misdiagnosed as other conditions. It aims to identify the disease using a small sample of tissue from the lung.",
+   "approach": "The researchers use a technique that involves freezing a small sample of lung tissue, then examining it under a microscope to look for specific patterns and cells. They also use special stains to help identify the disease, and compare the results to known characteristics of the disease."
+  },
+  {
+   "work": "W4213029004",
+   "problem": "This work estimates the optimal configuration of a complex system by comparing the performance of different designs, using a combination of mathematical models and computational simulations. It aims to explain how the system behaves under various conditions.",
+   "approach": "The approach involves breaking down the system into smaller components, analyzing their behavior, and using rules to combine them into a single, optimized design. It uses a set of predefined rules to infer the behavior of the system and to optimize its performance."
+  }
+ ]
+}

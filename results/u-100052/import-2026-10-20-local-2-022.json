@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-20-local-2-022",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:44Z",
+ "descriptions": [
+  {
+   "work": "W4319925234",
+   "problem": "This work estimates the characteristics of a rare lung disease, compares its features to those of other diseases, and optimizes a treatment plan based on the findings. It aims to explain the underlying causes and behavior of the disease.",
+   "approach": "The study uses a combination of DNA and RNA analyses to identify the underlying causes of the disease. It also uses imaging data and software tools to analyze and compare the disease's characteristics."
+  },
+  {
+   "work": "W2806981346",
+   "problem": "This work estimates the impact of visual decline on driver self-regulation practices and compares the effects of two separate visual measures on driver self-regulation status. It also predicts the changes in driver self-regulation status after visual improvement.",
+   "approach": "The study uses a combination of self-reported questionnaires, objective visual measures, and in-vehicle monitoring devices to assess driver self-regulation practices. It follows participants over time to determine the relationship between visual changes and driver self-regulation status."
+  },
+  {
+   "work": "W4283319719",
+   "problem": "This study aims to understand the relationship between a person's nervous system response to stimuli and their central nervous system's ability to process and respond to stimuli. It estimates the level of this response in people with a certain condition and compares it to those without the condition.",
+   "approach": "The researchers used a test to measure how well the central nervous system can process stimuli, and another test to measure how well the body's 'fight or flight' response is working. They then looked at how these two measures were related to each other and to other symptoms of the condition."
+  },
+  {
+   "work": "W4390743390",
+   "problem": "This study aims to estimate the frequency and management of a rare condition that causes bleeding in the digestive tract, and to compare the effectiveness of different treatment options. It also seeks to explain the potential link between this condition and cancer.",
+   "approach": "The researchers reviewed existing cases and data to identify patterns and trends, and then used this information to inform their own analysis and conclusions. They also searched for evidence of alternative treatment approaches and explored potential associations with cancer."
+  },
+  {
+   "work": "W3204207334",
+   "problem": "This work aims to find the best way to arrange tasks to minimize idle time and maximize profit, given a constraint on the time it takes to complete each task. It also considers the reuse of materials to reduce waste and its impact on the environment.",
+   "approach": "The approach involves using a mathematical model to combine multiple objectives, such as profit and idle time, and then using a special method to select the best solution from a set of possible solutions. The method is compared to two other methods to see which one works best."
+  },
+  {
+   "work": "W4402852960",
+   "problem": "This research estimates the impact of roots on the movement of moisture through the ground in a dry region, comparing the effects of different types of plants on the moisture levels and evaporation rates.",
+   "approach": "The researchers used field experiments to study the movement of moisture through the ground, measuring the moisture levels and evaporation rates in different areas with and without plant roots, and comparing the results to understand the effects of roots on moisture movement."
+  },
+  {
+   "work": "W4413177445",
+   "problem": "This research estimates the presence and severity of a condition that affects the inner lining of a major blood vessel, and compares it to other indicators of inflammation. It aims to identify individuals at high risk of developing this condition and to guide preventive measures.",
+   "approach": "The researchers used data from 440 patients, comparing different groups to see if a specific ratio of two substances in the blood is higher in those with the condition. They also looked at how well this ratio predicts the severity of the condition and how it compares to other markers of inflammation."
+  },
+  {
+   "work": "W4404967120",
+   "problem": "This work aims to find the optimal weight of a structure with varying numbers of panels, spans, and heights, by estimating and comparing its characteristics. It seeks to explain how the structure's weight and height-span ratio are related.",
+   "approach": "The study uses a combination of mathematical models and machine learning algorithms to analyze the structure's characteristics and find the optimal weight. It starts by developing a parametric model of the structure's design and then processes the data using statistical analysis software."
+  },
+  {
+   "work": "W3041570370",
+   "problem": "This research estimates the rate at which a certain condition occurs in people who have undergone a specific medical procedure, and compares it to the rate in people who have not had the procedure. It also explains the cause of a rare and previously unknown side effect of the procedure.",
+   "approach": "The researchers used data from people who had undergone the procedure to identify the rate of the condition, and compared it to data from people who had not had the procedure. They then used this information to explain the cause of the rare side effect."
+  },
+  {
+   "work": "W3096446161",
+   "problem": "This work estimates the effect of adding a certain type of material to a metal on its mechanical properties and resistance to damage. It predicts how these properties change with the amount of material added and compares the results to a control group.",
+   "approach": "The researchers used a combination of tests to measure the mechanical properties and resistance to damage of the metal. They added a certain type of material to the metal and tested its hardness, strength, and resistance to damage using various machines and equipment."
+  },
+  {
+   "work": "W4403720007",
+   "problem": "This study estimates the impact of a certain medical condition on the severity of a disease, comparing outcomes in patients with and without the condition. It predicts that the condition is associated with increased risk of certain complications and longer hospital stays.",
+   "approach": "The researchers used a large dataset to identify patients with a specific medical condition and compared their outcomes to those without the condition. They used statistical tests to analyze the data and identify patterns."
+  },
+  {
+   "work": "W7217854594",
+   "problem": "This work estimates the optimal approach for a surgical procedure to minimize complications and optimize patient outcomes, considering factors such as age, risk of certain diseases, and the need to preserve certain organs. It also compares different methods to determine the most effective one.",
+   "approach": "The procedure involves analyzing data on patient outcomes and surgical methods to identify the best approach. It uses a combination of statistical models and expert knowledge to make predictions and recommendations."
+  },
+  {
+   "work": "W2999758323",
+   "problem": "This work estimates the effect of a certain substance on the growth of a specific type of cell, and compares it to a similar substance. It also predicts the outcome of a certain treatment on a group of organisms.",
+   "approach": "The procedure involves applying the substance to a group of organisms, and then measuring the effect on their growth. The results are compared to a similar substance and a control group."
+  },
+  {
+   "work": "W4396723801",
+   "problem": "This research aims to improve the performance of a system that combines two clean and sustainable sources of power, by optimizing the way they work together. It estimates the efficiency of the system under different operating conditions and compares it to strict requirements.",
+   "approach": "The study uses a detailed computer model to simulate the system and evaluate the effectiveness of different control mechanisms. It uses a specific type of model to handle both simple and complex loads."
+  },
+  {
+   "work": "W4400895262",
+   "problem": "This work estimates the impact of a new class of medications on the balance of tiny life forms in the digestive system of people with a certain health condition. It also tries to predict how well these medications will work based on the types of tiny life forms present at the start.",
+   "approach": "The researchers analyzed samples of waste and bodily fluids from people before and after taking these medications, and used statistical methods to compare the results and identify patterns."
+  },
+  {
+   "work": "W4313707010",
+   "problem": "This work estimates the age at which something is ready to grow or develop, and compares it to a clinical estimate. It also predicts the risk of something going wrong with growth or development based on this estimate.",
+   "approach": "The researchers use a special kind of data to measure how ready something is to grow or develop. They compare this data to a clinical estimate and look for patterns to predict the risk of something going wrong."
+  },
+  {
+   "work": "W2892840421",
+   "problem": "This work estimates the initial accuracy of images taken from a high altitude, and compares it to the accuracy of images taken from a known reference point. It aims to improve the accuracy of these images by optimising the parameters that affect their accuracy.",
+   "approach": "The method uses a combination of images taken from different angles to make a virtual observation, and weights this observation to ensure a stable solution. It then uses this weighted observation to improve the accuracy of the images."
+  },
+  {
+   "work": "W3157204031",
+   "problem": "Estimate the effectiveness of a simple, low-tech solution to manage air and fluid in a confined space, and predict the outcome for a young child with a persistent condition.",
+   "approach": "Use data from a chest CT scan to compare the child's lung function and lung capacity before and after the treatment, and evaluate the effectiveness of the low-tech solution in reducing the need for repeated interventions."
+  },
+  {
+   "work": "W2797661202",
+   "problem": "This work estimates the effect of a certain protein on the ability of cells to spread and move, and compares its effect on cells from different tissues. It also tries to explain why this protein's effect is different in different tissues.",
+   "approach": "The researchers used data from two types of cells, one from a normal tissue and one from a diseased tissue, to compare the levels of the protein in these cells. They then tested how the protein affects the ability of these cells to spread and move, and how it does this."
+  }
+ ]
+}

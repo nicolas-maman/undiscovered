@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-028",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:45Z",
+ "descriptions": [
+  {
+   "work": "W3198290475",
+   "problem": "This work estimates the effectiveness of certain substances in preventing or treating a chronic disease that causes inflammation and damage to blood vessels. It compares the effects of these substances to the current management of related conditions like diabetes, obesity, and high blood pressure.",
+   "approach": "The study uses data from various sources, including research on molecular targets and lifestyle factors, to identify potential benefits of these substances. It proposes a new approach by targeting factors that contribute to inflammation and damage to blood vessels."
+  },
+  {
+   "work": "W4393640859",
+   "problem": "This work aims to evaluate the effectiveness of on-road tests in determining the ability to safely operate vehicles, using data from various tests and studies.",
+   "approach": "It uses a systematic review approach, where data from multiple sources is collected, analyzed, and compared to identify the most reliable and accurate tests."
+  },
+  {
+   "work": "W4312541392",
+   "problem": "This research aims to estimate the impact of a training program on the output of a major export crop in Nigeria, and to compare the effects of different training techniques on the crop's yield. It also seeks to explain the relationship between the training program and the crop's output.",
+   "approach": "The study uses a random sampling procedure to select participants from a larger group, and then gathers information from them using a well-structured questionnaire. The data is then analysed using various statistical methods to identify patterns and relationships."
+  },
+  {
+   "work": "W4406806395",
+   "problem": "This work estimates the relationship between two concepts and how they transition from one to another. It predicts the path that this transition takes and compares different ideas to understand this path.",
+   "approach": "The procedure follows a logical sequence of ideas, starting with a foundation concept and building upon it to reach a conclusion. It uses a combination of analysis and comparison to understand the transition between these concepts."
+  },
+  {
+   "work": "W4410785771",
+   "problem": "This work estimates the effectiveness of different treatments for various conditions, predicts the likelihood of certain outcomes, and compares the results of different approaches. It aims to explain the best practices for managing these conditions.",
+   "approach": "The procedure involves using a comprehensive and practical guide to build on previous knowledge, covering the basics of treatment options, symptoms, and conditions. A team of experts works together to produce a resource that will help care providers make informed decisions."
+  },
+  {
+   "work": "W2803721575",
+   "problem": "This research estimates the effect of a certain treatment on the quality of a certain product over time. It compares the changes in the product's physical and chemical properties under different storage conditions.",
+   "approach": "The researchers used a combination of methods to analyze the product's properties, including measuring its mass, water content, and other characteristics. They applied a specific treatment to the product and then stored it under various conditions to observe the changes over time."
+  },
+  {
+   "work": "W4285688822",
+   "problem": "This research estimates and compares the nutritional status and lipid metabolism of a group of children with atherogenic risk factors, and optimizes their diet to prevent atherosclerosis. It also explains the clinical and laboratory parallels between lipid metabolism and nutritional status.",
+   "approach": "The researchers used a combination of surveys, blood tests, and biochemical analysis to assess the nutritional status and lipid metabolism of the children. They then compared the results with a control group of healthy children."
+  },
+  {
+   "work": "W4226284158",
+   "problem": "This work estimates and compares the travel times of water in streams, using data from two types of isotopes to infer the distribution of old and new water. It aims to explain the patterns of water flow in a specific region.",
+   "approach": "The researchers use a combination of two types of isotopes to model the travel times of water in streams, applying a selection function to determine the most likely distribution of old and new water."
+  },
+  {
+   "work": "W4287810967",
+   "problem": "This work describes the structure of a complex material, estimating the arrangement of its constituent parts and comparing it to known structures. It predicts the properties of the material based on its structure and explains how the different parts interact with each other.",
+   "approach": "The researchers used a combination of computational methods to analyze the structure of the material, including simulations and comparisons to known structures. They identified the arrangement of the material's constituent parts and predicted its properties based on this arrangement."
+  },
+  {
+   "work": "W2900426650",
+   "problem": "The task is to distinguish between two phenomena: a real condition (tumor recurrence) and a treatment effect (pseudo-progression). The researchers estimate the distribution of these phenomena in the brain and compare them to identify the differences.",
+   "approach": "The researchers use a statistical method to compare the distribution of two phenomena across a large dataset. They then use this comparison to identify clusters of voxels (small 3D regions) that are significantly different between the two phenomena."
+  },
+  {
+   "work": "W4386493974",
+   "problem": "This work estimates the travel speed of a vehicle based on its location and past movements, aiming to provide early alerts for drivers and management teams to prevent accidents. It predicts the speed of a vehicle from its GPS data.",
+   "approach": "The approach uses a combination of two neural networks: one that learns patterns in the data and another that makes predictions based on those patterns. The model follows a procedure where it trains the networks on historical data and then tests their accuracy on real-world data."
+  },
+  {
+   "work": "W2417138536",
+   "problem": "This work aims to estimate the risk of a rare and life-threatening condition in a specific population, compare it to known risks, and explain the underlying mechanisms. It also seeks to optimise treatment approaches and outcomes for this condition.",
+   "approach": "The approach involves using statistical models to combine data from various sources, including medical records and research studies. It also relies on a multidisciplinary team of experts to review and validate the findings."
+  },
+  {
+   "work": "W7216956450",
+   "problem": "This work estimates the relationship between two practices that have historically interacted with each other, but in a way that has been overlooked or underappreciated. It aims to compare and contrast these two practices to gain a deeper understanding of their interconnectedness.",
+   "approach": "The approach involves analyzing a specific case study to identify patterns and relationships between the two practices. It uses a combination of historical research and close reading of a literary work to illuminate the connections between the two practices."
+  },
+  {
+   "work": "W3087319169",
+   "problem": "This work estimates the flow rate at which water moves through a column of soil when the soil is saturated with water, and compares this to the flow rate when the soil is not saturated. It aims to understand how water moves through the soil when it is fully saturated.",
+   "approach": "The approach is to measure the change in water pressure in the soil column as water flows in and out, and use this information to calculate the flow rate. The computer program controls the analysis and optimizes the results by adjusting settings and constraints."
+  },
+  {
+   "work": "W4405197148",
+   "problem": "This work estimates the effectiveness of a treatment for depression, comparing the results of two different approaches: one involving a specific technique to stimulate brain activity, and the other using a medication to alter brain chemistry. The goal is to determine which approach is more effective.",
+   "approach": "The researchers used data from three patients who received the treatment, and compared the results to a traditional treatment method. They also compared the results to a medication that has been shown to be effective in treating depression."
+  },
+  {
+   "work": "W4402581701",
+   "problem": "This research estimates the effect of laboratory experiments on the stress levels of a certain type of animal, comparing stress indicators from blood samples to various physical characteristics. It aims to explain how these experiments affect the animal's stress state and physical condition.",
+   "approach": "The researchers took blood samples from the animals at different times and analyzed the data to compare the stress indicators with the animal's physical characteristics, such as temperature, speed, and body condition."
+  },
+  {
+   "work": "W2810595817",
+   "problem": "This research estimates the influence of certain mechanisms on the way people acquire and use knowledge within a group. It compares the effects of these mechanisms on how well people share their knowledge with each other.",
+   "approach": "The researchers used a questionnaire to collect data from a large group of people, and then analyzed the data using statistical methods to see how well the mechanisms explained the data on knowledge use."
+  },
+  {
+   "work": "W3110018239",
+   "problem": "This study aims to estimate the frequency of two types of parasites in people living in urban areas of a region in central Africa. It compares the results to data from rural areas to see if there is a difference in how often these parasites are found.",
+   "approach": "The researchers collected data from people in three cities, asking them about their symptoms and taking blood samples to check for the parasites. They then analyzed the data to see how often the parasites were found and how often people had certain symptoms."
+  },
+  {
+   "work": "W7216902473",
+   "problem": "This research estimates the quality and safety of a certain plant-based product, comparing its nutritional and biological properties to standards and evaluating its consistency and active ingredients. It aims to optimise the production process to preserve the plant's natural properties.",
+   "approach": "The researchers used various analytical techniques, including spectroscopy and chemical tests, to evaluate the plant's properties. They developed new standards to ensure the product's quality and safety."
+  },
+  {
+   "work": "W4307127241",
+   "problem": "This work estimates the impact of violence on a nation's psyche, predicts the consequences of inaction, compares the effects of different approaches to addressing social issues, optimizes the use of data to inform decision-making, and explains the complexities of human identity and culture.",
+   "approach": "The author uses a combination of personal reflection, historical analysis, and literary devices to explore the intersection of violence, culture, and identity. The work follows a procedural approach, starting with a personal account of the author's experiences and emotions, then expanding to broader societal and historical contexts."
+  }
+ ]
+}

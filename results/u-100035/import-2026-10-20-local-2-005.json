@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-005",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:40Z",
+ "descriptions": [
+  {
+   "work": "W4413105613",
+   "problem": "Estimate the risk of severe outcomes after a treatment that is effective but potentially highly morbid, based on variables that can be measured before the treatment.",
+   "approach": "Use a mathematical model to combine these variables and predict the risk of severe outcomes, and then test this model on a separate set of data to see how well it works."
+  },
+  {
+   "work": "W4408052916",
+   "problem": "This work estimates the outcome of a rare bacterial infection in immunocompromised patients, comparing the results to a large dataset of similar cases. It predicts the most common form of the infection and identifies the most effective treatment based on genetic testing.",
+   "approach": "The researchers used genetic testing to identify the type of bacteria causing the infection, and then used this information to determine the best treatment. They analyzed data from 13 years to identify the most common form of the infection and the most effective treatment."
+  },
+  {
+   "work": "W3159238845",
+   "problem": "This study aims to explore the effects of a certain medication on the quality of recovery and immune function in patients undergoing a specific surgical procedure. It estimates the impact of the medication on these outcomes and compares it to a control group.",
+   "approach": "The researchers randomly assigned patients to receive either a low dose, a high dose, or a control group, and measured the outcomes over time using a standardized score. The results were compared to the control group using statistical tests."
+  },
+  {
+   "work": "W4401553636",
+   "problem": "This study aims to understand how individuals with a specific learning difficulty support each other, and how this support affects their learning outcomes. It estimates the importance of certain social skills, such as seeking recognition and modelling learning activities, in this process.",
+   "approach": "The researchers use a method that involves gathering data from individuals with this learning difficulty, and then analyzing this data to identify patterns and relationships. They follow a procedure that involves collecting and categorizing the data, and then using this data to make predictions about the effectiveness of different support strategies."
+  },
+  {
+   "work": "W4413424825",
+   "problem": "This study estimates the distribution of a certain type of bacteria in patients' samples from different clinics, and compares the resistance rates of this bacteria to various antibiotics over time. It also explains the increasing importance of this bacteria due to the rising prevalence rates and antibiotic resistance.",
+   "approach": "The researchers used a device to identify the bacteria in 410 samples from 295 patients, and then tested the bacteria's susceptibility to various antibiotics using established guidelines. They compared the results over three years to see if the bacteria's distribution and resistance rates changed."
+  },
+  {
+   "work": "W4410351880",
+   "problem": "This work estimates the effectiveness of a new compound in targeting a specific biological mechanism, and compares it to the activity of a natural substance. It aims to explain how the compound works and whether it is safe to use.",
+   "approach": "The researchers used a combination of laboratory tests to evaluate the compound's performance. They started with a simple compound and modified it to improve its ability to target the desired biological mechanism."
+  },
+  {
+   "work": "W3117062704",
+   "problem": "This study estimates the relationship between exposure to various types of stressful events and the likelihood of experiencing negative mental health outcomes. It also compares the impact of these events on mental health outcomes and seeks to explain the role of a certain mindset in mitigating these effects.",
+   "approach": "The researchers used a statistical model to analyze data from a large sample of individuals, examining the relationship between exposure to stressful events and mental health outcomes. They also tested the hypothesis that a particular mindset can buffer the negative effects of these events on mental health."
+  },
+  {
+   "work": "W4383888013",
+   "problem": "This study aims to compare and analyze how different countries protect valuable information from being shared with others. It estimates the effectiveness of various methods used to safeguard this information.",
+   "approach": "The researchers used a combination of methods to gather data, including expert surveys and visual presentations. They then categorized and compared the results to identify the most effective measures for protecting valuable information."
+  },
+  {
+   "work": "W4385505150",
+   "problem": "This work estimates the effectiveness of a treatment for a potentially life-threatening condition caused by ingesting a poisonous plant, and compares it to a standard treatment. It predicts the outcome of the treatment and explains why it was successful.",
+   "approach": "The researchers used data from a patient's medical history and test results to determine the best course of treatment. They applied a specific medication to suppress a potentially deadly heart rhythm, and monitored the patient's response to the treatment."
+  },
+  {
+   "work": "W7220583280",
+   "problem": "This research aims to create a consistent visual image for a group or organization by designing a unique visual style for their written materials, using a combination of traditional and modern methods.",
+   "approach": "The researchers use a combination of visual analysis and creative design to develop a new visual style, starting with a sample of existing materials and then creating multiple versions to compare and evaluate."
+  },
+  {
+   "work": "W4402778172",
+   "problem": "This work estimates the properties of various substances found in a plant, and compares them to known effects on the body. It predicts how these substances might interact with other substances in the body.",
+   "approach": "The study uses data from various experiments and observations to identify and summarize the substances found in the plant, and their effects on the body."
+  },
+  {
+   "work": "W2735475367",
+   "problem": "This work estimates the optimal number of offers a single entity should make to another entity, taking into account the entity's ability to choose from multiple options. It compares the outcomes of different scenarios to determine the best approach.",
+   "approach": "The researchers use a mathematical model to calculate the best number of offers, following a step-by-step procedure that involves calculating probabilities and expected outcomes. They test their results using data from various scenarios."
+  },
+  {
+   "work": "W4390907773",
+   "problem": "This work estimates the impact of a specific canon on a particular type of creative writing, comparing it to other writings from the same time period. It predicts how this canon influenced the development of a specific genre of writing.",
+   "approach": "The researchers used a combination of historical records and examples of writings from the time period to develop a model that predicts the influence of the canon on the genre. They then compared their results to other writings from the same time period to validate their findings."
+  },
+  {
+   "work": "W4378219892",
+   "problem": "This work aims to estimate the effectiveness of introducing environmental practices in a specific region, comparing the benefits of these practices to the costs and identifying the necessary steps for implementation. It also aims to explain the importance of legislative support for environmental strategies.",
+   "approach": "The approach involves analyzing the stages of environmental practice introduction, proposing key steps for implementation, and highlighting the need for legislative support. This is done through a step-by-step analysis of the region's environmental conditions and the potential benefits of introducing environmental practices."
+  },
+  {
+   "work": "W2969955284",
+   "problem": "This work estimates the capabilities of a system with limited agents that can share information through a network. It compares the performance of different systems with varying levels of information sharing.",
+   "approach": "The system uses a network of agents to share information, and the agents can record the states of the connections they use to communicate. The work analyzes the performance of the system by translating it into a new model that allows for more efficient information sharing."
+  },
+  {
+   "work": "W3175229938",
+   "problem": "Estimate the value of materials and resources over time, and compare their efficiency in different business models. Predict the environmental impact of various resource circulation modes.",
+   "approach": "Use data from various sources to analyze the performance of different business models and identify the most efficient ways to maintain the value of products and materials."
+  },
+  {
+   "work": "W4412908199",
+   "problem": "This study aims to investigate the presence of certain substances in food products that may be linked to a global health concern. It estimates the levels of these substances in different types of food and compares them to established limits.",
+   "approach": "The researchers use a specific technique to analyze the food samples, and then compare the results to established limits. They follow a procedure that involves extracting the substances from the food, then using a machine to detect and measure their levels."
+  },
+  {
+   "work": "W2790273113",
+   "problem": "This work estimates the rate at which a certain substance is taken up by liver cells, and compares it to the rate at which it is taken up by liver cells in a mixture of liver cells and blood. It also predicts how much of the substance is in the blood over time.",
+   "approach": "The researchers use a special type of liver cell that can be easily studied in a lab, and mix it with blood from humans. They then use a mathematical model to simulate how the substance is taken up and released by the liver cells over time."
+  },
+  {
+   "work": "W4406178240",
+   "problem": "This work estimates the prevalence of a specific disease in a particular population, comparing it to existing knowledge. It predicts the disease's impact on a group of people with a shared ancestry.",
+   "approach": "The researchers followed a procedure of identifying cases, collecting data, and analyzing it to draw conclusions about the disease's presence and effects in the population."
+  },
+  {
+   "work": "W2810066961",
+   "problem": "This study estimates the levels of coordination of patient services in different locations, compares these levels, and optimizes the understanding of coordination among personnel in these locations. It aims to explain the relationship between location and levels of coordination.",
+   "approach": "The researchers used a mixed-methods approach, combining quantitative and qualitative data, to investigate the understanding and practice of coordination among personnel in different locations. They employed an ecological model to analyze the relationship between location and levels of coordination."
+  }
+ ]
+}

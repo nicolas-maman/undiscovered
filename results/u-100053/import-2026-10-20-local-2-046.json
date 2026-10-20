@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-046",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:48Z",
+ "descriptions": [
+  {
+   "work": "W4307033993",
+   "problem": "A material's response to varying frequencies and temperatures is measured to detect structural changes or transitions, using signals across a broad range of energy inputs.",
+   "approach": "A stable material is prepared under controlled conditions, then exposed to a range of frequencies and temperatures. Its vibrational modes are analyzed, and deviations from expected patterns are identified through comparison with theoretical predictions based on symmetry rules."
+  },
+  {
+   "work": "W4403615337",
+   "problem": "A pattern of delayed identification is observed in pediatric cases where initial evaluations fail to confirm a condition, despite the presence of underlying pathology that may only be revealed through invasive procedures.",
+   "approach": "A retrospective analysis is performed on patient records to map the timeline between symptom onset and confirmation, identifying delays and factors that obstruct early detection, such as ambiguous initial findings or conflicting alternative explanations."
+  },
+  {
+   "work": "W7168411545",
+   "problem": "A candidate organism is assessed for safety in hostile environments, including low pH, high bile, and digestive fluids, and for its response to common microbial inhibitors. The goal is to determine whether it can survive and remain viable under conditions mimicking the digestive tract.",
+   "approach": "The organism is exposed sequentially to acidic, bile-rich, and digestive fluid environments over time. Its survival is monitored across these conditions, and its response to a range of inhibitory agents is tested under controlled, time-dependent settings."
+  },
+  {
+   "work": "W4220772663",
+   "problem": "A system estimates how frequently and consistently various socioeconomic and environmental factors are mentioned across a large set of unstructured medical records.",
+   "approach": "It uses language processing to scan and classify text into predefined categories, then aggregates and analyzes the frequency of each category per individual record to identify patterns and gaps in reported information."
+  },
+  {
+   "work": "W4226079806",
+   "problem": "A system's functional integrity is impaired by exposure to a harmful environmental agent, leading to increased oxidative stress, structural disorganization of cellular components, and altered gene expression related to epigenetic regulation.",
+   "approach": "A protective compound is introduced to counteract oxidative damage and restore normal cellular structure and gene regulation, with outcomes measured through functional performance and molecular stability indicators."
+  },
+  {
+   "work": "W4400872206",
+   "problem": "A system identifies and evaluates a set of possible outcomes from a complex environment, aiming to determine the most effective sequence of small, actionable choices.",
+   "approach": "It models the process as a dynamic sequence where each step is influenced by both structured reasoning and unpredictable elements, using iterative refinement to build a coherent and adaptive pathway from initial options to final action."
+  },
+  {
+   "work": "W4413848561",
+   "problem": "A system tracks the spatial and functional state of cellular energy units during development, estimating how their activity and distribution change over time in response to developmental cues and cellular organization.",
+   "approach": "The system observes and records the movement, shape, and metabolic state of energy units in a structured cellular environment, then models their integration into stable, low-activity partnerships that persist through early developmental stages and are unevenly distributed during cell division."
+  },
+  {
+   "work": "W3198960978",
+   "problem": "A system's ability to operate efficiently at minimal power output is evaluated, comparing performance across different power levels and environmental conditions to determine the lowest sustainable operational threshold.",
+   "approach": "A control strategy adjusts core flow and heat input dynamically, maintaining stable thermal and mechanical conditions by selectively disabling components and managing energy transfer between stages."
+  },
+  {
+   "work": "W3176018789",
+   "problem": "A pattern of coordinated activity is identified across diverse experimental conditions, revealing consistent regional involvement in generating and refining internal models of ongoing states.",
+   "approach": "A statistical synthesis of distributed activation patterns is performed to detect shared spatial signatures. Then, a connectivity analysis maps how these regions interact, identifying a widespread network with consistent functional coupling across tasks and stimuli."
+  },
+  {
+   "work": "W4410795098",
+   "problem": "A system estimates a spatial distribution of heat intensity across a confined volume using real-time operational settings and sparse sensor readings from specific locations.",
+   "approach": "It learns a mapping from operational conditions and sparse spatial measurements to full spatial heat patterns using a neural network trained on simulated and measured data pairs."
+  },
+  {
+   "work": "W7203722364",
+   "problem": "A method is developed to interpret the meaning of educational experiences by examining how individuals and groups understand and respond to them within specific situations.",
+   "approach": "A structured process involves identifying underlying assumptions, exploring multiple perspectives, and refining interpretations through dialogue and reflection to build deeper understanding of lived experiences."
+  },
+  {
+   "work": "W3021313297",
+   "problem": "A pattern of systemic control by men over female members of society is assessed, particularly in times of societal disruption, to evaluate how quickly progress in equality is reversed.",
+   "approach": "A model tracks how societal norms evolve under stress, identifying shifts in power dynamics and the suppression of female participation in public life as indicators of deteriorating equity."
+  },
+  {
+   "work": "W4407955821",
+   "problem": "A biological mechanism is identified that enhances resistance to a chemotherapeutic agent by promoting cell survival and DNA repair through activation of specific signaling pathways.",
+   "approach": "A regulatory RNA is detected as being overexpressed in resistant cells and shown to bind and suppress a microRNA, leading to increased expression of a growth factor. This interaction activates two distinct cellular signaling cascades that promote survival and reduce drug-induced cell death."
+  },
+  {
+   "work": "W3200765981",
+   "problem": "The frequency of adverse structural outcomes in bones following radiation exposure is estimated from longitudinal clinical records of individuals with advanced disease and compromised bone integrity.",
+   "approach": "A retrospective analysis evaluates treatment timing, pre-treatment structural assessments, and post-treatment complications, using dose and fractionation patterns to identify patterns of structural failure and intervention needs over time."
+  },
+  {
+   "work": "W4307349461",
+   "problem": "The rate and quality of new tissue formation around a material surface is estimated from longitudinal imaging and microscopic tissue samples taken at multiple time points.",
+   "approach": "A model compares tissue growth metrics across three surface treatments using radiographic and histological data, evaluating how surface chemistry influences early tissue attachment and bone volume development over time."
+  },
+  {
+   "work": "W2982276659",
+   "problem": "The effect of reducing mineral content in feed on animal performance and skeletal structure is assessed, comparing outcomes across different levels of mineral deficiency and the impact of a supplement that enhances mineral release from organic sources.",
+   "approach": "Animals are fed diets with varying mineral levels and supplemented with a compound that breaks down organic mineral binders. Performance, growth, and structural integrity are monitored, with results analyzed across deficiency severity and supplement dosage."
+  },
+  {
+   "work": "W3032992256",
+   "problem": "The impact of a medical intervention on an individual's daily functioning and well-being is assessed, comparing self-reported and independently observed outcomes to detect inconsistencies in subjective experience.",
+   "approach": "Pre- and post-intervention data from two sources—self-report and an external observer—are collected and compared. Statistical analysis identifies patterns in how different personal traits correlate with changes in functional outcomes across treatment groups."
+  },
+  {
+   "work": "W4413965058",
+   "problem": "A rare condition is identified where a structural abnormality in the heart's vascular network presents with electrical signal patterns typical of tissue damage, despite no clear cause or prior intervention.",
+   "approach": "Electrical activity is monitored over time to detect abnormal waveforms. Structural imaging is used to locate a mass that fills a cardiac chamber and responds to contrast injection, revealing a vascular malformation with unexpected electrical features."
+  },
+  {
+   "work": "W3180872921",
+   "problem": "The strength and resistance to sliding under load are measured from samples subjected to controlled forces in different directions and conditions.",
+   "approach": "Samples are exposed to increasing forces in multiple orientations, and the resulting deformation and failure points are recorded to establish thresholds and relationships between load magnitude and material response."
+  },
+  {
+   "work": "W4321372432",
+   "problem": "A system where multiple stable outcomes can emerge is studied to determine which outcome is likely to occur under real-world decision-making conditions.",
+   "approach": "A rule-based process simulates how agents update their actions based on direct observation of others' choices, leading to a self-reinforcing pattern that naturally evolves toward one stable state over time."
+  }
+ ]
+}

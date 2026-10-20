@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-052",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:49Z",
+ "descriptions": [
+  {
+   "work": "W7117053928",
+   "problem": "A system is designed to assign therapeutic strategies based on biological mechanisms, patient risk levels, and behavioral factors, aiming to reduce injury events in individuals with compromised structural integrity.",
+   "approach": "A model maps drug classes to specific molecular actions, then applies risk thresholds to guide treatment sequencing. It integrates preventive actions and long-term behavior support to ensure sustained intervention effectiveness."
+  },
+  {
+   "work": "W4409682074",
+   "problem": "The structure and evolution of user interactions across digital spaces are analyzed to determine how different environments influence the emergence and sustainability of inclusive, constructive exchanges among diverse groups.",
+   "approach": "User activity patterns are mapped over time to identify how visibility of collective expression and shared norms shape engagement. A comparative framework evaluates how environmental design influences the likelihood of constructive versus divisive exchanges."
+  },
+  {
+   "work": "W2893045461",
+   "problem": "A material is designed to maintain high transparency while improving solubility in organic solvents and resisting water absorption. Its physical and thermal performance is evaluated across multiple conditions, including mechanical strength, heat resistance, and surface wettability.",
+   "approach": "A monomer with bulky, hydrophobic side groups is combined with two different cyclic anhydride precursors. The resulting polymer is assessed for its response to stress, temperature, and environmental exposure through controlled chemical and physical testing."
+  },
+  {
+   "work": "W4394820963",
+   "problem": "A sudden, forceful movement of the head and neck in a specific body orientation leads to damage in a region of the central nervous system, resulting in loss of motor control below a certain level.",
+   "approach": "The body is positioned with the head and neck extended backward and downward, creating a high-stress alignment. This alignment is subjected to mechanical stress during a procedure involving direct access to the posterior brain region, and the resulting forces are monitored for unintended impact on a distant neural pathway."
+  },
+  {
+   "work": "W3025236304",
+   "problem": "The extent and consequences of repeated human collection of a common coastal plant species are estimated across seasons and years, using observed removal patterns and field-based comparisons of plant survival and regrowth under different handling methods.",
+   "approach": "A field experiment compares outcomes when a plant is cut at a defined height above its base versus directly at its main stem. Data from multiple collection events are used to track changes in plant density and recovery over time."
+  },
+  {
+   "work": "W3205104733",
+   "problem": "The system estimates how clusters of flexible molecules form and dissolve on a surface, depending on their local concentration and how much they can bend or move. It predicts the likelihood of stable groupings under different conditions, based on physical interactions and spatial constraints.",
+   "approach": "The model uses a simplified representation of entities with variable shapes and movement. It computes how these entities interact over time, balancing attraction and repulsion based on proximity and flexibility, to determine stable group configurations and transition rates between them."
+  },
+  {
+   "work": "W4411523207",
+   "problem": "The stability and performance of a crystalline material under high-frequency electromagnetic fields are assessed by analyzing how structural changes affect its internal charge distribution and mechanical response.",
+   "approach": "A model of the material's atomic arrangement is refined to find the lowest energy configuration. This leads to predictions of how charge and strain respond to external stimuli, enabling evaluation of performance under dynamic conditions."
+  },
+  {
+   "work": "W4407128828",
+   "problem": "A method is needed to detect harmful effects of multiple treatments in older individuals with complex health conditions, using observable symptoms and clinical interactions to identify potential harm in real time.",
+   "approach": "A structured list of concerning symptoms is applied to patient reports, combined with expert review. Outcomes are evaluated across different settings to determine which combinations improve detection and reduce harm."
+  },
+  {
+   "work": "W4399725888",
+   "problem": "A system estimates the size and location of internal discontinuities in layered materials by analyzing responses to thermal stimulation, comparing results across different sensing mechanisms to determine which provides more accurate spatial and dimensional information.",
+   "approach": "A sequence of thermal pulses is applied to a surface, and the resulting surface response is captured over time. The data from two distinct sensing strategies are processed and cross-validated to infer the size and position of internal anomalies, with adjustments made to minimize measurement error."
+  },
+  {
+   "work": "W3081006750",
+   "problem": "A quantity representing the body's resistance to clotting is measured across different dosages of a substance, and its effect on oxidative stress markers is assessed in a biological system exposed to repeated daily administration.",
+   "approach": "A dose-dependent intervention is applied over a set period. Biological responses are monitored for changes in clotting inhibition and oxidative damage indicators, with statistical comparison across groups to determine trends and significance."
+  },
+  {
+   "work": "W4395014298",
+   "problem": "A mechanical performance of a composite structure is evaluated under dynamic loading conditions to determine its suitability as a lightweight, durable frame alternative in mobile transport systems.",
+   "approach": "A layered material is assembled with interlayer bonding and subjected to stress tests to measure stiffness, strength, and failure behavior under repeated bending and impact."
+  },
+  {
+   "work": "W2884634442",
+   "problem": "A system detects and suppresses the expression of a regulatory signal in neighboring units to ensure only one unit activates a specific state while others remain inactive.",
+   "approach": "A dual regulatory mechanism operates: one suppresses early signal expression in surrounding units, and a second, non-local suppression actively blocks the signal's function in adjacent units to maintain distinct outcomes."
+  },
+  {
+   "work": "W3158870680",
+   "problem": "A system estimates and stabilizes a continuous-time signal's phase and frequency over time, maintaining consistent performance under varying environmental conditions and noise sources.",
+   "approach": "A control loop uses a first-order digital filter to adjust phase differences and a linearized feedback mechanism to maintain precision. It operates at high speed with minimal energy, and includes noise-reduction techniques to preserve signal integrity."
+  },
+  {
+   "work": "W3018876093",
+   "problem": "A system is evaluated to determine the optimal interval for harvesting plants based on accumulated environmental energy, to balance output quantity with nutritional quality across different plant types and seasonal conditions.",
+   "approach": "Harvesting events are scheduled based on the total environmental energy input, and plant growth metrics are tracked over time. Output and nutritional traits are measured at each event, and patterns are used to identify the harvesting interval that maximizes yield while maintaining desirable nutritional content."
+  },
+  {
+   "work": "W4386737186",
+   "problem": "A biological marker is measured across individuals to assess its relationship with genetic variation and the timing of a developmental event, and to evaluate its connection with early hormonal signals in infancy.",
+   "approach": "A retrospective analysis of stored measurements is conducted, grouping individuals by genetic makeup and developmental milestones, then comparing marker levels across groups and linking them to early hormonal activity in early life."
+  },
+  {
+   "work": "W2903967751",
+   "problem": "A group of dedicated individuals is evaluated to assign optimal roles based on skills and engagement, while establishing shared resources and a structured support network to ensure continuity and performance improvement across a transition period.",
+   "approach": "Roles are matched to individuals using observed performance and engagement patterns. A repository of materials and procedural guidelines is compiled and made accessible to ensure consistent, repeatable operations in the next phase."
+  },
+  {
+   "work": "W2997169104",
+   "problem": "A procedure is evaluated to determine the likelihood of complications based on patient characteristics and procedural support tools, with the goal of predicting safety outcomes under different conditions.",
+   "approach": "A stepwise model assigns risk levels based on patient traits and the availability of real-time imaging and airway visualization, then compares outcomes across different procedural setups to identify the most reliable and safe configuration."
+  },
+  {
+   "work": "W4382139014",
+   "problem": "The effect of a dietary additive on the breakdown and recovery of a specific nutrient complex is assessed across different treatment levels and biological compartments.",
+   "approach": "A chemical agent is introduced into a sample environment under controlled conditions to bind and concentrate a target compound. The resulting concentration in different sample locations is measured and compared across treatment groups to evaluate interference with the natural processing pathway."
+  },
+  {
+   "work": "W4298394595",
+   "problem": "A system evaluates visitor preferences and behavioral shifts in response to recent societal changes, aiming to predict how engagement with natural environments and alternative experiences may influence overall satisfaction and participation patterns.",
+   "approach": "The system analyzes feedback from users to identify preferred activities, then applies a rule-based model that balances retention of core values with the integration of new, nature-based experiences to optimize visitor flow and satisfaction."
+  },
+  {
+   "work": "W4232186809",
+   "problem": "A closed, smooth surface is constructed from a set of polygonal faces arranged so that each face shares edges with adjacent ones, forming a continuous, non-self-intersecting structure with a specific topological complexity.",
+   "approach": "The arrangement of faces is determined by a rule that ensures each vertex connects to a fixed number of neighbors, and the overall shape maintains a consistent curvature pattern across its surface."
+  }
+ ]
+}

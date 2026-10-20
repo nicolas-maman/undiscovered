@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-049",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:48Z",
+ "descriptions": [
+  {
+   "work": "W7217417113",
+   "problem": "A function that changes over time is inferred from observations of a system's behavior at different moments, using additional information that links the system's state to its past and future states.",
+   "approach": "A mathematical model is built that relates the system's observed evolution to an unknown time-varying influence. The model is solved using known data and a set of constraints to recover the influence function, ensuring consistent results under small perturbations in input."
+  },
+  {
+   "work": "W3127935822",
+   "problem": "A material's internal structure and surface features are adjusted by varying the amount of a specific additive to influence its physical form and performance under heat and electrical stress.",
+   "approach": "A controlled chemical process is used to modify the material's growth conditions, where increasing the additive concentration leads to larger, more uniform shapes. The resulting material is then processed into a dense form and tested for consistent performance across a wide temperature range."
+  },
+  {
+   "work": "W4210493973",
+   "problem": "A system is evaluated to determine whether it meets the standards required to deliver advanced knowledge and critical thinking outcomes typically expected in higher-level learning environments.",
+   "approach": "A comparative analysis is conducted between the institution's internal processes and established benchmarks for academic rigor, student progression, and faculty qualifications, using official governance frameworks and outcome data as evidence."
+  },
+  {
+   "work": "W4312963998",
+   "problem": "A pattern of long-term, widespread human progress is estimated based on observable, interconnected developments across regions and time. It is compared to localized, isolated patterns to determine which better explains broad, sustained change.",
+   "approach": "A model aggregates evidence from diverse, geographically spread indicators over time. It identifies which patterns scale consistently across regions and time, and assigns greater weight to those that show coherence and interdependence."
+  },
+  {
+   "work": "W3119269716",
+   "problem": "A set of conditions is optimized to restore material integrity to a component exposed to harsh environmental degradation, based on measurements of internal structure, void content, and bond strength between layers.",
+   "approach": "A cycle of parameter adjustment is performed, evaluating deposited material properties through microscopic and mechanical analysis, until a stable and durable repair configuration is achieved."
+  },
+  {
+   "work": "W7197256925",
+   "problem": "The structure and composition of microbial communities in human-occupied environments are compared across different types of outdoor spaces to assess differences in microbial diversity and their potential influence on health outcomes.",
+   "approach": "Environmental samples are sequenced to identify microbial presence. Statistical models analyze community differences, test for diversity variations, and evaluate which species are uniquely associated with specific site features."
+  },
+  {
+   "work": "W4408522436",
+   "problem": "A group of rural land users estimates how they perceive changes in land conditions that affect crop productivity and land stability, based on observed environmental signs and long-term agricultural practices.",
+   "approach": "Respondents evaluate environmental indicators like color and yield trends, then link these to land degradation patterns. They report on land management actions, such as planting barriers and rotating crops, to explain observed changes in land health over time."
+  },
+  {
+   "work": "W4413992819",
+   "problem": "The binding strength of a class of molecules to two distinct biological targets is assessed, using experimental data from in vitro binding assays with labeled probes to measure displacement efficiency.",
+   "approach": "A systematic variation of substituent position and type on a core molecular scaffold is introduced, and the resulting binding potency is evaluated through competitive inhibition assays in membrane-derived biological samples."
+  },
+  {
+   "work": "W3131511718",
+   "problem": "A set of gene-derived molecules is measured to determine their levels in biological samples, and their association with a disease state is assessed across different patient groups and clinical conditions.",
+   "approach": "Levels of specific molecules are compared between groups with and without a condition. Statistical models evaluate their predictive power, and interactions with other regulatory molecules are tested through functional assays to confirm biological relevance."
+  },
+  {
+   "work": "W4254275487",
+   "problem": "A system combines multiple uncertain assessments to produce a single, refined assessment, either by combining them additively or by combining them multiplicatively, based on how confidently each assessment is made.",
+   "approach": "The system evaluates each assessment's confidence level and applies a rule-based transformation to merge them, favoring consistent and structured integration when confidence is quantified precisely."
+  },
+  {
+   "work": "W4408685102",
+   "problem": "A system identifies and isolates recurring oscillations in a time-series signal, detecting dominant and secondary peaks in specific frequency ranges to characterize underlying physiological patterns.",
+   "approach": "The signal is transformed into the frequency domain using a mathematical technique that decomposes temporal variations into periodic components, then analyzes amplitude and presence of specific frequency bands to detect patterns."
+  },
+  {
+   "work": "W4414309509",
+   "problem": "A precise, continuous measurement of ultraviolet light intensity across a defined wavelength range is estimated from time-series observations of incoming electromagnetic radiation in a specific atmospheric window.",
+   "approach": "A dual-filter system rotates around a central axis to separate and record light intensity at fine wavelength intervals using diffraction-based separation, with data processed to resolve variations in light distribution across a narrow band."
+  },
+  {
+   "work": "W3208875084",
+   "problem": "A set of operational workflows is analyzed to identify inefficiencies and environmental impacts, with the goal of reducing waste, energy use, and emissions while maintaining output levels.",
+   "approach": "A systematic review of input-output relationships across stages is conducted, using baseline performance metrics to compare alternatives and select configurations that improve resource efficiency and reduce negative environmental footprints."
+  },
+  {
+   "work": "W4405117638",
+   "problem": "A system is analyzed that organizes individuals into groups based on a shared temporal characteristic, such as birth month, to foster interaction and mutual recognition among members.",
+   "approach": "A digital platform hosts recurring events and discussions where members engage in structured activities tied to their shared origin. Interactions are monitored and evaluated to determine patterns of participation, connection, and collective identity formation over time."
+  },
+  {
+   "work": "W2898309699",
+   "problem": "A system estimates the likelihood that a gastrointestinal lesion may progress to a malignant condition based on its cellular and molecular characteristics observed in tissue samples.",
+   "approach": "The system analyzes patterns in cellular structure and molecular markers to assign a risk level, then applies known thresholds to guide decisions on monitoring, intervention, or surgical removal."
+  },
+  {
+   "work": "W4386244527",
+   "problem": "The relative contribution of each limb during tactile text acquisition is estimated from movement patterns and performance metrics across different behavioral strategies.",
+   "approach": "Movement data are analyzed to detect patterns of independent versus coordinated limb actions, and performance is correlated with the degree of temporal and spatial separation between limb inputs."
+  },
+  {
+   "work": "W4396629235",
+   "problem": "A system is studied to determine how an infection affects the diversity and function of a resident community of organisms living in a specific bodily environment, particularly when the infection triggers widespread physiological changes.",
+   "approach": "Data from individuals before and after infection are analyzed to track shifts in community structure and metabolic activity. A model compares these shifts to baseline patterns and correlates them with systemic inflammation and symptom duration."
+  },
+  {
+   "work": "W2796298854",
+   "problem": "A pattern of biological activity is assessed across different environmental conditions to determine how it influences growth outcomes under stress. The strength and consistency of this activity are compared across multiple samples and environmental contexts.",
+   "approach": "A set of biological agents is exposed to controlled environmental stressors. Their performance is measured by changes in growth parameters and overall output. The most effective agent is identified based on the magnitude and consistency of observed improvements."
+  },
+  {
+   "work": "W3185336401",
+   "problem": "A local intervention is evaluated to determine whether it induces metabolic changes in a specific tissue region, measuring shifts in energy substrates and tissue mass over time.",
+   "approach": "A biological agent with high metabolic activity is introduced into a defined tissue area. Tissue mass and circulating metabolite levels are monitored to assess localized metabolic effects and compare outcomes to a control region receiving no such agent."
+  },
+  {
+   "work": "W3108513864",
+   "problem": "A group of individuals lacks foundational skills to access and interpret essential information, hindering their ability to engage with daily tasks and community resources.",
+   "approach": "A structured six-phase process is applied: identifying needs, designing interventions, demonstrating methods, measuring progress, reviewing outcomes, and tracking changes over time to build competence and confidence in participants."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-029",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:45Z",
+ "descriptions": [
+  {
+   "work": "W7117053928",
+   "problem": "This work estimates the effectiveness of different treatments for a condition that affects the strength and density of bones in older adults, and compares the results to identify the most effective approach. It also explains the limitations of current treatments and identifies gaps in knowledge.",
+   "approach": "The approach involves analyzing the molecular pathways affected by different treatments, and then using this information to develop a framework for guiding treatment decisions. The framework takes into account the individual needs and risk factors of each patient."
+  },
+  {
+   "work": "W4409682074",
+   "problem": "This research estimates the impact of social media on political polarization, predicts the effects of platform features on democratic outcomes, and compares the effects of two social media platforms on user behavior. It aims to explain why one platform is more conducive to productive discussion than the other.",
+   "approach": "The study uses a mixed-methods approach, combining quantitative data from both platforms with qualitative insights from user expectations. It follows a procedure of data collection, analysis, and comparison to identify the key features that support or hinder democratic norms."
+  },
+  {
+   "work": "W2893045461",
+   "problem": "This work estimates the properties of new materials created by combining two different kinds of molecules. It predicts how these materials will behave under different conditions, such as heat and chemicals.",
+   "approach": "The researchers use a combination of chemical reactions and measurements to create the new materials. They then test these materials to see how they perform in terms of strength, transparency, and other properties."
+  },
+  {
+   "work": "W4394820963",
+   "problem": "This work estimates the risk of a severe complication in patients who undergo a specific type of operation, and compares it to the outcome in a single case. It aims to explain why this complication occurred in a young patient.",
+   "approach": "The researchers followed a patient who underwent a procedure to remove a ruptured blood vessel in the brain, and then observed the patient's outcome. They used this case to illustrate a general principle about the risks of a specific operation."
+  },
+  {
+   "work": "W3025236304",
+   "problem": "This work estimates the impact of a certain activity on a specific ecosystem, comparing the effects of two different methods on the growth and health of a particular type of seaweed. It aims to explain the consequences of these methods on the ecosystem.",
+   "approach": "The study uses data from surveys and interviews to understand the activity and its effects, and then conducts a controlled experiment to compare the outcomes of two different methods."
+  },
+  {
+   "work": "W3205104733",
+   "problem": "This work estimates the behavior of clusters of flexible, flexible objects that interact with each other and with a complex, dynamic surface. It predicts how these clusters form and break up, and optimizes the conditions under which they do so.",
+   "approach": "The approach involves creating a simplified model of the surface, with flexible objects that can move and interact with each other. The model is then used to study the behavior of these clusters and the conditions that influence their formation and breakup."
+  },
+  {
+   "work": "W4411523207",
+   "problem": "This work investigates how replacing a certain element with another in a specific material affects its properties. It aims to improve the material's performance by changing its internal structure.",
+   "approach": "The researchers use mathematical models to simulate the material's structure and behavior before and after the change. They then test the material experimentally to verify their findings."
+  },
+  {
+   "work": "W4407128828",
+   "problem": "This work aims to identify and measure the occurrence of unwanted symptoms caused by certain substances in older people who take multiple substances, in order to improve their safety and wellbeing.",
+   "approach": "It uses a systematic search of existing research to find studies that have developed and tested methods for identifying and addressing these unwanted symptoms, and then evaluates the effectiveness of these methods."
+  },
+  {
+   "work": "W4399725888",
+   "problem": "This work estimates and compares the quality of composite structures, using data from thermal imaging and visual inspections to determine the size and presence of internal damage. It also optimizes the use of these methods to improve detection accuracy.",
+   "approach": "The procedure involves using thermal imaging to detect internal damage, and then using visual inspections to confirm and quantify the damage. The methods are combined to leverage their complementary advantages and improve detection accuracy."
+  },
+  {
+   "work": "W3081006750",
+   "problem": "This research estimates the effect of a certain plant extract on the body's ability to stop bleeding and repair damaged tissues, and compares it to a control group. It also predicts the impact of the extract on the levels of certain substances in the body.",
+   "approach": "The researchers randomly assigned a group of animals to receive different doses of the extract, and then measured the levels of certain substances in their bodies over a set period of time. The results were compared to the control group to see if the extract had any effect."
+  },
+  {
+   "work": "W4395014298",
+   "problem": "This work estimates the mechanical properties of a composite material made from multiple layers of a strong, lightweight, and corrosion-resistant material, combined with a strong adhesive, to determine its suitability as a frame material for a vehicle designed for efficient transportation in densely populated areas.",
+   "approach": "The researchers use a combination of experimental data and computational models to compare the mechanical properties of the composite material to those of a traditional, yet environmentally concerning, material used in vehicle frames. They then optimize the design of the composite material to achieve the best balance of strength, weight, and environmental sustainability."
+  },
+  {
+   "work": "W2884634442",
+   "problem": "This work estimates the effect of a regulatory mechanism on the establishment of distinct identities in a group of similar entities, comparing the expression levels of a key protein in these entities. It predicts the outcome of this mechanism when one entity is specified and the others are not.",
+   "approach": "The work uses a combination of data analysis and experimental manipulation to identify the key components and regulatory relationships involved in this mechanism. It follows a procedure where the effect of the regulatory mechanism is tested in different conditions, and the results are compared to understand the underlying rules."
+  },
+  {
+   "work": "W3158870680",
+   "problem": "This work aims to improve the performance of a device that generates a precise signal, by estimating the best value for the signal's frequency and comparing it to a reference signal. It also optimizes the device's energy efficiency and minimizes unwanted variations in the signal.",
+   "approach": "The device uses a combination of a simple controller and a highly linear method to generate the precise signal. It achieves this by using a specific procedure that involves measuring the signal's performance and adjusting the controller's settings accordingly."
+  },
+  {
+   "work": "W3018876093",
+   "problem": "This work estimates the optimal frequency of harvesting certain plants to balance their growth with their nutritional value, using a measure of the time it takes for the plants to grow. It compares the growth and nutritional value of two types of plants under different harvesting frequencies.",
+   "approach": "The researchers used a mathematical model to calculate the growth and nutritional value of the plants over time, and then compared the results under different harvesting frequencies. They measured the growth of the plants every three days and calculated various metrics such as leaf length and growth rate."
+  },
+  {
+   "work": "W4386737186",
+   "problem": "This study estimates the distribution of a hormone in a group of patients with a specific genetic condition, and compares it to the presence of certain physical characteristics and the development of reproductive features. It also examines the hormone's relationship to the patients' age and reproductive status.",
+   "approach": "The researchers looked at data from patients' charts to determine the hormone's levels and how they relate to the patients' genetic makeup and reproductive development. They used statistical methods to identify patterns and correlations in the data."
+  },
+  {
+   "work": "W2903967751",
+   "problem": "This work estimates the effectiveness of a transition process for a group of students, comparing the outcomes of the 2017-2018 and 2018-2019 academic years. It aims to explain the success of the group in achieving high job acceptance rates and significant savings.",
+   "approach": "The approach involves determining the best fits for roles, providing foundational materials, and creating a support system for the next year's team. The procedure follows a structured process, with 150 hours invested in the organization, and a collection of resources, including 55 documents and 150 PowerPoint slides, to facilitate the transition."
+  },
+  {
+   "work": "W2997169104",
+   "problem": "This work estimates the safety of a medical procedure for patients with chronic respiratory failure, comparing it to a more invasive surgical method. It predicts the outcomes for patients with certain characteristics and optimizes the procedure for selected patients.",
+   "approach": "The procedure involves passing tools over a guide wire to create an opening in the patient's airway, using a technique that has the best safety profile. The work also uses other tools, like a device that shows images of the airway, to help with the procedure and assess its safety."
+  },
+  {
+   "work": "W4382139014",
+   "problem": "This work estimates the effect of adding a specific substance to a mixture of substances on the presence of another substance in the mixture. It predicts whether the presence of the substance affects the recovery of a specific substance from the mixture.",
+   "approach": "The procedure involves adding the substance to the mixture and then analyzing the mixture to see if the specific substance is present. The analysis is done in a controlled environment with different levels of the substance and different levels of the specific substance."
+  },
+  {
+   "work": "W4298394595",
+   "problem": "Estimate the impact of a global event on a specific industry, and compare the results to previous data. Predict the changes in behavior and preferences of the industry's customers. Explain the findings in terms of their implications for the industry's operations.",
+   "approach": "Use data from the industry's customers to analyze their behavior and preferences. Apply statistical methods to compare the results to previous data and predict future changes."
+  },
+  {
+   "work": "W4232186809",
+   "problem": "This work estimates the number of faces required to create a closed, three-dimensional surface with a specific arrangement of polygons, without any intersections or holes. It also predicts the minimum number of faces needed to achieve this arrangement for different numbers of polygons.",
+   "approach": "The approach involves analyzing the structure of the surface and using mathematical models to determine the required number of faces. It follows a procedure that involves comparing the surface's properties to a set of predefined rules, and optimizes the arrangement to minimize the number of faces."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-042",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T14:41:47Z",
+ "descriptions": [
+  {
+   "work": "W2973377295",
+   "problem": "The effect of how often a plant is collected on its chemical composition and mineral content is estimated, compared across different types of plants and fertilizer levels.",
+   "approach": "Plants are grown under repeated collection cycles and varied nutrient inputs. Their chemical and mineral profiles are measured using spectral analysis. Results are evaluated to determine which collection frequency and plant type yield the most favorable composition."
+  },
+  {
+   "work": "W4406967886",
+   "problem": "A group of individuals with limited mobility expresses preferences for structured physical activities and the conditions under which they should occur, based on personal experiences and interactions with care providers.",
+   "approach": "Interviews are conducted to gather detailed accounts of activity experiences; data are systematically organized into recurring patterns, then grouped into broad categories reflecting consistent personal and contextual priorities."
+  },
+  {
+   "work": "W4225410261",
+   "problem": "A pattern of a key biological marker is monitored over time in individuals undergoing long-term medication treatment and exposed to a widespread infectious agent. The change in the marker is assessed before, during, and after exposure to determine if the exposure or treatment independently or jointly alters the marker's level.",
+   "approach": "A longitudinal sequence of measurements is collected from individuals before, during, and after exposure to a common stressor. The data are compared across time points and grouped by exposure status to detect statistically significant shifts in the marker's value."
+  },
+  {
+   "work": "W2907676467",
+   "problem": "A system estimates the performance of materials under dynamic environmental stress and predicts their durability, cost, and efficiency across different operational conditions.",
+   "approach": "The system analyzes atomic and molecular interactions using scaled simulations, evaluates structural responses under varying loads, and compares outcomes across material compositions to identify optimal configurations for long-term use."
+  },
+  {
+   "work": "W3081235294",
+   "problem": "A comprehensive list of published works is compiled from pre-1900 sources, tracking the volume, language, and origin of printed materials produced in a specific geographic and cultural context.",
+   "approach": "Each entry is structured with metadata such as title, author, year, and place of publication, then organized by time and location, enabling pattern recognition across historical and regional trends in knowledge production."
+  },
+  {
+   "work": "W4416099926",
+   "problem": "A system of fields is analyzed to determine a set of conserved quantities that depend on the behavior of the fields at large distances, with each quantity defined by a function that varies smoothly across rotational directions.",
+   "approach": "The field strengths are expanded in powers and logarithmic terms, with the gauge choices adjusted to preserve directional consistency. The conserved quantities are derived by combining contributions from different field components in a structured, recursive way."
+  },
+  {
+   "work": "W4411291825",
+   "problem": "The system estimates how well an individual can detect mismatches between actions and their consequences over time, and how reliably they assign responsibility for those outcomes, using timed responses to stimuli during intentional actions.",
+   "approach": "The system compares response timing under conditions where actions are delayed and when feedback is delayed, applying a model that maps response latency to perceived consistency between intention and outcome."
+  },
+  {
+   "work": "W3044135866",
+   "problem": "The performance of a composite material made from mixed plastic waste is evaluated under various stress conditions to determine its strength and structural adaptability for use in construction elements.",
+   "approach": "A series of formulations are created by varying the proportion of two plastic types. Their response to compressive, bending, and stretching forces is measured, and structural features at different scales are analyzed to infer performance limits and failure patterns."
+  },
+  {
+   "work": "W3121515314",
+   "problem": "A system evaluates how well educational programs promote holistic development through structured, outdoor-based activities, comparing the balance and emphasis given to physical, personal, and social growth across different national systems.",
+   "approach": "It analyzes time allocation, content diversity, and instructional focus by mapping activity types and their integration into daily learning schedules, using documented program structures and official guidelines as input."
+  },
+  {
+   "work": "W4412900047",
+   "problem": "A system is assessed to measure how well various user groups perceive the quality and clarity of facility management services, based on structured feedback inputs from those directly involved.",
+   "approach": "A set of predefined evaluation metrics is applied to gather subjective responses from stakeholders, then analyzed to identify patterns, gaps, and areas for improvement in service delivery and understanding."
+  },
+  {
+   "work": "W7217600797",
+   "problem": "A system is evaluated to determine how different chemical inputs influence the development and growth of plant segments, measuring outcomes like new growth and root formation across seasons.",
+   "approach": "A set of treatments is applied to plant segments, and responses are observed over time. Growth metrics are recorded and compared across conditions, with seasonal variation and input concentration serving as key variables in determining optimal development conditions."
+  },
+  {
+   "work": "W4327926340",
+   "problem": "A system estimates the concentration of a key gas in a dynamic environment by analyzing visual patterns from real-time images under varying operational conditions.",
+   "approach": "A layered deep learning model processes image sequences, learns from both labeled and unlabeled data, and combines multiple network predictions to refine the final output value with high precision."
+  },
+  {
+   "work": "W4389148359",
+   "problem": "The stability and distribution of organic material in a landscape are assessed across different land management strategies, comparing how much and where it accumulates or depletes with depth and over time.",
+   "approach": "A model evaluates the amount of organic material in various layers of the land, tracking changes over time and across treatments, using measurements of microbial activity and chemical reactivity as indicators of long-term retention."
+  },
+  {
+   "work": "W3035966603",
+   "problem": "A model estimates how chronic stress and immune activation interact to produce widespread pain and systemic symptom patterns in individuals with complex, long-standing discomfort.",
+   "approach": "The model maps symptom onset and progression through a network of stress-induced biological feedback loops, using clinical observations and tissue-based evidence to adjust treatment strategies in response to patient-reported changes over time."
+  },
+  {
+   "work": "W2989674878",
+   "problem": "A metric is estimated that quantifies the balance between effectiveness and safety in a targeted therapeutic delivery system, comparing outcomes across different chemical attachment strategies to a biological macromolecule.",
+   "approach": "A defined chemical pathway is used to attach a cytotoxic agent to a macromolecule at a single, controlled site, and the resulting performance is evaluated under varying biological conditions and disease contexts."
+  },
+  {
+   "work": "W4245397015",
+   "problem": "A spatial distribution is inferred from acoustic wave propagation times through a medium, and the effect of measurement errors in those times on the accuracy of the distribution is evaluated.",
+   "approach": "Multiple wave path measurements are processed using a computational model that assigns values to spatial regions based on travel time data. The system adjusts the number of spatial segments and their weighting to minimize deviation in the reconstructed field."
+  },
+  {
+   "work": "W4382795724",
+   "problem": "A pattern of audience engagement is inferred from narrative sequences involving deception, bodily exposure, and surprise revelations, using historical sources that describe bodily functions and social norms to interpret how such events provoke response.",
+   "approach": "A model maps narrative events to known societal beliefs about bodily behavior and social taboos, then evaluates how specific plot structures trigger emotional or cognitive reactions in a presumed audience."
+  },
+  {
+   "work": "W3111901618",
+   "problem": "A pattern of behavior is assessed based on past involvement in family-related activities and its influence on future requests for support from family members.",
+   "approach": "A statistical model links past interactions with family members to future requests for support, adjusting for regional differences and using multiple indicators of involvement to determine the strength and direction of influence."
+  },
+  {
+   "work": "W4206062719",
+   "problem": "A system estimates the most efficient way to route a fixed volume of energy through a network of interconnected nodes to meet demand at various endpoints while minimizing losses and operational costs.",
+   "approach": "It evaluates all possible flow patterns across the network, applies constraints on capacity and demand, and selects the configuration that minimizes total cost while ensuring all endpoints receive required amounts."
+  },
+  {
+   "work": "W4400927184",
+   "problem": "A critical breach in a central airway structure occurs during a medical intervention, leading to uncontrolled fluid escape due to impaired patient awareness. The extent and risk of further leakage are assessed from clinical observations and real-time physiological feedback.",
+   "approach": "A surgical repair is performed using a nearby tissue with strong structural integrity and reliable vascular supply. The tissue is repositioned and anchored to stabilize the weakened area, with both open and minimally invasive techniques used to ensure secure closure."
+  }
+ ]
+}

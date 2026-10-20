@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-024",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T14:41:44Z",
+ "descriptions": [
+  {
+   "work": "W3016553481",
+   "problem": "This work estimates the performance of the tool-making industry in Russia by comparing its resource usage efficiency with the sustainable development of economic systems at different levels. It aims to explain how the industry's development affects the country's strategic security.",
+   "approach": "The study uses statistical analysis and synthesis to compare and contrast different levels of economic systems, and to identify the key factors that influence the industry's performance."
+  },
+  {
+   "work": "W4288686890",
+   "problem": "This work estimates the presence of a specific type of bacteria in a patient's body fluids, based on a sample of those fluids. It predicts the likelihood of a particular disease based on the results of this estimation.",
+   "approach": "The procedure involves examining the sample under a microscope to look for signs of the bacteria, and then using a culture to confirm the presence of the bacteria. The model follows a step-by-step process of sample preparation, examination, and culture, to provide a definitive answer."
+  },
+  {
+   "work": "W4402054497",
+   "problem": "This work estimates the angles of a joint in the human body from a signal that reflects the electrical activity of muscles. It aims to improve the accuracy of this estimation by combining two different types of neural networks.",
+   "approach": "The approach combines two neural networks: one that looks at local patterns in the signal and one that remembers long-term patterns. The combined model is then tested on a dataset of real signals to see how well it works."
+  },
+  {
+   "work": "W4393323377",
+   "problem": "This work estimates the changes in heat distribution within a complex object over time, predicting how it will behave under different conditions. It also compares the results to a broader range of conditions to make more accurate predictions.",
+   "approach": "The study uses a mathematical model to simulate the object's behavior, then uses a type of computer program to analyze the results and make predictions. The program is trained on data from the simulation to improve its accuracy."
+  },
+  {
+   "work": "W4394928736",
+   "problem": "This research aims to evaluate the efficiency of a device that converts liquid from one state to another, using data from a system that processes multiple types of materials. The goal is to understand how various factors, such as temperature and flow rates, affect the device's performance.",
+   "approach": "The researchers used data from the system to calculate the efficiency of the device, comparing different days and conditions. They identified the factors that most influence the device's performance and optimized its efficiency."
+  },
+  {
+   "work": "W7118260944",
+   "problem": "This work estimates the likelihood of a system failing due to a breakdown in trust and the erosion of symbolic authority, and compares it to the historical case of a powerful figure's downfall. It predicts the consequences of such a failure and explains the underlying dynamics.",
+   "approach": "The study uses a qualitative, conceptual-historical approach to analyze the dynamics of risk culture failure, integrating risk theory, trust studies, and resilience theory with historical research."
+  },
+  {
+   "work": "W4413443246",
+   "problem": "This work estimates the composition and properties of a substance, comparing its quality and safety in different forms. It predicts the effects of processing on the substance's properties and optimizes the process to enhance its safety and efficacy.",
+   "approach": "The procedure involves analyzing the substance's composition and properties using various techniques, such as spectroscopy and microscopy. The results are then compared and validated to determine the effects of processing on the substance's quality and safety."
+  },
+  {
+   "work": "W3035542341",
+   "problem": "This work estimates the impact of different approaches to management education on the ability of students to create profitable enterprises that also benefit society. It predicts the outcomes of various educational methods on students' skills and knowledge.",
+   "approach": "The approach involves developing a new way of teaching management skills that considers the relationships between companies and their surroundings, and how these relationships affect the creation of value."
+  },
+  {
+   "work": "W4285495698",
+   "problem": "This work estimates the effect of alcohol consumption on blood pressure in relation to a person's tendency to retain sodium in their urine. It also compares this effect to the risk of developing cardiovascular diseases.",
+   "approach": "The researchers used data from a large group of people to identify a pattern that links alcohol consumption to sodium retention and blood pressure. They then used this pattern to predict the effect of alcohol on blood pressure in relation to sodium retention."
+  },
+  {
+   "work": "W2883186487",
+   "problem": "This research estimates the effectiveness of a treatment on a specific type of skin growth, comparing it to a more common and potentially more serious condition. It predicts the likelihood of the treatment causing a rare skin condition, and optimizes the treatment's performance by identifying its limitations.",
+   "approach": "The researchers use a model that identifies patterns in data from patients who received the treatment, and then applies these patterns to a new set of data to make predictions and estimates. The model follows a procedure of analyzing data, identifying correlations, and using this information to make predictions and optimize the treatment's performance."
+  },
+  {
+   "work": "W7220531551",
+   "problem": "This research estimates the accuracy of two historical accounts, compares them to a third account, and optimizes the results to correct errors and omissions. It aims to explain the discrepancies between the accounts.",
+   "approach": "The researchers used a critical review approach, analyzing the accounts and identifying errors and inconsistencies. They compared the accounts to a third, verified source and re-investigated the findings to correct the errors."
+  },
+  {
+   "work": "W4401024352",
+   "problem": "This work aims to estimate the future speed of moving objects in urban areas, using patterns that are not dependent on the connections between these objects. It also compares and optimizes these patterns to improve the accuracy of the predictions.",
+   "approach": "The approach involves developing a new model that can learn patterns that are not dependent on the connections between objects, and then using this model to improve the accuracy of existing models that rely on connections."
+  },
+  {
+   "work": "W4387784714",
+   "problem": "This work estimates the potential benefits of adopting green technologies and innovations in various sectors and countries, comparing them to current levels of development. It aims to identify the most promising opportunities for inclusive and sustainable development.",
+   "approach": "The study uses data from different industries and countries to predict the outcomes of adopting green technologies and innovations. It follows a procedure of comparing current levels of development to predicted levels, and optimising strategies for each sector and country."
+  },
+  {
+   "work": "W4412905885",
+   "problem": "This work estimates the spread of a language over time, comparing the impact of various factors such as adoption, influence, incentives, and policies on language preferences and the language itself. It predicts how these factors will interact and influence the language's spread.",
+   "approach": "The model simulates the interactions between entities with specific linguistic attributes, following a set of rules that govern their communication. It uses network analysis to understand the relationships between these entities and how they change over time."
+  },
+  {
+   "work": "W4411583874",
+   "problem": "This work aims to improve a process that forms a new chemical bond between two molecules, using a common metal that is non-toxic and abundant. It estimates the best conditions for this process to occur, and predicts the outcome when different molecules are involved.",
+   "approach": "The researchers use a metal-based method to facilitate the formation of a new bond between molecules. They follow a specific sequence of steps, involving the use of a metal in different oxidation states, to achieve the desired outcome."
+  },
+  {
+   "work": "W3197893902",
+   "problem": "This work estimates the effectiveness of a certain type of food (leaves) in providing various health benefits (antioxidant, hypolipidemic, antibacterial) based on the presence of certain chemicals (chemicals that have health benefits). It also compares the effectiveness of different concentrations of these chemicals.",
+   "approach": "The researchers use a combination of data (chemical composition of the food) and evidence (previous studies on the health benefits of these chemicals) to identify the most effective chemicals and concentrations. They then use this information to make predictions about the effectiveness of different types of food and to identify areas for further research."
+  },
+  {
+   "work": "W2982694918",
+   "problem": "This work estimates the effectiveness of a treatment for a difficult-to-treat condition that causes significant suffering and reduces quality of life. It compares the outcomes of this treatment to conventional therapies and identifies the patients who may benefit most from this treatment.",
+   "approach": "The researchers used a systematic review to gather data from multiple studies, applying a framework to assess the quality of the evidence. They then synthesized the data to draw conclusions about the treatment's effectiveness and safety."
+  },
+  {
+   "work": "W7217030954",
+   "problem": "This study aims to evaluate the effectiveness of monitoring systems and community feedback mechanisms in addressing environmental problems caused by industrial activities. It estimates the impact of these systems on environmental issues and compares the results to identify areas for improvement.",
+   "approach": "The researchers used a qualitative method, analyzing data from community feedback and regulatory analysis to identify patterns and trends. They employed a descriptive-analytical approach, combining literature review, case studies, and data analysis to draw conclusions."
+  },
+  {
+   "work": "W4410115037",
+   "problem": "This research aims to create a new type of material that can be injected into the body to help with surgery, using a combination of calcium and magnesium compounds. The goal is to improve the material's ability to flow easily and stick together in the body.",
+   "approach": "The researchers used various machines to test the properties of the material, such as how it flows, sticks together, and is strong. They also added a special liquid to the material to see how it affected its properties."
+  },
+  {
+   "work": "W7164906826",
+   "problem": "This research estimates the impact of a teacher's personality and teaching style on students' ability to recall and apply their knowledge, comparing it to their academic performance.",
+   "approach": "The study uses a combination of surveys and interviews to gather data on students' perceptions of their teachers, and then uses statistical analysis to identify patterns and correlations."
+  }
+ ]
+}

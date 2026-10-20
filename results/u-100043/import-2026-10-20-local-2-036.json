@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-036",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:46Z",
+ "descriptions": [
+  {
+   "work": "W3210048135",
+   "problem": "The relationship between processing temperature and electrical performance in layered ceramic components is investigated, focusing on how material composition affects capacitance, loss, and stability across multiple layers.",
+   "approach": "A liquid-phase-assisted process is applied to reduce processing temperature; performance is evaluated by measuring capacitance and loss across varying layer counts under controlled voltage conditions."
+  },
+  {
+   "work": "W4206191532",
+   "problem": "A quantitative measure is derived from imaging to assess the severity of inflammation in cartilaginous tissues and its relationship to respiratory function and systemic inflammatory markers.",
+   "approach": "Imaging data is processed to compute a standardized score reflecting regional metabolic activity. This score is then correlated with functional breathing metrics and blood-based inflammation indicators to evaluate disease progression and treatment response."
+  },
+  {
+   "work": "W2905372231",
+   "problem": "A dynamic system's behavior over time is estimated under conditions where the direction of time evolution changes, and the system's response at one point depends on its state across a broader temporal range.",
+   "approach": "The system's state is approximated using a sequence of basis functions, with error controlled by adjusting a smoothing parameter that balances accuracy and stability across different time intervals."
+  },
+  {
+   "work": "W3091217043",
+   "problem": "A regulatory mechanism is inferred that modulates the expression of a key protein involved in cell behavior and response to external stressors, based on molecular interactions and cellular outcomes observed in experimental models.",
+   "approach": "A molecular sponge effect is modeled where a circular RNA sequesters a microRNA, preventing it from suppressing a target protein. This interaction is validated through binding assays and functional tests in living systems to assess downstream effects on cell behavior and stress response."
+  },
+  {
+   "work": "W4405741265",
+   "problem": "A system estimates the reliability of a biological sequence segment based on three measurable features: its vertical intensity, sharpness, and distance between adjacent occurrences.",
+   "approach": "The system uses fuzzy logic to combine these features into a single score, adjusting weights dynamically based on observed patterns in repeated sequence events to reflect confidence in the result."
+  },
+  {
+   "work": "W3128226137",
+   "problem": "A system continuously monitors neural activity in response to mechanical perturbation during invasive procedures, estimating the sensitivity of motor pathways to detect early signs of functional disruption. It compares real-time responses across time and location to assess stability and predict potential damage.",
+   "approach": "A probe is moved through neural tissue while recording thresholds for eliciting motor responses. These thresholds are tracked over time and space, and the data are used to adjust surgical actions in real time, maintaining functional integrity while enabling deeper tissue removal."
+  },
+  {
+   "work": "W2963913177",
+   "problem": "A pattern of respiratory illness in adults is analyzed to determine the likelihood of a specific pathogen causing acute respiratory failure and organ dysfunction, and to assess whether a biological marker distinguishes cases with a secondary bacterial presence.",
+   "approach": "Data from clinical records and laboratory tests are reviewed over a decade to identify disease onset timing, patient demographics, and severity scores. A statistical model compares marker levels across cases with and without a secondary infection to evaluate diagnostic utility."
+  },
+  {
+   "work": "W4414238936",
+   "problem": "The effectiveness of a natural, bioactive substance in promoting tissue repair and reducing infection in chronic conditions is evaluated across diverse biological models and human trials.",
+   "approach": "A structured review of studies is conducted, extracting outcomes related to tissue recovery and infection suppression. Data from multiple sources are combined and analyzed to determine the overall impact and consistency of the effect across different settings and conditions."
+  },
+  {
+   "work": "W4294307820",
+   "problem": "A treatment outcome is estimated based on clinical signs, imaging findings, and team involvement, aiming to predict success and risk of severe complications during a procedural intervention.",
+   "approach": "A standardized protocol is followed, integrating real-time imaging feedback and multidisciplinary input to guide the procedure, with decisions adjusted based on observed physiological indicators and available resources."
+  },
+  {
+   "work": "W4407908149",
+   "problem": "A quantitative assessment is made of how a metabolic state influences the structural stability of a protective interface between the body's circulation and neural tissue, based on fluid biomarkers and genetic predisposition.",
+   "approach": "A statistical model evaluates the relationship between a metabolic indicator and tissue barrier function, adjusting for genetic background and controlling for shared clinical and biochemical traits across individuals."
+  },
+  {
+   "work": "W4409697097",
+   "problem": "A pattern of repeated, harmful behaviors is observed across individuals and contexts, with a high likelihood of repetition and escalation. The goal is to predict and explain the recurrence of such behaviors based on personal, environmental, and behavioral indicators.",
+   "approach": "A framework identifies underlying motivations and routines behind repeated actions. Interventions focus on modifying behavioral patterns by exploring personal goals, contextual pressures, and alternative constructive activities to reduce harmful repetition."
+  },
+  {
+   "work": "W4387321178",
+   "problem": "A compound mixture is analyzed to identify its chemical components using separation and mass detection. Its ability to mitigate cognitive decline in an animal model is assessed through behavioral tests, tissue examination, and enzyme activity measurements.",
+   "approach": "Chemical components are separated and characterized via liquid chromatography coupled with mass spectrometry. The mixture is administered alongside a stressor, and its effects on memory, enzyme function, and cellular redox balance are monitored over time."
+  },
+  {
+   "work": "W4386764947",
+   "problem": "A system estimates how well a design performs under specific constraints, predicting outcomes based on layout patterns and known performance metrics, using either large datasets or limited observations.",
+   "approach": "A model analyzes patterns in spatial data using statistical rules when data is scarce, and adapts those rules using learned patterns from data-rich environments to improve accuracy and consistency."
+  },
+  {
+   "work": "W2915412222",
+   "problem": "A system estimates how many distinct user requests can be uniquely identified in a shared communication channel, based on signal patterns and noise characteristics.",
+   "approach": "Multiple independent signal patterns are transmitted simultaneously, with a detection method that resolves overlapping signals using spatial and energy distribution cues to identify unique user identifiers."
+  },
+  {
+   "work": "W4410525536",
+   "problem": "A system is designed to determine what characteristic to assess and how to capture it through a structured process involving tools, procedures, and data handling steps.",
+   "approach": "A sequence of five defined stages is followed: physical tools, setup actions, raw data or sample capture, data processing, and final value assignment to ensure consistency and reliability across observations."
+  },
+  {
+   "work": "W2996552006",
+   "problem": "A system is designed to predict how changes in leadership practices affect student outcomes in underperforming groups, using data from institutional policies and classroom interventions over time.",
+   "approach": "A model evaluates the impact of structured interventions by simulating how different leadership decisions influence group-level outcomes, adjusting strategies based on feedback from real-world performance metrics."
+  },
+  {
+   "work": "W4410898940",
+   "problem": "A quantity in a liquid sample is measured to determine if it exceeds a known safety threshold established by a regulatory body.",
+   "approach": "A biochemical assay is applied to the sample, producing a measurable signal at a specific wavelength. The signal strength is correlated to the concentration of the substance, and results are compared against a predefined limit."
+  },
+  {
+   "work": "W2953539859",
+   "problem": "The impact of shifting temperature and moisture patterns on the long-term flow of subsurface water into aquifer systems is estimated across multiple climate projections.",
+   "approach": "A monthly cycle-based model is applied to five climate simulations, calculating the balance between input and output over time, then projecting changes in the net volume of water entering the system annually."
+  },
+  {
+   "work": "W2801930614",
+   "problem": "The pattern of how an entity is described in terms of its physical traits and handling is used to infer the social standing and influence of an individual within a narrative.",
+   "approach": "A system analyzes narrative passages that describe an entity's interaction with a vehicle, mapping how its treatment and appearance reflect the power dynamics between individuals, and uses these patterns to infer underlying social roles and relationships."
+  },
+  {
+   "work": "W2911546633",
+   "problem": "A physical property of a material is estimated under controlled conditions, relating its internal arrangement to its resistance to deformation under load.",
+   "approach": "Samples are prepared with varying degrees of compaction and subjected to controlled loading. The resulting deformation behavior is analyzed and correlated to the internal arrangement of particles, using established benchmarks to validate the observed relationships."
+  }
+ ]
+}

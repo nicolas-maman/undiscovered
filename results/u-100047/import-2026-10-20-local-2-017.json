@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-2-017",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T14:41:43Z",
+ "descriptions": [
+  {
+   "work": "W4402443682",
+   "problem": "This research estimates the impact of certain substances on the health of specific organs and tissues, and compares their effects to determine the most effective treatment. It also predicts the consequences of these substances on the overall health of an individual.",
+   "approach": "The researchers use data from animal studies and experiments to develop a treatment plan. They follow a procedure that involves identifying the substances' effects on specific organs and tissues, and then testing the effectiveness of a treatment, such as chelation therapy, to reduce the negative impact."
+  },
+  {
+   "work": "W4388577566",
+   "problem": "This work estimates the impact of certain compounds on living things, comparing their effects on different types of life forms, from tiny microbe-like things to large animals and plants. It also predicts the potential benefits of these compounds for human health and the environment.",
+   "approach": "The researchers analyzed existing studies on the effects of these compounds, looking at how they affect living things at different levels (molecular, structural, and whole). They also looked at data from people living in areas with high concentrations of these compounds in their water supply."
+  },
+  {
+   "work": "W3014458203",
+   "problem": "This work estimates the relationship between low oxygen levels and the activation of immune cells, which in turn leads to the downregulation of protective proteins and the uncontrolled release of a key molecule that damages cells. It also compares the effects of low oxygen levels to those of normal oxygen levels.",
+   "approach": "The researchers use a transplantation model to study the effects of low oxygen levels on the immune system and cell damage. They follow the changes in the levels of certain proteins and molecules in the cells over time."
+  },
+  {
+   "work": "W4387421557",
+   "problem": "This study estimates the presence of noble values in a traditional activity, compares them to Islamic principles, and optimizes the benefits of this activity for personal growth and social cohesion. It aims to explain how this activity can be used to develop essential life skills.",
+   "approach": "The researchers employed observation and interview to collect data, using empirical research in a specific village. They then analyzed the data to identify the benefits of this activity and its alignment with Islamic values."
+  },
+  {
+   "work": "W3108621502",
+   "problem": "This work estimates the effect of a certain environmental factor on the physiological processes of a specific type of plant, and compares the results to understand how the plant responds to this factor. It aims to explain how the plant maintains its internal balance under stress conditions.",
+   "approach": "The study uses data from a specific type of plant that is sensitive to changes in humidity, and follows a procedure that involves applying the environmental factor, measuring the plant's response, and analyzing the results to understand the plant's adaptation mechanisms."
+  },
+  {
+   "work": "W4410632734",
+   "problem": "This work estimates the likelihood of a life-threatening infection in an immunocompromised patient after a bite from an animal that carries a specific type of bacteria, and compares it to the effectiveness of different treatments. It also explains the immune evasion mechanisms of the bacteria.",
+   "approach": "The procedure involves taking a thorough medical history, using microbial cell-free DNA testing to identify the bacteria, and administering targeted therapy with antibiotics. The approach also involves monitoring the patient's condition closely and adjusting treatment as needed."
+  },
+  {
+   "work": "W3183851816",
+   "problem": "This work estimates the minimum area required for a low-noise oscillator to achieve a certain level of phase noise stability, and compares it to a conventional design. It predicts the performance of a smaller oscillator by reducing the area of a key component.",
+   "approach": "The approach involves switching the output of a key component to produce a wider positive pulse and a narrower negative pulse, allowing for a smaller component with lower noise. The component is driven by a phase detector with high gain, which helps to suppress noise."
+  },
+  {
+   "work": "W4408793613",
+   "problem": "This study aims to understand the potential of global connections in increasing the widespread use of a particular type of power source across a continent with significant development challenges. It seeks to identify trends and correlations in data related to this power source's adoption, investment, and policy impact.",
+   "approach": "The study collects data through literature reviews, case studies, and interviews with key stakeholders. It then analyzes this data to identify patterns and relationships, and recommends a multi-step approach to increase the use of this power source across the continent."
+  },
+  {
+   "work": "W4406560001",
+   "problem": "The task is to estimate the likelihood of a rare complication occurring in a specific medical procedure, and to compare the effectiveness of two different approaches to managing this complication. The complication is a problem that arises when a part of the stomach gets stuck in the duodenum.",
+   "approach": "The approach involves using data from two cases to compare the outcomes of two different procedures, and to identify the most effective way to manage the complication. The procedure involves manually reducing the stuck part, followed by a major surgery to remove the affected stomach section and reconnect the remaining stomach to the duodenum."
+  },
+  {
+   "work": "W2953804410",
+   "problem": "This research aims to improve the efficiency of a production process by analyzing and optimizing the allocation of resources. It estimates the most efficient way to use workers and equipment to produce a certain amount of output.",
+   "approach": "The researchers used a method to study the times and movements of workers, creating diagrams to visualize their activities. They then analyzed the data to identify the most efficient way to use resources, resulting in increased output and efficiency."
+  },
+  {
+   "work": "W3007212892",
+   "problem": "This research estimates the demand for a certain product, compares it to historical data, and predicts future trends. It also explains the obstacles to the development of the market and identifies the need for a strategy to address these challenges.",
+   "approach": "The study uses data on the market's performance, economic conditions, and industry trends to develop a strategy for the market's growth and competitiveness. It involves analyzing the market's fluctuations and identifying opportunities for improvement."
+  },
+  {
+   "work": "W4412114009",
+   "problem": "This work investigates the impact of a common benign tumor on outcomes in a specific life stage, where the size, number, and location of the tumor affect the results. It aims to describe the consequences of this tumor on the health and well-being of individuals in this stage.",
+   "approach": "The researchers followed a group of women with this tumor through three stages of their lives, collecting data on their characteristics, complications, and outcomes. They analyzed this data to identify patterns and make predictions about the effects of the tumor on individual outcomes."
+  },
+  {
+   "work": "W2783086947",
+   "problem": "This study estimates the long-term effects of a specific medical treatment on the cognitive abilities of people who have undergone it. It compares the cognitive outcomes of people who received this treatment to those who did not.",
+   "approach": "The researchers used data from a large group of people who had undergone this treatment, and compared their cognitive abilities to those of a control group who did not receive the treatment. They used statistical analysis to identify any patterns or correlations in the data."
+  },
+  {
+   "work": "W4400296739",
+   "problem": "This study estimates the time it takes for certain types of cells to develop and mature in a laboratory setting, comparing how fast they develop compared to cells with no abnormalities and cells with a small number of abnormalities.",
+   "approach": "The researchers used a technique called time-lapse imaging to observe the cells in real-time, taking note of how long it takes for them to go through certain stages of development, and then compared these times to see if there were any differences."
+  },
+  {
+   "work": "W3110259130",
+   "problem": "This research aims to understand how a certain type of cancer treatment works by studying how it affects a specific part of a molecule in cells. It wants to know how this treatment affects the molecule and whether it can be improved.",
+   "approach": "The researchers use a computer simulation to model how the treatment works by changing the molecule's shape and properties. They calculate the effects of the treatment on the molecule's structure and properties using a set of rules and formulas."
+  },
+  {
+   "work": "W4327932133",
+   "problem": "This study aims to determine the effectiveness of a specific medical procedure in alleviating symptoms in individuals with a particular type of growth in the uterus, and to identify any potential complications. It seeks to compare the outcomes of this procedure with other available treatments.",
+   "approach": "The researchers used existing data from previous treatments to evaluate the results of the procedure, comparing the effectiveness of the procedure in different groups of individuals. They followed a specific procedure to analyze the data and draw conclusions about the procedure's efficacy."
+  },
+  {
+   "work": "W4289296842",
+   "problem": "This work estimates the frequency and patterns of aggressive language directed at opponents, compares it to real-world events, and optimizes the spread of such language through communication networks. It aims to explain the relationship between online language and real-world violence.",
+   "approach": "The approach involves analyzing a dataset of social media posts and communication networks to identify patterns and spread of aggressive language, using a method that tracks the frequency and spread of such language over time."
+  },
+  {
+   "work": "W4400956214",
+   "problem": "This work estimates the relationship between the well-being of a group of young people and their ability to develop a more optimistic outlook on life. It compares the effects of different factors on this relationship.",
+   "approach": "The researcher uses data from a sample of young people to build a model that predicts how their well-being affects their outlook on life. The model is based on a series of steps that involve collecting data, analyzing it, and using the results to make predictions."
+  },
+  {
+   "work": "W3045767880",
+   "problem": "This work estimates and compares the diversity of microorganisms in different environments, with a focus on how these microorganisms respond to changes in moisture, nutrients, and pH levels. It aims to explain how these microorganisms are affected by different characteristics of their surroundings.",
+   "approach": "The researchers used a high-through sequencing technology to analyze the diversity of microorganisms in different environments. They then used statistical methods to identify patterns and relationships between the microorganisms and their surroundings."
+  },
+  {
+   "work": "W3213085279",
+   "problem": "The task is to predict the likelihood of a product failing in a certain way, based on limited information about its past performance. This prediction is used to decide on the best course of action for maintenance and repair.",
+   "approach": "A complex algorithm is used to forecast the product's failure type, taking into account various attributes such as time until failure and repair time. The algorithm is trained on a limited set of data and then tested on new, unseen data."
+  }
+ ]
+}
