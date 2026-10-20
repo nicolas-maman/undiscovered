@@ -138,8 +138,10 @@ between them, and read the object from the first `{` to the last `}`.
 For each description: `problem` and `approach` both present, each at least
 4 and at most 60 words; at most `max_avoided` of the work's `avoid` words
 used (lower case, words of letters only, a final `s` ignored on words
-longer than 3 letters); and not word for word the same as the description
-of another work in the unit. If an answer fails, ask once more, adding to
+longer than 3 letters); and not almost the same as the description of
+another work in the unit: the cosine between the two descriptions' counts of
+content words (lower case, words of letters, English stop words left out,
+the list in `clients/python/undiscovered/stopwords.py`) must be at most 0.8. If an answer fails, ask once more, adding to
 the user message, after a blank line: `Your previous answer could not be
 used: ` and the reason, then `. Try again.` A result must describe at least
 three quarters of the unit's works. If your model fails on more than a

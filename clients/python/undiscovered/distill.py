@@ -7,18 +7,27 @@ will check it: one JSON object, both parts present and short, at most
 `max_avoided` of the paper's own distinctive words (the unit's `avoid` list)
 reused, and not the same as the description of another paper in the unit. A
 model that fails a check is asked once more, told why.
+
+"The same as another paper" is measured on content words: two descriptions
+whose counts of non-stop words have a cosine above SAME_SHAPE say the same
+thing, whatever small words differ, so a model that fills one template for
+every paper is caught paper by paper rather than after the whole unit.
 """
 
 from __future__ import annotations
 
 import json
+import math
 import re
+from collections import Counter
 
 from .models import Model
 from .openalex import OpenAlex, abstract_text
+from .stopwords import ENGLISH_STOP_WORDS
 
 PROMPT = 1          # changes whenever SYSTEM, FORMAT or prompt() changes
 MAX_WORDS = 60      # per part
+SAME_SHAPE = 0.8    # cosine of content-word counts above which two descriptions say the same thing
 
 SYSTEM = ("You help researchers in one field recognise work from another. You describe what a "
           "piece of research does in plain words that any scientist would understand.")
@@ -84,14 +93,31 @@ def parse(answer: str) -> dict[str, str]:
     return out
 
 
+def model_name(model: dict) -> str:
+    """A model as units and results name it: its id and the kind of endpoint that served it."""
+    return f"{model['id']} ({model['provider']})"
+
+
 def fingerprint(desc: dict[str, str]) -> str:
     """A description's words, lower case, in order: two descriptions with the same are the same."""
     return " ".join(WORD.findall((desc["problem"] + " " + desc["approach"]).lower()))
 
 
+def _content(text: str) -> Counter:
+    return Counter(w for w in WORD.findall(text.lower()) if w not in ENGLISH_STOP_WORDS)
+
+
+def likeness(a: str, b: str) -> float:
+    """Cosine between the content-word counts of two texts (descriptions or their fingerprints)."""
+    ca, cb = _content(a), _content(b)
+    dot = sum(n * cb[w] for w, n in ca.items())
+    return dot / math.sqrt(sum(n * n for n in ca.values()) * sum(n * n for n in cb.values())) if dot else 0.0
+
+
 def check(desc: dict[str, str], avoid: list[str], max_avoided: int, taken: set[str] = frozenset()) -> None:
-    if fingerprint(desc) in taken:
-        raise Unusable("it was word for word the description of another paper")
+    mine = fingerprint(desc)
+    if any(likeness(mine, other) > SAME_SHAPE for other in sorted(taken)):
+        raise Unusable("it said almost the same as the description of another paper in this unit")
     for part in ("problem", "approach"):
         if len(desc[part].split()) > MAX_WORDS:
             raise Unusable(f'"{part}" was longer than {MAX_WORDS} words')

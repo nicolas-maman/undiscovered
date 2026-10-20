@@ -281,20 +281,39 @@ def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
     descs = check_descriptions(result, unit)
     folder = dist_dir / "results" / unit["unit"]
     earlier = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))]
-    if any(r["author"] == author for r in earlier):
-        raise Reject("each volunteer describes a unit once; its second result must come from someone else")
+    from undiscovered.distill import model_name
+    model = model_name(result["model"])
+    if any(model_name(r["model"]) == model for r in earlier):
+        raise Reject(f"this unit already has descriptions made with {model}; it needs another model, "
+                     "from anyone, so that two models can check each other")
     folder.mkdir(parents=True, exist_ok=True)
     (folder / f"{issue}.json").write_text(json.dumps(
         {"issue": issue, "author": author, "client": result.get("client"), "model": result["model"],
          "prompt": result["prompt"], "descriptions": descs}, indent=1, ensure_ascii=False), encoding="utf-8")
-    have = len(earlier) + 1
+    unit["models"] = sorted({model_name(r["model"]) for r in earlier} | {model})
+    have = len(unit["models"])
     unit["status"] = "done" if have >= unit.get("quorum", 2) else "check"
     index_path.write_text(json.dumps(index, indent=1), encoding="utf-8")
     write_progress(dist_dir, distill_progress(dist_dir))
-    model = f"{result['model']['id']} ({result['model']['provider']})"
     return (f"Accepted: {len(descs)} descriptions for {unit['unit']}, made with {model}. " +
             ("The unit is complete. Thank you." if unit["status"] == "done"
-             else f"It needs {unit.get('quorum', 2) - have} more from another volunteer. Thank you."))
+             else f"It needs descriptions from {unit.get('quorum', 2) - have} more model(s), not {model}, "
+                  "from anyone. Thank you."))
+
+
+def log_rejection(store: Path, issue: dict, reason: str) -> None:
+    """Keep every rejected result's reason on the data branch, so the site can show what goes wrong."""
+    result = {}
+    try:
+        result = json_block(issue.get("body") or "")
+    except Reject:
+        pass
+    folder = store / "rejected"
+    folder.mkdir(exist_ok=True)
+    (folder / f"{issue['number']}.json").write_text(json.dumps(
+        {"issue": issue["number"], "author": issue["user"]["login"], "title": issue.get("title", ""),
+         "unit": result.get("unit"), "client": result.get("client"), "model": result.get("model"),
+         "reason": reason, "at": _now()}, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
 def distill_progress(dist_dir: Path) -> dict:
@@ -351,14 +370,17 @@ def main() -> int | None:
     event = json.loads(Path(os.environ.get("INTAKE_EVENT") or os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
     issue = event["issue"]
     body, author, number = issue.get("body") or "", issue["user"]["login"], issue["number"]
+    distill_result = issue.get("title", "").startswith("distill result")
+    store = Path(os.environ["DISTILL_DIR" if distill_result else "MAP_DIR"])
     try:
-        if issue.get("title", "").startswith("distill result"):
-            reply = intake_distill(Path(os.environ["DISTILL_DIR"]), body, author, number)
+        if distill_result:
+            reply = intake_distill(store, body, author, number)
         else:
-            reply = intake(Path(os.environ["MAP_DIR"]), body, author, number, os.environ.get("GITHUB_TOKEN", ""))
+            reply = intake(store, body, author, number, os.environ.get("GITHUB_TOKEN", ""))
         ok = True
     except Reject as e:
         reply, ok = f"Not accepted: {e}.", False
+        log_rejection(store, issue, str(e))
     print(json.dumps({"accepted": ok, "reply": reply}))
 
 

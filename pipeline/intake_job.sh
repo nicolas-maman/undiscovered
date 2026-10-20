@@ -10,8 +10,9 @@
 # cancels the rest, which would drop results in a burst). Instead each run,
 # on every attempt, starts again from the branch as it is now, checks the
 # result against it, and pushes; if another run pushed first, it tries again.
-# The reply for the issue is left in verdict.json; stored=false in it means
-# the result was accepted but could not be pushed, and the issue is left
+# The reply for the issue is left in verdict.json. A rejected result is
+# stored too, as its reason in rejected/<issue>.json, so the site can show
+# what goes wrong. stored=false in it means the result could not be pushed, and the issue is left
 # open for the sweeper to try again. With INTAKE_NO_PUSH set (CI's
 # rehearsal), everything happens but the push.
 
@@ -29,13 +30,13 @@ for attempt in 1 2 3 4 5 6; do
     python pipeline/known_twins.py result store > /dev/null
   fi
   if [ -z "$(git -C store status --porcelain)" ]; then
-    stored=true                       # nothing to store: rejected, or the unit was already complete
+    stored=true                       # nothing to store: the result was already stored, or the unit complete
     break
   fi
   git -C store add -A
   git -C store -c user.name="github-actions[bot]" \
       -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
-      commit -q -m "Accept a ${kind} result from issue #$(python -c "import json, os; print(json.load(open(os.environ.get('INTAKE_EVENT') or os.environ['GITHUB_EVENT_PATH']))['issue']['number'])")"
+      commit -q -m "Record a ${kind} result from issue #$(python -c "import json, os; print(json.load(open(os.environ.get('INTAKE_EVENT') or os.environ['GITHUB_EVENT_PATH']))['issue']['number'])")"
   if [ -n "${INTAKE_NO_PUSH:-}" ] || git -C store push -q origin "HEAD:$branch"; then
     stored=true
     break

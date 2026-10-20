@@ -36,9 +36,10 @@ jobs:
       - name: Links within the project point at files and headings that exist
         run: python scripts/check_links.py
 
-  # The describing intake workflow's own commands, on a valid result for the
-  # first open unit of the live branch, without pushing anything: a broken
-  # workflow shows here before a volunteer's result meets it.
+  # The describing intake workflow's own commands, on a sound result and on
+  # junk for the first open units of the live branch, without pushing
+  # anything: a broken workflow, or one that lets junk in, shows here before a
+  # volunteer's result meets it.
   intake-rehearsal:
     runs-on: ubuntu-latest
     steps:
@@ -62,6 +63,15 @@ jobs:
           python -c "import json, sys; v = json.load(open('verdict.json')); sys.exit(0 if v['accepted'] and v['stored'] else 1)"
           python -c "import json; p = json.load(open('store/progress.json')); assert p['descriptions'] == 20, p"
           git -C store log -1 --format=%s
+      - name: The same on junk (one template for every paper), which must be turned away and logged
+        env:
+          INTAKE_EVENT: event.json
+          INTAKE_NO_PUSH: "1"
+        run: |
+          python scripts/rehearse_intake.py store event.json junk
+          bash pipeline/intake_job.sh distill
+          python -c "import json, sys; v = json.load(open('verdict.json')); sys.exit(1 if v['accepted'] else 0)"
+          python -c "import json; r = json.load(open('store/rejected/2.json')); assert 'almost the same' in r['reason'], r"
 
   # The Aether client on Linux, where its non-Windows parts (priority, hidden
   # input, settings path) are compiled and tested. The toolchain is built from

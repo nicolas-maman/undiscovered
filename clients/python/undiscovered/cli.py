@@ -25,6 +25,7 @@ from pathlib import Path
 import requests
 
 from . import CLIENT, PROTOCOL, REPO, __version__, config, github, models
+from . import distill
 from .distill import PROMPT, Unusable, distill_unit
 from .gentle import be_gentle
 from .mapper import map_unit
@@ -80,11 +81,19 @@ def choose_model(cfg: dict) -> None:
     cfg["model"] = {"provider": kind, "base_url": base, "id": mid, **({"key": secret} if secret else {})}
 
 
-def pick_unit(index: dict, done: set[str], rng: random.Random) -> dict | None:
-    """A random open unit this volunteer has not done. Random, so volunteers rarely collide."""
+def pick_unit(index: dict, done: set[str], rng: random.Random, model: str = "") -> dict | None:
+    """A unit this volunteer has not done, and that the volunteer's model has not described.
+
+    Units that already have another model's descriptions come first: a unit is
+    complete, and its papers can be paired, once two different models have
+    described it. Among those, and then among open units, the choice is random,
+    so volunteers rarely collide.
+    """
     todo = [u for u in index.get("units", []) if u.get("status") in ("open", "check")
-            and u["unit"] not in done]
-    return rng.choice(todo) if todo else None
+            and u["unit"] not in done and model not in u.get("models", [])]
+    waiting = [u for u in todo if u.get("status") == "check"]
+    pool = waiting or todo
+    return rng.choice(pool) if pool else None
 
 
 def result_body(unit: dict, gist: str, sha: str) -> str:
@@ -132,7 +141,7 @@ def cmd_work(args) -> None:
             if unit is None:
                 sys.exit(f"There is no unit {args.unit}.")
         else:
-            unit = pick_unit(index, done, rng)
+            unit = pick_unit(index, done, rng, distill.model_name(model.provenance) if model else "")
         if unit is None:
             print("No open units left for you. Thank you.")
             return

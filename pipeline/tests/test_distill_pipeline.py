@@ -18,12 +18,24 @@ GOOD = {"problem": "Measure how much of one small molecule a living tissue has b
         "approach": "React an extract with a reagent that colours that molecule, then read the colour."}
 
 
-WORDS = ["alpha", "beta", "gamma", "delta", "epsilon", "zeta"]
+DISTINCT = [
+    GOOD,
+    {"problem": "Predict when the next shock comes after one has happened in the same place.",
+     "approach": "Let each event raise the chance of others nearby for a while, and fit how fast that fades."},
+    {"problem": "Rank teams fairly when they have played different opponents.",
+     "approach": "Give each team a score that grows with the scores of the teams it beat, repeated until stable."},
+    {"problem": "Follow a quantity that cannot be watched directly, using noisy readings that arrive over time.",
+     "approach": "Keep a running estimate with its uncertainty and correct it a little with every new reading."},
+    {"problem": "Tell which parts of a large assembly touch, without seeing it whole.",
+     "approach": "Find pairs of positions that change together across many related examples."},
+    {"problem": "Choose where to build a few depots so that every town is close to one.",
+     "approach": "Start from a guess, move each depot to the middle of its towns, and repeat."},
+]
 
 
 def own(i: int) -> dict:
-    """GOOD, worded slightly differently for the i-th paper, as two papers' descriptions would be."""
-    return {**GOOD, "problem": f"{GOOD['problem']} Case {WORDS[i]}."}
+    """A description of the i-th paper, different from the others as real papers' descriptions are."""
+    return DISTINCT[i]
 
 
 def unit(works=("W1", "W2", "W3", "W4")) -> dict:
@@ -74,18 +86,30 @@ def test_units_mix_papers_twenty_at_a_time_and_are_rebuilt_exactly():
     assert set(a["units"][0]["avoid"]) == set(a["units"][0]["works"])
 
 
-def test_two_volunteers_complete_a_unit(tmp_path):
+def test_a_unit_is_complete_once_two_models_have_described_it(tmp_path):
     u = unit()
     d = branch(tmp_path, u)
     first = intake.intake_distill(d, issue(u), "alice", 11)
-    assert "needs 1 more" in first and "qwen3:8b" in first
-    with pytest.raises(intake.Reject, match="once"):
-        intake.intake_distill(d, issue(u), "alice", 12)
-    second = intake.intake_distill(d, issue(u, model_id="llama3.1:8b"), "bob", 13)
+    assert "1 more model" in first and "qwen3:8b" in first
+    for who, n in (("alice", 12), ("bob", 13)):          # the same model again, from anyone, adds nothing
+        with pytest.raises(intake.Reject, match="needs another model"):
+            intake.intake_distill(d, issue(u), who, n)
+    second = intake.intake_distill(d, issue(u, model_id="llama3.1:8b"), "alice", 14)   # one person, two models
     assert "complete" in second
-    saved = json.loads((d / "results" / "u-100001" / "13.json").read_text(encoding="utf-8"))
-    assert saved["model"]["id"] == "llama3.1:8b" and saved["author"] == "bob" and len(saved["descriptions"]) == 4
-    assert json.loads((d / "units" / "index.json").read_text())["units"][0]["status"] == "done"
+    saved = json.loads((d / "results" / "u-100001" / "14.json").read_text(encoding="utf-8"))
+    assert saved["model"]["id"] == "llama3.1:8b" and saved["author"] == "alice" and len(saved["descriptions"]) == 4
+    stored = json.loads((d / "units" / "index.json").read_text())["units"][0]
+    assert stored["status"] == "done"
+    assert stored["models"] == ["llama3.1:8b (openai-compatible)", "qwen3:8b (openai-compatible)"]
+
+
+def test_a_template_filled_in_for_every_paper_is_rejected(tmp_path):
+    u = unit()
+    template = [{"work": w, "problem": f"Find out how one quantity responds when another is changed, case {c}.",
+                 "approach": "Take repeated readings under steady conditions and compare them with a simple rule."}
+                for w, c in zip(u["works"], ("amber", "birch", "cobalt", "delta"))]
+    with pytest.raises(intake.Reject, match="W2: it said almost the same"):
+        intake.intake_distill(branch(tmp_path, u), issue(u, template), "alice", 11)
 
 
 def described(*works, **change) -> list[dict]:
@@ -99,7 +123,7 @@ def described(*works, **change) -> list[dict]:
     (described("W1", "W1", "W3", "W4"), "described twice"),
     (described("W1", "W2"), "only 2 of the unit's 4"),
     (described("W1", "W2", "W3", "W4", approach="word " * 70), "longer than"),
-    ([{"work": w, **GOOD} for w in ("W1", "W2", "W3", "W4")], "W2: it was word for word"),
+    ([{"work": w, **GOOD} for w in ("W1", "W2", "W3", "W4")], "W2: it said almost the same"),
 ])
 def test_bad_descriptions_are_rejected_with_the_reason(tmp_path, descs, reason):
     u = unit()
@@ -141,3 +165,19 @@ def test_the_same_issue_processed_twice_is_stored_once(tmp_path):
     intake.intake_distill(d, issue(u), "alice", 11)
     assert "already stored" in intake.intake_distill(d, issue(u), "alice", 11)
     assert len(list((d / "results" / "u-100001").glob("*.json"))) == 1
+
+
+def test_a_rejected_result_leaves_its_reason_on_the_branch(tmp_path, monkeypatch, capsys):
+    u = unit()
+    d = branch(tmp_path, u)
+    event = tmp_path / "event.json"
+    event.write_text(json.dumps({"issue": {"title": f"distill result {u['unit']}", "number": 21,
+                                           "user": {"login": "carol"}, "body": issue(u, described("W1", "W2"))}}))
+    monkeypatch.setenv("INTAKE_EVENT", str(event))
+    monkeypatch.setenv("DISTILL_DIR", str(d))
+    intake.main()
+    verdict = json.loads(capsys.readouterr().out.strip().splitlines()[-1])
+    logged = json.loads((d / "rejected" / "21.json").read_text(encoding="utf-8"))
+    assert not verdict["accepted"] and "only 2 of the unit's 4" in verdict["reply"]
+    assert logged["reason"] in verdict["reply"] and logged["author"] == "carol" and logged["unit"] == u["unit"]
+    assert logged["model"] == {"provider": "openai-compatible", "id": "qwen3:8b"}

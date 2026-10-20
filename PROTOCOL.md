@@ -183,13 +183,23 @@ A `distill` result is checked in three ways before it counts:
 
 - No jargon, when it arrives. Each description has a problem and an
   approach of at most 60 words each, and reuses at most `max_avoided` of
-  its work's `avoid` words (case and a final s ignored), and no two
-  descriptions in a result are word for word the same. A result must
-  describe at least three quarters of the unit's works, each once, made
-  with the current prompt. The checking job uses the client's own
-  functions (`clients/python/undiscovered/distill.py`), so a result that
-  passed the client's checks passes these. `max_avoided` is 2 until the
-  first trial runs, which set it; the value is published in every unit.
+  its work's `avoid` words (case and a final s ignored), and no
+  description in a result says almost the same as another: the cosine
+  between the two descriptions' counts of content words (stop words left
+  out) is at most 0.8, so one template filled in for every paper is turned
+  away. A result must describe at least three quarters of the unit's works,
+  each once, made with the current prompt. The checking job uses the
+  client's own functions (`clients/python/undiscovered/distill.py`), so a
+  result that passed the client's checks passes these. `max_avoided` is 2
+  until the first trial runs, which set it; the value is published in every
+  unit.
+- Two models, before a unit is complete. A unit's `quorum` counts different
+  models, not people: a unit needs descriptions from `quorum` different
+  models, from anyone, including one volunteer running two models. A
+  second result made with a model the unit already has is turned away.
+  Each unit in `units/index.json` lists the models that have described it
+  (`models`), so a client can pick units its model has not done; units
+  waiting for a second model come first.
 - Agreement between models, when results are combined. Descriptions of the same work from different
   contributors are compared by embedding. The accepted description is the
   one closest to the others, and a model whose descriptions keep landing
@@ -273,6 +283,10 @@ with its evidence works. It enters the queue as a `judge` unit.
    agreement between two runs of the same model.
 4. Publish. Accepted results update `data/bridges.json`; the site is
    rebuilt; the issues are closed with a link to what they changed.
+
+Every result that is turned away is kept with its reason in
+`rejected/<issue>.json` on its data branch, beside the accepted ones, so
+the site can show what goes wrong and why.
 
 ## Versioning
 

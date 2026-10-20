@@ -1,12 +1,12 @@
 name: sweep
 
-# Every half hour, processes any result issue that is still open and
+# Every hour, processes any result issue that is still open and
 # unlabelled ten minutes after it was opened: one whose intake run failed,
 # was cancelled, or could not store it. One at a time, with the same scripts
 # as the intake workflow.
 on:
   schedule:
-    - cron: "17,47 * * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:

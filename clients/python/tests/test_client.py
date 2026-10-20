@@ -168,3 +168,15 @@ def test_a_map_record_follows_the_shared_schema():
     jsonschema = pytest.importorskip("jsonschema")
     schema = json.loads((REPO / "schemas" / "map-record.schema.json").read_text(encoding="utf-8"))
     jsonschema.Draft202012Validator(schema).validate(mapper.map_topic(FakeOpenAlex(), "T1", 2025))
+
+
+def test_units_waiting_for_another_model_come_first_and_never_for_the_same_model():
+    mine, other = "qwen3:8b (openai-compatible)", "gemini-2.5-flash (google)"
+    index = {"units": [{"unit": "u-100001", "status": "open"},
+                       {"unit": "u-100002", "status": "check", "models": [other]},
+                       {"unit": "u-100003", "status": "check", "models": [mine]},
+                       {"unit": "u-100004", "status": "done", "models": [mine, other]}]}
+    rng = random.Random(1)
+    assert {cli.pick_unit(index, set(), rng, mine)["unit"] for _ in range(30)} == {"u-100002"}
+    assert cli.pick_unit(index, {"u-100002"}, rng, mine)["unit"] == "u-100001"
+    assert cli.pick_unit(index, {"u-100001", "u-100002"}, rng, mine) is None

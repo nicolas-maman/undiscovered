@@ -97,7 +97,7 @@ def test_the_same_description_for_two_papers_is_asked_again():
     model = FakeModel([GOOD, GOOD, other])
     out = distill.distill_unit(TwoWorks(), model, unit)
     assert [d["problem"][:4] for d in out] == ["Meas", "Work"]
-    assert "word for word the description of another paper" in model.asked[2]
+    assert "almost the same as the description of another paper" in model.asked[2]
 
 
 def test_a_model_that_keeps_failing_is_stopped_before_anything_is_sent():
