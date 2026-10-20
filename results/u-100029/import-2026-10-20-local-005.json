@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-005",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T02:21:43Z",
+ "descriptions": [
+  {
+   "work": "W4392224101",
+   "problem": "A quantity measuring how quickly information spreads through a system is computed under different conditions of external influence. It is determined from time-evolving data of a quantum state and compared across various initial conditions and system parameters.",
+   "approach": "A sequence of operations is applied to a state over time, using a set of rules derived from a continuous symmetry group. The evolution is tracked, and the growth rate of a specific observable is extracted from the resulting patterns."
+  },
+  {
+   "work": "W4416554998",
+   "problem": "It estimates how environmental features affect human feelings of comfort and tension, based on observed reactions to physical arrangements and sensory cues.",
+   "approach": "It models responses by adjusting parameters like form, contrast, and movement patterns, then evaluates how changes in these elements shift subjective experiences across different settings."
+  },
+  {
+   "work": "W4205133817",
+   "problem": "A liquid formulation's effect on microbial growth is assessed under controlled conditions to determine if it suppresses the development of specific pathogens.",
+   "approach": "A series of dilutions are prepared from the liquid formulation and exposed to microbial cultures. Growth is monitored over time to identify the lowest concentration that prevents visible microbial development."
+  },
+  {
+   "work": "W4387318960",
+   "problem": "The extent to which insect herbivores consume plant material is measured under controlled conditions involving different plant treatments.",
+   "approach": "A set of plant specimens is exposed to insect herbivores under identical environmental conditions. Consumption is quantified and compared across treatments to determine if plant condition influences feeding behavior."
+  },
+  {
+   "work": "W3211632732",
+   "problem": "The effectiveness of instructional support in improving learning outcomes for individuals in disadvantaged circumstances is assessed using observed interactions and performance metrics.",
+   "approach": "A model evaluates how different facets of human engagement—such as emotional connection and digital interaction—relate to learning gains, using statistical analysis to identify which elements most strongly influence progress."
+  },
+  {
+   "work": "W4220772408",
+   "problem": "A pattern of clinical decision-making is inferred from sequences of patient encounters involving diagnostic uncertainty and real-time intervention choices.",
+   "approach": "A structured model analyzes temporal patterns in patient interactions, identifying recurring sequences of observations, responses, and outcomes to predict how decisions evolve under pressure and ambiguity."
+  },
+  {
+   "work": "W4392024837",
+   "problem": "The system estimates how sensitive a mechanical sensor becomes to minute mass additions, by measuring changes in oscillation amplitude under varying control conditions.",
+   "approach": "A control parameter is adjusted continuously to modulate the sensor's response range, and the resulting mass detection limit is derived from the peak-to-peak variation in oscillation amplitude across different operating regimes."
+  },
+  {
+   "work": "W3199559536",
+   "problem": "A pattern in a biological system is assessed to see if it correlates with clinical symptoms, lab markers, or disease progression over time in individuals who have experienced a specific illness.",
+   "approach": "A group of individuals is tested for a particular genetic variant using a molecular technique. Their health outcomes and biomarker levels are then compared across different variants to determine if any association exists."
+  },
+  {
+   "work": "W4384302275",
+   "problem": "A system's response to sudden load changes is evaluated under real-time communication lags and variable input sources, including distributed energy units with dynamic behavior.",
+   "approach": "A feedback mechanism adjusts control parameters in real time based on system response, using an adaptive search algorithm to refine gains and maintain stability under varying conditions and delays."
+  },
+  {
+   "work": "W3138280936",
+   "problem": "A system is estimated that assigns financial risk exposure to small and large agricultural units based on loss frequency and unit size, using historical data on production decline and economic impact.",
+   "approach": "A two-part risk-sharing model is applied: one assigns 90% risk coverage to small units and 60% to large units, with compensation thresholds adjusted to reflect unit vulnerability and recovery timelines."
+  },
+  {
+   "work": "W4391021448",
+   "problem": "A system estimates the likelihood that an input signal belongs to a class based on multiple overlapping segments of the signal, while detecting subtle manipulations introduced during training that alter classification behavior.",
+   "approach": "The model processes each segment independently, learns the statistical distribution of signal patterns, and combines segment-level evidence during prediction to detect anomalies, using noise during evaluation to improve robustness."
+  },
+  {
+   "work": "W4282553358",
+   "problem": "The structure and distribution of plant communities are inferred from patterns in climate, geology, and water chemistry across a landscape, identifying distinct groupings based on environmental conditions and their spatial relationships.",
+   "approach": "A statistical model groups sites by similarity in environmental conditions and identifies dominant community types, then maps their spatial distribution based on climate, soil type, and hydrological flow characteristics."
+  },
+  {
+   "work": "W4212799621",
+   "problem": "A system's performance under extreme environmental conditions is evaluated to ensure it maintains functional stability and operational integrity across a range of external exposures and internal load variations.",
+   "approach": "A series of controlled environmental exposures are applied, with real-time monitoring of internal state changes. Test scenarios are iteratively refined based on physical constraints and observed deviations to ensure coverage of operational boundaries."
+  },
+  {
+   "work": "W4416095345",
+   "problem": "A group of individuals evaluates how disruptive specific types of sudden, short-duration vibrations are to their perception, comparing responses across different physical environments and sound intensities.",
+   "approach": "Participants rate the level of disturbance caused by sudden vibrations, using a structured scale, while responses are analyzed across varying conditions and locations to identify patterns in human reaction to abrupt mechanical events."
+  },
+  {
+   "work": "W4404346175",
+   "problem": "The spatial arrangement and physical properties of a network of thin, filamentous connections between cells are measured and compared across different regions of a tissue.",
+   "approach": "High-resolution 3D imaging captures the structure of these connections in multiple tissue regions. Their length, width, and frequency are analyzed, and statistical patterns are derived to reveal regional variations in density and morphology."
+  },
+  {
+   "work": "W4319265757",
+   "problem": "A system estimates the extent to which an organization can sustain or enhance its operations beyond current capacity by leveraging untapped capabilities, based on market demand, supplier reliability, customer behavior, and financial support.",
+   "approach": "The system evaluates potential operational flexibility by comparing current performance to historical patterns and external conditions, using statistical and optimization models to assign weights to different factors and predict outcomes under varying conditions."
+  },
+  {
+   "work": "W2588515803",
+   "problem": "A group of individuals is evaluated to determine the economic viability and practicality of raising a small-animal livestock system for income and household nutrition improvement.",
+   "approach": "A structured training program is delivered to teach key husbandry practices, including breeding management, animal care, and disease prevention, using a defined set of animals as a model. Performance is measured through output volume, cost input, and revenue generated over a set period."
+  },
+  {
+   "work": "W2903449478",
+   "problem": "A system is designed to reproduce complex temporal patterns of physiological activity by combining dynamic waveforms with varying pressure, frequency, and timing characteristics across different segments of a biological process.",
+   "approach": "A physical system with four adjustable parameters is used to generate time-varying signals. These signals are composed by blending wave components with distinct amplitude, pressure, duration, and spacing to replicate observed patterns in real-world data."
+  },
+  {
+   "work": "W2987576849",
+   "problem": "A group of individuals collaboratively designs and constructs a durable, lightweight structure using a rapidly growing, locally available natural material, aiming to optimize stability and sustainability through iterative, hands-on experience.",
+   "approach": "The structure is assembled using interlocking joints secured by a simple, low-tech binding technique, with decisions refined through repeated testing, observation, and group feedback during the building process."
+  },
+  {
+   "work": "W4392125592",
+   "problem": "A mechanism is estimated that reduces cellular damage caused by an imbalance in reactive molecules and their neutralizing agents, particularly in sensitive tissues. The effect is evaluated across time and dosage, measuring changes in gene expression related to cellular defense and programmed cell death.",
+   "approach": "A compound is administered over time to modulate gene activity. It enhances expression of antioxidant enzymes and suppresses genes involved in cellular damage and death pathways, with outcomes assessed through changes in molecular markers over a defined period."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-011",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.8,
+ "at": "2026-10-20T02:21:44Z",
+ "descriptions": [
+  {
+   "work": "W4413105613",
+   "problem": "A model estimates the likelihood of a negative clinical outcome following a major surgical procedure, based on patient characteristics measured before surgery.",
+   "approach": "The model uses binary logistic regression to identify which pre-surgical factors are linked to adverse events. It then combines these factors into a single predictive score that assigns a probability to each patient."
+  },
+  {
+   "work": "W4408052916",
+   "problem": "An estimate is made of the spread and severity of a chronic, often undiagnosed infection in a population with weakened immunity, based on observed patterns in patient records over time.",
+   "approach": "Patient data is reviewed to identify patterns in symptoms, progression, and response to treatment. A treatment protocol is applied based on laboratory results, and outcomes are tracked to assess effectiveness and guide future decisions."
+  },
+  {
+   "work": "W3159238845",
+   "problem": "A quantity representing patient well-being is measured over time and compared across three treatment groups to determine how different dosing levels affect recovery speed and immune response after a surgical procedure.",
+   "approach": "Patients are assigned to one of three groups with varying doses of a substance administered intravenously. Outcomes are tracked using standardized scores and biological markers, and recovery timelines are analyzed using statistical modeling to detect differences in recovery patterns."
+  },
+  {
+   "work": "W4401553636",
+   "problem": "A pattern of interaction is identified in which individuals share experiences and strategies to enhance understanding and performance in a challenging context.",
+   "approach": "A structured analysis is applied to observed behaviors and exchanges, identifying recurring roles such as role modeling, validation, and collaborative problem-solving during learning episodes."
+  },
+  {
+   "work": "W4413424825",
+   "problem": "A pattern is estimated in a population of bacterial infections over time, tracking how frequently they appear and how strongly they resist common antimicrobial treatments across different patient groups and sample types.",
+   "approach": "Data from patient samples are collected annually and categorized by source and clinical setting. Resistance trends are computed by comparing resistance frequencies across years and sample types using standardized testing protocols."
+  },
+  {
+   "work": "W4410351880",
+   "problem": "A compound is evaluated for its ability to modulate a specific biological target with high precision, distinguishing it from closely related targets and assessing its performance in living systems through behavioral and pharmacokinetic outcomes.",
+   "approach": "A scaffold is modified by introducing a specific functional group to enhance target engagement while reducing unwanted metabolic degradation, followed by iterative refinement to improve stability, delivery, and functional response in vivo."
+  },
+  {
+   "work": "W3117062704",
+   "problem": "The strength of a negative influence across a lifetime of adverse experiences is estimated and evaluated in relation to a protective psychological trait that mitigates its effect on mental well-being.",
+   "approach": "A statistical model is built to assess how the effect of cumulative adverse exposures changes depending on the level of a protective psychological factor, using regression with interaction terms to quantify the modifying effect."
+  },
+  {
+   "work": "W4383888013",
+   "problem": "A system is identified that maps how sensitive knowledge escapes from institutions through interactions with external parties, and how institutions respond with structured safeguards to limit exposure.",
+   "approach": "A framework compares policies across regions, categorizes exposure pathways, and evaluates protective strategies—such as access controls, technological barriers, and procedural updates—based on real-world reports from institutional stakeholders."
+  },
+  {
+   "work": "W4385505150",
+   "problem": "A system exhibits uncontrolled, rapidly recurring electrical disturbances that disrupt normal function and persist despite initial interventions. The goal is to identify a treatment that stabilizes the system and restores normal rhythmic activity.",
+   "approach": "A continuous infusion of a substance that dampens sympathetic overactivity is applied. The response is monitored over time to determine when the system returns to a stable, regular pattern of activity."
+  },
+  {
+   "work": "W7220583280",
+   "problem": "A system estimates the structural and stylistic features of a visual form based on observed patterns in historical records and physical artifacts. It predicts how these features can be adapted to represent a specific cultural or institutional identity in modern applications.",
+   "approach": "The system analyzes visual data from historical sources to extract key design traits. It then applies a transformation rule to generate a new version of the form that reflects a defined organizational or cultural identity while maintaining historical coherence."
+  },
+  {
+   "work": "W4402778172",
+   "problem": "A pattern of bioactive molecules is identified across different plant tissues, with their chemical structures and biological effects being assessed to determine which types are most prevalent and functionally significant.",
+   "approach": "A systematic analysis groups molecular structures by functional groups and biological activity, then maps their abundance and known effects across various plant parts and environmental conditions."
+  },
+  {
+   "work": "W2735475367",
+   "problem": "A decision-maker interacts with multiple parties over time, each offering a set of options to influence future actions. The outcome depends on how these options are structured and selected, and the goal is to determine whether a simpler rule—offering one option per party—fully captures the resulting behavior.",
+   "approach": "Each party presents a range of possible agreements, and the decision-maker chooses one based on anticipated future performance. The selection process is evaluated under uncertainty, and the resulting behavior is compared to what would occur if only one option per party were available."
+  },
+  {
+   "work": "W4390907773",
+   "problem": "A pattern of textual change is identified and analyzed across a sequence of written records, where a specific doctrinal statement is observed to shift in form and emphasis over time.",
+   "approach": "A computational model maps the frequency and phrasing of a particular statement across documents, adjusting its interpretation based on contextual and linguistic features to detect subtle shifts in meaning or emphasis."
+  },
+  {
+   "work": "W4378219892",
+   "problem": "A system is designed to evaluate the economic and environmental viability of integrating sustainable practices into industrial operations, assessing how such integration benefits local communities and improves resource efficiency over time.",
+   "approach": "A phased implementation model is applied, starting with infrastructure for renewable energy generation, followed by waste-to-energy conversion, structured collection systems, and continuous monitoring of compliance with environmental standards."
+  },
+  {
+   "work": "W2969955284",
+   "problem": "A system of identical agents, each with limited memory, must reach a consistent global state based on local interactions and shared observation of neighbors' states over time.",
+   "approach": "Agents update their behavior by directly observing the current state of adjacent agents, and a global configuration is defined by tracking each agent's state and its neighbors' states during interactions, enabling deterministic convergence to a known outcome."
+  },
+  {
+   "work": "W3175229938",
+   "problem": "A system is evaluated to determine how effectively resources are reused and recycled across different stages of production and consumption to reduce dependency on new inputs and minimize material loss.",
+   "approach": "A model tracks the flow of materials through various stages, assigning value to by-products and reusing them in new processes, adjusting operations to maximize retention and minimize loss over time."
+  },
+  {
+   "work": "W4412908199",
+   "problem": "The presence and levels of certain chemical compounds in food items are assessed across multiple types of products, with a focus on detecting elevated concentrations that exceed established safety thresholds.",
+   "approach": "Samples are processed using a chemical separation and detection technique to identify and quantify specific compounds. Results are compared against predefined safety limits and evaluated for frequency and magnitude across different product types and sources."
+  },
+  {
+   "work": "W2790273113",
+   "problem": "The rate and affinity of a drug's uptake by liver cells are estimated from in vitro experiments involving human-derived cellular systems and biological fluids. These values are used to predict how the drug behaves in living organisms across different dosing levels.",
+   "approach": "A computational model integrates experimental uptake rates and binding affinities to simulate drug concentration over time in a living system, adjusting for physiological differences without requiring empirical scaling factors."
+  },
+  {
+   "work": "W4406178240",
+   "problem": "A pattern of recurrent, severe inflammation affecting connective tissues is identified and documented across multiple individuals from a specific cultural group over time.",
+   "approach": "Clinical records and medical histories are reviewed to detect recurring episodes of inflammation in cartilaginous and supportive tissues, and these are compared across individuals to identify shared features and potential triggers."
+  },
+  {
+   "work": "W2810066961",
+   "problem": "The extent to which health teams implement integrated support for patients with long-term conditions is assessed, comparing outcomes across locations with differing resource availability.",
+   "approach": "A structured framework evaluates how well teams manage patient needs across medical and personal domains, analyzing patterns by location and identifying key operational constraints affecting service delivery."
+  }
+ ]
+}

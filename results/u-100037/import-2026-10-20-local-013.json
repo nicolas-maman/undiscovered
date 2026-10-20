@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-013",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9,
+ "at": "2026-10-20T02:21:45Z",
+ "descriptions": [
+  {
+   "work": "W4200416544",
+   "problem": "A system identifies and characterizes boundaries in visual data under low-illumination conditions, evaluating how well different computational techniques extract and preserve structural details in the presence of noise and variation.",
+   "approach": "A sequence of filtering and thresholding operations is applied to input data, using local gradient and curvature analysis to detect transitions, with a focus on preserving fine structural features while suppressing irrelevant variations."
+  },
+  {
+   "work": "W4413907251",
+   "problem": "The system estimates why individuals select or reject a shared physical environment for work, based on personal needs, environmental control, and social interactions, using self-reported experiences and observed behaviors in real-world settings.",
+   "approach": "It analyzes patterns in user reports and sensor-derived activity logs to map how routines, preferences, and social behaviors align with environmental features and usage frequency over time."
+  },
+  {
+   "work": "W4205661930",
+   "problem": "A pattern of immune activity is assessed in a fluid surrounding reproductive structures, measuring changes in specific immune cell types and their secreted signaling molecules that may indicate declining biological function.",
+   "approach": "Immune cell populations are categorized and analyzed for activation markers. Signaling molecule levels are measured and linked to cell behavior. A key signal is shown to attract specific immune cells through a known receptor interaction."
+  },
+  {
+   "work": "W7117945418",
+   "problem": "Unknown features of a smoothly varying signal are estimated from observations contaminated by random noise that may be strongly or weakly linked across time. The accuracy and statistical behavior of the estimate are analyzed as the amount of data grows large.",
+   "approach": "A rule is applied to compute values of the signal's features using observed data points. This rule is shown to converge reliably and to follow a predictable pattern when data volume increases significantly."
+  },
+  {
+   "work": "W4387964668",
+   "problem": "A pattern of public response to a cultural decision is analyzed to determine how it triggers collective action and shifts in public sentiment over time.",
+   "approach": "Social media content is grouped by recurring themes and mapped to underlying motivations, revealing how a specific event reactivates and redirects existing emotional and social currents."
+  },
+  {
+   "work": "W2799717438",
+   "problem": "A system of interacting components is studied to manipulate and tune the strength of quantum correlations between distinct parts, adjusting one correlation while affecting others, and evaluating how these relationships persist under varying environmental noise levels.",
+   "approach": "A dynamic control mechanism adjusts the interaction strength between components, enabling selective enhancement or suppression of specific quantum-linked behaviors based on external modulation, while monitoring stability under thermal disturbances."
+  },
+  {
+   "work": "W4379530468",
+   "problem": "A quantitative assessment of how two natural compounds influence key metabolic indicators in a biological system exposed to oxidative stress is performed, comparing outcomes across control and intervention groups.",
+   "approach": "A structured experimental design administers a stress-inducing agent over time, then measures changes in metabolic markers and tissue structure, using a defined dosing regimen and repeated sampling to evaluate protective effects."
+  },
+  {
+   "work": "W2921319344",
+   "problem": "The effect of varying exposure duration, intensity, and environmental temperature on a biological response rate and subsequent growth outcome is estimated from experimental observations under controlled conditions.",
+   "approach": "A mathematical model links input variables to a response metric using a regression function, calibrated to ensure statistical reliability at a defined confidence threshold."
+  },
+  {
+   "work": "W2805871241",
+   "problem": "The structure and dimensions of early plant growth stages are measured and compared across two cultivated species to identify differences in tissue organization and developmental patterns.",
+   "approach": "Seeds are grown under controlled conditions; key growth features are recorded and tissue samples are sectioned, examined, and imaged. Anatomical features are analyzed and cross-referenced with known patterns in related species and environmental influences."
+  },
+  {
+   "work": "W4387459711",
+   "problem": "A quantitative assessment is made of how different liquid extracts affect biological processes in plants, including seed activation and enzyme function, using measured responses across varying concentrations and conditions.",
+   "approach": "Extracts are prepared from plant parts through physical separation and chemical solvents. Their effects are tested across multiple biological endpoints using controlled exposure and response measurement to determine potency and specificity."
+  },
+  {
+   "work": "W4286669034",
+   "problem": "A pattern of unregulated online behavior by young users is observed and analyzed to understand its social and educational implications, using available reports and guidelines as evidence.",
+   "approach": "A structured thematic review is applied to group and interpret diverse sources, using a framework that links individual actions to broader societal and environmental influences to identify key behavioral and educational factors."
+  },
+  {
+   "work": "W4309524192",
+   "problem": "A pattern of behavior related to dietary intake is assessed based on public knowledge, personal beliefs, and actual actions, using data collected from diverse community groups.",
+   "approach": "A structured model analyzes responses to health-related questions, identifies gaps between beliefs and behaviors, and maps changes in habits across different population segments using survey-based evidence."
+  },
+  {
+   "work": "W3092492135",
+   "problem": "A personalized device is designed to fit a child's eye socket and support orbital bone development, based on imaging and anatomical measurements.",
+   "approach": "A geometric model is created from patient-specific scans, then adjusted to match orbital dimensions and facial structure, ensuring optimal fit and stimulation of bony growth over time."
+  },
+  {
+   "work": "W4294991328",
+   "problem": "The degree of disease progression and patient response to treatment is estimated from repeated measurements of a specific immune protein in blood and urine over time.",
+   "approach": "A statistical model compares fluctuations in the protein level across individuals and time points, identifying patterns that correlate with worsening or improvement, then uses these patterns to forecast future disease states."
+  },
+  {
+   "work": "W4390949828",
+   "problem": "A set of factors influencing the long-term viability of transport systems is analyzed, including environmental, social, and economic impacts, to identify key drivers and constraints across diverse geographic and political contexts.",
+   "approach": "A structured review of existing studies is performed by gathering and evaluating relevant research from multiple sources, then organizing findings into core components and identifying gaps that require deeper investigation in specific settings."
+  },
+  {
+   "work": "W7124228718",
+   "problem": "The final state of a group of individuals is influenced by how they respond to a single influential source, based on the strength of their connections to one another and the influence of that source.",
+   "approach": "A set of rules governs how each individual updates their belief based on interactions with others, with a single dominant source having greater impact. The system evolves over time, and the outcome is adjusted by modifying the interaction strengths between individuals."
+  },
+  {
+   "work": "W4386967486",
+   "problem": "A pattern of preference is estimated for the number of offspring of a given sex in a household, based on self-reported ideals from individuals across different social and demographic groups.",
+   "approach": "The pattern is modeled by comparing responses across groups defined by residence, education, economic status, marital structure, and household size, then adjusting for observed household characteristics and social context."
+  },
+  {
+   "work": "W4403978146",
+   "problem": "The extent to which certain harmful compounds in a nutrient-rich material are broken down is estimated, and the effectiveness of enzymatic activity increases are predicted based on varying process conditions.",
+   "approach": "A screening method identifies key variables affecting degradation, then refines them through a structured experimental design to find conditions that maximize the breakdown of harmful compounds and boost beneficial enzyme activity."
+  },
+  {
+   "work": "W4286603608",
+   "problem": "A system estimates how closely different biological samples share structural patterns based on repeated motifs and their spatial arrangements in a linear order.",
+   "approach": "It constructs a structured representation from repeated pattern occurrences, then defines a distance measure between such representations to quantify how closely two samples align in pattern frequency and arrangement."
+  },
+  {
+   "work": "W3016983159",
+   "problem": "The change in physiological response to a high-sodium intake is estimated and compared across groups to determine if blocking a specific signaling pathway amplifies sensitivity to dietary salt changes.",
+   "approach": "Animals are exposed to a low-sodium and a high-sodium diet over time. A treatment is administered to inhibit a specific receptor pathway. Blood pressure changes are monitored and compared between treated and untreated groups during the dietary shift."
+  }
+ ]
+}

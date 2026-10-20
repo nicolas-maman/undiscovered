@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-004",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T02:21:43Z",
+ "descriptions": [
+  {
+   "work": "W4406083888",
+   "problem": "A patient with a chronic genetic condition affecting connective tissue presents with a sudden onset of respiratory distress and imaging-confirmed lung collapse. The likelihood and severity of this collapse are assessed based on clinical history and imaging findings.",
+   "approach": "A minimally invasive procedure is performed to relieve pressure and prevent recurrence. The lung's structural integrity is evaluated, and a substance is applied to promote adhesion and prevent future collapse."
+  },
+  {
+   "work": "W2987956668",
+   "problem": "A model estimates how a past event affecting physical stability influences the likelihood of a future driving-related incident over time, using repeated observations across a long period.",
+   "approach": "The model tracks changes in behavior and physical condition over time, adjusting risk predictions based on prior instability and frequency of driving activity, using statistical methods that account for repeated measurements in the same individuals."
+  },
+  {
+   "work": "W4383957658",
+   "problem": "A system is evaluated to reduce greenhouse gas output during resource extraction and processing, based on operational data and material flow patterns.",
+   "approach": "A set of strategies is applied, including on-site power generation, transport efficiency improvements, process optimization, and capturing and storing emissions, all implemented in combination to achieve overall emission reduction."
+  },
+  {
+   "work": "W3123648691",
+   "problem": "A system adapts its structure and dynamics based on past interactions, adjusting how information flows through interconnected pathways in response to environmental inputs.",
+   "approach": "The system maintains and modifies internal patterns of activity across a network, where the timing and synchronization of these patterns influence how information is processed and stored over time."
+  },
+  {
+   "work": "W2917813788",
+   "problem": "A condition causing rapid decline in red blood cell count is identified in individuals with suppressed immune function, and the likelihood of this condition being triggered by a specific pathogen is assessed using biological and clinical data.",
+   "approach": "A detection method measures the presence and concentration of a pathogen in bodily fluids. Clinical outcomes are evaluated after intervention, and patterns in patient history and response are analyzed to determine the probability of the pathogen being the root cause."
+  },
+  {
+   "work": "W3197837068",
+   "problem": "A factor is identified that increases the expression of a gene involved in cellular structure maintenance, and its effect on cell movement is assessed through interference with that gene.",
+   "approach": "The factor binds to a specific region of the gene's regulatory sequence and enhances its activity. Cellular movement and structural protein modification are monitored under conditions where the gene is either amplified or suppressed."
+  },
+  {
+   "work": "W4415917865",
+   "problem": "A pattern of environmental degradation is assessed through continuous, multi-sourced observations over time, including changes in natural rhythms and human behaviors. The goal is to identify correlations between these patterns and shifts in collective well-being.",
+   "approach": "A structured process is applied that integrates personal and environmental observations into a shared narrative. This narrative is refined through iterative feedback loops involving diverse participants to detect subtle shifts in perception and response to change."
+  },
+  {
+   "work": "W4399682097",
+   "problem": "A biological system's response to a high-fat diet is assessed, measuring levels of inflammatory markers, lipid abnormalities, and enzymatic activity involved in tissue damage and immune activation.",
+   "approach": "A compound is administered to suppress a specific enzyme complex that drives inflammatory and metabolic dysfunction. Tissue and blood samples are analyzed for changes in metabolic, immune, and structural indicators over time."
+  },
+  {
+   "work": "W4388461540",
+   "problem": "A material's response to an electric field is measured across a range of conditions to determine how effectively it can induce a reversible thermal change in a controlled environment.",
+   "approach": "A powder is synthesized with adjusted composition to control particle size and purity. The resulting bulk form is processed under reduced heat, and its thermal and electrical behavior is evaluated under varying field strengths and environmental conditions."
+  },
+  {
+   "work": "W4400681503",
+   "problem": "A system's performance under varying environmental conditions is predicted and optimized to maintain consistent output across a range of operational states.",
+   "approach": "A unified model links structural behavior, environmental exposure, and functional output. Design parameters are adjusted to minimize variation in performance, using real-time environmental and structural data as input."
+  },
+  {
+   "work": "W4384343086",
+   "problem": "The system estimates how changes in material resistance, thermal effects, and chemical interaction influence flow speed, temperature, and concentration distributions near a stretching surface.",
+   "approach": "A simplified set of equations is derived using similarity transformations. These are solved numerically with a robust iterative method. Results are visualized and compared to prior studies to validate trends in response to varying physical conditions."
+  },
+  {
+   "work": "W3119708744",
+   "problem": "A model estimates how inherited and learned traits from a household influence an individual's chances of being selected for a structured learning program, based on observed behaviors and household characteristics.",
+   "approach": "The model evaluates household traits like income, parental background, and engagement in structured activities, then maps how these traits correlate with selection outcomes through statistical analysis of reported behaviors and outcomes."
+  },
+  {
+   "work": "W3010431058",
+   "problem": "The residence time of water in a subsurface system is estimated from isotopic ratios of tritium and helium-3 in water samples collected from different locations.",
+   "approach": "A mathematical model correlates the ratio of tritium to helium-3 in water with time, assuming constant decay rates and minimal contamination, then applies calibration to derive age estimates consistent with other independent time measurements."
+  },
+  {
+   "work": "W3097424900",
+   "problem": "A system estimates how much visual structure in an image contributes to perceived artistic quality, comparing it against subjective evaluations of aesthetic value.",
+   "approach": "It analyzes patterns in visual elements using computational rules, assigning weights to features like composition, detail density, and spatial consistency, then maps these to human assessments of artistic merit."
+  },
+  {
+   "work": "W4415466768",
+   "problem": "The system estimates how much mental energy is allocated to a task based on perceived challenge and lack of engagement, and compares this allocation across different task conditions and time points.",
+   "approach": "It models mental resource distribution by tracking changes in performance and subjective feedback, then adjusts the allocation estimate using real-time responses to task stimuli and internal evaluation signals."
+  },
+  {
+   "work": "W4281866267",
+   "problem": "A system learns to generate diverse and effective model instances by focusing on intermediate outputs during processing, aiming to improve prediction stability and accuracy across different input patterns.",
+   "approach": "It iteratively refines a set of model variants by adjusting their behavior based on how they respond to internal processing stages, promoting distinct responses to similar inputs while maintaining overall performance."
+  },
+  {
+   "work": "W4283390440",
+   "problem": "A compound is tested to determine its ability to promote the merging of cellular energy-producing units, enhancing their movement and coordination within a cell's network.",
+   "approach": "A series of structurally modified versions of a known compound are designed with specific spatial relationships between key functional groups. Their effectiveness is measured in live cells using assays that track the movement and fusion of these units in response to the compound."
+  },
+  {
+   "work": "W3103397036",
+   "problem": "A system measures changes in the concentration of two proteins bound to a network structure over time after initial treatment, comparing early and later stages to determine if these changes correlate with specific activity levels or other measurable traits.",
+   "approach": "The method tracks protein levels in a biological sample before and after treatment, then analyzes how these levels relate to functional activity or structural properties, using statistical models to detect persistent or evolving patterns over time."
+  },
+  {
+   "work": "W3019220919",
+   "problem": "A quantitative measure of inflammatory activity is estimated from tissue samples and correlated with the severity of a clinical condition.",
+   "approach": "A numerical value is derived from molecular detection and compared across different levels of disease progression using statistical analysis to identify trends in intensity."
+  },
+  {
+   "work": "W3159728908",
+   "problem": "A material's ability to generate an electrical response under mechanical strain is measured across different compositions. The strength of this response is compared across variants and linked to the degree of variation in local atomic arrangements.",
+   "approach": "A systematic variation in composition is applied to induce structural irregularities. The resulting electrical output is monitored and correlated with the complexity of atomic-scale variations in the material's structure."
+  }
+ ]
+}

@@ -7019,7 +7019,25 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "done",
+   "models": [
+    "mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible)",
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-001",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible)",
+     "relevance": 0.9473684210526315
+    },
+    {
+     "issue": "import-2026-10-20-local-004",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 1.0
+    }
+   ]
   },
   {
    "unit": "u-100029",
@@ -7250,7 +7268,25 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "done",
+   "models": [
+    "mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible)",
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-002",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible)",
+     "relevance": 0.95
+    },
+    {
+     "issue": "import-2026-10-20-local-005",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.85
+    }
+   ]
   },
   {
    "unit": "u-100030",
@@ -7483,7 +7519,25 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "done",
+   "models": [
+    "mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible)",
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-003",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Llama-3.2-3B-Instruct-4bit (openai-compatible)",
+     "relevance": 1.0
+    },
+    {
+     "issue": "import-2026-10-20-local-006",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.85
+    }
+   ]
   },
   {
    "unit": "u-100031",
@@ -7716,7 +7770,18 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "check",
+   "models": [
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-007",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.9473684210526315
+    }
+   ]
   },
   {
    "unit": "u-100032",
@@ -7944,7 +8009,18 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "check",
+   "models": [
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-008",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.8
+    }
+   ]
   },
   {
    "unit": "u-100033",
@@ -8176,7 +8252,18 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "check",
+   "models": [
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-009",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.9
+    }
+   ]
   },
   {
    "unit": "u-100034",
@@ -8406,7 +8493,18 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "check",
+   "models": [
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-010",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.9473684210526315
+    }
+   ]
   },
   {
    "unit": "u-100035",
@@ -8637,7 +8735,18 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "check",
+   "models": [
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-011",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.8
+    }
+   ]
   },
   {
    "unit": "u-100036",
@@ -8870,7 +8979,18 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "check",
+   "models": [
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-012",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.75
+    }
+   ]
   },
   {
    "unit": "u-100037",
@@ -9101,7 +9221,18 @@
    "max_avoided": 2,
    "instructions": "Describe the task this work carries out as an abstract computation, so that a researcher in any field could recognise the same task in their own work. In the problem, say what is estimated, predicted, compared, optimised or explained, and from what kind of data or evidence. In the approach, say the procedure: the model, the steps or the rule it follows. Do not name the field, its methods or its objects of study; say what they are and what they do instead, and do not reuse terms from the abstract that only that field would use.",
    "quorum": 2,
-   "status": "open"
+   "status": "check",
+   "models": [
+    "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)"
+   ],
+   "results": [
+    {
+     "issue": "import-2026-10-20-local-013",
+     "author": "nicolas-maman",
+     "model": "mlx-community/Qwen3-4B-Instruct-2507-4bit (openai-compatible)",
+     "relevance": 0.9
+    }
+   ]
   },
   {
    "unit": "u-100038",

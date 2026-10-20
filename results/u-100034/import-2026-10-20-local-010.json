@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-20-local-010",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9473684210526315,
+ "at": "2026-10-20T02:21:44Z",
+ "descriptions": [
+  {
+   "work": "W7125230000",
+   "problem": "A system estimates how emotional distress is transformed into abstract, non-reflective expressions to reduce psychological pain, using data from personal emotional patterns and patterns of avoidance.",
+   "approach": "The system models emotional relief through deliberate obscurity and sensory play, applying rules that shift raw feeling into forms that cannot be directly named or understood, preserving internal stability by preventing direct confrontation with painful truths."
+  },
+  {
+   "work": "W3035635979",
+   "problem": "A system identifies whether a microbial presence in a respiratory sample is indicative of active infection, colonization, or non-relevant contamination, based on observed growth patterns and response to treatment.",
+   "approach": "A model evaluates sample characteristics over time, comparing growth behavior to known patterns, and assigns a classification based on consistency with clinical outcomes and antimicrobial response."
+  },
+  {
+   "work": "W3215059648",
+   "problem": "A system estimates whether an image shows a deviation from normal tissue structure, based on patterns in pixel intensity and spatial arrangement across a two-dimensional visual field.",
+   "approach": "The method identifies boundaries of structured regions using gradient-based edge detection, then analyzes surface texture and intensity variation to classify the image as normal or abnormal using a statistical classifier trained on labeled examples."
+  },
+  {
+   "work": "W3191354110",
+   "problem": "A small molecule is identified that transiently disrupts the tight junctions between endothelial cells, enabling passage of small therapeutic agents through a protective cellular barrier.",
+   "approach": "The molecule binds selectively to a conserved region of a key junctional protein, weakening cell-to-cell adhesion. This triggers internalization and reduced expression of the protein, creating a temporary opening for controlled transport of substances."
+  },
+  {
+   "work": "W4404006502",
+   "problem": "A system is identified that enables representative bodies to engage in international coordination beyond executive control, with outcomes assessed across time, context, and similar systems. The nature and effectiveness of such engagement are evaluated based on observed interactions and structural patterns.",
+   "approach": "A structured framework is built by mapping stages of evolution, comparing similar systems, and analyzing how decisions unfold across time and across different governing bodies. Outcomes are assessed through iterative refinement and cross-case validation."
+  },
+  {
+   "work": "W3195359067",
+   "problem": "A pattern of future healthcare delivery is estimated based on current trends, expert opinions, and evolving patient needs across multiple healthcare settings.",
+   "approach": "A weighted aggregation of diverse forecasts is computed, adjusting for reliability and consistency, then iteratively refined through consensus review and sensitivity analysis to produce a stable, evidence-informed projection."
+  },
+  {
+   "work": "W7117358596",
+   "problem": "A system is analyzed to maintain stable output under varying input conditions and load changes, estimating how output levels respond to shifts in drive speed and load magnitude while preserving operational equilibrium.",
+   "approach": "A control loop adjusts internal power supply based on real-time output feedback, using a nonlinear response model to maintain balance. It responds to disturbances by modulating supply strength to restore equilibrium without external intervention."
+  },
+  {
+   "work": "W4206063893",
+   "problem": "A compound's ability to mitigate tissue damage caused by a known irritant is evaluated by measuring changes in oxidative stress markers and inflammatory response indicators in biological samples.",
+   "approach": "A compound is administered before exposure to an irritant, and after a set time, levels of oxidative byproducts, antioxidant enzyme activity, and inflammatory signaling molecules are measured to assess protective effects."
+  },
+  {
+   "work": "W4414833156",
+   "problem": "A system is evaluated to identify obstacles preventing the integration of new, low-emission power sources into a national grid, based on historical project approvals and spatial planning records.",
+   "approach": "A standardized assessment framework is applied to each project, evaluating alignment with environmental and spatial criteria, and recommending procedural changes to improve consistency and reduce delays in approval processes."
+  },
+  {
+   "work": "W4242271510",
+   "problem": "A pattern of behavior is identified in individuals who engage in same-gender relationships within culturally constrained environments, and the extent to which these behaviors align with traditional beliefs is assessed through personal accounts and digital interactions.",
+   "approach": "Personal accounts are analyzed for consistency with established cultural norms and non-traditional practices, using iterative interpretation to detect subtle shifts in behavior and identity expression across digital and physical contexts."
+  },
+  {
+   "work": "W4205789398",
+   "problem": "A two-dimensional thermal map is reconstructed from indirect sensor readings affected by unintended signal mixing due to parallel pathways between adjacent elements.",
+   "approach": "A mathematical transformation is applied to align measured signals with a known non-linear response pattern, then iteratively refined to minimize discrepancies between predicted and observed values using local gradient updates."
+  },
+  {
+   "work": "W3175837017",
+   "problem": "A system's output mass and internal tissue composition are measured across different dietary treatments to assess performance and physiological balance.",
+   "approach": "A controlled experiment applies varying nutritional inputs to a group of animals over time, then evaluates resulting body mass and organ proportionality using standardized measurement protocols."
+  },
+  {
+   "work": "W4399355816",
+   "problem": "A system is designed to transition between multiple stable states, where each state is independently set and maintained under mechanical load. The transitions are triggered by small inputs, and the system maintains stability in each state without external support.",
+   "approach": "A geometric framework is built where folding patterns allow independent stabilization at distinct shapes. Each shape is supported by a network of connected segments that maintain rigidity through local curvature and distributed stress distribution."
+  },
+  {
+   "work": "W4386558183",
+   "problem": "A model estimates the rate of decline in structural integrity of biological tissues over time, influenced by both internal biological shifts and repeated environmental exposures, and predicts how interventions can stabilize or reverse these changes.",
+   "approach": "The model integrates longitudinal data on tissue degradation and exposure history, applying a dynamic rule that adjusts outcomes based on lifestyle modifications and targeted interventions to maintain tissue resilience over time."
+  },
+  {
+   "work": "W4316464312",
+   "problem": "A group of healthcare trainees is assessed for their interest in pursuing a specialized, high-pressure clinical role involving urgent patient care. The level of interest is measured across various personal and situational factors, including financial considerations and prior training background.",
+   "approach": "A structured survey is administered to trainees, collecting self-reported preferences and motivations. Responses are aggregated and analyzed to identify patterns, with statistical comparisons made across demographic and background variables to detect influencing factors."
+  },
+  {
+   "work": "W3210008241",
+   "problem": "It estimates the exact interval between two distinct occurrences, achieving finer precision than conventional methods, especially when events happen rapidly and must be recorded with sub-nanosecond accuracy.",
+   "approach": "It uses a high-frequency reference signal and a parallel sampling mechanism to resolve tiny time gaps by comparing event timestamps across multiple independent sampling phases."
+  },
+  {
+   "work": "W4313199109",
+   "problem": "A pattern of urgent care decisions is inferred from real-time patient data streams, including vital signs and clinical observations, to predict outcomes under time-sensitive conditions.",
+   "approach": "A dynamic model processes incoming data sequences, updating predictions continuously, and compares them against known outcomes to refine future responses in high-pressure scenarios."
+  },
+  {
+   "work": "W4401501295",
+   "problem": "A system estimates the presence and concentration of a nitrogen-rich compound in a food-based product that is intentionally added to misrepresent its protein content, using chemical and physical signals from the sample.",
+   "approach": "A model analyzes signals from multiple detection methods to identify and quantify the compound, comparing results across techniques to determine its level and consistency in different sample types."
+  },
+  {
+   "work": "W3085657447",
+   "problem": "A quantitative assessment of a substance's ability to interfere with a digestive enzyme that breaks down complex carbohydrates is performed using measured chemical and biological responses from processed natural materials.",
+   "approach": "A standardized extract is prepared, and its chemical composition and biological activity are evaluated through assays measuring antioxidant potential and suppression of enzyme activity, with results compared across different forms of the material."
+  }
+ ]
+}

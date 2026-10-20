@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-006",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.85,
+ "at": "2026-10-20T02:21:43Z",
+ "descriptions": [
+  {
+   "work": "W4405858964",
+   "problem": "A mechanism is inferred that regulates the binding of a cofactor and the transformation of a substrate into a product, where the binding and reaction steps are interdependent and influenced by the chemical environment and pH.",
+   "approach": "A network of residues is identified that stabilizes the cofactor through weak interactions, and a sequence of events is mapped where proton transfer between specific sites enables the reaction to proceed efficiently under physiological conditions."
+  },
+  {
+   "work": "W3003671208",
+   "problem": "A system is designed to ensure that emergency escape equipment remains functional and ready at all times by identifying which components require immediate attention and optimizing the sequence of actions for maintenance.",
+   "approach": "A structured planning process is applied to analyze equipment conditions and operational needs, using a diagnostic framework to map dependencies and prioritize actions based on failure risks and usage frequency."
+  },
+  {
+   "work": "W2978168053",
+   "problem": "A pattern of skin lesions with a ring-like structure and central ulceration is observed, and its response to a specific class of medication is evaluated to determine effectiveness in reducing inflammation and improving tissue appearance.",
+   "approach": "A patient's skin condition is monitored over time, and changes in lesion size, symmetry, and tissue integrity are assessed after initiating a standardized treatment regimen."
+  },
+  {
+   "work": "W3181446646",
+   "problem": "A system is analyzed to track how chemical compositions change as fluids move through layered rock formations over long periods, comparing fluid properties at different depths and flow rates.",
+   "approach": "Fluids pass through distinct rock layers with varying chemical interactions; at each stage, the concentration of key ions is measured and modeled based on dissolution, precipitation, and transport dynamics over time."
+  },
+  {
+   "work": "W4407134094",
+   "problem": "A sequence of healthcare interactions is analyzed to determine how long it takes for an individual to receive a confirmed diagnosis and a curative intervention after initial symptoms appear.",
+   "approach": "Data from multiple medical encounters are collected and reviewed to map the progression of care, including diagnostic tests and decisions made at each stage, to identify delays and underlying barriers affecting timely treatment."
+  },
+  {
+   "work": "W3098990366",
+   "problem": "The effect of a mechanical stimulus applied during sustained muscle activation on peak force output is measured across different joint positions, comparing outcomes under and without stimulation.",
+   "approach": "A stimulus is delivered during prolonged muscle activation at varying joint angles. Force, neural drive, and muscle response amplitude are monitored before and after, with changes analyzed to determine if stimulation amplifies performance decline."
+  },
+  {
+   "work": "W3134713371",
+   "problem": "A set of biological regions is analyzed for changes in chemical modification patterns across two related tissues, with the goal of identifying functional associations linked to specific cellular processes.",
+   "approach": "A computational model compares modification levels across tissue samples, then maps these patterns to known biological functions using statistical enrichment analysis to detect significant associations."
+  },
+  {
+   "work": "W4387782784",
+   "problem": "The relative fitness of offspring from mixed genetic backgrounds is estimated across different genetic combinations, and patterns of fitness decline are compared across sexes and genomic regions.",
+   "approach": "Genetic data from cross-breeding experiments are analyzed to detect regions where ancestry from one parent is unevenly distributed. Statistical models adjust for local genetic correlations to reveal true effects, distinguishing between isolated strong effects and widespread, subtle contributions from many genes."
+  },
+  {
+   "work": "W4405880182",
+   "problem": "A system estimates the most likely original form of a complex visual signal from degraded and corrupted copies, using patterns learned from large sets of similar signals.",
+   "approach": "It uses a deep neural network to compress the signal into a compact, structured form, then refines it using a network trained to generate plausible outputs from noisy inputs, adjusting fidelity based on available copies."
+  },
+  {
+   "work": "W4380084769",
+   "problem": "A system is estimated to operate efficiently under specific environmental conditions, determining the number of days per year it can function without degradation in performance or safety.",
+   "approach": "Environmental variables such as water flow, wind, wave motion, and periodic shifts are monitored over time. A model compares operational feasibility across different environmental regimes to identify the longest continuous period of safe and effective operation."
+  },
+  {
+   "work": "W4403678069",
+   "problem": "A system is evaluated to determine how well it identifies anomalies in real-time data streams under conditions that differ significantly from those during training, such as new signal patterns or environmental shifts.",
+   "approach": "Models are trained on data representing normal operational conditions and then tested on data with altered signal characteristics or unobserved environmental factors to assess consistency and reliability."
+  },
+  {
+   "work": "W4409213022",
+   "problem": "A system is evaluated to determine how external policy pressures influence the replacement of aging operational units in a network of transport assets.",
+   "approach": "A model correlates economic indicators and infrastructure conditions with decisions to replace or retain older units, using historical data on asset age and economic performance to predict future replacement patterns."
+  },
+  {
+   "work": "W3044497410",
+   "problem": "A comprehensive evaluation of therapeutic outcomes is performed across diverse medical conditions, assessing the strength and consistency of effects based on available research evidence and potential biases in study design.",
+   "approach": "A structured review process is applied to existing studies, classifying evidence into tiers of confidence, evaluating methodological rigor, and analyzing effect magnitudes to determine which conditions show reliable and meaningful improvements."
+  },
+  {
+   "work": "W2794783666",
+   "problem": "A system's response to environmental drivers is assessed over time to determine how well surface observations reflect underground processes, especially under varying moisture and texture conditions.",
+   "approach": "Temporal patterns in surface and underground emissions are analyzed using a dynamic model that tracks how changes in environmental conditions propagate through layers. Coherence and delays are evaluated across time scales to identify when and how surface signals align with deeper processes."
+  },
+  {
+   "work": "W3063426402",
+   "problem": "The rate at which infectious agents remain active and capable of reproducing in host tissues is estimated from biological samples collected over time and across different species.",
+   "approach": "Samples are examined under magnification to classify tissue infections by state (inactive, active, or calcified). Active cases are further assessed for reproductive potential, and statistical comparisons are made across species and tissue types to determine patterns of transmission risk."
+  },
+  {
+   "work": "W4318165280",
+   "problem": "A pattern of persistent symptoms is observed alongside a detectable mass in a bodily region, and the likelihood of a noninvasive, slow-growing microbial infection is assessed against the possibility of a rapidly progressing, destructive process.",
+   "approach": "A diagnostic procedure involves analyzing tissue samples for microbial presence and evaluating clinical history for risk factors, then comparing findings to known patterns of infection and disease progression over time."
+  },
+  {
+   "work": "W2918044009",
+   "problem": "The growth performance of different seed treatments is evaluated across controlled and open environments, measuring height, stem thickness, and development speed in response to varying pre-planting seed conditioning methods.",
+   "approach": "Seeds are exposed to distinct pre-planting treatments, then planted in contained and open settings. Growth metrics are recorded over time and compared using statistical analysis to determine which treatment yields the most consistent and rapid development."
+  },
+  {
+   "work": "W4392580583",
+   "problem": "A rare infection is identified in a patient with no known weakened immune system, where standard tests fail to detect the causative agent. The infection is found to resist a commonly used antibiotic, which alters treatment expectations and highlights the need for accurate detection of such resistance.",
+   "approach": "A sensitive genetic analysis is applied to a bodily fluid sample to identify a specific pathogen at the species level. The pathogen's response to a standard antibiotic is then tested, revealing unexpected resistance that guides a different treatment strategy."
+  },
+  {
+   "work": "W4205456522",
+   "problem": "A difference in performance is estimated between two instructional methods and between individuals with varying levels of engagement in a learning environment, based on observed outcomes and self-reported involvement.",
+   "approach": "Students are assigned to one of two teaching approaches and tracked over time. Performance is measured before and after intervention, and statistical analysis determines whether differences are influenced by the interaction between teaching style and learner engagement."
+  },
+  {
+   "work": "W3018529096",
+   "problem": "A system is designed to assign tasks to workstations in a way that minimizes idle time, reduces inefficiencies, and adapts to variations in task order and performance, using data that reflects real-world unpredictability and task dependencies.",
+   "approach": "Tasks are assigned iteratively using a dynamic rule that adjusts based on task sequence and performance noise, combining global exploration with local refinement to achieve consistent and robust task distribution across multiple scenarios."
+  }
+ ]
+}

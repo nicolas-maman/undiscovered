@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-003",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 1.0,
+ "at": "2026-10-20T02:21:43Z",
+ "descriptions": [
+  {
+   "work": "W4405858964",
+   "problem": "This work estimates the importance of specific residues in an enzyme's active site and how they interact with a crucial molecule. It predicts how these interactions affect the enzyme's function and optimizes the enzyme's performance.",
+   "approach": "The researchers used a combination of computer simulations and experiments to analyze the enzyme's behavior. They identified a network of weak bonds between the enzyme's residues and the crucial molecule, which is essential for its function."
+  },
+  {
+   "work": "W3003671208",
+   "problem": "This research aims to optimize the maintenance of a safety tool on a ship to ensure safety during sailing. It estimates the optimal maintenance schedule and compares it to the current maintenance practices.",
+   "approach": "The research uses a fishbone analysis and qualitative descriptive methods to analyze the data. It follows a procedure of identifying the causes of non-optimal maintenance and providing advice on planning and scheduling maintenance."
+  },
+  {
+   "work": "W2978168053",
+   "problem": "This research estimates the effectiveness of a specific treatment for a rare skin condition that affects people under 30. It compares the treatment's results to a similar condition with a different set of symptoms.",
+   "approach": "The researchers used a case study to present a patient's experience with a treatment that showed significant improvement. They followed a standard procedure for treating the condition, using a specific medication and monitoring the patient's response."
+  },
+  {
+   "work": "W3181446646",
+   "problem": "This research estimates the chemical composition of water in a specific geological formation, comparing it to the composition of the surrounding rocks. It predicts the levels of certain substances in the water based on the formation's properties.",
+   "approach": "The researchers use a combination of data from the formation's rocks and the water's chemical composition to make these predictions. They follow a procedure that involves analyzing the data, applying mathematical models, and drawing conclusions about the water's chemical state."
+  },
+  {
+   "work": "W4407134094",
+   "problem": "This work estimates the time it takes for individuals to receive treatment for a serious illness, compares the effectiveness of different healthcare providers, and identifies the underlying causes of delays in receiving proper care. It also explains the factors that contribute to these delays.",
+   "approach": "The study uses a combination of face-to-face interviews and review of medical records to gather information about the time it takes for individuals to receive treatment. The data is then analyzed to identify patterns and trends in the healthcare-seeking process."
+  },
+  {
+   "work": "W3098990366",
+   "problem": "This research estimates the effect of a specific intervention (applied during a particular type of exercise) on a performance metric (maximal force production). It compares the results of two groups with different knee angles and measures the change in this metric before and after the intervention.",
+   "approach": "The researchers used a combination of data collection methods: muscle force measurements, electrical signals, and subjective assessments. They applied the intervention in a specific order, with the intervention followed by repeated measurements of the performance metric."
+  },
+  {
+   "work": "W3134713371",
+   "problem": "This work compares the patterns of changes in the way genes are turned on or off in a specific type of tissue to another type of tissue. It aims to understand the unique characteristics of this tissue by comparing its patterns to those of another tissue.",
+   "approach": "The researchers compared the patterns of changes in the way genes are turned on or off in 444 samples of this specific type of tissue with 444 samples of another type of tissue. They used a computer program to identify patterns that were unique to this tissue."
+  },
+  {
+   "work": "W4387782784",
+   "problem": "This research estimates the impact of unbalanced genetic mixing on the fitness of female individuals with mixed sex chromosomes. It predicts that this imbalance is more pronounced in these individuals and that the proportion of mixed ancestry varies more on the sex chromosome.",
+   "approach": "The researchers use data from two closely related species to investigate the effects of unbalanced genetic mixing on fitness. They control for statistical linkage among multiple genes to determine if the observed effects are consistent with a single gene basis."
+  },
+  {
+   "work": "W4405880182",
+   "problem": "This work estimates the quality of images from noisy data, predicts the original image from the noisy data, and compares the quality of images with different levels of noise. It also optimizes the trade-off between image quality and compression ratio by selecting the best representation channel number.",
+   "approach": "The work uses two deep learning models: one to refine the noisy data and another to generate images from the refined data. It follows a procedure where the models are trained on a dataset of noisy images and then used to generate images from the noisy data."
+  },
+  {
+   "work": "W4380084769",
+   "problem": "Estimate the optimal conditions for reaching a small island with limited land area surrounded by water, and determine the number of effective days for a specific mode of transportation.",
+   "approach": "Use data from water conditions such as current speed, wind speed, waves height, and environmental factors to compare and optimise the performance of a specific mode of transportation."
+  },
+  {
+   "work": "W4403678069",
+   "problem": "The task is to estimate the performance of machine learning models on new data that is different from the data used to train them. The models are trained on data that represents a specific situation, and their performance is evaluated on data that is similar or different.",
+   "approach": "The models are trained using two different approaches: one uses data that represents a specific situation, and the other uses data that is transformed into a visual representation. The trained models are then tested on new data that is different from the training data."
+  },
+  {
+   "work": "W4409213022",
+   "problem": "This research aims to determine whether international regulations require transport operators to reduce their carbon emissions. It estimates the impact of regulations on transport operators' decisions to purchase new vehicles.",
+   "approach": "The study analyzes data from almost 10,000 trucks with a mass of more than 7.5 tons to understand the relationship between earnings, inflation, and the decision to buy new vehicles. It uses a model to compare the influence of these factors on the decision to purchase new vehicles."
+  },
+  {
+   "work": "W3044497410",
+   "problem": "This work estimates the effectiveness of a treatment for various conditions, such as depression, neuropathic pain, and stroke, based on data from multiple studies. It compares the results of these studies to determine the level of evidence for each condition.",
+   "approach": "The researchers used a systematic review approach, following established guidelines, to analyze data from multiple studies and make recommendations on the treatment's efficacy. They assessed the risk of bias in each study to ensure the results were reliable."
+  },
+  {
+   "work": "W2794783666",
+   "problem": "This work estimates the relationship between the amount of carbon dioxide produced by microorganisms and roots in the surface layer and the amount of carbon dioxide produced by microorganisms and roots in the deeper layers. It compares these amounts using historical data.",
+   "approach": "The researchers used a mathematical model to analyze the data and a statistical method to examine the patterns and relationships between the amounts of carbon dioxide produced by microorganisms and roots in different layers."
+  },
+  {
+   "work": "W3063426402",
+   "problem": "This research estimates the fertility rate of a certain type of parasite in animals, predicts the prevalence of the parasite in different species, compares the development rates of the parasite in different species, optimizes the process of eliminating infected organs, and explains the importance of certain animals in the spread of a disease.",
+   "approach": "The researchers collected infected organs from animals and examined them in a laboratory to classify them based on type and characteristics. They then analyzed the data to calculate the fertility rate and compare the development rates of the parasite in different species."
+  },
+  {
+   "work": "W4318165280",
+   "problem": "This work identifies a rare case where a certain type of bacteria, commonly found in the digestive system, causes a mass in a specific organ, mimicking a serious disease. It estimates the presence of this bacteria and its impact on the organ.",
+   "approach": "The researchers used imaging tests to detect the mass, took a sample from it, and then treated the patient with antibiotics. They followed up to see if the mass resolved, and their findings emphasize the importance of considering alternative explanations for the mass."
+  },
+  {
+   "work": "W2918044009",
+   "problem": "This research estimates the growth potential of a specific type of tree, comparing its performance under different conditions. It predicts the effect of a treatment on the tree's growth and compares the results to a control.",
+   "approach": "The researchers used a procedure involving treating seeds with different liquids, then planting them in bags and measuring their growth over time. They analyzed the data using statistical techniques to identify any patterns or differences."
+  },
+  {
+   "work": "W4392580583",
+   "problem": "This work estimates the resistance of a certain type of bacteria to a commonly used antibiotic, and compares it to previously reported cases. It also explains the importance of precise identification and tailored antibiotic therapy.",
+   "approach": "The researchers used a combination of advanced laboratory techniques, including DNA sequencing, to identify the bacteria and determine its resistance to the antibiotic. They then used this information to guide treatment and achieve a successful outcome."
+  },
+  {
+   "work": "W4205456522",
+   "problem": "This research aims to compare the effectiveness of two teaching methods on students' ability to create short texts, and to identify the impact of students' drive to produce these texts on their quality. It also seeks to understand the relationship between the teaching method and the students' drive.",
+   "approach": "The study uses a quantitative approach, comparing the results of two groups of students who received different teaching methods. It employs a pre-test and post-test design, measuring students' ability to create short texts and their drive to produce them."
+  },
+  {
+   "work": "W3018529096",
+   "problem": "This work estimates the most efficient way to sort and process a variety of items, taking into account their complexity and the need to minimize waste. It also considers the impact of random factors on the actual process.",
+   "approach": "The approach uses a mathematical model to analyze the problem and proposes a new method that combines elements of genetic and particle-based techniques to find the best solution. The method is designed to be flexible and adaptable to different problem sizes."
+  }
+ ]
+}

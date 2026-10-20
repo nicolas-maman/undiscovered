@@ -1,33 +1,34 @@
 {
  "job": "distill",
  "set": "distill-2025",
- "updated": "2026-10-20T01:57:44Z",
+ "updated": "2026-10-20T02:21:45Z",
  "papers": 8135,
- "papers_described": 537,
- "descriptions": 1072,
+ "papers_described": 735,
+ "descriptions": 1329,
  "units": {
-  "done": 27,
-  "open": 394
+  "check": 7,
+  "done": 30,
+  "open": 384
  },
  "contributors": [
   {
    "login": "nicolas-maman",
-   "units": 54,
-   "descriptions": 1072
+   "units": 67,
+   "descriptions": 1329
   }
  ],
  "models": [
   {
    "provider": "openai-compatible",
    "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit",
-   "units": 27,
-   "descriptions": 537
+   "units": 37,
+   "descriptions": 735
   },
   {
    "provider": "openai-compatible",
    "id": "mlx-community/Llama-3.2-3B-Instruct-4bit",
-   "units": 27,
-   "descriptions": 535
+   "units": 30,
+   "descriptions": 594
   }
  ]
 }

@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-008",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.8,
+ "at": "2026-10-20T02:21:44Z",
+ "descriptions": [
+  {
+   "work": "W3120236169",
+   "problem": "A system's response to a stimulus is measured to determine how effectively it suppresses uncontrolled cell growth and reprograms surrounding cells toward a protective state.",
+   "approach": "A compound is combined with a signal that activates immune-like cells to release protective factors. The combined effect is tested in a complex environment to assess suppression of growth and reprogramming of cell behavior."
+  },
+  {
+   "work": "W4205360402",
+   "problem": "A quantitative synthesis estimates the strength of a relationship between environmental exposure and the likelihood of a health condition in young individuals, comparing results across multiple studies to determine consistency and statistical significance.",
+   "approach": "A structured search identifies relevant studies, extracts outcome measures, combines results using statistical weighting, and evaluates the overall effect size while assessing heterogeneity and confidence in the estimate."
+  },
+  {
+   "work": "W4300003201",
+   "problem": "The model estimates how many health events and years of poor health are linked to high levels of a dietary factor that raises blood pressure, across different years and demographic groups.",
+   "approach": "It compares health outcomes under current conditions to a hypothetical scenario where the dietary factor is reduced to a minimal risk level, using population data and known health risks to compute differences in health impacts over time."
+  },
+  {
+   "work": "W2796232328",
+   "problem": "A quantity of interest in a crop system is measured under varying input conditions to determine how it changes with time and resource application, especially during a key growth phase.",
+   "approach": "A treatment is applied at a specific growth stage with a defined input level, and the resulting output is compared across different input doses to identify the most effective dose for improving yield and quality metrics."
+  },
+  {
+   "work": "W4392525109",
+   "problem": "A system evaluates how strongly individuals deviate from normative behavioral standards in response to specific stimuli, and determines whether such deviations can be meaningfully linked to personal agency.",
+   "approach": "The system analyzes behavioral patterns under controlled conditions, applies statistical thresholds to assess consistency, and adjusts its conclusions based on feedback from repeated trials to ensure reliability and coherence."
+  },
+  {
+   "work": "W3116548102",
+   "problem": "A set of creative works is analyzed to identify patterns and structures that challenge established norms in how knowledge is organized and taught. The focus is on uncovering underrepresented voices and unconventional forms that resist traditional categorization and authority.",
+   "approach": "A systematic review groups diverse creative outputs by style, origin, and thematic content. It then maps deviations from dominant frameworks to reveal alternative ways of structuring meaning and influence within cultural education."
+  },
+  {
+   "work": "W2941929307",
+   "problem": "The task is to understand how individuals integrate everyday objects into their personal life stories, and how these stories influence decisions about what to use, acquire, or discard in daily routines.",
+   "approach": "Collect personal accounts describing daily routines and object use, then analyze them through iterative interpretation to uncover underlying motivations, emotional connections, and patterns of behavior tied to specific items and experiences."
+  },
+  {
+   "work": "W3029290947",
+   "problem": "The long-term success of a surgical intervention is evaluated by measuring how well patients manage bowel function, avoid complications, and maintain normal growth, using standardized metrics across a group of individuals with a congenital condition affecting intestinal motility.",
+   "approach": "Patients are monitored over time using a structured scoring system to assess bowel control, daily bowel movements, and overall health. Outcomes are compared between groups that received different surgical techniques based on their post-intervention performance and complication rates."
+  },
+  {
+   "work": "W4304787433",
+   "problem": "A set of small, structured molecules is identified that bind to and modulate a specific type of ion channel involved in fast neuronal signaling, and their interaction is assessed across different receptor subtypes and cellular environments.",
+   "approach": "Binding affinity is measured using labeled ligands in a competitive assay. Functional effects are tested by applying a known agonist and measuring resulting ion flow. Structural features are analyzed computationally to explain sequence similarities across related organisms."
+  },
+  {
+   "work": "W3134991981",
+   "problem": "A system estimates public interest in mobile health services that provide accessible medical care in underserved locations, using feedback from user surveys and geographic usage patterns.",
+   "approach": "The system evaluates potential routes and service frequencies by analyzing population density, travel behavior, and demand signals to determine the most effective deployment strategy."
+  },
+  {
+   "work": "W3217703879",
+   "problem": "The effectiveness of various cleaning procedures is assessed across different surface types to determine how well they reduce pathogen load over time, based on measurable signal strength from biological samples.",
+   "approach": "Multiple surface types are exposed to different cleaning protocols, then sampled and analyzed for residual biological activity. Results are compared across surface type and treatment to identify which combinations yield the lowest residual signal."
+  },
+  {
+   "work": "W4315782494",
+   "problem": "A pattern of symptoms is observed in a young individual, including systemic weakness and localized swelling, with laboratory tests excluding other known causes of inflammation and infection.",
+   "approach": "A clinical history is reviewed alongside physical signs and lab results. Tissue examination confirms granulomatous inflammation. The pattern is compared to known responses to exposure-based triggers, and treatment is guided by the likelihood of a specific immune-mediated reaction to an external agent."
+  },
+  {
+   "work": "W3011566318",
+   "problem": "An organization faces recurring technical disruptions in its digital imaging infrastructure, with most failures stemming from connectivity issues. The impact and resolution are assessed based on user reports and system logs to evaluate response effectiveness and user satisfaction.",
+   "approach": "A structured survey is distributed to stakeholders to collect incident reports and service feedback. Data is analyzed to identify failure patterns, assign responsibility to relevant personnel, and measure overall service quality across different operational environments."
+  },
+  {
+   "work": "W4387733898",
+   "problem": "A pattern of mucosal abnormalities is identified in a gastrointestinal tract segment, where small, well-defined, fluid-filled structures appear and are assessed for potential malignancy.",
+   "approach": "An imaging sequence is performed to evaluate the depth and structure of the abnormalities, followed by tissue sampling and histological analysis to determine whether the structures originate from normal mucosal tissue and respond to acid suppression."
+  },
+  {
+   "work": "W4312448173",
+   "problem": "A pattern of decision-making is estimated across different environmental settings and demographic groups, based on observed behaviors and background factors.",
+   "approach": "A statistical model compares patterns across groups using structured observations, adjusting for age and background influences to isolate environmental effects."
+  },
+  {
+   "work": "W2905702374",
+   "problem": "A system estimates the likelihood that a given geographic area will experience significant growth in sustainable resource utilization based on environmental, infrastructural, and economic indicators.",
+   "approach": "The system evaluates how rapidly and consistently conditions improve over time by comparing current states to historical baselines, assigning weights to key factors, and detecting sudden shifts in performance patterns."
+  },
+  {
+   "work": "W2788866330",
+   "problem": "The system estimates how individual differences in cognitive performance affect the accuracy of identifying sensory cues and interpreting social signals, comparing outcomes across individuals with varying levels of cognitive load and demographic factors.",
+   "approach": "It uses a multivariate model that adjusts for age and cognitive resources, then evaluates how baseline sensory processing and social cognition interact, revealing distinct patterns based on biological sex and cognitive demands."
+  },
+  {
+   "work": "W4403426114",
+   "problem": "A system's environmental health is assessed over time using physical, chemical, and biological indicators collected from multiple locations. The performance of the system is evaluated across years, with trends in pollutant levels and overall condition being compared to identify patterns and sources of degradation or improvement.",
+   "approach": "A composite scoring model aggregates multiple measured properties into a single health metric. This metric is computed annually and compared across locations and time periods to detect changes, identify dominant pollution sources, and guide targeted intervention strategies."
+  },
+  {
+   "work": "W4385538751",
+   "problem": "A model estimates the likelihood that a treatment intervention will improve outcomes in individuals with advanced, localized spread of a malignancy, based on the volume and timing of spread, and the biological behavior of the tumor.",
+   "approach": "The model evaluates tumor characteristics and disease progression patterns to assign a risk score, then applies a decision rule that favors intervention only when the spread is limited and the disease course is slow and controllable."
+  },
+  {
+   "work": "W7145058225",
+   "problem": "A pattern of land use over time is inferred from repeated observations of how human groups manage and modify their environment across seasons.",
+   "approach": "A sequence of environmental and social indicators is analyzed to detect recurring cycles, with changes in land condition and resource availability used to infer decisions made by local populations in response to ecological and social pressures."
+  }
+ ]
+}

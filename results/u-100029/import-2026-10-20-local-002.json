@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-002",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.95,
+ "at": "2026-10-20T02:21:42Z",
+ "descriptions": [
+  {
+   "work": "W4392224101",
+   "problem": "This study estimates the complexity of a system in a specific state, comparing it to a phase boundary. It predicts the behavior of this complexity in different states, comparing it to a phase boundary.",
+   "approach": "The researchers use a mathematical model to analyze the system's behavior. They follow a procedure that involves computing the complexity of the system in different states and comparing it to a phase boundary."
+  },
+  {
+   "work": "W4416554998",
+   "problem": "This work estimates the impact of design elements on how a group feels about a given environment. It predicts how different design choices will affect the overall mood of a space.",
+   "approach": "The study uses data from various studies on human behavior and design to develop a model that compares the effects of different design elements on a group's feelings. The model follows a step-by-step procedure to optimize the design for the desired emotional outcome."
+  },
+  {
+   "work": "W4205133817",
+   "problem": "This study aims to determine the effectiveness of certain substances in preventing the growth of certain types of microorganisms, and to identify any potential risks or false negatives in diagnostic tests.",
+   "approach": "The researchers tested the substances against a range of microorganisms in a liquid medium, using a method that involves adding a small amount of the substance to a liquid and observing the growth of the microorganisms over time."
+  },
+  {
+   "work": "W4387318960",
+   "problem": "This work estimates the effect of a certain type of fungus on the growth of a specific type of plant, and compares it to the growth of the same plant without the fungus. It also predicts how a certain type of insect will react to the fungus-infected plant.",
+   "approach": "The researchers used a new method to create plants without the fungus, and then inoculated some of them with the fungus. They then transferred a certain type of insect to the plants with and without the fungus, and measured how much of the plant's growth material the insects consumed."
+  },
+  {
+   "work": "W3211632732",
+   "problem": "This work aims to understand the relationship between the effort put in by instructors and the progress made by learners in a specific type of training, where participants are isolated from their peers. It also seeks to identify which factors contribute most to the learners' success.",
+   "approach": "The researchers used a method where they collected data on the learners' progress and the instructors' work, and then analyzed the data to find patterns and connections. They used a statistical test to compare the data and determine the strength of the relationships between the variables."
+  },
+  {
+   "work": "W4220772408",
+   "problem": "This work estimates the effectiveness of a specific approach to facilitating discussions among medical professionals, using a series of case studies to compare the outcomes of different methods.",
+   "approach": "The approach involves using a set of pre-defined rules to evaluate the quality of discussions, based on a model that assesses the level of engagement and understanding among participants."
+  },
+  {
+   "work": "W4392024837",
+   "problem": "This work estimates the maximum amount of signal that can be detected in a device, and compares it to the minimum amount of signal that can be detected. It also optimizes the device's performance by adjusting a control parameter to achieve the highest possible signal-to-noise ratio.",
+   "approach": "The researchers use a device made of a thin, flexible material to detect signals. They adjust a control parameter to maximize the difference between the signals they can detect, and they do this by varying the voltage applied to the device."
+  },
+  {
+   "work": "W3199559536",
+   "problem": "This study aims to understand how a variation in a specific gene affects the symptoms, treatment response, and long-term outcome of a disease in children. It estimates the frequency of this variation in a group of children with a particular disease and compares it to a group of healthy children.",
+   "approach": "The researchers used a technique to identify the variation in the gene and then compared the results to a control group. They looked at various symptoms and test results to see if the variation was associated with any of them."
+  },
+  {
+   "work": "W4384302275",
+   "problem": "This work estimates the stability of a complex system with multiple sources of power, and predicts how it will behave under different conditions. It compares the performance of different regulators to find the best one.",
+   "approach": "The system is simulated with a specific type of regulator that can adjust two variables to optimize the system's performance. The regulator is optimized using a new algorithm to find the best settings."
+  },
+  {
+   "work": "W3138280936",
+   "problem": "Estimate the average number of animals lost annually due to a serious health risk, and compare the costs of losses to the total value of the affected animals. The data should be based on historical records and expert opinions.",
+   "approach": "Use a mathematical model to calculate the average number of animals lost, and then apply a formula to estimate the costs of losses based on the total value of the affected animals."
+  },
+  {
+   "work": "W4391021448",
+   "problem": "This work estimates the effectiveness of a robust speech classification system against a type of malicious attack where an attacker tries to mislead the system by providing incorrect labels. It predicts the system's performance under such an attack and compares it to a standard system.",
+   "approach": "The system uses a model that combines two approaches: one that looks at the input data and another that generates multiple views of the data. It uses this model to train and test the system, and also introduces noise to evaluate its robustness."
+  },
+  {
+   "work": "W4282553358",
+   "problem": "This research estimates the distribution of certain types of plant communities across different geographical areas, based on various environmental factors such as climate, soil type, and water quality. It also compares the diversity of these communities across different regions.",
+   "approach": "The researchers used a combination of data analysis and classification techniques to identify patterns and relationships between environmental factors and plant community types. They then compared the results to understand the geographical distribution of these communities."
+  },
+  {
+   "work": "W4212799621",
+   "problem": "This research aims to estimate the performance of a complex system under extreme conditions, comparing its actual performance to its predicted performance, and optimising its design to meet the required standards. It uses data from past experiments and simulations to make these estimates and predictions.",
+   "approach": "The researchers followed a procedure that involved identifying a comprehensive test scenario, using a combination of technical expertise and data analysis to design the test, and then executing the test to gather data and evaluate the system's performance."
+  },
+  {
+   "work": "W4416095345",
+   "problem": "An estimate is made of how much noise from falling weights bothers people, and this is compared to the actual noise levels on different floors. The goal is to understand how people perceive and react to noise levels.",
+   "approach": "A set of questions is used to gather information about people's reactions to different types of noise, and their responses are rated on a scale of 1 to 11. The impact of sound levels on each floor is measured and compared to the responses."
+  },
+  {
+   "work": "W4404346175",
+   "problem": "This research estimates the distribution and properties of a specific type of tunneling structure in a particular tissue, comparing its length, diameter, and density across different regions. It aims to explain how this structure affects the flow of substances and energy within the tissue.",
+   "approach": "The researchers used high-resolution imaging to visualize the structure, and then analyzed the data to quantify its properties and compare them across different regions. They used statistical methods to identify patterns and differences in the structure's distribution."
+  },
+  {
+   "work": "W4319265757",
+   "problem": "This work estimates the potential value of a business's resources based on market demand, competition, supplier and customer availability, and financial indicators. It compares different methods to calculate this value and optimizes the approach to ensure the business's long-term sustainability.",
+   "approach": "The work uses a combination of direct evaluation, comparison, and mathematical programming to identify and estimate the value of the business's resources. It classifies resources into different categories and applies various methods to calculate their value."
+  },
+  {
+   "work": "W2588515803",
+   "problem": "This work estimates the profitability of a certain type of animal production, comparing the costs and revenues of a specific venture. It predicts the potential benefits of this venture, including improved nutritional status and skill acquisition.",
+   "approach": "The study used a group of 16 members, each from two communities, to teach them about the production of a certain type of animal. They were trained on various skills, including breeding, feeding, and disease prevention, and were given a foundation stock of animals to work with."
+  },
+  {
+   "work": "W2903449478",
+   "problem": "This work estimates the characteristics of a physical phenomenon that occurs when a certain system is subjected to various activities. It aims to explain the underlying mechanisms and provide a general framework for understanding this phenomenon.",
+   "approach": "The approach involves using a mathematical framework to describe the system's behavior, with four key parameters that influence the phenomenon's characteristics. The parameters are adjusted to fit different types of data, and a comprehensive example is created to demonstrate the framework's accuracy."
+  },
+  {
+   "work": "W2987576849",
+   "problem": "This work estimates the structural integrity of a structure made from a strong, fast-growing, and lightweight material, and compares it to a theoretical design. It predicts the optimal way to harvest and use this material.",
+   "approach": "The researchers define the material's characteristics and design process, then describe the learning and building process, using a systemic thinking approach to understand the experience."
+  },
+  {
+   "work": "W4392125592",
+   "problem": "This research investigates how a certain substance can counteract the negative effects of another substance on the health of living organisms, specifically by reducing damage caused by an imbalance of harmful molecules. It aims to understand how this substance can prevent or slow down the progression of a particular condition.",
+   "approach": "The researchers tested the substance in two groups of organisms, one with a high dose and one with a low dose, over a period of time. They measured the effects of the substance on the organisms' health and compared the results to see if the substance was effective in reducing the damage caused by the other substance."
+  }
+ ]
+}

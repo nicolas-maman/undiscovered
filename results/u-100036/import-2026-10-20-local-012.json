@@ -1,0 +1,117 @@
+{
+ "issue": "import-2026-10-20-local-012",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.75,
+ "at": "2026-10-20T02:21:45Z",
+ "descriptions": [
+  {
+   "work": "W3122250506",
+   "problem": "A pattern of health outcomes is assessed across different social conditions, evaluating how exposure to stressors and economic instability influence the likelihood of adverse health events in vulnerable populations.",
+   "approach": "A model maps social conditions to health outcomes by analyzing trends in stress exposure, access to resources, and behavioral patterns, then identifies interventions that improve access, reduce risk factors, and support long-term well-being."
+  },
+  {
+   "work": "W4389252274",
+   "problem": "The effectiveness of a new instructional model is evaluated by measuring changes in student performance and hands-on skill development over time, using data from learning outcomes and practical assessments.",
+   "approach": "Students engage with instructional content before class, then participate in structured, guided activities during sessions. Performance is monitored and compared across groups using consistent evaluation criteria and longitudinal data collection."
+  },
+  {
+   "work": "W4395029833",
+   "problem": "A system estimates a key physiological metric from patient records, evaluating how different modeling strategies affect accuracy and performance across diverse subgroups.",
+   "approach": "Multiple models are trained on patient data, with varying levels of complexity. Performance is assessed across groups using standard error and precision measures, and improvements are made by incorporating additional clinical indicators."
+  },
+  {
+   "work": "W4414242859",
+   "problem": "The relationship between living expense pressure and daily consumption patterns is examined, specifically how local cost pressures influence the quantity and nutritional value of items acquired by individuals and families.",
+   "approach": "A statistical model evaluates how variations in local cost burdens affect consumption behavior, adjusting for household and regional differences, and identifies when higher costs lead to reduced intake or shifts in item selection."
+  },
+  {
+   "work": "W4309362539",
+   "problem": "A leader is selected through a formal process involving members' participation and voting, with the goal of identifying the most effective and representative individual for guiding organizational direction and decision-making.",
+   "approach": "Members evaluate candidates based on demonstrated leadership, experience, and alignment with organizational values. The selection process involves structured discussion, peer assessment, and a formal vote to determine the most suitable individual for the role."
+  },
+  {
+   "work": "W2848923681",
+   "problem": "The system estimates how much of a given input event penetrates deep into a subsurface medium over time, depending on the initial state of the medium. It compares outcomes under different starting conditions to determine how much of the input reaches a defined depth.",
+   "approach": "It tracks the movement of an input signal through a medium, measuring how far it travels based on the current state. It then computes the total volume that reaches a target depth, adjusting for the initial conditions and the rate of signal propagation."
+  },
+  {
+   "work": "W4312202625",
+   "problem": "A pattern of social control is observed across diverse groups in a densely populated urban environment, where individuals from different cultural backgrounds experience varying levels of monitoring and restriction based on perceived group identity and behavior.",
+   "approach": "Data is collected over time from individuals interacting in public and private spaces, and analyzed to identify how surveillance and behavioral expectations shift in response to group dynamics and institutional presence."
+  },
+  {
+   "work": "W3205603703",
+   "problem": "A factor is measured that decreases when a stimulus is removed and increases when a stressor is applied, and its effect on growth and survival is assessed across different conditions.",
+   "approach": "The factor's activity is enhanced to inhibit growth and promote death in sensitive cells, and its interaction with a receptor pathway is evaluated by measuring downstream changes in response to varying external signals."
+  },
+  {
+   "work": "W7221107892",
+   "problem": "A set of traditional treatments is evaluated to determine their effectiveness in mitigating harmful side effects caused by prolonged or improper use of a widely used medicinal substance.",
+   "approach": "A systematic review of regional texts is conducted to identify and analyze various plant-based interventions, then compares their documented usage and outcomes to assess consistency, feasibility, and potential efficacy in managing adverse responses."
+  },
+  {
+   "work": "W4376643563",
+   "problem": "The rate and pattern of biological community development on degraded surfaces are monitored over time to assess how diversity and stability evolve under consistent environmental conditions.",
+   "approach": "A long-term observation system tracks changes in plant species composition and soil chemical properties, using standardized thresholds to determine when ecological stability is achieved."
+  },
+  {
+   "work": "W3097400207",
+   "problem": "A mechanism is identified that causes air to enter a central airway structure, resulting in a breach of its integrity under normal breathing conditions, particularly during forceful exhalation.",
+   "approach": "Air pressure is measured during forceful exhalation, and the structural integrity of the airway is assessed under high-pressure conditions. A breach is confirmed through direct visualization and imaging, and the event is linked to repetitive high-pressure actions in a specific occupational context."
+  },
+  {
+   "work": "W4384825617",
+   "problem": "A system estimates missing values in a dynamic, multi-dimensional dataset where observations are irregularly recorded across space and time, relying on inherent patterns and relationships to infer what is absent.",
+   "approach": "The method models the data as a structured, low-dimensional representation where nearby points in space and time are assumed to be similar. It uses known relationships between locations and time points to reconstruct missing entries by preserving both global consistency and local dependencies."
+  },
+  {
+   "work": "W3122217127",
+   "problem": "A clinical decision is made regarding the suitability of a bodily cavity for diverting a fluid that accumulates in the brain to manage a neurological condition affecting cognitive and motor function.",
+   "approach": "A systematic review of published outcomes is conducted, comparing long-term results across different anatomical sites used for fluid drainage, evaluating complications, effectiveness, and patient survival over time."
+  },
+  {
+   "work": "W4401050872",
+   "problem": "A pattern of disease presentation is identified in older individuals with specific inflammatory and blood-related symptoms, and a subset of patients is suspected to have a previously unrecognized condition based on shared clinical features and laboratory findings.",
+   "approach": "A search is conducted across medical literature using combinations of symptom terms and blood disorder indicators. Patient groups with overlapping signs and blood abnormalities are analyzed to detect a consistent, previously overlooked disease pattern."
+  },
+  {
+   "work": "W4324101903",
+   "problem": "A pattern of behavior is assessed across multiple studies to determine whether exposure to a substance correlates with symptom reduction or disease progression in individuals with a known condition.",
+   "approach": "A systematic evaluation of research findings is conducted, filtering only those that report direct or indirect links between substance use and clinical outcomes, then analyzing consistency and strength of reported associations across diverse sources."
+  },
+  {
+   "work": "W4398238744",
+   "problem": "A quantity is estimated from a sample based on chemical and biological measurements, including levels of key compounds and their concentrations in a given volume of processed material.",
+   "approach": "A standardized preparation method is applied, followed by extended exposure to aromatic agents. Results are analyzed to determine the relative abundance of specific bioactive components and their stability over time."
+  },
+  {
+   "work": "W4402594774",
+   "problem": "A system estimates how environmental conditions evolve over space and time, using local patterns and regional boundaries to improve accuracy and clarity of forecasts.",
+   "approach": "It integrates domain-specific rules with spatial segmentation, applies advanced predictive models, and iteratively refines outputs based on regional behavior and historical trends."
+  },
+  {
+   "work": "W4288096496",
+   "problem": "A measure of drug exposure is tracked over time to assess changes in treatment intensity following expert-driven suggestions. The change is compared across individuals who follow the suggestions and those who do not, and factors influencing adherence are identified.",
+   "approach": "A set of recommendations is issued and evaluated for follow-through at multiple time points. Exposure levels are monitored and adjusted based on whether a treatment plan is adopted. Statistical models identify patterns linked to higher likelihood of adoption."
+  },
+  {
+   "work": "W4399367888",
+   "problem": "A measure is derived from expert responses to assess how consistently practitioners apply established recommendations in managing a chronic condition involving persistent pain and functional limitations.",
+   "approach": "Respondents evaluate a set of predefined statements about patient assessment and care delivery. Their answers are grouped into categories based on alignment with standard protocols, and consensus is determined by the proportion of agreement across the group."
+  },
+  {
+   "work": "W2980829615",
+   "problem": "The influence of gender on how young people engage in decision-making and their sense of personal value is estimated from self-reported behavioral and emotional patterns in a structured population.",
+   "approach": "Data is collected through standardized questionnaires scored on fixed scales, then analyzed using statistical methods to identify patterns and differences, with comparisons made across groups using mean and variance-based techniques."
+  }
+ ]
+}

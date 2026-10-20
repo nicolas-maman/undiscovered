@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-20-local-007",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9473684210526315,
+ "at": "2026-10-20T02:21:43Z",
+ "descriptions": [
+  {
+   "work": "W2944576151",
+   "problem": "A method is developed to create hollow, needle-like structures with precise internal geometry from biodegradable polymer materials, using a combination of patterned surface shaping and polymer molding under controlled conditions.",
+   "approach": "A template is etched with a spiral-shaped surface using focused energy, then a polymer is molded into the shape under pressure. The internal cavity is formed by pressing the polymer against a counterform, with geometric parameters adjusted to ensure consistent hollow structure formation."
+  },
+  {
+   "work": "W4289535070",
+   "problem": "The system estimates how well different environmental conditions support the presence of diverse, non-vascular life forms in wet, water-saturated environments. It identifies which environmental variables most strongly influence the number and variety of life forms found in specific habitat zones.",
+   "approach": "It evaluates environmental gradients across a landscape, focusing on moisture levels and substrate stability. It assigns weights to environmental features based on their correlation with observed life form diversity, then recommends preserving areas where these features peak."
+  },
+  {
+   "work": "W3036084153",
+   "problem": "A compound is evaluated for its ability to preserve the function and structure of neurons in a model of progressive neuronal degeneration, comparing its effects to a reference compound based on chemical composition and functional outcomes.",
+   "approach": "Chemical profiles are analyzed using separation and detection techniques to identify and quantify components. Neuronal health is assessed in living models and cell cultures, with biological activity linked to specific signaling pathways through experimental manipulation and outcome measurement."
+  },
+  {
+   "work": "W7219944432",
+   "problem": "A change in patient behavior related to dietary intake of a specific mineral is measured over time and compared between two groups exposed to different interventions.",
+   "approach": "Patients are assigned to either a group receiving a structured educational intervention or a control group. Behavior and knowledge levels are assessed before and after the intervention using standardized scales, and differences are evaluated using statistical tests for significance."
+  },
+  {
+   "work": "W4210573678",
+   "problem": "A framework is developed to assess how interconnected human experiences across time and place challenge the idea of unified moral standards, evaluating the extent to which boundaries between groups are maintained or dismantled in practice.",
+   "approach": "A model maps patterns of interaction and separation across diverse human societies, using longitudinal data to simulate how shared values emerge or fade under conditions of integration or fragmentation."
+  },
+  {
+   "work": "W2898218812",
+   "problem": "A system is inferred that maps how user behavior and technological changes influence public engagement and trust in information flow across diverse communities.",
+   "approach": "A structured framework evaluates trends in access, interaction, and response patterns using historical and real-time data, adjusting predictions based on feedback loops between individuals and digital platforms."
+  },
+  {
+   "work": "W4283326501",
+   "problem": "The long-term change in a physical movement pattern is measured over time, and patient perceptions of function and well-being are assessed across different life stages using standardized scoring systems.",
+   "approach": "Movement data is collected from images at multiple time points and analyzed for changes in magnitude and consistency. Patient feedback is gathered through structured questionnaires and interviews, then quantified and compared across time and individual reports."
+  },
+  {
+   "work": "W3206150924",
+   "problem": "A quantitative estimate of biological age is derived from molecular markers in cells, comparing it to known life spans across individuals exposed to different environmental conditions.",
+   "approach": "A model is trained on molecular profiles from biological samples, adjusting parameters by sex and environment to predict age-related changes, then identifies key genomic sites where variation patterns differ between sexes and environments."
+  },
+  {
+   "work": "W4281640465",
+   "problem": "A quantity of interest is assessed across different conditions: the influence of a substance administered during a medical procedure on biological processes related to cell behavior and growth signals in living systems.",
+   "approach": "A systematic review of existing studies is conducted, filtering data based on experimental models and observed changes in cellular activity. Evidence from both controlled lab settings and living organisms is evaluated to determine patterns and potential causal links."
+  },
+  {
+   "work": "W4405114109",
+   "problem": "The risk of unintended ignition is assessed when a focused energy source interacts with various medical devices and materials under controlled exposure conditions.",
+   "approach": "A series of controlled exposures are conducted, varying distance, contact duration, and material composition. Outcomes are recorded for ignition, smoke production, and structural damage to evaluate safety thresholds and failure modes."
+  },
+  {
+   "work": "W4411127944",
+   "problem": "A system detects a sudden increase in pressure within a confined space, which may impair overall function and cause a shift in bodily balance, leading to reduced efficiency in fluid return and oxygen exchange.",
+   "approach": "Pressure changes are monitored over time; if a rapid rise occurs with signs of reduced performance, a quick release mechanism is activated to restore normal conditions, with a simple tool used in emergencies and a more controlled method applied when the situation is less urgent."
+  },
+  {
+   "work": "W4405256183",
+   "problem": "A rare mechanism for heart muscle damage is identified when a dilated vessel segment becomes obstructed by a clot, despite no significant narrowing of the vessel itself.",
+   "approach": "Vessel segments are imaged to detect abnormal dilation and the presence of a clot within them. Clinical history and imaging data are analyzed to link the clot formation to a prior surgical event and to assess recovery outcomes."
+  },
+  {
+   "work": "W4399498002",
+   "problem": "A system is evaluated to determine how effectively its internal operations support long-term resilience and performance under varying external pressures and disruptions.",
+   "approach": "A set of predefined response patterns is applied to simulate interactions between operational decisions and environmental changes, with performance measured across stability, adaptability, and growth under different conditions."
+  },
+  {
+   "work": "W4321471990",
+   "problem": "A system allocates a shared resource to multiple users over time, where each user wants to use it for a continuous period and gains value only if they receive the full period. The goal is to ensure each user receives a predictable fraction of their maximum possible benefit, regardless of how others act.",
+   "approach": "Each user starts with a fixed amount of virtual tokens representing their expected share. On each turn, users submit a request for a continuous period and a value for each unit of time. The one with the highest value for that period is granted access, with a minimum threshold ensuring fairness and stability."
+  },
+  {
+   "work": "W7160506619",
+   "problem": "The frequency and types of visible surface conditions in individuals with chronic metabolic imbalance are estimated and categorized by nature and severity, using clinical records and lab indicators.",
+   "approach": "A structured observation and classification system is applied to group symptoms into distinct patterns based on underlying causes, then analyzed through statistical summarization to identify trends linked to disease duration and control levels."
+  },
+  {
+   "work": "W2900862591",
+   "problem": "The effect of external nutrient inputs on the chemical profile of plant-derived products is assessed, specifically how these inputs alter the concentration of volatile organic compounds and key nitrogen-containing molecules.",
+   "approach": "A controlled experiment applies two levels of a nitrogen-based compound and a specific organic compound to plants, then measures resulting changes in volatile emissions and internal molecular concentrations across different treatment groups."
+  },
+  {
+   "work": "W4293578213",
+   "problem": "A set of user-reported outcomes is evaluated to determine the effectiveness and safety of a treatment method based on subjective experiences and observed results across diverse individuals.",
+   "approach": "Multiple sources are systematically reviewed to aggregate and compare individual reports, then a weighted assessment is formed based on consistency, detail, and reported adverse effects to infer overall reliability and potential risks."
+  },
+  {
+   "work": "W4200401870",
+   "problem": "A system is designed to infer how molecular regulators influence cellular responses across different conditions by linking regulatory elements to downstream outcomes based on observable expression patterns.",
+   "approach": "It integrates chromatin accessibility and expression data across samples, then constructs a network of regulatory relationships. It evaluates the network's predictive accuracy by testing how well it forecasts expression changes in specific cell states."
+  },
+  {
+   "work": "W4377246061",
+   "problem": "A set of local varieties is analyzed to identify which ones are most frequently chosen by consumers in markets, based on observed preferences and resilience to environmental stressors.",
+   "approach": "A mapping is constructed linking geographic regions to preferred varieties, then patterns are extracted to determine which traits correlate with high selection frequency and survival under variable conditions."
+  }
+ ]
+}

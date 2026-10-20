@@ -1,0 +1,112 @@
+{
+ "issue": "import-2026-10-20-local-001",
+ "author": "nicolas-maman",
+ "client": {
+  "name": "undiscovered-py",
+  "version": "0.2.0"
+ },
+ "model": {
+  "provider": "openai-compatible",
+  "id": "mlx-community/Llama-3.2-3B-Instruct-4bit"
+ },
+ "prompt": 1,
+ "relevance": 0.9473684210526315,
+ "at": "2026-10-20T02:21:42Z",
+ "descriptions": [
+  {
+   "work": "W4406083888",
+   "problem": "This work aims to estimate the effectiveness of a minimally invasive procedure for managing a specific complication in a genetic disorder, and to compare the outcomes of this approach with traditional methods. It also aims to explain the importance of tailored intervention in managing this complication.",
+   "approach": "The procedure involves using a mechanical device to remove a specific type of lung tissue, and then using a special powder to help the lung re-expand. The approach is minimally invasive and effective, as shown by the successful recovery of the patient."
+  },
+  {
+   "work": "W4383957658",
+   "problem": "Estimate the impact of increasing global temperatures on the number of floods and hurricanes, and the melting of permafrost, and identify the potential losses. The goal is to find ways to reduce the negative effects of industrial development on the environment.",
+   "approach": "Analyze data on the current state of industrial development, its environmental impact, and the potential consequences of increasing global temperatures. Identify the most effective methods to reduce negative effects and mitigate losses."
+  },
+  {
+   "work": "W3123648691",
+   "problem": "This work estimates the role of a specific pattern in the brain-like network of a certain type of living being, which uses information from past experiences to adjust its behavior. It compares this pattern to the brain's own way of organizing activity.",
+   "approach": "The researchers describe the network's behavior and its patterns of activity, and then explore how these patterns might be related to learning and memory. They use this information to evaluate the network's ability to process information and sustain learning."
+  },
+  {
+   "work": "W2917813788",
+   "problem": "This work estimates the presence of a specific virus in patients with severe blood loss, predicts the likelihood of this virus causing the blood loss, compares the effectiveness of different treatments, optimizes treatment protocols, and explains the underlying reasons for the blood loss. It does so using data from patient blood samples.",
+   "approach": "The procedure involves testing patient blood for the presence of the virus, treating patients with a specific medication, and monitoring their response to treatment. The approach follows a step-by-step process of investigation, diagnosis, and treatment, using a combination of laboratory tests and clinical observations."
+  },
+  {
+   "work": "W3197837068",
+   "problem": "This work estimates the effect of a protein on the expression of another protein, and compares the results of overexpressing the protein to the results of knocking down the protein that is expressed by the protein. It also explains how the protein affects the phosphorylation of a protein that is part of a network.",
+   "approach": "The work uses data from the promoter region of the protein that is expressed by the protein to determine how the protein affects its expression. It then uses data from cells that have been overexpressed or knocked down to compare the effects of the protein on the network of proteins it interacts with."
+  },
+  {
+   "work": "W4415917865",
+   "problem": "This work estimates the impact of human activities on the environment, predicts the effects of climate change, and compares the consequences of different scenarios. It aims to explain the importance of understanding the emotional and psychological connections between humans and the natural world.",
+   "approach": "The approach involves using a combination of data analysis and qualitative research to develop a new framework for understanding the emotional and psychological connections between humans and the natural world. This framework is based on a set of tools and methods that help people directly experience and understand the emotional and psychological impacts of human activities on the environment."
+  },
+  {
+   "work": "W4399682097",
+   "problem": "This study investigates the effect of inhibiting certain enzymes on inflammation and heart disease in mice. It aims to estimate the impact of a specific substance on these conditions.",
+   "approach": "The researchers used mice with high cholesterol to test the effect of a substance on heart disease. They compared the results to mice without high cholesterol."
+  },
+  {
+   "work": "W4388461540",
+   "problem": "This work investigates how to create materials with a large change in energy when heated, high resistance to electric fields, and low energy loss when heated. It aims to find the best way to prepare these materials from a mixture of substances and analyze their properties.",
+   "approach": "The researchers use a method to mix the substances and then heat them to create a new material. They then analyze the material's properties, such as its ability to change energy when heated, its resistance to electric fields, and its energy loss when heated."
+  },
+  {
+   "work": "W4400681503",
+   "problem": "This work estimates the performance of a complex system under various conditions, compares its performance to a baseline, and optimizes its design to achieve a desired level of stability. It uses data from the system's initial state and its performance at different points to make predictions and improvements.",
+   "approach": "The system is analyzed using a combination of different fields of study, including the way the system's components interact with each other and their environment. The analysis is done using a simulation model that takes into account the system's initial state and its performance at different points."
+  },
+  {
+   "work": "W4384343086",
+   "problem": "This research estimates the effect of a certain force on the flow of a fluid with heat and chemical reactions. It compares the results to earlier findings and optimizes the understanding of how the fluid behaves under these conditions.",
+   "approach": "The researchers used a combination of mathematical equations and numerical methods to analyze the flow. They transformed the equations into a system of ordinary differential equations and solved them using a specific numerical technique."
+  },
+  {
+   "work": "W3119708744",
+   "problem": "This work estimates the impact of family and social resources on the acceptance of higher learning institutions. It compares the effects of various factors, such as parental education, family income, and family motivation, on university admission.",
+   "approach": "The study uses a combination of survey data, statistical analysis, and secondary research to analyze the relationships between family and social resources and university acceptance. It follows a theoretical framework that considers the interplay between individual and family resources."
+  },
+  {
+   "work": "W3010431058",
+   "problem": "This work estimates the age of a resource that is replenished at a known rate, using a method that compares the amount of a radioactive isotope to the amount of its stable counterpart. The goal is to determine the time elapsed since the resource was last replenished.",
+   "approach": "The researchers used a procedure that involves measuring the amount of a radioactive isotope and its stable counterpart in a sample, then using a mathematical model to calculate the age based on the ratio of the two amounts. The model follows a simple rule: the age is proportional to the ratio of the radioactive isotope to its stable counterpart."
+  },
+  {
+   "work": "W3097424900",
+   "problem": "This research aims to estimate the value of art based on its technical aspects, rather than just its cultural interpretation. It predicts that art education should focus on teaching technical skills from the beginning.",
+   "approach": "The study uses computer-aided analysis to compare the quality of art based on its technical factors, such as composition and color, with its cultural interpretation and ideology."
+  },
+  {
+   "work": "W4415466768",
+   "problem": "This work estimates how much people allocate their mental resources to a task, and compares this to how much they think they should allocate resources to the task. It also tries to explain why people allocate resources in different ways.",
+   "approach": "The researchers use a combination of self-reported feelings and objective measures to understand how people's mental resources are allocated. They compare these measures to see if one is more important than the other."
+  },
+  {
+   "work": "W4281866267",
+   "problem": "This work aims to improve the performance of a group of models by making each model more diverse and robust in its predictions. It estimates the best way to make each model capture unique characteristics that will lead to better overall predictions.",
+   "approach": "The approach involves optimizing the models to capture distinct characteristics in a specific layer of their internal workings, which is expected to improve the overall predictions and make them more robust."
+  },
+  {
+   "work": "W4283390440",
+   "problem": "This work estimates the effect of a certain compound on the movement and transport of a specific type of cell organelle, comparing the results to a control. It predicts which compounds will be most effective at improving this process.",
+   "approach": "The researchers use a combination of experiments to test the compound's effect, including measuring the compound's ability to stimulate the movement and transport of the organelle. They compare the results to a control and identify the optimal structure of the compound to achieve the desired effect."
+  },
+  {
+   "work": "W3103397036",
+   "problem": "This research estimates the levels of certain proteins in the blood of patients with a specific medical condition, and compares these levels to those of patients who have received a certain treatment. The study aims to explain how the levels of these proteins change over time.",
+   "approach": "The researchers used data from blood tests to compare the levels of two proteins in the blood of patients with the medical condition, and those of patients who have received the treatment. They followed the patients for a certain period of time and analyzed the changes in the levels of these proteins."
+  },
+  {
+   "work": "W3019220919",
+   "problem": "This work investigates the level of a specific molecule in the colon of individuals with a certain condition, which causes severe illness and death. The goal is to understand the relationship between this molecule and the severity of the condition.",
+   "approach": "The researchers assessed the severity of the condition in the colon and then measured the level of a particular molecule using a laboratory test. They compared the results to see if there was a connection between the molecule and the severity of the condition."
+  },
+  {
+   "work": "W3159728908",
+   "problem": "This work investigates the relationship between a certain property of materials and the amount of a specific element added to them. It aims to understand how this element affects the property and whether it can be used to create materials with a certain characteristic.",
+   "approach": "The researchers prepared several samples of a material with a specific element added and measured the effect of the element on the material's property. They compared the results to understand the relationship between the element and the property."
+  }
+ ]
+}
