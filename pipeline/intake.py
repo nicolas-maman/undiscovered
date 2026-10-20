@@ -266,6 +266,7 @@ def check_descriptions(result: dict, unit: dict) -> list[dict]:
     return descs
 
 
+REJECTED_SHOWN = 500      # rejections listed in rejected/index.json, latest first, for the site
 RELEVANT_TOP = 0.15       # a description should find its own paper's abstract in this top share of the unit's
 RELEVANT_SHARE = 0.5      # share of a result's descriptions that must, where the abstracts are known
 
@@ -334,6 +335,10 @@ def intake_distill(dist_dir: Path, body: str, author: str, issue: int) -> str:
          "prompt": result["prompt"], "relevance": match, "at": _now(), "descriptions": descs},
         indent=1, ensure_ascii=False), encoding="utf-8")
     unit["models"] = sorted({model_name(r["model"]) for r in earlier} | {model})
+    unit["results"] = sorted([{"issue": r["issue"], "author": r["author"], "model": model_name(r["model"]),
+                               "relevance": r.get("relevance")} for r in earlier] +
+                             [{"issue": issue, "author": author, "model": model, "relevance": match}],
+                             key=lambda r: r["issue"])
     have = len(unit["models"])
     unit["status"] = "done" if have >= unit.get("quorum", 2) else "check"
     index_path.write_text(json.dumps(index, indent=1), encoding="utf-8")
@@ -357,6 +362,10 @@ def log_rejection(store: Path, issue: dict, reason: str) -> None:
         {"issue": issue["number"], "author": issue["user"]["login"], "title": issue.get("title", ""),
          "unit": result.get("unit"), "client": result.get("client"), "model": result.get("model"),
          "reason": reason, "at": _now()}, indent=1, ensure_ascii=False), encoding="utf-8")
+    log = sorted((json.loads(f.read_text(encoding="utf-8")) for f in folder.glob("[0-9]*.json")),
+                 key=lambda r: -r["issue"])
+    (folder / "index.json").write_text(json.dumps({"rejected": len(log), "latest": log[:REJECTED_SHOWN]},
+                                                  indent=1, ensure_ascii=False), encoding="utf-8")
 
 
 def distill_progress(dist_dir: Path) -> dict:

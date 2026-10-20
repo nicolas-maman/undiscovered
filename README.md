@@ -108,7 +108,7 @@ what actually happened.
    do now ([take part](https://nicolas-maman.github.io/undiscovered/join.html)).
    The descriptions go into an open index, and papers far apart that are
    described alike are shown as pairs
-   ([same problem, different field](https://nicolas-maman.github.io/undiscovered/connections.html)).
+   ([same problem, different field](https://nicolas-maman.github.io/undiscovered/explore.html#pairs)).
    Any model good enough to write them has read papers from after any past
    freeze, so whether they predict connections is tested forward: described
    now, judged on the citations that arrive later ([draft](research/NEXT.md)).
@@ -127,12 +127,15 @@ Contributors who choose a paid model pay for their own calls.
 
 Now:
 
-- [Take part](https://nicolas-maman.github.io/undiscovered/join.html): lend
-  your computer and an AI model of your choice, on your own machine or free
-  in the cloud, to describe papers in plain words. The page shows the
-  progress so far, who has helped and which models they used; the pairs of
-  papers the descriptions bring together, and how the models compare, are on
-  [Same problem, different field](https://nicolas-maman.github.io/undiscovered/connections.html).
+- [Describe papers in your browser](https://nicolas-maman.github.io/undiscovered/describe.html):
+  nothing to install; the model runs in the page, or you use your own key
+  (Google, Groq and OpenRouter give free ones). Or
+  [use the command-line client](https://nicolas-maman.github.io/undiscovered/join.html#terminal)
+  for many units unattended.
+- [Explore](https://nicolas-maman.github.io/undiscovered/explore.html): the map
+  of every paper, the pairs across fields and the words that made them, a
+  search by what papers do, and everything the checking job has accepted or
+  turned away.
 - Find a flaw in the [first test's results](https://nicolas-maman.github.io/undiscovered/results.html)
   or the [forward test's plan](research/FORWARD-TEST.md), and
   [tell us what could make a result wrong](https://github.com/nicolas-maman/undiscovered/issues/new?template=plan-review.yml).

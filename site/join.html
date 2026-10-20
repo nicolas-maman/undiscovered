@@ -32,6 +32,12 @@
   pre { background: var(--band); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px;
         overflow-x: auto; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 8px 0; }
   .cmdhead { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; }
+  .ways { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 24px 0 8px; }
+  .way { display: block; border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; text-decoration: none; color: var(--fg); }
+  .way:hover, .way:focus { border-color: var(--accent); }
+  .way strong { display: block; font: 600 1.1rem system-ui, sans-serif; margin-bottom: 4px; }
+  .way span { display: block; color: var(--muted); font-size: .95rem; }
+  .way em { display: block; font: 600 15px system-ui, sans-serif; font-style: normal; color: var(--accent); margin-top: 10px; }
   .copy { font: 13px system-ui, sans-serif; background: none; border: 1px solid var(--rule); color: var(--muted);
           border-radius: 4px; padding: 2px 8px; cursor: pointer; }
   .copy:hover, .copy:focus { color: var(--fg); border-color: var(--muted); }
@@ -57,11 +63,11 @@
 <main>
   <header class="top">
     <a class="brand" href="./">undiscovered</a>
-    <nav><a href="./#examples">Examples</a><a href="./#how">How it works</a><a href="results.html">Results</a><a class="cta" href="join.html" aria-current="page">Take part</a></nav>
+    <nav><a href="./#examples">Examples</a><a href="explore.html">Explore</a><a href="results.html">Results</a><a href="describe.html" class="cta" aria-current="page">Take part</a></nav>
   </header>
   <h1>Take part</h1>
   <p class="lede">Lend your computer and the AI model of your choice. Your model reads a paper's
-  title and abstract and writes, in two plain sentences, the problem it works on and how, without
+  title and abstract and writes, in two plain sentences, the task it carries out and how, without
   its field's words.</p>
   <p>Fields often name the same problem differently: estimating a hidden state from noisy
   measurements is a Kalman filter to a control engineer and data assimilation to a weather
@@ -69,14 +75,23 @@
   other. That takes one model call per paper, far more than one project can make, and easy when
   many people each make a few hundred.</p>
 
-  <h2>Start</h2>
+  <div class="ways">
+    <a class="way" href="describe.html"><strong>In your browser</strong><span>Nothing to install. The model runs
+    in the page, or you use your own key. A unit takes a few minutes, and you see at once what your papers
+    resemble in other fields.</span><em>Describe papers now</em></a>
+    <a class="way" href="#terminal"><strong>From a terminal</strong><span>For many units unattended, with a model
+    on your machine or a key. Python 3.10 or newer and the GitHub command-line tool.</span><em>Install the client</em></a>
+  </div>
+
+  <h2 id="terminal">From a terminal</h2>
   <p>You need Python 3.10 or newer, a GitHub account with the
   <a href="https://cli.github.com">GitHub command-line tool</a> logged in once
   (<code>gh auth login</code>), and a model: one on your own computer, a free one in the cloud,
-  or one you already pay for.</p>
+  or one you already pay for. Install the client with <a href="https://docs.astral.sh/uv/">uv</a> (or
+  <code>pipx install</code> with the same address), which keeps it apart from the system's Python.</p>
   <div class="cmdhead"><span class="note">In a terminal:</span>
   <button class="copy" type="button" data-for="commands">Copy</button></div>
-  <pre id="commands">pip install "undiscovered @ git+https://github.com/nicolas-maman/undiscovered#subdirectory=clients/python"
+  <pre id="commands">uv tool install "git+https://github.com/nicolas-maman/undiscovered#subdirectory=clients/python"
 undiscovered setup            # which model, and an optional OpenAlex key
 undiscovered work --units 5   # five units of twenty papers</pre>
   <p class="note"><code>undiscovered work --dry-run</code> does one unit and saves what it would send,
@@ -100,7 +115,7 @@ undiscovered work --units 5   # five units of twenty papers</pre>
   <div class="jobs" id="jobs"><p class="note">Loading progress...</p></div>
   <p class="note" id="updated"></p>
   <p>What the descriptions find, and how the models compare:
-  <a href="connections.html">Same problem, different field</a>.</p>
+  <a href="explore.html#pairs">the explorer</a>.</p>
 
   <h2>Who has helped</h2>
   <div id="people"></div>
@@ -151,7 +166,7 @@ undiscovered work --units 5   # five units of twenty papers</pre>
       el("div", {class: "big", text: n(done)}),
       el("div", {class: "note", text: "of " + n(total) + " " + unit}),
       bar,
-      el("div", {class: "note", text: n(units.done) + " units done, " + n(units.check) + " waiting for a second volunteer, " +
+      el("div", {class: "note", text: n(units.done) + " units done, " + n(units.check) + " waiting for a second model, " +
         n(units.open) + " open" + (detail ? ". " + detail : "")})]);
   }
   function table(rows, cols, empty) {

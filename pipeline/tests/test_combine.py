@@ -32,6 +32,11 @@ def write_branch(tmp_path: Path, n_papers: int = 40) -> Path:
         words[w] = rng.sample(VOCAB, 4)
     words["W1"] = words["W0"]
     (tmp_path / "papers.json").write_text(json.dumps(papers), encoding="utf-8")
+    life, physical = ["cell", "tissue", "organism", "species"], ["force", "particle", "energy", "field"]
+    (tmp_path / "abstracts.jsonl").write_text("\n".join(json.dumps(
+        {"work": w, "title": f"Paper {w}", "year": 2024,
+         "abstract": " ".join(words[w] + (life if papers[w]["domain"] == "Life Sciences" else physical) * 2)})
+        for w in papers), encoding="utf-8")
 
     generic = ["process", "system", "change", "pattern", "effect", "factor", "outcome", "method", "trend", "result"]
 
@@ -81,6 +86,9 @@ def test_the_planted_twins_come_first_and_vague_papers_are_never_confirmed(tmp_p
     assert all(t["a"]["domain"] != t["b"]["domain"] for t in twins)
     assert [w for w, _ in confirmed[0]["why"]][:4] and all(weight > 0 for _, weight in confirmed[0]["why"])
     assert {t["trust"] for t in twins} == {"two models agree", "one model so far"}
+    assert all(0 < t["field_distance"] <= 1 and t["score"] == pytest.approx(t["similarity"] * t["field_distance"], abs=1e-3)
+               for t in twins)
+    assert [t["score"] for t in confirmed] == sorted((t["score"] for t in confirmed), reverse=True)
 
 
 def test_boilerplate_two_models_share_for_every_paper_is_never_confirmed(tmp_path):
@@ -92,6 +100,8 @@ def test_boilerplate_two_models_share_for_every_paper_is_never_confirmed(tmp_pat
     papers.update({w: {"topic": f"T{w}", "domain": ["Life Sciences", "Physical Sciences"][i % 2]}
                    for i, w in enumerate(generic)})
     (branch / "papers.json").write_text(json.dumps(papers))
+    with (branch / "abstracts.jsonl").open("a") as f:
+        f.write("".join("\n" + json.dumps({"work": w, "title": w, "abstract": "plain generic words"}) for w in generic))
     for issue, model in ((7, "model-same-1"), (8, "model-same-2")):
         folder = branch / "results" / f"u-1{issue:05d}"
         folder.mkdir(parents=True)
@@ -112,13 +122,14 @@ def test_pairs_cross_fields_not_domains_and_known_cases_are_listed_apart(tmp_pat
     papers["W0"].update(domain="Physical Sciences", field="Earth and Planetary Sciences")
     papers["W1"].update(domain="Physical Sciences", field="Mathematics")
     (branch / "papers.json").write_text(json.dumps(papers))
+    near = lambda: dict(json.loads((tmp_path / "combined" / "neighbours.json").read_text())["W0"])  # noqa: E731
     combine.combine(branch)
-    first = next(t for t in twins_of(tmp_path)["twins"] if t["trust"] == "two models agree")
-    assert {first["a"]["work"], first["b"]["work"]} == {"W0", "W1"}          # one domain, two fields: a pair
+    assert "W1" in near()                                                    # one domain, two fields: may pair
 
     papers["W1"]["field"] = "Earth and Planetary Sciences"                       # one field: never a pair
     (branch / "papers.json").write_text(json.dumps(papers))
     combine.combine(branch)
+    assert "W1" not in near()
     assert not any({t["a"]["work"], t["b"]["work"]} == {"W0", "W1"} for t in twins_of(tmp_path)["twins"])
 
     papers["W1"]["field"] = "Mathematics"
@@ -157,7 +168,7 @@ def test_two_volunteers_with_the_same_model_do_not_count_as_agreeing(tmp_path):
     folder.mkdir(parents=True)
     same = json.loads((branch / "results" / "u-100001" / "1.json").read_text())
     (folder / "9.json").write_text(json.dumps({**same, "author": "dave"}), encoding="utf-8")   # dave runs model-a too
-    _papers, rows = combine.load(branch)
+    _papers, rows, _abstracts = combine.load(branch)
     pairs = combine.same_paper_pairs(rows)
     assert pairs and all(rows[a]["model"] != rows[b]["model"] for a, b in pairs)
     assert not any({rows[a]["author"], rows[b]["author"]} == {"alice", "dave"} for a, b in pairs)

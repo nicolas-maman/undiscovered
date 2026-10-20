@@ -101,6 +101,8 @@ def test_a_unit_is_complete_once_two_models_have_described_it(tmp_path):
     stored = json.loads((d / "units" / "index.json").read_text())["units"][0]
     assert stored["status"] == "done"
     assert stored["models"] == ["llama3.1:8b (openai-compatible)", "qwen3:8b (openai-compatible)"]
+    assert [(r["issue"], r["model"]) for r in stored["results"]] == [(11, "qwen3:8b (openai-compatible)"),
+                                                                    (14, "llama3.1:8b (openai-compatible)")]
 
 
 def test_a_template_filled_in_for_every_paper_is_rejected(tmp_path):
@@ -181,6 +183,8 @@ def test_a_rejected_result_leaves_its_reason_on_the_branch(tmp_path, monkeypatch
     assert not verdict["accepted"] and "only 2 of the unit's 4" in verdict["reply"]
     assert logged["reason"] in verdict["reply"] and logged["author"] == "carol" and logged["unit"] == u["unit"]
     assert logged["model"] == {"provider": "openai-compatible", "id": "qwen3:8b"}
+    listed = json.loads((d / "rejected" / "index.json").read_text(encoding="utf-8"))
+    assert listed["rejected"] == 1 and listed["latest"][0]["issue"] == 21
 
 
 def test_descriptions_of_other_papers_are_turned_away(tmp_path):

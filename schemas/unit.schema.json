@@ -107,6 +107,42 @@
         "done",
         "disputed"
       ]
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "distill units: the models that have described the unit, as \"<id> (<provider>)\"; set by the checking job"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "issue",
+          "author",
+          "model"
+        ],
+        "properties": {
+          "issue": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "relevance": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      },
+      "description": "distill units: each accepted result, by issue, with the share of its descriptions that found their own paper's abstract; set by the checking job"
     }
   },
   "allOf": [

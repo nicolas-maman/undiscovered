@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Describe papers in your browser · undiscovered">
+<meta property="og:description" content="Lend an AI model, in this browser or with your own key, to describe papers without their field's words, so that work on the same problem in different fields can find each other.">
+<meta property="og:url" content="https://nicolas-maman.github.io/undiscovered/describe.html">
+<meta property="og:image" content="https://nicolas-maman.github.io/undiscovered/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="undiscovered: research in one field that another field could use, but has never cited.">
+<meta name="twitter:card" content="summary_large_image">
+<title>Describe papers in your browser · undiscovered</title>
+<meta name="description" content="Describe twenty papers without their field's words, in your browser: with a model that runs in the browser itself, or your own key.">
+<style>
+  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; --band: #f1eee6;
+          --good: #2e7d4f; --bad: #a3412f; --warn: #8a6d1d; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0; --band: #1d1c1a;
+            --good: #7fc79b; --bad: #e38c79; --warn: #d9bf6f; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 16px 80px; }
+  a { color: var(--accent); }
+  h1 { font-size: 2.1rem; line-height: 1.2; margin: 8px 0 12px; }
+  h2 { font-size: 1.35rem; margin: 44px 0 8px; display: flex; gap: 10px; align-items: baseline; }
+  h2 .n { font: 600 14px/26px system-ui, sans-serif; width: 26px; height: 26px; border-radius: 50%; flex: none;
+          border: 1px solid var(--accent); color: var(--accent); text-align: center; }
+  .lede { font-size: 1.1rem; }
+  .note { color: var(--muted); font-size: .92rem; }
+  .ui, button, input, select, textarea { font: 15px/1.4 system-ui, sans-serif; }
+  .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 14px 0; }
+  .choice { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; cursor: pointer; display: block; }
+  .choice:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .choice input { margin-right: 6px; }
+  .choice strong { font: 600 15px system-ui, sans-serif; }
+  .choice span { display: block; color: var(--muted); font: 13px/1.4 system-ui, sans-serif; margin-top: 4px; }
+  .choice.off { opacity: .55; cursor: not-allowed; }
+  .panel { background: var(--band); border-radius: 8px; padding: 14px 16px; margin: 10px 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0; }
+  label.f { display: flex; flex-direction: column; gap: 3px; font: 13px system-ui, sans-serif; color: var(--muted); flex: 1 1 220px; }
+  input[type=text], input[type=password], input[type=url], select { padding: 7px 9px; border: 1px solid var(--rule);
+          border-radius: 5px; background: var(--bg); color: var(--fg); width: 100%; }
+  button { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--accent); background: var(--bg); color: var(--accent);
+           cursor: pointer; font-weight: 600; }
+  button.primary { background: var(--accent); color: var(--bg); }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  .status { font: 14px/1.4 system-ui, sans-serif; color: var(--muted); }
+  .status.ok { color: var(--good); } .status.bad { color: var(--bad); }
+  .bar { height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; margin: 8px 0; }
+  .bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+  .papers { list-style: none; padding: 0; margin: 12px 0; }
+  .paper { border-top: 1px solid var(--rule); padding: 10px 0; }
+  .paper .head { display: flex; gap: 10px; align-items: baseline; }
+  .paper .state { font: 600 12px system-ui, sans-serif; text-transform: uppercase; letter-spacing: .05em; min-width: 78px; color: var(--muted); }
+  .paper .state.ok { color: var(--good); } .paper .state.bad { color: var(--bad); } .paper .state.busy { color: var(--accent); }
+  .paper .field { font: 12px system-ui, sans-serif; color: var(--muted); }
+  .paper .t { flex: 1; }
+  .paper .t a { color: var(--fg); text-decoration: none; }
+  .paper .t a:hover { text-decoration: underline; }
+  .desc { margin: 6px 0 0 88px; font-size: .95rem; }
+  .desc b { font: 600 11px system-ui, sans-serif; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 6px; }
+  .desc p { margin: 2px 0; }
+  details.raw { margin: 4px 0 0 88px; font: 13px system-ui, sans-serif; color: var(--muted); }
+  details.raw pre { white-space: pre-wrap; background: var(--band); border-radius: 5px; padding: 8px; font-size: 12px; }
+  .badges { margin: 4px 0 0 88px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge { font: 12px system-ui, sans-serif; border: 1px solid var(--rule); border-radius: 10px; padding: 0 8px; color: var(--muted); }
+  .badge.warn { color: var(--warn); border-color: var(--warn); }
+  .match { border-top: 1px solid var(--rule); padding: 10px 0; }
+  .match .why { font: 13px system-ui, sans-serif; color: var(--muted); }
+  ol.how { padding-left: 22px; }
+  @media (max-width: 560px) { .desc, details.raw, .badges { margin-left: 0; } .paper .state { min-width: 0; } }
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
+</style>
+<link rel="stylesheet" href="site.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<main>
+  <header class="top">
+    <a class="brand" href="./">undiscovered</a>
+    <nav><a href="./#examples">Examples</a><a href="explore.html">Explore</a><a href="results.html">Results</a><a href="describe.html" class="cta" aria-current="page">Take part</a></nav>
+  </header>
+
+  <h1>Describe papers in your browser</h1>
+  <p class="lede">Your AI model reads twenty abstracts and writes, for each, the task the paper carries out,
+  without its field's words. Nothing to install: the model runs in this page, or you use your own key.
+  A unit takes a few minutes.</p>
+  <p class="note">Your key, if you use one, stays in this browser and goes only to the service it belongs to.
+  The abstracts come from <a href="https://openalex.org">OpenAlex</a>; your descriptions are published under
+  CC0 once you send them, with your GitHub name and the model's.</p>
+
+  <h2><span class="n">1</span>Choose a model</h2>
+  <div class="choices" role="radiogroup">
+    <label class="choice" id="choice-browser"><input type="radio" name="kind" value="browser">
+      <strong>In this browser</strong><span id="gpu-note">No key and no account. A one-time download of 2 to 4 GB,
+      kept by the browser. Needs a recent Chrome, Edge or Safari with WebGPU.</span></label>
+    <label class="choice"><input type="radio" name="kind" value="hosted">
+      <strong>With your own key</strong><span>Google Gemini, Groq and OpenRouter have free keys; OpenAI, Anthropic
+      and Mistral work too.</span></label>
+    <label class="choice"><input type="radio" name="kind" value="local">
+      <strong>A server on this computer</strong><span>Ollama, LM Studio, llama.cpp or anything that speaks the
+      OpenAI API.</span></label>
+  </div>
+
+  <div class="panel" id="panel-browser" hidden>
+    <div class="row"><label class="f">Model
+      <select id="webllm-model"></select></label></div>
+    <p class="note">The first unit waits for the download; later units start at once. Results name the model,
+    so different volunteers' models can check each other.</p>
+  </div>
+
+  <div class="panel" id="panel-hosted" hidden>
+    <div class="row">
+      <label class="f">Service <select id="provider"></select></label>
+      <label class="f">Key <input type="password" id="key" autocomplete="off" spellcheck="false" placeholder="paste your key"></label>
+    </div>
+    <div class="row">
+      <label class="f">Model <input type="text" id="hosted-model" list="hosted-models" spellcheck="false" placeholder="its name, as the service writes it"></label>
+      <datalist id="hosted-models"></datalist>
+      <button type="button" id="list-hosted">List its models</button>
+    </div>
+    <p class="note" id="provider-note"></p>
+    <label class="note"><input type="checkbox" id="remember"> Remember the key on this computer (otherwise it is
+    forgotten when you close the tab)</label>
+  </div>
+
+  <div class="panel" id="panel-local" hidden>
+    <div class="row">
+      <label class="f">Address <input type="url" id="local-base" value="http://127.0.0.1:11434/v1" spellcheck="false"></label>
+      <label class="f">Model <input type="text" id="local-model" list="local-models" spellcheck="false" placeholder="its name"></label>
+      <datalist id="local-models"></datalist>
+      <button type="button" id="list-local">List its models</button>
+    </div>
+    <p class="note">The server must allow this page to call it. Ollama: start it with
+    <code>OLLAMA_ORIGINS=https://nicolas-maman.github.io ollama serve</code>. LM Studio: turn on CORS in its server
+    settings.</p>
+  </div>
+
+  <div class="row"><button type="button" id="test" disabled>Test the model</button>
+    <span class="status" id="test-status"></span></div>
+
+  <h2><span class="n">2</span>Describe a unit</h2>
+  <div class="row"><button type="button" class="primary" id="start" disabled>Get a unit and start</button>
+    <button type="button" id="stop" hidden>Stop after this paper</button>
+    <span class="status" id="unit-status">Choose a model first.</span></div>
+  <div class="bar"><span id="progress"></span></div>
+  <ul class="papers" id="papers"></ul>
+
+  <h2><span class="n">3</span>Send it</h2>
+  <div id="send"><p class="note">When the unit is described, its result appears here, with how to send it.</p></div>
+
+  <h2>What your papers resemble</h2>
+  <div id="resemble"><p class="note">Once the unit is described, the papers from other fields that its
+  descriptions are most like appear here: in this unit, and among the descriptions already published.</p></div>
+
+  <h2>How a result is checked</h2>
+  <ol class="how">
+    <li>You send it as a GitHub issue under your account, through a form the page opens for you.</li>
+    <li>A job on the project checks it within minutes: no jargon, no description of one paper reused for another,
+    and descriptions that match their own papers' abstracts. It answers on the issue.</li>
+    <li>A unit is complete once two different models have described it, from anyone. Their descriptions are then
+    compared, and papers from different fields that both models describe alike become
+    <a href="connections.html">pairs</a>.</li>
+  </ol>
+  <p class="note">Prefer a terminal, or want to run many units unattended? <a href="join.html#terminal">Use the
+  command-line client</a>. Something not working? The <a href="explore.html#log">explorer's log</a> shows every
+  result the checking job turned away, and why.</p>
+
+  <footer>
+    Open source (MIT). Data CC0, from <a href="https://openalex.org">OpenAlex</a>.
+    <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
+  </footer>
+</main>
+<script src="core.js"></script>
+<script src="textsim.js"></script>
+<script src="describe.js"></script>
+</body>
+</html>

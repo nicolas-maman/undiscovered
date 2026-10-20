@@ -3,8 +3,8 @@
     pip install numpy scikit-learn       # this script only
     python pipeline/combine.py <distill-2025 checkout>
 
-Reads results/<unit>/<issue>.json, papers.json and, when it is there,
-abstracts.jsonl (for titles), and writes combined/:
+Reads results/<unit>/<issue>.json, papers.json and abstracts.jsonl, and
+writes combined/:
 
     descriptions.jsonl   every accepted description, one paper per line: the open index (CC0)
     models.json          for each model: what it described, and how well its descriptions agree
@@ -30,6 +30,13 @@ agree more than 95% of chance pairs do, and more than its descriptions are
 like 99% of the other papers' descriptions. The second condition stops
 boilerplate: two models that write the same generic words for every paper
 agree with each other, but they agree just as much with every other paper.
+
+Pairs are ranked by their similarity times the distance between their two
+fields, so that the same task done in distant fields comes before the same
+task done next door. A field's place is the mean TF-IDF vector of its
+papers' abstracts; the distance between two fields is one minus the cosine
+of their places (Medicine and Biochemistry are close, about 0.3 apart; Mathematics
+and Earth Sciences far, about 0.8). Each pair reports all three numbers.
 
 Twins come in two kinds. "Two models agree" pairs join reliably described
 papers. "One model so far" pairs join papers that only one model has
@@ -66,26 +73,24 @@ MIN_DESCRIPTIONS = 40       # below this there is too little to compare
 BINS = 20                   # histogram bins on [0, 1] for the site
 
 
-def load(branch: Path) -> tuple[dict, list[dict]]:
+def load(branch: Path) -> tuple[dict, list[dict], list[dict]]:
     papers = json.loads((branch / "papers.json").read_text(encoding="utf-8"))
     twins = branch / "known-twins.json"
     if twins.exists():                  # the benchmark's families, so a recovered known case is not a lead
         for p in json.loads(twins.read_text(encoding="utf-8"))["papers"]:
             if p["work"] in papers:
                 papers[p["work"]] = {**papers[p["work"]], "family": p["family"], "role": p["role"]}
-    abstracts = branch / "abstracts.jsonl"
-    if abstracts.exists():
-        for line in abstracts.read_text(encoding="utf-8").splitlines():
-            a = json.loads(line)
-            if a["work"] in papers:
-                papers[a["work"]] = {**papers[a["work"]], "title": a.get("title", ""), "year": a.get("year")}
+    abstracts = [json.loads(line) for line in (branch / "abstracts.jsonl").read_text(encoding="utf-8").splitlines()]
+    for a in abstracts:
+        if a["work"] in papers:
+            papers[a["work"]] = {**papers[a["work"]], "title": a.get("title", ""), "year": a.get("year")}
     rows = []
     for f in sorted((branch / "results").glob("*/*.json")):
         r = json.loads(f.read_text(encoding="utf-8"))
         for d in r["descriptions"]:
             rows.append({"work": d["work"], "author": r["author"], "model": (r["model"]["provider"], r["model"]["id"]),
                          "problem": d["problem"], "approach": d["approach"]})
-    return papers, rows
+    return papers, rows, abstracts
 
 
 def vectors(rows: list[dict]):
@@ -147,6 +152,20 @@ def paper_vectors(X, rows: list[dict]) -> tuple[list[str], np.ndarray, dict[str,
     V = np.vstack([np.asarray(X[by_work[w]].mean(axis=0)).ravel() for w in works]).astype(np.float32)
     V /= np.linalg.norm(V, axis=1, keepdims=True) + 1e-12
     return works, V, by_work
+
+
+def field_distances(papers: dict, abstracts: list[dict]) -> tuple[dict[str, int], np.ndarray]:
+    """Every field's index, and one minus the cosine between the mean abstracts of each two fields."""
+    have = [a for a in abstracts if a.get("abstract") and a["work"] in papers]
+    fields = sorted({field_of(papers[a["work"]], a["work"]) for a in have})
+    at = {f: i for i, f in enumerate(fields)}
+    A = TfidfVectorizer(stop_words="english", sublinear_tf=True, min_df=2).fit_transform(
+        [f"{a.get('title', '')} {a['abstract']}" for a in have])
+    C = np.zeros((len(fields), A.shape[1]))
+    for k, a in enumerate(have):
+        C[at[field_of(papers[a["work"]], a["work"])]] += A[k].toarray().ravel()
+    C /= np.linalg.norm(C, axis=1, keepdims=True) + 1e-12
+    return at, np.clip(1 - C @ C.T, 0, 1)
 
 
 def field_of(paper: dict, work: str) -> str:
@@ -216,7 +235,7 @@ def similar_pairs(ranked: list, works: list[str], allowed, used: dict, limit: in
     return out
 
 
-def pairing(X, terms, rows, pairs, papers, threshold) -> tuple[dict, dict]:
+def pairing(X, terms, rows, pairs, papers, abstracts, threshold) -> tuple[dict, dict]:
     """Twins of both kinds, known cases recovered, and every paper's neighbours from other fields."""
     works, V, by_work = paper_vectors(X, rows)
     reliable = reliable_papers(X, rows, pairs, works, V, threshold)
@@ -228,6 +247,10 @@ def pairing(X, terms, rows, pairs, papers, threshold) -> tuple[dict, dict]:
     field = np.array([field_of(papers.get(w, {}), w) for w in works])
     family = [papers.get(w, {}).get("family") if papers.get(w, {}).get("role") == "member" else None for w in works]
     S[field[:, None] == field[None, :]] = -1                 # same field: not a twin
+    at, apart = field_distances(papers, abstracts)
+    fi = np.array([at.get(f, -1) for f in field])
+    D = np.where((fi[:, None] >= 0) & (fi[None, :] >= 0), apart[np.maximum(fi, 0)][:, np.maximum(fi, 0)], 1.0)
+    score = np.where(S > 0, S * D, -1)
     trusted = np.array([w in reliable for w in works])
     known = lambda a, b: family[a] is not None and family[a] == family[b]  # noqa: E731
 
@@ -237,21 +260,23 @@ def pairing(X, terms, rows, pairs, papers, threshold) -> tuple[dict, dict]:
                 "descriptions": [{"problem": rows[k]["problem"], "approach": rows[k]["approach"],
                                   "model": rows[k]["model"][1]} for k in by_work[w]]}
 
-    def entry(a: int, b: int, s: float, trust: str) -> dict:
-        return {"similarity": round(s, 4), "trust": trust, "why": why(terms, V[a], V[b]), "a": side(a), "b": side(b)}
+    def entry(a: int, b: int, trust: str) -> dict:
+        return {"score": round(float(score[a, b]), 4), "similarity": round(float(S[a, b]), 4),
+                "field_distance": round(float(D[a, b]), 4), "trust": trust, "why": why(terms, V[a], V[b]),
+                "a": side(a), "b": side(b)}
 
     used = defaultdict(int)
-    ranked = candidates(S)
+    ranked = candidates(score)
     confirmed = similar_pairs(ranked, works, lambda a, b: trusted[a] and trusted[b] and not known(a, b), used, TWINS)
     provisional = similar_pairs(ranked, works, lambda a, b: not (trusted[a] and trusted[b]) and not generic[a]
                                 and not generic[b] and not known(a, b), used, TWINS)
     members = [i for i in range(n) if family[i] is not None]
     recovered = sorted(((a, b, float(S[a, b])) for x, a in enumerate(members) for b in members[x + 1:]
                         if known(a, b) and S[a, b] > -1), key=lambda t: -t[2])
-    twins = {"method": "tf-idf cosine", "reliable_papers": len(reliable),
-             "twins": [entry(a, b, s, "two models agree") for a, b, s in confirmed] +
-                      [entry(a, b, s, "one model so far") for a, b, s in provisional],
-             "known_cases": [entry(a, b, s, "known case") for a, b, s in recovered]}
+    twins = {"method": "tf-idf cosine, times field distance", "reliable_papers": len(reliable),
+             "twins": [entry(a, b, "two models agree") for a, b, _ in confirmed] +
+                      [entry(a, b, "one model so far") for a, b, _ in provisional],
+             "known_cases": [entry(a, b, "known case") for a, b, _ in recovered]}
     neighbours = {}
     for i, w in enumerate(works):
         best = np.argsort(-S[i])[:NEIGHBOURS]
@@ -260,7 +285,7 @@ def pairing(X, terms, rows, pairs, papers, threshold) -> tuple[dict, dict]:
 
 
 def combine(branch: Path) -> dict:
-    papers, rows = load(branch)
+    papers, rows, abstracts = load(branch)
     out_dir = branch / "combined"
     out_dir.mkdir(exist_ok=True)
     by_work = defaultdict(list)
@@ -281,7 +306,7 @@ def combine(branch: Path) -> dict:
         threshold = float(np.percentile(base, RELIABLE))
         summary.update(chance_median=round(float(np.median(base)), 4), reliable_above=round(threshold, 4),
                        chance_histogram=histogram(base), models=models(X, rows, pairs, rng))
-        twins, neighbours = pairing(X, terms, rows, pairs, papers, threshold)
+        twins, neighbours = pairing(X, terms, rows, pairs, papers, abstracts, threshold)
         summary["reliable_papers"] = twins["reliable_papers"]
     else:
         summary["note"] = f"Fewer than {MIN_DESCRIPTIONS} descriptions so far: nothing to compare yet."

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Explore · undiscovered">
+<meta property="og:description" content="A map of the papers being described, the pairs found across fields and why, and everything the checking job has accepted or turned away.">
+<meta property="og:url" content="https://nicolas-maman.github.io/undiscovered/explore.html">
+<meta property="og:image" content="https://nicolas-maman.github.io/undiscovered/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="undiscovered: research in one field that another field could use, but has never cited.">
+<meta name="twitter:card" content="summary_large_image">
+<title>Explore · undiscovered</title>
+<meta name="description" content="Map, search and debug the describing work: papers by field, pairs across fields with the words that made them, units, models and rejected results.">
+<style>
+  :root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5d5b55; --rule: #e3e0d8; --accent: #2f5d8a; --band: #f1eee6;
+          --good: #2e7d4f; --bad: #a3412f; --warn: #8a6d1d;
+          --d0: #2f7d4f; --d1: #b04a3a; --d2: #2f5d8a; --d3: #a87a14; --twin: #7a3fa0; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141413; --fg: #ecebe6; --muted: #a8a59c; --rule: #2c2b28; --accent: #8db7e0; --band: #1d1c1a;
+            --good: #7fc79b; --bad: #e38c79; --warn: #d9bf6f;
+            --d0: #78c494; --d1: #e58b78; --d2: #86b3e3; --d3: #dcb85e; --twin: #c79be6; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 16px/1.55 Georgia, "Iowan Old Style", "Times New Roman", serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 16px 80px; }
+  a { color: var(--accent); }
+  h1 { font-size: 2rem; margin: 8px 0 6px; }
+  h3 { font-size: 1.05rem; margin: 22px 0 6px; }
+  .lede { margin: 0 0 18px; }
+  .note { color: var(--muted); font-size: .9rem; }
+  .ui, button, input, select { font: 14px/1.4 system-ui, sans-serif; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--rule); margin: 18px 0 16px; }
+  .tabs a { font: 600 14px system-ui, sans-serif; padding: 8px 14px; text-decoration: none; color: var(--muted);
+            border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; margin-bottom: -1px; }
+  .tabs a[aria-selected=true] { color: var(--fg); border-color: var(--rule); background: var(--bg); }
+  .tabs .count { font-weight: 400; color: var(--muted); }
+  section[role=tabpanel][hidden] { display: none; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 0 0 10px; font: 14px system-ui, sans-serif; }
+  .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+  .seg button { border: none; background: var(--bg); color: var(--muted); padding: 6px 12px; cursor: pointer; }
+  .seg button[aria-pressed=true] { background: var(--accent); color: var(--bg); }
+  .seg button:disabled { opacity: .45; cursor: not-allowed; }
+  select, input[type=search] { padding: 6px 8px; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--fg); }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .legend button { border: none; background: none; color: var(--fg); cursor: pointer; padding: 2px 0; font: 13px system-ui, sans-serif; }
+  .legend button[aria-pressed=false] { opacity: .35; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+  .mapwrap { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 16px; }
+  @media (max-width: 900px) { .mapwrap { grid-template-columns: 1fr; } }
+  .canvasbox { position: relative; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; height: 640px; background: var(--bg); }
+  @media (max-width: 600px) { .canvasbox { height: 420px; } }
+  canvas { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+  canvas.drag { cursor: grabbing; }
+  .tip { position: absolute; pointer-events: none; background: var(--bg); border: 1px solid var(--rule); border-radius: 6px;
+         padding: 6px 9px; font: 13px/1.35 system-ui, sans-serif; max-width: 300px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  .maphint { position: absolute; left: 10px; bottom: 8px; font: 12px system-ui, sans-serif; color: var(--muted); }
+  .side { border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; max-height: 640px; overflow: auto; }
+  .side h3:first-child { margin-top: 0; }
+  .kv { font: 13px system-ui, sans-serif; color: var(--muted); margin: 2px 0; }
+  .d { font-size: .93rem; margin: 8px 0; padding-left: 10px; border-left: 2px solid var(--rule); }
+  .d .m { font: 12px system-ui, sans-serif; color: var(--muted); }
+  .d b { font: 600 11px system-ui, sans-serif; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-right: 4px; }
+  .nb { display: block; text-align: left; width: 100%; border: none; background: none; color: var(--accent); cursor: pointer;
+        padding: 4px 0; font: 14px/1.35 Georgia, serif; }
+  .nb span { font: 12px system-ui, sans-serif; color: var(--muted); }
+  .pair { border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; margin: 12px 0; }
+  .pair .head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font: 13px system-ui, sans-serif; color: var(--muted); }
+  .chip { font: 12px system-ui, sans-serif; border: 1px solid var(--rule); border-radius: 10px; padding: 0 8px; }
+  .chip.good { color: var(--good); border-color: var(--good); } .chip.warn { color: var(--warn); border-color: var(--warn); }
+  .chip.bad { color: var(--bad); border-color: var(--bad); }
+  .sides { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  @media (max-width: 700px) { .sides { grid-template-columns: 1fr; } }
+  .why { margin-top: 8px; font: 13px system-ui, sans-serif; color: var(--muted); }
+  .why mark { background: none; color: var(--fg); font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; font: 14px/1.4 system-ui, sans-serif; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.id { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 8px 0 16px; }
+  .stat { background: var(--band); border-radius: 8px; padding: 10px 14px; font: 13px system-ui, sans-serif; color: var(--muted); }
+  .stat b { display: block; font: 600 1.5rem system-ui, sans-serif; color: var(--fg); font-variant-numeric: tabular-nums; }
+  .hist { display: inline-flex; align-items: flex-end; gap: 1px; height: 28px; vertical-align: middle; }
+  .hist span { width: 4px; background: var(--accent); display: inline-block; }
+  .hist.chance span { background: var(--muted); }
+  .result { border-top: 1px solid var(--rule); padding: 10px 0; }
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
+</style>
+<link rel="stylesheet" href="site.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<main>
+  <header class="top">
+    <a class="brand" href="./">undiscovered</a>
+    <nav><a href="./#examples">Examples</a><a href="explore.html" aria-current="page">Explore</a><a href="results.html">Results</a><a href="describe.html" class="cta">Take part</a></nav>
+  </header>
+  <h1>Explore</h1>
+  <p class="lede">Every paper being described, the pairs found across fields and why, and everything the checking
+  job has done. The data is the project's own, read live from its
+  <a href="https://github.com/nicolas-maman/undiscovered/tree/distill-2025">data branch</a>.</p>
+
+  <nav class="tabs" role="tablist" id="tabs">
+    <a href="#map" role="tab" data-tab="map">Map</a>
+    <a href="#pairs" role="tab" data-tab="pairs">Pairs <span class="count" id="n-pairs"></span></a>
+    <a href="#search" role="tab" data-tab="search">Search</a>
+    <a href="#units" role="tab" data-tab="units">Units <span class="count" id="n-units"></span></a>
+    <a href="#models" role="tab" data-tab="models">Models <span class="count" id="n-models"></span></a>
+    <a href="#log" role="tab" data-tab="log">Log <span class="count" id="n-log"></span></a>
+  </nav>
+
+  <section role="tabpanel" id="tab-map">
+    <div class="controls">
+      <span class="seg" role="group" aria-label="Place papers by">
+        <button type="button" id="by-abstracts" aria-pressed="true">By abstract</button>
+        <button type="button" id="by-descriptions" aria-pressed="false" disabled>By plain description</button>
+      </span>
+      <label>Field <select id="field"><option value="">all fields</option></select></label>
+      <label><input type="checkbox" id="show-twins" checked> known twins</label>
+      <label><input type="checkbox" id="show-pairs" checked> pairs two models agree on</label>
+      <span class="legend" id="legend"></span>
+    </div>
+    <div class="mapwrap">
+      <div class="canvasbox"><canvas id="map" aria-label="Map of papers"></canvas><div class="tip" id="tip" hidden></div>
+        <div class="maphint">Scroll to zoom, drag to move, click a paper.</div></div>
+      <aside class="side" id="paper"><p class="note" id="map-note">Loading the map...</p></aside>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="tab-pairs" hidden><div id="pairs"><p class="note">Loading...</p></div></section>
+
+  <section role="tabpanel" id="tab-search" hidden>
+    <div class="controls">
+      <input type="search" id="q" placeholder="what a paper does, in plain words: estimate a hidden state from noisy readings"
+             style="flex: 1 1 420px">
+      <span class="seg" role="group" aria-label="Search in">
+        <button type="button" id="in-descriptions" aria-pressed="true">plain descriptions</button>
+        <button type="button" id="in-titles" aria-pressed="false">titles</button>
+      </span>
+    </div>
+    <div id="results"><p class="note">Plain descriptions say what a paper does in words any field uses, so a search in
+    them finds work from fields you would not have thought to look in. Titles use each field's own words.</p></div>
+  </section>
+
+  <section role="tabpanel" id="tab-units" hidden><div id="units"><p class="note">Loading...</p></div></section>
+  <section role="tabpanel" id="tab-models" hidden><div id="models"><p class="note">Loading...</p></div></section>
+  <section role="tabpanel" id="tab-log" hidden><div id="log"><p class="note">Loading...</p></div></section>
+
+  <footer>
+    Open source (MIT). Data CC0, from <a href="https://openalex.org">OpenAlex</a>.
+    <a href="https://github.com/nicolas-maman/undiscovered">github.com/nicolas-maman/undiscovered</a>
+  </footer>
+</main>
+<script src="core.js"></script>
+<script src="textsim.js"></script>
+<script src="explore.js"></script>
+</body>
+</html>
