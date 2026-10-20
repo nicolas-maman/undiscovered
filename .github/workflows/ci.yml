@@ -59,9 +59,16 @@ jobs:
           INTAKE_NO_PUSH: "1"
         run: |
           python scripts/rehearse_intake.py store event.json
+          python -c "import json; print(json.load(open('store/progress.json'))['descriptions'])" > before.txt
           bash pipeline/intake_job.sh distill
+          cat verdict.json
           python -c "import json, sys; v = json.load(open('verdict.json')); sys.exit(0 if v['accepted'] and v['stored'] else 1)"
-          python -c "import json; p = json.load(open('store/progress.json')); assert p['descriptions'] == 20, p"
+          python - <<'PY'
+          import json, re
+          sent = json.loads(re.search(r"```json\s*\n(.*?)\n```", json.load(open("event.json"))["issue"]["body"], re.S).group(1))
+          now = json.load(open("store/progress.json"))["descriptions"]
+          assert now == int(open("before.txt").read()) + len(sent["descriptions"]), now
+          PY
           git -C store log -1 --format=%s
       - name: The same on junk (one template for every paper), which must be turned away and logged
         env:

@@ -64,6 +64,7 @@ SEED = 2025
 CHANCE_PAIRS = 20000        # pairs of descriptions of different papers, for the chance level
 RELIABLE = 95               # percentile of chance a paper's two models' descriptions must beat
 DISTINCT = 99               # percentile of a paper's likeness to other papers its own agreement must beat
+TIE = 1e-4                  # by more than this: two equal similarities differ by rounding, by platform
 GENERIC = 95                # papers above this percentile of mean likeness to all others are never paired
 TWINS = 50                  # pairs published, of each kind
 PER_PAPER = 2               # times one paper may appear among them
@@ -186,7 +187,7 @@ def reliable_papers(X, rows, pairs, works, V, threshold: float) -> dict[str, flo
             continue
         others = V @ V[index[w]]
         others = np.delete(others, index[w])
-        if others.size == 0 or mine > float(np.percentile(others, DISTINCT)):
+        if others.size == 0 or mine > float(np.percentile(others, DISTINCT)) + TIE:
             out[w] = mine
     return out
 
